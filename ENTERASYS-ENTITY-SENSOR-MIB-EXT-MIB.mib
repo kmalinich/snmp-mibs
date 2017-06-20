@@ -1,0 +1,291 @@
+ENTERASYS-ENTITY-SENSOR-MIB-EXT-MIB DEFINITIONS ::= BEGIN
+
+--  enterasys-entity-sensor-mib-ext-mib.txt
+--
+--  Part Number:
+--
+--
+
+--  This module provides authoritative definitions for Enterasys 
+--  Networks' Entity Sensor MIB Extensions functionality.
+
+--
+--  This module will be extended, as needed.
+
+--  Enterasys Networks reserves the right to make changes in this
+--  specification and other information contained in this document
+--  without prior notice.  The reader should consult Enterasys Networks
+--  to determine whether any such changes have been made.
+--
+--  In no event shall Enterasys Networks be liable for any incidental,
+--  indirect, special, or consequential damages whatsoever (including
+--  but not limited to lost profits) arising out of or related to this
+--  document or the information contained in it, even if Enterasys
+--  Networks has been advised of, known, or should have known, the
+--  possibility of such damages.
+--
+--  Enterasys Networks grants vendors, end-users, and other interested
+--  parties a non-exclusive license to use this Specification in 
+--  connection with the management of Enterasys Networks products.
+
+--  Copyright October 2011 Enterasys Networks, Inc.
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE
+        FROM SNMPv2-SMI
+    TEXTUAL-CONVENTION
+        FROM SNMPv2-TC
+    MODULE-COMPLIANCE, OBJECT-GROUP, NOTIFICATION-GROUP
+        FROM SNMPv2-CONF
+    entPhysicalIndex
+        FROM ENTITY-MIB
+    entPhySensorScale, entPhySensorPrecision, entPhySensorValue, 
+    EntitySensorValue, entPhySensorOperStatus, entPhySensorUnitsDisplay
+        FROM ENTITY-SENSOR-MIB
+    EnabledStatus
+        FROM P-BRIDGE-MIB
+    etsysModules
+        FROM ENTERASYS-MIB-NAMES;
+
+etsysEntitySensorExtMIB MODULE-IDENTITY
+    LAST-UPDATED "201110141449Z"  -- Fri Oct 14 14:49 UTC 2011
+    ORGANIZATION "Enterasys Networks, Inc."
+    CONTACT-INFO
+        "Postal:  Enterasys Networks
+                  50 Minuteman Rd.
+                  Andover, MA 01810-1008
+                  USA
+         Phone:   +1 978 684 1000
+         E-mail:  support@enterasys.com
+         WWW:     http://www.enterasys.com"
+   
+    DESCRIPTION
+        "This MIB module defines a portion of the SNMP MIB under
+         the Enterasys Networks enterprise OID that provide 
+         extensions to the industry proposed standard ENTITY-SENSOR-MIB."
+
+    REVISION    "201110141449Z"  -- Fri Oct 14 14:49 UTC 2011
+    DESCRIPTION 
+        "The initial version of this MIB module."
+    ::= { etsysModules 85 } 
+
+
+-- -------------------------------------------------------------
+-- MIB Objects
+-- -------------------------------------------------------------
+
+etsysEntitySensorExtObjects   
+         OBJECT IDENTIFIER ::= { etsysEntitySensorExtMIB 1 }
+
+etsysEntitySensorExtNotifications
+         OBJECT IDENTIFIER ::= { etsysEntitySensorExtObjects 0 }
+
+etsysEntityTempSensorExt     
+         OBJECT IDENTIFIER ::= { etsysEntitySensorExtObjects 1 }
+
+-- -------------------------------------------------------------
+-- The Entity Temperature Sensor Extension Group
+-- -------------------------------------------------------------
+
+etsysEntityTempSensorExtTable OBJECT-TYPE
+    SYNTAX       SEQUENCE OF EtsysEntityTempSensorExtEntry
+    MAX-ACCESS   not-accessible
+    STATUS       current
+    DESCRIPTION
+        "A table of per temperature sensor information that extends the
+         general information provided in entPhySensorTable as defined in
+         RFC3433.  This table should contain an entry for every object
+         contained in entPhySensorTable that has an entPhySensorType 
+         of type celsius(8)."
+    ::= {  etsysEntityTempSensorExt 1 }
+
+etsysEntityTempSensorExtEntry OBJECT-TYPE
+    SYNTAX       EtsysEntityTempSensorExtEntry
+    MAX-ACCESS   not-accessible
+    STATUS       current
+    DESCRIPTION
+        "An entry containing per temperature sensor information."
+    INDEX  { entPhysicalIndex }    -- SPARSE-AUGMENTS
+    ::= { etsysEntityTempSensorExtTable 1 }
+
+EtsysEntityTempSensorExtEntry ::=
+    SEQUENCE { 
+        etsysEntityTempSensorState
+            INTEGER,
+        etsysEntityTempSensorHotTemp
+            EntitySensorValue,
+        etsysEntityTempSensorWarmTemp
+            EntitySensorValue,
+        etsysEntityTempSensorCoolTemp
+            EntitySensorValue,
+        etsysEntityTempSensorColdTemp
+            EntitySensorValue,
+        etsysEntityTempSensorTrapEnable
+            EnabledStatus
+    }
+
+etsysEntityTempSensorState OBJECT-TYPE
+    SYNTAX       INTEGER {
+                   unknown(1),             --  none of the following
+                   cold(2),
+                   cool(3),
+                   normal(4),
+                   warm(5),
+                   hot(6)
+                 }
+    MAX-ACCESS   read-only
+    STATUS       current
+    DESCRIPTION
+        "This object indicates the state of the temperature sensor."
+    ::= { etsysEntityTempSensorExtEntry 1 }
+
+etsysEntityTempSensorHotTemp OBJECT-TYPE
+    SYNTAX        EntitySensorValue
+    MAX-ACCESS    read-only
+    STATUS        current
+    DESCRIPTION
+        "The temperature value above which the ambient temperature
+         is deemed to be hot.
+
+         To correctly interpret the value of this object, the
+         associated entPhySensorType, entPhySensorScale, and
+         entPhySensorPrecision objects must also be examined."
+    ::= { etsysEntityTempSensorExtEntry 2 }
+
+etsysEntityTempSensorWarmTemp OBJECT-TYPE
+    SYNTAX        EntitySensorValue
+    MAX-ACCESS    read-only
+    STATUS        current
+    DESCRIPTION
+        "The temperature value above which the ambient temperature
+         is deemed to be warm, if it is below or equal the hot
+         value.
+
+         To correctly interpret the value of this object, the
+         associated entPhySensorType, entPhySensorScale, and
+         entPhySensorPrecision objects must also be examined."
+    ::= { etsysEntityTempSensorExtEntry 3 }
+
+etsysEntityTempSensorCoolTemp OBJECT-TYPE
+    SYNTAX        EntitySensorValue
+    MAX-ACCESS    read-only
+    STATUS        current
+    DESCRIPTION
+        "The temperature value below which the ambient temperature
+         is deemed to be cool, if it is above or equal the cold
+         value.
+
+         To correctly interpret the value of this object, the
+         associated entPhySensorType, entPhySensorScale, and
+         entPhySensorPrecision objects must also be examined."
+    ::= { etsysEntityTempSensorExtEntry 4 }
+
+etsysEntityTempSensorColdTemp OBJECT-TYPE
+    SYNTAX        EntitySensorValue
+    MAX-ACCESS    read-only
+    STATUS        current
+    DESCRIPTION
+        "The temperature value below which the ambient temperature
+         is deemed to be cold.
+
+         To correctly interpret the value of this object, the
+         associated entPhySensorType, entPhySensorScale, and
+         entPhySensorPrecision objects must also be examined."
+    ::= { etsysEntityTempSensorExtEntry 5 }
+
+etsysEntityTempSensorTrapEnable OBJECT-TYPE
+    SYNTAX       EnabledStatus 
+    MAX-ACCESS   read-write
+    STATUS       current
+    DESCRIPTION
+        "This object indicates whether the etsysEntityTempSensorStateChng
+         notification will be sent when the sensor state changes as 
+         defined by etsysEntityTempSensorState."
+    DEFVAL      { enabled }
+    ::= { etsysEntityTempSensorExtEntry 6 }
+
+-- -------------------------------------------------------------
+-- The Entity Temperature Sensor Extension Notification Group
+-- -------------------------------------------------------------
+
+etsysEntityTempSensorStateChng NOTIFICATION-TYPE
+    OBJECTS { etsysEntityTempSensorState, entPhySensorOperStatus,
+              entPhySensorScale, entPhySensorPrecision, 
+              entPhySensorValue, entPhySensorUnitsDisplay }
+    STATUS        current
+    DESCRIPTION
+        "An etsysEntityTempSensorStateChng trap signifies that the 
+         SNMP entity, acting in an agent role, has detected the 
+         transition of etsysEntityTempSensorState from one 
+         enumerated state to another.  It is RECOMMENDED that devices 
+         implementing this trap optionally varbind the entPhysicalName 
+         and entPhysicalDescr objects for this sensor."
+    ::= { etsysEntitySensorExtNotifications 1 }
+
+-- -------------------------------------------------------------
+-- Conformance Information
+-- -------------------------------------------------------------
+
+etsysEntitySensorExtConformance OBJECT IDENTIFIER
+    ::= { etsysEntitySensorExtMIB 2 }
+
+etsysEntitySensorExtGroups      OBJECT IDENTIFIER
+    ::= { etsysEntitySensorExtConformance 1 }
+
+etsysEntitySensorExtCompliances OBJECT IDENTIFIER
+    ::= { etsysEntitySensorExtConformance 2 }
+
+
+-- -------------------------------------------------------------
+-- Units of conformance
+-- -------------------------------------------------------------
+
+etsysEntityTempSensorGroup OBJECT-GROUP
+    OBJECTS {
+        etsysEntityTempSensorState, 
+        etsysEntityTempSensorHotTemp, 
+        etsysEntityTempSensorWarmTemp, 
+        etsysEntityTempSensorCoolTemp, 
+        etsysEntityTempSensorColdTemp, 
+        etsysEntityTempSensorTrapEnable
+    }
+    STATUS        current
+    DESCRIPTION
+        "The group that controls and reports per temperature sensor
+         extensions."
+    ::= { etsysEntitySensorExtGroups 1 }
+
+etsysEntityTempSensorNotificationGroup NOTIFICATION-GROUP
+    NOTIFICATIONS {
+        etsysEntityTempSensorStateChng
+    }
+    STATUS        current
+    DESCRIPTION
+        "The group of per temperature sensor notifications for Entity
+         Sensor Extensions."
+    ::= { etsysEntitySensorExtGroups 2 }
+
+-- -------------------------------------------------------------
+-- Compliance statements
+-- -------------------------------------------------------------
+
+etsysEntitySensorExtCompliance MODULE-COMPLIANCE
+    STATUS     current
+    DESCRIPTION
+        "The compliance statement for devices that support per temperature
+         sensor extensions."
+
+    MODULE
+        MANDATORY-GROUPS { etsysEntityTempSensorGroup }
+        
+        GROUP       etsysEntityTempSensorNotificationGroup
+        DESCRIPTION
+            "This group is mandatory for all devices that support per
+             temperature sensor state change notifications."
+        
+        OBJECT      etsysEntityTempSensorTrapEnable
+        MIN-ACCESS  read-only
+        DESCRIPTION
+            "Write access is not required."
+    ::= { etsysEntitySensorExtCompliances 1 }
+END

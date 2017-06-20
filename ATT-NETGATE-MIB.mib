@@ -1,0 +1,3023 @@
+ATT-NETGATE-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+MODULE-IDENTITY, OBJECT-TYPE, enterprises,
+Integer32, TimeTicks, IpAddress,
+Unsigned32, NOTIFICATION-TYPE             FROM SNMPv2-SMI
+
+DisplayString, DateAndTime                FROM SNMPv2-TC
+
+InetAddressIPv6                           FROM INET-ADDRESS-MIB
+
+MODULE-COMPLIANCE, OBJECT-GROUP, 
+NOTIFICATION-GROUP                        FROM SNMPv2-CONF;
+
+
+--     Copyright (C) 2013 AT&T
+--
+--     Copyright (C) 2013 AT&T Intellectual Property. All rights reserved. 
+--     AT&T, the AT&T logo and all other AT&T marks contained herein are trademarks
+--     of AT&T Intellectual Property and/or AT&T affiliated companies. 
+--     NETGATE is a registered trademark of Rubicon Communications L.P., and is used 
+--     by AT&T by permission of Rubicon. All other marks contained herein are the 
+--     property of their respective owners. The information contained herein is not
+--     an offer, commitment, representation or warranty by AT&T and is subject to change.
+--
+--     Title: AT&T NetGate Definitions
+--
+--     This file may be freely copied and distributed as
+--     long as no changes are made to it.
+--
+--     This file should only be used with AT&T NetGates running
+--     version 4.7 (or later).
+
+attNetGateMIB MODULE-IDENTITY
+    LAST-UPDATED "201108020000Z"
+    ORGANIZATION "AT&T"
+    CONTACT-INFO
+            "Please contact your AT&T Account Representative."
+    DESCRIPTION
+            "The MIB module for the AT&T NetGate."
+
+    REVISION      "201108020000Z"
+    DESCRIPTION
+            "Added the ngevCellModemRequired trap to alert when
+             the cell modem is not found or removed.  Added cell
+             modem status ot the ng3GInfo section. Remove the range
+             from the syntax for ng3gSlotNum because a -1 is returned
+             when no card is found. Added support for IPv6 for
+             polling and traps/informs.
+             Added active WAN interface to excessive dial trap.
+
+             Supported by AT&T NetGates running at least
+             version 5.3."
+    REVISION      "201003150000Z"
+    DESCRIPTION
+            "Changed timestamps in polling fields to use the 
+             standard DateAndTime format. Previously only fields
+             in traps could be in DateAndTime format.
+             Added nghwPorts section for more detailed info about
+             hardware ports. Added ngev8200VPortDown trap.
+             Supported by AT&T NetGates running at least
+             version 5.0."
+    REVISION      "201003120000Z"
+    DESCRIPTION
+            "Added free-format customer field.
+             Supported by AT&T NetGates running at least
+             version 4.10."
+    REVISION      "200904290000Z"
+    DESCRIPTION
+            "Added traps for secondary authentication and switch
+             user attempts.  These traps are supported by 
+             AT&T NetGates running at least version 4.9.
+             Added max threshold to excessive dial trap.
+             Changes made for strict MIB compliance.
+             More OIDs added to ng3GInfo section.
+             Added a new section called ngDialInfo that
+             contains some of the dial configuration 
+             information (regardless of whether a 3G card
+             is in use or not).
+             Supported by AT&T NetGates running at least
+             version 4.9."
+    REVISION      "200807070000Z"
+    DESCRIPTION
+            "Added traps that the AT&T NetGate can send.
+             Added firewall sections that report on the firewall
+             tables, chains, and rules active on the device.
+             Added total time the dial connection has been active.
+             Added current number and max number of ip_conntrack entries.
+             Supported by AT&T NetGates running at least
+             version 4.8."
+    REVISION      "200805120000Z"
+    DESCRIPTION
+            "Added compliance and conformance groups."
+    REVISION      "200805090000Z"
+    DESCRIPTION
+            "Initial revision."
+    ::= { attNetGate 8 }
+
+att-2                OBJECT IDENTIFIER ::= { enterprises 74 }
+att-products         OBJECT IDENTIFIER ::= { att-2 1 }
+
+attNetGate           OBJECT IDENTIFIER ::= { att-products 30 }
+
+ngHardwareInfo       OBJECT IDENTIFIER ::= { attNetGate 1 }
+ngInterfaceInfo      OBJECT IDENTIFIER ::= { attNetGate 2 }
+ngVlanInfo           OBJECT IDENTIFIER ::= { attNetGate 3 }
+ngVrrpInfo           OBJECT IDENTIFIER ::= { attNetGate 4 }
+ng3GInfo             OBJECT IDENTIFIER ::= { attNetGate 5 }
+ngTunnelInfo         OBJECT IDENTIFIER ::= { attNetGate 6 }
+ngCosInfo            OBJECT IDENTIFIER ::= { attNetGate 7 }
+-- attNetGate 8 used above for MODULE-IDENTITY
+ngFirewallInfo       OBJECT IDENTIFIER ::= { attNetGate 9 }
+ngRogueMacInfo       OBJECT IDENTIFIER ::= { attNetGate 10 }
+ngDialInfo           OBJECT IDENTIFIER ::= { attNetGate 11 }
+ngDhcpLeaseInfo      OBJECT IDENTIFIER ::= { attNetGate 12 }
+
+ngMIBConformance     OBJECT IDENTIFIER ::= { attNetGateMIB 1 }
+ngMIBCompliances     OBJECT IDENTIFIER ::= { ngMIBConformance 1 }
+ngMIBGroups          OBJECT IDENTIFIER ::= { ngMIBConformance 2 }
+
+ngEvents             OBJECT IDENTIFIER ::= { attNetGateMIB 2 }
+ngEventNotification  OBJECT IDENTIFIER ::= { ngEvents 0 }
+ngEventObjects       OBJECT IDENTIFIER ::= { ngEvents 1 }
+ngEventConformance   OBJECT IDENTIFIER ::= { ngEvents 2 }
+ngEventCompliances   OBJECT IDENTIFIER ::= { ngEventConformance 1 }
+ngEventGroups        OBJECT IDENTIFIER ::= { ngEventConformance 2 }
+
+--
+-- Hardware Info
+--
+nghwHardwareVersion OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Hardware Version."
+    ::= { ngHardwareInfo 1 }
+
+nghwCodeVersion OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Software code version."
+    ::= { ngHardwareInfo 2 }
+
+nghwAccount OBJECT-TYPE
+    SYNTAX  DisplayString (SIZE (1..8))
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The account in Service Manager this device
+       is registered under."
+    ::= { ngHardwareInfo 3 }
+
+nghwUtcOffset OBJECT-TYPE
+    SYNTAX  Integer32(-840..840)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Indicates how many minutes away from UTC time the
+       device is located. Values must be in 30 minute
+       increments.  Valid range is -840 to 840."
+    ::= { ngHardwareInfo 4 }
+
+nghwDstAllowed OBJECT-TYPE
+    SYNTAX  INTEGER {
+      dstNotAllowed(0),
+      dstAllowed(1)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Indicates if the device is located in an area that
+       observes daylight savings time."
+    ::= { ngHardwareInfo 5 }
+
+nghwDstActive OBJECT-TYPE
+    SYNTAX  INTEGER {
+      dstNotActive(0),
+      dstActive(1)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Indicates if daylight savings time is current active
+       at this date and time."
+    ::= { ngHardwareInfo 6 }
+
+nghwWanConnectionMethod OBJECT-TYPE
+    SYNTAX  INTEGER {
+     wanConfigUnknown(0),
+     wanConfigStatic(1),
+     wanConfigDHCP(2),
+     wanConfigPPPoE(3),
+     wanConfigDialPri(4),
+     wanConfigISDNPri(5),
+     wanConfigPPPoA(6),
+     wanConfigCellularPer(7),
+     wanConfigCellularPri(8)
+    }     
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The current primary IPv4 WAN connection setting. This is configured
+       via the web interface and is not read from Service Manager."
+    ::= { ngHardwareInfo 7 }
+
+nghwHostname OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The name of the current host."
+    ::= { ngHardwareInfo 8 }
+
+--
+-- IPv4 DNS Servers
+--
+nghwDnsServers       OBJECT IDENTIFIER ::= { ngHardwareInfo 9 }
+
+ngDnsTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgDnsEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of DNS on the device.
+        An entry shall be placed in the storage table for each
+        DNS."
+    ::= { nghwDnsServers 1 }
+
+ngDnsEntry OBJECT-TYPE
+    SYNTAX     NgDnsEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical DNS area on
+        the host."
+    INDEX { ngdnIndex }
+    ::= { ngDnsTable 1 }
+
+NgDnsEntry ::= SEQUENCE {
+        ngdnIndex            Integer32,
+        ngdnServer           IpAddress
+    }
+
+ngdnIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical DNS
+         contained on the device."
+    ::= { ngDnsEntry 1 }
+
+ngdnServer OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The IP address of an indivdual name server in use."
+    ::= { ngDnsEntry 2 }
+
+--
+-- IPv6 DNS Servers
+--
+ngDnsIPv6Table OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgDnsIPv6Entry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of IPv6 DNS on the device.
+         An entry shall be placed in the storage table for each
+         DNS."
+    ::= { nghwDnsServers 2 }
+
+ngDnsIPv6Entry OBJECT-TYPE
+    SYNTAX     NgDnsIPv6Entry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical IPv6 DNS area on
+         the host."
+    INDEX { ngdnIPv6Index }
+    ::= { ngDnsIPv6Table 1 }
+
+NgDnsIPv6Entry ::= SEQUENCE {
+        ngdnIPv6Index            Integer32,
+        ngdnIPv6Server           InetAddressIPv6
+    }
+
+ngdnIPv6Index OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical IPv6 DNS
+         contained on the device."
+    ::= { ngDnsIPv6Entry 1 }
+
+ngdnIPv6Server OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The IPv6 IP address of an indivdual name server in use."
+    ::= { ngDnsIPv6Entry 2 }
+--
+-- end IPv4 Iv6 DNS Servers 
+--
+
+nghwDeviceStatus OBJECT-TYPE
+    SYNTAX  INTEGER {
+      deviceActive        (0), 
+      deviceInActive      (1), 
+      deviceDiscontinued  (2), 
+      deviceNotConfigured (3), 
+      deviceBadVlanSwitch (4)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The current device status."
+    ::= { ngHardwareInfo 10 }
+
+nghwLanguage OBJECT-TYPE
+    SYNTAX  DisplayString (SIZE (1..2))
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The language that will be displayed on the CGI web
+       interface.
+       The valid values are:                          
+         EN = English                                 
+         JA = Japanese                                
+         ES = Spanish                                 
+         BP = Brazil Portuguese                       
+         FC = French Canadian                        
+         TC = Traditional Chinese                    
+         SC = Simplified Chinese"
+    ::= { ngHardwareInfo 11 }
+
+-- // start customer comment info
+nghwCustComm OBJECT IDENTIFIER ::= { ngHardwareInfo 12 }
+
+ngCustCommTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgCustCommEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of customer info (such as 
+         comments) on the device.  An entry shall be placed 
+         in the storage table for each one."
+    ::= { nghwCustComm 1 }
+
+ngCustCommEntry OBJECT-TYPE
+    SYNTAX     NgCustCommEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical customer comment 
+         area on the host."
+    INDEX { ngcuIndex }
+    ::= { ngCustCommTable 1 }
+
+NgCustCommEntry ::= SEQUENCE {
+        ngcuIndex            Integer32,
+        ngcuCustComment      DisplayString
+    }
+
+ngcuIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical customer info."
+    ::= { ngCustCommEntry 1 }
+
+ngcuCustComment OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "A free-format field that can be added to the AT&T NetGate's
+       profile at a customer's request.
+       Currently only one comment field can be specified."
+    ::= { ngCustCommEntry 2 }
+
+-- // end customer comment info
+
+-- // start port info
+nghwPorts            OBJECT IDENTIFIER ::= { ngHardwareInfo 13 }
+
+ngPortTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgPortEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of ports on the device.
+        An entry shall be placed in the storage table for each
+        port."
+    ::= { nghwPorts 1 }
+
+ngPortEntry OBJECT-TYPE
+    SYNTAX     NgPortEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical port area on
+        the host."
+    INDEX { ngpoIndex }
+    ::= { ngPortTable 1 }
+
+NgPortEntry ::= SEQUENCE {
+        ngpoIndex            Integer32,
+        ngpoStatus           INTEGER
+    }
+
+ngpoIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical port
+         contained on the device."
+    ::= { ngPortEntry 1 }
+
+ngpoStatus OBJECT-TYPE
+    SYNTAX  INTEGER {
+                inactive(0),
+                active(1),
+                unknown(2)
+            }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The link status of an individual hardware port."
+    ::= { ngPortEntry 2 }
+
+-- // end port info
+
+nghwCurrentWanConnectionMethod OBJECT-TYPE
+    SYNTAX  INTEGER {
+     wanConfigUnknown(0),
+     wanConfigStatic(1),
+     wanConfigDHCP(2),
+     wanConfigPPPoE(3),
+     wanConfigDialPri(4),
+     wanConfigISDNPri(5),
+     wanConfigPPPoA(6),
+     wanConfigCellularPer(7),
+     wanConfigCellularPri(8),
+     wanConfigStatic2(9),
+     wanConfigDHCP2(10),
+     wanConfigPPPoE2(11)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The currently active IPv4 WAN connection, which may differ from the configured
+       primary IPv4 WAN connection setting.  For example, the primary IPv4 WAN is
+       configured for DHCP (wanConfigDHCP), but because of a network outage the 
+       PPPoE secondary WAN connection (wanConfigPPPoE2) is currently providing 
+       connectivity."
+    ::= { ngHardwareInfo 14 }
+
+nghwIPv6WanConnectionMethod OBJECT-TYPE
+    SYNTAX  INTEGER {
+     wanConfigUnknown(0),
+     wanConfigIPv6Static(12),
+     wanConfigIPv6DHCP(13),
+     wanConfigIPv6Stateless(14),
+     wanConfigOff(15)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The current primary IPv6 WAN connection setting. This is configured
+       via the web interface and is not read from Service Manager."
+    ::= { ngHardwareInfo 15 }
+
+nghwIPv6CurrentWanConnectionMethod OBJECT-TYPE
+    SYNTAX  INTEGER {
+     wanConfigUnknown(0),
+     wanConfigIPv6Static(12),
+     wanConfigIPv6DHCP(13),
+     wanConfigIPv6Stateless(14),
+     wanConfigOff(15),
+     wanConfigIPv6Static2(16),
+     wanConfigIPv6DHCP2(17),
+     wanConfigIPv6Stateless2(18)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The currently active IPv6 WAN connection, which may differ from the configured
+       primary IPv6 WAN connection setting.  For example, the primary IPv4 WAN is
+       configured for DHCP (wanConfigIPv6DHCP), but because of a network outage the 
+       static IP secondary WAN connection (wanConfigIPv6Static2) is currently providing 
+       connectivity."
+    ::= { ngHardwareInfo 16 }
+
+nghwLastFullQueryTimeDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The last time when the AT&T NetGate was successfully able to retrieve its full
+       profile from an AT&T Administration Server."
+    ::= { ngHardwareInfo 17 }
+
+nghwLastAnyQueryTimeDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The last time when the AT&T NetGate was successfully able to retrieve
+       its profile from an AT&T Administration Server.  If this time
+       does not match nghwLastFullQueryTimeDAT then that means only part of the 
+       profile was retrieved. This is to prevent any possible reboots if critical 
+       portions of the profile were to change."
+    ::= { ngHardwareInfo 18 }
+
+--
+-- Interface Info
+--
+ngifActiveWanIface OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The interface that is currently in use for the
+       primary connection."
+    ::= { ngInterfaceInfo 1 }
+
+ngifTotalBytesIn OBJECT-TYPE
+    SYNTAX  Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total bytes in on the active WAN interface."
+    ::= { ngInterfaceInfo 2 }
+
+ngifTotalBytesOut OBJECT-TYPE
+    SYNTAX  Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total bytes out on the active WAN interface."
+    ::= { ngInterfaceInfo 3 }
+
+ngifTimeInDial OBJECT-TYPE
+    SYNTAX     TimeTicks
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "How long the current dial connection has been up."
+    ::= { ngInterfaceInfo 4 }
+
+--
+-- VLAN Info
+--
+ngVlanTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgVlanEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of VLANs on the device.
+        An entry shall be placed in the storage table for each
+        VLAN."
+    ::= { ngVlanInfo 1 }
+
+ngVlanEntry OBJECT-TYPE
+    SYNTAX     NgVlanEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical VLAN area on
+        the host."
+    INDEX { ngvlIndex }
+    ::= { ngVlanTable 1 }
+
+NgVlanEntry ::= SEQUENCE {
+        ngvlIndex            Integer32,
+        ngvlId               Integer32,
+        ngvlPorts            DisplayString,
+        ngvlSpeed            INTEGER,
+        ngvlIpRange          DisplayString,
+        ngvlDhcpRelayAddr    DisplayString,
+        ngvlDhcpDefRoute     IpAddress,
+        ngvlLanAddr          IpAddress,
+        ngvlLanSubAddr       IpAddress,
+        ngvlIPv6IpRangeStart InetAddressIPv6,
+        ngvlIPv6IpRangeEnd   InetAddressIPv6,
+        ngvlIPv6DhcpRelayAddrPri InetAddressIPv6,
+        ngvlIPv6DhcpRelayAddrBak InetAddressIPv6,
+        ngvlIPv6LanAddr      InetAddressIPv6,
+        ngvlIPv6LanPrefix    Integer32
+    }
+
+ngvlIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical VLAN
+        contained by the device."
+    ::= { ngVlanEntry 1 }
+
+ngvlId OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "This is the number assigned to the VLAN. 
+       Please note: A VLAN with an ID of 4070 is a special
+       VLAN used to hold ports that are disabled."
+    ::= { ngVlanEntry 2 }
+
+ngvlPorts OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+      "The ports assigned to the VLAN."
+    ::= { ngVlanEntry 3 }
+
+-- Had to add "speed" to the front of some because enumerated
+-- types cannot start with a number.  5/9/2008 
+
+ngvlSpeed OBJECT-TYPE
+    SYNTAX  INTEGER {
+      notActive(0),
+      autoNegot(1),
+      speed10MbitHalfDuplex(2),
+      speed10MbitFullDuplex(3),
+      speed100MbitHalfDuplex(4),
+      speed100MbitFullDuplex(5)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+     "This is the speed supported on the Ethernet interfaces."
+    ::= { ngVlanEntry 4 }
+
+ngvlIpRange OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The range of IP addresses handed out via
+         DHCP on this VLAN.  Values will be 0.0.0.0 0.0.0.0
+         if DHCP is not enabled on this VLAN.  Followed by
+         number of addresses assigned and number of total
+         addresses.
+         NOTE: As of AT&T NetGate version 5.3 the number of 
+         addresses assigned will no longer be returned.  A 
+         zero will be returned for that field."
+    ::= { ngVlanEntry 5 }
+
+ngvlDhcpRelayAddr OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+       "When the DHCP Type is 'R', this is the address the AT&T NetGate      
+        devices uses to relay DHCP requests. This field is required     
+        when the DHCP Type is 'R'. A second address can be specified."
+    ::= { ngVlanEntry 6 }
+
+ngvlDhcpDefRoute OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "This field is required when VRRP Active Indicator is 'Y' and         
+       is optional otherwise.  If specified, it must be within the          
+       local LAN subnet of the AT&T NetGate but cannot fall within the           
+       DHCP pool start and end addresses.                                   
+                                                                        
+       For the DHCP Default Route on the AT&T NetGate device profile,            
+       if entered, the address must be within the network specified         
+       by the LAN Address and LAN Subnet, but not within the address        
+       range specified by the DHCP Start Address and DHCP End               
+       Address."
+    ::= { ngVlanEntry 7 }
+
+ngvlLanAddr OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "This is the LAN address for the device on the VLAN. "
+    ::= { ngVlanEntry 8 }
+
+ngvlLanSubAddr OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "This is the LAN subnet address for the device on the VLAN. "
+    ::= { ngVlanEntry 9 }
+
+ngvlIPv6IpRangeStart OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "The start of the range of IPv6 IP addresses handed out via
+         DHCP on this VLAN.  Value will be all zeroes
+         if DHCP is not enabled on this VLAN."
+    ::= { ngVlanEntry 10 }
+
+ngvlIPv6IpRangeEnd OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "The end of the range of IPv6 IP addresses handed out via
+         DHCP on this VLAN.  Value will be all zeroes
+         if DHCP is not enabled on this VLAN." 
+    ::= { ngVlanEntry 11 }
+
+ngvlIPv6DhcpRelayAddrPri OBJECT-TYPE
+    SYNTAX     InetAddressIPv6
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+       "When the DHCP Type is 'R', this is the primary address the AT&T NetGate
+        devices uses to relay DHCP requests. This field is required
+        when the DHCP Type is 'R' and IPv6 is in use."
+    ::= { ngVlanEntry 12 }
+
+ngvlIPv6DhcpRelayAddrBak OBJECT-TYPE
+    SYNTAX     InetAddressIPv6
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+       "When the DHCP Type is 'R', this is the primary address the AT&T NetGate
+        devices uses to relay DHCP requests."
+    ::= { ngVlanEntry 13 }
+
+ngvlIPv6LanAddr OBJECT-TYPE 
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION 
+            "This is the IPv6 LAN address for the device on the VLAN. "
+    ::= { ngVlanEntry 14 }
+      
+ngvlIPv6LanPrefix OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "This is the IPv6 LAN prefix for the device on the VLAN. "
+    ::= { ngVlanEntry 15 }
+--
+-- end VLAN IPv4 IPv6 Info
+--
+
+
+--
+-- VRRP Info
+--
+ngVrrpTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgVrrpEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of VRRPs on the device.
+        An entry shall be placed in the storage table for each
+        VRRP."
+    ::= { ngVrrpInfo 1 }
+
+ngVrrpEntry OBJECT-TYPE
+    SYNTAX     NgVrrpEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical VRRP area on
+        the host."
+    INDEX { ngvrIndex }
+    ::= { ngVrrpTable 1 }
+
+NgVrrpEntry ::= SEQUENCE {
+        ngvrIndex            Integer32,
+        ngvrIface            DisplayString,
+        ngvrId               Integer32,
+        ngvrMasterStatus     INTEGER,
+        ngvrPriority         INTEGER
+    }
+
+ngvrIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical VRRP
+        contained by the device."
+    ::= { ngVrrpEntry 1 }
+
+ngvrIface OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The interface associated with this VRRP."
+    ::= { ngVrrpEntry 2 }
+
+ngvrId OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Virtual router ID."
+    ::= { ngVrrpEntry 3 }
+
+ngvrMasterStatus OBJECT-TYPE
+    SYNTAX     INTEGER {
+      vrrpNotRunning(0),
+      vrrpMasterState(1),   
+      vrrpBackupState(2),   
+      vrrpFaultState(3)    
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what the status is (master, backup, not active)."
+    ::= { ngVrrpEntry 4 }
+
+ngvrPriority OBJECT-TYPE
+    SYNTAX     INTEGER {
+      stop(0),
+      default(100),
+      owner(255)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "VRRP_PRIO_OWNER	255	/* priority of the ip owner -- rfc2338.5.3.4 */
+         VRRP_PRIO_DFL	100	/* default priority -- rfc2338.5.3.4 */
+         VRRP_PRIO_STOP	0	/* priority to stop -- rfc2338.5.3.4 */"
+    ::= { ngVrrpEntry 5 }
+
+--
+-- 3G Card Info
+-- This section details information about each 3G card that is in use by the AT&T NetGate.
+--
+ng3GTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF Ng3GEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of 3G cards on the device.
+        An entry shall be placed in the storage table for each
+        3G card."
+    ::= { ng3GInfo 1 }
+
+ng3GEntry OBJECT-TYPE
+    SYNTAX     Ng3GEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical 3G card area on
+        the host."
+    INDEX { ng3gIndex }
+    ::= { ng3GTable 1 }
+
+Ng3GEntry ::= SEQUENCE {
+        ng3gIndex            Integer32,
+        ng3gSlotNum          Integer32,
+        ng3gModemType        DisplayString,
+        ng3gManufacturer     DisplayString,
+        ng3gModel            DisplayString,
+        ng3gRevision         DisplayString,
+        ng3gID               DisplayString,
+        ng3gSignalStrength   Integer32,
+        ng3gCarrier          DisplayString,
+        ng3gImsiStatus       DisplayString,
+        ng3gCellConnNetwork  DisplayString,
+        ng3gPhoneNum         DisplayString,
+        ng3gApn              DisplayString,
+        ng3gApnUser          DisplayString,
+        ng3gApnPassword      DisplayString,
+        ng3gCellModemPresent INTEGER,
+        ng3gSIMCardNumber    DisplayString,
+        ng3gDeviceType       INTEGER
+    }
+
+ng3gIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical 3G card
+        contained by the device."
+    ::= { ng3GEntry 1 }
+
+ng3gSlotNum OBJECT-TYPE
+    SYNTAX     Integer32
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The slot the card is plugged into. Returns -1 if no card is found."
+    ::= { ng3GEntry 2 }
+
+ng3gModemType OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The modem type."
+    ::= { ng3GEntry 3 }
+
+ng3gManufacturer OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The 3G card manufacturer."
+    ::= { ng3GEntry 4 }
+
+ng3gModel OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The 3G card model."
+    ::= { ng3GEntry 5 }
+
+ng3gRevision OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The 3G card revision."
+    ::= { ng3GEntry 6 }
+
+ng3gID OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Either the IMEI or ESN depending on the card."
+    ::= { ng3GEntry 7 }
+
+ng3gSignalStrength OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Signal Strength at the connect."
+    ::= { ng3GEntry 8 }
+
+ng3gCarrier      OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Information about the carrier."
+    ::= { ng3GEntry 9 }
+
+ng3gImsiStatus OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The IMSI attach status."
+    ::= { ng3GEntry 10 }
+
+ng3gCellConnNetwork OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The connected network."
+    ::= { ng3GEntry 11 }
+
+ng3gPhoneNum OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The cell phone number."
+    ::= { ng3GEntry 12 }
+
+ng3gApn OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The access point name."
+    ::= { ng3GEntry 13 }
+
+ng3gApnUser OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The APN userid.  Only populated when the access point name exists."
+    ::= { ng3GEntry 14 }
+
+ng3gApnPassword OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The APN password.  Only populated when the access point name exists."
+    ::= { ng3GEntry 15 }
+
+ng3gCellModemPresent OBJECT-TYPE
+    SYNTAX     INTEGER {
+      unknown(0),
+      present(1),
+      missing(2)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "If the cellular modem is a supported unit that allows the AT&T NetGate to
+         query its current status then this value will indicate whether or not
+         the unit is physically present.  Unsupported units will always have a
+         value of 'unknown'."
+    ::= { ng3GEntry 16 }
+
+ng3gSIMCardNumber OBJECT-TYPE     
+    SYNTAX     DisplayString 
+    MAX-ACCESS read-only     
+    STATUS     current
+    DESCRIPTION
+        "The SIM number of the card."
+    ::= { ng3GEntry 17 }
+
+ng3gDeviceType OBJECT-TYPE
+    SYNTAX     INTEGER {
+      unknown(0),
+      pcmcia(1),
+      usb(2)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The type of hardware of the cellular modem."
+    ::= { ng3GEntry 18 }
+
+--
+-- Tunnel Info
+--
+ngTunnelTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgTunnelEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of tunnels on the device.
+        An entry shall be placed in the storage table for each
+        tunnel."
+    ::= { ngTunnelInfo 1 }
+
+ngTunnelEntry OBJECT-TYPE
+    SYNTAX     NgTunnelEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical tunnel area on
+        the host."
+    INDEX { ngtuIndex }
+    ::= { ngTunnelTable 1 }
+
+NgTunnelEntry ::= SEQUENCE {
+        ngtuIndex            Integer32,
+        ngtuIpsecIface       DisplayString,
+        ngtuAuthState        INTEGER,
+        ngtuState            INTEGER,
+        ngtuDuration         TimeTicks,
+        ngtuEndpoint         IpAddress,
+        ngtuEndpointType     INTEGER,
+        ngtuBulkEncryptMode  INTEGER,
+        ngtuCurrEncryptCeIp  IpAddress,
+        ngtuEspAlg           DisplayString,
+        ngtuAuthAlg          DisplayString,
+        ngtuCompressionAlg   DisplayString,
+        ngtuAuthType         INTEGER,
+        ngtuAuthProt         INTEGER,
+        ngtuReasonCode       INTEGER,
+        ngtuServerMgmt       INTEGER,
+        ngtuTunInitiator     INTEGER,
+        ngtuTunMode          INTEGER,
+        ngtuIPv6Endpoint     InetAddressIPv6
+    }
+
+ngtuIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical tunnel
+        contained by the device."
+    ::= { ngTunnelEntry 1 }
+
+ngtuIpsecIface OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The ipsec interface associated with the tunnel."
+    ::= { ngTunnelEntry 2 }
+
+ngtuAuthState OBJECT-TYPE
+    SYNTAX     INTEGER {
+     attNotSetYet(0),
+     attReset(1),
+     attSentLogon(2),
+     attRigAuthPending(3),
+     attCertLoginPending(4),
+     attISAKMPNegPending(5),
+     attProtocolNegPending(6),
+     attAuthReqAckPending(7),
+     attAuthReqPending(8),
+     attRunning(9),
+     attLogoffPending(10),
+     attQuiesed(11),
+     attXAuthPending(12),
+     attXAuthFailedPendingResp(13),
+     attXAuthReqPending(14),
+     attDialing(15),
+     attDialingDone(16),
+     attSASetup(17),
+     attXAuthTimeout(18),
+     attDialPendingResponse(19),
+     attDialRequestingTok(20),
+     attRetrySIG(21),
+     attTryNextTun(22),
+     attModeCfgPending(23),
+     attAllTunPingsFailed(24),
+     attRigAuthFailedPendingResp(25),
+     attRigAuthReqPending(26)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "An internal state used to indicate the tunnel's
+	 current operation."
+    ::= { ngTunnelEntry 3 }
+
+ngtuState OBJECT-TYPE
+    SYNTAX     INTEGER {
+      attTunnelDown(0),
+      attTunnelComingUp(1),                  
+      attTunnelPendingDialConnection(2),
+      attTunnelUp(3),
+      attTunnelComingDown(4),
+      attTunnelRestarting(5)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "An internal state used to indicate the tunnel's
+	 status.  This state was created because the 
+	 ngtuAuthState can change while the tunnel is still up.
+	 For example, when the clock is being set.  This state
+	 is always attTunnelUp when the tunnel is up."
+    ::= { ngTunnelEntry 4 }
+
+ngtuDuration OBJECT-TYPE
+    SYNTAX     TimeTicks
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "How long the tunnel has been up."
+    ::= { ngTunnelEntry 5 }
+
+ngtuEndpoint OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "IP of the endpoint the tunnel is connected to.
+	 Populated if the ngtuState is 'up'."
+    ::= { ngTunnelEntry 6 }
+
+ngtuEndpointType OBJECT-TYPE
+    SYNTAX     INTEGER {
+        none(0),
+        nortel(3),              
+        linuxFrameSig(4),     
+        gig(5),                 
+        linuxSig(6),           
+        cisco(9),               
+        vig(20)                 
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Type of the endpoint the tunnel is connected to.
+	 Populated if the ngtuState is 'up'."
+    ::= { ngTunnelEntry 7 }
+
+ngtuBulkEncryptMode OBJECT-TYPE
+    SYNTAX     INTEGER {
+      disabled(0),
+      enabled(1)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Bulk encryption mode."
+    ::= { ngTunnelEntry 8 }
+
+ngtuCurrEncryptCeIp OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Bulk encryption CE address."
+    ::= { ngTunnelEntry 9 }
+
+ngtuEspAlg OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "ESP algorithm."
+    ::= { ngTunnelEntry 10 }
+
+ngtuAuthAlg OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "AUTH algorithm."
+    ::= { ngTunnelEntry 11 }
+
+ngtuCompressionAlg OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "COMPRESSION algorithm."
+    ::= { ngTunnelEntry 12 }
+
+ngtuAuthType OBJECT-TYPE
+    SYNTAX     INTEGER {
+      internetOnly(0),
+      serviceManager(1),
+      customerDirect(2),
+      branchOffice(3),
+      customerDirectSm(4),
+      noTunnelYet(999)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Indicates the authentication server that
+	 will be used by the tunnel endpoint."
+    ::= { ngTunnelEntry 13 }
+
+ngtuAuthProt OBJECT-TYPE
+    SYNTAX     INTEGER {
+      none(0),
+      custRadius(1),
+      custSecureID(2),
+      custAxent(3),
+      custCert(4),
+      custLDAP(5),
+      custInternal(6),
+      branchSharedSecret(7),
+      agnsManaged(8)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The authentication protocol."
+    ::= { ngTunnelEntry 14 }
+
+ngtuReasonCode OBJECT-TYPE
+    SYNTAX     INTEGER {
+      discoButton(0),
+      tnlInitiatedDisco(226),
+      missedHeartBts(227),
+      eth1Lost(258),
+      eth1Restored(259),
+      powerLost(503),
+      tnlAlive(504),
+      deviceStatusInactiveWasActive(506),
+      noTunnInInetOnlyMode(507),
+      tnlIdleTimeout(508),
+      dialIdleTimeout(509),
+      maxSessionTimeout(510),
+      noReasonGiven(599)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "A numeric value that indicates why a tunnel came down. 
+         The one exception is tnlAlive, which is sent for the
+         tunnel 'alive' message for a tunnel that is still up."
+    ::= { ngTunnelEntry 15 }
+
+ngtuServerMgmt OBJECT-TYPE
+    SYNTAX     INTEGER {
+      nonAgnsManaged(0),
+      agnsManaged(1)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "AGNS managed or not."
+    ::= { ngTunnelEntry 16 }
+
+ngtuTunInitiator OBJECT-TYPE
+    SYNTAX     INTEGER {
+      attUnknown(0),
+      attFromUser(1),
+      attAutoLogon(2),
+      attPersistentLogon(3),
+      attVpnctl(4)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "What initiated the tunnel."
+    ::= { ngTunnelEntry 17 }
+
+ngtuTunMode OBJECT-TYPE
+    SYNTAX     INTEGER {
+      tunnelUnknown(0),
+      tunnelUserControl(1),
+      tunnelUserViewOnly(2),
+      tunnelHidden(3),
+      tunnelMaintenance(4),
+      tunnelWSSInternet(5)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The tunnel control mode."
+    ::= { ngTunnelEntry 18 }
+
+ngtuIPv6Endpoint OBJECT-TYPE
+    SYNTAX     InetAddressIPv6
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "IPv6 IP of the endpoint the tunnel is connected to.
+         Populated if the ngtuState is 'up' and IPv6 is in use."
+    ::= { ngTunnelEntry 19 }
+
+--
+-- COS Info
+--
+ngcoEnabled OBJECT-TYPE
+    SYNTAX  INTEGER {
+      notActive(0),
+      activeWithDscpRemarking(1),
+      activeWithoutDscpRemarking(2)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Indicates if COS is enabled or not."
+    ::= { ngCosInfo 1 }
+
+ngcoNextTestTime OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "When the next bandwidth test is scheduled to run.
+       MM/DD/YYYY HH:MM:SS. Returns '00/00/0000 00:00:00'
+       when no test is scheduled.
+       The time returned is the local time on the AT&T NetGate.  To determine 
+       how the AT&T NetGate's local time relates to UTC view the following OIDs:
+       nghwUtcOffset (current UTC offset), nghwDstAllowed (daylight saving time allowed),
+       nghwDstActive (daylight savings time active).
+       NOTE: This entry is made obsolete by ngcoNextTestTimeDAT."
+    ::= { ngCosInfo 2 }
+
+ngcoWanMtu OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Current WAN interface MTU value."
+    ::= { ngCosInfo 3 }
+
+ngcoCurUpstreamBandw OBJECT-TYPE
+    SYNTAX  Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Current upstream bandwidth high water mark in use."
+    ::= { ngCosInfo 4 }
+
+ngcoCurDownstreamBandw OBJECT-TYPE
+    SYNTAX  Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Current downstream bandwidth high water mark in use."
+    ::= { ngCosInfo 5 }
+
+ngcoNextTestTimeDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "When the next bandwidth test is scheduled to run.
+       Returns January 1 year 0 time 0 when no test is scheduled.
+       NOTE: This entry replaces ngcoNextTestTime."
+    ::= { ngCosInfo 6 }
+
+ngcoLastTestTimeDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The date and time of when the last bandwidth test was performed.
+       NOTE: The date and time of high water marks retained after a reboot
+       will return January 1 year 0 time 0 for the time."
+    ::= { ngCosInfo 7 }
+
+ngcoLastUpstreamResult OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION 
+      "The upstream bandwidth measured when the last bandwidth test was performed."
+    ::= { ngCosInfo 8 }
+
+ngcoLastDownstreamResult OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The downstream bandwidth measured when the last bandwidth test was performed."
+    ::= { ngCosInfo 9 }
+
+--
+-- compliance statements
+--
+ngBasicComplianceRev MODULE-COMPLIANCE
+    STATUS  current
+    DESCRIPTION
+            "The compliance statement for AT&T NetGate entities 
+             which implement this MIB module."
+    MODULE  -- this module
+        MANDATORY-GROUPS { nghwGroup, ngifGroup, ngvlGroup,
+                           ngvrGroup, ng3gGroup, ngtuGroup,
+                           ngcoGroup, ngfwGroup, ngrmGroup,
+                           ngdiGroup, ngdhlGroup }
+    ::= { ngMIBCompliances 1 }
+
+--
+-- Groups
+--
+nghwGroup   OBJECT-GROUP
+    OBJECTS { nghwHardwareVersion, nghwCodeVersion, nghwAccount,
+              nghwUtcOffset, nghwDstAllowed, nghwDstActive,
+              nghwWanConnectionMethod, nghwHostname,
+              nghwDeviceStatus, nghwLanguage,
+              ngdnServer, ngcuCustComment, 
+              ngpoStatus, ngdnIPv6Server,
+              nghwCurrentWanConnectionMethod,
+              nghwIPv6WanConnectionMethod,
+              nghwIPv6CurrentWanConnectionMethod,
+	      nghwLastFullQueryTimeDAT,
+	      nghwLastAnyQueryTimeDAT
+            }
+    STATUS  current
+    DESCRIPTION
+            "The hardware group."
+    ::= { ngMIBGroups 1 }
+
+ngifGroup   OBJECT-GROUP
+    OBJECTS { ngifActiveWanIface, ngifTotalBytesIn, ngifTotalBytesOut,
+              ngifTimeInDial }
+    STATUS  current
+    DESCRIPTION
+            "The interface group."
+    ::= { ngMIBGroups 2 }
+
+ngvlGroup   OBJECT-GROUP
+    OBJECTS { ngvlId, ngvlPorts, ngvlSpeed, ngvlIpRange,
+              ngvlDhcpRelayAddr, ngvlDhcpDefRoute, ngvlLanAddr,
+              ngvlLanSubAddr, ngvlIPv6IpRangeStart, ngvlIPv6IpRangeEnd,
+              ngvlIPv6DhcpRelayAddrPri, ngvlIPv6DhcpRelayAddrBak,
+              ngvlIPv6LanAddr, ngvlIPv6LanPrefix
+            }
+    STATUS  current
+    DESCRIPTION
+            "The VLAN group."
+    ::= { ngMIBGroups 3 }
+
+ngvrGroup   OBJECT-GROUP
+    OBJECTS { ngvrIface, ngvrId, ngvrMasterStatus,
+              ngvrPriority }
+    STATUS  current
+    DESCRIPTION
+            "The VRRP group."
+    ::= { ngMIBGroups 4 }
+
+ng3gGroup   OBJECT-GROUP
+    OBJECTS { ng3gSlotNum, ng3gModemType, ng3gManufacturer,
+              ng3gModel, ng3gRevision, ng3gID, ng3gSignalStrength,
+              ng3gCarrier, ng3gImsiStatus, ng3gCellConnNetwork,
+              ng3gPhoneNum, ng3gApn, ng3gApnUser, ng3gApnPassword,
+              ng3gCellModemPresent, ng3gSIMCardNumber, ng3gDeviceType
+            }
+    STATUS  current
+    DESCRIPTION
+            "The 3G group."
+    ::= { ngMIBGroups 5 }
+
+ngtuGroup   OBJECT-GROUP
+    OBJECTS { ngtuIpsecIface, ngtuAuthState, ngtuState,
+              ngtuDuration, ngtuEndpoint, ngtuEndpointType,
+              ngtuBulkEncryptMode, ngtuCurrEncryptCeIp,
+              ngtuEspAlg, ngtuAuthAlg, ngtuCompressionAlg,
+              ngtuAuthType, ngtuAuthProt, ngtuReasonCode,
+              ngtuServerMgmt, ngtuTunInitiator, ngtuTunMode,
+              ngtuIPv6Endpoint
+            }
+    STATUS  current
+    DESCRIPTION
+            "The tunnel group."
+    ::= { ngMIBGroups 6 }
+
+ngcoGroup   OBJECT-GROUP
+    OBJECTS { ngcoEnabled, ngcoNextTestTime, ngcoWanMtu,
+              ngcoCurUpstreamBandw, ngcoCurDownstreamBandw,
+	      ngcoNextTestTimeDAT, ngcoLastDownstreamResult,
+              ngcoLastUpstreamResult, ngcoLastTestTimeDAT
+            }
+    STATUS  current
+    DESCRIPTION
+            "The COS group."
+    ::= { ngMIBGroups 7 }
+
+ngfwGroup   OBJECT-GROUP
+    OBJECTS {
+              ngfwTableName, ngfwTableNumberOfChains,
+              ngfwChainTableIndex, ngfwChainName,
+              ngfwChainsNumberOfRules, ngfwRuleTableIndex,
+              ngfwRuleChainIndex, ngfwRulePackets, ngfwRuleBytes,
+              ngfwRuleTarget, ngfwRuleProtocol, ngfwRuleInIface,
+              ngfwRuleOutIface, ngfwRuleSrcIp, ngfwRuleSrcMask,
+              ngfwRuleDstIp, ngfwRuleDstMask, ngfwRuleMisc,
+              ngfwIpConntrackNumEntries, ngfwIpConntrackMaxNumEntries,
+              ngfwIPv6RuleSrcIp, ngfwIPv6RuleSrcMask,
+              ngfwIPv6RuleDstIp, ngfwIPv6RuleDstMask,
+              ngfwIPv6TableName, ngfwIPv6TableNumberOfChains,
+              ngfwIPv6ChainTableIndex, ngfwIPv6ChainName,
+              ngfwIPv6ChainsNumberOfRules, ngfwIPv6RuleTableIndex,
+              ngfwIPv6RuleChainIndex, ngfwIPv6RulePackets, ngfwIPv6RuleBytes,
+              ngfwIPv6RuleTarget, ngfwIPv6RuleProtocol, ngfwIPv6RuleInIface,
+              ngfwIPv6RuleOutIface, ngfwIPv6RuleMisc
+            }
+    STATUS  current
+    DESCRIPTION
+            "The firewall group."
+    ::= { ngMIBGroups 8 }
+
+ngrmGroup   OBJECT-GROUP
+    OBJECTS { ngRogueMacStatus, ngrmMac, ngrmTimestamp,
+              ngrmIface, ngrmTimestampDAT }
+    STATUS  current
+    DESCRIPTION
+            "The Rogue MAC group."
+    ::= { ngMIBGroups 9 }
+
+ngdiGroup   OBJECT-GROUP
+    OBJECTS { ngdiPhoneNum, ngdiLastTestResult, ngdiLastTestCompleteTime,
+              ngdiDialTestFailCategory, ngdiDialTestFailReason,
+	      ngdiLastTestCompleteTimeDAT, ngdiSecondaryPhoneNum }
+    STATUS  current
+    DESCRIPTION
+            "The dial group."
+    ::= { ngMIBGroups 10 }
+
+ngdhlGroup   OBJECT-GROUP
+    OBJECTS { ngdhlLeaseAddr, ngdhlMac, ngdhlHostname, ngdhlPort,
+              ngdhlVlanId }
+    STATUS  current
+    DESCRIPTION
+            "The DHCP leases group."
+    ::= { ngMIBGroups 11 }
+--
+-- Firewall Table Info
+--
+ngFirewallTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgFirewallTableEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of firewall tables on the device.
+        An entry shall be placed in the storage table for each
+        table."
+    ::= { ngFirewallInfo 1 }
+
+ngFirewallTableEntry OBJECT-TYPE
+    SYNTAX     NgFirewallTableEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical firewall table area on
+        the host."
+    INDEX { ngfwTableIndex }
+    ::= { ngFirewallTable 1 }
+
+NgFirewallTableEntry ::= SEQUENCE {
+        ngfwTableIndex            Integer32,
+        ngfwTableName             DisplayString,
+        ngfwTableNumberOfChains   Integer32
+    }
+
+ngfwTableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical firewall table
+        contained by the device."
+    ::= { ngFirewallTableEntry 1 }
+
+ngfwTableName OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The name of this table."
+    ::= { ngFirewallTableEntry 2 }
+
+ngfwTableNumberOfChains OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The number of chains in this particular table."
+    ::= { ngFirewallTableEntry 3 }
+
+--
+-- Firewall Chains Info
+--
+ngFirewallChainTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgFirewallChainEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) chain of firewall chains on the device.
+        An entry shall be placed in the storage chain for each
+        chain."
+    ::= { ngFirewallInfo 2 }
+
+ngFirewallChainEntry OBJECT-TYPE
+    SYNTAX     NgFirewallChainEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical firewall chain area on
+        the host."
+    INDEX { ngfwChainIndex }
+    ::= { ngFirewallChainTable 1 }
+
+NgFirewallChainEntry ::= SEQUENCE {
+        ngfwChainIndex             Integer32,
+        ngfwChainTableIndex        Integer32,
+        ngfwChainName              DisplayString,
+        ngfwChainsNumberOfRules    Integer32
+    }
+
+ngfwChainIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical firewall chain
+        contained by the device."
+    ::= { ngFirewallChainEntry 1 }
+
+ngfwChainTableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what table this chain belongs to.  Corresponds
+         to ngfwTableIndex in ngFirewallTable."
+    ::= { ngFirewallChainEntry 2 }
+
+ngfwChainName OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The name of this chain."
+    ::= { ngFirewallChainEntry 3 }
+
+ngfwChainsNumberOfRules  OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The number of rules in this particular chain."
+    ::= { ngFirewallChainEntry 4 }
+
+--
+-- Firewall Rules Info
+--
+ngFirewallRuleTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgFirewallRuleEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of firewall rules on the device.
+        An entry shall be placed in the storage rule for each
+        rule."
+    ::= { ngFirewallInfo 3 }
+
+ngFirewallRuleEntry OBJECT-TYPE
+    SYNTAX     NgFirewallRuleEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical firewall rule area on
+        the host."
+    INDEX { ngfwRuleIndex }
+    ::= { ngFirewallRuleTable 1 }
+
+NgFirewallRuleEntry ::= SEQUENCE {
+        ngfwRuleIndex             Integer32,
+        ngfwRuleTableIndex        Integer32,
+        ngfwRuleChainIndex        Integer32,
+        ngfwRulePackets           Unsigned32,
+        ngfwRuleBytes             Unsigned32,
+        ngfwRuleTarget            DisplayString,
+        ngfwRuleProtocol          DisplayString,
+        ngfwRuleInIface           DisplayString,
+        ngfwRuleOutIface          DisplayString,
+        ngfwRuleSrcIp             IpAddress,
+        ngfwRuleSrcMask           Integer32,
+        ngfwRuleDstIp             IpAddress,
+        ngfwRuleDstMask           Integer32,
+        ngfwRuleMisc              DisplayString
+    }
+
+ngfwRuleIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical firewall rule
+        contained by the device."
+    ::= { ngFirewallRuleEntry 1 }
+
+ngfwRuleTableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what table this rule belongs to.  Corresponds
+         to ngfwTableIndex in ngFirewallTable."
+    ::= { ngFirewallRuleEntry 2 }
+
+ngfwRuleChainIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what chain this rule belongs to.  Corresponds  
+         to ngfwChainIndex in ngFirewallChainTable."
+    ::= { ngFirewallRuleEntry 3 }
+
+ngfwRulePackets OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total packets for this rule."
+    ::= { ngFirewallRuleEntry 4 }
+
+ngfwRuleBytes OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total bytes for this rule."
+    ::= { ngFirewallRuleEntry 5 }
+
+ngfwRuleTarget OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule target."
+    ::= { ngFirewallRuleEntry 6 }
+
+ngfwRuleProtocol OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule protocol."
+    ::= { ngFirewallRuleEntry 7 }
+
+ngfwRuleInIface OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule input interface."
+    ::= { ngFirewallRuleEntry 8 }
+
+ngfwRuleOutIface OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule output interface."
+    ::= { ngFirewallRuleEntry 9 }
+
+ngfwRuleSrcIp OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule source IP."
+    ::= { ngFirewallRuleEntry 10 }
+
+ngfwRuleSrcMask OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule source mask in CIDR-compliant format."
+    ::= { ngFirewallRuleEntry 11 }
+
+ngfwRuleDstIp OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule destination IP."
+    ::= { ngFirewallRuleEntry 12 }
+
+ngfwRuleDstMask OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule destination mask in CIDR-compliant format."
+    ::= { ngFirewallRuleEntry 13 }
+
+ngfwRuleMisc OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule MISC section."
+    ::= { ngFirewallRuleEntry 14 }
+
+--
+-- 
+--
+
+ngfwIpConntrackNumEntries  OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The number entries in the ip_conntrack file."
+    ::= { ngFirewallInfo 4 }
+
+ngfwIpConntrackMaxNumEntries  OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The maximum number of entries in the ip_conntrack file."
+    ::= { ngFirewallInfo 5 }
+
+--
+-- Start IPv6 Firewall Info
+--
+ngIPv6FirewallTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgIPv6FirewallTableEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of IPv6 firewall tables on the device.
+        An entry shall be placed in the storage table for each
+        table."
+    ::= { ngFirewallInfo 6 }
+
+ngIPv6FirewallTableEntry OBJECT-TYPE
+    SYNTAX     NgIPv6FirewallTableEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical IPv6 firewall table area on
+        the host."
+    INDEX { ngfwIPv6TableIndex }
+    ::= { ngIPv6FirewallTable 1 }
+
+NgIPv6FirewallTableEntry ::= SEQUENCE {
+        ngfwIPv6TableIndex            Integer32,
+        ngfwIPv6TableName             DisplayString,
+        ngfwIPv6TableNumberOfChains   Integer32
+    }
+
+ngfwIPv6TableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical IPv6 firewall table
+        contained by the device."
+    ::= { ngIPv6FirewallTableEntry 1 }
+
+ngfwIPv6TableName OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The name of this table."
+    ::= { ngIPv6FirewallTableEntry 2 }
+
+ngfwIPv6TableNumberOfChains OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The number of chains in this particular table."
+    ::= { ngIPv6FirewallTableEntry 3 }
+
+--
+-- IPv6 Firewall Chains Info
+--
+ngIPv6FirewallChainTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgIPv6FirewallChainEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) chain of IPv6 firewall chains on the device.
+        An entry shall be placed in the storage chain for each
+        chain."
+    ::= { ngFirewallInfo 7 }
+
+ngIPv6FirewallChainEntry OBJECT-TYPE
+    SYNTAX     NgIPv6FirewallChainEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical IPv6 firewall chain area on
+        the host."
+    INDEX { ngfwIPv6ChainIndex }
+    ::= { ngIPv6FirewallChainTable 1 }
+
+NgIPv6FirewallChainEntry ::= SEQUENCE {
+        ngfwIPv6ChainIndex             Integer32,
+        ngfwIPv6ChainTableIndex        Integer32,
+        ngfwIPv6ChainName              DisplayString,
+        ngfwIPv6ChainsNumberOfRules    Integer32
+    }
+
+ngfwIPv6ChainIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical IPv6 firewall chain
+        contained by the device."
+    ::= { ngIPv6FirewallChainEntry 1 }
+
+ngfwIPv6ChainTableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what table this chain belongs to.  Corresponds
+         to ngfwIPv6TableIndex in ngIPv6FirewallTable."
+    ::= { ngIPv6FirewallChainEntry 2 }
+
+ngfwIPv6ChainName OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The name of this chain."
+    ::= { ngIPv6FirewallChainEntry 3 }
+
+ngfwIPv6ChainsNumberOfRules  OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The number of rules in this particular chain."
+    ::= { ngIPv6FirewallChainEntry 4 }
+
+--
+-- IPv6 Firewall Rules Info
+--
+ngIPv6FirewallRuleTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgIPv6FirewallRuleEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of IPv6 firewall rules on the device.
+        An entry shall be placed in the storage rule for each
+        rule."
+    ::= { ngFirewallInfo 8 }
+
+ngIPv6FirewallRuleEntry OBJECT-TYPE
+    SYNTAX     NgIPv6FirewallRuleEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical IPv6 firewall rule area on
+        the host."
+    INDEX { ngfwIPv6RuleIndex }
+    ::= { ngIPv6FirewallRuleTable 1 }
+
+NgIPv6FirewallRuleEntry ::= SEQUENCE {
+        ngfwIPv6RuleIndex             Integer32,
+        ngfwIPv6RuleTableIndex        Integer32,
+        ngfwIPv6RuleChainIndex        Integer32,
+        ngfwIPv6RulePackets           Unsigned32,
+        ngfwIPv6RuleBytes             Unsigned32,
+        ngfwIPv6RuleTarget            DisplayString,
+        ngfwIPv6RuleProtocol          DisplayString,
+        ngfwIPv6RuleInIface           DisplayString,
+        ngfwIPv6RuleOutIface          DisplayString,
+        ngfwIPv6RuleSrcIp             InetAddressIPv6,
+        ngfwIPv6RuleSrcMask           Integer32,
+        ngfwIPv6RuleDstIp             InetAddressIPv6,
+        ngfwIPv6RuleDstMask           Integer32,
+        ngfwIPv6RuleMisc              DisplayString
+    }
+
+ngfwIPv6RuleIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical IPv6 firewall rule
+        contained by the device."
+    ::= { ngIPv6FirewallRuleEntry 1 }
+
+ngfwIPv6RuleTableIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what table this rule belongs to.  Corresponds
+         to ngfwIPv6TableIndex in ngIPv6FirewallTable."
+    ::= { ngIPv6FirewallRuleEntry 2 }
+
+ngfwIPv6RuleChainIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Shows what chain this rule belongs to.  Corresponds  
+         to ngfwIPv6ChainIndex in ngIPv6FirewallChainTable."
+    ::= { ngIPv6FirewallRuleEntry 3 }
+
+ngfwIPv6RulePackets OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total packets for this rule."
+    ::= { ngIPv6FirewallRuleEntry 4 }
+
+ngfwIPv6RuleBytes OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "Total bytes for this rule."
+    ::= { ngIPv6FirewallRuleEntry 5 }
+
+ngfwIPv6RuleTarget OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule target."
+    ::= { ngIPv6FirewallRuleEntry 6 }
+
+ngfwIPv6RuleProtocol OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule protocol."
+    ::= { ngIPv6FirewallRuleEntry 7 }
+
+ngfwIPv6RuleInIface OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule input interface."
+    ::= { ngIPv6FirewallRuleEntry 8 }
+
+ngfwIPv6RuleOutIface OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule output interface."
+    ::= { ngIPv6FirewallRuleEntry 9 }
+
+ngfwIPv6RuleSrcIp OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "The rule source IP. Not used and set to all zeroes for IPv4 firewall output."
+    ::= { ngIPv6FirewallRuleEntry 10 }
+
+ngfwIPv6RuleSrcMask OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule source mask in CIDR-compliant format. 
+         Not used and set to all zeroes for IPv4 firewall output."
+    ::= { ngIPv6FirewallRuleEntry 11 }
+
+ngfwIPv6RuleDstIp OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "The rule source IP. Not used and set to all zeroes for IPv4 firewall output."
+    ::= { ngIPv6FirewallRuleEntry 12 }
+
+ngfwIPv6RuleDstMask OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The rule source mask in CIDR-compliant format. 
+         Not used and set to all zeroes for IPv4 firewall output."
+    ::= { ngIPv6FirewallRuleEntry 13 }
+
+ngfwIPv6RuleMisc OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The rule MISC section."
+    ::= { ngIPv6FirewallRuleEntry 14 }
+--
+-- End IPv6 Firewall Info
+--
+
+--
+-- Rogue MAC Info
+--
+ngRogueMacStatus OBJECT-TYPE
+    SYNTAX     INTEGER {
+      disabled(0),
+      enabled(1)
+    }
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Inidicates whether or not Rogue MAC detection has been enabled
+         in Service Manager."
+    ::= { ngRogueMacInfo 1 }
+
+ngRogueMacTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgRogueMacEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of rogue MACs detected by the device.
+        An entry shall be placed in the storage table for each
+        rogue MAC."
+    ::= { ngRogueMacInfo 2 }
+
+ngRogueMacEntry OBJECT-TYPE
+    SYNTAX     NgRogueMacEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical rogue MAC area on
+        the host."
+    INDEX { ngrmIndex }
+    ::= { ngRogueMacTable 1 }
+
+NgRogueMacEntry ::= SEQUENCE {
+        ngrmIndex            Integer32,
+        ngrmMac              DisplayString,
+        ngrmTimestamp        DisplayString,
+        ngrmIface            DisplayString,
+	ngrmTimestampDAT     DateAndTime
+    }
+
+ngrmIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical rogue MAC
+         detected by the device."
+    ::= { ngRogueMacEntry 1 }
+
+ngrmMac OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The MAC address of this detected rogue MAC. One
+         entry that is zeroed out is returned when there
+         are no rogue MACs detected."
+    ::= { ngRogueMacEntry 2 }
+
+ngrmTimestamp OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The date and time of when this rogue MAC was detected.
+         Returned as a regular string in the format MM/DD/YYYY HH:MM:SS. 
+         Returns '00/00/0000 00:00:00' when there are no rogue MACs detected.
+         The time returned is the local time on the AT&T NetGate.  To determine 
+         how the AT&T NetGate's local time relates to UTC view the following OIDs:
+         nghwUtcOffset (current UTC offset), nghwDstAllowed (daylight saving time allowed),
+         nghwDstActive (daylight savings time active).
+         NOTE: This entry is made obsolete by ngrmTimestampDAT."
+    ::= { ngRogueMacEntry 3 }
+
+ngrmIface OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The interface this rogue MAC was
+         detected on.  One entry that with a value of 
+         'NONE' and a msg is returned when there are 
+         no rogue MACs detected."
+    ::= { ngRogueMacEntry 4 }
+
+ngrmTimestampDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The date and time of when this rogue MAC was detected.
+       Returns January 1 year 0 time 0 when there are no rogue MACs detected or
+       the time is unknown.
+       NOTE: This entry replaces ngrmTimestamp."
+    ::= { ngRogueMacEntry 5 }
+
+--
+-- Dial Info
+--
+ngdiPhoneNum OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "The full phone number that will be dialed by the AT&T NetGate.  This
+         also includes dial prefix information.  For example, the AT&T NetGate
+         might have to dial the number nine and then a comma to access an outside
+         line.  The nine and the comma will be included in this entry."
+    ::= { ngDialInfo 1 }
+
+ngdiLastTestResult OBJECT-TYPE
+    SYNTAX  INTEGER {
+      failure(0),
+      success(1)
+    }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The result of the last dial test.  If no dial test has been performed yet
+       then 'failure' is returned.  If a dial test is not needed because dial is
+       currently up then 'success' is returned."
+    ::= { ngDialInfo 2 }
+
+ngdiLastTestCompleteTime OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The approximate time the last dial test completed given in the format
+       MM/DD/YYYY HH:MM:SS. Returns '00/00/0000 00:00:00' when no test is scheduled.
+       or when no test has run yet.  
+       If the dial connection is currently in use then the dial test is not needed
+       (since dial is obviously already working). ngdiLastTestCompleteTime is simply
+       updated to the recent time whent the AT&T NetGate last verified that the dial
+       connection was still up.
+       The time returned is the local time on the AT&T NetGate.  To determine 
+       how the AT&T NetGate's local time relates to UTC view the following OIDs:
+       nghwUtcOffset (current UTC offset), nghwDstAllowed (daylight saving time allowed),
+       nghwDstActive (daylight savings time active).
+       NOTE: This entry is made obsolete by ngdiLastTestCompleteTimeDAT."
+    ::= { ngDialInfo 3 }
+
+ngdiDialTestFailCategory  OBJECT-TYPE
+    SYNTAX      INTEGER {
+                  dialProblemError(0),
+                  dialProblemWarning(1),
+                  dialProblemMessage(2),
+                  dialProblemNoCategory(3)
+                }
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Shows what type of category the dial test failure would be put in.
+       For example, a busy signal would return dialProblemWarning but a bad password 
+       would return dialProblemError.
+       If a dial test is not needed because dial is currently up then dialProblemMessage
+       is returned."
+    ::= { ngDialInfo 4 }
+
+ngdiDialTestFailReason OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "String that shows why the dial test failed.  If the test was successful or the dial
+       connection is currently up then 'success' is returned."
+    ::= { ngDialInfo 5 }
+
+ngdiLastTestCompleteTimeDAT OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "If the dial connection is currently in use then the dial test is not needed
+       (since dial is obviously already working). ngdiLastTestCompleteTimeDAT is simply
+       updated to the recent time whent the AT&T NetGate last verified that the dial
+       connection was still up.
+       Returns January 1 year 0 time 0 when no test is scheduled or when no test has run yet.  
+       The time returned is the local time on the AT&T NetGate.  To determine 
+       how the AT&T NetGate's local time relates to UTC view the following OIDs:
+       nghwUtcOffset (current UTC offset), nghwDstAllowed (daylight saving time allowed),
+       nghwDstActive (daylight savings time active).
+       NOTE: This entry replaces ngdiLastTestCompleteTime."
+    ::= { ngDialInfo 6 }
+
+ngdiSecondaryPhoneNum OBJECT-TYPE
+    SYNTAX     DisplayString
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+        "Specifies the secondary phone number to be tried for Dial Backup in case the 
+         primary Dial Backup phone number is not available."
+    ::= { ngDialInfo 7 }
+
+--
+-- DHCP Lease Info
+--
+
+ngDhcpLeaseTable OBJECT-TYPE
+    SYNTAX     SEQUENCE OF NgDhcpLeaseEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "The (conceptual) table of all current, active DHCP leases
+	on the device. An entry shall be placed in the storage table 
+	for each DHCP lease."
+    ::= { ngDhcpLeaseInfo 1 }
+
+ngDhcpLeaseEntry OBJECT-TYPE
+    SYNTAX     NgDhcpLeaseEntry
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A (conceptual) entry for one logical DHCP lease on
+        the host."
+    INDEX { ngdhlIndex }
+    ::= { ngDhcpLeaseTable 1 }
+
+NgDhcpLeaseEntry ::= SEQUENCE {
+        ngdhlIndex            Integer32,
+        ngdhlLeaseAddr        IpAddress,
+        ngdhlMac              DisplayString,
+        ngdhlHostname         DisplayString,
+        ngdhlPort             Integer32,
+        ngdhlVlanId           Integer32
+    }
+
+ngdhlIndex OBJECT-TYPE
+    SYNTAX     Integer32 (1..65535)
+    MAX-ACCESS not-accessible
+    STATUS     current
+    DESCRIPTION
+        "A unique value for each logical DHCP lease
+        contained by the device."
+    ::= { ngDhcpLeaseEntry 1 }
+
+ngdhlLeaseAddr OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The IP address associated with an indivdual DHCP lease."
+    ::= { ngDhcpLeaseEntry 2 }
+
+ngdhlMac OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The MAC address associated with an indivdual DHCP lease."
+    ::= { ngDhcpLeaseEntry 3 }
+
+ngdhlHostname OBJECT-TYPE
+    SYNTAX  DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The hostname associated with an indivdual DHCP lease."
+    ::= { ngDhcpLeaseEntry 4 }
+
+ngdhlPort OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The physical port (if valid) on the device associated
+      with an indivdual DHCP lease."
+    ::= { ngDhcpLeaseEntry 5 }
+
+ngdhlVlanId OBJECT-TYPE
+    SYNTAX     Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+      "The VLAN ID on the device associated
+      with an indivdual DHCP lease."
+    ::= { ngDhcpLeaseEntry 6 }
+--
+-- AT&T NetGate Traps
+--
+
+--
+-- Objects in the individual events.
+--
+ngevNetGateMac OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The MAC address associated with this AT&T NetGate."
+    ::= { ngEventObjects 1 }
+
+ngevRogueMac    OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The MAC address of the unauthorized machine detected when
+       MAC monitoring is enabled."
+    ::= { ngEventObjects 2 }
+
+ngevActiveWanIp OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The IP address of the active WAN interface.  When viewing
+       the output of the SNMP tree this can be determined from the
+       interface statistics.  However, for traps the active WAN
+       interface might not be used to send the trap (i.e. it could
+       be down the tunnel. Set to zero if not used."
+    ::= { ngEventObjects 3 }
+
+ngevIpConntrackMaxPercentage OBJECT-TYPE
+    SYNTAX      Integer32 (1..65535)
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "An alert will be sent when the ip_conntrack table is within
+       this percentage of the maximum."
+    ::= { ngEventObjects 4 }
+
+ngevIpConntrackCurrentPercentage OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The ip_conntrack table is currently at this percentage
+       of the maximum."
+    ::= { ngEventObjects 5 }
+
+ngevTimeInDial  OBJECT-TYPE
+    SYNTAX      Integer32 (1..65535)
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The number of minutes the device has been connected
+       via dial."
+    ::= { ngEventObjects 6 }
+
+ngevQueryProblem  OBJECT-TYPE
+    SYNTAX      INTEGER {
+                  profileNotFound(0),
+                  discontinuingTheDevice(1),
+		  bandwNoResults(2)
+                }
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Used to indicate what type of problem is happening with the device's status.
+       profileNotFound means that a profile for the device was not found on an AT&T
+       Administration Server in any region. discontinuingTheDevice means that the
+       device has gone too long without having a valid profile in any region.  
+       bandwNoResults means that a bandwidth test failed and no previous bandwidth 
+       test results have been found, which results in the device being marked as 
+       discontinued until a bandwidth test works."
+    ::= { ngEventObjects 7 }
+
+ngevTunConnectionId   OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Use to tie this trap to a trap for the tunnel disconnect."
+    ::= { ngEventObjects 8 }
+
+ngevTunnelDateAndTime   OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The timestamp from when the tunnel came up, tried to come up,
+       or came down."
+    ::= { ngEventObjects 9 }
+
+ngevConnectionType  OBJECT-TYPE
+    SYNTAX      INTEGER {
+                  connTypeBroadband(0),
+                  connTypeAgnsDial(1),
+                  connTypeOtherIspDial(2)
+                }
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Indicates whether the tunnel is via broadband or dial."
+    ::= { ngEventObjects 10 }
+
+ngevAccount OBJECT-TYPE
+    SYNTAX      DisplayString (SIZE (1..8))
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "In the tunnel up/down trap it is the customer account
+       used to start the tunnel. 
+       In the secondary auth attempt trap it is the account
+       used for the login attempt."
+    ::= { ngEventObjects 11 }
+
+ngevUserid OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "In the tunnel up/down trap it is the customer userid
+       used to start the tunnel. 
+       In the secondary auth attempt trap it is the userid
+       used for the login attempt."
+    ::= { ngEventObjects 12 }
+
+ngevTunConReason OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "String that shows a message that explains the
+       results of a tunnel connection attempt."
+    ::= { ngEventObjects 13 }
+
+ngevDialTestFailReason OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "String that shows why the dial test failed."
+    ::= { ngEventObjects 14 }
+
+ngevSshSourceIp OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The IP address of the client that ssh'ed into the device."
+    ::= { ngEventObjects 15 }
+
+ngevRequestorIp OBJECT-TYPE
+    SYNTAX      IpAddress
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The IP address of the machine that initiated a particular
+       request (reboot, shutdown, secondary auth attempt, etc.).
+       Will be set to loopback if an automated process caused
+       the reboot."
+    ::= { ngEventObjects 16 }
+
+ngevDialTestFailCategory  OBJECT-TYPE
+    SYNTAX      INTEGER {
+                  dialProblemError(0),
+                  dialProblemWarning(1),
+                  dialProblemMessage(2),
+                  dialProblemNoCategory(3)
+                }
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Shows what type of category the dial test failure would
+       be put in.  For example, a busy signal would be a warning
+       but a bad password would be an error."
+    ::= { ngEventObjects 17 }
+
+ngevRogueIp    OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS accessible-for-notify
+    STATUS     current
+    DESCRIPTION
+      "The IP address of the unauthorized machine detected when
+       MAC monitoring is enabled. Set to zero if not used."
+    ::= { ngEventObjects 18 }
+
+ngevRogueInterface OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The interface of the unauthorized machine detected when
+       MAC monitoring is enabled."
+    ::= { ngEventObjects 19 }
+
+ngevTrapDescription OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "For MAC monitoring this is the Service Manager 
+       description field.  Other traps may use this field
+       for other purposes."
+    ::= { ngEventObjects 20 }
+
+ngevLoginResult  OBJECT-TYPE
+    SYNTAX      INTEGER {
+                  failure(0),
+                  success(1)
+                }
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "Specifies the result of the secondary login attempt when
+       someone tries to ssh into the AT&T NetGate."
+    ::= { ngEventObjects 21 }
+
+ngevNewLocalID OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The userid that the user became after their secondary 
+       login attempt was successful. Secondary logins are 
+       performed when someone tries to ssh into the AT&T NetGate.
+
+       The userid that the user became (or tried to become)
+       for their switch user attempt."
+    ::= { ngEventObjects 22 }
+
+ngevOldLocalID OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The userid that was in use when the user made their
+       switch user attempt."
+    ::= { ngEventObjects 23 }
+
+ngevMaxTimeInDialUntilAlert  OBJECT-TYPE
+    SYNTAX      TimeTicks
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The max number of minutes the device can be connected
+       via dial without a trap being sent for excessive dial.
+       Once this maximum is reached a trap will be sent."
+    ::= { ngEventObjects 24 }
+
+ngevPortDown OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "An individual port that is currently not active.  Only
+       used by the AT&T NetGate 8200V."
+    ::= { ngEventObjects 25 }
+
+ngevIPv6ActiveWanIp OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The IP address of the active IPv6 WAN interface.  When viewing
+       the output of the SNMP tree this can be determined from the
+       interface statistics.  However, for traps the active WAN
+       interface might not be used to send the trap (i.e. it could
+       be down the tunnel. Set to zero if not used."
+    ::= { ngEventObjects 26 }
+
+ngevIPv6RogueIp OBJECT-TYPE
+    SYNTAX     InetAddressIPv6
+    MAX-ACCESS accessible-for-notify
+    STATUS     current
+    DESCRIPTION
+      "The IPv6 IP address of the unauthorized machine detected when
+       MAC monitoring is enabled. Set to zero if not used."
+    ::= { ngEventObjects 27 }
+
+ngevIPv6RequestorIp OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The IPv6 IP address of the machine that initiated a particular
+       request (reboot, shutdown, secondary auth attempt, etc.).
+       Will be set to loopback if an automated process caused
+       the reboot."
+    ::= { ngEventObjects 28 }
+
+ngevCardNotFoundTime   OBJECT-TYPE
+    SYNTAX      DateAndTime
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+      "The timestamp that indicates when the AT&T NetGate noted that
+       the required cellular card was missing."
+    ::= { ngEventObjects 29 }
+
+ngevVPNServiceIPv4Address    OBJECT-TYPE
+    SYNTAX     IpAddress
+    MAX-ACCESS accessible-for-notify
+    STATUS     current
+    DESCRIPTION
+      "The VPN Service Address assigned for this tunnel connetino. 
+       Will be not set if this is an IPv6 tunnel or the tunnel did
+       not come up."
+    ::= { ngEventObjects 30 }
+
+ngevVPNServiceIPv6Address    OBJECT-TYPE
+    SYNTAX      InetAddressIPv6
+    MAX-ACCESS accessible-for-notify
+    STATUS     current
+    DESCRIPTION
+      "The VPN Service Address assigned for this tunnel connetino.  
+       Will be not set if this is an IPv4 tunnel or the tunnel did
+       not come up."
+    ::= { ngEventObjects 31 }
+
+ngevTunConReasonNUM OBJECT-TYPE
+    SYNTAX      Integer32 (0..65535)
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "A numeric value that indicates the results of a tunnel connection attempt."
+    ::= { ngEventObjects 32 }
+
+--
+-- Individual events.
+--
+ngevIpConntrackTable NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevIpConntrackCurrentPercentage,
+              ngevIpConntrackMaxPercentage }
+    STATUS  current
+    DESCRIPTION
+             "Sent if the Firewall Connection table reaches
+              the specified threshold."
+    ::= { ngEventNotification 1 }
+
+ngevIpConntrackTableFull NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac }
+    STATUS  current
+    DESCRIPTION
+            "Indicates the firewall Connection table has reached
+             capacity."
+    ::= { ngEventNotification 2 }
+
+ngevExcessiveDial NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevTimeInDial, 
+              ngifTimeInDial, ngevMaxTimeInDialUntilAlert,
+              ngifActiveWanIface
+            }
+    STATUS  current
+    DESCRIPTION
+            "The device has been in dial backup longer than
+             the allowed threshold."
+    ::= { ngEventNotification 3 }
+
+ngevActiveWanIpChanged NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngifActiveWanIface, ngevActiveWanIp, 
+              ngevIPv6ActiveWanIp
+            }
+    STATUS  current
+    DESCRIPTION
+            "The IP address associated with the active WAN interface
+             has changed.  For example, dial backup was initiated
+             because WAN connectivity was lost.  Another example
+             is that a PPPoE connection changed its IP address."
+    ::= { ngEventNotification 4 }
+
+ngevRogueMacDetected NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevRogueMac, ngevRogueIp, 
+              ngevRogueInterface, ngevTrapDescription,
+              ngevIPv6RogueIp }
+    STATUS  current
+    DESCRIPTION
+            "The unauthorized MAC detection feature is enabled and 
+             an unauthorized MAC address was detected."
+    ::= { ngEventNotification 5 }
+
+ngevRogueMacNoFile NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac }
+    STATUS  current
+    DESCRIPTION
+            "The unauthorized MAC detection feature is enabled and 
+             the authorized MAC file doesn't exist."
+    ::= { ngEventNotification 6 }
+
+ngevNoTeps NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngtuIpsecIface }
+    STATUS  current
+    DESCRIPTION
+            "The AT&T NetGate cannot bring up a tunnel to any of the 
+             tunnel endpoints."
+    ::= { ngEventNotification 7 }
+
+ngevDeviceDiscoOrNotFound NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevQueryProblem }
+    STATUS  current
+    DESCRIPTION
+            "Sent if the AT&T NetGate profile is not found.
+             If the AT&T NetGate goes too long without 
+             finding its device profile then the device will 
+             switch its status to discontinued, which will
+             also trigger a trap/inform."
+    ::= { ngEventNotification 8 }
+
+ngevTunnelUp NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevTunConnectionId, 
+              ngevTunnelDateAndTime, ngtuTunMode,
+              ngevConnectionType, ngevAccount, ngevUserid,
+              ngtuEndpoint, ngtuAuthType, ngtuAuthProt,
+              ngtuEndpointType, ngevTunConReason, 
+              nghwWanConnectionMethod, ngtuTunInitiator,
+              ngtuIpsecIface, ngtuIPv6Endpoint,
+              ngevVPNServiceIPv4Address, ngevVPNServiceIPv6Address,
+              ngevTunConReasonNUM
+            }
+    STATUS  current
+    DESCRIPTION
+            "Information about the results of a tunnel connection attempt."
+    ::= { ngEventNotification 9 }
+
+ngevTunnelDown NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevTunConnectionId, 
+              ngevTunnelDateAndTime, ngtuReasonCode
+            }
+    STATUS  current
+    DESCRIPTION
+            "Information about a tunnel disconnect.
+             The one exception is a tunnel 'alive' message,
+             which is sent for a tunnel that is still up.
+             Tunnel 'alive' messages have a ngtuReasonCode
+             of tnlAlive."
+    ::= { ngEventNotification 10 }
+
+ngevDialAutotestFailure NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevDialTestFailReason,
+              ngevDialTestFailCategory }
+    STATUS  current
+    DESCRIPTION
+            "The Dial Autotest failed."
+    ::= { ngEventNotification 11 }
+
+ngevDeviceReboot NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevRequestorIp, ngevIPv6RequestorIp }
+    STATUS  current
+    DESCRIPTION
+            "Sent when the device reboots. Requestor IP
+             will be set to loopback if an automated process 
+             caused the reboot."
+    ::= { ngEventNotification 12 }
+
+ngevDeviceShutdown NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevRequestorIp, ngevIPv6RequestorIp }
+    STATUS  current
+    DESCRIPTION
+            "Sent when the device shuts down."
+    ::= { ngEventNotification 13 }
+
+ngevSshLogin NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevSshSourceIp, ngevIPv6RequestorIp }
+    STATUS  current
+    DESCRIPTION
+            "Sent when a user accesses the device via SSH."
+    ::= { ngEventNotification 14 }
+
+ngevDhcpPoolExhausted NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngvlId }
+    STATUS  current
+    DESCRIPTION
+            "Sent when a VLAN's DHCP pool is full."
+    ::= { ngEventNotification 15 }
+
+ngevForTestingOnly NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevTunConReason,
+              ngevTunnelDateAndTime
+            }
+    STATUS  current
+    DESCRIPTION
+            "Only for use by QA and development for testing."
+    ::= { ngEventNotification 16 }
+
+ngevSecondaryAuthAttempt NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevRequestorIp, ngevAccount, ngevUserid,
+              ngevLoginResult, ngevNewLocalID, ngevIPv6RequestorIp
+            }
+    STATUS  current
+    DESCRIPTION
+            "Sent when a secondary login attempt occurs. Secondary logins are 
+             performed when someone tries to ssh into the AT&T NetGate."
+    ::= { ngEventNotification 17 }
+
+ngevSwitchUseridAttempt NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevRequestorIp, ngevAccount, ngevUserid,
+              ngevLoginResult, ngevNewLocalID, ngevOldLocalID, ngevIPv6RequestorIp
+            }
+    STATUS  current
+    DESCRIPTION
+            "Sent when a user who is ssh'ed into the AT&T NetGate tries to
+             switch to another userid."
+    ::= { ngEventNotification 18 }
+
+ngev8200VPortDown NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ngevPortDown
+            }
+    STATUS  current
+    DESCRIPTION
+            "Sent when either port 7 or 8 is determined to be not active.
+             Only used by the AT&T NetGate 8200V."
+    ::= { ngEventNotification 19 }
+
+ngevCellModemRequired NOTIFICATION-TYPE
+    OBJECTS { ngevNetGateMac, ng3gModel, ng3gManufacturer, ng3gID,
+              ng3gRevision, ng3gSIMCardNumber, ng3gPhoneNum,
+              ngevCardNotFoundTime
+            }
+    STATUS  current
+    DESCRIPTION
+            "Sent when either the AT&T NetGate boots without a cell modem
+             present or when the AT&T NetGate detects that the cell modem
+             has been removed. The cellular modem must be a supported unit
+             that allows the AT&T NetGate to query its current status."
+    ::= { ngEventNotification 20 }
+
+--
+-- Trap/inform compliance groups.
+--
+ngevBasicComplianceRev MODULE-COMPLIANCE
+    STATUS  current
+    DESCRIPTION
+            "The compliance statement for AT&T NetGate entities
+             which implement this MIB module."
+    MODULE  -- this module
+        MANDATORY-GROUPS { ngevNotificationsGroup, ngevObjectsGroup }
+    ::= { ngEventCompliances 1 }
+
+ngevNotificationsGroup  NOTIFICATION-GROUP
+    NOTIFICATIONS {
+                    ngevIpConntrackTable, ngevIpConntrackTableFull,
+                    ngevExcessiveDial, ngevActiveWanIpChanged,
+                    ngevRogueMacDetected, ngevRogueMacNoFile,
+                    ngevNoTeps, ngevDeviceDiscoOrNotFound,
+                    ngevTunnelUp, ngevTunnelDown,
+                    ngevDialAutotestFailure, ngevDeviceReboot,
+                    ngevDeviceShutdown, ngevSshLogin,
+                    ngevDhcpPoolExhausted, ngevForTestingOnly,
+                    ngevSecondaryAuthAttempt, ngevSwitchUseridAttempt,
+                    ngev8200VPortDown, ngevCellModemRequired
+                  }
+    STATUS  current
+    DESCRIPTION
+            "The event notifications"
+    ::= { ngEventGroups 1 }
+
+ngevObjectsGroup   OBJECT-GROUP
+    OBJECTS { ngevNetGateMac, ngevRogueMac, ngevActiveWanIp, 
+              ngevIpConntrackMaxPercentage, ngevIpConntrackCurrentPercentage,
+              ngevTimeInDial, ngevQueryProblem, ngevTunConnectionId,
+              ngevConnectionType,
+              ngevAccount, ngevUserid, ngevTunConReason,
+              ngevDialTestFailReason, ngevSshSourceIp, 
+              ngevTunnelDateAndTime, ngevRequestorIp,
+              ngevDialTestFailCategory, ngevRogueIp,
+              ngevRogueInterface, ngevTrapDescription,
+              ngevMaxTimeInDialUntilAlert,
+              ngevLoginResult, ngevNewLocalID,
+              ngevOldLocalID, ngevPortDown,
+              ngevIPv6ActiveWanIp, ngevIPv6RogueIp,
+              ngevIPv6RequestorIp, ngevCardNotFoundTime,
+              ngevVPNServiceIPv4Address, ngevVPNServiceIPv6Address,
+              ngevTunConReasonNUM
+            }
+    STATUS  current
+    DESCRIPTION
+            "The event ojects."
+    ::= { ngEventGroups 2 }
+
+END
