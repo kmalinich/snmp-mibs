@@ -1,38 +1,38 @@
 CT-FLASH-MIB    DEFINITIONS ::= BEGIN
- 
+
         --  ct-flash-mib.txt
         --  Revision: 01.01.02
-        --  Part Number:  
+        --  Part Number:
         --  Date: May 7, 1998
- 
+
         --  Cabletron Systems, Inc.
         --  35 Industrial Way, P.O. Box 5005
         --  Rochester, NH 03867-0505
         --  (603) 332-9400
         --  support@ctron.com
- 
+
         --  This module provides authoritative definitions for Cabletron's
         --  flash filing system mib.
         --
         --  This module will be extended, as required.
         --
- 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
         --  a non-exclusive license to use this Specification in connection
         --  with the management of Cabletron products.
- 
+
         --  Copyright (c)1998 Cabletron Systems
 
  IMPORTS
@@ -54,9 +54,9 @@ flashStatus     OBJECT IDENTIFIER ::= { ctFlash 1 }
 flashFile       OBJECT IDENTIFIER ::= { ctFlash 2 }
 flashCmd        OBJECT IDENTIFIER ::= { ctFlash 3 }
 
--- All groups are optional, within a group all objects are 
+-- All groups are optional, within a group all objects are
 -- mandatory.
--- Groups 1 and 2 contain related summary information and 
+-- Groups 1 and 2 contain related summary information and
 -- should be implemented together.
 
 
@@ -103,7 +103,7 @@ flashVolFiles   OBJECT-TYPE
      STATUS     mandatory
      DESCRIPTION
                 "The flash filing system status contains the number of
-                files currently in the volume." 
+                files currently in the volume."
         ::= { flashVolumeStatusEntry 2 }
 
  flashVolSpace  OBJECT-TYPE
@@ -111,10 +111,10 @@ flashVolFiles   OBJECT-TYPE
      ACCESS     read-only
      STATUS     mandatory
      DESCRIPTION
-                "This object returns the approximate amount of remaining 
+                "This object returns the approximate amount of remaining
                   storage space, in bytes, in the flash filing system."
         ::= { flashVolumeStatusEntry 3 }
- 
+
 
 
 --===============   Flash File group : ctFlash 2   ===================
@@ -165,7 +165,7 @@ FlashFileEntry  ::= SEQUENCE {
      DESCRIPTION
                 "This object contains the filename of the current file."
         ::= { flashFileEntry 2 }
- 
+
  flashFileVersion       OBJECT-TYPE
      SYNTAX     DisplayString(SIZE (0..8))
      ACCESS     read-only
@@ -174,7 +174,7 @@ FlashFileEntry  ::= SEQUENCE {
                 "This object contains the file version number of the current
                   file in the form 'XX.XX.XX', where 'X' is in the range 0-9."
         ::= { flashFileEntry 3 }
- 
+
  flashFileType  OBJECT-TYPE
      SYNTAX     INTEGER { intelHex(1),
                           intelHexCompressed(2),
@@ -192,7 +192,7 @@ FlashFileEntry  ::= SEQUENCE {
      DESCRIPTION
                 "This object contains the file type defined for the file."
         ::= { flashFileEntry 4  }
- 
+
  flashFileSize  OBJECT-TYPE
      SYNTAX     INTEGER
      ACCESS     read-only
@@ -201,7 +201,7 @@ FlashFileEntry  ::= SEQUENCE {
                 "This object contains the size, in bytes, currently allocated
                   to the file."
         ::= { flashFileEntry 5 }
- 
+
 
 
 --===============   Flash Command group : ctFlash 3   ===================
@@ -263,8 +263,8 @@ flashCmdStatus  OBJECT-TYPE
      STATUS     mandatory
      DESCRIPTION
                 "Status of the download or upload operation. The idle(1)
-                status indicates no operation is in progress. The 
-                downLoadActive(3) or upLoadActive(4) indicate a file 
+                status indicates no operation is in progress. The
+                downLoadActive(3) or upLoadActive(4) indicate a file
                 transfer in progress. The completeError(5) status indicates
                 that a file transfer was started but an error was detected."
         ::= { flashCmd 5 }
@@ -281,7 +281,7 @@ flashCmdError   OBJECT-TYPE
                           maxFiles(9),      -- Exceeded maximum files per
                                             -- flash volume
                           invalidName(10),  -- Invalid flash filename
-                          protocolErr(11),  -- TFTP protocol error 
+                          protocolErr(11),  -- TFTP protocol error
                           serverLost(12),   -- Lost TFTP server
                           noNetFile(13),    -- Network file not found
                           noNetAccess(14),  -- Network access violation
@@ -344,7 +344,7 @@ flashCmdSize    OBJECT-TYPE
      STATUS     mandatory
      DESCRIPTION
                 "Size of the download file. This value allows the flash
-                filing system to initialize an appropriate amount of 
+                filing system to initialize an appropriate amount of
                 flash memory prior to the TFTP transfer, preventing a
                 time-out condition during a transfer."
         ::= { flashCmd 10 }

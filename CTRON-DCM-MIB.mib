@@ -34,12 +34,12 @@ IMPORTS
 -- ctDcm          OBJECT IDENTIFIER ::= { ctron 6 }
 
 -- DCM is the parent branch of a group of mibs related to
--- distributed chassis management, of which Dcm is the first. 
+-- distributed chassis management, of which Dcm is the first.
 
 dCM               OBJECT IDENTIFIER ::= { ctDcm 1 }
 
 dCMMode OBJECT-TYPE
-    SYNTAX  INTEGER 
+    SYNTAX  INTEGER
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
@@ -58,5 +58,5 @@ dCMMode OBJECT-TYPE
                 1 = DISTRIBUTED
             "
     ::= { dCM 1 }
- 
+
 END

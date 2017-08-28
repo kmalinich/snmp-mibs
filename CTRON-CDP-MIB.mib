@@ -28,7 +28,7 @@ IMPORTS
        ctCDP
                 FROM CTRON-MIB-NAMES
        ifIndex, InterfaceIndex
-                FROM IF-MIB 
+                FROM IF-MIB
        MODULE-IDENTITY, OBJECT-TYPE, IpAddress, Counter32
                 FROM SNMPv2-SMI
        MODULE-COMPLIANCE, OBJECT-GROUP
@@ -38,9 +38,9 @@ IMPORTS
         TimeFilter
                 FROM RMON2-MIB;
 
-ctronCdpMIB MODULE-IDENTITY 
+ctronCdpMIB MODULE-IDENTITY
    LAST-UPDATED
-     "199908280000Z"  -- August 28, 1999 
+     "199908280000Z"  -- August 28, 1999
 
    ORGANIZATION
      "Cabletron Systems, Inc."
@@ -56,18 +56,18 @@ ctronCdpMIB MODULE-IDENTITY
    DESCRIPTION
      "This module defines a schema that maintains per port
       neighbor information for the express purpose
-      of helping a managment application map 
+      of helping a managment application map
       Layaer 2 topology."
-    ::= { ctCDP 3 }   
+    ::= { ctCDP 3 }
 
 
    CTCDPCapability ::= TEXTUAL-CONVENTION
-   STATUS current          
-   DESCRIPTION 
+   STATUS current
+   DESCRIPTION
             "The current capabilities of the neighbor device on a per
 port basis.  "
    SYNTAX INTEGER {
-                igmp(1),      -- IGMP enabled on the port over which device sent the packet 
+                igmp(1),      -- IGMP enabled on the port over which device sent the packet
                 rip(2),       -- Device performs routing using RIP
                 bgp(3),       -- Device performs routing using BGP
                 ospf(4),      -- Device performs routing using OSPF
@@ -101,9 +101,9 @@ ctCDPNeighborLastDelete OBJECT-TYPE
      STATUS      current
      DESCRIPTION
         "The value of sysUpTime the last time an entry in the
-        ctCDPNeighborTable was deleted. This should be polled 
+        ctCDPNeighborTable was deleted. This should be polled
         at an interval no greater than one second.
-        When it changes, the whole table should be 
+        When it changes, the whole table should be
         reread by management with a timeMark of 0 to rebuild
         connectivity map."
     ::= { ctCDPNeighbor 2 }
@@ -123,7 +123,7 @@ ctCDPNeighborEntry    OBJECT-TYPE
      MAX-ACCESS  not-accessible
      STATUS  current
      DESCRIPTION
-         "An entry containing objects pertaining to  
+         "An entry containing objects pertaining to
           neighbor devices speaking CDP protocols."
      INDEX   { ctCDPNeighborTimeMark, ifIndex, ctCDPNeighborMAC  }
         ::= { ctCDPNeighborTable 1 }
@@ -165,7 +165,7 @@ ctCDPNeighborIP    OBJECT-TYPE
      DESCRIPTION
         "The IP address of SNMP agent on neighboring entity from which
          corresponding data for this port may be obtained. In the case
-         of unnumbered IP Interfaces, this may not be the same as the 
+         of unnumbered IP Interfaces, this may not be the same as the
          port."
         ::= { ctCDPNeighborEntry 3 }
 
@@ -174,7 +174,7 @@ ctCDPNeighborPort OBJECT-TYPE
      MAX-ACCESS  read-only
      STATUS      current
      DESCRIPTION
-        "The ifIndex of the remote port. Note, there may not be an IP 
+        "The ifIndex of the remote port. Note, there may not be an IP
          Interface associated with this port."
         ::= { ctCDPNeighborEntry 4 }
 
@@ -204,8 +204,8 @@ ctCDPNeighborChassisMAC    OBJECT-TYPE
      STATUS      current
      DESCRIPTION
         "The MAC Address of the chassis in architectures
-         where many manageable  elements exist within a 
-         given chassis. If no containing chassis exists, 
+         where many manageable  elements exist within a
+         given chassis. If no containing chassis exists,
          exists, this value must be set to 000000:000000"
         ::= { ctCDPNeighborEntry 6 }
 
@@ -224,7 +224,7 @@ ctCDPNeighborDescription  OBJECT-TYPE
      STATUS      current
      DESCRIPTION
         "A textual description of the neighbor. It
-         should contain operator diagnostic information 
+         should contain operator diagnostic information
          similar to sysDescr: system type, firmware version..."
         ::= { ctCDPNeighborEntry 8 }
 
@@ -304,7 +304,7 @@ ctCDPPort OBJECT-TYPE
      MAX-ACCESS  read-only
      STATUS      current
      DESCRIPTION
-        "The ifIndex for a physical port. ifConnectorPresent is true(1) 
+        "The ifIndex for a physical port. ifConnectorPresent is true(1)
          defines a physical port on which cdp pdus will be emitted."
     ::= { ctCDPPortTableEntry 1 }
 
@@ -312,14 +312,14 @@ ctCDPPortStatus OBJECT-TYPE
      SYNTAX  INTEGER {
                 enabled(1),   -- CDP is enabled always on the port
                 disabled(2),  -- CDP is disabled always on the port
-                autoEnable(3) -- CDP is automatically enabled on the port 
+                autoEnable(3) -- CDP is automatically enabled on the port
                               -- when device receives CDP packet on that port
         }
      MAX-ACCESS  read-write
      STATUS  current
      DESCRIPTION
-        "The current state administrative of cdp on a physical port. 
-         The ability to enable and disable the sending of CDP pdu's 
+        "The current state administrative of cdp on a physical port.
+         The ability to enable and disable the sending of CDP pdu's
          on a per port basis is controlled here."
     ::= { ctCDPPortTableEntry 2 }
 
@@ -340,7 +340,7 @@ ctCDPHoldTime OBJECT-TYPE
         "The maximum amount of time in seconds to wait before aging out
          an entry in the ctCDPNeighborTable. The agent may choose to change
          this value based on the hold time it receives from other devices
-         so as to have a stable neighbor table which ages out entries 
+         so as to have a stable neighbor table which ages out entries
          in accordance with the transmit frequency."
    ::= { ctCDPStatus 5 }
 
@@ -356,14 +356,14 @@ ctCDPVersion OBJECT-TYPE
 
 --
 -- CDP statistics
--- 
+--
 
 ctCDPInPackets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-        "Count of CDP packets received by the device over all 
+    DESCRIPTION
+        "Count of CDP packets received by the device over all
          the ports."
    ::= { ctCDPStats 1 }
 
@@ -371,8 +371,8 @@ ctCDPOutPackets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-        "Count of CDP packets successfully transmitted by the 
+    DESCRIPTION
+        "Count of CDP packets successfully transmitted by the
          device over all the ports."
    ::= { ctCDPStats 2 }
 
@@ -380,8 +380,8 @@ ctCDPInvalidVersionPackets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-        "Count of CDP packets received with version not 
+    DESCRIPTION
+        "Count of CDP packets received with version not
          supported by the device."
    ::= { ctCDPStats 3 }
 
@@ -389,7 +389,7 @@ ctCDPParseErrorPackets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
         "Count of CDP packets received and could not be parsed
          successfully by the device."
    ::= { ctCDPStats 4 }
@@ -398,8 +398,8 @@ ctCDPTransmitErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-        "Count of errors occured by the device while trying 
+    DESCRIPTION
+        "Count of errors occured by the device while trying
          to transmit CDP packets."
    ::= { ctCDPStats 5 }
 
@@ -407,21 +407,21 @@ ctCDPMemoryErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-        "Count of memory errors occured in the device while 
-         either trying to process the CDP packet or adding the 
+    DESCRIPTION
+        "Count of memory errors occured in the device while
+         either trying to process the CDP packet or adding the
          neighbor entry or while trying to send a CDP packet."
    ::= { ctCDPStats 6 }
 
 
 --
--- Compliance Statements 
+-- Compliance Statements
 --
 
 ctCDPConformance OBJECT IDENTIFIER ::= { ctronCdpMIB 11 }
 ctCDPCompliances OBJECT IDENTIFIER ::= { ctCDPConformance 1 }
 ctCDPGroups OBJECT IDENTIFIER      ::= { ctCDPConformance 2 }
- 
+
 ctCDPComplianceV10 MODULE-COMPLIANCE
     STATUS current
     DESCRIPTION
@@ -430,7 +430,7 @@ ctCDPComplianceV10 MODULE-COMPLIANCE
         MANDATORY-GROUPS { ctCdpGroupV10 }
     ::= { ctCDPCompliances 1 }
 
-ctCdpGroupV10  OBJECT-GROUP 
+ctCdpGroupV10  OBJECT-GROUP
    OBJECTS {
     ctCDPNeighborLastChange,
     ctCDPNeighborLastDelete,
@@ -463,6 +463,6 @@ ctCdpGroupV10  OBJECT-GROUP
  DESCRIPTION
   "The set of managed objects that make up version 2 of the
    CTRON-CDP-MIB."
-   ::= { ctCDPGroups 1 } 
+   ::= { ctCDPGroups 1 }
 
 END

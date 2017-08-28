@@ -20,16 +20,16 @@ CTRON-WAN-MIB DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -406,7 +406,7 @@ CTRON-WAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER {
                 sixteen-bits(1),
                 thirty-two-bits(2)
-                }       
+                }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -424,15 +424,15 @@ CTRON-WAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This switch acts in concert with the wanInterfaceEntryProtocol
                 object.  To activate LEX, this object should first be set to
-                enable (1), then set the wanInterfaceEntryProtocol to PPP.  The 
+                enable (1), then set the wanInterfaceEntryProtocol to PPP.  The
                 enable will have no effect if PPP is not selected.  If the
                 wanInterfaceEntryProtocol is selected first, the default NCP of
-                BNCP will be selected.  To De-select LEX, you must set this 
+                BNCP will be selected.  To De-select LEX, you must set this
                 object to disable (2), and wanInterfaceEntryProtocol to NONE or
                 reset the device.  Just selecting disable (2) will not tear down
                 the connection."
         ::= { wanInterfaceEntry 10}
-    
+
     wanInterfaceEntryLexProtocolStatus  OBJECT-TYPE
         SYNTAX  INTEGER {
                 bound (1),
@@ -453,7 +453,7 @@ CTRON-WAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ratio of uncompressed to compressed transmitted data. 
+                "The ratio of uncompressed to compressed transmitted data.
                 If the data compression status is off, 1:1 will be displayed"
 
         ::= { wanInterfaceEntry 12}
@@ -635,8 +635,8 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Enables or disables Drop and Insert functionality on a
-                D/I WPIM.  If enabled, all zero assigned timeslots will 
-                designate D/I interface channels, if disabled all zero 
+                D/I WPIM.  If enabled, all zero assigned timeslots will
+                designate D/I interface channels, if disabled all zero
                 channels will designate dummy channels as on a T1 or E1.
                 If this object is set to diDataEnabled the zero channels
                 will designate D/I interface channels and data to and
@@ -669,10 +669,10 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         DESCRIPTION
                 "This object is used to request that a type of
                 process be in control of the testing function.
-                This is used to differentiate between automated test 
-                procedures and those manually controlled by a user.  
-                When read, this object reflects which type of process 
-                is actually in control of the testing function.  The 
+                This is used to differentiate between automated test
+                procedures and those manually controlled by a user.
+                When read, this object reflects which type of process
+                is actually in control of the testing function.  The
                 implementation is free to prioritize or deny requests
                 in a proprietary manner."
         ::= { wanDs1ExtensionsEntry 8 }
@@ -685,13 +685,13 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS      read-write
         STATUS      mandatory
         DESCRIPTION
-                "Controls the sending of test data over this physical 
-                port.  The data is a pattern described by 
-                wanDs1ExtensionsBertTestPattern." 
+                "Controls the sending of test data over this physical
+                port.  The data is a pattern described by
+                wanDs1ExtensionsBertTestPattern."
         ::= { wanDs1ExtensionsEntry 9 }
 
     wanDs1ExtensionsBertCurrentResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
@@ -701,7 +701,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ::= { wanDs1ExtensionsEntry 10 }
 
     wanDs1ExtensionsBertCumulativeResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
@@ -710,25 +710,25 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ::= { wanDs1ExtensionsEntry 11 }
 
     wanDs1ExtensionsBertPeakResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
-                "Indicates the highest value of 
-                wanDs1ExtensionsBertCurrentResults since the testing 
-                was enabled.  A non-negative number is the error rate 
-                in bits per million bits." 
+                "Indicates the highest value of
+                wanDs1ExtensionsBertCurrentResults since the testing
+                was enabled.  A non-negative number is the error rate
+                in bits per million bits."
         ::= { wanDs1ExtensionsEntry 12 }
 
     wanDs1ExtensionsBertAverageResult   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
-                "Indicates the average value of 
-                wanDs1ExtensionsBertCurrentResults since the testing 
-                was enabled.  A non-negative number is the error rate 
-                in bits per million bits." 
+                "Indicates the average value of
+                wanDs1ExtensionsBertCurrentResults since the testing
+                was enabled.  A non-negative number is the error rate
+                in bits per million bits."
         ::= { wanDs1ExtensionsEntry 13 }
 
     wanDs1ExtensionsBertTestPattern     OBJECT-TYPE
@@ -744,7 +744,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object is used to specify the pattern of the 
+                "This object is used to specify the pattern of the
                 test data."
         ::= { wanDs1ExtensionsEntry 14 }
 
@@ -755,7 +755,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         DESCRIPTION
                 "This object is the duration of time in seconds at
                 which the current test results will be periodically
-                written to wanDs1ExtensionsBertCurrentResults.  The 
+                written to wanDs1ExtensionsBertCurrentResults.  The
                 range is 1 to 3600, with a default value of 10."
         ::= { wanDs1ExtensionsEntry 15 }
 
@@ -877,7 +877,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ::= { wanRs232ExtensionsEntry 3 }
 
 --  ctFrDcp Group
---  This group is mandatory to support Data Compression Protocol 
+--  This group is mandatory to support Data Compression Protocol
 --  (DCP following FRF.9) for per virtual circuit basis
 
     frDcpCircuitTable OBJECT-TYPE
@@ -885,7 +885,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table containing data compression information about 
+                "A table containing data compression information about
                 specific Data Link Connection Identifiers and corresponding
                 virtual circuit. This information is used to support the
                 frCircuitTable following RFC-1315."
@@ -896,7 +896,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "The data compression information regarding a single Data 
+                "The data compression information regarding a single Data
                 Link Connection Identifier."
         INDEX { frDcpCircuitIfIndex, frDcpCircuitDlci }
         ::= { frDcpCircuitTable 1 }
@@ -920,7 +920,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex value of ifEntry that this DCP virtual circuit 
+                "The ifIndex value of ifEntry that this DCP virtual circuit
                 object is layered onto."
         ::= { frDcpCircuitEntry 1 }
 
@@ -929,7 +929,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The Data Link Connection Identifier for this DCP virtual 
+                "The Data Link Connection Identifier for this DCP virtual
                 circuit object."
         REFERENCE
                 "Draft American National Standard T1.618-1991, Section 3.3.6"
@@ -967,7 +967,7 @@ wanInterfaceEntryBackUpIfEnable    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ratio of uncompressed to compressed transmitted data. 
+                "The ratio of uncompressed to compressed transmitted data.
                 If the data compression status is off, 1:1 will be displayed"
         ::= { frDcpCircuitEntry 5 }
 
@@ -1009,7 +1009,7 @@ DdsConfigEntry ::=
                 INTEGER,
             ddsTxClockSource
                 INTEGER,
-            ddsPortInSpeed 
+            ddsPortInSpeed
                 INTEGER,
             ddsPortOutSpeed
                 INTEGER
@@ -1020,7 +1020,7 @@ DdsConfigEntry ::=
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        "A unique value for each dds physical port on the 
+                        "A unique value for each dds physical port on the
                          platform"
                 ::= { ddsConfigEntry 1 }
 
@@ -1040,12 +1040,12 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "DDS-PRI is full duplex 56k link, No framing in loop 
+                        "DDS-PRI is full duplex 56k link, No framing in loop
                         data so loop speed is also 56k. Data stream:
-                                --d1 d2 d3 d4 d5 d6 d7--        
+                                --d1 d2 d3 d4 d5 d6 d7--
 
                         DDS-CC is full duplex 64k link. Does not require framing
-                        bit but uses a same format as SC, ninth bit position is 
+                        bit but uses a same format as SC, ninth bit position is
                         lumped with primary channel and not used for control.
                         Loop speed is 72k, Primary channel rate is 64k.
                                 --d1 d2 d3 d4 d5 d6 d7 F d8--"
@@ -1060,10 +1060,10 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "This object describes the variety of Zero Code 
-                        suppression on this interface.  JBZS refers to Jammed 
-                        Bit Zero suppression, which forces a 1 bit every 8 bit 
-                        periods. None refers to a mode in which some other 
+                        "This object describes the variety of Zero Code
+                        suppression on this interface.  JBZS refers to Jammed
+                        Bit Zero suppression, which forces a 1 bit every 8 bit
+                        periods. None refers to a mode in which some other
                         means is used to insure pulse density requirements."
                 ::= { ddsConfigEntry 4 }
 
@@ -1075,7 +1075,7 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "This variable represents the loop-back configuration 
+                        "This variable represents the loop-back configuration
                         of the DDS interface.  ddsNoLoop means the interface is
                         not in loop-back state, and LineLoop means the the
                         received data is looped back out."
@@ -1093,7 +1093,7 @@ DdsConfigEntry ::=
                 DESCRIPTION
                         "This describes the current operational
                         status of DDS line."
-                ::= { ddsConfigEntry 6 }        
+                ::= { ddsConfigEntry 6 }
 
         ddsTxClockSource OBJECT-TYPE
                 SYNTAX  INTEGER {
@@ -1104,7 +1104,7 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "The source of Transmit clock.
-                        ddsLoopTiming - indicates that the recovered receive 
+                        ddsLoopTiming - indicates that the recovered receive
                         clock is used as transmit clock.
                         ddsLocalTiming - indicates that a local clock source is
                         used."
@@ -1115,11 +1115,11 @@ DdsConfigEntry ::=
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        " This variable describes the current operational 
+                        " This variable describes the current operational
                          receive speed of DDS line.  It is a read only value
                          based entirely on DDS type (CC or PRI)."
-                ::= { ddsConfigEntry 8 }        
-        
+                ::= { ddsConfigEntry 8 }
+
         ddsPortOutSpeed OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
@@ -1128,7 +1128,7 @@ DdsConfigEntry ::=
                         "This variable describes the current operational
                          transmit speed of DDS line.  It is a read only value
                          based entirely on DDS type CC or PRI"
-                ::= { ddsConfigEntry 9 }        
+                ::= { ddsConfigEntry 9 }
 
 --
 -- Wan Alarms Group
@@ -1159,7 +1159,7 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        Monitoring Application for all DS1 circuits on the 
+                        Monitoring Application for all DS1 circuits on the
                         device."
                 ::= { ds1AlarmsGlobalConfigGroup 1}
 
@@ -1172,7 +1172,7 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        Automatic Recovery feature for all DS1 circuits on 
+                        Automatic Recovery feature for all DS1 circuits on
                         the device. For those devices that support ds1
                         alarm monitoring, but do not support the automatic
                         recovery feature, this object always returns disabled,
@@ -1188,8 +1188,8 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        SNMP Trap generation feature for all DS1 circuits on 
-                        the device.  This object operates in conjunction with 
+                        SNMP Trap generation feature for all DS1 circuits on
+                        the device.  This object operates in conjunction with
                         configuration of objects in the ctron-trap-mib.txt"
                 ::= { ds1AlarmsGlobalConfigGroup 3}
 
@@ -1198,11 +1198,11 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESInterval to set 
-                        the threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, 
-                        measured in minutes, is exceeded.  The default 
-                        Errored Seconds alarm condition is 100 errored seconds 
+                        "Used in conjuction with ctDs1AlarmESInterval to set
+                        the threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval,
+                        measured in minutes, is exceeded.  The default
+                        Errored Seconds alarm condition is 100 errored seconds
                         over a 6 minute time interval."
                 ::= { ds1AlarmsGlobalConfigGroup 4}
 
@@ -1211,26 +1211,26 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ds1AlarmGlobalESCount to 
-                        set the threshold for alarm generation when the number 
-                        of Errored Seconds for a specified time interval, 
+                        "Used in conjuction with ds1AlarmGlobalESCount to
+                        set the threshold for alarm generation when the number
+                        of Errored Seconds for a specified time interval,
                         measured in minutes, is exceeded.  The default
-                        Errored Seconds alarm condition is 100 errored seconds 
+                        Errored Seconds alarm condition is 100 errored seconds
                         over a 6 minute time interval."
                 ::= { ds1AlarmsGlobalConfigGroup 5}
 
-        ds1AlarmGlobalBPVErrorRate      OBJECT-TYPE 
+        ds1AlarmGlobalBPVErrorRate      OBJECT-TYPE
                 SYNTAX  INTEGER (5..9)  -- default is 6
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to specify the negative exponent of 10, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        over intervals defined by ds1AlarmGlobalBPVInterval.  
-                        For example, for a ds1AlarmGlobalBPVErrorRate value 
-                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, 
-                        an alarm is generated when a 15 minute period has an 
-                        average error rate which exceeds 1 Bipolar Violation 
+                        over intervals defined by ds1AlarmGlobalBPVInterval.
+                        For example, for a ds1AlarmGlobalBPVErrorRate value
+                        of 6 used with a ds1AlarmGlobalBPVInterval of 15,
+                        an alarm is generated when a 15 minute period has an
+                        average error rate which exceeds 1 Bipolar Violation
                         (Code Violation for E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not support detect bipolar
@@ -1243,13 +1243,13 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used to specify the interval, used in monitoring 
+                        "Used to specify the interval, used in monitoring
                         Bipolar Violations (Code Violations for E1)
                         with thresholds defined by ds1AlarmGlobalBPVErrorRate.
-                        For example, for a ds1AlarmGlobalBPVErrorRate value 
-                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, an 
-                        alarm is generated when a 15 minute period has an 
-                        average error rate which exceeds 1 Bipolar Violation 
+                        For example, for a ds1AlarmGlobalBPVErrorRate value
+                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, an
+                        alarm is generated when a 15 minute period has an
+                        average error rate which exceeds 1 Bipolar Violation
                         (Code Violation for E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not detect bipolar
@@ -1265,7 +1265,7 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "To cause a manual recovery to occur on all Ds1 circuits, this
-                        object is set to a 1.  It is always read as a 1.  The recovery 
+                        object is set to a 1.  It is always read as a 1.  The recovery
                         will occur only when automatic recovery is disabled."
                 ::= { ds1AlarmsGlobalConfigGroup 8}
 
@@ -1273,7 +1273,7 @@ DdsConfigEntry ::=
 -- DS1 Alarms Configuration Table
 --
 --      The DS1 alarm table structure contains the same information as the
---      global configuration objects, but allows seperate configuratoin of 
+--      global configuration objects, but allows seperate configuratoin of
 --      specific DS1 circuits contained on the device
 --
         ds1AlarmConfigTable OBJECT-TYPE
@@ -1281,10 +1281,10 @@ DdsConfigEntry ::=
                 ACCESS      not-accessible
                 STATUS      mandatory
                 DESCRIPTION
-                        "Table containing objects used to configure DS1 alarm 
+                        "Table containing objects used to configure DS1 alarm
                         functionality on a per DS1 basis."
                 ::= { ctDs1Alarms 2 }
-        
+
         ds1AlarmConfigEntry OBJECT-TYPE
                 SYNTAX      Ds1AlarmConfigEntry
                 ACCESS      not-accessible
@@ -1293,7 +1293,7 @@ DdsConfigEntry ::=
                         "A description of a single entry."
                 INDEX       { ds1PhysNum }
                 ::= { ds1AlarmConfigTable 1 }
-        
+
         Ds1AlarmConfigEntry ::=
                 SEQUENCE {
                         ds1PhysNum
@@ -1315,7 +1315,7 @@ DdsConfigEntry ::=
                         ds1AlarmManualRecovery
                         INTEGER
                         }
-        
+
         ds1PhysNum    OBJECT-TYPE
                 SYNTAX      INTEGER
                 ACCESS      read-only
@@ -1328,7 +1328,7 @@ DdsConfigEntry ::=
                         labeled on the device, the value for this object is
                         the same as rfc1406 dsx1LineIndex."
                 ::= { ds1AlarmConfigEntry 1 }
-        
+
         ds1AlarmAdmin   OBJECT-TYPE
                 SYNTAX  INTEGER {
                         disabled(1),    -- default
@@ -1367,7 +1367,7 @@ DdsConfigEntry ::=
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
                         SNMP Trap generation feature for this DS1 circuit.
-                        This object operates in conjunction with configuration 
+                        This object operates in conjunction with configuration
                         of objects in the ctron-trap-mib.txt"
                 ::= { ds1AlarmConfigEntry 4}
 
@@ -1376,10 +1376,10 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESInterval to set 
-                        the threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, measured 
-                        in minutes, is exceeded.  The default Errored Seconds 
+                        "Used in conjuction with ctDs1AlarmESInterval to set
+                        the threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval, measured
+                        in minutes, is exceeded.  The default Errored Seconds
                         alarm condition is 100 errored seconds over a 6 minute
                         time interval."
                 ::= { ds1AlarmConfigEntry 5}
@@ -1389,11 +1389,11 @@ DdsConfigEntry ::=
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESCount to set the 
-                        threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, measured 
-                        in minutes, is exceeded.  The default Errored Seconds 
-                        alarm condition is 100 errored seconds over a 6 minute 
+                        "Used in conjuction with ctDs1AlarmESCount to set the
+                        threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval, measured
+                        in minutes, is exceeded.  The default Errored Seconds
+                        alarm condition is 100 errored seconds over a 6 minute
                         time interval."
                 ::= { ds1AlarmConfigEntry 6}
 
@@ -1404,10 +1404,10 @@ DdsConfigEntry ::=
                 DESCRIPTION
                         "Used to specify the negative exponent of 10, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        over intervals defined by ds1AlarmBPVInterval.  For 
-                        example, for a ds1AlarmBPVErrorRate value of 6 used 
-                        with a ds1AlarmBPVInterval of 15, an alarm is generated 
-                        when a 15 minute period has an average error rate which 
+                        over intervals defined by ds1AlarmBPVInterval.  For
+                        example, for a ds1AlarmBPVErrorRate value of 6 used
+                        with a ds1AlarmBPVInterval of 15, an alarm is generated
+                        when a 15 minute period has an average error rate which
                         exceeds 1 Bipolar Violation (Code Violation for E1) per
                         million bits.
                         For those devices that support ds1 alarm monitoring
@@ -1423,11 +1423,11 @@ DdsConfigEntry ::=
                 DESCRIPTION
                         "Used to specify the interval, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        with thresholds defined by ds1AlarmBPVErrorRate.  For 
-                        example, for a ds1AlarmBPVErrorRate value of 6 used 
-                        with a ds1AlarmBPVInterval of 15, an alarm is generated 
+                        with thresholds defined by ds1AlarmBPVErrorRate.  For
+                        example, for a ds1AlarmBPVErrorRate value of 6 used
+                        with a ds1AlarmBPVInterval of 15, an alarm is generated
                         when a 15 minute period has an average error rate
-                        which exceeds 1 Bipolar Violation (Code Violation for 
+                        which exceeds 1 Bipolar Violation (Code Violation for
                         E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not support detect bipolar
@@ -1443,7 +1443,7 @@ DdsConfigEntry ::=
                 STATUS  mandatory
                 DESCRIPTION
                         "To cause a manual recovery to occur, this object is set
-                        to a 1.  It is always read as a 1.  The recovery will 
+                        to a 1.  It is always read as a 1.  The recovery will
                         occur only when automatic recovery is disabled."
                 ::= { ds1AlarmConfigEntry 9}
 
@@ -1461,7 +1461,7 @@ DdsConfigEntry ::=
 --      IP addresses in a filtering database.  The database
 --      of IP addresses are used when a WAN service is over
 --      subscribed, and the packet would normally be discarded.
---      If the IP PQ admin status is enabled, and the IP 
+--      If the IP PQ admin status is enabled, and the IP
 --      address of the packet to be discarded matches one
 --      programmed in the database, an attempt will be made
 --      to use high priority, reserved, resources to transmit
@@ -1491,13 +1491,13 @@ DdsConfigEntry ::=
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        "Returns the maximum number of IP address entries 
-                        supported by the IP Priority Queue application on 
+                        "Returns the maximum number of IP address entries
+                        supported by the IP Priority Queue application on
                         this device."
                 ::= { ipPQConfigGroup 2}
 
         iPPQNumEntries  OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
@@ -1513,7 +1513,7 @@ DdsConfigEntry ::=
                         "Add an IP address to the ipPQAddressTable. Always
                         read as a 0.0.0.0."
                 ::= { ipPQConfigGroup 4 }
-          
+
         iPPQDelAddress OBJECT-TYPE
                 SYNTAX      IpAddress
                 ACCESS      read-write
@@ -1522,14 +1522,14 @@ DdsConfigEntry ::=
                         "Delete an IP address from the ipPQAddressTable.
                         Always read as a 0.0.0.0."
                 ::= { ipPQConfigGroup 5 }
-          
+
 --
 --
 --
 -- IP Priority Queue Address Table
 --
---      The IP PQ table contains a list of IP adresses used with the 
---      Priority Queue filtering mechanism. 
+--      The IP PQ table contains a list of IP adresses used with the
+--      Priority Queue filtering mechanism.
 --
         ipPQAddressTable OBJECT-TYPE
                 SYNTAX      SEQUENCE OF IpPQAddressEntry
@@ -1539,7 +1539,7 @@ DdsConfigEntry ::=
                         "Table containing IP addresses, used in an
                         IP Priority Queue Forwarding function."
                 ::= { ctIPPQFilters 2 }
-        
+
         ipPQAddressEntry OBJECT-TYPE
                 SYNTAX      IpPQAddressEntry
                 ACCESS      not-accessible
@@ -1548,7 +1548,7 @@ DdsConfigEntry ::=
                         "A description of a single entry."
                 INDEX       { ipPQAddressId }
                 ::= { ipPQAddressTable 1 }
-        
+
         IpPQAddressEntry ::=
                 SEQUENCE {
                         ipPQAddressId
@@ -1556,7 +1556,7 @@ DdsConfigEntry ::=
                         ipPQIPAddress
                         IpAddress
                         }
-        
+
         ipPQAddressId    OBJECT-TYPE
                 SYNTAX      INTEGER (1..65535)
                 ACCESS      read-only
@@ -1565,7 +1565,7 @@ DdsConfigEntry ::=
                         "A unique value identifying an element in a sequence
                         of IP PQ address entries."
                 ::= { ipPQAddressEntry 1 }
-          
+
         ipPQIPAddress    OBJECT-TYPE
                 SYNTAX      IpAddress
                 ACCESS      read-only
@@ -1586,14 +1586,14 @@ DdsConfigEntry ::=
         ACCESS    not-accessible
         STATUS    mandatory
         DESCRIPTION
-            "HDSL 15 minute performance table. This table provides the 
-             accumulated counts of errored seconds (ES) and unavailable 
+            "HDSL 15 minute performance table. This table provides the
+             accumulated counts of errored seconds (ES) and unavailable
              seconds (UAS) for the HDSL line including the local, remote
              units and any doublers in between during a 15 minutes period
-             for the last 24 hours. 
+             for the last 24 hours.
 
              The table is indexed by the non-empty slot in the device and
-             the 15-minute history slot within the last 24 hours period."  
+             the 15-minute history slot within the last 24 hours period."
         ::= { ctWanHDSLExt 1 }
 
     ctWanHDSLPerformance15mEntry OBJECT-TYPE
@@ -1606,7 +1606,7 @@ DdsConfigEntry ::=
             { ctWanHDSLPerformance15mConnIndex, ctWanHDSLPerformance15mSlotIndex }
         ::= { ctWanHDSLPerformance15mTable 1 }
 
-    CtWanHDSLPerformance15mEntry ::= SEQUENCE { 
+    CtWanHDSLPerformance15mEntry ::= SEQUENCE {
         ctWanHDSLPerformance15mConnIndex
             INTEGER,
         ctWanHDSLPerformance15mSlotIndex
@@ -1660,7 +1660,7 @@ DdsConfigEntry ::=
         ctWanHDSLDb2CustomerLoop2ES15m
             INTEGER
          }
- 
+
     ctWanHDSLPerformance15mConnIndex  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -1677,10 +1677,10 @@ DdsConfigEntry ::=
         STATUS    mandatory
         DESCRIPTION
             "Define which 15-minute slot history of the HDSL within the
-             24 hour period. Indexing from 1 - 97 with the first index 
+             24 hour period. Indexing from 1 - 97 with the first index
              representing the current 15-minute history"
         ::= { ctWanHDSLPerformance15mEntry 2 }
- 
+
     --
     -- Local line unit's 15 minute performance history
     --
@@ -1914,7 +1914,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance15mEntry 26 }
 
     --
-    -- HDSL 24 hour Performance History Table 
+    -- HDSL 24 hour Performance History Table
     -- This group provides counters for UnAvailable Seconds and
     -- Errored Seconds of all HDSL connections
     --
@@ -1929,7 +1929,7 @@ DdsConfigEntry ::=
              seconds (UAS) for the HDSL line including the local, remote
              units and any doublers in between during a 24-hour period
              for the last 7 days.
- 
+
              The table is indexed by the non-empty slot in the device and
              the 24-hour history slot within the last 7 days period."
         ::= { ctWanHDSLExt 2 }
@@ -1944,7 +1944,7 @@ DdsConfigEntry ::=
             { ctWanHDSLPerformance24hConnIndex, ctWanHDSLPerformance24hSlotIndex }
         ::= { ctWanHDSLPerformance24hTable 1 }
 
-    CtWanHDSLPerformance24hEntry ::= SEQUENCE { 
+    CtWanHDSLPerformance24hEntry ::= SEQUENCE {
         ctWanHDSLPerformance24hConnIndex
             INTEGER,
         ctWanHDSLPerformance24hSlotIndex
@@ -1996,13 +1996,13 @@ DdsConfigEntry ::=
         ctWanHDSLDb2CustomerLoop2UAS24h
             INTEGER,
         ctWanHDSLDb2CustomerLoop2ES24h
-            INTEGER 
+            INTEGER
          }
 
     --
     -- Local line unit's 24-hour performance history
     --
- 
+
     ctWanHDSLPerformance24hConnIndex  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2022,7 +2022,7 @@ DdsConfigEntry ::=
              last 7 days period. Indexing from 1 - 8 with the first index
              representing the current 24 hour history"
         ::= { ctWanHDSLPerformance24hEntry 2 }
- 
+
     ctWanHDSLHLULoop1UAS24h  OBJECT-TYPE
         SYNTAX     INTEGER
         ACCESS    read-only
@@ -2033,7 +2033,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 3 }
 
     ctWanHDSLHLULoop1ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2051,7 +2051,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 5 }
 
     ctWanHDSLHLULoop2ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2064,7 +2064,7 @@ DdsConfigEntry ::=
     --
 
     ctWanHDSLHRULoop1UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2073,7 +2073,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 7 }
 
     ctWanHDSLHRULoop1ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2082,7 +2082,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 8 }
 
     ctWanHDSLHRULoop2UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2091,7 +2091,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 9 }
 
     ctWanHDSLHRULoop2ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2104,7 +2104,7 @@ DdsConfigEntry ::=
     --
 
     ctWanHDSLDb1NetworkLoop1UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2113,7 +2113,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 11 }
 
     ctWanHDSLDb1NetworkLoop1ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2122,7 +2122,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 12 }
 
     ctWanHDSLDb1NetworkLoop2UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2131,7 +2131,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 13 }
 
     ctWanHDSLDb1NetworkLoop2ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2140,7 +2140,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 14 }
 
     ctWanHDSLDb1CustomerLoop1UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2149,7 +2149,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 15 }
 
     ctWanHDSLDb1CustomerLoop1ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2158,7 +2158,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 16 }
 
     ctWanHDSLDb1CustomerLoop2UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2167,7 +2167,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 17 }
 
     ctWanHDSLDb1CustomerLoop2ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2180,7 +2180,7 @@ DdsConfigEntry ::=
     --
 
     ctWanHDSLDb2NetworkLoop1UAS24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2189,7 +2189,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 19 }
 
     ctWanHDSLDb2NetworkLoop1ES24h  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2207,7 +2207,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 21 }
 
     ctWanHDSLDb2NetworkLoop2ES24h OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2216,7 +2216,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 22 }
 
     ctWanHDSLDb2CustomerLoop1UAS24h OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2225,7 +2225,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 23 }
 
     ctWanHDSLDb2CustomerLoop1ES24h OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2234,7 +2234,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 24 }
 
     ctWanHDSLDb2CustomerLoop2UAS24h OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2243,7 +2243,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLPerformance24hEntry 25 }
 
     ctWanHDSLDb2CustomerLoop2ES24h OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -2261,9 +2261,9 @@ DdsConfigEntry ::=
         ACCESS    not-accessible
         STATUS    mandatory
         DESCRIPTION
-            "This table collects the statistics for the Signal noise ratio 
+            "This table collects the statistics for the Signal noise ratio
              (SNR), and the pulse attenuation of the HDSL line, including
-             the local, remote units and the doublers in between." 
+             the local, remote units and the doublers in between."
         ::= { ctWanHDSLExt 3 }
 
     ctWanHDSLStatisticsEntry  OBJECT-TYPE
@@ -2276,7 +2276,7 @@ DdsConfigEntry ::=
             { ctWanHDSLStatisticsHLUConnIndex }
         ::= { ctWanHDSLStatisticsTable 1 }
 
-    CtWanHDSLStatisticsEntry ::= SEQUENCE { 
+    CtWanHDSLStatisticsEntry ::= SEQUENCE {
         ctWanHDSLStatisticsHLUConnIndex
             INTEGER,
         ctWanHDSLSNRHLULoop1
@@ -2287,10 +2287,10 @@ DdsConfigEntry ::=
             INTEGER,
         ctWanHDSLSNRHLULoop2
             INTEGER,
-        ctWanHDSLSNRLowHLULoop2 
-            INTEGER, 
-        ctWanHDSLSNRHighHLULoop2 
-            INTEGER, 
+        ctWanHDSLSNRLowHLULoop2
+            INTEGER,
+        ctWanHDSLSNRHighHLULoop2
+            INTEGER,
         ctWanHDSLPulseAttenuationHLULoop1
             INTEGER,
         ctWanHDSLPulseAttenuationHLULoop2
@@ -2299,16 +2299,16 @@ DdsConfigEntry ::=
             INTEGER,
         ctWanHDSLSNRHRULoop1
             INTEGER,
-        ctWanHDSLSNRLowHRULoop1 
-            INTEGER, 
-        ctWanHDSLSNRHighHRULoop1 
-            INTEGER, 
+        ctWanHDSLSNRLowHRULoop1
+            INTEGER,
+        ctWanHDSLSNRHighHRULoop1
+            INTEGER,
         ctWanHDSLSNRHRULoop2
             INTEGER,
-        ctWanHDSLSNRLowHRULoop2  
-            INTEGER,  
-        ctWanHDSLSNRHighHRULoop2  
-            INTEGER,  
+        ctWanHDSLSNRLowHRULoop2
+            INTEGER,
+        ctWanHDSLSNRHighHRULoop2
+            INTEGER,
         ctWanHDSLPulseAttenuationHRULoop1
             INTEGER,
         ctWanHDSLPulseAttenuationHRULoop2
@@ -2317,28 +2317,28 @@ DdsConfigEntry ::=
             INTEGER,
         ctWanHDSLSNRDb1NetworkLoop1
             INTEGER,
-        ctWanHDSLSNRLowDb1NetworkLoop1  
-            INTEGER,  
-        ctWanHDSLSNRHighDb1NetworkLoop1  
-            INTEGER,  
+        ctWanHDSLSNRLowDb1NetworkLoop1
+            INTEGER,
+        ctWanHDSLSNRHighDb1NetworkLoop1
+            INTEGER,
         ctWanHDSLSNRDb1NetworkLoop2
             INTEGER,
-        ctWanHDSLSNRLowDb1NetworkLoop2   
-            INTEGER,   
-        ctWanHDSLSNRHighDb1NetworkLoop2   
-            INTEGER,   
+        ctWanHDSLSNRLowDb1NetworkLoop2
+            INTEGER,
+        ctWanHDSLSNRHighDb1NetworkLoop2
+            INTEGER,
         ctWanHDSLSNRDb1CustomerLoop1
             INTEGER,
-        ctWanHDSLSNRLowDb1CustomerLoop1   
-            INTEGER,   
-        ctWanHDSLSNRHighDb1CustomerLoop1   
-            INTEGER,   
+        ctWanHDSLSNRLowDb1CustomerLoop1
+            INTEGER,
+        ctWanHDSLSNRHighDb1CustomerLoop1
+            INTEGER,
         ctWanHDSLSNRDb1CustomerLoop2
             INTEGER,
-        ctWanHDSLSNRLowDb1CustomerLoop2    
-            INTEGER,   
-        ctWanHDSLSNRHighDb1CustomerLoop2    
-            INTEGER,    
+        ctWanHDSLSNRLowDb1CustomerLoop2
+            INTEGER,
+        ctWanHDSLSNRHighDb1CustomerLoop2
+            INTEGER,
         ctWanHDSLPulseAttenuationDb1NetworkLoop1
             INTEGER,
         ctWanHDSLPulseAttenuationDb1NetworkLoop2
@@ -2349,28 +2349,28 @@ DdsConfigEntry ::=
             INTEGER,
         ctWanHDSLSNRDb2NetworkLoop1
             INTEGER,
-        ctWanHDSLSNRLowDb2NetworkLoop1    
-            INTEGER,    
-        ctWanHDSLSNRHighDb2NetworkLoop1    
-            INTEGER,    
+        ctWanHDSLSNRLowDb2NetworkLoop1
+            INTEGER,
+        ctWanHDSLSNRHighDb2NetworkLoop1
+            INTEGER,
         ctWanHDSLSNRDb2NetworkLoop2
             INTEGER,
-        ctWanHDSLSNRLowDb2NetworkLoop2    
-            INTEGER,    
-        ctWanHDSLSNRHighDb2NetworkLoop2    
-            INTEGER,    
+        ctWanHDSLSNRLowDb2NetworkLoop2
+            INTEGER,
+        ctWanHDSLSNRHighDb2NetworkLoop2
+            INTEGER,
         ctWanHDSLSNRDb2CustomerLoop1
             INTEGER,
-        ctWanHDSLSNRLowDb2CustomerLoop1    
-            INTEGER,   
-        ctWanHDSLSNRHighDb2CustomerLoop1    
-            INTEGER,    
+        ctWanHDSLSNRLowDb2CustomerLoop1
+            INTEGER,
+        ctWanHDSLSNRHighDb2CustomerLoop1
+            INTEGER,
         ctWanHDSLSNRDb2CustomerLoop2
             INTEGER,
-        ctWanHDSLSNRLowDb2CustomerLoop2    
-            INTEGER,    
-        ctWanHDSLSNRHighDb2CustomerLoop2     
-            INTEGER,     
+        ctWanHDSLSNRLowDb2CustomerLoop2
+            INTEGER,
+        ctWanHDSLSNRHighDb2CustomerLoop2
+            INTEGER,
         ctWanHDSLPulseAttenuationDb2NetworkLoop1
             INTEGER,
         ctWanHDSLPulseAttenuationDb2NetworkLoop2
@@ -2383,7 +2383,7 @@ DdsConfigEntry ::=
 
     --
     -- Local line unit's statistics
-    -- 
+    --
 
     ctWanHDSLStatisticsHLUConnIndex  OBJECT-TYPE
         SYNTAX    INTEGER
@@ -2418,7 +2418,7 @@ DdsConfigEntry ::=
         DESCRIPTION
             "Highest SNR on LOOP 1 of the local line unit."
         ::= { ctWanHDSLStatisticsEntry 4 }
- 
+
     ctWanHDSLSNRHLULoop2  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2427,22 +2427,22 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 2 of the local line unit."
         ::= { ctWanHDSLStatisticsEntry 5 }
 
-    ctWanHDSLSNRLowHLULoop2  OBJECT-TYPE 
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
+    ctWanHDSLSNRLowHLULoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Lowest SNR on LOOP 2 of the local line unit."
-        ::= { ctWanHDSLStatisticsEntry 6 } 
- 
+        ::= { ctWanHDSLStatisticsEntry 6 }
+
     ctWanHDSLSNRHighHLULoop2  OBJECT-TYPE
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Highest SNR on LOOP 2 of the local line unit."
-        ::= { ctWanHDSLStatisticsEntry 7 } 
- 
+        ::= { ctWanHDSLStatisticsEntry 7 }
+
     ctWanHDSLPulseAttenuationHLULoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2478,32 +2478,32 @@ DdsConfigEntry ::=
 
     --
     -- Remote line unit's statistics
-    -- 
+    --
 
     ctWanHDSLSNRHRULoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Current SNR on LOOP 1 of the remote line unit." 
+            "Current SNR on LOOP 1 of the remote line unit."
         ::= { ctWanHDSLStatisticsEntry 11 }
 
-    ctWanHDSLSNRLowHRULoop1  OBJECT-TYPE  
-        SYNTAX    INTEGER  
-        ACCESS    read-only  
-        STATUS    mandatory  
-        DESCRIPTION  
-            "Lowest SNR on LOOP 1 of the remote line unit."  
-        ::= { ctWanHDSLStatisticsEntry 12 }  
- 
-    ctWanHDSLSNRHighHRULoop1  OBJECT-TYPE 
-        SYNTAX    INTEGER  
-        ACCESS    read-only  
-        STATUS    mandatory  
-        DESCRIPTION  
-            "Highest SNR on LOOP 1 of the remote line unit."  
-        ::= { ctWanHDSLStatisticsEntry 13 }  
- 
+    ctWanHDSLSNRLowHRULoop1  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Lowest SNR on LOOP 1 of the remote line unit."
+        ::= { ctWanHDSLStatisticsEntry 12 }
+
+    ctWanHDSLSNRHighHRULoop1  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Highest SNR on LOOP 1 of the remote line unit."
+        ::= { ctWanHDSLStatisticsEntry 13 }
+
     ctWanHDSLSNRHRULoop2  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2512,23 +2512,23 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 2 of the remote line unit."
         ::= { ctWanHDSLStatisticsEntry 14 }
 
-    ctWanHDSLSNRLowHRULoop2  OBJECT-TYPE  
-        SYNTAX    INTEGER  
-        ACCESS    read-only  
-        STATUS    mandatory  
-        DESCRIPTION  
-            "Lowest SNR on LOOP 2 of the remote line unit."  
-        ::= { ctWanHDSLStatisticsEntry 15 }  
+    ctWanHDSLSNRLowHRULoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Lowest SNR on LOOP 2 of the remote line unit."
+        ::= { ctWanHDSLStatisticsEntry 15 }
 
- 
-    ctWanHDSLSNRHighHRULoop2  OBJECT-TYPE 
-        SYNTAX    INTEGER  
-        ACCESS    read-only  
-        STATUS    mandatory  
-        DESCRIPTION  
-            "Highest SNR on LOOP 2 of the remote line unit."  
-        ::= { ctWanHDSLStatisticsEntry 16 }  
- 
+
+    ctWanHDSLSNRHighHRULoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Highest SNR on LOOP 2 of the remote line unit."
+        ::= { ctWanHDSLStatisticsEntry 16 }
+
     ctWanHDSLPulseAttenuationHRULoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2550,30 +2550,30 @@ DdsConfigEntry ::=
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Byte value shows DS1 frame and code information for the remote 
+            "Byte value shows DS1 frame and code information for the remote
              line unit (HiGain only):
-          
+
              bit 0:1 -
                  0 - frame format is SF.
                  1 - frame format is ESF.
                  2 - Frame format is unframed.
                  3 - no activity.
- 
+
              bit 2:3 -
                  reserved.
- 
+
              bit 4  -
                  0 - line code is AMI
                  1 - line code is B8ZS.
- 
+
              bit 5:7 -
                  reserved."
-  
+
         ::= { ctWanHDSLStatisticsEntry 19 }
 
     --
     -- Doubler 1's statistics
-    -- 
+    --
 
     ctWanHDSLSNRDb1NetworkLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
@@ -2607,22 +2607,22 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 2 of doubler 1's network side."
         ::= { ctWanHDSLStatisticsEntry 23 }
 
-    ctWanHDSLSNRLowDb1NetworkLoop2  OBJECT-TYPE 
-        SYNTAX    INTEGER 
-        ACCESS    read-only
-        STATUS    mandatory 
-        DESCRIPTION 
-            "Lowest SNR on LOOP 2 of doubler 1's network side."
-        ::= { ctWanHDSLStatisticsEntry 24 } 
- 
-    ctWanHDSLSNRHighDb1NetworkLoop2  OBJECT-TYPE 
+    ctWanHDSLSNRLowDb1NetworkLoop2  OBJECT-TYPE
         SYNTAX    INTEGER
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
-            "Highest SNR on  LOOP 2 of doubler 1's network side." 
-        ::= { ctWanHDSLStatisticsEntry 25 } 
- 
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Lowest SNR on LOOP 2 of doubler 1's network side."
+        ::= { ctWanHDSLStatisticsEntry 24 }
+
+    ctWanHDSLSNRHighDb1NetworkLoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Highest SNR on  LOOP 2 of doubler 1's network side."
+        ::= { ctWanHDSLStatisticsEntry 25 }
+
     ctWanHDSLSNRDb1CustomerLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2631,22 +2631,22 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 1 of doubler 1's customer side."
         ::= { ctWanHDSLStatisticsEntry 26 }
 
-    ctWanHDSLSNRLowDb1CustomerLoop1  OBJECT-TYPE  
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory  
-        DESCRIPTION  
+    ctWanHDSLSNRLowDb1CustomerLoop1  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Lowest SNR on LOOP 1 of doubler 1's customer side."
-        ::= { ctWanHDSLStatisticsEntry 27 }  
-  
-    ctWanHDSLSNRHighDb1CustomerLoop1  OBJECT-TYPE  
-        SYNTAX    INTEGER 
-        ACCESS    read-only  
-        STATUS    mandatory  
-        DESCRIPTION  
+        ::= { ctWanHDSLStatisticsEntry 27 }
+
+    ctWanHDSLSNRHighDb1CustomerLoop1  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Highest SNR on LOOP 1 of doubler 1's customer side."
-        ::= { ctWanHDSLStatisticsEntry 28 }  
- 
+        ::= { ctWanHDSLStatisticsEntry 28 }
+
     ctWanHDSLSNRDb1CustomerLoop2  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2655,22 +2655,22 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 2 of doubler 1's customer side."
         ::= { ctWanHDSLStatisticsEntry 29 }
 
-    ctWanHDSLSNRLowDb1CustomerLoop2  OBJECT-TYPE   
-        SYNTAX    INTEGER  
-        ACCESS    read-only 
-        STATUS    mandatory   
-        DESCRIPTION   
-            "Lowest SNR on LOOP 2 of doubler 1's customer side."   
-        ::= { ctWanHDSLStatisticsEntry 30 }   
-   
-    ctWanHDSLSNRHighDb1CustomerLoop2  OBJECT-TYPE   
-        SYNTAX    INTEGER  
-        ACCESS    read-only   
-        STATUS    mandatory   
-        DESCRIPTION   
-            "Highest SNR on LOOP 2 of doubler 1's customer side."   
-        ::= { ctWanHDSLStatisticsEntry 31 }   
- 
+    ctWanHDSLSNRLowDb1CustomerLoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Lowest SNR on LOOP 2 of doubler 1's customer side."
+        ::= { ctWanHDSLStatisticsEntry 30 }
+
+    ctWanHDSLSNRHighDb1CustomerLoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
+            "Highest SNR on LOOP 2 of doubler 1's customer side."
+        ::= { ctWanHDSLStatisticsEntry 31 }
+
     ctWanHDSLPulseAttenuationDb1NetworkLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2705,7 +2705,7 @@ DdsConfigEntry ::=
 
     --
     -- Doubler 2's Statistics
-    -- 
+    --
 
     ctWanHDSLSNRDb2NetworkLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
@@ -2739,22 +2739,22 @@ DdsConfigEntry ::=
             "Current SNR on LOOP 2 of doubler 2's network side."
         ::= { ctWanHDSLStatisticsEntry 39 }
 
-    ctWanHDSLSNRLowDb2NetworkLoop2  OBJECT-TYPE 
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
+    ctWanHDSLSNRLowDb2NetworkLoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
         STATUS    mandatory
-        DESCRIPTION 
-            "Lowest SNR on LOOP 2 of doubler 2's network side." 
-        ::= { ctWanHDSLStatisticsEntry 40 } 
- 
-    ctWanHDSLSNRHighDb2NetworkLoop2  OBJECT-TYPE 
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
+        DESCRIPTION
+            "Lowest SNR on LOOP 2 of doubler 2's network side."
+        ::= { ctWanHDSLStatisticsEntry 40 }
+
+    ctWanHDSLSNRHighDb2NetworkLoop2  OBJECT-TYPE
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Highest SNR on LOOP 2 of doubler 2's network side."
-        ::= { ctWanHDSLStatisticsEntry 41 } 
- 
+        ::= { ctWanHDSLStatisticsEntry 41 }
+
     ctWanHDSLSNRDb2CustomerLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2788,21 +2788,21 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLStatisticsEntry 45 }
 
     ctWanHDSLSNRLowDb2CustomerLoop2  OBJECT-TYPE
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Lowest SNR on LOOP 2 of doubler 2's customer side."
-        ::= { ctWanHDSLStatisticsEntry 46 } 
- 
+        ::= { ctWanHDSLStatisticsEntry 46 }
+
     ctWanHDSLSNRHighDb2CustomerLoop2  OBJECT-TYPE
-        SYNTAX    INTEGER 
-        ACCESS    read-only 
-        STATUS    mandatory 
-        DESCRIPTION 
+        SYNTAX    INTEGER
+        ACCESS    read-only
+        STATUS    mandatory
+        DESCRIPTION
             "Highest SNR on LOOP 2 of doubler 2's customer side."
-        ::= { ctWanHDSLStatisticsEntry 47 } 
- 
+        ::= { ctWanHDSLStatisticsEntry 47 }
+
     ctWanHDSLPulseAttenuationDb2NetworkLoop1  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -2858,7 +2858,7 @@ DdsConfigEntry ::=
             { ctWanHDSLTestHLUConnIndex }
         ::= { ctWanHDSLTestTable 1 }
 
-    CtWanHDSLTestEntry ::= SEQUENCE { 
+    CtWanHDSLTestEntry ::= SEQUENCE {
         ctWanHDSLTestHLUConnIndex
             INTEGER,
         ctWanHDSLTestMode
@@ -2875,12 +2875,12 @@ DdsConfigEntry ::=
         STATUS    mandatory
         DESCRIPTION
             "Identify the slot of the HDSL within the device that the user
-             wants to conduct the line unit test. Slot number start from 
+             wants to conduct the line unit test. Slot number start from
              1 to maximum slots available in the device."
         ::= { ctWanHDSLTestEntry 1 }
 
     ctWanHDSLTestMode  OBJECT-TYPE
-        SYNTAX    INTEGER       
+        SYNTAX    INTEGER
         ACCESS    read-write
         STATUS    mandatory
         DESCRIPTION
@@ -2896,7 +2896,7 @@ DdsConfigEntry ::=
                 7 - MUX-DMUX test
                 9 - Analog loopback mode
                13 - Transceiver mode
-             
+
              When getting this object, the value returned represents
              the last value this object had been set to."
 
@@ -2964,7 +2964,7 @@ DdsConfigEntry ::=
 
     ctWanHDSLAlarmsEntry    OBJECT-TYPE
         SYNTAX    CtWanHDSLAlarmsEntry
-        ACCESS    not-accessible 
+        ACCESS    not-accessible
         STATUS    mandatory
         DESCRIPTION
             "Entries for the ctWanHDSL alarms information"
@@ -2972,7 +2972,7 @@ DdsConfigEntry ::=
             { ctWanHDSLAlarmsHLUConnIndex }
         ::= { ctWanHDSLAlarmsTable 1 }
 
-    CtWanHDSLAlarmsEntry ::= SEQUENCE { 
+    CtWanHDSLAlarmsEntry ::= SEQUENCE {
         ctWanHDSLAlarmsHLUConnIndex
             INTEGER,
         ctWanHDSLAlarmsBackplane
@@ -2996,32 +2996,32 @@ DdsConfigEntry ::=
         STATUS    mandatory
         DESCRIPTION
             "Specific information that's related to the HDSL alarms, each bit
-             in the two bytes value has the following meaning if set: 
+             in the two bytes value has the following meaning if set:
 
              Bit 0 : Local Loss of Signal on DS1 line (HiGain only).
                  1 : Remote Loss of Signal on DS1 list (HiGain only).
                  2 - 7 : reserved.
                  8 : Loss of Sync word on LOOP 1 of the local line unit.
-                 9 : Loss of Sync word on LOOP 2 of the local line unit. 
+                 9 : Loss of Sync word on LOOP 2 of the local line unit.
                 10  : Loss of Sync word on LOOP 1 of the first doubler.
                 11 : Loss of sync word on LOOP 2 of the first doubler.
                 12 : Loss of Sync word on LOOP 1 of the second doubler.
                 13 : Loss of sync word on LOOP 2 of the second doubler."
         ::= { ctWanHDSLAlarmsEntry 2 }
- 
+
     ctWanHDSLAlarmsES    OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "A two bytes value for the Errored Second indication of the HDSL 
+            "A two bytes value for the Errored Second indication of the HDSL
              line unit, including local, remote line units and the doublers.
-             each bit in the two bytes value has the following meaning if set: 
+             each bit in the two bytes value has the following meaning if set:
 
              Bit 0 : Errored Second on LOOP 1 of local line unit.
-                 1 : Errored Second on LOOP 2 of local line unit. 
+                 1 : Errored Second on LOOP 2 of local line unit.
                  2 : Errored Second on LOOP 1 of remote line unit.
-                 3 : Errored Second on LOOP 2 of remote line unit.  
+                 3 : Errored Second on LOOP 2 of remote line unit.
                  4 : Errored Second on LOOP 1 of local line unit's network side.
                  5 : Errored Second on LOOP 2 of local line unit's network side.
                  6 : Errored Second on LOOP 1 of local line unit's customer side.
@@ -3037,14 +3037,14 @@ DdsConfigEntry ::=
         ACCESS    not-accessible
         STATUS    mandatory
         DESCRIPTION
-            "HDSL Alarm History table. This table provides the accumulated 
+            "HDSL Alarm History table. This table provides the accumulated
              counts of Errored Seconds (ES) and Loss of Sync words (LOS)
              as well as the time stamp of the above events occurred for both
              of the HDSL loops.
 
              The time stamps show the date in MMDDYYYYHHMM format."
         ::= { ctWanHDSLExt 6 }
- 
+
     ctWanHDSLAlarmHistoryEntry  OBJECT-TYPE
         SYNTAX    CtWanHDSLAlarmHistoryEntry
         ACCESS    not-accessible
@@ -3054,8 +3054,8 @@ DdsConfigEntry ::=
         INDEX
             { ctWanHDSLAlarmHistoryConnIndex }
         ::= { ctWanHDSLAlarmHistoryTable 1  }
- 
-    CtWanHDSLAlarmHistoryEntry ::= SEQUENCE { 
+
+    CtWanHDSLAlarmHistoryEntry ::= SEQUENCE {
         ctWanHDSLAlarmHistoryConnIndex
             INTEGER,
         ctWanHDSLAlHistLLOSFirst
@@ -3136,13 +3136,13 @@ DdsConfigEntry ::=
             "Defines which HDSL connection's alarm history within the
              device."
         ::= { ctWanHDSLAlarmHistoryEntry 1 }
- 
+
     ctWanHDSLAlHistLLOSFirst  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Time stamp of the first time the DS1 Loss Of Signal (LOS) 
+            "Time stamp of the first time the DS1 Loss Of Signal (LOS)
              occurred on the local side of the HDSL."
         ::= { ctWanHDSLAlarmHistoryEntry 2  }
 
@@ -3151,16 +3151,16 @@ DdsConfigEntry ::=
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Time stamp of the last time the DS1 Loss Of Signal (LOS) 
+            "Time stamp of the last time the DS1 Loss Of Signal (LOS)
              occurred on the local side of the HDSL."
          ::= { ctWanHDSLAlarmHistoryEntry 3  }
 
     ctWanHDSLAlHistLLOSCurrent  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the DS1 Loss Of Signal (LOS) still occurred on the 
+            "Set if the DS1 Loss Of Signal (LOS) still occurred on the
              local side of the HDSL."
         ::= { ctWanHDSLAlarmHistoryEntry 4  }
 
@@ -3169,8 +3169,8 @@ DdsConfigEntry ::=
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Number of times the DS1 Loss Of Signal (LOS) occurred since 
-             we last cleared the alarm history on the local side of the HDSL. 
+            "Number of times the DS1 Loss Of Signal (LOS) occurred since
+             we last cleared the alarm history on the local side of the HDSL.
              (HiGain only)"
         ::= { ctWanHDSLAlarmHistoryEntry 5  }
 
@@ -3179,10 +3179,10 @@ DdsConfigEntry ::=
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Time stamp of the first time  the DS1 Loss Of Signal (LOS) 
+            "Time stamp of the first time  the DS1 Loss Of Signal (LOS)
              occurred on the remote side of the HDSL. (HiGain only)"
         ::= { ctWanHDSLAlarmHistoryEntry 6  }
- 
+
     ctWanHDSLAlHistRLOSLast  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3191,35 +3191,35 @@ DdsConfigEntry ::=
             "Time stamp of the last time the DS1 Loss Of Signal (LOS) occurred
              on the remote side of the HDSL. (HiGain only)"
         ::= { ctWanHDSLAlarmHistoryEntry 7  }
- 
+
     ctWanHDSLAlHistRLOSCurrent  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the DS1 Loss Of Signal (LOS) still occurred on the remote 
+            "Set if the DS1 Loss Of Signal (LOS) still occurred on the remote
              site of the HDSL. (HiGain only)"
         ::= { ctWanHDSLAlarmHistoryEntry 8  }
- 
+
     ctWanHDSLAlHistRLOSCount  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Number of times the DS1 Loss Of Signal (LOS) occurred since we 
-             last cleared the alarm history on the remote site of the HDSL. 
+            "Number of times the DS1 Loss Of Signal (LOS) occurred since we
+             last cleared the alarm history on the remote site of the HDSL.
              (HiGain only)"
         ::= { ctWanHDSLAlarmHistoryEntry 9  }
- 
+
     ctWanHDSLAlHistLOSW1First  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
             "Time stamp of the first time the Loss Of Sync Word (LOSW) occurred
-             on the LOOP 1 of the HDSL link." 
+             on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 10  }
- 
+
     ctWanHDSLAlHistLOSW1Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3228,22 +3228,22 @@ DdsConfigEntry ::=
             "Time stamp of the last time the Loss Of Sync Word (LOSW) occurred
              on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 11  }
- 
+
     ctWanHDSLAlHistLOSW1Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the Loss Of Sync Word (LOSW) still occurred on the LOOP 1 
+            "Set if the Loss Of Sync Word (LOSW) still occurred on the LOOP 1
              of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 12  }
- 
+
     ctWanHDSLAlHistLOSW1Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Number of times the Loss Of Sync Word (LOSW) occurred since we 
+            "Number of times the Loss Of Sync Word (LOSW) occurred since we
              last cleared the history on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 13  }
 
@@ -3255,7 +3255,7 @@ DdsConfigEntry ::=
             "Time stamp of the first time the Loss Of Sync Word (LOSW) occurred
              on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 14  }
- 
+
     ctWanHDSLAlHistLOSW2Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3264,25 +3264,25 @@ DdsConfigEntry ::=
             "Time stamp of the last time the Loss Of Sync Word (LOSW) occurred
              on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 15  }
- 
+
     ctWanHDSLAlHistLOSW2Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the Loss Of Sync Word (LOSW) still occurred on the LOOP 2 
+            "Set if the Loss Of Sync Word (LOSW) still occurred on the LOOP 2
              of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 16  }
- 
+
     ctWanHDSLAlHistLOSW2Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Number of times the Loss Of Sync Word (LOSW) occurred since we 
+            "Number of times the Loss Of Sync Word (LOSW) occurred since we
              last cleared the history on the LOOP 2 of the HDSL link. "
         ::= { ctWanHDSLAlarmHistoryEntry 17  }
- 
+
     ctWanHDSLAlHistES1First  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3291,7 +3291,7 @@ DdsConfigEntry ::=
             "Time stamp of the first time the Errored Seconds (ES) occurred
              on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 18  }
- 
+
     ctWanHDSLAlHistES1Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3300,16 +3300,16 @@ DdsConfigEntry ::=
             "Time stamp of the last time the Errored Seconds (ES) occurred
              on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 19  }
- 
+
     ctWanHDSLAlHistES1Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the Errored Seconds (ES) still occurred on the LOOP 1 of 
+            "Set if the Errored Seconds (ES) still occurred on the LOOP 1 of
              the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 20  }
- 
+
     ctWanHDSLAlHistES1Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -3327,7 +3327,7 @@ DdsConfigEntry ::=
             "Time stamp of the first time the Errored Seconds (ES) occurred
              on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 22  }
- 
+
     ctWanHDSLAlHistES2Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3336,16 +3336,16 @@ DdsConfigEntry ::=
             "Time stamp of the last time the Errored Seconds (ES) occurred
              on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 23  }
- 
+
     ctWanHDSLAlHistES2Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Set if the Errored Seconds (ES) still occurred on the LOOP 2 of 
+            "Set if the Errored Seconds (ES) still occurred on the LOOP 2 of
              the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 24  }
- 
+
     ctWanHDSLAlHistES2Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -3360,10 +3360,10 @@ DdsConfigEntry ::=
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Time stamp of the first time the alarms exceeded the 
-             Margin Threshold on LOOP 1 of the HDSL link." 
+            "Time stamp of the first time the alarms exceeded the
+             Margin Threshold on LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 26  }
- 
+
     ctWanHDSLAlHistMargin1Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
@@ -3372,7 +3372,7 @@ DdsConfigEntry ::=
             "Time stamp of the last time the alarms exceeded the Margin
              Threshold  on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 27  }
- 
+
     ctWanHDSLAlHistMargin1Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -3381,13 +3381,13 @@ DdsConfigEntry ::=
             "Set if the alarms still exceeded the Margin Threshold
              on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 28  }
- 
+
     ctWanHDSLAlHistMargin1Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Number of times the alarm exceeded the Margin Threshold since 
+            "Number of times the alarm exceeded the Margin Threshold since
              we last cleared the alarm history on the LOOP 1 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 29  }
 
@@ -3399,16 +3399,16 @@ DdsConfigEntry ::=
             "Time stamp of the first time the alarms exceeded the Margin
              Threshold on LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 30  }
- 
+
     ctWanHDSLAlHistMargin2Last  OBJECT-TYPE
         SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
-            "Time stamp of the last time  the alarms exceeded the Margin 
+            "Time stamp of the last time  the alarms exceeded the Margin
              Threshold  on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 31  }
- 
+
     ctWanHDSLAlHistMargin2Current  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -3417,7 +3417,7 @@ DdsConfigEntry ::=
             "Set if the alarms still exceeded the Margin Threshold
              on the LOOP 2 of the HDSL link."
         ::= { ctWanHDSLAlarmHistoryEntry 32  }
- 
+
     ctWanHDSLAlHistMargin2Count  OBJECT-TYPE
         SYNTAX    INTEGER
         ACCESS    read-only
@@ -3428,7 +3428,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLAlarmHistoryEntry 33  }
 
     ctWanHDSLAlHistCleared  OBJECT-TYPE
-        SYNTAX    DisplayString(SIZE(12)) 
+        SYNTAX    DisplayString(SIZE(12))
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -3436,7 +3436,7 @@ DdsConfigEntry ::=
         ::= { ctWanHDSLAlarmHistoryEntry 34  }
 
     ctWanHDSLAlHistClearit  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-write
         STATUS    mandatory
         DESCRIPTION
@@ -3458,7 +3458,7 @@ DdsConfigEntry ::=
         ACCESS    not-accessible
         STATUS    mandatory
         DESCRIPTION
-          "HDSL Loopback table. This table provides the certain loopback 
+          "HDSL Loopback table. This table provides the certain loopback
             settings for the HDSL link."
         ::= { ctWanHDSLExt 7 }
 
@@ -3472,7 +3472,7 @@ DdsConfigEntry ::=
             { ctWanHDSLLoopbacksHLUConnIndex }
         ::= { ctWanHDSLLoopbacksTable 1 }
 
-    CtWanHDSLLoopbacksEntry ::= SEQUENCE { 
+    CtWanHDSLLoopbacksEntry ::= SEQUENCE {
         ctWanHDSLLoopbacksHLUConnIndex
             INTEGER,
         ctWanHDSLLoopbacksAdminType
@@ -3491,19 +3491,19 @@ DdsConfigEntry ::=
 
     ctWanHDSLLoopbacksAdminType  OBJECT-TYPE
         SYNTAX    INTEGER
-        ACCESS    read-write 
+        ACCESS    read-write
         STATUS    mandatory
         DESCRIPTION
             "This is the requested loopback type for the HDSL.
 
              loopbacks setting:
-                 1 : Smartjack - loopback to network at remote line unit. 
-                 2 : Loopback to network at local line unit. 
-                 3 : Loopback to network at remote line unit. 
-                 4 : Loopback to customer at local line unit. 
-                 5 : Loopback to customer at remote line unit. 
+                 1 : Smartjack - loopback to network at remote line unit.
+                 2 : Loopback to network at local line unit.
+                 3 : Loopback to network at remote line unit.
+                 4 : Loopback to customer at local line unit.
+                 5 : Loopback to customer at remote line unit.
                  6 : Loopback to customer at first doubler.
-                 7 : Loopback to customer at second doubler. 
+                 7 : Loopback to customer at second doubler.
                  8 : Loopback to network at first doubler.
                  9 : Loopback to network at second doubler.
                  10: No loopback (turn loopback off). "
@@ -3517,13 +3517,13 @@ DdsConfigEntry ::=
             "This is the operational loopback type for the HDSL.
 
              loopbacks setting:
-                 1 : Smartjack - loopback to network at remote line unit. 
-                 2 : Loopback to network at local line unit. 
-                 3 : Loopback to network at remote line unit. 
-                 4 : Loopback to customer at local line unit. 
-                 5 : Loopback to customer at remote line unit. 
+                 1 : Smartjack - loopback to network at remote line unit.
+                 2 : Loopback to network at local line unit.
+                 3 : Loopback to network at remote line unit.
+                 4 : Loopback to customer at local line unit.
+                 5 : Loopback to customer at remote line unit.
                  6 : Loopback to customer at first doubler.
-                 7 : Loopback to customer at second doubler. 
+                 7 : Loopback to customer at second doubler.
                  8 : Loopback to network at first doubler.
                  9 : Loopback to network at second doubler.
                  10: No loopback (turn loopback off). "

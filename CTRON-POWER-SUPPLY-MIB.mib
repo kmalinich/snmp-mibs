@@ -2,7 +2,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
 
         --  ctron-power-supply-mib.txt The power supply MIB
         --  Revision: 1.01.02
-        --  Part Number:  
+        --  Part Number:
         --  Date: March 26, 1997
 
         --  Cabletron Systems, Inc.
@@ -17,16 +17,16 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -39,7 +39,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
         --      This MIB describes objects for MMAC+ style power supplies.
 
         IMPORTS
-                ctps    
+                ctps
                         FROM CTRON-MIB-NAMES
                 OBJECT-TYPE
                         FROM RFC-1212;
@@ -88,14 +88,14 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "This object reflects the state of the main voltage 
+                "This object reflects the state of the main voltage
                  rail within the chassis. The power on this rail may
                  be delivered by AC supplies, DC supplies or battery
                  supplies."
             ::= { chPower 2 }
 
         chPowerMainVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -106,42 +106,42 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { chPower 3 }
 
         chPowerTotalSupply  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The total power being supplied by the chassis's power 
-                 supplies to the chassis. The value of this object is the 
+                "The total power being supplied by the chassis's power
+                 supplies to the chassis. The value of this object is the
                  actual watts."
             ::= { chPower 4 }
 
         chPowerTotalLoad  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The total load being presented by the chassis to the  
-                 chassis's power supplies. The value of 
+                "The total load being presented by the chassis to the
+                 chassis's power supplies. The value of
                  this object is the actual watts."
             ::= { chPower 5 }
 
         chPowerMaxSupply  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum power that could de supplied by the chassis's power 
-                 supplies to the chassis. The value of this object is the 
+                "The maximum power that could de supplied by the chassis's power
+                 supplies to the chassis. The value of this object is the
                  actual watts."
             ::= { chPower 6 }
 
         chPowerMaxLoad  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum load that could be presented by the chassis to the  
-                 chassis's power supplies. The value of 
+                "The maximum load that could be presented by the chassis to the
+                 chassis's power supplies. The value of
                  this object is the actual watts."
             ::= { chPower 7 }
 
@@ -165,7 +165,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
 
         ChPowerEntry  ::=
             SEQUENCE {
-                chPowerLineID 
+                chPowerLineID
                     INTEGER,
                 chPowerLineType
                     OBJECT IDENTIFIER,
@@ -194,49 +194,49 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "The type of power. For example, a power line that supplies
-                 DC current at a nominal voltage of 40 to 57 volts or a 
+                 DC current at a nominal voltage of 40 to 57 volts or a
                  power line that supplies AC current at a nominal volatge of
                  110v."
             ::= { chPowerEntry 2 }
 
         chPowerLineTotalSupply  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The total power being supplied by the chassis's power 
-                 supplies to the chassis on this power line. The value 
+                "The total power being supplied by the chassis's power
+                 supplies to the chassis on this power line. The value
                  of this object is the actual watts."
             ::= { chPowerEntry 3 }
 
         chPowerLineTotalLoad  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The total load being presented by the chassis to the  
+                "The total load being presented by the chassis to the
                  chassis's power supplies on this power line. This value
                  will be zero if unknown The value of this object is the
                  actual watts."
             ::= { chPowerEntry 4 }
 
         chPowerLineMaxSupply  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum power that could de supplied by the chassis's power 
-                 supplies to the chassison this power line. The value of 
+                "The maximum power that could de supplied by the chassis's power
+                 supplies to the chassison this power line. The value of
                  this object is the actual watts."
             ::= { chPowerEntry 5 }
 
         chPowerLineMaxLoad  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum load that could be presented by the chassis to the  
-                 chassis's power supplies on this power line. The value of 
+                "The maximum load that could be presented by the chassis to the
+                 chassis's power supplies on this power line. The value of
                  this object is the actual watts."
             ::= { chPowerEntry 6 }
 
@@ -250,12 +250,12 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "This object reflects the state of the diag voltage 
+                "This object reflects the state of the diag voltage
                  rail within the chassis."
             ::= { chPower 9 }
 
         chPowerDiagVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -268,7 +268,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
         --===============    boardPower group          ====================
 
         --  Board Power Group
-        --  This group covers information on the use of power within the 
+        --  This group covers information on the use of power within the
         --  chassis by the networking boards.
 
         boardPowerSlotStatusTable  OBJECT-TYPE
@@ -293,17 +293,17 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             SEQUENCE {
                 boardPowerSlotStatusID
                     INTEGER,
-                boardPowerOperationalStatus 
+                boardPowerOperationalStatus
                     INTEGER,
-                boardPowerAdminStatus 
+                boardPowerAdminStatus
                     INTEGER,
-                boardPowerLocalAdminStatus  
+                boardPowerLocalAdminStatus
                     INTEGER,
-                boardPowerLocalStatus  
+                boardPowerLocalStatus
                     INTEGER,
                 boardPowerShutdownAdmin
                     INTEGER,
-                boardPowerPriority  
+                boardPowerPriority
                     INTEGER,
                 boardPowerMaxInputPower
                     INTEGER,
@@ -352,7 +352,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "This object controls the operation of the module's
-                 DC-DC power supply. If the value 3 is written to 
+                 DC-DC power supply. If the value 3 is written to
                  this object then the value of the object will be
                  set to 1 after the reset is performed."
             DEFVAL { powerOn }
@@ -368,8 +368,8 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "This object controls the operation of the module's
                  front panel button. In local mode this button may
-                 be used to locally control the operation of the 
-                 DC-DC converter, i.e. power on, power off and 
+                 be used to locally control the operation of the
+                 DC-DC converter, i.e. power on, power off and
                  reset. In secure mode a request the state of the
                  front panel button is reflected in the object
                  boardPowerOperationalStatus. In secure mode
@@ -399,7 +399,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-write
             STATUS  mandatory
             DESCRIPTION
-                "This object controls whether or not the module should 
+                "This object controls whether or not the module should
                  auto power down due to an fault condition."
             DEFVAL { disabled }
             ::= { boardPowerSlotStatusEntry 6 }
@@ -412,19 +412,19 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
                 "The module's power-up and power down priority. This is a
                  value of 1 to 14 and is used to decide which modules are
                  allowed to power on in the event that power demand of the
-                 chassis is greater than the total power supply. The default 
+                 chassis is greater than the total power supply. The default
                  value is 14, highest priority. When two modules have equal
                  priority then the module in the lowest slot wins."
             DEFVAL { 14 }
             ::= { boardPowerSlotStatusEntry 7 }
 
         boardPowerMaxInputPower OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum input power that this module is allowed 
-                 to consume. The value of this object is actual 
+                "The maximum input power that this module is allowed
+                 to consume. The value of this object is actual
                  watts."
             ::= { boardPowerSlotStatusEntry 8 }
 
@@ -446,7 +446,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  not-accessible
             STATUS  mandatory
             DESCRIPTION
-                "A list of networking modules and associated power lines 
+                "A list of networking modules and associated power lines
                  installed in this chassis."
             ::= { boardPower 2 }
 
@@ -464,19 +464,19 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             SEQUENCE {
                 boardPowerSlotID
                     INTEGER,
-                boardPowerID 
+                boardPowerID
                     INTEGER,
                 boardPowerType
                     OBJECT IDENTIFIER,
-                boardPowerStatus 
+                boardPowerStatus
                     INTEGER,
-                boardPowerVoltage 
+                boardPowerVoltage
                     INTEGER,
                 boardPowerCurrent
                     INTEGER,
-                boardPowerMaxVoltage 
+                boardPowerMaxVoltage
                     INTEGER,
-                boardPowerMinVoltage 
+                boardPowerMinVoltage
                     INTEGER,
                 boardPowerMaxPower
                     INTEGER
@@ -488,7 +488,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "The slot number of a chassis slot in which this board is
-                 installed. This object is similiar to chSlotID in the 
+                 installed. This object is similiar to chSlotID in the
                  Chassis MIB."
             ::= { boardPowerSlotEntry 1 }
 
@@ -506,7 +506,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "The type of power. For example, a power line that supplies
-                 DC current at a nominal voltage of 40 to 57 volts or a 
+                 DC current at a nominal voltage of 40 to 57 volts or a
                  power line that supplies AC current at a nominal volatge of
                  110v."
             ::= { boardPowerSlotEntry 3 }
@@ -526,7 +526,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { boardPowerSlotEntry 4 }
 
         boardPowerVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -535,7 +535,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { boardPowerSlotEntry 5 }
 
         boardPowerCurrent  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -545,34 +545,34 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { boardPowerSlotEntry 6 }
 
         boardPowerMaxVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum voltage for this power line. If the voltage 
+                "The maximum voltage for this power line. If the voltage
                  reading for this power line is greater than this value
                  then the power line is considered to be in an overvolatge
                  condition. The value of this object is in voltage * 100."
             ::= { boardPowerSlotEntry 7 }
 
         boardPowerMinVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The minimum voltage for this power line. If the voltage 
+                "The minimum voltage for this power line. If the voltage
                  reading for this power line is less than this value
                  then the power line is considered to be in an undervolatge
                  condition. The value of this object is voltage * 100."
             ::= { boardPowerSlotEntry 8 }
 
         boardPowerMaxPower  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum power for this power line. If the power calculated 
-                 for this power line is greater than this value then the 
+                "The maximum power for this power line. If the power calculated
+                 for this power line is greater than this value then the
                  power line is considered to be in an overload condition.
                  The value of this object is in watts."
             ::= { boardPowerSlotEntry 9 }
@@ -580,7 +580,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
         --===============    psPower group          ====================
 
         --  AC and DC Power Supply Power Group
-        --  This group covers information on the use of power within the 
+        --  This group covers information on the use of power within the
         --  chassis by the networking boards.
 
         psPowerSlotStatusTable  OBJECT-TYPE
@@ -605,9 +605,9 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             SEQUENCE {
                 psPowerSlotStatusID
                     INTEGER,
-                psPowerOperationalStatus 
+                psPowerOperationalStatus
                     INTEGER,
-                psPowerAdminStatus 
+                psPowerAdminStatus
                     INTEGER,
                 psPowerMaxOutputPower
                     INTEGER
@@ -618,7 +618,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The slot number of a chassis slot in which this AC power 
+                "The slot number of a chassis slot in which this AC power
                  supply is installed. This object is similiar
                  to chSlotID in the Chassis MIB."
             ::= { psPowerSlotStatusEntry 1 }
@@ -655,11 +655,11 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { psPowerSlotStatusEntry 3 }
 
         psPowerMaxOutputPower   OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum power that this power supply is allowed 
+                "The maximum power that this power supply is allowed
                  to ouput. The value of this object is watts."
             ::= { psPowerSlotStatusEntry 4 }
 
@@ -686,23 +686,23 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             SEQUENCE {
                 psPowerSlotID
                     INTEGER,
-                psPowerID 
+                psPowerID
                     INTEGER,
                 psPowerType
                     OBJECT IDENTIFIER,
-                psPowerStatus 
+                psPowerStatus
                     INTEGER,
-                psPowerAdmin 
+                psPowerAdmin
                     INTEGER,
-                psPowerVoltage 
+                psPowerVoltage
                     INTEGER,
                 psPowerCurrent
                     INTEGER,
-                psPowerLineFrequency  
+                psPowerLineFrequency
                     INTEGER,
-                psPowerMaxVoltage 
+                psPowerMaxVoltage
                     INTEGER,
-                psPowerMinVoltage 
+                psPowerMinVoltage
                     INTEGER,
                 psPowerMaxPower
                     INTEGER
@@ -732,7 +732,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "The type of power.  For example, a power line that supplies
-                 DC current at a nominal voltage of 40 to 57 volts or a 
+                 DC current at a nominal voltage of 40 to 57 volts or a
                  power line that supplies AC current at a nominal volatge of
                  110v."
             ::= { psPowerSlotEntry 3 }
@@ -764,7 +764,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { psPowerSlotEntry 5 }
 
         psPowerVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -773,54 +773,54 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ::= { psPowerSlotEntry 6 }
 
         psPowerCurrent  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
                 "The current reading for the power line. The value of this
-                 object is amperage * 100. If this reading is not implemented 
+                 object is amperage * 100. If this reading is not implemented
                  then value will be zero."
             ::= { psPowerSlotEntry 7 }
 
         psPowerLineFrequency  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
                 "The line frequency for the power line. The value of this
-                 object is the actual frequency in Hertz * 10. If this 
+                 object is the actual frequency in Hertz * 10. If this
                  reading is not implemented then value will be zero."
             ::= { psPowerSlotEntry 8 }
 
         psPowerMaxVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum voltage for this power line. If the voltage 
+                "The maximum voltage for this power line. If the voltage
                  reading for this power line is greater than this value
                  then the power line is considered to be in an over volatge
                  condition. The value of this object is voltage * 100."
             ::= { psPowerSlotEntry 9 }
 
         psPowerMinVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The minimum voltage for this power line. If the voltage 
+                "The minimum voltage for this power line. If the voltage
                  reading for this power line is greater than this value
                  then the power line is considered to be in an over volatge
                  condition. The value of this object is voltage * 100."
             ::= { psPowerSlotEntry 10 }
 
         psPowerMaxPower  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The maximum power for this power line. If the power calculated 
-                 for this power line is greater than this value then the 
+                "The maximum power for this power line. If the power calculated
+                 for this power line is greater than this value then the
                  power line is considered to be in an overload condition.
                  The value of this object is watts."
             ::= { psPowerSlotEntry 11 }
@@ -828,13 +828,13 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
         --===============    bbuPower group          ====================
 
         --  Battery Backup Unit Power Group
-        --  This group covers information on the use of power within the 
+        --  This group covers information on the use of power within the
         --  chassis by the battery backup unit.
 
         --===============    termPower group          ====================
 
         --  INB Termination Module Power Group
-        --  This group covers information on the use of power within the 
+        --  This group covers information on the use of power within the
         --  chassis by the INB termination modules.
 
         termPowerStatus  OBJECT-TYPE
@@ -848,29 +848,29 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "This object reflects the status of the chassis's termination 
+                "This object reflects the status of the chassis's termination
                  voltage rail."
             ::= { termPower 1 }
 
         termPowerVoltage  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The voltage of the chassis's termination voltage rail. 
+                "The voltage of the chassis's termination voltage rail.
                  This rail carries power to INB terminator cards in the
                  chassis.  It has an allowalble range of 3.3 Volt + or -
                  5%.The value of this object is voltage * 100."
             ::= { termPower 2 }
 
         termPowerCurrent  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
                 "The current on the chassis's termination voltage rail.
                  The value of this object is the actual amperage * 100.
-                 If this reading is not implemented then the value will 
+                 If this reading is not implemented then the value will
                  be zero."
             ::= { termPower 3 }
 
@@ -886,7 +886,7 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "This object reflects the state of the INB termination 
+                "This object reflects the state of the INB termination
                  module number 1. A value of normal(1) reflects that
                  both busses are normal. A value of fault(4) reflects
                  that both busses are in a fault condition."
@@ -904,9 +904,9 @@ CTRON-POWER-SUPPLY-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "This object reflects the state of the INB termination 
-                 module number 2. A value of normal(1) reflects that 
-                 both busses are normal. A value of fault(4) reflects 
+                "This object reflects the state of the INB termination
+                 module number 2. A value of normal(1) reflects that
+                 both busses are normal. A value of fault(4) reflects
                  that both busses are in a fault condition."
             ::= { termPower 5 }
 

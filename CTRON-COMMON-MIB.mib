@@ -17,16 +17,16 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -36,9 +36,9 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
         --  Copyright August 94 Cabletron Systems
 
         IMPORTS
-                NetworkAddress, Counter     
+                NetworkAddress, Counter
                         FROM RFC1155-SMI
-                subSysMMAC, subSysDevice, ups, 
+                subSysMMAC, subSysDevice, ups,
                 commonRev1, dl
                         FROM IRM-OIDS
                 DisplayString, PhysAddress
@@ -109,10 +109,10 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                                     --  management subsystem
                     trmMim(190),    --  token ring repeater MIM
                     mrxi24(65569),  --  integrated repeater and
-                                    --  management subsytem with 24 
+                                    --  management subsytem with 24
                                     --  10BaseT ports (RJ45), 2 EPIMs
                     mrxi22(65570),  --  integrated repeater and
-                                    --  management subsytem with 12 
+                                    --  management subsytem with 12
                                     --  10BaseT ports (RJ45), 1 EPIM
                     mrxi34(65571),  --  integrated repeater and
                                     --  management subsytem with 24
@@ -163,7 +163,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                     "The current date, as measured by the device.  The
-                    representation shall use the standard MMDDYYYY 
+                    representation shall use the standard MMDDYYYY
                     format."
             ::= { commonRev1 5 }
 
@@ -266,7 +266,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                     "Denotes the bypass status of the current Token Ring
                     board.  Bypassed means the board is NOT attached to the
-                    FNB."       
+                    FNB."
             ::= { fnbTREntry 4 }
 
         fnbRPBypass  OBJECT-TYPE
@@ -521,19 +521,19 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-write
             STATUS  mandatory
             DESCRIPTION
-                    "Denotes the current condition of the power supply 
+                    "Denotes the current condition of the power supply
                     fault detection circuit.  Setting a value of
-                    chassisNoFaultCondition(1) disables the current 
-                    chassis alarm condition, and stops the current 
-                    audible alarm from sounding.  Setting a value of 
+                    chassisNoFaultCondition(1) disables the current
+                    chassis alarm condition, and stops the current
+                    audible alarm from sounding.  Setting a value of
                     chassisFaultCondition(2) is not allowed.
 
-                    This object will read with the value of 
-                    chassisNoFaultCondition(1) when the chassis is 
+                    This object will read with the value of
+                    chassisNoFaultCondition(1) when the chassis is
                     currently operating with no power faults detected.
 
-                    This object will read with the value of 
-                    chassisFaultCondition(2) when the chassis is 
+                    This object will read with the value of
+                    chassisFaultCondition(2) when the chassis is
                     currently in a power fault condition."
             ::= { chassis 6 }
 
@@ -564,18 +564,18 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             SEQUENCE  {
                  powerSupplyNum
                       INTEGER,
-                powerSupplyState  
+                powerSupplyState
                         INTEGER,
-                powerSupplyId 
+                powerSupplyId
                       OBJECT IDENTIFIER,
-                powerSupplyRedun 
+                powerSupplyRedun
                       INTEGER,
-                powerSupplyRemoteDisable 
+                powerSupplyRemoteDisable
                       INTEGER
            }
 
         powerSupplyNum  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -635,8 +635,8 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "Provides Enable/Disable control of the power supply.
 
-                For devices that do not support this capability, a set 
-                attempt will return BADVALUE, and a read will always 
+                For devices that do not support this capability, a set
+                attempt will return BADVALUE, and a read will always
                 return infoNotAvailable."
 
         ::= { powerEntry 5 }
@@ -760,18 +760,18 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-write
             STATUS  mandatory
             DESCRIPTION
-                    "Controls how front panel ports are associated 
+                    "Controls how front panel ports are associated
                     with the Irm3."
             ::= { iRM3 4 }
 
-        iRM3BPSupport  OBJECT-TYPE 
+        iRM3BPSupport  OBJECT-TYPE
             SYNTAX  INTEGER {
                         notSupported (1),
                         supported (2)
                     }
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Denotes whether or not Backplane Protocol Support is
                     present in the current version of the IRM3."
             ::= { iRM3 5 }
@@ -876,10 +876,10 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                     "If this object is set to Reset it will cause a reset
                      of the front panel redundancy. Setting this object to
-                     NoReset will do nothing. This object will always be 
+                     NoReset will do nothing. This object will always be
                      read as NoReset."
              ::= { fPRedund 1 }
- 
+
         fPRedundPollInterval  OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-write
@@ -888,7 +888,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "Get/Set the number of seconds between polls for front
                      panel redundancy."
              ::= { fPRedund 2 }
-        
+
         fPRedundRetrys    OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-write
@@ -897,7 +897,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "Get/Set the the number of unanswered polls allowed for
                      the front panel redundancy before it switches ports."
             ::= { fPRedund 3 }
-        
+
         fPRedundNumAddr   OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-only
@@ -906,7 +906,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "Get the number of IP Addresses associated with front panel
                      redundancy."
             ::= { fPRedund 4 }
-        
+
         fPRedundAddAddr   OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-write
@@ -915,13 +915,13 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "Add an IP Address to the polling list for the front panel
                      redundancy."
             ::= { fPRedund 5 }
-          
+
         fPRedundDelAddr   OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-write
             STATUS      mandatory
             DESCRIPTION
-                    "Delete an IP Address from the polling list for the 
+                    "Delete an IP Address from the polling list for the
                      front panel redundancy."
             ::= { fPRedund 6 }
 
@@ -930,10 +930,10 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-write
             STATUS      mandatory
             DESCRIPTION
-                    "Get/Set the front panel port you want to be active 
+                    "Get/Set the front panel port you want to be active
                      when front panel redundancy is enabled."
             ::= { fPRedund 7 }
-        
+
         fPRedundEnable    OBJECT-TYPE
             SYNTAX      INTEGER {
                         disable(1),
@@ -943,14 +943,14 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                     "If this object is set to enable, the front panel
-                     redundancy will be activated. If this object is set 
-                     to disable,  the front panel redundancy will be 
-                     deactivated.  When read, this object will returns the 
-                     state of the object based on the last request 
+                     redundancy will be activated. If this object is set
+                     to disable,  the front panel redundancy will be
+                     deactivated.  When read, this object will returns the
+                     state of the object based on the last request
                      made."
             ::= { fPRedund 8 }
-        
-        
+
+
         --  The fPredundAddr group
 
         --  Implementation of this group is mandatory for devices with
@@ -964,7 +964,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "A list of entries that provide IP address
                     information for front panel redundancy."
             ::= { fPRedundancy 2 }
-        
+
         fPRedundAddrEntry OBJECT-TYPE
             SYNTAX      FPRedundAddrEntry
             ACCESS      not-accessible
@@ -974,7 +974,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     for front panel redundancy."
             INDEX       { fPRedundAddrId }
             ::= { fPRedundAddrTable 1 }
-        
+
         FPRedundAddrEntry ::=
           SEQUENCE {
              fPRedundAddrId
@@ -982,19 +982,19 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
              fPRedundAddrIPAddr
                   NetworkAddress
           }
-        
+
         fPRedundAddrId    OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-only
             STATUS      mandatory
             DESCRIPTION
                     "A unique value identifying an element in a sequence of
-                     member IP Addresses which belong to the front panel 
-                     redundancy.  This value goes from 1 to the maximum 
-                     number of IP Addresses which may be included in  
+                     member IP Addresses which belong to the front panel
+                     redundancy.  This value goes from 1 to the maximum
+                     number of IP Addresses which may be included in
                      front panel redundancy."
             ::= { fPRedundAddrEntry 1 }
-          
+
         fPRedundAddrIPAddr    OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-only
@@ -1003,7 +1003,7 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
                     "Returns an IP Address associated with the front panel
                      redundancy."
             ::= { fPRedundAddrEntry 2 }
-        
+
 
         --  The ups group
 
@@ -1339,13 +1339,13 @@ CTRON-COMMON-MIB DEFINITIONS ::= BEGIN
 
 -- Trap Description
 --        fPRedundActivePort
- 
+
 -- Specific Trap Type Code - 0x15F
- 
+
 -- This trap indicates that a new port has been activated for the front panel
 -- redundant circuit.  This does NOT indicate this port is usable, but is being
 -- tested.
- 
+
 -- The interesting information will include:
 --        Active Port Number
 --

@@ -39,16 +39,16 @@ IMPORTS
 --      DisplayString
 --                FROM RFC1213-MIB
 --      enterprises,
-        TimeTicks 
+        TimeTicks
 --        IpAddress,
 --        Counter,
 --        Gauge
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.1
-        vlanSpanningTreePort, vlanSpanningTreeSwitch 
-                FROM CTRON-SFPS-INCLUDE-MIB; 
- 
+        vlanSpanningTreePort, vlanSpanningTreeSwitch
+                FROM CTRON-SFPS-INCLUDE-MIB;
+
 
 --  Textual Conventions
 
@@ -67,7 +67,7 @@ vlanSpanningTreePortTable    OBJECT-TYPE
        SYNTAX     SEQUENCE OF VlanSpanningTreePortEntry
        ACCESS     not-accessible
        STATUS     mandatory
-       DESCRIPTION 
+       DESCRIPTION
                 "This table contains information used by the spanning tree algorithm
                  for each port instance."
        ::= { vlanSpanningTreePort 1 }
@@ -99,13 +99,13 @@ VlanSpanningTreePortEntry ::=
      ACCESS       read-only
      STATUS       mandatory
      DESCRIPTION
-                "The port number of the port instance. This value is also the 
+                "The port number of the port instance. This value is also the
                  primary index for the table."
      ::= { vlanSpanningTreePortEntry 1 }
 
 vlanSpanningTreePortPortState             OBJECT-TYPE
      SYNTAX          INTEGER  {
-                              enabled(1),   
+                              enabled(1),
                               disabled(2),
                               blocking(3),
                               listening(4),
@@ -117,18 +117,18 @@ vlanSpanningTreePortPortState             OBJECT-TYPE
      STATUS             mandatory
      DESCRIPTION
                 "The spanning tree port state for this port."
-     ::= { vlanSpanningTreePortEntry 2 }       
+     ::= { vlanSpanningTreePortEntry 2 }
 
 vlanSpanningTreePortPortIdentifier        OBJECT-TYPE
-     SYNTAX             HexInteger 
+     SYNTAX             HexInteger
      ACCESS             read-only
      STATUS             mandatory
      DESCRIPTION
                 "The spanning tree port identifier for this port."
-     ::= { vlanSpanningTreePortEntry 3 }        
+     ::= { vlanSpanningTreePortEntry 3 }
 
 vlanSpanningTreePortPathCost              OBJECT-TYPE
-     SYNTAX             INTEGER 
+     SYNTAX             INTEGER
      ACCESS             read-write
      STATUS             mandatory
      DESCRIPTION
@@ -144,7 +144,7 @@ vlanSpanningTreePortDesignatedRoot        OBJECT-TYPE
      ::= { vlanSpanningTreePortEntry 5 }
 
 vlanSpanningTreePortDesignatedCost        OBJECT-TYPE
-     SYNTAX             INTEGER 
+     SYNTAX             INTEGER
      ACCESS             read-only
      STATUS             mandatory
      DESCRIPTION
@@ -152,7 +152,7 @@ vlanSpanningTreePortDesignatedCost        OBJECT-TYPE
      ::= { vlanSpanningTreePortEntry 6 }
 
 vlanSpanningTreePortDesignatedBridge      OBJECT-TYPE
-     SYNTAX             OCTET STRING 
+     SYNTAX             OCTET STRING
      ACCESS             read-only
      STATUS             mandatory
      DESCRIPTION
@@ -160,7 +160,7 @@ vlanSpanningTreePortDesignatedBridge      OBJECT-TYPE
      ::= { vlanSpanningTreePortEntry 7 }
 
 vlanSpanningTreePortDesignatedPort      OBJECT-TYPE
-     SYNTAX             HexInteger 
+     SYNTAX             HexInteger
      ACCESS             read-only
      STATUS             mandatory
      DESCRIPTION
@@ -176,7 +176,7 @@ vlanSpanningTreeSwitchTable    OBJECT-TYPE
        SYNTAX     SEQUENCE OF VlanSpanningTreeSwitchEntry
        ACCESS     not-accessible
        STATUS     mandatory
-       DESCRIPTION 
+       DESCRIPTION
                 "This table contains information used by the spanning tree
                  algorithm specific to the switch on which the algorithm is
                  running."
@@ -313,4 +313,4 @@ vlanSpanningTreeSwitchForwardDelay         OBJECT-TYPE
                 "Spanning tree forward delay value."
      ::= { vlanSpanningTreeSwitchEntry 13 }
 
-END 
+END

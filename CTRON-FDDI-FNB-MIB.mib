@@ -2,7 +2,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
 
         --  CTRON-FDDI-FNB-mib.txt The FDDI FNB backplane control MIB
         --  Revision: 1.01.00
-        --  Date: September 13, 1995 
+        --  Date: September 13, 1995
 
         --  Cabletron Systems, Inc.
         --  35 Industrial Way, P.O. Box 5005
@@ -16,16 +16,16 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -59,15 +59,15 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
         ctFDDISerialConfig      OBJECT IDENTIFIER ::= { ctFDDIFnb 4 }
 
         --=====    ctFDDIResource group       ========
-        
-        
+
+
         ctFDDIResourceTable     OBJECT-TYPE
             SYNTAX      SEQUENCE OF CtFDDIResourceEntry
             ACCESS      not-accessible
             STATUS      mandatory
             DESCRIPTION
                 "This table specifies the physical resources
-                associated with the FNB and general FNB operation for a 
+                associated with the FNB and general FNB operation for a
                 particular module in a particular slot."
         ::= { ctFDDIResource 1 }
 
@@ -127,14 +127,14 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
                 "This object defines the number of instances of a physical
                 resource.
 
-                Specific resource instances are physically located from 
-                top-to-bottom on a particular module. If there are multiple 
-                'columns' of a resource from the top to the bottom, then 
-                the numbering will start from the left side and proceed 
+                Specific resource instances are physically located from
+                top-to-bottom on a particular module. If there are multiple
+                'columns' of a resource from the top to the bottom, then
+                the numbering will start from the left side and proceed
                 top-to-bottom in each column.
 
-                For instance, the first FNB ring will be instance 1 (top 
-                in the chassis) while the second FNB ring is instance 2 
+                For instance, the first FNB ring will be instance 1 (top
+                in the chassis) while the second FNB ring is instance 2
                 (below FNB 1 in the backplane)."
         ::= { ctFDDIResourceEntry 4 }
 
@@ -176,7 +176,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-only
             STATUS      mandatory
             DESCRIPTION
-                "The slot within the chassis for which this 
+                "The slot within the chassis for which this
                 configuration information is defined."
             ::= { ctFDDINonMuxCapEntry 1 }
 
@@ -194,40 +194,40 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                 "This object defines a specific valid connection
-                configuration.  It will specify the connection state of all 
+                configuration.  It will specify the connection state of all
                 resource instances.  If an instance of a resource is
                 not specified, then it is disconnected.
 
-                Each valid configuration is encoded in an ascii string, using 
-                a specified format for interpretation.  The connection 
-                specifications are in groups of four where each group defines 
+                Each valid configuration is encoded in an ascii string, using
+                a specified format for interpretation.  The connection
+                specifications are in groups of four where each group defines
                 a specific connection configuration.  The terms of a connection
                 group is defined as follows:
 
-                        1st - The resource ID as defined by 
+                        1st - The resource ID as defined by
                         ctFDDIResourceID.
 
-                        2nd - A specific instance of the physical 
-                        resource.  This will be a value between 1 and 
-                        ctFDDIResourceNumbInstance for the particular 
+                        2nd - A specific instance of the physical
+                        resource.  This will be a value between 1 and
+                        ctFDDIResourceNumbInstance for the particular
                         resource ID in the first term.  If a resource ID
                         has more than one specific resource instance, but
-                        the whole resource can be connected, then this 
-                        term will have the value '0' to signify all instances 
+                        the whole resource can be connected, then this
+                        term will have the value '0' to signify all instances
                         of the resource.
 
-                        3rd - The connection ID for this specific 
-                        physical resource.  This value is the same as 
-                        ctFDDINMConnectionID, and through the 
+                        3rd - The connection ID for this specific
+                        physical resource.  This value is the same as
+                        ctFDDINMConnectionID, and through the
                         ctFDDINonMuxConnectionTable maps to a specific
                         instance of SMT and MAC.
 
                 For example if the value of this object is '1.1.2.2.1.1',
-                then it states that resource 1, instance 1 is connected to 
-                connection ID 2 and resource 2, instance 1 is connected to 
+                then it states that resource 1, instance 1 is connected to
+                connection ID 2 and resource 2, instance 1 is connected to
                 connection ID 1 and is inserted into its FDDI ring.
 
-                If a valid configuration is no connections then this 
+                If a valid configuration is no connections then this
                 object will have a value of '0.0.0'"
             ::= { ctFDDINonMuxCapEntry 3 }
 
@@ -236,11 +236,11 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-only
             STATUS      mandatory
             DESCRIPTION
-                "This object contains a textual description of a valid 
-                connection configuration.  This is a more user-friendly 
+                "This object contains a textual description of a valid
+                connection configuration.  This is a more user-friendly
                 representation of the configuration than the ctFDDINMConfig
                 object."
-            ::= { ctFDDINonMuxCapEntry 4 } 
+            ::= { ctFDDINonMuxCapEntry 4 }
 
 
         ctFDDINonMuxCapEnableTable      OBJECT-TYPE
@@ -282,12 +282,12 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-write
             STATUS      mandatory
             DESCRIPTION
-                "A specific configuration that is enabled.  
+                "A specific configuration that is enabled.
 
-                Enabling a configuration is done by writing the value of 
+                Enabling a configuration is done by writing the value of
                 ctFDDINMConfigID for a specific configuration to this object.
 
-                This object, when read, will return the value of 
+                This object, when read, will return the value of
                 ctFDDINMConfigID for the presently enabled configuration."
             ::= { ctFDDINonMuxCapEnableEntry 2 }
 
@@ -298,7 +298,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                 "This table defines specific information for each defined
-                FDDI/FNB connection.  This maps the third sub identifier 
+                FDDI/FNB connection.  This maps the third sub identifier
                 of ctFDDINMConfig to a particular SMT and MAC instance in
                 the 1512 FDDI MIB."
             ::= { ctFDDINonMux 3 }
@@ -384,7 +384,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
         ::= { ctFDDINonMuxConnectionEntry 6 }
 
 
-        
+
         ctFDDINonMuxInterfaceTable      OBJECT-TYPE
             SYNTAX      SEQUENCE OF CtFDDINonMuxInterfaceEntry
             ACCESS      not-accessible
@@ -491,12 +491,12 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
                 not specified, then it is disconnected.
 
                 Each valid configuration is encoded in an ascii string, using
-                a specified format for interpretation.  The specific 
-                connections are in groups of four where each group defines a 
-                specific connection configuration.  The terms of the connection 
+                a specified format for interpretation.  The specific
+                connections are in groups of four where each group defines a
+                specific connection configuration.  The terms of the connection
                 group are defined as follows:
 
-                        1st - Resource ID.  The value is the same as 
+                        1st - Resource ID.  The value is the same as
                         ctFDDIResourceID for a specific resource entry.
 
                         2nd - Instance of the resource.  This has a value in
@@ -506,12 +506,12 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
                         multiplexor.  Paths are specified as 1
                         for the primary ring and 2 for the secondary.
 
-                        4th - This is the multiplexor output channel 
+                        4th - This is the multiplexor output channel
                         that this resource comes out of the multiplexor.
                         This value is the same as a value of ctFDDIMuxOutID.
 
                         5th - Ring Connectivity.  This sub-identifier
-                        describes if the given mux-in resource 
+                        describes if the given mux-in resource
                         (sub-identifiers 1-3) is inserted into the backplane
                         FNB ring.  Valid values are 0 for no 1 for yes.
 
@@ -529,7 +529,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-only
             STATUS      mandatory
             DESCRIPTION
-                "This object contains a textual description of a valid 
+                "This object contains a textual description of a valid
                 connection configuration.  This is a more user-friendly
                 representation of the configuration than the ctFDDIMuxConfig
                 object."
@@ -653,8 +653,8 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                 "The MAC instance of this multiplexor output.  If this
-                this object has a value greater than 0, then this 
-                value is the same as fddimibMACIndex.  If this object has the 
+                this object has a value greater than 0, then this
+                value is the same as fddimibMACIndex.  If this object has the
                 value of 0, the given mux-out does not have a MAC."
             REFERENCE
                 "The IETF RFC FDDI-SMT73-MIB, fddimibMACIndex"
@@ -755,7 +755,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
 
 --      The ctFDDISerialControl group
 --      This group describes the control over the FDDI serial controlled
---      modules. 
+--      modules.
 
         ctFDDINumbModules       OBJECT-TYPE
             SYNTAX      INTEGER (0..14)
@@ -821,7 +821,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "Describes the adminstrative desired state for this FNB
                 serial control module.
-        
+
                         insertFNB1(1) - The serial controlled module should be
                         inserted into FNB-1 and bypass FNB-2.
 
@@ -912,9 +912,9 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                 "Defines the instance of the port for which this definition
-                is made.  Ports are physically located from top-to-bottom on a 
+                is made.  Ports are physically located from top-to-bottom on a
                 particular module. If there are multiple 'columns' of ports
-                from the top to the bottom, then the numbering will start 
+                from the top to the bottom, then the numbering will start
                 from the left side and proceed top-to-bottom in each column."
             ::= { ctFDDIModuleFPIMEntry 2 }
 
@@ -933,7 +933,7 @@ CTRON-FDDI-FNB-MIB DEFINITIONS ::= BEGIN
 
                 A value of noLink(2) states that no link is present.
 
-                A value of notSupported(3) means that link status is not 
+                A value of notSupported(3) means that link status is not
                 supported by this port and is unknown."
             ::= { ctFDDIModuleFPIMEntry 4 }
 

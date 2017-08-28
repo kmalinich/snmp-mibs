@@ -2,7 +2,7 @@ ENTERASYS-RTR-ADVERT-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 
 --  enterasys-rtr-advert-notification-mib.txt
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' router advertisement notifications.
 
 --
@@ -21,7 +21,7 @@ ENTERASYS-RTR-ADVERT-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright May, 2011 Enterasys Networks, Inc.
@@ -37,7 +37,7 @@ IMPORTS
         FROM SNMP-FRAMEWORK-MIB
     ifName
         FROM IF-MIB
-    InetAddressType, InetAddress 
+    InetAddressType, InetAddress
         FROM INET-ADDRESS-MIB
     etsysModules
         FROM ENTERASYS-MIB-NAMES;
@@ -53,35 +53,35 @@ etsysRtrAdvertNotificationMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          router advertisement notifications.
 
-         This MIB was designed to be used for monitoring router  
-         events that have occurred in the system related to router 
+         This MIB was designed to be used for monitoring router
+         events that have occurred in the system related to router
          advertisements."
 
     REVISION    "201105131347Z"  -- Fri May 13 13:47 UTC 2011
     DESCRIPTION "The initial version of this MIB module"
 
-    ::= { etsysModules 82 } 
+    ::= { etsysModules 82 }
 
 -- -------------------------------------------------------------
--- branches in the ENTERASYS-RTR-ADVERT-NOTIFICATION MIB 
+-- branches in the ENTERASYS-RTR-ADVERT-NOTIFICATION MIB
 -- -------------------------------------------------------------
 
-etsysRtrAdvertNotificationObjects   OBJECT IDENTIFIER 
+etsysRtrAdvertNotificationObjects   OBJECT IDENTIFIER
         ::= { etsysRtrAdvertNotificationMIB 1 }
 
-etsysRtrAdvertConfigBranch          OBJECT IDENTIFIER 
+etsysRtrAdvertConfigBranch          OBJECT IDENTIFIER
         ::= { etsysRtrAdvertNotificationObjects 0 }
 
-etsysRtrAdvertInformationBranch     OBJECT IDENTIFIER 
+etsysRtrAdvertInformationBranch     OBJECT IDENTIFIER
         ::= { etsysRtrAdvertNotificationObjects 1 }
 
-etsysRtrAdvertNotificationBranch    OBJECT IDENTIFIER 
+etsysRtrAdvertNotificationBranch    OBJECT IDENTIFIER
         ::= { etsysRtrAdvertNotificationObjects 2 }
 
 -- -------------------------------------------------------------
@@ -106,8 +106,8 @@ etsysRtrAdvertInetAddrType OBJECT-TYPE
     SYNTAX      InetAddressType
     MAX-ACCESS  accessible-for-notify
     STATUS      current
-    DESCRIPTION   
-        "A value that represents a type of Internet address specified 
+    DESCRIPTION
+        "A value that represents a type of Internet address specified
          by etsysRtrAdvertInetAddress."
     ::= { etsysRtrAdvertInformationBranch 1 }
 
@@ -115,9 +115,9 @@ etsysRtrAdvertInetAddress  OBJECT-TYPE
     SYNTAX      InetAddress
     MAX-ACCESS  accessible-for-notify
     STATUS      current
-    DESCRIPTION   
-        "The Internet Address of the router being advertised. 
-         The format of this object is defined by the 
+    DESCRIPTION
+        "The Internet Address of the router being advertised.
+         The format of this object is defined by the
          etsysRtrAdvertInetAddrType object."
     ::= { etsysRtrAdvertInformationBranch 2 }
 
@@ -125,7 +125,7 @@ etsysRtrAdvertUserData     OBJECT-TYPE
     SYNTAX      SnmpAdminString
     MAX-ACCESS  accessible-for-notify
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
         "The data pertinent to the router advertisement notification
          being sent (i.e. mtu, hop-limit, etc.)."
     ::= { etsysRtrAdvertInformationBranch 3 }
@@ -135,15 +135,15 @@ etsysRtrAdvertUserData     OBJECT-TYPE
 -- -------------------------------------------------------------
 
 etsysRtrAdvertInconsistent NOTIFICATION-TYPE
-    OBJECTS     { 
+    OBJECTS     {
                   etsysRtrAdvertInetAddrType,
                   etsysRtrAdvertInetAddress,
                   ifName,
                   etsysRtrAdvertUserData
                 }
     STATUS      current
-    DESCRIPTION 
-        "Inconsistent router advertisement notification.  The device 
+    DESCRIPTION
+        "Inconsistent router advertisement notification.  The device
          will send this notification when an inconsistent router
          advertisement is received from another router."
     ::= { etsysRtrAdvertNotificationBranch 1 }
@@ -152,13 +152,13 @@ etsysRtrAdvertInconsistent NOTIFICATION-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysRtrAdvertConformance 
+etsysRtrAdvertConformance
     OBJECT IDENTIFIER ::= { etsysRtrAdvertNotificationMIB 2 }
 
 etsysRtrAdvertGroups
     OBJECT IDENTIFIER ::= { etsysRtrAdvertConformance 1 }
 
-etsysRtrAdvertCompliances 
+etsysRtrAdvertCompliances
     OBJECT IDENTIFIER ::= { etsysRtrAdvertConformance 2 }
 
 -- -------------------------------------------------------------
@@ -207,10 +207,10 @@ etsysRtrAdvertCompliance MODULE-COMPLIANCE
          router advertisement notifications."
 
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
                            etsysRtrAdvertConfigGroup,
                            etsysRtrAdvertInformationGroup,
-                           etsysRtrAdvertNotificationGroup 
+                           etsysRtrAdvertNotificationGroup
                          }
 
     ::= { etsysRtrAdvertCompliances 1 }

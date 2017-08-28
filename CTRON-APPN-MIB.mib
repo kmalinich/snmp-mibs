@@ -39,7 +39,7 @@ CTRON-APPN-MIB  DEFINITIONS ::= BEGIN
 
 IMPORTS
       OBJECT-TYPE
-                FROM RFC-1212   
+                FROM RFC-1212
       nwRtrProtoSuites
                 FROM ROUTER-OIDS
       DisplayString
@@ -135,8 +135,8 @@ nwAppnMibRevText OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current revision level of the Cabletron APPN 
-                Router MIB in textual format." 
+                "Indicates the current revision level of the Cabletron APPN
+                Router MIB in textual format."
         ::= { nwAppnMibs 1 }
 
 
@@ -147,7 +147,7 @@ nwAppnMibRevText OBJECT-TYPE
 --  APPN Routing Services System Configuration Group
 --  This group contains the objects that pertain to the setup and
 --  configuration of APPN Routing Services at a global,
---  system-wide level.  
+--  system-wide level.
 
 nwAppnSysRouterId   OBJECT-TYPE
         SYNTAX  DisplayString (SIZE (3..17))
@@ -388,7 +388,7 @@ nwAppnSysIsrMaxRuSize   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                "Specifies maximum RU size supported for intermediate sessions.
-                Note: the number provided will be rounded up to the 
+                Note: the number provided will be rounded up to the
                 next valid RU size if necessary after APPN Routing Services has
                 been successfully enabled. A subsequent GET operation on
                 nwAppnSysMaxLocates will reflect this new value."
@@ -401,7 +401,7 @@ nwAppnSysIsrRcvPaceWind   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                "Specifies suggested receive pacing window size for intermediate
-                sessions. This value may be used as a fixed window size for 
+                sessions. This value may be used as a fixed window size for
                 fixed pacing, or as a tuning value for adaptive pacing. "
         DEFVAL { 8 }
         ::= { nwAppnSysCfgLocalNode 22 }
@@ -419,7 +419,7 @@ nwAppnSysRtAddResist   OBJECT-TYPE
 
 nwAppnSysStopType   OBJECT-TYPE
         SYNTAX  INTEGER {
-                  abort(1),      --  Shutdown APPN Routing Services immediately 
+                  abort(1),      --  Shutdown APPN Routing Services immediately
                   immediate(2),  --  deactivate links then abort(1)
                   quiesce(3),    --  advertize quiesce, deactivate endpoint
                                  --  sessions, then immediate(2)
@@ -453,7 +453,7 @@ nwAppnSysBlockNum       OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                "This represents the 3 hexadecimal digit block number which 
+                "This represents the 3 hexadecimal digit block number which
                 precedes the 5 digit id number in the 8 digit node id used in
                 XIDs and Alerts. The block number identifies the product type.
                 Both the block number and id number combined, uniquely identify
@@ -484,9 +484,9 @@ nwAppnSysIdNum          OBJECT-TYPE
 --      LU Definition Table
 
 
---  
+--
 --  LU Table
---  
+--
 
 
 nwAppnSysLuTable OBJECT-TYPE
@@ -523,7 +523,7 @@ nwAppnSysCpName OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the fully qualified name of the Control Point 
+                "Specifies the fully qualified name of the Control Point
                 containing the LU being defined. The format of this name
                 is NNNNNNNN.CCCCCCCC where NNNNNNNN is the network identifier and
                 CCCCCCCC is the LU or Control Point name. Valid characters to make
@@ -546,7 +546,7 @@ nwAppnSysLuName OBJECT-TYPE
                 A through Z, numerics 0 through 9, and the special characters
                 $, @, and #. The first character of the name must NOT be numeric.
                 The string must be a maximum length of 8 characters with no
-                embedded spaces. Note that the nework identifier of the LU is 
+                embedded spaces. Note that the nework identifier of the LU is
                 taken from the fully qualified control point name of the adjacent
                 LEN node (nwAppnSysCpName) which owns the LU. "
         ::= { nwAppnSysLuEntry 2 }
@@ -571,9 +571,9 @@ nwAppnSysLuControl  OBJECT-TYPE
 nwAppnSysAdminStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                   other(1),             --  none of the following
-                  disable(2),           --  shut down APPN Routing Services 
+                  disable(2),           --  shut down APPN Routing Services
                   enabled(3)            --  start up APPN Routing Services
-                        
+
                 }
         ACCESS  read-write
         STATUS  mandatory
@@ -613,7 +613,7 @@ nwAppnSysOperStatus     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current operating system-wide status of APPN 
+                "Indicates the current operating system-wide status of APPN
                 Routing Services.  "
         ::= { nwAppnSysAdministration 2 }
 
@@ -632,7 +632,7 @@ nwAppnSysAdminReset      OBJECT-TYPE
         ::= { nwAppnSysAdministration 3 }
 
 nwAppnSysOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -641,11 +641,11 @@ nwAppnSysOperationalTime  OBJECT-TYPE
         ::= { nwAppnSysAdministration 4 }
 
 nwAppnSysVersion  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current revision level of APPN routing 
+                "Indicates the current revision level of APPN routing
                  services in textual format."
         ::= { nwAppnSysAdministration 5 }
 
@@ -960,7 +960,7 @@ nwAppnFwdIfAdminStatus      OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                "Sets the administrative state of an APPN Routing Services 
+                "Sets the administrative state of an APPN Routing Services
                 port for which the entry exists. enabled(3) causes the
                 APPN Routing Services port to become active. disable(2)
                 causes it to become inactive. There are various choices
@@ -1302,7 +1302,7 @@ nwAppnExtIfNonActXidXchgLimit  OBJECT-TYPE
         ::= { nwAppnExtEntry 12 }
 
 nwAppnExtIfLsXmitRcvCap  OBJECT-TYPE
-        SYNTAX  INTEGER  { twowaysimultaneous(1), 
+        SYNTAX  INTEGER  { twowaysimultaneous(1),
                            twowayalternating(2)  }
         ACCESS  read-write
         STATUS  mandatory
@@ -1322,7 +1322,7 @@ nwAppnExtIfMaxIfrmRcvd  OBJECT-TYPE
         ::= { nwAppnExtEntry 14 }
 
 nwAppnExtIfDfltTargetPacing  OBJECT-TYPE
-        SYNTAX  INTEGER (1..32767) 
+        SYNTAX  INTEGER (1..32767)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1332,7 +1332,7 @@ nwAppnExtIfDfltTargetPacing  OBJECT-TYPE
         ::= { nwAppnExtEntry 15 }
 
 nwAppnExtIfDfltMaxSBtuSize  OBJECT-TYPE
-        SYNTAX  INTEGER (99..65535) 
+        SYNTAX  INTEGER (99..65535)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1350,7 +1350,7 @@ nwAppnExtIfDfltEffectCap  OBJECT-TYPE
         ::= { nwAppnExtEntry 17 }
 
 nwAppnExtIfDfltConnectCost  OBJECT-TYPE
-        SYNTAX  INTEGER (0..255) 
+        SYNTAX  INTEGER (0..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1360,7 +1360,7 @@ nwAppnExtIfDfltConnectCost  OBJECT-TYPE
         ::= { nwAppnExtEntry 18 }
 
 nwAppnExtIfDfltByteCost  OBJECT-TYPE
-        SYNTAX  INTEGER (0..255) 
+        SYNTAX  INTEGER (0..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1383,7 +1383,7 @@ nwAppnExtIfDfltSecurity  OBJECT-TYPE
                 "Specify one of the following security selections:
 
                         non-secure        - specifies no security.
-                        public switched   - data flows over a public switched 
+                        public switched   - data flows over a public switched
                                             network.
                         underground cable - data transmitted over a secure
                                             underground cable.
@@ -1398,7 +1398,7 @@ nwAppnExtIfDfltSecurity  OBJECT-TYPE
         ::= { nwAppnExtEntry 20 }
 
 nwAppnExtIfDfltPropDelay  OBJECT-TYPE
-        SYNTAX  INTEGER {       
+        SYNTAX  INTEGER {
                                 minimum(0),                     --X'00'
                                 negligible(384),                --X'4C'
                                 terrestrial(9216),              --X'71'
@@ -1426,7 +1426,7 @@ nwAppnExtIfDfltPropDelay  OBJECT-TYPE
         ::= { nwAppnExtEntry 21 }
 
 nwAppnExtIfDfltUsrDef1  OBJECT-TYPE
-        SYNTAX  INTEGER (0..255) 
+        SYNTAX  INTEGER (0..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1435,7 +1435,7 @@ nwAppnExtIfDfltUsrDef1  OBJECT-TYPE
         ::= { nwAppnExtEntry 22 }
 
 nwAppnExtIfDfltUsrDef2  OBJECT-TYPE
-        SYNTAX  INTEGER (0..255) 
+        SYNTAX  INTEGER (0..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1444,7 +1444,7 @@ nwAppnExtIfDfltUsrDef2  OBJECT-TYPE
         ::= { nwAppnExtEntry 23 }
 
 nwAppnExtIfDfltUsrDef3  OBJECT-TYPE
-        SYNTAX  INTEGER (0..255) 
+        SYNTAX  INTEGER (0..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1453,9 +1453,9 @@ nwAppnExtIfDfltUsrDef3  OBJECT-TYPE
         ::= { nwAppnExtEntry 24 }
 
 nwAppnExtIfStopType OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                  immediate(1), 
-                  orderly(2) 
+        SYNTAX  INTEGER {
+                  immediate(1),
+                  orderly(2)
                         }
         ACCESS  read-write
         STATUS  mandatory
@@ -1466,7 +1466,7 @@ nwAppnExtIfStopType OBJECT-TYPE
 
                    immediate(1) causes the link stations belonging to the
                                 physical port to be disabled immediately
-                                without flushing pending messages and 
+                                without flushing pending messages and
                                 without initiating an orderly disconnect sequence.
                    orderly(2)   causes pending messages in link stations to be
                                 flushed, followed by an orderly disconnect
@@ -1479,7 +1479,7 @@ nwAppnExtIfCpCpSupp  OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Specifies whether CP-CP sessions are permitted on dynamic 
+                "Specifies whether CP-CP sessions are permitted on dynamic
                  links generated on this port. "
         DEFVAL { yes }
         ::= { nwAppnExtEntry 26 }
@@ -1504,7 +1504,7 @@ nwAppnExtIfAddress  OBJECT-TYPE
                 media type. For token ring or ethernet ports, the information is
                 the 6 byte MAC address which starts in byte 1 and ends in byte 6.
                 For token ring ports the MAC address must be specified in non-
-                canonical format. For ethernet ports the MAC address must be 
+                canonical format. For ethernet ports the MAC address must be
                 specified in canonical format.  For frame relay ports, there is
                 no associated address, i.e., it will be a zero length octet string."
         ::= { nwAppnExtEntry 28 }
@@ -1699,7 +1699,7 @@ nwAppnIfCnTgSecurity  OBJECT-TYPE
         ::= { nwAppnIfCnTgCharEntry 5 }
 
 nwAppnIfCnTgPropDelay OBJECT-TYPE
-        SYNTAX  INTEGER {       
+        SYNTAX  INTEGER {
                                 minimum(0),                     --X'00'
                                 negligible(384),                --X'4C'
                                 terrestrial(9216),              --X'71'
@@ -1858,7 +1858,7 @@ nwAppnFwdIfCtrInMus        OBJECT-TYPE
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
-                "Indicates the total number of Message Units (MU)s that have been 
+                "Indicates the total number of Message Units (MU)s that have been
                 received, during nwAppnFwdIfCtrOperationaltime on the router port
                 for which this entry exists."
         ::= { nwAppnFwdIfCtrEntry 5 }
@@ -2070,12 +2070,12 @@ nwAppnFwdLsTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "This table contains the configuration and management 
+                "This table contains the configuration and management
                 information for links to adjacent link stations. This table is
                 indexed by nwAppnFwdLsName.  Operations which apply are add,
                 delete, modify, enable, and disable.  To add a row to the
                 table, the required fields in the row must be provided.
-                The required fields are nwAppnFwdLsPortName and 
+                The required fields are nwAppnFwdLsPortName and
                 nwAppnFwdLsDestAddr.  All other fields which are not provided
                 will be defaulted.  To enable a link select enable(3) from
                 nwAppnFwdLsAdminStatus. To delete a row, set nwAppnFwdLsControl
@@ -2280,7 +2280,7 @@ SYNTAX  DisplayString (SIZE (1..8))
                 "Specifies the name of the local PU if nwAppnFwdLsSscpSession is
                 set to yes.  Valid characters are uppercase A through Z and
                 numerics 0 through 9.  The name must start with an alphabetic
-                character. Note: once this parameter is set along with other 
+                character. Note: once this parameter is set along with other
                 link station parameters associated with a link station definition,
                 it cannot be modified. In order to change it, the link station
                 definition itself must be deleted and then redefined with the new
@@ -2296,7 +2296,7 @@ nwAppnFwdLsBackLvlLenEN  OBJECT-TYPE
                 LEN Node. If so, specify the type of back level LEN node as
                 follows:
 
-                xid3(2) -       supports XID-3 protocols, but does not include 
+                xid3(2) -       supports XID-3 protocols, but does not include
                                 Network Name control vector in the XID.
 
                 xid0(3) -       Supports XID-0 protocols. Not valid if
@@ -2305,7 +2305,7 @@ nwAppnFwdLsBackLvlLenEN  OBJECT-TYPE
                 noxid(4) -      Does not support XID protocols. Valid only if
                                 nwAppnExtIfPortType is nonswitched(1) and not
                                 valid if nwAppnExtIfLocalLsRole is negotiable(1).
-                                
+
                 If not no(1), then nwAppnFwdLsAdjCpName and nwAppnFwdLsIdNum
                 must be specified. "
         DEFVAL { no }
@@ -2376,7 +2376,7 @@ nwAppnFwdLsSecurity     OBJECT-TYPE
         ::= { nwAppnFwdLsEntry 20 }
 
 nwAppnFwdLsPropDelay    OBJECT-TYPE
-        SYNTAX  INTEGER {       
+        SYNTAX  INTEGER {
                                 minimum(0),                     --X'00'
                                 negligible(384),                --X'4C'
                                 terrestrial(9216),              --X'71'
@@ -2470,9 +2470,9 @@ nwAppnFwdLsdynamicLs  OBJECT-TYPE
         ::= { nwAppnFwdLsEntry 28 }
 
 nwAppnFwdLsStopType  OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                        immediate(1), 
-                        orderly(2) 
+        SYNTAX  INTEGER {
+                        immediate(1),
+                        orderly(2)
                         }
         ACCESS  read-write
         STATUS  mandatory
@@ -2489,12 +2489,12 @@ nwAppnFwdLsStopType  OBJECT-TYPE
         ::= { nwAppnFwdLsEntry 29 }
 
 nwAppnFwdLsPortNbr    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "This link station port number corresponds to the index into
-                the nwAppnFwdIfTable and the nwAppnExtensionTable, which 
+                the nwAppnFwdIfTable and the nwAppnExtensionTable, which
                 together describe the port used by APPN Routing Services."
         ::= { nwAppnFwdLsEntry 30 }
 
@@ -2506,7 +2506,7 @@ nwAppnFwdLsDestAddr  OBJECT-TYPE
                 "Specifies the destination address of the adjacent link station
                 depending on the media type. For token ring or ethernet ports,
                 the information is the 6 byte Destination MAC Address which
-                starts in byte 1 and ends in byte 6. For token ring ports, 
+                starts in byte 1 and ends in byte 6. For token ring ports,
                 the MAC address must be specified in non-canonical format.
                 For ethernet ports the MAC address must be specified in
                 canonical format. For frame relay, the  address is a non-null
@@ -2528,7 +2528,7 @@ nwAppnFwdLsBlockNum       OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                "This represents the 3 hexadecimal digit block number which 
+                "This represents the 3 hexadecimal digit block number which
                 precedes the 5 digit id number in the 8 digit node id of the
                 adjacent node. The node id is used in XIDs and Alerts. The
                 block number identifies the product type. Both the block number
@@ -2546,7 +2546,7 @@ nwAppnFwdLsIdNum    OBJECT-TYPE
                 node. The node id is used in XIDs and Alerts. The id number
                 uniquely identifies the adjacent node within a product type
                 indicated by its block number. Both the block number and id number
-                combined, uniquely identify the adjacent node within the 
+                combined, uniquely identify the adjacent node within the
                 installation network."
         ::= { nwAppnFwdLsEntry 34 }
 
@@ -2611,7 +2611,7 @@ nwAppnFwdLsCtrLsName       OBJECT-TYPE
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
-                "Specifies the primary index into the link station 
+                "Specifies the primary index into the link station
                 counter table. This index is the link station name. "
         ::= { nwAppnFwdLsCtrEntry 1 }
 
@@ -2726,7 +2726,7 @@ nwAppnFwdLsCtrLenErrBlus        OBJECT-TYPE
         DESCRIPTION
                 "Specifies the total number of received Basic Link Unit (BLU)s
                 during nwAppnFwdLsCtrOperationalTime which have invalid DLC
-                headers on the link for which this entry exists." 
+                headers on the link for which this entry exists."
         ::= { nwAppnFwdLsCtrEntry 11 }
 
 nwAppnFwdLsCtrHdrErrBlus        OBJECT-TYPE
@@ -2736,7 +2736,7 @@ nwAppnFwdLsCtrHdrErrBlus        OBJECT-TYPE
         DESCRIPTION
                 "Specifies the total number of received Basic Link Unit (BLU)s
                 during nwAppnFwdLsCtrOperationalTime which have length errors
-                on the link for which this entry exists." 
+                on the link for which this entry exists."
         ::= { nwAppnFwdLsCtrEntry 12 }
 
 nwAppnFwdLsCtrInBytes      OBJECT-TYPE
@@ -2746,7 +2746,7 @@ nwAppnFwdLsCtrInBytes      OBJECT-TYPE
         DESCRIPTION
                 "Specifies the total number of bytes that have been received,
                 during nwAppnFwdLsCtrOperationalTime, on the link for which
-                the entry exists.  This includes bytes contained in 
+                the entry exists.  This includes bytes contained in
                 information (I-frames) and XID BLUs."
         ::= { nwAppnFwdLsCtrEntry 13 }
 

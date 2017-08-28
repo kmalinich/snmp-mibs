@@ -6,7 +6,7 @@ ENTERASYS-POWER-ETHERNET-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Power Ethernet Extensions MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-POWER-ETHERNET-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright 2004-2005, 2009 Enterasys Networks, Inc.
@@ -57,14 +57,14 @@ etsysPowerEthernetMibExtMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
          the Enterasys Networks enterprise OID pertaining to the
          allocation of power in a Pse chassis."
 
     REVISION    "200908272031Z"  -- Thu Aug 27 20:31 UTC 2009
-    DESCRIPTION 
+    DESCRIPTION
         "Adding objects to support IEEE Std. 802.3at functionality.
 
         Changes to etsysPsePortPowerManagementTable:
@@ -73,39 +73,39 @@ etsysPowerEthernetMibExtMIB MODULE-IDENTITY
            and etsysPsePortDetectionStatus objects."
 
     REVISION    "200501101630Z"  -- Mon Jan 10 16:30 GMT 2005
-    DESCRIPTION 
+    DESCRIPTION
         "Added the power management functionality."
 
     REVISION    "200408172227Z"  -- Tue Aug 17 22:27 GMT 2004
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 50 } 
+    ::= { etsysModules 50 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysPowerEthernetObjects       OBJECT IDENTIFIER 
+etsysPowerEthernetObjects       OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetMibExtMIB 1 }
 
-etsysPseChassisPowerAllocation  OBJECT IDENTIFIER 
+etsysPseChassisPowerAllocation  OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 1 }
 
-etsysPseSlotPowerAllocation     OBJECT IDENTIFIER 
+etsysPseSlotPowerAllocation     OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 2 }
 
-etsysPseChassisPowerStatus      OBJECT IDENTIFIER 
+etsysPseChassisPowerStatus      OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 3 }
 
-etsysPseSlotPowerManagement     OBJECT IDENTIFIER 
+etsysPseSlotPowerManagement     OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 4 }
 
-etsysPsePortPowerManagement     OBJECT IDENTIFIER 
+etsysPsePortPowerManagement     OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 5 }
-                        
-etsysPsePowerNotification       OBJECT IDENTIFIER 
+
+etsysPsePowerNotification       OBJECT IDENTIFIER
                                    ::= { etsysPowerEthernetObjects 0 }
 
 
@@ -114,9 +114,9 @@ etsysPsePowerNotification       OBJECT IDENTIFIER
 -- -------------------------------------------------------------
 
 etsysPseChassisPowerAllocationMode OBJECT-TYPE
-    SYNTAX       INTEGER { 
-                   auto     (1), 
-                   manual   (2) 
+    SYNTAX       INTEGER {
+                   auto     (1),
+                   manual   (2)
                  }
     MAX-ACCESS   read-write
     STATUS       current
@@ -137,7 +137,7 @@ etsysPseChassisPowerAllocationMode OBJECT-TYPE
     ::= { etsysPseChassisPowerAllocation 1 }
 
 etsysPseChassisPowerSnmpNotification OBJECT-TYPE
-    SYNTAX       EnabledStatus 
+    SYNTAX       EnabledStatus
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
@@ -192,7 +192,7 @@ etsysPseSlotPowerAllocationTable OBJECT-TYPE
     ::= { etsysPseSlotPowerAllocation 1 }
 
 etsysPseSlotPowerAllocationEntry OBJECT-TYPE
-    SYNTAX       EtsysPseModulePowerAllocationEntry 
+    SYNTAX       EtsysPseModulePowerAllocationEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -202,14 +202,14 @@ etsysPseSlotPowerAllocationEntry OBJECT-TYPE
     INDEX { entPhysicalIndex }
     ::= { etsysPseSlotPowerAllocationTable 1 }
 
-EtsysPseModulePowerAllocationEntry ::= 
+EtsysPseModulePowerAllocationEntry ::=
     SEQUENCE {
         etsysPseSlotPowerMaximum       Unsigned32,
         etsysPseSlotPowerAssigned      Unsigned32
     }
 
 etsysPseSlotPowerMaximum OBJECT-TYPE
-    SYNTAX       Unsigned32 
+    SYNTAX       Unsigned32
     UNITS        "Watts"
     MAX-ACCESS   read-only
     STATUS       current
@@ -220,7 +220,7 @@ etsysPseSlotPowerMaximum OBJECT-TYPE
     ::= { etsysPseSlotPowerAllocationEntry 1 }
 
 etsysPseSlotPowerAssigned OBJECT-TYPE
-    SYNTAX       Unsigned32 
+    SYNTAX       Unsigned32
     UNITS        "Watts"
     MAX-ACCESS   read-write
     STATUS       current
@@ -246,7 +246,7 @@ etsysPseChassisPowerDetected OBJECT-TYPE
     DESCRIPTION
         "The total power detected by the chassis from Pse Power Supply."
     ::= { etsysPseChassisPowerStatus 1 }
- 
+
 etsysPseChassisPowerAvailable OBJECT-TYPE
     SYNTAX       Gauge32
     UNITS        "Watts"
@@ -257,7 +257,7 @@ etsysPseChassisPowerAvailable OBJECT-TYPE
          ( etsysPseChassisPowerDetected *
          ( etsysPseChassisPowerAvailableMaximum / 100 ) )."
     ::= { etsysPseChassisPowerStatus 2 }
- 
+
 etsysPseChassisPowerConsumable OBJECT-TYPE
     SYNTAX       Gauge32
     UNITS        "Watts"
@@ -270,7 +270,7 @@ etsysPseChassisPowerConsumable OBJECT-TYPE
     ::= { etsysPseChassisPowerStatus 3 }
 
 etsysPseChassisPowerAssigned OBJECT-TYPE
-    SYNTAX       Unsigned32 
+    SYNTAX       Unsigned32
     UNITS        "Watts"
     MAX-ACCESS   read-only
     STATUS       current
@@ -281,8 +281,8 @@ etsysPseChassisPowerAssigned OBJECT-TYPE
     ::= { etsysPseChassisPowerStatus 4 }
 
 etsysPseChassisPowerRedundancy OBJECT-TYPE
-    SYNTAX       INTEGER { 
-                   redundant     (1), 
+    SYNTAX       INTEGER {
+                   redundant     (1),
                    notRedundant  (2),
                    notSupported  (3)   -- Object is not supported
                  }
@@ -309,7 +309,7 @@ etsysPseModulePowerManagementTable OBJECT-TYPE
     ::= { etsysPseSlotPowerManagement 1 }
 
 etsysPseModulePowerManagementEntry OBJECT-TYPE
-    SYNTAX       EtsysPseModulePowerManagementEntry 
+    SYNTAX       EtsysPseModulePowerManagementEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -318,7 +318,7 @@ etsysPseModulePowerManagementEntry OBJECT-TYPE
     AUGMENTS { pethMainPseEntry }
     ::= { etsysPseModulePowerManagementTable 1 }
 
-EtsysPseModulePowerManagementEntry ::= 
+EtsysPseModulePowerManagementEntry ::=
     SEQUENCE {
         etsysPseModulePowerMode          INTEGER,
         etsysPseModulePowerClassBudget   Gauge32,
@@ -326,28 +326,28 @@ EtsysPseModulePowerManagementEntry ::=
     }
 
 etsysPseModulePowerMode OBJECT-TYPE
-    SYNTAX       INTEGER { 
-                   realtime     (1), 
+    SYNTAX       INTEGER {
+                   realtime     (1),
                    class        (2)
                  }
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
         "This object controls the power management of the PSE.
-         It also controls how etsysPseModulePowerClassBudget, 
-         etsysPseModulePowerUsage and etsysPsePortPowerLimit are 
+         It also controls how etsysPseModulePowerClassBudget,
+         etsysPseModulePowerUsage and etsysPsePortPowerLimit are
          utilized.
 
-         In realtime mode, the power is managed based on the 
-         actual power consumption of the ports.  
+         In realtime mode, the power is managed based on the
+         actual power consumption of the ports.
          etsysPseModulePowerClassBudget is sum of power
-         consumed by all ports, measured in real-time. The 
-         etsysPseModulePowerUsage is ratio of pethMainPseConsumptionPower 
+         consumed by all ports, measured in real-time. The
+         etsysPseModulePowerUsage is ratio of pethMainPseConsumptionPower
          over pethMainPsePower, expressed in percents.
 
-         In class mode, the power is managed based on the IEEE 802.3af 
+         In class mode, the power is managed based on the IEEE 802.3af
          definition of the class upper limit, except classes 0 & 4
-         for which the actual power consumption is used. 
+         for which the actual power consumption is used.
          etsysPseModulePowerClassBudget is sum of all ports
          power according to their class upper bound, except classes 0 & 4
          for which the actual power consumption is accounted.
@@ -356,7 +356,7 @@ etsysPseModulePowerMode OBJECT-TYPE
          in percents.
 
          The effect of etsysPseModulePowerMode to etsysPsePortPowerLimit is
-         described in etsysPsePortPowerLimit definition. 
+         described in etsysPsePortPowerLimit definition.
 
          Maintaining the value of this object across agent reboots
          is REQUIRED."
@@ -364,7 +364,7 @@ etsysPseModulePowerMode OBJECT-TYPE
     ::= { etsysPseModulePowerManagementEntry 1 }
 
 etsysPseModulePowerClassBudget OBJECT-TYPE
-    SYNTAX       Gauge32 
+    SYNTAX       Gauge32
     UNITS        "Watts"
     MAX-ACCESS   read-only
     STATUS       current
@@ -373,18 +373,18 @@ etsysPseModulePowerClassBudget OBJECT-TYPE
          their class upper bound, except classes 0 & 4 for which the
          actual power consumption is accounted.  In realtime mode,
          this is sum of power consumed by all ports, measured in
-         real-time." 
+         real-time."
     ::= { etsysPseModulePowerManagementEntry 2 }
 
 etsysPseModulePowerUsage OBJECT-TYPE
-    SYNTAX       Integer32 (0..100) 
+    SYNTAX       Integer32 (0..100)
     UNITS        "%"
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
         "In class mode, this is ratio of etsysPseModulePowerClassBudget
          over pethMainPsePower, expressed in percents.
-         In realtime mode, this is ratio of pethMainPseConsumptionPower 
+         In realtime mode, this is ratio of pethMainPseConsumptionPower
          over pethMainPsePower, expressed in percents."
     ::= { etsysPseModulePowerManagementEntry 3 }
 
@@ -404,16 +404,16 @@ etsysPsePortPowerManagementTable OBJECT-TYPE
     ::= { etsysPsePortPowerManagement 1 }
 
 etsysPsePortPowerManagementEntry OBJECT-TYPE
-    SYNTAX       EtsysPsePortPowerManagementEntry 
+    SYNTAX       EtsysPsePortPowerManagementEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A set of objects that display and control the power 
+        "A set of objects that display and control the power
          consumption of a PSE, at the port level."
     AUGMENTS { pethPsePortEntry }
     ::= { etsysPsePortPowerManagementTable 1 }
 
-EtsysPsePortPowerManagementEntry ::= 
+EtsysPsePortPowerManagementEntry ::=
     SEQUENCE {
         etsysPsePortPowerLimit   Integer32,
         etsysPsePortPowerUsage   Gauge32,
@@ -440,17 +440,17 @@ etsysPsePortPowerLimit OBJECT-TYPE
     ::= { etsysPsePortPowerManagementEntry 1 }
 
 etsysPsePortPowerUsage OBJECT-TYPE
-    SYNTAX       Gauge32 
+    SYNTAX       Gauge32
     UNITS        "milliwatts"
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "Actual power consumption measured in real-time." 
+        "Actual power consumption measured in real-time."
     ::= { etsysPsePortPowerManagementEntry 2 }
 
 etsysPsePortPDType OBJECT-TYPE
-    SYNTAX       INTEGER { 
-                   legacy       (1), 
+    SYNTAX       INTEGER {
+                   legacy       (1),
                    ieee8023af   (2),
                    other        (3),
                    ieee8023     (4),
@@ -460,20 +460,20 @@ etsysPsePortPDType OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "Describes the detected PD type on this port.
-         
+
          A value of legacy(1) - indicates that the PD is using a
          capacitive signature, which is pre-IEEE standard.
-         
+
          A value of ieee8023af(2)- indicates that the PD is using a
          resistive signature and is compliant with the IEEE Std 802.3af.
-         
+
          A value of other(3) - indicates that the PD type could not be
          determined.
-         
+
          A value of ieee8023(4)- indicates that the PD is using a
          resistive signature and is compliant with the IEEE Std 802.3af
          and/or IEEE Std 802.3at specifications.
-         
+
          A value of ieee8023at(5)- indicates that the PD is using a
          resistive signature and is compliant with the IEEE Std 802.3at."
     REFERENCE
@@ -568,7 +568,7 @@ etsysPsePowerSupplyStatusTable OBJECT-TYPE
     ::= { etsysPseChassisPowerStatus 6 }
 
 etsysPsePowerSupplyStatusEntry OBJECT-TYPE
-    SYNTAX       EtsysPsePowerSupplyStatusEntry 
+    SYNTAX       EtsysPsePowerSupplyStatusEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -576,14 +576,14 @@ etsysPsePowerSupplyStatusEntry OBJECT-TYPE
     INDEX { etsysPsePowerSupplyModuleNumber }
     ::= { etsysPsePowerSupplyStatusTable 1 }
 
-EtsysPsePowerSupplyStatusEntry ::= 
+EtsysPsePowerSupplyStatusEntry ::=
     SEQUENCE {
         etsysPsePowerSupplyModuleNumber      Unsigned32,
         etsysPsePowerSupplyModuleStatus      INTEGER
     }
 
 etsysPsePowerSupplyModuleNumber OBJECT-TYPE
-    SYNTAX       Unsigned32 
+    SYNTAX       Unsigned32
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -597,7 +597,7 @@ etsysPsePowerSupplyModuleStatus OBJECT-TYPE
                      notInstalled               (2),
                      installedAndOperating      (3),
                      installedAndNotOperating   (4)
-                 }    
+                 }
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -708,7 +708,7 @@ etsysPsePortPowerManagementGroup OBJECT-GROUP
     OBJECTS {
         etsysPsePortPowerLimit,
         etsysPsePortPowerUsage,
-        etsysPsePortPDType    
+        etsysPsePortPDType
     }
     STATUS      deprecated
     DESCRIPTION
@@ -740,7 +740,7 @@ etsysPsePowerAllocationCompliance MODULE-COMPLIANCE
          power allocation."
 
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
             etsysPsePowerAllocationControlGroup,
             etsysPseChassisPowerStatusGroup,
             etsysPsePowerNotificationGroup
@@ -751,11 +751,11 @@ etsysPsePowerAllocationCompliance MODULE-COMPLIANCE
 etsysPsePowerAllocationCompliance2 MODULE-COMPLIANCE
     STATUS      deprecated
     DESCRIPTION
-        "The compliance statement for devices that support 
+        "The compliance statement for devices that support
          power budgets."
 
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
             etsysPsePowerAllocationControlGroup,
             etsysPseChassisPowerStatusGroup,
             etsysPsePowerNotificationGroup
@@ -776,11 +776,11 @@ etsysPsePowerAllocationCompliance2 MODULE-COMPLIANCE
 etsysPsePowerAllocationCompliance2Rev2 MODULE-COMPLIANCE
     STATUS      current
     DESCRIPTION
-        "The compliance statement for devices that support 
+        "The compliance statement for devices that support
          power budgets."
 
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
             etsysPsePowerAllocationControlGroup,
             etsysPseChassisPowerStatusGroup,
             etsysPsePowerNotificationGroup

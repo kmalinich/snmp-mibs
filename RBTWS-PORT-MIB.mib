@@ -87,7 +87,7 @@ rbtwsPortConfigTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF RbtwsPortConfigEntry
         MAX-ACCESS      not-accessible
         STATUS          current
-        DESCRIPTION     
+        DESCRIPTION
                 "Port configuration table"
         ::= { rbtwsPortDataObjects 1 }
 
@@ -98,7 +98,7 @@ rbtwsPortConfigEntry OBJECT-TYPE
         DESCRIPTION
                 "Port configuration entry"
         INDEX   { rbtwsPortConfigPortNumber }
-        ::= { rbtwsPortConfigTable 1 }        
+        ::= { rbtwsPortConfigTable 1 }
 
 RbtwsPortConfigEntry ::= SEQUENCE {
         rbtwsPortConfigPortNumber          RbtwsPhysPortNumber,
@@ -131,7 +131,7 @@ rbtwsPortConfigPoeMode     OBJECT-TYPE
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION
-                "Indicates whether this port is configured to 
+                "Indicates whether this port is configured to
                  supply PoE (Power over Ethernet)."
         ::= { rbtwsPortConfigEntry 3 }
 
@@ -175,7 +175,7 @@ rbtwsPortConfigGroup OBJECT-GROUP
         OBJECTS {
                  rbtwsPortConfigPortMode,
                  rbtwsPortConfigPoeMode,
-                 rbtwsPortConfigTrunkMaster     
+                 rbtwsPortConfigTrunkMaster
                 }
         STATUS      current
         DESCRIPTION

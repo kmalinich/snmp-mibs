@@ -11,24 +11,24 @@ ZIPLOCK-MIB DEFINITIONS ::= BEGIN
         --  support@ctron.com
 
         --  This module provide authoritative definitions for
-        --      object identifiers created for the support of the 
+        --      object identifiers created for the support of the
         --      Ziplock Daughter Board optionally used on Cabletron
-        --      products. 
+        --      products.
         --
         --      enterprise.cabletron.mibs.ctron.
         --              ctPhysical.ctResource.sysResourceInstalled
         --                                                                                                      .ctZiplock
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -44,9 +44,9 @@ ZIPLOCK-MIB DEFINITIONS ::= BEGIN
 
                 ctZiplock       OBJECT IDENTIFIER ::= { ctResource 3 }
 
---  
+--
 --  ctZiplock Group
--- 
+--
 
         ctZiplockTable  OBJECT-TYPE
         SYNTAX  SEQUENCE OF CtZiplockEntry
@@ -66,7 +66,7 @@ ZIPLOCK-MIB DEFINITIONS ::= BEGIN
         INDEX   { ctZiplockNumber }
         ::= { ctZiplockTable 1 }
 
-        CtZiplockEntry ::= SEQUENCE 
+        CtZiplockEntry ::= SEQUENCE
         {
                 ctZiplockNumber         INTEGER,
                 ctZiplockPresence       INTEGER,
@@ -99,7 +99,7 @@ ZIPLOCK-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "This object represents the hardware revision of the Ziplock
-                daughter board." 
+                daughter board."
         ::= { ctZiplockEntry 3 }
 
     ctZiplockStatus OBJECT-TYPE
@@ -108,10 +108,10 @@ ZIPLOCK-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "This object indicates the status of the Ziplock
-                daughter board.  
-                
-                1=GOOD, 
-                2=BAD, 
+                daughter board.
+
+                1=GOOD,
+                2=BAD,
                 3=UNKNOWN."
         ::= { ctZiplockEntry 4 }
 

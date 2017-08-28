@@ -43,7 +43,7 @@ IMPORTS
 --       Counter, Gauge
 --         TimeTicks
 --                FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.10
         sfpsSizeService, sfpsSizeServiceAPI
                 FROM CTRON-SFPS-INCLUDE-MIB;
@@ -52,13 +52,13 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 --SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 --SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 --HexInteger ::= INTEGER
 --  display this integer in hex format
 
@@ -89,17 +89,17 @@ sfpsSizeServiceEntry    OBJECT-TYPE
 
 SfpsSizeServiceEntry ::=
         SEQUENCE {
-                sfpsSizeServiceName          DisplayString,  
-                sfpsSizeServiceId            INTEGER,  
-                sfpsSizeServiceElemSize      INTEGER,  
-                sfpsSizeServiceDesired       INTEGER,  
-                sfpsSizeServiceGranted       INTEGER,  
-                sfpsSizeServiceIncrement     INTEGER,  
+                sfpsSizeServiceName          DisplayString,
+                sfpsSizeServiceId            INTEGER,
+                sfpsSizeServiceElemSize      INTEGER,
+                sfpsSizeServiceDesired       INTEGER,
+                sfpsSizeServiceGranted       INTEGER,
+                sfpsSizeServiceIncrement     INTEGER,
                 sfpsSizeServiceTotalBytes    INTEGER,
                                 sfpsSizeServiceNbrCalls      INTEGER,
                                 sfpsSizeServiceRtnStatus     INTEGER,
                                 sfpsSizeServiceHowGranted    INTEGER
-        }  
+        }
 
 sfpsSizeServiceName   OBJECT-TYPE
         SYNTAX  DisplayString
@@ -132,7 +132,7 @@ sfpsSizeServiceDesired   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays how many Elements/Bytes the current user asked 
+                "Displays how many Elements/Bytes the current user asked
                  for in SizeRequest"
         ::= { sfpsSizeServiceEntry 4 }
 
@@ -142,7 +142,7 @@ sfpsSizeServiceGranted   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays how many Elements/Bytes the current user was 
+                "Displays how many Elements/Bytes the current user was
                  granted via SizeRequest."
         ::= { sfpsSizeServiceEntry 5 }
 
@@ -152,7 +152,7 @@ sfpsSizeServiceIncrement   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays total Element/Bytes the user was granted via 
+                "Displays total Element/Bytes the user was granted via
                  all IncrementRequest calls."
         ::= { sfpsSizeServiceEntry 6 }
 
@@ -162,7 +162,7 @@ sfpsSizeServiceTotalBytes   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays the total number of Bytes the current user was 
+                "Displays the total number of Bytes the current user was
                  granted (SizeRequest & IncrementRequest)."
         ::= { sfpsSizeServiceEntry 7 }
 
@@ -172,7 +172,7 @@ sfpsSizeServiceNbrCalls   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays the number of requests the current user has made 
+                "Displays the number of requests the current user has made
                  to the SizeService."
         ::= { sfpsSizeServiceEntry 8 }
 
@@ -224,7 +224,7 @@ sfpsSizeServiceAPIVerb   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 1 }
 
 sfpsSizeServiceAPIName   OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -232,7 +232,7 @@ sfpsSizeServiceAPIName   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 2 }
 
 sfpsSizeServiceAPIId   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -240,7 +240,7 @@ sfpsSizeServiceAPIId   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 3 }
 
 sfpsSizeServiceAPIGrant   OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -248,7 +248,7 @@ sfpsSizeServiceAPIGrant   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 4 }
 
 sfpsSizeServiceAPIIncrement   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -256,7 +256,7 @@ sfpsSizeServiceAPIIncrement   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 5 }
 
 sfpsSizeServiceAPINumberSet   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -264,11 +264,11 @@ sfpsSizeServiceAPINumberSet   OBJECT-TYPE
         ::= { sfpsSizeServiceAPI 6 }
 
 sfpsSizeServiceAPIVersion   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "The version."
         ::= { sfpsSizeServiceAPI 7 }
 
-END 
+END

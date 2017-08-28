@@ -14,7 +14,7 @@ IMPORTS
         FROM IF-MIB
     lldpV2Extensions,
     lldpV2LocPortIfIndex,
-    lldpV2RemTimeMark, 
+    lldpV2RemTimeMark,
     lldpV2RemLocalIfIndex,
     lldpV2RemLocalDestMACAddress,
     lldpV2RemIndex,
@@ -26,13 +26,13 @@ IMPORTS
 lldpV2Xdot3MIB MODULE-IDENTITY
     LAST-UPDATED "201305241753Z"  -- Fri May 24 17:53 UTC 2013
     ORGANIZATION "IEEE 802.1 Working Group"
-    CONTACT-INFO 
+    CONTACT-INFO
             "WG-URL: http://grouper.ieee.org/groups/802/1/index.html
             WG-EMail: STDS-802-1-L@LISTSERV.IEEE.ORG
 
             Contact: Tony Jeffree
             Postal:  11a Poplar Grove
-                     Sale 
+                     Sale
                      Cheshire M33 3AX
                      UK
             Tel:     +44-161-973-4278
@@ -69,7 +69,7 @@ lldpV2Xdot3MIB MODULE-IDENTITY
             (now moved to the 802.1 extension MIB)."
 
 -- OUI for IEEE 802.3 is 4623 (00-12-0F)
-   ::= { lldpV2Extensions 4623 } 
+   ::= { lldpV2Extensions 4623 }
 
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ p8021lldpV2Xdot3PortConfigTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "A table that controls selection of LLDP TLVs to be transmitted 
+            "A table that controls selection of LLDP TLVs to be transmitted
             on individual ports."
     ::= { p8021lldpV2Xdot3Config 1 }
 
@@ -136,7 +136,7 @@ p8021lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
     SYNTAX      BITS {
             macPhyConfigStatus(0),
             powerViaMDI(1),
-            unused(2), --avoids re-use of the old link agg bit number 
+            unused(2), --avoids re-use of the old link agg bit number
             maxFrameSize(3)
     }
     MAX-ACCESS  read-write
@@ -167,7 +167,7 @@ p8021lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
 
             The value of this object is restored from non-volatile
             storage after a re-initialization of the management system."
-    REFERENCE 
+    REFERENCE
             "9.1.2.1"
     DEFVAL  { { } }
     ::= { p8021lldpV2Xdot3PortConfigEntry  1 }
@@ -175,7 +175,7 @@ p8021lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
 
 
 ------------------------------------------------------------------------------
--- IEEE 802.3 - Local Device Information 
+-- IEEE 802.3 - Local Device Information
 ------------------------------------------------------------------------------
 
 ---
@@ -217,7 +217,7 @@ p8021lldpV2Xdot3LocPortAutoNegSupported OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the given port
             (associated with the local system) supports Auto-negotiation."
-    REFERENCE 
+    REFERENCE
             "F.2.1"
     ::= { p8021lldpV2Xdot3LocPortEntry 1 }
 
@@ -229,7 +229,7 @@ p8021lldpV2Xdot3LocPortAutoNegEnabled  OBJECT-TYPE
             "The truth value used to indicate whether port
             Auto-negotiation is enabled on the given port associated
             with the local system."
-    REFERENCE 
+    REFERENCE
             "F.2.1"
     ::= { p8021lldpV2Xdot3LocPortEntry 2 }
 
@@ -242,7 +242,7 @@ p8021lldpV2Xdot3LocPortAutoNegAdvertisedCap OBJECT-TYPE
             ifMauAutoNegCapAdvertisedBits object (defined in IETF RFC
             3636) which is associated with the given port on the
             local system."
-    REFERENCE 
+    REFERENCE
             "F.2.2"
     ::= { p8021lldpV2Xdot3LocPortEntry 3 }
 
@@ -255,16 +255,16 @@ p8021lldpV2Xdot3LocPortOperMauType  OBJECT-TYPE
             of the given port on the local system.
 
             This object contains the integer value derived from the
-            list position of the corresponding dot3MauType as listed 
+            list position of the corresponding dot3MauType as listed
             in IETF RFC 4836 (or subsequent revisions) and is equal
             to the last number in the respective dot3MauType OID.
-           
+
             For example, if the ifMauType object is dot3MauType1000BaseTHD
             which corresponds to {dot3MauType 29}, the numerical value of
             this field is 29. For MAU types not listed in RFC 4836
             (or subsequent revisions), the value of this field shall be
             set to zero."
-    REFERENCE 
+    REFERENCE
             "F.2.3"
     ::= { p8021lldpV2Xdot3LocPortEntry 4 }
 
@@ -282,7 +282,7 @@ p8021lldpV2Xdot3LocPowerTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of power ethernet 
+            "This table contains one row per port of power ethernet
             information (as a part of the LLDP 802.3 organizational
             extension) on the local system known to this agent."
     ::= { p8021lldpV2Xdot3LocalData 2 }
@@ -303,7 +303,7 @@ LldpV2Xdot3LocPowerEntry ::= SEQUENCE {
          p8021lldpV2Xdot3LocPowerPairControlable     TruthValue,
          p8021lldpV2Xdot3LocPowerPairs               Unsigned32,
          p8021lldpV2Xdot3LocPowerClass               Unsigned32
-} 
+}
 
 
 p8021lldpV2Xdot3LocPowerPortClass  OBJECT-TYPE
@@ -313,7 +313,7 @@ p8021lldpV2Xdot3LocPowerPortClass  OBJECT-TYPE
     DESCRIPTION
             "The value that identifies the port Class of the given port
             associated with the local system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3LocPowerEntry 1 }
 
@@ -324,7 +324,7 @@ p8021lldpV2Xdot3LocPowerMDISupported  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the MDI power is
             supported on the given port associated with the local system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3LocPowerEntry 2 }
 
@@ -335,7 +335,7 @@ p8021lldpV2Xdot3LocPowerMDIEnabled  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to identify whether MDI power is
             enabled on the given port associated with the local system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3LocPowerEntry 3 }
 
@@ -349,7 +349,7 @@ p8021lldpV2Xdot3LocPowerPairControlable  OBJECT-TYPE
             RFC 3621) and is used to indicate whether the pair selection
             can be controlled on the given port associated with the
             local system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3LocPowerEntry 4 }
 
@@ -361,7 +361,7 @@ p8021lldpV2Xdot3LocPowerPairs  OBJECT-TYPE
             "This object contains the value of the pethPsePortPowerPairs
             object (defined in IETF RFC 3621) which is associated with
             the given port on the local system."
-    REFERENCE 
+    REFERENCE
             "F.3.2"
     ::= { p8021lldpV2Xdot3LocPowerEntry 5 }
 
@@ -374,7 +374,7 @@ p8021lldpV2Xdot3LocPowerClass  OBJECT-TYPE
             pethPsePortPowerClassifications object (defined in IETF
             RFC 3621) which is associated with the given port on the
             local system."
-    REFERENCE 
+    REFERENCE
             "F.3.3"
     ::= { p8021lldpV2Xdot3LocPowerEntry 6 }
 
@@ -382,7 +382,7 @@ p8021lldpV2Xdot3LocPowerClass  OBJECT-TYPE
 
 ---
 ---
---- lldpV2Xdot3LocMaxFrameSizeTable: Maximum Frame Size information 
+--- lldpV2Xdot3LocMaxFrameSizeTable: Maximum Frame Size information
 --- V2 modified to be indexed by ifIndex.
 ---
 ---
@@ -391,7 +391,7 @@ p8021lldpV2Xdot3LocMaxFrameSizeTable  OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of maximum frame 
+            "This table contains one row per port of maximum frame
             size information (as a part of the LLDP 802.3 organizational
             extension) on the local system known to this agent."
     ::= { p8021lldpV2Xdot3LocalData 3 }
@@ -408,16 +408,16 @@ p8021lldpV2Xdot3LocMaxFrameSizeEntry OBJECT-TYPE
 
 LldpV2Xdot3LocMaxFrameSizeEntry ::= SEQUENCE {
         p8021lldpV2Xdot3LocMaxFrameSize             Unsigned32
-} 
+}
 
 p8021lldpV2Xdot3LocMaxFrameSize OBJECT-TYPE
     SYNTAX      Unsigned32(0..65535)
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "An integer value indicating the maximum supported frame 
+            "An integer value indicating the maximum supported frame
              size in octets on the given port of the local system."
-    REFERENCE 
+    REFERENCE
             "F.4.1"
     ::= { p8021lldpV2Xdot3LocMaxFrameSizeEntry 1 }
 
@@ -451,7 +451,7 @@ p8021lldpV2Xdot3RemPortEntry OBJECT-TYPE
     DESCRIPTION
             "Information about a particular physical network connection."
     INDEX   { lldpV2RemTimeMark,
-              lldpV2RemLocalIfIndex, 
+              lldpV2RemLocalIfIndex,
               lldpV2RemLocalDestMACAddress,
               lldpV2RemIndex }
     ::= { p8021lldpV2Xdot3RemPortTable 1 }
@@ -461,7 +461,7 @@ LldpV2Xdot3RemPortEntry ::= SEQUENCE {
               p8021lldpV2Xdot3RemPortAutoNegEnabled       TruthValue,
               p8021lldpV2Xdot3RemPortAutoNegAdvertisedCap OCTET STRING,
               p8021lldpV2Xdot3RemPortOperMauType          Unsigned32
-} 
+}
 
 
 p8021lldpV2Xdot3RemPortAutoNegSupported OBJECT-TYPE
@@ -471,7 +471,7 @@ p8021lldpV2Xdot3RemPortAutoNegSupported OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the given port
             (associated with remote system) supports Auto-negotiation."
-    REFERENCE 
+    REFERENCE
             "F.2.1"
     ::= { p8021lldpV2Xdot3RemPortEntry 1 }
 
@@ -483,7 +483,7 @@ p8021lldpV2Xdot3RemPortAutoNegEnabled  OBJECT-TYPE
             "The truth value used to indicate whether port
             Auto-negotiation is enabled on the given port associated
             with the remote system."
-    REFERENCE 
+    REFERENCE
             "F.2.1"
     ::= { p8021lldpV2Xdot3RemPortEntry 2 }
 
@@ -496,7 +496,7 @@ p8021lldpV2Xdot3RemPortAutoNegAdvertisedCap  OBJECT-TYPE
             ifMauAutoNegCapAdvertisedBits object (defined in IETF RFC
             3636) which is associated with the given port on the
             remote system."
-    REFERENCE 
+    REFERENCE
             "F.2.2"
     ::= { p8021lldpV2Xdot3RemPortEntry 3 }
 
@@ -512,13 +512,13 @@ p8021lldpV2Xdot3RemPortOperMauType OBJECT-TYPE
             list position of the corresponding dot3MauType as listed in
             in IETF RFC 4836 (or subsequent revisions) and is equal
             to the last number in the respective dot3MauType OID.
-           
+
             For example, if the ifMauType object is dot3MauType1000BaseTHD
             which corresponds to {dot3MauType 29}, the numerical value of
             this field is 29. For MAU types not listed in RFC 4836
             (or subsequent revisions), the value of this field shall be
             set to zero."
-    REFERENCE 
+    REFERENCE
             "F.2.3"
     ::= { p8021lldpV2Xdot3RemPortEntry 4 }
 
@@ -559,7 +559,7 @@ LldpV2Xdot3RemPowerEntry ::= SEQUENCE {
               p8021lldpV2Xdot3RemPowerPairControlable     TruthValue,
               p8021lldpV2Xdot3RemPowerPairs               Unsigned32,
               p8021lldpV2Xdot3RemPowerClass               Unsigned32
-} 
+}
 
 
 p8021lldpV2Xdot3RemPowerPortClass  OBJECT-TYPE
@@ -569,7 +569,7 @@ p8021lldpV2Xdot3RemPowerPortClass  OBJECT-TYPE
     DESCRIPTION
             "The value that identifies the port Class of the given port
             associated with the remote system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3RemPowerEntry 1 }
 
@@ -581,7 +581,7 @@ p8021lldpV2Xdot3RemPowerMDISupported  OBJECT-TYPE
             "The truth value used to indicate whether the MDI power
             is supported on the given port associated with the remote
             system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3RemPowerEntry 2 }
 
@@ -592,7 +592,7 @@ p8021lldpV2Xdot3RemPowerMDIEnabled  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to identify whether MDI power is
             enabled on the given port associated with the remote system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3RemPowerEntry 3 }
 
@@ -606,7 +606,7 @@ p8021lldpV2Xdot3RemPowerPairControlable  OBJECT-TYPE
             RFC 3621) and is used to indicate whether the pair selection
             can be controlled on the given port associated with the
             remote system."
-    REFERENCE 
+    REFERENCE
             "F.3.1"
     ::= { p8021lldpV2Xdot3RemPowerEntry 4 }
 
@@ -618,7 +618,7 @@ p8021lldpV2Xdot3RemPowerPairs  OBJECT-TYPE
             "This object contains the value of the pethPsePortPowerPairs
             object (defined in IETF RFC 3621) which is associated with
             the given port on the remote system."
-    REFERENCE 
+    REFERENCE
             "F.3.2"
     ::= { p8021lldpV2Xdot3RemPowerEntry 5 }
 
@@ -631,14 +631,14 @@ p8021lldpV2Xdot3RemPowerClass  OBJECT-TYPE
             pethPsePortPowerClassifications object (defined in IETF
             RFC 3621) which is associated with the given port on the
             remote system."
-    REFERENCE 
+    REFERENCE
             "F.3.3"
     ::= { p8021lldpV2Xdot3RemPowerEntry 6 }
 
 
 
 ---
---- lldpV2Xdot3RemMaxFrameSizeTable: Maximum Frame Size information 
+--- lldpV2Xdot3RemMaxFrameSizeTable: Maximum Frame Size information
 --- V2 modified to be indexed by ifIndex and destination MAC address.
 ---
 ---
@@ -649,8 +649,8 @@ p8021lldpV2Xdot3RemMaxFrameSizeTable  OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "This table contains one row per port/destination
-            address pair of maximum frame 
-            size information (as a part of the LLDP IEEE 802.3 
+            address pair of maximum frame
+            size information (as a part of the LLDP IEEE 802.3
             organizational extension) of the remote system."
     ::= { p8021lldpV2Xdot3RemoteData 3 }
 
@@ -676,10 +676,10 @@ p8021lldpV2Xdot3RemMaxFrameSize OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "An integer value indicating the maximum supported frame 
-             size in octets on the port component associated with the 
+            "An integer value indicating the maximum supported frame
+             size in octets on the port component associated with the
              remote system."
-    REFERENCE 
+    REFERENCE
             "F.4.1"
     ::= { p8021lldpV2Xdot3RemMaxFrameSizeEntry 1 }
 
@@ -700,7 +700,7 @@ p8021lldpV2Xdot3TxRxCompliance MODULE-COMPLIANCE
             "A compliance statement for SNMP entities that implement
             the LLDP 802.3 organizational extension MIB.
 
-            This group is mandatory for all agents that implement the 
+            This group is mandatory for all agents that implement the
             LLDP 802.3 organizational extension in TX and/or RX mode.
 
             This version defines compliance requirements for
@@ -719,7 +719,7 @@ p8021lldpV2Xdot3TxCompliance MODULE-COMPLIANCE
             "The compliance statement for SNMP entities which implement
             the LLDP 802.3 organizational extension MIB.
 
-            This group is mandatory for agents which implement the 
+            This group is mandatory for agents which implement the
             LLDP 802.3 organizational extension in the TX mode.
 
             This version defines compliance requirements for
@@ -734,7 +734,7 @@ p8021lldpV2Xdot3RxCompliance MODULE-COMPLIANCE
             "The compliance statement for SNMP entities which implement
             the LLDP 802.3 organizational extension MIB.
 
-            This group is mandatory for agents which implement the 
+            This group is mandatory for agents which implement the
             LLDP 802.3 organizational extension in the RX mode.
 
             This version defines compliance requirements for

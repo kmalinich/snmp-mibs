@@ -33,21 +33,21 @@ CTRON-SFPS-POLICY-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
       TimeTicks
                 FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.2
-        sfpsISPPolicy, sfpsVlanMatrix, sfpsVlanMatrixApi, sfpsVMMatrix  
-        
+        sfpsISPPolicy, sfpsVlanMatrix, sfpsVlanMatrixApi, sfpsVMMatrix
+
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
@@ -71,24 +71,24 @@ sfpsServiceCenterPolicyEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Policy Entry."
-        INDEX   { sfpsServiceCenterPolicyHashLeaf } 
+        INDEX   { sfpsServiceCenterPolicyHashLeaf }
         ::= { sfpsServiceCenterPolicyTable 1 }
 
 SfpsServiceCenterPolicyEntry ::=
         SEQUENCE {
-                sfpsServiceCenterPolicyHashLeaf         HexInteger,  
-                sfpsServiceCenterPolicyMetric   INTEGER,  
-                sfpsServiceCenterPolicyName     DisplayString,  
-                sfpsServiceCenterPolicyOperStatus       INTEGER,  
+                sfpsServiceCenterPolicyHashLeaf         HexInteger,
+                sfpsServiceCenterPolicyMetric   INTEGER,
+                sfpsServiceCenterPolicyName     DisplayString,
+                sfpsServiceCenterPolicyOperStatus       INTEGER,
                 sfpsServiceCenterPolicyAdminStatus     INTEGER,
                 sfpsServiceCenterPolicyStatusTime       TimeTicks,
                 sfpsServiceCenterPolicyRequests         INTEGER,
                 sfpsServiceCenterPolicyResponses        INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterPolicyHashLeaf   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -162,7 +162,7 @@ sfpsServiceCenterPolicyResponses   OBJECT-TYPE
         DESCRIPTION
                 "GOOD replies by server."
         ::= { sfpsServiceCenterPolicyEntry 8 }
- 
+
 -- Matrix Table
 
 sfpsMatrixTable     OBJECT-TYPE
@@ -179,23 +179,23 @@ sfpsMatrixEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsMatrixRowId, sfpsMatrixColId } 
+        INDEX   { sfpsMatrixRowId, sfpsMatrixColId }
         ::= { sfpsMatrixTable 1 }
 
 SfpsMatrixEntry ::=
         SEQUENCE {
-                sfpsMatrixRowId         INTEGER,  
-                sfpsMatrixColId         INTEGER,  
-                sfpsMatrixUser1Type     OCTET STRING,  
-                sfpsMatrixUser1Load     OCTET STRING,  
-                sfpsMatrixUser2Type     OCTET STRING,  
-                sfpsMatrixUser2Load     OCTET STRING,  
-                sfpsMatrixConnect       INTEGER,  
+                sfpsMatrixRowId         INTEGER,
+                sfpsMatrixColId         INTEGER,
+                sfpsMatrixUser1Type     OCTET STRING,
+                sfpsMatrixUser1Load     OCTET STRING,
+                sfpsMatrixUser2Type     OCTET STRING,
+                sfpsMatrixUser2Load     OCTET STRING,
+                sfpsMatrixConnect       INTEGER,
                 sfpsMatrixFlood         INTEGER
-        }  
+        }
 
 sfpsMatrixRowId   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -203,7 +203,7 @@ sfpsMatrixRowId   OBJECT-TYPE
         ::= { sfpsMatrixEntry 1 }
 
 sfpsMatrixColId   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -211,7 +211,7 @@ sfpsMatrixColId   OBJECT-TYPE
         ::= { sfpsMatrixEntry 2 }
 
 sfpsMatrixUser1Type   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -219,7 +219,7 @@ sfpsMatrixUser1Type   OBJECT-TYPE
         ::= { sfpsMatrixEntry 3 }
 
 sfpsMatrixUser1Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING 
+        SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -227,7 +227,7 @@ sfpsMatrixUser1Load   OBJECT-TYPE
         ::= { sfpsMatrixEntry 4 }
 
 sfpsMatrixUser2Type   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -235,7 +235,7 @@ sfpsMatrixUser2Type   OBJECT-TYPE
         ::= { sfpsMatrixEntry 5 }
 
 sfpsMatrixUser2Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -243,7 +243,7 @@ sfpsMatrixUser2Load   OBJECT-TYPE
         ::= { sfpsMatrixEntry 6 }
 
 sfpsMatrixConnect   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -251,7 +251,7 @@ sfpsMatrixConnect   OBJECT-TYPE
         ::= { sfpsMatrixEntry 7 }
 
 sfpsMatrixFlood   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -275,22 +275,22 @@ sfpsMatrixInfoEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsMatrixInfoAddrType, sfpsMatrixInfoAddrHash, sfpsMatrixInfoHashIndex } 
+        INDEX   { sfpsMatrixInfoAddrType, sfpsMatrixInfoAddrHash, sfpsMatrixInfoHashIndex }
         ::= { sfpsMatrixInfoTable 1 }
 
 SfpsMatrixInfoEntry ::=
         SEQUENCE {
-                sfpsMatrixInfoAddrType          INTEGER,  
-                sfpsMatrixInfoAddrHash          INTEGER,  
-                sfpsMatrixInfoHashIndex         INTEGER,  
-                sfpsMatrixInfoAddrValue         OCTET STRING,  
-                sfpsMatrixInfoTableIndex        INTEGER,  
-                sfpsMatrixInfoDefConnect        INTEGER,  
-                sfpsMatrixInfoDefFlood          INTEGER  
-        }  
+                sfpsMatrixInfoAddrType          INTEGER,
+                sfpsMatrixInfoAddrHash          INTEGER,
+                sfpsMatrixInfoHashIndex         INTEGER,
+                sfpsMatrixInfoAddrValue         OCTET STRING,
+                sfpsMatrixInfoTableIndex        INTEGER,
+                sfpsMatrixInfoDefConnect        INTEGER,
+                sfpsMatrixInfoDefFlood          INTEGER
+        }
 
 sfpsMatrixInfoAddrType   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -298,7 +298,7 @@ sfpsMatrixInfoAddrType   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 1 }
 
 sfpsMatrixInfoAddrHash   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -306,7 +306,7 @@ sfpsMatrixInfoAddrHash   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 2 }
 
 sfpsMatrixInfoHashIndex   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -314,7 +314,7 @@ sfpsMatrixInfoHashIndex   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 3 }
 
 sfpsMatrixInfoAddrValue   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -322,7 +322,7 @@ sfpsMatrixInfoAddrValue   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 4 }
 
 sfpsMatrixInfoTableIndex   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -330,7 +330,7 @@ sfpsMatrixInfoTableIndex   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 5 }
 
 sfpsMatrixInfoDefConnect   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -338,7 +338,7 @@ sfpsMatrixInfoDefConnect   OBJECT-TYPE
         ::= { sfpsMatrixInfoEntry 6 }
 
 sfpsMatrixInfoDefFlood   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -363,7 +363,7 @@ sfpsMatrixInfoVerb   OBJECT-TYPE
                 clearFilter1(12),
                 clearFitler2(13),
                 clearTable(14)
-        }  
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -371,7 +371,7 @@ sfpsMatrixInfoVerb   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 1 }
 
 sfpsMatrixInfoIndex1Tag   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -379,7 +379,7 @@ sfpsMatrixInfoIndex1Tag   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 2 }
 
 sfpsMatrixInfoIndex1Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -387,7 +387,7 @@ sfpsMatrixInfoIndex1Load   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 3 }
 
 sfpsMatrixInfoIndex2Tag   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -395,7 +395,7 @@ sfpsMatrixInfoIndex2Tag   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 4 }
 
 sfpsMatrixInfoIndex2Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -406,7 +406,7 @@ sfpsMatrixInfoMatrixFlag   OBJECT-TYPE
         SYNTAX  INTEGER         {
                 connect(1),
                 flood(2)
-        } 
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -414,7 +414,7 @@ sfpsMatrixInfoMatrixFlag   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 6 }
 
 sfpsMatrixInfoFlagMask   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -422,7 +422,7 @@ sfpsMatrixInfoFlagMask   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 7 }
 
 sfpsMatrixInfoFilter1Tag   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -430,7 +430,7 @@ sfpsMatrixInfoFilter1Tag   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 8 }
 
 sfpsMatrixInfoFilter1Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -438,7 +438,7 @@ sfpsMatrixInfoFilter1Load   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 9 }
 
 sfpsMatrixInfoFilter2Tag   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -446,7 +446,7 @@ sfpsMatrixInfoFilter2Tag   OBJECT-TYPE
         ::= { sfpsVlanMatrixApi 10 }
 
 sfpsMatrixInfoFilter2Load   OBJECT-TYPE
-        SYNTAX  OCTET STRING  
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -456,7 +456,7 @@ sfpsMatrixInfoFilter2Load   OBJECT-TYPE
 -- VMMatrix
 
 sfpsVMMatrixRowIndex   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -464,7 +464,7 @@ sfpsVMMatrixRowIndex   OBJECT-TYPE
         ::= { sfpsVMMatrix 1 }
 
 sfpsVMMatrixCellIndexMask   OBJECT-TYPE
-        SYNTAX  OCTET STRING 
+        SYNTAX  OCTET STRING
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -472,7 +472,7 @@ sfpsVMMatrixCellIndexMask   OBJECT-TYPE
         ::= { sfpsVMMatrix 2 }
 
 sfpsVMMatrixAction   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION

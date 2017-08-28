@@ -2,7 +2,7 @@ CTRON-IF-REMAP-2-MIB DEFINITIONS ::= BEGIN
 
 --  ctron-if-remap-2-mib.txt
 --  Revision: 02.00.02
---  Part Number: 
+--  Part Number:
 --  Date: September 15, 1998
 
 --  Cabletron Systems, Inc.
@@ -17,16 +17,16 @@ CTRON-IF-REMAP-2-MIB DEFINITIONS ::= BEGIN
 --  This module will be extended, as required.
 --
 
---  Cabletron Systems reserves the right to make changes in 
---  specification and other information contained in this document 
+--  Cabletron Systems reserves the right to make changes in
+--  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
 --  to determine whether any such changes have been made.
 --
---  In no event shall Cabletron Systems be liable for any incidental, 
---  indirect, special, or consequential damages whatsoever (including 
+--  In no event shall Cabletron Systems be liable for any incidental,
+--  indirect, special, or consequential damages whatsoever (including
 --  but not limited to lost profits) arising out of or related to this
 --  document or the information contained in it, even if Cabletron
---  Systems has been advised of, known, or should have known, the 
+--  Systems has been advised of, known, or should have known, the
 --  possibility of such damages.
 --
 --  Cabletron grants vendors, end-users, and other interested parties
@@ -50,21 +50,21 @@ CTRON-IF-REMAP-2-MIB DEFINITIONS ::= BEGIN
 -- This control is defined by creating a row in the ctIFRemap2Table
 -- specifying source slot, source port, destination slot, and destination
 -- port with ctIFRemap2Status set to a value of enable(1) or by creating
--- a row in the ctIFRemap2VlanTable specifying source slot, source vlan, 
+-- a row in the ctIFRemap2VlanTable specifying source slot, source vlan,
 -- destination slot, destination port with ctIFRemap2VlanStatus set to a
 -- value of enable(1).
--- 
+--
 -- When a source port is remapped to a destination port, the destination
 -- port will transmit out all packets received or transmitted on the
 -- source port. Counters on the destination port will increment for all
--- packets transmitted be it by normal packet forwarding or due to 
+-- packets transmitted be it by normal packet forwarding or due to
 -- ifremap.
 --
 -- When a source vlan is remapped to a destination port, the destination
--- port will transmit out all packets received on the source vlan. Counters 
+-- port will transmit out all packets received on the source vlan. Counters
 -- on the destination port will increment for all packets transmitted be it
 -- by normal packet forwarding or due to ifremap.
--- 
+--
 -- All tables in this MIB contain a slot instance.  In the case of a
 -- stand-alone device the slot will always be 1.
 --
@@ -82,20 +82,20 @@ ctIFRemap2Table  OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
             "This table provides the ability to remap all frames from one
-            port onto another port.  A port is defined by 
+            port onto another port.  A port is defined by
 ctIFRemap2PortIndex
             from the ctIFRemap2PortTable below.  Only ports listed in the
             ctIFRemap2PortTable are available for remapping.
 
-            A given source port may only be mapped to only one destination 
+            A given source port may only be mapped to only one destination
             port.  Once a port is reserved as part of a ctIFRemap2Table  entry,
-            it may not be used in any other ctIFRemap2Table entries (ie. If 
+            it may not be used in any other ctIFRemap2Table entries (ie. If
             remapping port 1 to port 3, then neither port 1 or port 3 may be
             used as a ctIFRemap2SourcePort or ctIFRemap2DestPort in another
             ctIFRemap2Table entry).
 
             Each row that exists in this table defines such a relationship.
-            By disabling a row in this table the remapping relationship no 
+            By disabling a row in this table the remapping relationship no
             longer exists.
 
             Each entry will be referenced by slot.  In the case of a
@@ -211,7 +211,7 @@ ctIFRemap2PhysicalErrors OBJECT-TYPE
             controls whether or not frames with physical errors should be
             remapped out the destination port for this entry.  By default,
             this will be enabled when an entry is created.
-            
+
             NOTE: This action is always superseded by the value of
             ctIFRemap2PhysErrsCapable for either the source or destination
             port specified in this remap entry.  If a port is not
@@ -231,16 +231,16 @@ ctIFRemap2EgressType OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-            "Defines how each packet will be tagged when sent out the 
+            "Defines how each packet will be tagged when sent out the
              ctIFRemap2DestPort.  Setting ctIFRemap2EgressType to normal(1)
-             will set packets to be sent out as they are seen by 
-             ctIFRemap2SourcePort.  Setting ctIFRemap2EgressType to 
-             alwaysTagged(2) will set packets to always be sent out 
-             ctIFRemap2DestSlot and ctIFRemap2DestPort with a tag. Setting 
-             ctIFRemap2EgressType to alwaysUntagged(3) will set packets to always 
+             will set packets to be sent out as they are seen by
+             ctIFRemap2SourcePort.  Setting ctIFRemap2EgressType to
+             alwaysTagged(2) will set packets to always be sent out
+             ctIFRemap2DestSlot and ctIFRemap2DestPort with a tag. Setting
+             ctIFRemap2EgressType to alwaysUntagged(3) will set packets to always
              be sent out ctIFRemap2DestSlot and ctIFRemap2DestPort without a tag.
-             If the module is not configured to support packet tagging (i.e. 802.1d 
-             bridge mode) then setting this object to alwaysTagged(2) or 
+             If the module is not configured to support packet tagging (i.e. 802.1d
+             bridge mode) then setting this object to alwaysTagged(2) or
              alwaysUntagged(3) will return a BAD-VALUE error."
     DEFVAL { normal }
     ::= { ctIFRemap2Entry 7 }
@@ -287,7 +287,7 @@ ctIFRemap2PortSlot OBJECT-TYPE
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
-            "Defines the slot in which the remap capable module resides. 
+            "Defines the slot in which the remap capable module resides.
             In the case of a stand-alone device the slot will always be 1."
     ::= { ctIFRemap2PortEntry 1 }
 
@@ -381,7 +381,7 @@ ctIFRemap2SlotIndex OBJECT-TYPE
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
-            "Defines the slot in which the remap capable module resides. 
+            "Defines the slot in which the remap capable module resides.
 In
             the case of a stand-alone device the slot will always be 1."
     ::= { ctIFRemap2SlotEntry 1 }
@@ -415,9 +415,9 @@ ctIFRemap2SlotMaxRemoteDests OBJECT-TYPE
 --
 -- The IFRemap Vlan Table
 --
--- The ctIFRemap2VlanTable may only be implemented on a Cabletron Bridge 
+-- The ctIFRemap2VlanTable may only be implemented on a Cabletron Bridge
 -- which supports the use of IEEE Draft P802.1Q/D11 compliant vlans.
--- 
+--
 -- The implementation of this table is OPTIONAL
 
 ctIFRemap2VlanTable  OBJECT-TYPE
@@ -426,12 +426,12 @@ ctIFRemap2VlanTable  OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
             "This table provides the ability to remap all frames from any
-            port on a particular vlan to a specific destination port.  
+            port on a particular vlan to a specific destination port.
             Each row that exists in this table defines such a relationship.
             By disabling a row in this table the remapping relationship no
             longer exists.
 
-            Multiple vlans may be mapped to a given destination port 
+            Multiple vlans may be mapped to a given destination port
             (ie. vlan 11 and vlan 35 may both remap to port 10).
 
             A port is defined by ctIFRemap2PortIndex in the ctIFRemap2PortTable,
@@ -534,14 +534,14 @@ ctIFRemap2VlanStatus OBJECT-TYPE
             Setting ctIFRemap2VlanStatus to a value of disable(2) disables the
             entry and deletes the row from the table.  Therefore this
             table only contains entries that are active.
-   
+
             If ctIFRemap2VlanSourceVlan is already being used by another
-            ctIfRemap2Vlan entry or ctifRemap2 Entry then a set to 
+            ctIfRemap2Vlan entry or ctifRemap2 Entry then a set to
             ctIFRemap2VlanStatus of value enable(1) will return with a
             BAD-VALUE error."
     DEFVAL { enable }
     ::= { ctIFRemap2VlanEntry 5 }
- 
+
 
 ctIFRemap2VlanEgressType OBJECT-TYPE
     SYNTAX INTEGER {
@@ -552,17 +552,17 @@ ctIFRemap2VlanEgressType OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-            "Defines how each packet will be tagged when sent out the 
-             ctIFRemap2VlanDestPort.  Setting ctIFRemap2VlanEgressType to 
+            "Defines how each packet will be tagged when sent out the
+             ctIFRemap2VlanDestPort.  Setting ctIFRemap2VlanEgressType to
              received(1) will set packets to be sent out ctIFRemap2VlanDestSlot
-             and ctIFRemap2VlanDestPort exactly as they are received by 
-             ctIFRemap2VlanSourceVlan. Setting ctIFRemap2VlanEgressType to 
-             alwaysTagged(2) will set packets to be sent out 
-             ctIFRemap2VlanDestSlot and ctIFRemap2VlanDestPort with the 
+             and ctIFRemap2VlanDestPort exactly as they are received by
+             ctIFRemap2VlanSourceVlan. Setting ctIFRemap2VlanEgressType to
+             alwaysTagged(2) will set packets to be sent out
+             ctIFRemap2VlanDestSlot and ctIFRemap2VlanDestPort with the
              vlan tag associated with ctIFRemap2VlanSourceVlan.  If this port
              does not have a vlan tag associated with it then all packets will
              be remapped without a tag.  Setting ctIFRemap2VlanEgressType to
-             alwaysUntagged(3) will set packets to be sent out 
+             alwaysUntagged(3) will set packets to be sent out
              ctIFRemap2VlanDestSlot and ctIFRemap2VlanDestPort without any
              tag reguardless of ctIFRemap2VlanSourceVlan's tagging status."
     DEFVAL { received }

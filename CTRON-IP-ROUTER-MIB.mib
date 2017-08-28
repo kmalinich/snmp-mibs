@@ -36,17 +36,17 @@ CTRON-IP-ROUTER-MIB DEFINITIONS ::= BEGIN
 --  Copyright August 95 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
 
       DisplayString, PhysAddress
                 FROM RFC1213-MIB
-        
+
       nwRtrProtoSuites
                 FROM ROUTER-OIDS
-      
+
       IpAddress, Counter, TimeTicks, Gauge
                 FROM RFC1155-SMI;
 
@@ -213,7 +213,7 @@ nwIpSysRouterId   OBJECT-TYPE
         DESCRIPTION
             "The IP Address used to uniquely identify the host
             (device) running IP Routing Services. The value of
-            nwIpSysRouterId is equal to the highest IP Address in 
+            nwIpSysRouterId is equal to the highest IP Address in
             the IP Address Table."
         ::= { nwIpSysConfig 1 }
 
@@ -252,8 +252,8 @@ nwIpSysOperStatus     OBJECT-TYPE
     DESCRIPTION
         "Indicates the operating condition of IP Routing Services, system-wide.
         The value of nwIpSysOperStatus indicates any problem with
-        your IP Routing Services configuration. A value of 6 
-        indicates that regardless of the value of 
+        your IP Routing Services configuration. A value of 6
+        indicates that regardless of the value of
         nwIpSysAdminStatus,IP Routing Services is not operating
         because of an invalid configuration."
     ::= { nwIpSysAdministration 2 }
@@ -272,9 +272,9 @@ nwIpSysAdminReset      OBJECT-TYPE
         affecting any other routing services."
     DEFVAL { other }
     ::= { nwIpSysAdministration 3 }
-                
+
 nwIpSysOperationalTime  OBJECT-TYPE
-    SYNTAX  TimeTicks 
+    SYNTAX  TimeTicks
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -284,7 +284,7 @@ nwIpSysOperationalTime  OBJECT-TYPE
     ::= { nwIpSysAdministration 4 }
 
 nwIpSysVersion  OBJECT-TYPE
-    SYNTAX  DisplayString 
+    SYNTAX  DisplayString
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -324,7 +324,7 @@ nwIpFwdCtrReset        OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Resets the aggregate (system-wide) IP packet and byte
-        counters. Reset (2) resets the IP aggregate counters to 0. 
+        counters. Reset (2) resets the IP aggregate counters to 0.
         nwIpFwdCtrOperationalTime is also reset to 0."
     DEFVAL { other }
     ::= { nwIpFwdCounters 2 }
@@ -420,7 +420,7 @@ nwIpFwdCtrInBytes      OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of bytes in the IP packets that
-        have been received, system-wide, during 
+        have been received, system-wide, during
         nwIpFwdCtrOperationalTime."
     ::= { nwIpFwdCounters 12 }
 
@@ -479,7 +479,7 @@ nwIpFwdCtrHostOutPkts OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION
         "Indicates the total number of IP packets that have been
-         forwarded by the local host, during 
+         forwarded by the local host, during
         nwIpFwdCtrOperationalTime."
     ::= { nwIpFwdCounters 18 }
 
@@ -535,7 +535,7 @@ nwIpFwdIfTable     OBJECT-TYPE
     DESCRIPTION
          "This table contains an entry for each router port.
          This table is indexed by nwIpFwdIfIndex, which indicates
-         the value of MIB 2 ifindex which identifies the router 
+         the value of MIB 2 ifindex which identifies the router
          port for which each entry exists. "
     ::= { nwIpFwdIfConfig 1 }
 
@@ -553,7 +553,7 @@ NwIpFwdIfEntry ::=
         SEQUENCE {
                 nwIpFwdIfIndex                INTEGER,
                 nwIpFwdIfAdminStatus          INTEGER,
-                nwIpFwdIfOperStatus              INTEGER,    
+                nwIpFwdIfOperStatus              INTEGER,
                 nwIpFwdIfOperationalTime      TimeTicks,
                 nwIpFwdIfControl              INTEGER,
                 nwIpFwdIfMtu                  INTEGER,
@@ -608,7 +608,7 @@ nwIpFwdIfOperStatus     OBJECT-TYPE
         IP Routing Services on the router port for which the
         entry exists. The value of nwIpFwdIfOperStatus indicates
         any problem with the configuration of IP routing Services on
-        the router port. A value of 6 indicates that regardless of 
+        the router port. A value of 6 indicates that regardless of
         the value of nwIpFwdIfAdminStatus, IP Routing Services is
         not operating because of an invalid port-level configuration."
     ::= { nwIpFwdIfEntry 3 }
@@ -691,7 +691,7 @@ nwIpFwdIfFrameType        OBJECT-TYPE
     ::= { nwIpFwdIfEntry 8 }
 
 nwIpFwdIfAclIdentifier    OBJECT-TYPE
-    SYNTAX         INTEGER    
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
@@ -722,7 +722,7 @@ nwIpFwdIfAclStatus        OBJECT-TYPE
 
 nwIpFwdIfCacheControl     OBJECT-TYPE
     SYNTAX      INTEGER {
-                            other(1),     -- none of the following, 
+                            other(1),     -- none of the following,
                             disable(2),   -- next hop caching disabled,
                             enable(3)     -- next hop caching enabled,
                         }
@@ -759,7 +759,7 @@ nwIpFwdIfCacheHits        OBJECT-TYPE
             required to validate, filter, or forward an IP packet
             on the router port."
         ::= { nwIpFwdIfEntry 13 }
-       
+
 nwIpFwdIfCacheMisses      OBJECT-TYPE
         SYNTAX      Counter
         ACCESS      read-only
@@ -780,7 +780,7 @@ nwIpAddressTable    OBJECT-TYPE
     ACCESS  not-accessible
     STATUS  mandatory
     DESCRIPTION
-        "This table contains an entry for each IP Address 
+        "This table contains an entry for each IP Address
         assigned to each router port."
     ::= { nwIpFwdIfConfig 2 }
 
@@ -803,7 +803,7 @@ NwIpAddrEntry ::=
             nwIpAddrIfMask            IpAddress,
             nwIpAddrIfBcastAddr        INTEGER
             }
-         
+
 nwIpAddrIfIndex    OBJECT-TYPE
     SYNTAX  INTEGER
     ACCESS  read-write
@@ -819,9 +819,9 @@ nwIpAddrIfAddress  OBJECT-TYPE
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
-       "This is the IP Address assigned to the logical IP 
+       "This is the IP Address assigned to the logical IP
         network for which the entry exist. As multiple IP Addresses
-        may be assigned to a single router port, all addresses 
+        may be assigned to a single router port, all addresses
         assigned to the port must be of the same subnet."
             ::= { nwIpAddrEntry 2 }
 
@@ -1142,8 +1142,8 @@ nwIpFwdIfCtrHostDiscardPkts      OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of IP packets discarded by the
-        local host due to a lack of host resources, that were 
-        received on the router port for which the entry exists, 
+        local host due to a lack of host resources, that were
+        received on the router port for which the entry exists,
         during nwIpFwdIfCtrOperationalTime."
     ::= { nwIpFwdIfCtrEntry 20 }
 
@@ -1153,7 +1153,7 @@ nwIpFwdIfCtrHostInBytes  OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of bytes in the IP packets that
-        have been successfully delivered to the local host, that 
+        have been successfully delivered to the local host, that
         were received on the router port for which the entry exists,
         during nwIpFwdIfCtrOperationalTime. "
     ::= { nwIpFwdIfCtrEntry 21 }
@@ -1185,7 +1185,7 @@ nwIpFwdIfCtrHostDiscardBytes     OBJECT-TYPE
 
 --  DistanceVector-based Protocols
 --  This group contains the managed objects for RIP, IP DistanceVector based
---  routing. 
+--  routing.
 
 --  IP RIP System Configuration Parameters
 --  This group contains the objects that pertain to the setup and
@@ -1207,7 +1207,7 @@ nwIpRipAdminStatus     OBJECT-TYPE
         inactive."
     DEFVAL { disabled }
     ::= { nwIpRipConfig 1 }
- 
+
 nwIpRipOperStatus     OBJECT-TYPE
     SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -1221,13 +1221,13 @@ nwIpRipOperStatus     OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
         "Indicates the current operating condition of the RIP
-        routing protocol system-wide. The value of 
+        routing protocol system-wide. The value of
         nwIpRipOperStatus indicates any problem with your RIP
-        configuration. A value of 6 indicates that regardless 
+        configuration. A value of 6 indicates that regardless
         of the value of nwIpRipAdminStatus, RIP is not operating
         because of an invalid configuration."
     ::= { nwIpRipConfig 2 }
-   
+
 nwIpRipAdminReset      OBJECT-TYPE
     SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -1241,7 +1241,7 @@ nwIpRipAdminReset      OBJECT-TYPE
          a graceful shutdown on any active router ports."
     DEFVAL { other }
     ::= { nwIpRipConfig 3 }
-   
+
 nwIpRipOperationalTime  OBJECT-TYPE
     SYNTAX  TimeTicks
     ACCESS  read-only
@@ -1250,7 +1250,7 @@ nwIpRipOperationalTime  OBJECT-TYPE
          "Indicates the elapsed time, in hundredths of a second, that
         nwIpRipOperStatus, has been in its current state."
     ::= { nwIpRipConfig 4 }
- 
+
 nwIpRipVersion  OBJECT-TYPE
     SYNTAX  DisplayString
     ACCESS  read-only
@@ -1259,7 +1259,7 @@ nwIpRipVersion  OBJECT-TYPE
         "Indicates the current revision level of the RIP routing
         protocol firmware, in textual format."
     ::= { nwIpRipConfig 5 }
- 
+
 nwIpRipStackSize OBJECT-TYPE
     SYNTAX  INTEGER
     ACCESS  read-write
@@ -1417,7 +1417,7 @@ nwIpRipCtrOutBytes     OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of bytes in the RIP packets
-         that have been transmitted, system-wide, during     
+         that have been transmitted, system-wide, during
         nwIpRipCtrOperationalTime."
     ::= { nwIpRipCounters 9 }
 
@@ -1454,7 +1454,7 @@ nwIpRipIfTable OBJECT-TYPE
         "This table contains an entry for each router port. Each
         entry can contain different values, allowing the routing
         protocol configuration to vary from router port to router
-        port. This table is indexed by nwIpRipIfIndex, which 
+        port. This table is indexed by nwIpRipIfIndex, which
         indicates the value of MIB 2 ifindex, which identifies the
         router port for which the entry exists."
     ::= { nwIpRipIfConfig 1 }
@@ -1536,7 +1536,7 @@ nwIpRipIfOperStatus     OBJECT-TYPE
     ::= { nwIpRipIfEntry 3 }
 
 nwIpRipIfOperationalTime        OBJECT-TYPE
-    SYNTAX         TimeTicks    
+    SYNTAX         TimeTicks
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
@@ -1560,7 +1560,7 @@ nwIpRipIfAdvertisement OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Sets the interval, in seconds, at which RIP advertises 
+        "Sets the interval, in seconds, at which RIP advertises
         the RIP route table on the router port for which the entry
         exists."
     DEFVAL    { 30 }
@@ -1586,9 +1586,9 @@ nwIpRipIfRequestDelay  OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Sets the length of time, in hundredths of a second, that
-        the RIP routing protocol should wait after receiving a 
-        route request packet, before sending a response on the 
-        router port for which the entry exists. A value of 0 
+        the RIP routing protocol should wait after receiving a
+        route request packet, before sending a response on the
+        router port for which the entry exists. A value of 0
         specifies that if a route request packet is received on the
         port, a response should be sent immediately."
     DEFVAL { 0 }
@@ -1613,8 +1613,8 @@ nwIpRipIfHelloTimer    OBJECT-TYPE
     STATUS          mandatory
     DESCRIPTION
         "This object does not apply to this protocol. It is a
-        common object, inherited from the MIB framework used to 
-        provide a common management interfaced to all the Cabletron      
+        common object, inherited from the MIB framework used to
+        provide a common management interfaced to all the Cabletron
         Routing Services protocol-specific MIBs. Setting this object
         has no effect."
     DEFVAL { 10 }
@@ -1647,7 +1647,7 @@ nwIpRipIfPoisonReverse OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Sets the operating condition of Poison Reverse on the 
+        "Sets the operating condition of Poison Reverse on the
         router port for which the entry exists. When Poison Reverse
         is enabled, the RIP routing protocol advertises any downed
         route as unreachable during the period of time that it must
@@ -1672,7 +1672,7 @@ nwIpRipIfSnooping      OBJECT-TYPE
         entry exists."
     DEFVAL { disabled }
     ::= { nwIpRipIfEntry 13 }
-                                
+
 nwIpRipIfType  OBJECT-TYPE
      SYNTAX  INTEGER {
                         other(1),        --  none of the following,
@@ -1686,7 +1686,7 @@ nwIpRipIfType  OBJECT-TYPE
         does or does not support broadcast media access. If broadcast
         media access is supported, RIP advertisements are sent out one
         broadcast packet per router port. If broadcast media is not
-        supported, RIP advertisements are sent directly to each 
+        supported, RIP advertisements are sent directly to each
         neighbor router access."
     DEFVAL { bma }
     ::= { nwIpRipIfEntry 14 }
@@ -1696,7 +1696,7 @@ nwIpRipIfXmitCost OBJECT-TYPE
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
-        "This object does not apply to this protocol. It is a 
+        "This object does not apply to this protocol. It is a
         common object, inherited from the MIB framework used to
         provide a common management interface to all the Cabletron
         Routing Services protocol-specific MIBs. Setting this object
@@ -1705,13 +1705,13 @@ nwIpRipIfXmitCost OBJECT-TYPE
     ::= { nwIpRipIfEntry 15 }
 
 nwIpRipIfAclIdentifier OBJECT-TYPE
-    SYNTAX         INTEGER    
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
         "Specifies the Access Control ID of the access control
         list in effect for RIP routing protocol packets on the
-        router port for which the entry exists. A value of 0 
+        router port for which the entry exists. A value of 0
         indicates that there is no access control list in effect
         for RIP routing protocol packets on the router port."
     DEFVAL { 0 }
@@ -1721,12 +1721,12 @@ nwIpRipIfAclStatus     OBJECT-TYPE
     SYNTAX          INTEGER {
                                 other(1),
                                 disabled(2),
-                enabled(3) 
+                enabled(3)
                         }
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Controls the operation of the access control list 
+        "Controls the operation of the access control list
         identified by nwIpRipIfAclIdentifier. Enabled (3) applies
         the access control list to all RIP routing protocol packet
         traffic on the router port for which the entry exists.
@@ -1795,7 +1795,7 @@ nwIpRipIfCtrAdminStatus  OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Sets the administrative state of the RIP packet and byte
-        counters on the router port for which this entry exists. 
+        counters on the router port for which this entry exists.
         Enabled (3) causes these counters to become active.
         Disabled (2) causes these counters to become inactive."
     DEFVAL { disabled }
@@ -1985,7 +1985,7 @@ nwIpRipRtMask  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-            "Indicates the Subnet Mask of the IP Address for 
+            "Indicates the Subnet Mask of the IP Address for
             which the entry exists."
         ::= { nwIpRipRouteEntry 4 }
 
@@ -2020,13 +2020,13 @@ nwIpRipRtType          OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates whether the destination network is directly
-        connected through the router port specified by 
+        connected through the router port specified by
         nwIpRipRtIfIndex, or is indirectly connected through
         another router, specified by nwIpRipRtSrcNode."
     ::= { nwIpRipRouteEntry 7 }
 
 nwIpRipRtFlags         OBJECT-TYPE
-    SYNTAX          INTEGER  
+    SYNTAX          INTEGER
     ACCESS          read-only
     STATUS            mandatory
     DESCRIPTION
@@ -2044,7 +2044,7 @@ nwIpRipRtFlags         OBJECT-TYPE
 --  This group contains the objects that pertain to the setup and
 --  configuration of the IP OSPF Link State-based routing protocol.
 
- 
+
 nwIpOspfAdminStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -2056,12 +2056,12 @@ nwIpOspfAdminStatus     OBJECT-TYPE
         DESCRIPTION
             "Sets the administrative state of the OSPF routing
             protocol. enabled(3) causes OSPF to become active
-            on any IP configured router ports. disabled(2) causes 
+            on any IP configured router ports. disabled(2) causes
             OSPF to perform a graceful shutdown on any active IP
             configured router ports."
         DEFVAL { disabled }
         ::= { nwIpOspfConfig 1 }
- 
+
 nwIpOspfOperStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -2075,7 +2075,7 @@ nwIpOspfOperStatus     OBJECT-TYPE
         DESCRIPTION
             "Indicates the current operating condition of OSPF."
         ::= { nwIpOspfConfig 2 }
-   
+
 nwIpOspfAdminReset      OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -2088,9 +2088,9 @@ nwIpOspfAdminReset      OBJECT-TYPE
             on any active IP router ports, configured for OSPF,
             without a graceful shutdown, without affecting any
             other routing services."
-        DEFVAL { other }   
+        DEFVAL { other }
         ::= { nwIpOspfConfig 3 }
- 
+
 nwIpOspfOperationalTime  OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
@@ -2099,7 +2099,7 @@ nwIpOspfOperationalTime  OBJECT-TYPE
         "Indicates the amount of time (#of time ticks) that OSPF
          has been in its current operational state."
     ::= { nwIpOspfConfig 4 }
- 
+
 nwIpOspfVersion  OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
@@ -2152,7 +2152,7 @@ nwIpOspfCtrAdminStatus  OBJECT-TYPE
          causes these counters to become active on any router ports
          running OSPF. disabled (2) cause these counters to become
          inactive on any router port running OSPF."
-    DEFVAL { enabled } 
+    DEFVAL { enabled }
     ::= { nwIpOspfCounters 1 }
 
 nwIpOspfCtrReset     OBJECT-TYPE
@@ -2222,7 +2222,7 @@ nwIpOspfCtrInBytes      OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of bytes in the OSFP packets
-         that have been received, device-wide, during     
+         that have been received, device-wide, during
         nwIpOspfCtrOperationalTime."
     ::= { nwIpOspfCounters 8 }
 
@@ -2341,7 +2341,7 @@ nwIpOspfIfOperStatus     OBJECT-TYPE
     ::= { nwIpOspfIfEntry 3 }
 
 nwIpOspfIfOperationalTime     OBJECT-TYPE
-    SYNTAX         TimeTicks    
+    SYNTAX         TimeTicks
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
@@ -2356,7 +2356,7 @@ nwIpOspfIfVersion       OBJECT-TYPE
     DESCRIPTION
         "Indicates the OSPF protocol revision level supported on
           the router port."
-    DEFVAL { 1 } 
+    DEFVAL { 1 }
     ::= { nwIpOspfIfEntry 5 }
 
 nwIpOspfIfSnooping      OBJECT-TYPE
@@ -2376,7 +2376,7 @@ nwIpOspfIfSnooping      OBJECT-TYPE
          turns on OSPF Snooping. disable (2) turns it off."
     DEFVAL { disabled }
     ::= { nwIpOspfIfEntry 6 }
-                                
+
 nwIpOspfIfType  OBJECT-TYPE
     SYNTAX  INTEGER {
                         other(1),
@@ -2395,7 +2395,7 @@ nwIpOspfIfType  OBJECT-TYPE
     ::= { nwIpOspfIfEntry 7 }
 
 nwIpOspfIfAclIdentifier OBJECT-TYPE
-    SYNTAX         INTEGER    
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
@@ -2487,7 +2487,7 @@ nwIpOspfIfCtrAdminStatus  OBJECT-TYPE
          the entry exists. enabled(3) causes these counters to
          become active on the router port. disabled(2) turns these
          counters off."
-    DEFVAL { enabled } 
+    DEFVAL { enabled }
     ::= { nwIpOspfIfCtrEntry 2 }
 
 nwIpOspfIfCtrReset      OBJECT-TYPE
@@ -2639,11 +2639,11 @@ nwIpStaticRoutePriority          OBJECT-TYPE
     DESCRIPTION
          "Specifies the route priority assigned to routes learned by
         statically configured routes.."
-    DEFVAL { 48 }   
+    DEFVAL { 48 }
     ::= { nwIpFibSystem 3 }
 
 -- The Cabletron IP OSPF FIB control group
--- A list of objects controlling or identifying the number of entries 
+-- A list of objects controlling or identifying the number of entries
 -- in the Cabletron IP OSPF FIB.
 
 nwIpOspfForward OBJECT-TYPE
@@ -2672,7 +2672,7 @@ nwIpOspfLeakAllRipRoutes OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Add all RIP routes in the IP FIB to the Cabletron IP OSPF FIB for 
+        "Add all RIP routes in the IP FIB to the Cabletron IP OSPF FIB for
          advertisement in OSPF routing protocol announcements."
     ::= { nwIpOspfFibControl 3 }
 
@@ -2681,7 +2681,7 @@ nwIpOspfLeakAllBgp4Routes OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Add all BGP4 routes in the IP FIB to the Cabletron IP OSPF FIB for 
+        "Add all BGP4 routes in the IP FIB to the Cabletron IP OSPF FIB for
          advertisement in OSPF routing protocol announcements."
     ::= { nwIpOspfFibControl 4 }
 
@@ -2693,7 +2693,7 @@ nwIpOspfStaticTable OBJECT-TYPE
     ACCESS        not-accessible
     STATUS        mandatory
     DESCRIPTION
-        "A table of statically configured entries in the Cabletron IP OSPF 
+        "A table of statically configured entries in the Cabletron IP OSPF
          FIB."
     ::= { nwIpOspfFibEntries 1 }
 
@@ -2702,7 +2702,7 @@ nwIpOspfStaticEntry OBJECT-TYPE
     ACCESS        not-accessible
     STATUS        mandatory
     DESCRIPTION
-        "A list of information for each static entry in the Cabletron 
+        "A list of information for each static entry in the Cabletron
        IP OSPF FIB."
     INDEX { nwIpOspfStaticDest, nwIpOspfStaticForwardMask, nwIpOspfStaticNextHop }
     ::= { nwIpOspfStaticTable 1 }
@@ -2731,7 +2731,7 @@ nwIpOspfStaticForwardMask OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "The network mask of a static route leaked from the IP FIB into the 
+        "The network mask of a static route leaked from the IP FIB into the
          Cabletron IP OSPF FIB."
     ::= { nwIpOspfStaticEntry 2 }
 
@@ -2740,23 +2740,23 @@ nwIpOspfStaticNextHop OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "The next hop address of a static route leaked from the IP FIB into the 
-         Cabletron IP OSPF FIB. A value of 0.0.0.0 indicates that packets for 
+        "The next hop address of a static route leaked from the IP FIB into the
+         Cabletron IP OSPF FIB. A value of 0.0.0.0 indicates that packets for
          the external destination should be forwarded to the
          advertising router."
     ::= { nwIpOspfStaticEntry 3 }
 
 nwIpOspfStaticMetric OBJECT-TYPE
-    SYNTAX         INTEGER  
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "The Cabletron IP OSPF advertised cost of reaching the leaked static 
+        "The Cabletron IP OSPF advertised cost of reaching the leaked static
          route."
     ::= { nwIpOspfStaticEntry 4 }
 
 nwIpOspfStaticMetricType OBJECT-TYPE
-    SYNTAX         INTEGER  
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
@@ -2774,11 +2774,11 @@ nwIpOspfStaticStatus OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-       "By setting this OID to inactive for a particular static route, the static 
-        route will be added to the IP OSPF FIB but not advertised. Setting this 
-        OID to active for a particular static route, the static route will be 
-        advertised by the OSPF router. By setting this OID to delete for a 
-        particular static route, the entry will no longer be advertised using 
+       "By setting this OID to inactive for a particular static route, the static
+        route will be added to the IP OSPF FIB but not advertised. Setting this
+        OID to active for a particular static route, the static route will be
+        advertised by the OSPF router. By setting this OID to delete for a
+        particular static route, the entry will no longer be advertised using
         OSPF and will be deleted from the IP OSPF FIB."
     ::= { nwIpOspfStaticEntry 6 }
 
@@ -2900,7 +2900,7 @@ nwIpHostCtlAdminStatus OBJECT-TYPE
         provide a common management interface to all the Cabletron
         Routing Services protocol specific MIBS. Setting this object
         has no effect."
-    DEFVAL { enable }    
+    DEFVAL { enable }
     ::= { nwIpHostCtlEntry 2 }
 
 nwIpHostCtlOperStatus     OBJECT-TYPE
@@ -2914,7 +2914,7 @@ nwIpHostCtlOperStatus     OBJECT-TYPE
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
-        "Indicates the current operating condition of the 
+        "Indicates the current operating condition of the
         IP Host Address cache on the router port for which the
         entry exists."
     ::= { nwIpHostCtlEntry 3 }
@@ -2939,7 +2939,7 @@ nwIpHostCtlProtocol    OBJECT-TYPE
     DESCRIPTION
         "Controls the operation of the ARP protocol on the router
         port for which the entry exists."
-    DEFVAL { enable }  
+    DEFVAL { enable }
     ::= { nwIpHostCtlEntry 5 }
 
 nwIpHostCtlSnooping    OBJECT-TYPE
@@ -2954,11 +2954,11 @@ nwIpHostCtlSnooping    OBJECT-TYPE
         "Controls ARP Snooping on the router port for which
         the entry exists. Given the ARP protocol is enabled,
         nwIpHostCtlProtocol=3, setting nwIpHostCtlIfSnooping to
-        enabled (3) turns on ARP Snooping. When ARP Snooping is 
-        enabled the source IP and physical addresses of all ARP 
+        enabled (3) turns on ARP Snooping. When ARP Snooping is
+        enabled the source IP and physical addresses of all ARP
         packets received on the router port are added to the MIB 2
         Net-to-Media Table."
-    DEFVAL { disable }   
+    DEFVAL { disable }
     ::= { nwIpHostCtlEntry 6 }
 
 nwIpHostCtlProxy       OBJECT-TYPE
@@ -2971,20 +2971,20 @@ nwIpHostCtlProxy       OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Controls the operations of Proxy ARP on the router port
-        for which the entry exists. Given the ARP protocol is 
+        for which the entry exists. Given the ARP protocol is
         enabled, nwIpHostCtlProtocol=3, setting nwIpHostCtlProxy to
         enabled (3) turns on Proxy ARP. When Proxy ARP is enabled on
         a router port, and an ARP request is received, requesting the
         address for an IP host whose network address is listed on the
         IP route table, then IP Routing Services sends a Proxy ARP
-        response, with the physical address of the receiving router 
+        response, with the physical address of the receiving router
         port in place of the requested host's physical address. Based
         on this proxy response, the requesting host will then forward
         packets to the router port, and IP Routing Services will then
         forward them to the correct destination."
-    DEFVAL { disable }    
+    DEFVAL { disable }
     ::= { nwIpHostCtlEntry 7 }
-       
+
 nwIpHostCtlCacheMax    OBJECT-TYPE
     SYNTAX          INTEGER
     ACCESS          read-write
@@ -2994,10 +2994,10 @@ nwIpHostCtlCacheMax    OBJECT-TYPE
         can consist of. nwIpHostCtlCacheMax cannot be set to less
         than 16. Setting this value does not allocate any memory for
         the cache."
-    DEFVAL { 1024 }   
+    DEFVAL { 1024 }
     ::= { nwIpHostCtlEntry 8 }
 
-       
+
 nwIpHostCtlCacheSize   OBJECT-TYPE
     SYNTAX          INTEGER
     ACCESS          read-only
@@ -3005,7 +3005,7 @@ nwIpHostCtlCacheSize   OBJECT-TYPE
     DESCRIPTION
         "Indicates the current number of entry slots in the cache.
         The cache automatically resizes to accommodate all entries
-        up to the maximum number of entries set by 
+        up to the maximum number of entries set by
         nwIpHostCtlCacheMax."
     ::= { nwIpHostCtlEntry 9 }
 
@@ -3028,18 +3028,18 @@ nwIpHostCtlNumDynamics OBJECT-TYPE
         the router port for which the entry exists. Dynamic entries
         area added and aged out by the ARP protocol."
     ::= { nwIpHostCtlEntry 11 }
-       
+
 nwIpHostCtlCacheHits   OBJECT-TYPE
-    SYNTAX          Counter 
+    SYNTAX          Counter
     ACCESS          read-only
     STATUS        mandatory
     DESCRIPTION
         "Indicates the number of times an entry in the cache has
-        been used to successfully provide the physical address 
+        been used to successfully provide the physical address
         required to forward an IP packet on the router port for
         which the entry exists."
     ::= { nwIpHostCtlEntry 12 }
-       
+
 nwIpHostCtlCacheMisses OBJECT-TYPE
     SYNTAX          Counter
     ACCESS          read-only
@@ -3050,11 +3050,11 @@ nwIpHostCtlCacheMisses OBJECT-TYPE
         the cache on the router port for which the entry exists."
     ::= { nwIpHostCtlEntry 13 }
 
-        
---  IP Hosts-to-Media Table 
+
+--  IP Hosts-to-Media Table
 --  This table serves to supplement the MIB-2 Net-To-Media Table.  It
 --  supports both non-WAN interfaces and logical WAN interfaces and the
---  circuits under them. In addition to the ifIndex, IpAddress, and 
+--  circuits under them. In addition to the ifIndex, IpAddress, and
 --  PhysAddress mapping, each address translation includes the framing
 --  required to converse with the host, the platform's logical port number,
 --  and the circuit identifier associated with the mapping if applicable.
@@ -3087,9 +3087,9 @@ nwIpHostMapEntry     OBJECT-TYPE
                 nwIpHostMapIfIndex      INTEGER,
                 nwIpHostMapIpAddr       IpAddress,
                 nwIpHostMapPhysAddr     PhysAddress,
-                nwIpHostMapType         INTEGER,   
+                nwIpHostMapType         INTEGER,
                 nwIpHostMapCircuitID    INTEGER,
-                nwIpHostMapFraming      INTEGER,   
+                nwIpHostMapFraming      INTEGER,
                 nwIpHostMapPortNumber   INTEGER
                 }
 
@@ -3098,12 +3098,12 @@ nwIpHostMapIfIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-            "This is the primary (major) index into the HostMap 
+            "This is the primary (major) index into the HostMap
               table. This number corresponds to the index into the
-              MIB-2 Interfaces Group which describes the IP router 
+              MIB-2 Interfaces Group which describes the IP router
               port for which the entry exists."
         ::= { nwIpHostMapEntry 1 }
- 
+
 
 nwIpHostMapIpAddr    OBJECT-TYPE
         SYNTAX  IpAddress
@@ -3132,7 +3132,7 @@ nwIpHostMapType        OBJECT-TYPE
             dynamic(3),
             static(4),
             inactive(5)
-        }    
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3157,7 +3157,7 @@ nwIpHostMapCircuitID    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-            "The identifier for the virtual circuit present on the 
+            "The identifier for the virtual circuit present on the
              interface. On an interface configured for Frame Relay,
              this number is the DLCI for the IP Address at the end of
              the circuit. For non-WAN interfaces, the value of this
@@ -3186,7 +3186,7 @@ nwIpHostMapFraming    OBJECT-TYPE
         ::= { nwIpHostMapEntry 6 }
 
 nwIpHostMapPortNumber    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -3225,10 +3225,10 @@ nwIpAclTable           OBJECT-TYPE
         for IP traffic. This table contains entries, each of which
         allows packet forwarding between source/destination pairs to
         be permitted or denied. The list is identified by the Access
-        Control List ID. Each list may contain multiple entries 
+        Control List ID. Each list may contain multiple entries
         ordered by sequence number. When an access control list is
-        searched, it is searched in sequence number order and the 
-        first match found ends the search. If no match is found, 
+        searched, it is searched in sequence number order and the
+        first match found ends the search. If no match is found,
         access defaults to permitted."
     ::= { nwIpAccessControl 2 }
 
@@ -3297,7 +3297,7 @@ nwIpAclPermission      OBJECT-TYPE
         control is selected. To remove an existing entry set
         nwIpAclPermission to invalid (2). Invalid entries disappear
         after reboot."
-    DEFVAL { permit }   
+    DEFVAL { permit }
     ::= { nwIpAclEntry 3 }
 
 nwIpAclMatches         OBJECT-TYPE
@@ -3306,7 +3306,7 @@ nwIpAclMatches         OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the number of matches on this entry that have
-        resulted in the permit/deny access restriction being 
+        resulted in the permit/deny access restriction being
         applied as part of the forwarding process."
     ::= { nwIpAclEntry 4 }
 
@@ -3326,8 +3326,8 @@ nwIpAclDestMask        OBJECT-TYPE
     DESCRIPTION
         "Specifies the mask to be applied to the destination address
         to determine the portion of the address used to compare for
-        matches on the access control list. Only bits that are 
-        matching are used in the comparison. This allows for 
+        matches on the access control list. Only bits that are
+        matching are used in the comparison. This allows for
         wild-carding and partial matching."
     ::= { nwIpAclEntry 6 }
 
@@ -3348,7 +3348,7 @@ nwIpAclSrcMask         OBJECT-TYPE
         "Specifies the mask to be applied to the source address
         to determine the portion of the address to be used to compare
         for matches on the access control list. Only bits that are
-        matching are used in the comparison. This allows for 
+        matching are used in the comparison. This allows for
         wild-carding and partial matching."
     ::= { nwIpAclEntry 8 }
 
@@ -3365,7 +3365,7 @@ nwIpAclProtocol      OBJECT-TYPE
     DESCRIPTION
         "Specifies the IP protocols checked to compare for matches
         on the access control list."
-    DEFVAL { all }   
+    DEFVAL { all }
     ::= { nwIpAclEntry 9 }
 
 nwIpAclPortNumber    OBJECT-TYPE
@@ -3374,9 +3374,9 @@ nwIpAclPortNumber    OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Specifies the port number used to compare for matches on
-        the access control list. nwIpAclPortNumber only applies 
+        the access control list. nwIpAclPortNumber only applies
         if nwIpAclProtocol is equal to 4 or 5, UDP or TCP
-        nwIpAclPortNumber ranges from 0 to 65536. The value 0 is 
+        nwIpAclPortNumber ranges from 0 to 65536. The value 0 is
         a wildcard which matches any port."
     ::= { nwIpAclEntry 10 }
 
@@ -3421,7 +3421,7 @@ nwIpRedirectPort        OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "This is the primary index into the UDP redirector table,
-        identifying the UDP port number of the packets that will 
+        identifying the UDP port number of the packets that will
         be redirected."
     ::= { nwIpRedirectEntry 1 }
 
@@ -3471,8 +3471,8 @@ nwIpEventAdminStatus    OBJECT-TYPE
         DESCRIPTION
             "Sets the administrative state of IP event logging.
             enabled(3) causes the event log to become active.
-            disabled(2) causes the event log to become inactive."  
-        DEFVAL { disabled }  
+            disabled(2) causes the event log to become inactive."
+        DEFVAL { disabled }
         ::= { nwIpEventLogConfig 1 }
 
 nwIpEventMaxEntries     OBJECT-TYPE
@@ -3481,9 +3481,9 @@ nwIpEventMaxEntries     OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
             "Sets the administrative state of IP event logging.
-            Enabled (3) causes the event log to become active. 
+            Enabled (3) causes the event log to become active.
             Disabled (2) causes the event log to become inactive."
-        DEFVAL { 100 }   
+        DEFVAL { 100 }
         ::= { nwIpEventLogConfig 2 }
 
 nwIpEventTraceAll OBJECT-TYPE
@@ -3496,10 +3496,10 @@ nwIpEventTraceAll OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
             "Enabled (3) allows logging of all event types on all
-            router ports for all protocols and components. 
+            router ports for all protocols and components.
             Disabled (2) causes the filter table to specify which events
             to log."
-        DEFVAL { enabled }    
+        DEFVAL { enabled }
         ::= { nwIpEventLogConfig 3 }
 
 
@@ -3523,7 +3523,7 @@ nwIpEventFilterEntry            OBJECT-TYPE
         DESCRIPTION
             "Each entry describes an event filter which defines
             a particular type of event to be logged to the event log.
-            The value of nwIpEventProtocol indicates the value used 
+            The value of nwIpEventProtocol indicates the value used
             in either the nwRtgProtocolTable or the nwComponentTable
             in the Cabletron Routing Services MIB, which identifies
             the protocol to which the entry exists."
@@ -3572,7 +3572,7 @@ nwIpEventFltrControl    OBJECT-TYPE
             "Set this value to 3 to add the entry to the event
             filter table. Set this value to 2 to remove the entry
             from the event filter table."
-        DEFVAL { add }   
+        DEFVAL { add }
         ::= { nwIpEventFilterEntry 3 }
 
 nwIpEventFltrType        OBJECT-TYPE
@@ -3589,7 +3589,7 @@ nwIpEventFltrType        OBJECT-TYPE
         STATUS      mandatory
         DESCRIPTION
             "This 6 bit mask specifies the types of events to
-            be logged. By default all 6 bits are set to 1, 
+            be logged. By default all 6 bits are set to 1,
             indicating that all types of events are to be logged.
             Setting any bit to 0 removes an event type from this field
             and prevents that type of event from being logged.Setting
@@ -3761,7 +3761,7 @@ nwIpEventTextString     OBJECT-TYPE
 --                       if the entry range is a single host address
 --                       it may also lock that host to a given physical address
 -- Host Table        = entry indicates a discovered host on the discovered port
---                       with its discovered physical address            
+--                       with its discovered physical address
 
 
 --  This group makes use of a Rowstatus textual convention.
@@ -3784,9 +3784,9 @@ nwIpEventTextString     OBJECT-TYPE
 --          "Rowstatus is used to manage the creation and deletion of conceptual
 --          rows, and is used as the value of the SYNTAX clause for the status
 --          column of the row.
- 
+
 --          The status column has six defined values:
- 
+
 --               active         = usable by the managed device;
 --               notInService   = unusable, row information complete;
 --               notReady       = unusable, row incomplete;
@@ -3794,7 +3794,7 @@ nwIpEventTextString     OBJECT-TYPE
 --               createAndWait  = set to create a row in either
 --                                    notReady or notInService status;
 --               destroy        = set to delete existing row;
- 
+
 --          The first three values are states which may be retrieved by a
 --          management protocol get operation. The last three values are
 --          actions - they may be written but not read.  All values except
@@ -3844,7 +3844,7 @@ NwIpWgDefEntry ::=
                 nwIpWgDefNumActiveIntf      INTEGER,
                 nwIpWgDefNumTotalIntf       INTEGER
         }
- 
+
 nwIpWgDefIdentifier     OBJECT-TYPE
     SYNTAX      INTEGER
     ACCESS      read-only
@@ -3860,7 +3860,7 @@ nwIpWgDefHostAddress    OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-                "The IP address of the IP router host which applies to every  
+                "The IP address of the IP router host which applies to every
                 interface included in the workgroup."
         ::= { nwIpWgDefEntry 2 }
 
@@ -3890,16 +3890,16 @@ nwIpWgDefSecurity       OBJECT-TYPE
                 which locks hosts to interfaces and/or physical address.
                 Packets are filtered out if security is violated.
 
-                For a high (4) security workgroup, a host must reside on the 
+                For a high (4) security workgroup, a host must reside on the
                 interface and with the physical address configured in a range
-                table entry. For medium (3) security a host must reside on a 
+                table entry. For medium (3) security a host must reside on a
                 configured interface, but unless a physical address is also
                 specified in that range entry, the physical address is not
-                constrained.  For low (2) security a host is free to reside 
-                on any interface with any physical address if not configured 
+                constrained.  For low (2) security a host is free to reside
+                on any interface with any physical address if not configured
                 in the range table, but if configured must match a configured
                 entry.  If security is none (1) the range table does not apply."
-    DEFVAL { low }    
+    DEFVAL { low }
         ::= { nwIpWgDefEntry 4 }
 
 
@@ -3915,7 +3915,7 @@ nwIpWgDefFastPath       OBJECT-TYPE
                 "Enabled (3) provides a fast path for packets through the
                 router when both source and destination are within this
                 workgroup - done mostly by skipping IP header validation."
-    DEFVAL { enabled }    
+    DEFVAL { enabled }
         ::= { nwIpWgDefEntry 5 }
 
 
@@ -3939,7 +3939,7 @@ nwIpWgDefRowStatus      OBJECT-TYPE
                 nwIpWgDefSubnetMask. If defaults are OK for nwIpWgDefFastPath
                 and nwIpWgDefSecurity this status instance may then be set to
                 `active' to activate the row."
-    DEFVAL { notReady }    
+    DEFVAL { notReady }
         ::= { nwIpWgDefEntry 6 }
 
 
@@ -3991,7 +3991,7 @@ nwIpWgIfTable           OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION
                 "This table contains an entry for each port in a workgroup.
-                It is indexed by the workgroup identifier and the MIB-II 
+                It is indexed by the workgroup identifier and the MIB-II
                 interface indentifier."
         ::= { nwIpWorkGroup 2 }
 
@@ -4014,7 +4014,7 @@ NwIpWgIfEntry ::=
                 nwIpWgIfRowStatus      INTEGER,
                 nwIpWgIfOperStatus     INTEGER
         }
- 
+
 nwIpWgIfDefIdent        OBJECT-TYPE
     SYNTAX      INTEGER
     ACCESS      read-only
@@ -4047,7 +4047,7 @@ nwIpWgIfNumActiveHosts  OBJECT-TYPE
                  Host Table below. Hosts age out and become inactive in
                  approximately 10 minutes if not rediscovered thrugh ARP."
         ::= { nwIpWgIfEntry 3 }
- 
+
 
 nwIpWgIfNumKnownHosts   OBJECT-TYPE
     SYNTAX      Counter
@@ -4074,13 +4074,13 @@ nwIpWgIfRowStatus       OBJECT-TYPE
     DESCRIPTION
                 "This status instance supports `createAndGo' semantics
                 to create an active entry."
-    DEFVAL { notInService }    
+    DEFVAL { notInService }
         ::= { nwIpWgIfEntry 5 }
 
 
 
 nwIpWgIfOperStatus      OBJECT-TYPE
-    SYNTAX      INTEGER { 
+    SYNTAX      INTEGER {
                         ok(1),
                         disabled(2),
                         workgroupInvalid(3),
@@ -4093,7 +4093,7 @@ nwIpWgIfOperStatus      OBJECT-TYPE
     ACCESS      read-only
     STATUS      mandatory
     DESCRIPTION
-                "The operational status of this interface (port) entry. 
+                "The operational status of this interface (port) entry.
                 It will be `disabled' if this entry's row status is not active.
                 It will be `workgroupInvalid' if either there is no workgroup
                 defined for this entry's nwIpWgIfDefIdent or if the operational
@@ -4186,7 +4186,7 @@ NwIpWgRngEntry ::=
                 nwIpWgRngRowStatus          INTEGER,
                 nwIpWgRngOperStatus         INTEGER
         }
- 
+
 
 nwIpWgRngBegHostAddr    OBJECT-TYPE
     SYNTAX      IpAddress
@@ -4247,12 +4247,12 @@ nwIpWgRngRowStatus      OBJECT-TYPE
     DESCRIPTION
                 "This status instance supports `createAndGo' semantics
                 to create an active entry."
-    DEFVAL    { notInService }    
+    DEFVAL    { notInService }
         ::= { nwIpWgRngEntry 5 }
 
 
 nwIpWgRngOperStatus      OBJECT-TYPE
-    SYNTAX      INTEGER { 
+    SYNTAX      INTEGER {
                         ok(1),
                         disabled(2),
                         workgroupInvalid(3),
@@ -4263,7 +4263,7 @@ nwIpWgRngOperStatus      OBJECT-TYPE
     ACCESS      read-only
     STATUS      mandatory
     DESCRIPTION
-                "The operational status of this range table entry. 
+                "The operational status of this range table entry.
                 It will be `disabled' if this entry's row status is not active.
                 It will be `workgroupInvalid' if either there is no workgroup
                 or if the operational status for the workgroup in the definition
@@ -4274,7 +4274,7 @@ nwIpWgRngOperStatus      OBJECT-TYPE
                 the security level of the associated workgroup is high and
                 no physical address has been specified for this entry."
         ::= { nwIpWgRngEntry 6 }
- 
+
 
 
 --  IP Work Group Host Table
@@ -4295,7 +4295,7 @@ nwIpWgHostEntry         OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION
                 "Each entry shows a workgroup host. Entry is indexed by
-                IP address and interface (port).  It gives the workgroup 
+                IP address and interface (port).  It gives the workgroup
                 and the physical address found for the host."
     INDEX    { nwIpWgHostHostAddr, nwIpWgHostIfIndex }
         ::= { nwIpWgHostTable 1 }
@@ -4330,7 +4330,7 @@ nwIpWgHostIfIndex       OBJECT-TYPE
                 to the MIB-2 IfTable which describes the router port."
         ::= { nwIpWgHostEntry 2 }
 
- 
+
 nwIpWgHostDefIdent      OBJECT-TYPE
     SYNTAX      INTEGER
     ACCESS      read-only

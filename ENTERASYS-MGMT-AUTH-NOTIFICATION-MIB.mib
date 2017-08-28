@@ -1,6 +1,6 @@
 ENTERASYS-MGMT-AUTH-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Resource usage monitoring.
 
 --
@@ -19,7 +19,7 @@ ENTERASYS-MGMT-AUTH-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright November, 2005 Enterasys Networks, Inc.
@@ -34,7 +34,7 @@ IMPORTS
         FROM SNMPv2-CONF
     InterfaceIndexOrZero
         FROM IF-MIB
-    InetAddressType, InetAddress 
+    InetAddressType, InetAddress
         FROM INET-ADDRESS-MIB
     etsysModules
         FROM ENTERASYS-MIB-NAMES;
@@ -52,26 +52,26 @@ etsysMgmtAuthNotificationMIB  MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
          MIBs under Enterasys Networks' enterprise OID pertaining to
          Network management authentication notifications.
 
-         This MIB was designed to be used for monitoring 
-         authentication events on the network management system by 
+         This MIB was designed to be used for monitoring
+         authentication events on the network management system by
          various remote monitoring mechanisms."
 
     REVISION    "201103082040Z"  -- March 08, 2011,  8:40PM UTC
-    DESCRIPTION 
-        "Added the following notifications (and associated 
+    DESCRIPTION
+        "Added the following notifications (and associated
          configuration controls): etsysMgmtAuthInactiveNotification,
-         etsysMgmtAuthMaxAuthAttemptNotification, and 
+         etsysMgmtAuthMaxAuthAttemptNotification, and
          etsysmgmtAuthMaxFailNotification."
 
     REVISION    "200511141648Z"  -- Mon Nov 14 16:48 UTC 2005
     DESCRIPTION "The initial version of this MIB module."
-    ::= { etsysModules 60 } 
+    ::= { etsysModules 60 }
 
 -- -------------------------------------------------------------
 -- Textual Conventions
@@ -80,12 +80,12 @@ etsysMgmtAuthNotificationMIB  MODULE-IDENTITY
 EtsysMgmtAuthNotificationTypes ::= TEXTUAL-CONVENTION
     STATUS current
     DESCRIPTION
-        "The list of authentication notification types that 
-         could be supported and enabled on the managed entity. 
-  
+        "The list of authentication notification types that
+         could be supported and enabled on the managed entity.
+
          cliConsole(0)     CLI console connection authentication
          cliSsh(1)         CLI SSH connection authentication
-         cliTelnet(2)      CLI TELNET connection authentication 
+         cliTelnet(2)      CLI TELNET connection authentication
          webview(3)        Webview connection authentication
          inactiveUser(4)   Username unused for specified interval
          maxUserAttempt(5) Exceeded maximum simultaneous authentications
@@ -102,27 +102,27 @@ EtsysMgmtAuthNotificationTypes ::= TEXTUAL-CONVENTION
            }
 
 -- -------------------------------------------------------------
--- branches in the ENTERASYS-MANAGEMENT-AUTH-NOTIFICATION MIB 
+-- branches in the ENTERASYS-MANAGEMENT-AUTH-NOTIFICATION MIB
 -- -------------------------------------------------------------
 
-etsysMgmtAuthObjects        
+etsysMgmtAuthObjects
         OBJECT IDENTIFIER ::= { etsysMgmtAuthNotificationMIB 1 }
 
 etsysMgmtAuthNotificationBranch
         OBJECT IDENTIFIER ::= { etsysMgmtAuthObjects 0 }
 
-etsysMgmtAuthConfigBranch 
+etsysMgmtAuthConfigBranch
         OBJECT IDENTIFIER ::= { etsysMgmtAuthObjects 1 }
 
 etsysMgmtAuthAuthenticationBranch
         OBJECT IDENTIFIER ::= { etsysMgmtAuthObjects 2 }
 
 -- -------------------------------------------------------------
--- Objects in the etsysMgmtAuthConfigBranch group 
+-- Objects in the etsysMgmtAuthConfigBranch group
 -- -------------------------------------------------------------
 
 etsysMgmtAuthNotificationsSupported OBJECT-TYPE
-    SYNTAX     EtsysMgmtAuthNotificationTypes 
+    SYNTAX     EtsysMgmtAuthNotificationTypes
     MAX-ACCESS read-only
     STATUS     current
     DESCRIPTION
@@ -132,24 +132,24 @@ etsysMgmtAuthNotificationsSupported OBJECT-TYPE
     ::= { etsysMgmtAuthConfigBranch 1 }
 
 etsysMgmtAuthNotificationEnabledStatus OBJECT-TYPE
-    SYNTAX     EtsysMgmtAuthNotificationTypes 
+    SYNTAX     EtsysMgmtAuthNotificationTypes
     MAX-ACCESS read-write
     STATUS     current
     DESCRIPTION
-        "The authentication types the management entity is configured 
+        "The authentication types the management entity is configured
          to send notifications for."
     DEFVAL { { } }
     ::= { etsysMgmtAuthConfigBranch 2 }
 
 -- -------------------------------------------------------------
--- Objects in the etsysMgmtAuthAuthenticationBranch group 
+-- Objects in the etsysMgmtAuthAuthenticationBranch group
 -- -------------------------------------------------------------
 
 etsysMgmtAuthType OBJECT-TYPE
-    SYNTAX     EtsysMgmtAuthNotificationTypes 
+    SYNTAX     EtsysMgmtAuthNotificationTypes
     MAX-ACCESS accessible-for-notify
     STATUS     current
-    DESCRIPTION 
+    DESCRIPTION
         "The authentication type that was attempted by the user.  Only
          1 bit MAY be set in any given notification."
     ::= { etsysMgmtAuthAuthenticationBranch 1 }
@@ -158,7 +158,7 @@ etsysMgmtAuthUserName OBJECT-TYPE
     SYNTAX     DisplayString
     MAX-ACCESS accessible-for-notify
     STATUS     current
-    DESCRIPTION 
+    DESCRIPTION
         "The username supplied by the user in the in the authentication
          attempt."
     ::= { etsysMgmtAuthAuthenticationBranch 2 }
@@ -167,8 +167,8 @@ etsysMgmtAuthInetAddressType OBJECT-TYPE
     SYNTAX        InetAddressType
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
-        "A value that represents a type of Internet address specified 
+    DESCRIPTION
+        "A value that represents a type of Internet address specified
          by etsysMgmtAuthInetAddress."
     ::= { etsysMgmtAuthAuthenticationBranch 3 }
 
@@ -176,9 +176,9 @@ etsysMgmtAuthInetAddress OBJECT-TYPE
     SYNTAX        InetAddress
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
-        "The Internet Address of the remote user being authenticated. 
-         The format of this object is defined by the 
+    DESCRIPTION
+        "The Internet Address of the remote user being authenticated.
+         The format of this object is defined by the
          etsysMgmtAuthInetAddressType object."
     ::= { etsysMgmtAuthAuthenticationBranch 4 }
 
@@ -186,9 +186,9 @@ etsysMgmtAuthInIfIndex OBJECT-TYPE
     SYNTAX        InterfaceIndexOrZero
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
-        "The MIB2 interface on the managed entity that the 
-         authentication 
+    DESCRIPTION
+        "The MIB2 interface on the managed entity that the
+         authentication
          request was received on.  This object must return a value of
          zero if the interface is unknown."
     ::= { etsysMgmtAuthAuthenticationBranch 5 }
@@ -198,12 +198,12 @@ etsysMgmtAuthInIfIndex OBJECT-TYPE
 -- -------------------------------------------------------------
 
 etsysMgmtAuthSuccessNotificiation NOTIFICATION-TYPE
-    OBJECTS    { 
-                 etsysMgmtAuthType, 
-                 etsysMgmtAuthUserName, 
+    OBJECTS    {
+                 etsysMgmtAuthType,
+                 etsysMgmtAuthUserName,
                  etsysMgmtAuthInetAddressType,
-                 etsysMgmtAuthInetAddress, 
-                 etsysMgmtAuthInIfIndex 
+                 etsysMgmtAuthInetAddress,
+                 etsysMgmtAuthInIfIndex
                 }
     STATUS      current
     DESCRIPTION
@@ -211,15 +211,15 @@ etsysMgmtAuthSuccessNotificiation NOTIFICATION-TYPE
          The managed entity will send this notification
          when the remote user is successfully authenticated"
     ::= { etsysMgmtAuthNotificationBranch 1 }
-        
+
 
 etsysMgmtAuthFailNotificiation NOTIFICATION-TYPE
-    OBJECTS    { 
-                 etsysMgmtAuthType, 
-                 etsysMgmtAuthUserName, 
+    OBJECTS    {
+                 etsysMgmtAuthType,
+                 etsysMgmtAuthUserName,
                  etsysMgmtAuthInetAddressType,
-                 etsysMgmtAuthInetAddress, 
-                 etsysMgmtAuthInIfIndex 
+                 etsysMgmtAuthInetAddress,
+                 etsysMgmtAuthInIfIndex
                 }
     STATUS      current
     DESCRIPTION
@@ -233,8 +233,8 @@ etsysMgmtAuthInactiveNotification NOTIFICATION-TYPE
                  etsysMgmtAuthType,
                  etsysMgmtAuthUserName,
                  etsysMgmtAuthInetAddressType,
-                 etsysMgmtAuthInetAddress, 
-                 etsysMgmtAuthInIfIndex 
+                 etsysMgmtAuthInetAddress,
+                 etsysMgmtAuthInIfIndex
                 }
     STATUS      current
     DESCRIPTION
@@ -250,13 +250,13 @@ etsysMgmtAuthMaxAuthAttemptNotification NOTIFICATION-TYPE
                  etsysMgmtAuthType,
                  etsysMgmtAuthUserName,
                  etsysMgmtAuthInetAddressType,
-                 etsysMgmtAuthInetAddress, 
-                 etsysMgmtAuthInIfIndex 
+                 etsysMgmtAuthInetAddress,
+                 etsysMgmtAuthInIfIndex
                 }
     STATUS      current
     DESCRIPTION
         "Max user authentication attempt notification.
-         The managed entity will send this notification to alert the 
+         The managed entity will send this notification to alert the
          appropriate administrator that a particular user has attempted
          to authenticate on the device a specified number of times."
     ::= { etsysMgmtAuthNotificationBranch 4 }
@@ -266,13 +266,13 @@ etsysMgmtAuthMaxFailNotification NOTIFICATION-TYPE
                  etsysMgmtAuthType,
                  etsysMgmtAuthUserName,
                  etsysMgmtAuthInetAddressType,
-                 etsysMgmtAuthInetAddress, 
-                 etsysMgmtAuthInIfIndex 
+                 etsysMgmtAuthInetAddress,
+                 etsysMgmtAuthInIfIndex
                 }
     STATUS      current
     DESCRIPTION
         "Failed authentication threshold notification.
-         The managed entity will send this notification to alert the 
+         The managed entity will send this notification to alert the
          appropriate administrator when the threshold for failed
          authentications for a particular user has been exceeded."
     ::= { etsysMgmtAuthNotificationBranch 5 }
@@ -281,13 +281,13 @@ etsysMgmtAuthMaxFailNotification NOTIFICATION-TYPE
 -- Conformance Information
 -- ------------------------------------------------------------- --
 
-etsysMgmtAuthConformance 
+etsysMgmtAuthConformance
     OBJECT IDENTIFIER ::= { etsysMgmtAuthNotificationMIB 2 }
 
-etsysMgmtAuthGroups      
+etsysMgmtAuthGroups
     OBJECT IDENTIFIER ::= { etsysMgmtAuthConformance  1 }
 
-etsysMgmtAuthCompliances 
+etsysMgmtAuthCompliances
     OBJECT IDENTIFIER ::= { etsysMgmtAuthConformance  2 }
 
 -- ------------------------------------------------------------- --
@@ -295,33 +295,33 @@ etsysMgmtAuthCompliances
 -- ------------------------------------------------------------- --
 
 etsysMgmtAuthConfigGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
               etsysMgmtAuthNotificationsSupported,
               etsysMgmtAuthNotificationEnabledStatus
             }
     STATUS current
     DESCRIPTION
-        "A collection of objects providing basic instrumentation of 
+        "A collection of objects providing basic instrumentation of
          network management authentication notifications."
     ::= { etsysMgmtAuthGroups 1 }
 
 etsysMgmtAuthHistoryGroup OBJECT-GROUP
-    OBJECTS { 
-              etsysMgmtAuthType, 
-              etsysMgmtAuthUserName, 
+    OBJECTS {
+              etsysMgmtAuthType,
+              etsysMgmtAuthUserName,
               etsysMgmtAuthInetAddressType,
-              etsysMgmtAuthInetAddress, 
+              etsysMgmtAuthInetAddress,
               etsysMgmtAuthInIfIndex
             }
     STATUS current
     DESCRIPTION
-        "A collection of objects providing authentication 
-         history information." 
+        "A collection of objects providing authentication
+         history information."
     ::= { etsysMgmtAuthGroups 2 }
 
 etsysMgmtAuthNotificationGroup NOTIFICATION-GROUP
-    NOTIFICATIONS { 
-                    etsysMgmtAuthSuccessNotificiation, 
+    NOTIFICATIONS {
+                    etsysMgmtAuthSuccessNotificiation,
                     etsysMgmtAuthFailNotificiation
                   }
     STATUS current
@@ -330,14 +330,14 @@ etsysMgmtAuthNotificationGroup NOTIFICATION-GROUP
     ::= { etsysMgmtAuthGroups 3 }
 
 etsysMgmtAuthNotificationUserGroup NOTIFICATION-GROUP
-    NOTIFICATIONS { 
-                    etsysMgmtAuthInactiveNotification, 
-                    etsysMgmtAuthMaxAuthAttemptNotification, 
+    NOTIFICATIONS {
+                    etsysMgmtAuthInactiveNotification,
+                    etsysMgmtAuthMaxAuthAttemptNotification,
                     etsysMgmtAuthMaxFailNotification
                   }
     STATUS current
     DESCRIPTION
-        "The management authentication notifications relating to a 
+        "The management authentication notifications relating to a
          particular user's attributes."
     ::= { etsysMgmtAuthGroups 4 }
 
@@ -350,12 +350,12 @@ etsysMgmtAuthCompliance MODULE-COMPLIANCE
     DESCRIPTION
         "The compliance statement for devices that support Enterasys
          management authentication notification."
-    MODULE 
-        MANDATORY-GROUPS { 
+    MODULE
+        MANDATORY-GROUPS {
                           etsysMgmtAuthConfigGroup,
-                          etsysMgmtAuthHistoryGroup, 
-                          etsysMgmtAuthNotificationGroup 
-                         } 
+                          etsysMgmtAuthHistoryGroup,
+                          etsysMgmtAuthNotificationGroup
+                         }
     ::= { etsysMgmtAuthCompliances 1 }
 
 etsysMgmtAuthUserCompliance MODULE-COMPLIANCE
@@ -364,10 +364,10 @@ etsysMgmtAuthUserCompliance MODULE-COMPLIANCE
         "The compliance statement for devices that support Enterasys
          management authentication notifications based on user
          attributes."
-    MODULE 
-        MANDATORY-GROUPS { 
+    MODULE
+        MANDATORY-GROUPS {
                           etsysMgmtAuthNotificationUserGroup
-                         } 
+                         }
     ::= { etsysMgmtAuthCompliances 2 }
 
 END

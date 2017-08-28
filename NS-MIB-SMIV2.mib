@@ -38,7 +38,7 @@ totalClientConnections OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Total Client Connections made from system start.
 
 	This object is obsolete."
@@ -48,7 +48,7 @@ curClientConnections OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Current Client Connections.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpCurClientConn."
@@ -58,7 +58,7 @@ totalServerConnections OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Total Server Connections made from system start.
 
 	This object is obsolete."
@@ -68,7 +68,7 @@ curServerConnections OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Current Server Connections.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpCurServerConn."
@@ -78,7 +78,7 @@ clientConnRefused OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Client connections added the SurgeQ, and blocked from initiating a server connection to control op/s.
 
 	This object is obsolete."
@@ -88,7 +88,7 @@ reuseHit OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total no of client transactions used the server connection in the reuse-pool.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpReuseHit."
@@ -98,7 +98,7 @@ reuseMiss OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total new Connections made, when server connection
          unavailable in reuse pool...OBSOLETE"
     ::= { sysStatistics 7 }
@@ -107,7 +107,7 @@ totClientDontReuse OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total client connection with Dont Reuse flag set...OBSOLETE"
     ::= { sysStatistics 8 }
 
@@ -115,7 +115,7 @@ totServerDontReuse OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total server connection with Dont Reuse set...OBSOLETE"
     ::= { sysStatistics 9 }
 
@@ -123,7 +123,7 @@ curPhysicalServers OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of physical servers that WS has open connections with.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpCurPhysicalServers."
@@ -133,8 +133,8 @@ totPhysicalServers OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The total number of physical servers that WS opened connections 
+    DESCRIPTION
+        "The total number of physical servers that WS opened connections
          to from the last reboot.
 
 	This object is obsolete."
@@ -144,7 +144,7 @@ cookiePacketSeqReject OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of tcp connections rejected because of syn cookie sequence number mismatch.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpErrCookiePktSeqReject."
@@ -154,7 +154,7 @@ cookieSignatureReject OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of tcp connections rejected because of syn cookie mismatch.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpErrCookiePktSigReject."
@@ -164,7 +164,7 @@ cpuUsage OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CPU Utilization.
 
 	This object is obsolete."
@@ -174,7 +174,7 @@ unackSyn OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of un-acknowledged SYNs NS has received so far.
 
 	This object is obsolete.It can be calculated as (tcpTotSyn - tcpTotClientConnOpened)."
@@ -184,7 +184,7 @@ curClientEstablishedConn OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of currently established client connections.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpCurClientConnEstablished."
@@ -194,7 +194,7 @@ curServerEstablishedConn OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of currently established server connections.
 
 	This object is obsolete.It can be measured through nsTcpStatsGroup.tcpCurServerConnEstablished."
@@ -207,7 +207,7 @@ totalRequests OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Requests."
     ::= { wsHttpGroup 1 }
 
@@ -215,7 +215,7 @@ totalGets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP GETs."
     ::= { wsHttpGroup 2 }
 
@@ -223,7 +223,7 @@ totalRequests1-0 OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP 1.0 Requests."
     ::= { wsHttpGroup 3 }
 
@@ -231,7 +231,7 @@ totalPosts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Posts."
     ::= { wsHttpGroup 4 }
 
@@ -239,7 +239,7 @@ totalResponses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Responses."
     ::= { wsHttpGroup 5 }
 
@@ -247,7 +247,7 @@ totalResponses1-0 OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP 1.0 Responses."
     ::= { wsHttpGroup 6 }
 
@@ -255,7 +255,7 @@ totalContentLenResponses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Responses with Content Length."
     ::= { wsHttpGroup 7 }
 
@@ -263,7 +263,7 @@ totalChunkedResponses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Chunked Responses."
     ::= { wsHttpGroup 8 }
 
@@ -271,7 +271,7 @@ totalMultiPartResponses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Multi-part Responses."
     ::= { wsHttpGroup 9 }
 
@@ -279,7 +279,7 @@ totalIncompleteHeaders OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Incomplete headers."
     ::= { wsHttpGroup 10 }
 
@@ -287,7 +287,7 @@ totalIncompleteRequests OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total Incomplete Requests."
     ::= { wsHttpGroup 11 }
 
@@ -295,7 +295,7 @@ totalIncompleteResponses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total Incomplete Responses."
     ::= { wsHttpGroup 12 }
 
@@ -303,7 +303,7 @@ totalPipeLinedRequests OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total pipe-lined Requests."
     ::= { wsHttpGroup 13 }
 
@@ -311,7 +311,7 @@ serverBusyErrs OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total HTTP Server Busy Errors."
     ::= { wsHttpGroup 14 }
 
@@ -319,7 +319,7 @@ wsIfStatsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF WsIfStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Raw bandwidth usage of all the interfaces.
 
 	This Table is obsolete.Instead of this table use nsSysGroup.nsIfStatsTable."
@@ -329,7 +329,7 @@ wsIfStatsEntry OBJECT-TYPE
     SYNTAX      WsIfStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Raw bandwidth usage of all the interfaces.
 
 	This Entry is obsolete.Instead of this entry use nsSysGroup.nsIfStatsEntry."
@@ -362,7 +362,7 @@ index OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each physical interface.
 
 	This object is obsolete."
@@ -372,7 +372,7 @@ wsIfName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the Interface.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifName."
@@ -382,7 +382,7 @@ wsIfMedia OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The media type of the Interface.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifMedia."
@@ -392,9 +392,9 @@ rxRawBandwidthUsage OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The received raw bandwidth on interface in bitsps
-         since the last time this variable was 
+         since the last time this variable was
          retrieved using SNMP.
 
 	This object is obsolete."
@@ -404,8 +404,8 @@ rxAveragePacketRate OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The average number of packets received on the 
+    DESCRIPTION
+        "The average number of packets received on the
          interface since the system start.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifRxAvgPacketRate."
@@ -415,7 +415,7 @@ rxCurrentPacketRate OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The packet rate on the interface since the last
          time the variable was retrieved with using SNMP.
 
@@ -426,8 +426,8 @@ rxAveragePacketsSize OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The average size of the packet received on the 
+    DESCRIPTION
+        "The average size of the packet received on the
          interface since the system start.
 
 	 This object is obsolete."
@@ -437,7 +437,7 @@ rxFrameErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "A Counter for the number of frame errors received
          on the interface.
 
@@ -448,7 +448,7 @@ rxCrcErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "A Counter for the number of Crc errors received on
          the interface.
 
@@ -459,7 +459,7 @@ rxAlignmentErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "A Counter to indicate the number of Alignment errors
          received on the interface.
 
@@ -470,7 +470,7 @@ txRawBandwidthUsage OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The transmit raw bandwidth on interface in bitsps
          from the last time this variable was retrieved.
 
@@ -481,8 +481,8 @@ txAveragePacketRate OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The average number of packets transmitted on the 
+    DESCRIPTION
+        "The average number of packets transmitted on the
          the interface since the system start.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifTxAvgPacketRate."
@@ -492,7 +492,7 @@ txCurrentPacketRate OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The packet rate on the interface since the last
          time this variable was retrieved using SNMP.
 
@@ -503,8 +503,8 @@ txAveragePacketsSize OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The average size of the packet received on the 
+    DESCRIPTION
+        "The average size of the packet received on the
          interface since the system start.
 
 	This object is obsolete."
@@ -514,7 +514,7 @@ txExcessCollisions OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "A Counter to indicate excess collisions detected in
          transmission on the interface.
 
@@ -525,7 +525,7 @@ txLateCollisions OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "A Counter to indicate late collisions detected in
          transmission on the interface.
 
@@ -536,8 +536,8 @@ txCollisions OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "A Counter to indicate total collision Errors detected 
+    DESCRIPTION
+        "A Counter to indicate total collision Errors detected
          in transmission on the interface.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifTxCollisions."
@@ -547,8 +547,8 @@ txMultiCollisionsErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "A Counter to indicate Multi collision Errors detected 
+    DESCRIPTION
+        "A Counter to indicate Multi collision Errors detected
          in transmission on the interface.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifTxMultiCollisionsErrors."
@@ -558,8 +558,8 @@ txCarrierErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "A Counter to indicate Carrier Errors detected in 
+    DESCRIPTION
+        "A Counter to indicate Carrier Errors detected in
          transmission on the interface.
 
 	This object is obsolete.It can be measured through nsIfStatsTable.ifTxCarrierErrors."
@@ -572,7 +572,7 @@ totudpsessions OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total number of udp sessions since the start of the system"
     ::= { wsudpgroup 1 }
 
@@ -580,7 +580,7 @@ currudpsessions OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total number of current udp sessions "
     ::= { wsudpgroup 2 }
 
@@ -591,7 +591,7 @@ wsIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The primary IP address of the netscaler.
 
 	This object is obsolete.It can be measured through nsSysGroup.sysIpAdress."
@@ -601,7 +601,7 @@ wsNetmask OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The netmask for the IP address of the netscaler.
 
 	This object is obsolete.It can be measured through nsSysGroup.sysNetmask."
@@ -611,7 +611,7 @@ wsMappedIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Mapped IP address of the netscaler."
     ::= { sysConfig 3 }
 
@@ -619,7 +619,7 @@ wsLastMappedIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The last Mapped IP address of the netscaler."
     ::= { sysConfig 4 }
 
@@ -627,7 +627,7 @@ wsMappedIpAddressRange OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The range of mapped IP addresses on the netscaler."
     ::= { sysConfig 5 }
 
@@ -635,7 +635,7 @@ wsFailOver OBJECT-TYPE
     SYNTAX      INTEGER { enabled(1), disabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Is Fail Over enabled on the netscaler.
 
 	This object is obsolete."
@@ -645,7 +645,7 @@ wsPriority OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The priority of the netscaler."
     ::= { sysConfig 7 }
 
@@ -653,7 +653,7 @@ wsMaxClientList OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Maximum number of server connections that NS can open to the server.
 
 	This object is obsolete."
@@ -663,9 +663,9 @@ wsClientIp OBJECT-TYPE
     SYNTAX      INTEGER { enabled(1), disabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Enable Client IP in the HTTP Request to the Server.
-	
+
 	This object is obsolete."
     ::= { sysConfig 9 }
 
@@ -673,8 +673,8 @@ wsFailoverTime OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The time in seconds after which the secondary takes over as 
+    DESCRIPTION
+        "The time in seconds after which the secondary takes over as
          primary, if there is no response from primary."
     ::= { sysConfig 10 }
 
@@ -682,7 +682,7 @@ wsMaxRequestsPerConn OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Maximum number of requests per connection on a server-connection.
 
 	This object is obsolete."
@@ -692,7 +692,7 @@ wsSmoothConnection OBJECT-TYPE
     SYNTAX      INTEGER { enabled(1), disabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Smooth Connection Feature on the netscaler.
 
 	This object is obsolete."
@@ -705,7 +705,7 @@ lbStatisticsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF LbStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Virtual Service Information for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverTable."
@@ -715,7 +715,7 @@ lbStatisticsEntry OBJECT-TYPE
     SYNTAX      LbStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Virtual Service Information for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverEntry."
@@ -741,7 +741,7 @@ vsId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each Virtual Service inside
          a NetScaler.
 
@@ -752,7 +752,7 @@ psId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each Physical Service inside
          a NetScaler.
 
@@ -763,7 +763,7 @@ vsIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrIpAddress."
@@ -773,7 +773,7 @@ vsPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrPort."
@@ -783,7 +783,7 @@ psIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcIpAddress."
@@ -793,22 +793,22 @@ psPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcPort."
     ::= { lbStatisticsEntry 6 }
 
 protocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrType."
@@ -832,7 +832,7 @@ serviceHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total hits on the physical service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrTotalRequests."
@@ -842,8 +842,8 @@ latency OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The latency in responding to gets from the 
+    DESCRIPTION
+        "The latency in responding to gets from the
          physical server.
 
 	This object is obsolete.It can be measured through lbvserverTable.lbvsvrAvgSvrTTFB."
@@ -854,7 +854,7 @@ connections OBJECT-TYPE
 	MAX-ACCESS read-only
 	STATUS obsolete
 	DESCRIPTION
-		"The number of active connections on the 
+		"The number of active connections on the
 		 physical Server.
 
 		This object is obsolete.It can be measured through lbvserverTable.lbvsvrActiveConn."
@@ -868,8 +868,8 @@ virServiceTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF VirServiceEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has all the configuration information 
+    DESCRIPTION
+        "The table that has all the configuration information
          for each virtual service.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverTable.	"
@@ -879,7 +879,7 @@ virServiceEntry OBJECT-TYPE
     SYNTAX      VirServiceEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Virtual Service Information for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverEntry."
@@ -902,7 +902,7 @@ vserId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each Virtual Service inside
          a NetScaler.
 
@@ -913,7 +913,7 @@ ipAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrIpAddress.	"
@@ -923,22 +923,22 @@ port OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrPort."
     ::= { virServiceEntry 3 }
 
 vsProtocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrType."
@@ -948,7 +948,7 @@ name OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrName."
@@ -986,7 +986,7 @@ persistanceTimeout OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The timeout set for persistence.
 
 	This object is obsolete.It can be measured through lbvserverTable.lbvsvrPersistanceTimeOut. "
@@ -996,7 +996,7 @@ state OBJECT-TYPE
 	SYNTAX INTEGER	{
 		up(0), down(1), unknown(2),
 		busy(3), outOfService(4), transitionToOutOfService(5)
-	}		
+	}
 	MAX-ACCESS read-only
 	STATUS obsolete
 	DESCRIPTION
@@ -1010,8 +1010,8 @@ phyServiceTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF PhyServiceEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has all the configuration information 
+    DESCRIPTION
+        "The table that has all the configuration information
          for each physical service.
 
 	This Table is obsolete.Instead of this table use nsSvcGroup.serviceTable."
@@ -1021,7 +1021,7 @@ phyServiceEntry OBJECT-TYPE
     SYNTAX      PhyServiceEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Physical Service Information for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsSvcGroup.serviceEntry."
@@ -1044,7 +1044,7 @@ pserId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each Physical Service inside
          a NetScaler.
 
@@ -1055,7 +1055,7 @@ pserIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcIpAddress."
@@ -1065,22 +1065,22 @@ pserPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcPort."
     ::= { phyServiceEntry 3 }
 
 psProtocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcServiceType."
@@ -1090,12 +1090,12 @@ psName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the Physical Service.
 
 	This object is obsolete.It can be measured through serviceTable.svcServiceName."
     ::= { phyServiceEntry 5 }
- 
+
 psState OBJECT-TYPE
 	SYNTAX INTEGER	{down(0), up(1) }
 	MAX-ACCESS read-only
@@ -1110,7 +1110,7 @@ weight OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The weight assigned to the Physical Service.
 
 	This object is obsolete.It can be measured through vserverServiceTable.serviceWeight."
@@ -1120,7 +1120,7 @@ psVsIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Virtual Service to which this
          physical service is bound.
 
@@ -1131,7 +1131,7 @@ psVsPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrPort."
@@ -1147,7 +1147,7 @@ scperServiceStatisticsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF ScperServiceStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Table is obsolete."
@@ -1157,7 +1157,7 @@ scperServiceStatisticsEntry OBJECT-TYPE
     SYNTAX      ScperServiceStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Entry is obsolete."
@@ -1179,7 +1179,7 @@ devno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each physical Service inside
          a NetScaler.
 
@@ -1190,7 +1190,7 @@ phyIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyDestIpAddress or vserverScpolicyTable.svcscpolicyDestIpAddress."
@@ -1200,22 +1200,22 @@ phyPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Physical Service.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyDestIpPort or vserverScpolicyTable.svcscpolicyDestIpPort."
     ::= { scperServiceStatisticsEntry 3 }
 
 scProtocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type in the Physical Service.
 
 	This object is obsolete."
@@ -1225,7 +1225,7 @@ currentDelay OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The current Delay on the physical Service.
 
 	This object is obsolete."
@@ -1235,7 +1235,7 @@ avgTxTime OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The average transaction time.
 
 	This object is obsolete.It can be measured through serviceTable.svcAvgSvrTTFB."
@@ -1245,7 +1245,7 @@ surgeCount OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The count of number of times the surge occurred.
 
 	This object is obsolete.It can be measured through serviceTable.svcSurgeCount."
@@ -1255,7 +1255,7 @@ iohCount OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of client requests, after having put on hold
          couldnt still access the physical server.
 
@@ -1266,7 +1266,7 @@ scperPolicyStatisticsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF ScperPolicyStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsSvcGroup.serviceScpolicyTable or nsVserverGroup.vserverScpolicyTable."
@@ -1276,7 +1276,7 @@ scperPolicyStatisticsEntry OBJECT-TYPE
     SYNTAX      ScperPolicyStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsSvcGroup.serviceScpolicyEntry or nsVserverGroup.vserverScpolicyEntry."
@@ -1298,7 +1298,7 @@ policydevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each physical Service inside
          a NetScaler.
 
@@ -1309,7 +1309,7 @@ primaryserviceIp OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " ip address of primary service.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyPrimaryIPAddress."
@@ -1319,9 +1319,9 @@ primaryserviceport OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " port number of primary service.
-	
+
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyPrimaryPort or vserverScpolicyTable.vsvrscpolicyPrimaryPort."
     ::= { scperPolicyStatisticsEntry 3 }
 
@@ -1329,7 +1329,7 @@ destserviceIp OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " ip address of destination physical service.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyDesIpAddress or vserverScpolicyTable.vsvrscpolicyDesIpAddress."
@@ -1339,7 +1339,7 @@ destserviceport OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " port number of destination physical service.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyDestPort or vserverScpolicyTable.vsvrscpolicyDestPort."
@@ -1349,7 +1349,7 @@ transactiontime OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " transaction time.
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyAvgServerTransactionTime or vserverScpolicyTable.vsvrscpolicyAvgServerTransactionTime."
@@ -1359,7 +1359,7 @@ totaltransaction OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " total number of transactions .
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyTotClientTransaction or vserverScpolicyTable.vsvrscpolicyTotClientTransaction."
@@ -1369,7 +1369,7 @@ totalopenconnection OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " total number of open connections for this policy .
 
 	This object is obsolete.It can be measured through serviceScpolicyTable.svcscpolicyTotOpenConn or vserverScpolicyTable.vsvrscpolicyTotOpenConn."
@@ -1382,7 +1382,7 @@ scUrlHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "this Counter gives the  number of times we matched an
          incoming request with a Configured sureconnect  policy .
 
@@ -1420,7 +1420,7 @@ sessReqs OBJECT-TYPE
 	STATUS	obsolete
 	DESCRIPTION
 		"this Counter gives the number requests which came in a
-		SureConnect session. 
+		SureConnect session.
 
 		This object is obsolete.It can be measured through scPolicyStatistics.scSessionReqs."
 	::= {scGlobalStats 4 }
@@ -1480,7 +1480,7 @@ resetStats OBJECT-TYPE
 		url for more than 10 minutes.
 
 	This object is obsolete.It can be measured through scPolicyStatistics.scResetStats."
-	::= { scGlobalStats 9}		
+	::= { scGlobalStats 9}
 
 scConfig OBJECT IDENTIFIER
     ::= { sureConnect 2 }
@@ -1489,7 +1489,7 @@ scPolicyconfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF ScPolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsScPolicyGroup.scPolicyConfigTable.	"
@@ -1499,7 +1499,7 @@ scPolicyconfigEntry OBJECT-TYPE
     SYNTAX      ScPolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Internet On Hold Statistics for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsScPolicyGroup.scPolicyConfigEntry."
@@ -1522,7 +1522,7 @@ policyIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each On Hold Policy inside
          a NetScaler.
 
@@ -1533,7 +1533,7 @@ policyName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the Physical Service.
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scPolicyName."
@@ -1543,9 +1543,9 @@ scPolicyUrl OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The URL in the IOH Policy.
-		
+
 	This object is obsolete.It can be measured through scPolicyConfigTable.scPolUrl."
     ::= { scPolicyconfigEntry 3 }
 
@@ -1553,7 +1553,7 @@ delayThreshold OBJECT-TYPE
     SYNTAX      INTEGER { notconfigured(-1) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The delay threshold.
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scDelayThreshold."
@@ -1563,7 +1563,7 @@ maxConnections OBJECT-TYPE
     SYNTAX      INTEGER { notconfigured(-1) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The max connections.
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scMaxConnections."
@@ -1578,12 +1578,12 @@ actionType OBJECT-TYPE
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scActionType."
 	::= { scPolicyconfigEntry 6}
-		
+
 alternatecontentServicename OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The alternate service name for the content.
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scAlternateContentServiceName. "
@@ -1593,7 +1593,7 @@ ruleName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Rule Name .
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scRuleName."
@@ -1603,7 +1603,7 @@ alternatecontentPath OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The alternate path for the content.
 
 	This object is obsolete.It can be measured through scPolicyConfigTable.scAlternateContentPath. "
@@ -1616,7 +1616,7 @@ cswStatisticsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CswStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Content Switching Statistics for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverTable."
@@ -1626,7 +1626,7 @@ cswStatisticsEntry OBJECT-TYPE
     SYNTAX      CswStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Content Switching Statistics for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverEntry."
@@ -1647,7 +1647,7 @@ cswIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each virtual Service inside
          a NetScaler.
 
@@ -1658,7 +1658,7 @@ cswVsIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrIpAddress."
@@ -1668,22 +1668,22 @@ cswVsPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrPort."
     ::= { cswStatisticsEntry 3 }
 
 cswProtocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type of the Virtual Server.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrType."
@@ -1693,7 +1693,7 @@ virServiceName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the CSW Virtual server.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrName. "
@@ -1703,7 +1703,7 @@ vsHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total hits on all the policies bound to this virtual server.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrTotalRequests."
@@ -1713,7 +1713,7 @@ vsMiss OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total Miss on all the policies bound to this virtual server.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrTotalMiss."
@@ -1723,7 +1723,7 @@ cswConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CswConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CSW configuration information for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverCspolicyTable."
@@ -1733,7 +1733,7 @@ cswConfigEntry OBJECT-TYPE
     SYNTAX      CswConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CSW configuration information for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverCspolicyEntry."
@@ -1754,7 +1754,7 @@ cswVsId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each CSW Vserver inside
          a NetScaler.
 
@@ -1765,7 +1765,7 @@ policyId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each CSW Policy inside
          a NetScaler.
 
@@ -1776,7 +1776,7 @@ vServerName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the CSW Virtual Server.
 
 	This object is obsolete."
@@ -1786,7 +1786,7 @@ policyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the policy binding to a Virtual Server.
 
 	This object is obsolete.It can be measured through vserverCspolicyTable.cspolicyName."
@@ -1796,7 +1796,7 @@ policyvalue OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The value of the policy.
 
 	 This object is obsolete."
@@ -1806,7 +1806,7 @@ policyHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The hits on the Policy in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverCspolicyTable.cspolicyHits."
@@ -1816,7 +1816,7 @@ domain OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The domain hosted by the CSW vserver.
 
 	This object is obsolete."
@@ -1829,7 +1829,7 @@ crStatisticsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CrStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cache Redirection Statistics for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverTable."
@@ -1839,7 +1839,7 @@ crStatisticsEntry OBJECT-TYPE
     SYNTAX      CrStatisticsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cache Redirection Statistics for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverEntry."
@@ -1860,7 +1860,7 @@ crVsIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each virtual Service inside
          a NetScaler.
 
@@ -1871,7 +1871,7 @@ crVsIpAddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The IP address in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrIpAddress."
@@ -1881,22 +1881,22 @@ crVsPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrPort."
     ::= { crStatisticsEntry 3 }
 
 crProtocolType OBJECT-TYPE
-    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4), 
-                    monitor(5), monitorUdp(6), nntp(7), httpserver(8), 
-                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12), 
-                    nat(13), any(14), ssl(15), dns(16), adns(17), 
-                    snmp(18), ha(19), monitorPing(20), 
+    SYNTAX      INTEGER { http(0), ftp(1), tcp(2), udp(3), sslBridge(4),
+                    monitor(5), monitorUdp(6), nntp(7), httpserver(8),
+                    httpclient(9), rpcserver(10), rpcclient(11), ssf(12),
+                    nat(13), any(14), ssl(15), dns(16), adns(17),
+                    snmp(18), ha(19), monitorPing(20),
                     serviceUnknown(21) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The protocol type in the Physical Service.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrType."
@@ -1906,7 +1906,7 @@ crVirServiceName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the CSW Virtual server.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrName. "
@@ -1916,7 +1916,7 @@ crVsHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total hits on the policies.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrTotalRequests."
@@ -1926,7 +1926,7 @@ crVsMiss OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total Miss on the policy.
 
 	This object is obsolete.It can be measured through vserverTable.vsvrTotMiss."
@@ -1939,7 +1939,7 @@ crPolBindConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CrPolBindConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR policy binding configuration information for each of the entry.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverCrpolicyTable."
@@ -1949,7 +1949,7 @@ crPolBindConfigEntry OBJECT-TYPE
     SYNTAX      CrPolBindConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR policy binding configuration information for each of the entry.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverCrpolicyEntry."
@@ -1968,7 +1968,7 @@ bindId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The unique binding Id for each CR Policy inside
          a NetScaler.
 
@@ -1979,7 +1979,7 @@ crbVServerName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the CR Virtual Server.
 
 	This object is obsolete."
@@ -1989,7 +1989,7 @@ crbPolicyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the policy binding to a Virtual Server.
 
 	This object is obsolete.It can be measured through vserverCrpolicyTable.crpolicyName."
@@ -1999,7 +1999,7 @@ crbPolicyvalue OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The value of the policy.
 
 	This object is obsolete."
@@ -2009,7 +2009,7 @@ crbPolicyHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The hits on the Policy in the Virtual Service.
 
 	This object is obsolete.It can be measured through vserverCrpolicyTable.crpolicyHits."
@@ -2019,7 +2019,7 @@ crMapBindConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CrMapBindConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR map policy binding configuration information for each of the entry.
 
 	This Table is obsolete."
@@ -2029,7 +2029,7 @@ crMapBindConfigEntry OBJECT-TYPE
     SYNTAX      CrMapBindConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR map policy binding configuration information for each of the entry.
 
 	This Entry is obsolete."
@@ -2047,7 +2047,7 @@ mapbindId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The unique binding Id for each CR Map Policy inside
          a NetScaler.
 
@@ -2058,7 +2058,7 @@ mapName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the map policy bound to CR Virtual Server.
 
 	This object is obsolete."
@@ -2068,7 +2068,7 @@ mapHits OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The hits on the Map Policy in the Virtual Service.
 
 	This object is obsolete."
@@ -2078,7 +2078,7 @@ vserverName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the CR vserver.
 
 	This object is obsolete."
@@ -2088,7 +2088,7 @@ crMapConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CrMapConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR map configuration information for each of the entry.
 
 	This Table is obsolete.Instead of this table use nsSysGroup.crConfigGroup.crPolicyMapConfigTable."
@@ -2098,7 +2098,7 @@ crMapConfigEntry OBJECT-TYPE
     SYNTAX      CrMapConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CR map configuration information for each of the entry.
 
 	This Entry is obsolete.Instead of this entry use nsSysGroup.crConfigGroup.crPolicyMapConfigEntry."
@@ -2118,7 +2118,7 @@ crmIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The unique Id for each CR Map inside
          a NetScaler.
 
@@ -2129,7 +2129,7 @@ crmMapName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the map policy.
 
 	This object is obsolete.It can be measured through crPolicyMapConfigTable.crMapName."
@@ -2139,7 +2139,7 @@ srcDomain OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the source domain hosted by the map.
 
 	This object is obsolete.It can be measured through crPolicyMapConfigTable.crMapSrcName."
@@ -2149,7 +2149,7 @@ dstDomain OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the destination domain after the mapping is applied.
 
 	This object is obsolete.It can be measured through crPolicyMapConfigTable.crMapDstName."
@@ -2159,7 +2159,7 @@ srcUrl OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Url to be modified under the given source domain.
 
 	This object is obsolete.It can be measured through crPolicyMapConfigTable.crMapSrcUrl."
@@ -2169,7 +2169,7 @@ dstUrl OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Url after mapping.
 
 	This object is obsolete.It can be measured through crPolicyMapConfigTable.crMapDstUrl."
@@ -2185,7 +2185,7 @@ cmpTotRequests OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Number of compression requests done"
     ::= { compressionStats 1 }
 
@@ -2193,7 +2193,7 @@ cmpTotTxbytes OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Number of compressed bytes transmitted"
     ::= { compressionStats 2 }
 
@@ -2201,7 +2201,7 @@ cmpTotRxbytes OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Number of compressible bytes received"
     ::= { compressionStats 3 }
 
@@ -2209,7 +2209,7 @@ cmpTotTxpkts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Number of compressed packets transmitted"
     ::= { compressionStats 4 }
 
@@ -2217,7 +2217,7 @@ cmpTotRxpkts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " Number of compressible packets received"
     ::= { compressionStats 5 }
 
@@ -2225,7 +2225,7 @@ compressionRatio OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " ratio of compressible data received vs compressed data transmitted"
     ::= { compressionStats 6 }
 
@@ -2233,7 +2233,7 @@ totalDataCompressionRatio OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " ratio of total data received to total data transmitted"
     ::= { compressionStats 7 }
 
@@ -2244,7 +2244,7 @@ vlanstatsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF VlanstatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Vlan Statistics for each of the entities."
     ::= { vlan 1 }
 
@@ -2252,7 +2252,7 @@ vlanstatsEntry OBJECT-TYPE
     SYNTAX      VlanstatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Vlan Statistics for each of the entities."
     INDEX       { vlansDevno }
     ::= { vlanstatsTable 1 }
@@ -2271,7 +2271,7 @@ vlansDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each vlan inside
          netscaler"
     ::= { vlanstatsEntry 1 }
@@ -2280,7 +2280,7 @@ totalrxpkts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of packets received in this vlan "
     ::= { vlanstatsEntry 2 }
 
@@ -2288,7 +2288,7 @@ totaltxpkts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of packets transmitted in this vlan"
     ::= { vlanstatsEntry 3 }
 
@@ -2296,7 +2296,7 @@ totalrxbytes OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of bytes received in this vlan "
     ::= { vlanstatsEntry 4 }
 
@@ -2304,7 +2304,7 @@ totaltxbytes OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of bytes transmitted in this vlan"
     ::= { vlanstatsEntry 5 }
 
@@ -2312,7 +2312,7 @@ totaldroppedpkts OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of dropped packets in this vlan"
     ::= { vlanstatsEntry 6 }
 
@@ -2320,7 +2320,7 @@ totalbroadcastpackets OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total Number of broadcasted packets in this vlan"
     ::= { vlanstatsEntry 7 }
 
@@ -2328,7 +2328,7 @@ vlanconfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF VlanconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Vlan config Statistics for each of the entities.
 
 	This Table is obsolete.Instead of this table use nsSysGroup.vlanTable."
@@ -2338,7 +2338,7 @@ vlanconfigEntry OBJECT-TYPE
     SYNTAX      VlanconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Vlan config Statistics for each of the entities.
 
 	This Entry is obsolete.Instead of this entry use nsSysGroup.vlanEntry."
@@ -2358,7 +2358,7 @@ vlancDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each vlan inside
          netscaler.
 
@@ -2369,7 +2369,7 @@ tagId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The unique tag Id for each vlan inside
          NetScaler.
 
@@ -2380,10 +2380,10 @@ vlancInterfaces OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The port number associated to each vlan inside
          netscaler.
-	
+
 	This object is obsolete.It can be measured through vlanTable.vlanMemberInterfaces."
     ::= { vlanconfigEntry 3 }
 
@@ -2391,7 +2391,7 @@ ipaddress OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The ipaddress for each vlan inside
          netscaler.
 
@@ -2402,7 +2402,7 @@ netmask OBJECT-TYPE
     SYNTAX      IpAddress
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The netmask corresponding to ipaddress for each vlan inside
          netscaler.
 
@@ -2413,7 +2413,7 @@ tagging OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Tagged member interfaces of this vlan.
 
 	This object is obsolete."
@@ -2432,8 +2432,8 @@ totQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
          name server received a query for any kind of DNS Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotQueries.  "
@@ -2443,8 +2443,8 @@ totAnswers OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
          name server received a query for a name server Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotAnswers. "
@@ -2454,7 +2454,7 @@ totAuthAns OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of queries which were authoritatively answered.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotAuthAns."
@@ -2464,7 +2464,7 @@ totAuthNoNames OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of queries for which `authoritative no such name'
          responses were made.
 
@@ -2475,7 +2475,7 @@ totAuthNoDataResps OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of queries for which `authoritative no such data'
          (empty answer) responses were made.
 
@@ -2486,7 +2486,7 @@ totNonAuthDatas OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of queries which were non-authoritatively
          answered (cached data).
 
@@ -2497,7 +2497,7 @@ totNonAuthNoDatas OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of queries which were non-authoritatively
          answered with no data (empty answer).
 
@@ -2508,7 +2508,7 @@ totReqRefusals OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of DNS requests refused by the server.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotReqRefusals."
@@ -2518,7 +2518,7 @@ totReqUnparses OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of requests received which were unparseable.
 
 	This object is obsolete."
@@ -2528,7 +2528,7 @@ totOtherErrors OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of requests which were aborted for other (local)
          server errors.
 
@@ -2539,8 +2539,8 @@ aRecQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
          name server received a query for an Address Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotArecQueries. "
@@ -2550,9 +2550,9 @@ nsRecQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
-         name server received a query for a name server Record. 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
+         name server received a query for a name server Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotNSrecQueries."
     ::= { dnsServerStatistics 12 }
@@ -2561,9 +2561,9 @@ mxRecQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
-         name server received a query for an mail exchanger Record. 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
+         name server received a query for an mail exchanger Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotMXrecQueries."
     ::= { dnsServerStatistics 13 }
@@ -2572,9 +2572,9 @@ soaRecQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
-         name server received a query for an SOA Record. 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
+         name server received a query for an SOA Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotSOArecQueries."
     ::= { dnsServerStatistics 14 }
@@ -2583,8 +2583,8 @@ cnameRecQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
          name server received a query for an CNAME Record.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotCNAMErecQueries. "
@@ -2594,9 +2594,9 @@ totUnsupportedQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "this Counter gives the  number of times NetScaler as a 
-         name server received a query for an unsupported Record type. 
+    DESCRIPTION
+        "this Counter gives the  number of times NetScaler as a
+         name server received a query for an unsupported Record type.
 
 	This object is obsolete.It can be measured through nsDomainServiceName.dnsTotUnsupportedQueries."
     ::= { dnsServerStatistics 16 }
@@ -2608,17 +2608,17 @@ dnsServerRecursion OBJECT-TYPE
     SYNTAX      INTEGER { available(1), restricted(2), unavailable(3) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "This represents the recursion services offered by this
          name server.  The values that can be read are:
-         
+
          available(1) - performs recursion on requests from
          clients.
-         
+
          restricted(2) - recursion is performed on requests only
          from certain clients, for example; clients on an access
          control list.
-         
+
          unavailable(3) - recursion is not available.
 
 	This object is obsolete."
@@ -2628,8 +2628,8 @@ dnsServerZoneTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF DnsServerZoneEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has the configuration information 
+    DESCRIPTION
+        "The table that has the configuration information
          for each zone for which NetScaler is authoritative.
 
 	This Table is obsolete."
@@ -2639,7 +2639,7 @@ dnsServerZoneEntry OBJECT-TYPE
     SYNTAX      DnsServerZoneEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Zone information for each domain as an entry.
 
 	This Entry is obsolete."
@@ -2655,7 +2655,7 @@ zoneIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each zone on NetScaler.
 
 	This object is obsolete."
@@ -2665,7 +2665,7 @@ zoneName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The domain name.
 
 	This object is obsolete."
@@ -2681,8 +2681,8 @@ gslbDomainStatsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF GslbDomainStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has statistics for each gslb domain 
+    DESCRIPTION
+        "The table that has statistics for each gslb domain
          on netscaler.OBSOLETE"
     ::= { gslbStatistics 1 }
 
@@ -2690,7 +2690,7 @@ gslbDomainStatsEntry OBJECT-TYPE
     SYNTAX      GslbDomainStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The gslb statistics table entry. OBSOLETE"
     INDEX       { gslbDomainIndex }
     ::= { gslbDomainStatsTable 1 }
@@ -2705,7 +2705,7 @@ gslbDomainIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each gslb Domain on NetScaler. OBSOLETE"
     ::= { gslbDomainStatsEntry 1 }
 
@@ -2713,7 +2713,7 @@ domainname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The domain name that has gslb feature enabled. OBSOLETE"
     ::= { gslbDomainStatsEntry 2 }
 
@@ -2721,7 +2721,7 @@ gslbDomainQueries OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "number of times a dns query against this gslb domain
          was received by the netscaler. OBSOLETE"
     ::= { gslbDomainStatsEntry 3 }
@@ -2733,8 +2733,8 @@ gslbDomainConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF GslbDomainConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has configuration for each gslb domain 
+    DESCRIPTION
+        "The table that has configuration for each gslb domain
          on netscaler.OBSOLETE"
     ::= { gslbConfig 1 }
 
@@ -2742,7 +2742,7 @@ gslbDomainConfigEntry OBJECT-TYPE
     SYNTAX      GslbDomainConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The gslb statistics table entry. OBSOLETE"
     INDEX       { gslbcDomainIndex }
     ::= { gslbDomainConfigTable 1 }
@@ -2758,7 +2758,7 @@ gslbcDomainIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for each gslb Domain on NetScaler.OBSOLETE"
     ::= { gslbDomainConfigEntry 1 }
 
@@ -2766,7 +2766,7 @@ gslbcDomainName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The domain name that has gslb feature enabled.OBSOLETE"
     ::= { gslbDomainConfigEntry 2 }
 
@@ -2774,10 +2774,10 @@ gslbVipName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The LB VIP thats bound to the gslb domain name. All the 
+    DESCRIPTION
+        "The LB VIP thats bound to the gslb domain name. All the
          IP addresses for the gslb domain are bound to this VIP.
-         The characteristics for this VIP should be found in the 
+         The characteristics for this VIP should be found in the
          LoadBalancing Group Mib. OBSOLETE"
     ::= { gslbDomainConfigEntry 3 }
 
@@ -2785,8 +2785,8 @@ reOrderInterval OBJECT-TYPE
     SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The interval in which metrics are exchanged among the 
+    DESCRIPTION
+        "The interval in which metrics are exchanged among the
          NetScalers and a decision made about which is the best
          IP address at that point for the gslb domain name. OBSOLETE"
     ::= { gslbDomainConfigEntry 4 }
@@ -2801,8 +2801,8 @@ pqStatsperLBVipTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF PqStatsperLBVipEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has statistics for each LB Vip 
+    DESCRIPTION
+        "The table that has statistics for each LB Vip
          on netscaler.
 
 	This Table is obsolete."
@@ -2812,7 +2812,7 @@ pqStatsperLBVipEntry OBJECT-TYPE
     SYNTAX      PqStatsperLBVipEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The PQ statistics per Load Balancing VIP entry.
 
 	This Entry is obsolete."
@@ -2831,7 +2831,7 @@ pqDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the LoadBalancing Vserver.
 
 	This object is obsolete."
@@ -2841,7 +2841,7 @@ totclienttransactiontime OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total client transaction time.
 
 	This object is obsolete. "
@@ -2851,7 +2851,7 @@ totclienttransaction OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total number of client transaction.
 
 	This object is obsolete. "
@@ -2861,7 +2861,7 @@ dropped OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of dropped transactions.
 
 	This object is obsolete. "
@@ -2871,7 +2871,7 @@ qdepth OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of waiting clients .
 
 	This object is obsolete."
@@ -2881,8 +2881,8 @@ pqStatsperpqpolicyandperLBVipTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF PqStatsperpqpolicyandperLBVipEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has statistics for each LB Vip 
+    DESCRIPTION
+        "The table that has statistics for each LB Vip
          on netscaler.
 
 	This Table is obsolete.Instead of this table use nsVserverGroup.vserverPqpolicyTable."
@@ -2892,7 +2892,7 @@ pqStatsperpqpolicyandperLBVipEntry OBJECT-TYPE
     SYNTAX      PqStatsperpqpolicyandperLBVipEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The PQ statistics per Load Balancing VIP entry.
 
 	This Entry is obsolete.Instead of this entry use nsVserverGroup.vserverPqpolicyEntry."
@@ -2912,7 +2912,7 @@ pqvsdevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the LoadBalancing Vservice.
 
 	This object is obsolete."
@@ -2922,7 +2922,7 @@ pqpoldevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the PQ policy.
 
 	This object is obsolete."
@@ -2932,7 +2932,7 @@ pqtotclienttransactiontime OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total client transaction time.
 
 	This object is obsolete.It can be measured through vserverPqpolicyTable.pqpolicyTotClientTransactionTime. "
@@ -2942,7 +2942,7 @@ pqtotclienttransaction OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Total number of client transaction.
 
 	This object is obsolete.It can be measured through vserverPqpolicyTable.pqpolicyTotClientTransactions. "
@@ -2952,9 +2952,9 @@ pqDropped OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of dropped transactions.
-	
+
 	This object is obsolete.It can be measured through vserverPqpolicyTable.pqpolicyDropped. "
     ::= { pqStatsperpqpolicyandperLBVipEntry 5 }
 
@@ -2962,7 +2962,7 @@ pqQdepth OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of waiting clients.
 
 	This object is obsolete.It can be measured through vserverPqpolicyTable.pqpolicyQdepth. "
@@ -2975,7 +2975,7 @@ pqpolicyconfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF PqpolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has configuration statistics for each PQ
          policy on netscaler.
 
@@ -2986,7 +2986,7 @@ pqpolicyconfigEntry OBJECT-TYPE
     SYNTAX      PqpolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The PQ config statistics per policy.
 
 	This Entry is obsolete.Instead of this entry use nsPqPolicyGroup.pqPolicyConfigEntry."
@@ -3007,7 +3007,7 @@ pqPolDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the policy.
 
 	This object is obsolete."
@@ -3017,7 +3017,7 @@ pqpolicyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name for PQ policyi.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqName."
@@ -3027,7 +3027,7 @@ rulename OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The rule name.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqRuleName."
@@ -3037,7 +3037,7 @@ qdepthThreshval OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The threshold value for qdepth.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqQdepthThreshval."
@@ -3047,7 +3047,7 @@ polqdepthThreshval OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The threshold value for policyqdepth.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqPolQdepthThreshval."
@@ -3057,7 +3057,7 @@ priority OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The priority for this pq policy.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqPriority."
@@ -3067,7 +3067,7 @@ pqPolWeight OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The weight for the priority.
 
 	This object is obsolete.It can be measured through pqPolicyConfigTable.pqPolicyWeight."
@@ -3083,7 +3083,7 @@ dosservicestatsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF DosservicestatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has statistics for each LB Vip.
 
 	This Table is obsolete.Instead of this table use nsSvcGroup.serviceTable."
@@ -3093,7 +3093,7 @@ dosservicestatsEntry OBJECT-TYPE
     SYNTAX      DosservicestatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The DOS service statistics per Load Balancing VIP entry.
 
 	This Entry is obsolete.Instead of this entry use nsSvcGroup.serviceEntry."
@@ -3111,7 +3111,7 @@ dosDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the LoadBalancing Vserver.
 
 	This object is obsolete."
@@ -3121,7 +3121,7 @@ surgecnt OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The qdepth on this service.
 
 	This object is obsolete.It can be measured through serviceTable.svcSurgeCount."
@@ -3131,7 +3131,7 @@ dosqdepth OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The number of genuine clients on this service.
 
 	This object is obsolete.It can be measured through serviceTable.svcdosQDepth."
@@ -3141,7 +3141,7 @@ totaljstransaction OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The total number of javascripts sent to genuine clients.
 
 	This object is obsolete.It can be measured through serviceTable.svctotalJsTransaction. "
@@ -3154,8 +3154,8 @@ dospolicyconfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF DospolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has statistics for each policy 
+    DESCRIPTION
+        "The table that has statistics for each policy
          on netscaler.
 
 	This Table is obsolete.Instead of this table use nsDosPolicyGroup.dosPolicyTable."
@@ -3165,9 +3165,9 @@ dospolicyconfigEntry OBJECT-TYPE
     SYNTAX      DospolicyconfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The entry for DOS policy configuration.
-	
+
 	This Entry is obsolete.Instead of this entry use nsDosPolicyGroup.dosPolicyEntry."
     INDEX       { dosPolDevno }
     ::= { dospolicyconfigTable 1 }
@@ -3182,7 +3182,7 @@ dosPolDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing id for the configured DOS policies.
 
 	This object is obsolete."
@@ -3192,7 +3192,7 @@ dospolicyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the DOS policy.
 
 	This object is obsolete.It can be measured through dosPolicyTable.dosPolicyName."
@@ -3202,7 +3202,7 @@ thresholdvalue OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The value of qdepth at which DOS protection gets triggered.
 
 	This object is obsolete.It can be measured through dosPolicyTable.thresholdValue."
@@ -3221,7 +3221,7 @@ currSPS OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "SSL session/second between client and NetScaler"
     ::= { sslglobalstats 1 }
 
@@ -3256,7 +3256,7 @@ keyExRSA512 OBJECT-TYPE
 	DESCRIPTION
 		"Total number of 512 bit RSA key exchange"
 	::= { sslglobalstats 5 }
-		
+
 keyExRSA1024 OBJECT-TYPE
 	SYNTAX Counter32
 	MAX-ACCESS read-only
@@ -3288,7 +3288,7 @@ authRSA OBJECT-TYPE
 	DESCRIPTION
 		"Total number of RSA authentication"
 	::= { sslglobalstats 9 }
-		
+
 authDH OBJECT-TYPE
 	SYNTAX Counter32
 	MAX-ACCESS read-only
@@ -3420,8 +3420,8 @@ certKeyTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CertKeyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has all the configuration information for 
+    DESCRIPTION
+        "The table that has all the configuration information for
          each certificate key pair.
 
 	This Table is obsolete.Instead of this table use nsSslConfigGroup.sslCertKeyTable."
@@ -3431,7 +3431,7 @@ certKeyEntry OBJECT-TYPE
     SYNTAX      CertKeyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate key pair information for each entry.
 
 	This Entry is obsolete.Instead of this entry use nsSslConfigGroup.sslCertKeyEntry."
@@ -3450,7 +3450,7 @@ certKeyId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Distinguish ID for each certificate key pair in NetScaler.
 
 	This object is obsolete."
@@ -3460,7 +3460,7 @@ certKeyName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate key pair Name.
 
 	This object is obsolete.It can be measured through sslCertKeyTable.sslCertKeyName."
@@ -3470,7 +3470,7 @@ certPath OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate path.
 
 	This object is obsolete.It can be measured through sslCertKeyTable.sslCertPath."
@@ -3480,7 +3480,7 @@ keyPath OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The private key path.
 
 	This object is obsolete.It can be measured through sslCertKeyTable.sslKeyPath."
@@ -3490,7 +3490,7 @@ inputFormat OBJECT-TYPE
     SYNTAX      INTEGER { der(1), pem(3) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The input format of the certificate key pair.
 
 	This object is obsolete.It can be measured through sslCertKeyTable.sslInputFormat."
@@ -3500,8 +3500,8 @@ crlTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CrlEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has all the configuration 
+    DESCRIPTION
+        "The table that has all the configuration
          information for each CRL in NetScaler.
 
 	This Table is obsolete.Instead of this table use nsSslConfigGroup.sslCrlTable."
@@ -3511,7 +3511,7 @@ crlEntry OBJECT-TYPE
     SYNTAX      CrlEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The CRL information for each entry.
 
 	This Entry is obsolete.Instead of this entry use nsSslConfigGroup.sslCrlEntry."
@@ -3524,12 +3524,12 @@ CrlEntry ::= SEQUENCE {
 	crlPath	OCTET STRING,
     crlInputFormat     INTEGER
 }
-  
+
 crlId  OBJECT-TYPE
 	SYNTAX Integer32
     MAX-ACCESS  read-only
 	STATUS obsolete
-	DESCRIPTION		
+	DESCRIPTION
 		"The Distinguish ID for each CRL in NetScaler.
 
 	This object is obsolete."
@@ -3540,7 +3540,7 @@ crlName OBJECT-TYPE
   	SYNTAX OCTET STRING
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The name of CRL.
 
 	This object is obsolete.It can be measured through sslCrlTable.sslCrlName."
@@ -3551,28 +3551,28 @@ crlPath OBJECT-TYPE
   	SYNTAX OCTET STRING
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The CRL path.
 
 	This object is obsolete.It can be measured through sslCrlTable.sslCrlPath."
 	::= { crlEntry 3 }
 
-  
+
 crlInputFormat OBJECT-TYPE
     SYNTAX      INTEGER { der(1), pem(3) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The input format of CRL.
 
 	This object is obsolete.It can be measured through sslCrlTable.sslCrlInputFormat."
     ::= { crlEntry 4 }
-                
+
 cipherGroupTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CipherGroupEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the configuration information
          for each cipher group in NetScaler.
 
@@ -3583,7 +3583,7 @@ cipherGroupEntry OBJECT-TYPE
     SYNTAX      CipherGroupEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cipher group information for each entry.
 
 	This Entry is obsolete.Instead of this entry use sslCipherGroupTable.sslCipherGroupEntry."
@@ -3602,7 +3602,7 @@ cipherGroupId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Distinguish ID for each Cipher group in NetScaler.
 
 	This object is obsolete."
@@ -3612,7 +3612,7 @@ cipherId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Distinguish ID for each Cipher in NetScaler.
 
 	This object is obsolete."
@@ -3622,7 +3622,7 @@ cipherGroupName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cipher group name.
 
 	This object is obsolete.It can not be measured through sslCipherGroupTable.sslCipherGroupName.	"
@@ -3632,7 +3632,7 @@ cipherName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cipher name.
 
 	This object is obsolete.It can not be measured through sslCipherGroupTable.sslCipherName."
@@ -3642,7 +3642,7 @@ cipherDesc OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Cipher description.
 
 	This object is obsolete.It can not be measured through sslCipherGroupTable.sslCipherDesc."
@@ -3652,7 +3652,7 @@ advanceSSLConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF AdvanceSSLConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the advance SSL configuration
          information for each  virtual/physical service in NetScaler.
 
@@ -3663,7 +3663,7 @@ advanceSSLConfigEntry OBJECT-TYPE
     SYNTAX      AdvanceSSLConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The advance SSL configuration for each entry.
 
 	This Entry is obsolete.Instead of this entry use nsSvcGroup.serviceAdvanceSslConfigEntry or nsVserverGroup.vserverAdvanceSslConfigEntry."
@@ -3690,12 +3690,12 @@ AdvanceSSLConfigEntry ::= SEQUENCE {
     clearTextPort   Integer32,
     serviceType     INTEGER
 }
- 
+
 id	OBJECT-TYPE
 	SYNTAX Integer32
 	MAX-ACCESS  read-only
-	STATUS obsolete   
-	DESCRIPTION	
+	STATUS obsolete
+	DESCRIPTION
 		"The Distinguish ID for each SSL virtual/physical service in NetScaler.
 
 	This object is obsolete."
@@ -3705,7 +3705,7 @@ serviceName	OBJECT-TYPE
   	SYNTAX OCTET STRING
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The service name.
 
 	This object is obsolete.It can be measured."
@@ -3715,7 +3715,7 @@ dh OBJECT-TYPE
 	SYNTAX INTEGER {disabled(1),enabled(2)}
 	MAX-ACCESS  read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"Whether DH is enabled/disabled.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslDH or vserverAdvanceSslConfigTable.vsvrSslDH."
@@ -3725,7 +3725,7 @@ dhCount OBJECT-TYPE
 	SYNTAX Integer32
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The DH refresh count to re-generate public/private key.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslDHCount or vserverAdvanceSslConfigTable.vsvrSslDHCount."
@@ -3735,7 +3735,7 @@ dhFile OBJECT-TYPE
   	SYNTAX OCTET STRING
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The DH file path name.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslDHFilePath or vserverAdvanceSslConfigTable.vsvrSslDHFilePath."
@@ -3745,7 +3745,7 @@ eRSA OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The ephimeral RSA support for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSsleRSA or vserverAdvanceSslConfigTable.vsvrSsleRSA."
@@ -3755,7 +3755,7 @@ eRSACount OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The eRSA refresh count to re-generate RSA temporary key.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSsleRSACount or vserverAdvanceSslConfigTable.vsvrSsleRSACount."
@@ -3765,7 +3765,7 @@ certHeader OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate insertion in HTTP request.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslCertHeader or vserverAdvanceSslConfigTable.vsvrSslCertHeader."
@@ -3775,7 +3775,7 @@ certHeaderTag OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate tag name in HTTP request.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslCertHeaderTag or vserverAdvanceSslConfigTable.vsvrSslCertHeaderTag."
@@ -3785,7 +3785,7 @@ sessHeader OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The session id insertion in HTTP request.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslSessionHeader or vserverAdvanceSslConfigTable.vsvrSslSessionHeader."
@@ -3795,7 +3795,7 @@ sessHeaderTag OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The session id tag name in HTTP request.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslSessionHeaderTag or vserverAdvanceSslConfigTable.vsvrSslSessionHeaderTag."
@@ -3805,7 +3805,7 @@ sslv2 OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The support for SSLv2 protocol for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslv2Protocol or vserverAdvanceSslConfigTable.vsvrSslv2Protocol."
@@ -3815,7 +3815,7 @@ sslv3 OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The support for SSLv3 protocol for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslv3Protocol or vserverAdvanceSslConfigTable.vsvrSslv3Protocol."
@@ -3825,7 +3825,7 @@ tlsv1 OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The support for TLSv1 protocol for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslTLSv1Protocol or vserverAdvanceSslConfigTable.vsvrSslTLSv1Protocol."
@@ -3835,7 +3835,7 @@ owaSupport OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The support for outlook web access for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSsloutlookSupport or vserverAdvanceSslConfigTable.vsvrSsloutlookSupport."
@@ -3845,7 +3845,7 @@ sslRedirect OBJECT-TYPE
     SYNTAX      INTEGER { disabled(1), enabled(2) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The support for ssl redirect for service.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslRedirectSupport or vserverAdvanceSslConfigTable.vsvrSslRedirectSupport."
@@ -3855,7 +3855,7 @@ clearTextPort OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The clear text port on the backend webserver.
 
 	This object is obsolete.It can be measured through serviceAdvanceSslConfigTable.svcSslClearTextPort or vserverAdvanceSslConfigTable.vsvrSslClearTextPort."
@@ -3865,7 +3865,7 @@ serviceType OBJECT-TYPE
     SYNTAX      INTEGER { virtualserver(0), physicalservice(1) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The type of the service virtual/ real.
 
 	This object is obsolete."
@@ -3875,8 +3875,8 @@ certBindingConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CertBindingConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "The table that has all the certificate configuration 
+    DESCRIPTION
+        "The table that has all the certificate configuration
          for each  service in NetScaler.
 
 	This Table is obsolete."
@@ -3886,7 +3886,7 @@ certBindingConfigEntry OBJECT-TYPE
     SYNTAX      CertBindingConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate bindings for each entry.
 
 	This Entry is obsolete."
@@ -3906,7 +3906,7 @@ certBindId	OBJECT-TYPE
 	SYNTAX Integer32
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The Distinguish ID for each SSL virtual/real service in NetScaler.
 
 	This object is obsolete."
@@ -3916,27 +3916,27 @@ certKeyID OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The Distinguish ID for each certificate key pair in NetScaler.
 
 	This object is obsolete."
     ::= { certBindingConfigEntry 2 }
- 
+
 certType OBJECT-TYPE
 	SYNTAX INTEGER { serverCertificate(1), caCertificate (2) }
 	MAX-ACCESS  read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"Whether certificate key pair is CA or not.
 
 	This object is obsolete."
 	::= { certBindingConfigEntry 3 }
 
 certBindServiceName     OBJECT-TYPE
-	SYNTAX OCTET STRING	
+	SYNTAX OCTET STRING
     MAX-ACCESS  read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The service name.
 
 	This object is obsolete."
@@ -3946,7 +3946,7 @@ certBindKeyName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate key pair name.
 
 	This object is obsolete."
@@ -3956,7 +3956,7 @@ certBindServiceType OBJECT-TYPE
     SYNTAX      INTEGER { virtualserver(0), physicalservice(1) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The type of the service virtual/ real.
 
 	This object is obsolete."
@@ -3966,7 +3966,7 @@ cipherBindingConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CipherBindingConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the cipher configuration for
          each  service in NetScaler.
 
@@ -3977,7 +3977,7 @@ cipherBindingConfigEntry OBJECT-TYPE
     SYNTAX      CipherBindingConfigEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The cipher bindings for each entry.
 
 	This Entry is obsolete.Instead of this entry use nsSvcGroup.serviceCipherBindingEntry or nsVserverGroup.vserverCipherBindingEntry."
@@ -3997,7 +3997,7 @@ cipherBindId OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing ID for each SSL virtual/real service in NetScaler.
 
 	This object is obsolete."
@@ -4007,17 +4007,17 @@ cipherID OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing ID for each cipher in NetScaler.
 
 	This object is obsolete."
     ::= { cipherBindingConfigEntry 2 }
 
 cipherBindServiceName	OBJECT-TYPE
-	SYNTAX OCTET STRING	
+	SYNTAX OCTET STRING
 	MAX-ACCESS read-only
 	STATUS obsolete
-	DESCRIPTION	
+	DESCRIPTION
 		"The name of the physical or virtual service.
 
 	This object is obsolete."
@@ -4027,7 +4027,7 @@ cipherbName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The cipher name.
 
 	This object is obsolete.It can be measured through serviceCipherBindingTable.svcSslCipherBindName or vserverCipherBindingTable.vsvrSslCipherBindName."
@@ -4037,7 +4037,7 @@ cipherbDesc OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The cipher description.
 
 	This object is obsolete.It can be measured through serviceCipherBindingTable.svcSslCipherBindDesc or vserverCipherBindingTable.vsvrSslCipherBindDesc."
@@ -4047,7 +4047,7 @@ cipherBindServiceType OBJECT-TYPE
     SYNTAX      INTEGER { virtualserver(0), physicalservice(1) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The type of the service virtual/ real.
 
 	This object is obsolete."
@@ -4063,7 +4063,7 @@ cpestatspolicyTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpestatspolicyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the policy stats for
          each  virtual service in NetScaler."
     ::= { cpestatistics 1 }
@@ -4072,7 +4072,7 @@ cpestatspolicyEntry OBJECT-TYPE
     SYNTAX      CpestatspolicyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The policy items for each entry."
     INDEX       { cpesDevno }
     ::= { cpestatspolicyTable 1 }
@@ -4087,7 +4087,7 @@ cpesDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The unique identifier for the policy"
     ::= { cpestatspolicyEntry 1 }
 
@@ -4095,7 +4095,7 @@ cpesPolicyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the policy "
     ::= { cpestatspolicyEntry 2 }
 
@@ -4103,7 +4103,7 @@ cpesPolicyhits OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of times that the policy condition has been met by NetScaler"
     ::= { cpestatspolicyEntry 3 }
 
@@ -4111,7 +4111,7 @@ cpestatsactionTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpestatsactionEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the action stats for
          each  virtual service in NetScaler."
     ::= { cpestatistics 2 }
@@ -4120,7 +4120,7 @@ cpestatsactionEntry OBJECT-TYPE
     SYNTAX      CpestatsactionEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The action items for each entry."
     INDEX       { cpeaDevno }
     ::= { cpestatsactionTable 1 }
@@ -4135,7 +4135,7 @@ cpeaDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The unique identifier for the action"
     ::= { cpestatsactionEntry 1 }
 
@@ -4143,7 +4143,7 @@ actionname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the action "
     ::= { cpestatsactionEntry 2 }
 
@@ -4151,7 +4151,7 @@ actionhits OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "Number of times that the action has been made by NetScaler"
     ::= { cpestatsactionEntry 3 }
 
@@ -4162,7 +4162,7 @@ cpeconfigpolicyTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpeconfigpolicyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the policy stats for
          each  virtual service in NetScaler."
     ::= { cpeconfig 1 }
@@ -4171,7 +4171,7 @@ cpeconfigpolicyEntry OBJECT-TYPE
     SYNTAX      CpeconfigpolicyEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The policy items for each entry."
     INDEX       { cpecDevno }
     ::= { cpeconfigpolicyTable 1 }
@@ -4187,7 +4187,7 @@ cpecDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The unique identifier for the policy"
     ::= { cpeconfigpolicyEntry 1 }
 
@@ -4195,7 +4195,7 @@ cpecPolicyname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the policy "
     ::= { cpeconfigpolicyEntry 2 }
 
@@ -4203,7 +4203,7 @@ reqrule OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "user defined request rule for the policy from client to NetScaler"
     ::= { cpeconfigpolicyEntry 3 }
 
@@ -4211,7 +4211,7 @@ reqaction OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "user defined request action for the policy from client to NetScaler"
     ::= { cpeconfigpolicyEntry 4 }
 
@@ -4219,7 +4219,7 @@ cpeconfigactionTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpeconfigactionEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The table that has all the action configurations for
          each  virtual service in NetScaler."
     ::= { cpeconfig 2 }
@@ -4228,7 +4228,7 @@ cpeconfigactionEntry OBJECT-TYPE
     SYNTAX      CpeconfigactionEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The action items for each entry."
     INDEX       { cpecaDevno }
     ::= { cpeconfigactionTable 1 }
@@ -4247,7 +4247,7 @@ cpecaDevno OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The unique identifier for the action"
     ::= { cpeconfigactionEntry 1 }
 
@@ -4255,17 +4255,17 @@ cpecaActionname OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the action "
     ::= { cpeconfigactionEntry 2 }
 
 directive OBJECT-TYPE
-    SYNTAX      INTEGER { unknown(0), reset(1), drop(2), httpec(3), 
-                    cmp(4), add(5), mod(6), del(7), cor(8), forward(9), 
+    SYNTAX      INTEGER { unknown(0), reset(1), drop(2), httpec(3),
+                    cmp(4), add(5), mod(6), del(7), cor(8), forward(9),
                     noComparison(10), last(11) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the directive associated with this action "
     ::= { cpeconfigactionEntry 3 }
 
@@ -4273,7 +4273,7 @@ qualifier OBJECT-TYPE
     SYNTAX      INTEGER { unknown(0), http(1), header(2), query(3) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The name of the qualifier associated with this action "
     ::= { cpeconfigactionEntry 4 }
 
@@ -4281,9 +4281,9 @@ value OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        " The value associated with this action . The value depends on 
-         the directive . If the directive is RESPONSE , then the 
+    DESCRIPTION
+        " The value associated with this action . The value depends on
+         the directive . If the directive is RESPONSE , then the
          value returned is status. Similarly , if the directive is
          either ADD or MOD or DEL , then the value returned is header.
          If the directive is RST or CMP, then NULL is returned"
@@ -4293,10 +4293,10 @@ page OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The value of this depends on the value of directive. If value of
          directive is  RESPONSE  , then the page is returned, and if directive
-         is MOD , then the header is returned , 
+         is MOD , then the header is returned ,
          otherwise NULL is returned"
     ::= { cpeconfigactionEntry 6 }
 
@@ -4304,7 +4304,7 @@ server OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         " The server name associated with this action based on the directive.
          If the directive is FORWARD , then the server returns the name of the
           service , otherwise returns empty string"
@@ -4314,9 +4314,9 @@ cpeExprConfigStatsTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpeExprConfigStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "This table contains configuration information for each of 
-         the expressions on the Netscaler   
+    DESCRIPTION
+        "This table contains configuration information for each of
+         the expressions on the Netscaler
 
 	This Table is obsolete.Instead of this table use nsSysGroup.nsExpressionTable."
     ::= { cpe 3 }
@@ -4325,9 +4325,9 @@ cpeExprConfigStatsEntry OBJECT-TYPE
     SYNTAX      CpeExprConfigStatsEntry
     MAX-ACCESS  not-accessible
     STATUS      obsolete
-    DESCRIPTION 
-        "This table contains configuration information for each of 
-         the expressions on the Netscaler   
+    DESCRIPTION
+        "This table contains configuration information for each of
+         the expressions on the Netscaler
 
 	This Entry is obsolete.Instead of this entry use nsSysGroup.nsExpressionEntry."
     INDEX       { cpeeIndex }
@@ -4349,7 +4349,7 @@ cpeeIndex OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The distinguishing Id for expression.
 
 	This object is obsolete."
@@ -4359,35 +4359,35 @@ exprName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The name of the expression.
 
 	This object is obsolete.It can be measured through nsExpressionTable.expressionName."
     ::= { cpeExprConfigStatsEntry 2 }
 
 cpeeQualifier OBJECT-TYPE
-    SYNTAX      INTEGER { unknownQualifier(-1), method(0), 
-                    urlPrefix(1), urlSuffix(2), urlTokens(3), 
-                    version(4), header(5), urlQuery(6), url(7), 
-                    urllen(8), urlquerylen(9), domain(10), sourceIp(11), 
-                    sourcePort(12), destinationIp(13), 
-                    destinationPort(14), compoundExpression(15), 
+    SYNTAX      INTEGER { unknownQualifier(-1), method(0),
+                    urlPrefix(1), urlSuffix(2), urlTokens(3),
+                    version(4), header(5), urlQuery(6), url(7),
+                    urllen(8), urlquerylen(9), domain(10), sourceIp(11),
+                    sourcePort(12), destinationIp(13),
+                    destinationPort(14), compoundExpression(15),
                     evaluatePredefined(16) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The qualifier of the expression."
     ::= { cpeExprConfigStatsEntry 3 }
 
 operator OBJECT-TYPE
-    SYNTAX      INTEGER { and(0), or(1), not(2), equal(3), notEqual(4), 
-                    greaterThan(5), lessThan(6), 
-                    greaterThanOrEqualTo(7), 
-                    lessThanOrEqualTo(8), exists(9), notExists(10), 
+    SYNTAX      INTEGER { and(0), or(1), not(2), equal(3), notEqual(4),
+                    greaterThan(5), lessThan(6),
+                    greaterThanOrEqualTo(7),
+                    lessThanOrEqualTo(8), exists(9), notExists(10),
                     contains(11), notContains(12), contents(13) }
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The operator in the expression."
     ::= { cpeExprConfigStatsEntry 4 }
 
@@ -4395,8 +4395,8 @@ hdrName OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The http header in the expression when the 
+    DESCRIPTION
+        "The http header in the expression when the
          value of qualifier is HEADER , otherwise empty string"
     ::= { cpeExprConfigStatsEntry 5 }
 
@@ -4404,7 +4404,7 @@ cpeeValue OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
+    DESCRIPTION
         "The value of the expression.
 
 	This object is obsolete.It can be measured through nsExpressionTable.expressionValue."
@@ -4414,8 +4414,8 @@ length OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The length , which is an optional value , used in 
+    DESCRIPTION
+        "The length , which is an optional value , used in
          the expression . This has value only when the qualifier is
          CONTAINS or CONTENTS"
     ::= { cpeExprConfigStatsEntry 7 }
@@ -4424,8 +4424,8 @@ offset OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The offset , which is an optional value , used in 
+    DESCRIPTION
+        "The offset , which is an optional value , used in
          the expression . This has value only when the qualifier is
          CONTAINS or CONTENTS"
     ::= { cpeExprConfigStatsEntry 8 }
@@ -4434,8 +4434,8 @@ cpeeNetmask OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      obsolete
-    DESCRIPTION 
-        "The netmask , which is an optional value , used in 
+    DESCRIPTION
+        "The netmask , which is an optional value , used in
          the expression . This has value only when the qualifier is
          SOURCEIP"
     ::= { cpeExprConfigStatsEntry 9 }
@@ -5898,10 +5898,10 @@ haCurState  OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS  current
 	DESCRIPTION
-		"State of the HA node, based on its health, in a high availability setup. Possible values are: 
+		"State of the HA node, based on its health, in a high availability setup. Possible values are:
 UP – Indicates that the node is accessible and can function as either a primary or secondary node.
 DISABLED – Indicates that the high availability status of the node has been manually disabled. Synchronization and propagation cannot take place between the peer nodes.
-INIT – Indicates that the node is in the process of becoming part of the high availability configuration. 
+INIT – Indicates that the node is in the process of becoming part of the high availability configuration.
 PARTIALFAIL – Indicates that one of the high availability monitored interfaces has failed because of a card or link failure. This state triggers a failover.
 COMPLETEFAIL – Indicates that all the interfaces of the node are unusable, because the interfaces on which high availability monitoring is enabled are not connected or are manually disabled. This state triggers a failover.
 DUMB – Indicates that the node is in listening mode. It does not participate in high availability transitions or transfer configuration from the peer node. This is a configured value, not a statistic.
@@ -7504,7 +7504,7 @@ udpCurRateThresholdExceeds  OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS  current
 	DESCRIPTION
-		"Number of times the UDP rate threshold is exceeded. If this counter continuously increases, first make sure the UDP packets received are genuine. 
+		"Number of times the UDP rate threshold is exceeded. If this counter continuously increases, first make sure the UDP packets received are genuine.
 	If they are, increase the current rate threshold. This is a configurable value using the set rateControl command.
 	"
 	::= { nsUdpStatsGroup 21 }
@@ -11419,7 +11419,7 @@ httpErrServerBusy  OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS  current
 	DESCRIPTION
-		"Total number of HTTP error responses received. Some of the error responses are: 
+		"Total number of HTTP error responses received. Some of the error responses are:
 500 	Internal Server Error
 501 	Not Implemented
 502 	Bad Gateway
@@ -13915,8 +13915,8 @@ ifErrCongestedPktsDrops  OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS  current
 	DESCRIPTION
-		"Number of outbound packets dropped from the normal and low-priority transmit (Tx) overflow queues, during congestion on the specified interface, since the NetScaler appliance was started or the interface statistics were cleared. This could be caused by one of the following: 
-			1) Packets that have been in the overflow queue for more than 10 milliseconds. 
+		"Number of outbound packets dropped from the normal and low-priority transmit (Tx) overflow queues, during congestion on the specified interface, since the NetScaler appliance was started or the interface statistics were cleared. This could be caused by one of the following:
+			1) Packets that have been in the overflow queue for more than 10 milliseconds.
 			2) Shortage of free receive buffers on the NetScaler."
 	::= { nsIfStatsEntry 26 }
 
@@ -13960,7 +13960,7 @@ ifErrRxNoBuffs  OBJECT-TYPE
 	STATUS  current
 	DESCRIPTION
 		"Number of times the NIC hardware reported an error, due to packets drops caused by lack of buffers. This statistic is available on:
-			(1)	All ports except management ports on NetScaler MPX 15000 and 17000 platforms. 
+			(1)	All ports except management ports on NetScaler MPX 15000 and 17000 platforms.
 			(2)	All 1G ports on NetScaler MPX 7500, 9500, 10500, 12500, 15500, 17500, 19500, and 21500 platforms."
 	::= { nsIfStatsEntry 30 }
 
@@ -13985,7 +13985,7 @@ ifErrPktTx  OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS  current
 	DESCRIPTION
-		"Number of outbound packets dropped by the hardware on a specified interface since the NetScaler appliance was started or the interface statistics were cleared. This could happen due to length (undersize or oversize) errors and lack of resources. This statistic is available only for: 
+		"Number of outbound packets dropped by the hardware on a specified interface since the NetScaler appliance was started or the interface statistics were cleared. This could happen due to length (undersize or oversize) errors and lack of resources. This statistic is available only for:
 			(1) Loop back interface (LO) of all platforms.
 			(2) All data ports on the NetScaler 12000 platform.
 			(3) Management ports on the MPX 15000 and 17000 platforms."
@@ -14032,7 +14032,7 @@ ifErrDroppedTxPkts  OBJECT-TYPE
 		"Number of packets dropped in transmission by the specified interface due to one of the following reasons.
 			(1) VLAN mismatch.
 			(2) Oversized packets.
-			(3) Interface congestion.  
+			(3) Interface congestion.
 			(4) Loopback packets sent on non loop back interface."
 	::= { nsIfStatsEntry 38 }
 
@@ -14098,7 +14098,7 @@ ifnicRxStalls  OBJECT-TYPE
 	STATUS  current
 	DESCRIPTION
 		"Number of times the interface stalled, when receiving packets, since the NetScaler appliance was started or the interface statistics were cleared. Receive (Rx) stalls are detected when the following conditions are met:
-			(1)The link is up for more than 10 minutes. 
+			(1)The link is up for more than 10 minutes.
 			(2)Packets are transmitted, but no packets is received for 16 seconds."
 	::= { nsIfStatsEntry 46 }
 

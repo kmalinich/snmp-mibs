@@ -2,7 +2,7 @@ CTRON-IF-REMAP-MIB DEFINITIONS ::= BEGIN
 
 --  ctron-if-remap-mib.txt
 --  Revision: 1.03.00
---  Part Number: 
+--  Part Number:
 --  Date: May 6, 1997
 
 --  Cabletron Systems, Inc.
@@ -17,16 +17,16 @@ CTRON-IF-REMAP-MIB DEFINITIONS ::= BEGIN
 --  This module will be extended, as required.
 --
 
---  Cabletron Systems reserves the right to make changes in 
---  specification and other information contained in this document 
+--  Cabletron Systems reserves the right to make changes in
+--  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
 --  to determine whether any such changes have been made.
 --
---  In no event shall Cabletron Systems be liable for any incidental, 
---  indirect, special, or consequential damages whatsoever (including 
+--  In no event shall Cabletron Systems be liable for any incidental,
+--  indirect, special, or consequential damages whatsoever (including
 --  but not limited to lost profits) arising out of or related to this
 --  document or the information contained in it, even if Cabletron
---  Systems has been advised of, known, or should have known, the 
+--  Systems has been advised of, known, or should have known, the
 --  possibility of such damages.
 --
 --  Cabletron grants vendors, end-users, and other interested parties
@@ -51,9 +51,9 @@ CTRON-IF-REMAP-MIB DEFINITIONS ::= BEGIN
 -- enable(1).
 --
 -- When a source interface is remapped to a destination interface, the
--- destination interface will transmit out all packets received or 
--- transmitted on the source interface. Counters on the destination 
--- interface will increment for all packets transmitted be it by normal 
+-- destination interface will transmit out all packets received or
+-- transmitted on the source interface. Counters on the destination
+-- interface will increment for all packets transmitted be it by normal
 -- bridging or due to ifremap.
 
 
@@ -155,7 +155,7 @@ ctIfRemapPhysicalErrorsEnable OBJECT-TYPE
         "Enable or disable remapping of physical errors, or indicate that
          the device is incapable of remapping physical errors.  If the
          feature is supported, the value can only be set to 1 or 2.  If
-         the feature is unsupported, a get will return 3 and the value 
+         the feature is unsupported, a get will return 3 and the value
          cannot be changed."
     ::= { ctIFRemap 4 }
 
@@ -168,7 +168,7 @@ ctIfRemapTableEnable OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-      "This object places the device into the correct mode to allow for 
+      "This object places the device into the correct mode to allow for
       interface remapping.
 
       Setting this object to enable(1) configures the device to allow
@@ -177,7 +177,7 @@ ctIfRemapTableEnable OBJECT-TYPE
       Setting this object to disable(2) configures the device to
       disallow ifremapping.
 
-      A value of unsupported(3) indicates that this device does not 
+      A value of unsupported(3) indicates that this device does not
       require any special configuration to allow for interface remapping."
     DEFVAL { enable }
     ::= { ctIFRemap 5 }
@@ -191,11 +191,11 @@ ctIfRemapTableStart OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-      "This object allows operational control (start/stop) of all active 
+      "This object allows operational control (start/stop) of all active
       entries in  the ctIFRemapTable.  This object becomes meaningless
       if the ctIfRemapTableEnable object is set to disable(2).
 
-      Setting this object to start(1) allows all active entries to 
+      Setting this object to start(1) allows all active entries to
       perform interface remapping.
 
       Setting this object to stop(2) stops all interface remapping

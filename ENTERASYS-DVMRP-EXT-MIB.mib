@@ -6,7 +6,7 @@ ENTERASYS-DVMRP-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' DVMRP protocol.  This module extends the DVMRP-MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-DVMRP-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2009 Enterasys Networks, Inc.
@@ -55,7 +55,7 @@ etsysDvmrpExtMIB MODULE-IDENTITY
          WWW:     http://www.enterasys.com"
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          the DVMRP configuration.
 
          This MIB was designed to be used in conjunction with the
@@ -63,7 +63,7 @@ etsysDvmrpExtMIB MODULE-IDENTITY
 
     REVISION     "200902271929Z"  -- Fri Feb 27 19:29 UTC 2009
     DESCRIPTION  "The initial version of this MIB module"
-    ::= { etsysModules 69 } 
+    ::= { etsysModules 69 }
 
 
 -- Textual Conventions

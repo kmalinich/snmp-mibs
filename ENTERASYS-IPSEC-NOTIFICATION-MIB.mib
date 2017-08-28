@@ -2,7 +2,7 @@ ENTERASYS-IPSEC-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 
 --  enterasys-ipsec-notification-mib.txt
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' ipSecurity notifications.
 
 --
@@ -21,7 +21,7 @@ ENTERASYS-IPSEC-NOTIFICATION-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2011 Enterasys Networks, Inc.
@@ -51,34 +51,34 @@ etsysIpSecNotificationMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          ipSecurity notifications.
 
-         This MIB was designed to be used for monitoring router  
+         This MIB was designed to be used for monitoring router
          events that have occurred in the system related to ipSecurity."
 
     REVISION    "201102280800Z"  -- Mon Feb 28 08:00 GMT 2011
     DESCRIPTION "The initial version of this MIB module"
 
-    ::= { etsysModules 81 } 
+    ::= { etsysModules 81 }
 
 -- -------------------------------------------------------------
--- branches in the ENTERASYS-IPSEC-NOTIFICATION MIB 
+-- branches in the ENTERASYS-IPSEC-NOTIFICATION MIB
 -- -------------------------------------------------------------
 
-etsysIpSecNotificationObjects   OBJECT IDENTIFIER 
+etsysIpSecNotificationObjects   OBJECT IDENTIFIER
         ::= { etsysIpSecNotificationMIB 1 }
 
-etsysIpSecConfigBranch          OBJECT IDENTIFIER  
+etsysIpSecConfigBranch          OBJECT IDENTIFIER
         ::= { etsysIpSecNotificationObjects 0 }
 
-etsysIpSecInformationBranch     OBJECT IDENTIFIER 
+etsysIpSecInformationBranch     OBJECT IDENTIFIER
         ::= { etsysIpSecNotificationObjects 1 }
 
-etsysIpSecNotificationBranch    OBJECT IDENTIFIER 
+etsysIpSecNotificationBranch    OBJECT IDENTIFIER
         ::= { etsysIpSecNotificationObjects 2 }
 
 -- -------------------------------------------------------------
@@ -92,8 +92,8 @@ etsysIpSecDiscardedPacketEnabled OBJECT-TYPE
     DESCRIPTION
         "If this object is set to true (1) a trap will be sent when
          IPSec discards a packet due to not having a matching SPD
-         cache entry." 
-    DEFVAL { false } 
+         cache entry."
+    DEFVAL { false }
     ::= { etsysIpSecConfigBranch 1 }
 
 -- -------------------------------------------------------------
@@ -105,12 +105,12 @@ etsysIpSecTime OBJECT-TYPE
     MAX-ACCESS  accessible-for-notify
     STATUS      current
     DESCRIPTION
-        "The local date and time that the ipSecurity module took the 
+        "The local date and time that the ipSecurity module took the
          desired action that led to sending the notification."
     ::= { etsysIpSecInformationBranch 1 }
 
 etsysIpSecSPI OBJECT-TYPE
-    SYNTAX     Unsigned32    
+    SYNTAX     Unsigned32
     MAX-ACCESS accessible-for-notify
     STATUS current
     DESCRIPTION
@@ -130,7 +130,7 @@ etsysIpSecSourceAddrType OBJECT-TYPE
     MAX-ACCESS accessible-for-notify
     STATUS current
     DESCRIPTION
-        "The type of Internet Address specified with 
+        "The type of Internet Address specified with
          etsysIpSecSourceAddress."
     ::= { etsysIpSecInformationBranch 4 }
 
@@ -147,7 +147,7 @@ etsysIpSecDestinationAddrType OBJECT-TYPE
     MAX-ACCESS accessible-for-notify
     STATUS current
     DESCRIPTION
-        "The type of Internet Address specified with 
+        "The type of Internet Address specified with
          etsysIpSecDestinationAddress."
     ::= { etsysIpSecInformationBranch 6 }
 
@@ -183,9 +183,9 @@ etsysIpSecDiscardedPacket NOTIFICATION-TYPE
                   etsysIpSecSelectorValues
                 }
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
         "Discarded IPSec packet notification. When the device receives an
-         IPSec encrypted packet that does not match any SPD cache entry 
+         IPSec encrypted packet that does not match any SPD cache entry
          and it is determined that packet should be discarded, the device
          will send this notification with as much information as is
          available."
@@ -254,10 +254,10 @@ etsysIpSecCompliance MODULE-COMPLIANCE
          IPSec notifications."
 
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
                            etsysIpSecConfigGroup,
                            etsysIpSecInformationGroup,
-                           etsysIpSecNotificationGroup 
+                           etsysIpSecNotificationGroup
                          }
 
     ::= { etsysIpSecCompliances 1 }

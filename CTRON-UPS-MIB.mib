@@ -17,16 +17,16 @@ CTRON-UPS-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -65,7 +65,7 @@ CTRON-UPS-MIB DEFINITIONS ::= BEGIN
                     su700(265),
                     su1400(266),
                     su2000XL(267),
-                    aPCGeneric(268)  -- Generic APC for use when APC is not 
+                    aPCGeneric(268)  -- Generic APC for use when APC is not
                                      -- otherwise defined.
                     }
             ACCESS  read-write
@@ -182,7 +182,7 @@ CTRON-UPS-MIB DEFINITIONS ::= BEGIN
 --            ENTERPRISE  cabletron
 --            DESCRIPTION
 --                   "This trap is generated in the event that the UPS
---                    has entered an abnormal condition, such as an 
+--                    has entered an abnormal condition, such as an
 --                    overload or trip on low battery.  This trap is also
 --                    sent, when the UPS is first turned on."
 --            ::= 0x1105
@@ -191,7 +191,7 @@ CTRON-UPS-MIB DEFINITIONS ::= BEGIN
 --            ENTERPRISE  cabletron
 --            DESCRIPTION
 --                    "This trap is generated when the UPS has recovered
---                    from an abnormal condition, and only if the 
+--                    from an abnormal condition, and only if the
 --                    aPCAb-normalCondition trap was issued first."
 --            ::= 0x1106
 --

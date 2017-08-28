@@ -48,7 +48,7 @@ IMPORTS
                      FROM Q-BRIDGE-MIB
     ifIndex
                      FROM IF-MIB
-    ctDynamicArpInspectionExpMib                  
+    ctDynamicArpInspectionExpMib
                      FROM CTRON-MIB-NAMES;
 
 ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
@@ -73,7 +73,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
 --************ The Dynamic ARP Inspection Global Config Table ********
 
     ctAgentDaiConfigGroup  OBJECT IDENTIFIER ::={ ctFastPathDynamicArpInspectionMIB 1}
-    
+
     ctAgentDaiSrcMacValidate OBJECT-TYPE
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
@@ -81,15 +81,15 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "This object indicates whether Sender MAC validation in the ARP
              packets is enabled.
-    
+
              If this object is set to 'true', validation
              is enabled.
-    
+
              If this object is set to 'false', validation
              is disabled."
         DEFVAL      { false }
         ::= { ctAgentDaiConfigGroup 1 }
-    
+
     ctAgentDaiDstMacValidate OBJECT-TYPE
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
@@ -97,15 +97,15 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "This object indicates whether Target MAC validation in the ARP
              Response packets is enabled.
-    
+
              If this object is set to 'true', validation
              is enabled.
-    
+
              If this object is set to 'false', validation
              is disabled."
         DEFVAL      { false }
         ::= { ctAgentDaiConfigGroup 2 }
-    
+
     ctAgentDaiIPValidate OBJECT-TYPE
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
@@ -113,18 +113,18 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "This object indicates whether IP address validation in the ARP
              packets is enabled.
-    
+
              If this object is set to 'true', validation
              is enabled.
-    
+
              If this object is set to 'false', validation
              is disabled."
         DEFVAL      { false }
         ::= { ctAgentDaiConfigGroup 3 }
-    
-    
+
+
 --************ The Dynamic ARP Inspection VLAN Config Table ********
-    
+
     ctAgentDaiVlanConfigTable OBJECT-TYPE
         SYNTAX       SEQUENCE OF CtAgentDaiVlanConfigEntry
         MAX-ACCESS   not-accessible
@@ -135,17 +135,17 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             supporting this table, a corresponding entry of this table
             will be added."
         ::= { ctAgentDaiConfigGroup 4 }
-    
+
     ctAgentDaiVlanConfigEntry OBJECT-TYPE
         SYNTAX       CtAgentDaiVlanConfigEntry
         MAX-ACCESS   not-accessible
         STATUS       current
         DESCRIPTION
-            "A row instance contains the configuration for Dynamic 
+            "A row instance contains the configuration for Dynamic
              ARP Inspection at each existing VLAN."
         INDEX { ctAgentDaiVlanIndex }
         ::= { ctAgentDaiVlanConfigTable 1 }
-    
+
     CtAgentDaiVlanConfigEntry ::= SEQUENCE {
         ctAgentDaiVlanIndex                  VlanIndex,
         ctAgentDaiVlanDynArpInspEnable       TruthValue,
@@ -153,7 +153,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         ctAgentDaiVlanArpAclName             DisplayString,
         ctAgentDaiVlanArpAclStaticFlag       TruthValue
     }
-    
+
     ctAgentDaiVlanIndex OBJECT-TYPE
          SYNTAX      VlanIndex
          MAX-ACCESS  not-accessible
@@ -170,15 +170,15 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "This object indicates whether Dynamic ARP Inspection is
              enabled in this VLAN.
-    
+
              If this object is set to 'true', Dynamic ARP Inspection
              is enabled.
-    
+
              If this object is set to 'false', Dynamic ARP Inspection
              is disabled."
         DEFVAL      { false }
         ::= { ctAgentDaiVlanConfigEntry 2 }
-    
+
     ctAgentDaiVlanLoggingEnable  OBJECT-TYPE
         SYNTAX        TruthValue
         MAX-ACCESS    read-write
@@ -192,7 +192,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             loging is disabled."
         DEFVAL      { true }
         ::= { ctAgentDaiVlanConfigEntry 3 }
-    
+
     ctAgentDaiVlanArpAclName OBJECT-TYPE
         SYNTAX        DisplayString (SIZE(0..31))
         MAX-ACCESS    read-write
@@ -214,7 +214,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         ::= { ctAgentDaiVlanConfigEntry 5 }
 
 --************ The Dynamic ARP Inspection Vlan Statistics Table ********
-    
+
     ctAagentDaiStatsReset OBJECT-TYPE
         SYNTAX       INTEGER {
                      none(0),
@@ -228,7 +228,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
               always return the value none(0). The value none(0) cannot
               be forcibly set by the administrator."
         ::= { ctAgentDaiConfigGroup 5 }
-    
+
     ctAgentDaiVlanStatsTable OBJECT-TYPE
         SYNTAX       SEQUENCE OF CtAgentDaiVlanStatsEntry
         MAX-ACCESS   not-accessible
@@ -239,7 +239,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             supporting this table, a corresponding entry of this table
             will be added."
         ::= { ctAgentDaiConfigGroup 6 }
-    
+
     ctAgentDaiVlanStatsEntry OBJECT-TYPE
         SYNTAX       CtAgentDaiVlanStatsEntry
         MAX-ACCESS   not-accessible
@@ -249,7 +249,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              statistics per VLAN."
         INDEX { ctAgentDaiVlanStatsIndex }
         ::= { ctAgentDaiVlanStatsTable 1 }
-    
+
     CtAgentDaiVlanStatsEntry ::= SEQUENCE {
         ctAgentDaiVlanStatsIndex          VlanIndex,
         ctAgentDaiVlanPktsForwarded       Counter32,
@@ -279,7 +279,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "Number of valid ARP packets forwarded by DAI."
         ::= { ctAgentDaiVlanStatsEntry 2 }
-    
+
     ctAgentDaiVlanPktsDropped OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -287,7 +287,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "Number of invalid ARP packets dropped by DAI."
         ::= { ctAgentDaiVlanStatsEntry 3 }
-    
+
     ctAgentDaiVlanDhcpDrops OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -296,7 +296,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             "Number of ARP packets that were dropped by DAI as
              there is no matching DHCP Snooping binding entry found."
         ::= { ctAgentDaiVlanStatsEntry 4 }
-    
+
     ctAgentDaiVlanDhcpPermits OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -305,7 +305,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             "Number of ARP packets that were forwarded by DAI as
              there is a matching DHCP Snooping binding entry found."
         ::= { ctAgentDaiVlanStatsEntry 5 }
-    
+
     ctAgentDaiVlanAclDrops OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -315,7 +315,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              there is no matching ARP ACL rule found for this Vlan and
              the static flag is set on this vlan."
         ::= { ctAgentDaiVlanStatsEntry 6 }
-    
+
     ctAgentDaiVlanAclPermits OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -324,7 +324,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             "Number of ARP packets that were permitted by DAI as
              there is a matching ARP ACL rule found for this Vlan."
         ::= { ctAgentDaiVlanStatsEntry 7 }
-    
+
     ctAgentDaiVlanSrcMacFailures OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -334,7 +334,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              sender mac address in ARP packet didn't match the source
              mac in ethernet header."
         ::= { ctAgentDaiVlanStatsEntry 8 }
-    
+
     ctAgentDaiVlanDstMacFailures OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -344,7 +344,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              target mac address in ARP reply packet didn't match the
              destination mac in ethernet header."
         ::= { ctAgentDaiVlanStatsEntry 9 }
-    
+
     ctAgentDaiVlanIpValidFailures OBJECT-TYPE
         SYNTAX       Counter32
         MAX-ACCESS   read-only
@@ -356,9 +356,9 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              0.0.0.0, 255.255.255.255, IP multicast addresses,
              class E addresses (240.0.0.0/4), loopback addresses (127.0.0.0/8)."
         ::= { ctAgentDaiVlanStatsEntry 10 }
-    
+
 --************ The Dynamic ARP Inspection Interface Config Table ********
-    
+
     ctAgentDaiIfConfigTable OBJECT-TYPE
         SYNTAX       SEQUENCE OF CtAgentDaiIfConfigEntry
         MAX-ACCESS   not-accessible
@@ -368,24 +368,24 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
             state for Dynamic ARP Inspection purpose at each physical
             interface capable of this feature."
         ::= { ctAgentDaiConfigGroup 7 }
-    
+
     ctAgentDaiIfConfigEntry OBJECT-TYPE
         SYNTAX       CtAgentDaiIfConfigEntry
         MAX-ACCESS   not-accessible
         STATUS       current
         DESCRIPTION
-            "A row instance contains the configuration for 
-             Dynamic ARP Inspection at each physical 
+            "A row instance contains the configuration for
+             Dynamic ARP Inspection at each physical
              interface capable of this feature."
         INDEX { ifIndex }
         ::= { ctAgentDaiIfConfigTable 1 }
-    
+
     CtAgentDaiIfConfigEntry ::= SEQUENCE {
         ctAgentDaiIfTrustEnable       TruthValue,
         ctAgentDaiIfRateLimit         Unsigned32,
         ctAgentDaiIfBurstInterval     Unsigned32
     }
-    
+
     ctAgentDaiIfTrustEnable OBJECT-TYPE
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
@@ -393,17 +393,17 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
         DESCRIPTION
             "This object indicates whether the interface is trusted for
             Dynamic ARP Inspection purpose.
-    
+
             If this object is set to 'true', the interface is trusted.
             ARP packets coming to this interface will be forwarded
             without checking.
-    
+
             If this object is set to 'false', the interface is not
             trusted. ARP packets coming to this interface will be
             subjected to ARP inspection."
         DEFVAL      { false }
         ::= { ctAgentDaiIfConfigEntry 1 }
-    
+
     ctAgentDaiIfRateLimit OBJECT-TYPE
         SYNTAX      Unsigned32 (0..300)
         UNITS       "packets per second"
@@ -417,7 +417,7 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              dropped. "
         DEFVAL      { 15 }
         ::= { ctAgentDaiIfConfigEntry 2 }
-    
+
     ctAgentDaiIfBurstInterval OBJECT-TYPE
         SYNTAX      Unsigned32 (1..15)
         MAX-ACCESS  read-write
@@ -427,6 +427,6 @@ ctFastPathDynamicArpInspectionMIB MODULE-IDENTITY
              for rate limiting purpose on this interface."
         DEFVAL      { 1 }
         ::= { ctAgentDaiIfConfigEntry 3 }
-    
-    
+
+
 END

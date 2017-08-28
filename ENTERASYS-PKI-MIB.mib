@@ -1,6 +1,6 @@
 ENTERASYS-PKI-MIB DEFINITIONS ::= BEGIN
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Resource usage monitoring.
 
 --
@@ -19,7 +19,7 @@ ENTERASYS-PKI-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright March, 2013 Enterasys Networks, Inc.
@@ -50,7 +50,7 @@ etsysPkiMIB  MODULE-IDENTITY
          Phone:   +1 603 952 5000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
          MIBs under Enterasys Networks' enterprise OID pertaining to
@@ -62,7 +62,7 @@ etsysPkiMIB  MODULE-IDENTITY
 
     REVISION    "201303271108Z"  -- Wed Mar 27 11:08 UTC 2013
     DESCRIPTION "The initial version of this MIB module."
-    ::= { etsysModules 101 } 
+    ::= { etsysModules 101 }
 
 -- -------------------------------------------------------------
 -- Textual Conventions
@@ -70,27 +70,27 @@ etsysPkiMIB  MODULE-IDENTITY
 
 
 -- -------------------------------------------------------------
--- branches in the ENTERASYS-PKI-NOTIFICATION MIB 
+-- branches in the ENTERASYS-PKI-NOTIFICATION MIB
 -- -------------------------------------------------------------
 
-etsysPkiObjects        
+etsysPkiObjects
         OBJECT IDENTIFIER ::= { etsysPkiMIB 1 }
 
 etsysPkiNotificationBranch
         OBJECT IDENTIFIER ::= { etsysPkiObjects 0 }
 
-etsysPkiCertificateBranch 
+etsysPkiCertificateBranch
         OBJECT IDENTIFIER ::= { etsysPkiObjects 1 }
 
 -- -------------------------------------------------------------
--- Objects in the etsysPkiCertificateBranch group 
+-- Objects in the etsysPkiCertificateBranch group
 -- -------------------------------------------------------------
 
 etsysPkiCertListName OBJECT-TYPE
     SYNTAX     SnmpAdminString (SIZE(0..32))
     MAX-ACCESS accessible-for-notify
     STATUS     current
-    DESCRIPTION 
+    DESCRIPTION
         "The certificate list name to which the certificate belongs.
          If the list name is not known, then an empty string will be
          returned."
@@ -100,7 +100,7 @@ etsysPkiCertFingerprint OBJECT-TYPE
     SYNTAX     OCTET STRING (SIZE(20))
     MAX-ACCESS accessible-for-notify
     STATUS     current
-    DESCRIPTION 
+    DESCRIPTION
         "The SHA1 Hash of the certificate."
     ::= { etsysPkiCertificateBranch 2 }
 
@@ -108,7 +108,7 @@ etsysPkiCertIssuerName OBJECT-TYPE
     SYNTAX        SnmpAdminString (SIZE(0..63))
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
+    DESCRIPTION
         "The Issuer field of the certificate, which contains a
          distinguished name (DN).  If the length of the actual
          DN exceeds the maximum length of this object, then this
@@ -119,7 +119,7 @@ etsysPkiCertSubjectName OBJECT-TYPE
     SYNTAX        SnmpAdminString (SIZE(0..63))
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
+    DESCRIPTION
         "The Subject field of the certificate, which contains a
          distinguished name (DN).  If the length of the actual
          DN exceeds the maximum length of this object, then this
@@ -130,7 +130,7 @@ etsysPkiCertStartDate OBJECT-TYPE
     SYNTAX        DateAndTime
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
+    DESCRIPTION
         "The time when the certificate validity period begins, as defined
          by the notBefore value in certificate's validity field."
     ::= { etsysPkiCertificateBranch 5 }
@@ -139,7 +139,7 @@ etsysPkiCertEndDate OBJECT-TYPE
     SYNTAX        DateAndTime
     MAX-ACCESS    accessible-for-notify
     STATUS        current
-    DESCRIPTION   
+    DESCRIPTION
         "The time when the certificate validity period ends, as defined
          by the notAfter value in certificate's validity field."
     ::= { etsysPkiCertificateBranch 6 }
@@ -149,7 +149,7 @@ etsysPkiCertEndDate OBJECT-TYPE
 -- -------------------------------------------------------------
 
 etsysPkiCertNearingExpirationNotification NOTIFICATION-TYPE
-    OBJECTS    { 
+    OBJECTS    {
                  etsysPkiCertListName,
                  etsysPkiCertFingerprint,
                  etsysPkiCertIssuerName,
@@ -168,7 +168,7 @@ etsysPkiCertNearingExpirationNotification NOTIFICATION-TYPE
 
          Note that an expired certificate will be automatically
          rejected by the PKI authentication process.  If an
-         expired certificate is not replaced by a newer 
+         expired certificate is not replaced by a newer
          certificate, then any authentication attempt which
          uses the expired certificate will fail."
 
@@ -178,13 +178,13 @@ etsysPkiCertNearingExpirationNotification NOTIFICATION-TYPE
 -- Conformance Information
 -- ------------------------------------------------------------- --
 
-etsysPkiConformance 
+etsysPkiConformance
     OBJECT IDENTIFIER ::= { etsysPkiMIB 2 }
 
-etsysPkiGroups      
+etsysPkiGroups
     OBJECT IDENTIFIER ::= { etsysPkiConformance  1 }
 
-etsysPkiCompliances 
+etsysPkiCompliances
     OBJECT IDENTIFIER ::= { etsysPkiConformance  2 }
 
 -- ------------------------------------------------------------- --
@@ -206,8 +206,8 @@ etsysPkiCertificateGroup OBJECT-GROUP
     ::= { etsysPkiGroups 1 }
 
 etsysPkiNotificationGroup NOTIFICATION-GROUP
-    NOTIFICATIONS { 
-                    etsysPkiCertNearingExpirationNotification 
+    NOTIFICATIONS {
+                    etsysPkiCertNearingExpirationNotification
                   }
     STATUS current
     DESCRIPTION
@@ -222,11 +222,11 @@ etsysPkiCompliance MODULE-COMPLIANCE
     STATUS      current
     DESCRIPTION
         "The compliance statement for devices that support Enterasys PKI."
-    MODULE 
-        MANDATORY-GROUPS { 
+    MODULE
+        MANDATORY-GROUPS {
                           etsysPkiCertificateGroup,
-                          etsysPkiNotificationGroup 
-                         } 
+                          etsysPkiNotificationGroup
+                         }
     ::= { etsysPkiCompliances 1 }
 
 END

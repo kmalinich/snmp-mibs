@@ -39,17 +39,17 @@ IMPORTS
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
-        TimeTicks, 
+        TimeTicks,
         IpAddress
 --        Counter,
 --        Gauge
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.1
         vlanAPI, vlanName, vlanSystem, vlanTestAPI, vlanCountAPI, vlanAMRRules,
         vlanAMRStats,vlanAMRSubnets, vlanPort
-                FROM CTRON-SFPS-INCLUDE-MIB; 
- 
+                FROM CTRON-SFPS-INCLUDE-MIB;
+
 
 --  Textual Conventions
 
@@ -63,7 +63,7 @@ HexInteger ::= INTEGER
 
 SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 
 --  VLAN Switch Engine API Group
 --  This group contains the objects that pertain to the VLAN Engine and
@@ -71,7 +71,7 @@ SfpsSwitchPort ::= INTEGER
 --  verb-based autonomous interface to mapping and unmapping connections.
 
 
- 
+
 --  SFPS Virtual Bus API Group
 --  This group contains the objects that pertain to the SFPS vlan and
 --  its external Application Program Interface (API).  The API provides a
@@ -85,14 +85,14 @@ sfpsVAPIVerb    OBJECT-TYPE
                         delete-vlan(3),          -- add a user mapping
                         enable-vlan(4),          -- enables the entire vlan
                         disable-vlan(5),         -- disables the vlan
-                        map-port(6),     -- add an access port to the vlan 
+                        map-port(6),     -- add an access port to the vlan
                         unmap-port(7),           -- remove an access port from the vlan
                         enable-port(8),      -- enable an access port
                         disable-port(9),         -- disable an access port
                         map-user(10),    -- add a user mapping
                         unmap-user(11),  -- remove a user mapping
                         tap-vlan(12),            -- call tap a vlan
-                        untap-vlan(13),          -- remove call tap 
+                        untap-vlan(13),          -- remove call tap
                         auto-register(14),
                         auto-unregister(15)
                 }
@@ -108,14 +108,14 @@ sfpsVAPIInPort     OBJECT-TYPE
         SYNTAX  SfpsSwitchPort
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the ingress port of the Virtual LAN if mapping a connection.
                 Specifies the source port of a user when mapping a user"
         ::= { vlanAPI 2 }
 
 
 sfpsVAPIVlanName  OBJECT-TYPE
-        SYNTAX  DisplayString  
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -127,7 +127,7 @@ sfpsVAPIOutPort     OBJECT-TYPE
         SYNTAX  SfpsSwitchPort
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the egress port of the Virtual LAN if mapping a connection."
         ::= { vlanAPI 4 }
 
@@ -142,7 +142,7 @@ sfpsVAPIUserMAC OBJECT-TYPE
 
 
 sfpsVAPIUserAliasTag   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
                         {
                         aoMacDx(1),
                         aoIpxSap(2),
@@ -154,8 +154,8 @@ sfpsVAPIUserAliasTag   OBJECT-TYPE
                         aoInetRPC(8),
                         aoInetRIP(9),
                         aoMacDXMcast(10),
-                        aoAtDDP(11),      
-                        aoEmpty(12),      
+                        aoAtDDP(11),
+                        aoEmpty(12),
                         aoVlan(13),
                         aoHostName(14),
                         aoNetBiosName(15),
@@ -186,7 +186,7 @@ sfpsVAPIAdminStatus     OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Sets the administrative state of the object." 
+                "Sets the administrative state of the object."
         DEFVAL { enabled }
         ::= { vlanAPI 8 }
 
@@ -201,7 +201,7 @@ sfpsVAPIAutoRegisterRule OBJECT-TYPE
         appleTalk(6),
         decNET(7),
         vines(8),
-        bpdu(9)         
+        bpdu(9)
                 }
         ACCESS  read-write
         STATUS  mandatory
@@ -215,11 +215,11 @@ sfpsVAPIAutoRegMask   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the mask to apply when the IP-Subnet 
+                "Indicates the mask to apply when the IP-Subnet
                 rule is invoked."
         ::= { vlanAPI 10 }
 
- 
+
 sfpsVAPIAutoRegValue   OBJECT-TYPE
         SYNTAX  IpAddress
         ACCESS  read-write
@@ -228,7 +228,7 @@ sfpsVAPIAutoRegValue   OBJECT-TYPE
                 "Indicates the Alias Value of the user."
         ::= { vlanAPI 11 }
 
- 
+
 
 sfpsVAPIUnicastPolicy  OBJECT-TYPE
         SYNTAX          INTEGER {
@@ -280,7 +280,7 @@ sfpsVAPIRouterPort  OBJECT-TYPE
         DESCRIPTION
                 "Sets router port"
         ::= { vlanAPI 15}
- 
+
 sfpsVAPIVlanId   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -334,7 +334,7 @@ vlanNameTable     OBJECT-TYPE
                 "This table contains information of each SFVlan instance.
                  Essentially, a separate SFVlan instance exists for each Vlan.
                  If SFVlan is not configured on a module, than an entry
-                 will not exist." 
+                 will not exist."
         ::= { vlanName 1 }
 
 vlanNameEntry   OBJECT-TYPE
@@ -342,7 +342,7 @@ vlanNameEntry   OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "Each entry specifies the configuration for the Vlan instance." 
+                "Each entry specifies the configuration for the Vlan instance."
         INDEX   { vlanNameNHash, vlanNameIndex }
         ::= { vlanNameTable 1 }
 
@@ -365,13 +365,13 @@ VlanNameEntry ::=
                         vlanNameRelayAgent      IpAddress
       }
 
- 
+
 vlanNameNHash    OBJECT-TYPE
         SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The primary index to the VlanName table." 
+                "The primary index to the VlanName table."
         ::= { vlanNameEntry 1 }
 
 vlanNameIndex    OBJECT-TYPE
@@ -379,7 +379,7 @@ vlanNameIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The secondary index to the VlanName table." 
+                "The secondary index to the VlanName table."
         ::= { vlanNameEntry 2 }
 
 vlanNameVlanName    OBJECT-TYPE
@@ -387,7 +387,7 @@ vlanNameVlanName    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The Virual LAN ID." 
+                "The Virual LAN ID."
         ::= { vlanNameEntry 3 }
 
 vlanNameAdminStatus    OBJECT-TYPE
@@ -399,7 +399,7 @@ vlanNameAdminStatus    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The administrative state of the Vlan." 
+                "The administrative state of the Vlan."
         ::= { vlanNameEntry 4 }
 
 vlanNameOperStatus    OBJECT-TYPE
@@ -415,7 +415,7 @@ vlanNameOperStatus    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The operational state of the Vlan." 
+                "The operational state of the Vlan."
         ::= { vlanNameEntry 5 }
 
 vlanNameUniPolicy    OBJECT-TYPE
@@ -427,7 +427,7 @@ vlanNameUniPolicy    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The communication policy with respect to other Vlans." 
+                "The communication policy with respect to other Vlans."
         ::= { vlanNameEntry 6 }
 
 vlanNameFloodPolicy    OBJECT-TYPE
@@ -439,7 +439,7 @@ vlanNameFloodPolicy    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The multicast and unknown destination flood policy." 
+                "The multicast and unknown destination flood policy."
         ::= { vlanNameEntry 7 }
 
 vlanNameStatusTime    OBJECT-TYPE
@@ -448,7 +448,7 @@ vlanNameStatusTime    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The amount of time that this Vlan has been in its
-                 current operational state." 
+                 current operational state."
         ::= { vlanNameEntry 8 }
 
 vlanNameNumUsers    OBJECT-TYPE
@@ -456,7 +456,7 @@ vlanNameNumUsers    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The number of users per port" 
+                "The number of users per port"
         ::= { vlanNameEntry 9 }
 
 vlanNameEnabledPorts    OBJECT-TYPE
@@ -464,7 +464,7 @@ vlanNameEnabledPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The list of ports which have are enabled for this Vlan." 
+                "The list of ports which have are enabled for this Vlan."
         ::= { vlanNameEntry 10 }
 
 vlanNameMappedPorts    OBJECT-TYPE
@@ -472,7 +472,7 @@ vlanNameMappedPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The list of ports which have this Vlan mapped to it." 
+                "The list of ports which have this Vlan mapped to it."
         ::= { vlanNameEntry 11 }
 
 vlanNameVlanRule    OBJECT-TYPE
@@ -480,7 +480,7 @@ vlanNameVlanRule    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "." 
+                "."
         ::= { vlanNameEntry 12 }
 
 vlanNameFloodPorts    OBJECT-TYPE
@@ -488,7 +488,7 @@ vlanNameFloodPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanNameEntry 13 }
 
 vlanNameVlanId    OBJECT-TYPE
@@ -496,7 +496,7 @@ vlanNameVlanId    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanNameEntry 14 }
 
 vlanNameRelayAgent    OBJECT-TYPE
@@ -504,7 +504,7 @@ vlanNameRelayAgent    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanNameEntry 15 }
 
 
@@ -524,7 +524,7 @@ vlanSystemTable     OBJECT-TYPE
                  information of each SFVlan switch instance.  Essentially, a
                  separate SFVlan switch instance exists for each switch module.
                  If SFVlan is not configured on a module, than an entry
-                 will not exist." 
+                 will not exist."
         ::= { vlanSystem 1 }
 
 vlanSystemEntry    OBJECT-TYPE
@@ -549,7 +549,7 @@ VlanSystemEntry ::=
                 vlanSystemMibRev             DisplayString,
                 vlanSystemAgentIP            IpAddress,
                                 vlanSystemDomainName             DisplayString,
-                vlanSystemPollCount          INTEGER, 
+                vlanSystemPollCount          INTEGER,
                 vlanSystemFirstPollTime      TimeTicks,
                 vlanSystemLastPollTime       TimeTicks,
                 vlanSystemPriorPollTime      TimeTicks,
@@ -563,7 +563,7 @@ vlanSystemSwitchInstance    OBJECT-TYPE
         DESCRIPTION
                 "The primary index to the VLAN switch table.  This
                  identifies the VLAN switch for which the entry
-                 exists." 
+                 exists."
         ::= { vlanSystemEntry 1 }
 
 vlanSystemAdminStatus     OBJECT-TYPE
@@ -581,7 +581,7 @@ vlanSystemAdminStatus     OBJECT-TYPE
                  per-port state of each VLAN switching port and the
                  state of active connections, writing the value
                  disabled(2) will cause the VLAN to immediately
-                 shutdown.  A gracefull shutdown will be attempted." 
+                 shutdown.  A gracefull shutdown will be attempted."
         ::= { vlanSystemEntry 2 }
 
 vlanSystemAdminReset      OBJECT-TYPE
@@ -610,13 +610,13 @@ vlanSystemOperStatus     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current operating condition of the VLAN 
+                "Indicates the current operating condition of the VLAN
                  instance."
         ::= { vlanSystemEntry 4 }
 
-                            
+
 vlanSystemOperTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -626,7 +626,7 @@ vlanSystemOperTime  OBJECT-TYPE
         ::= { vlanSystemEntry 5 }
 
 vlanSystemLastChange  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -635,11 +635,11 @@ vlanSystemLastChange  OBJECT-TYPE
         ::= { vlanSystemEntry 6 }
 
 vlanSystemVersion  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current revision level of the VLAN firmware 
+                "Indicates the current revision level of the VLAN firmware
                  for this VLAN switch instance."
         ::= { vlanSystemEntry 7 }
 
@@ -654,7 +654,7 @@ vlanSystemMibRev OBJECT-TYPE
         ::= { vlanSystemEntry 8 }
 
 vlanSystemAgentIP      OBJECT-TYPE
-        SYNTAX  IpAddress  
+        SYNTAX  IpAddress
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -662,7 +662,7 @@ vlanSystemAgentIP      OBJECT-TYPE
         ::= { vlanSystemEntry 9 }
 
 vlanSystemDomainName  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -670,7 +670,7 @@ vlanSystemDomainName  OBJECT-TYPE
         ::= { vlanSystemEntry 10 }
 
 vlanSystemPollCount  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -678,7 +678,7 @@ vlanSystemPollCount  OBJECT-TYPE
         ::= { vlanSystemEntry 11 }
 
 vlanSystemFirstPollTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -686,7 +686,7 @@ vlanSystemFirstPollTime  OBJECT-TYPE
         ::= { vlanSystemEntry 12 }
 
 vlanSystemLastPollTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -694,7 +694,7 @@ vlanSystemLastPollTime  OBJECT-TYPE
         ::= { vlanSystemEntry 13 }
 
 vlanSystemPriorPollTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -702,7 +702,7 @@ vlanSystemPriorPollTime  OBJECT-TYPE
         ::= { vlanSystemEntry 14 }
 
 vlanSystemDeltaPollTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -713,7 +713,7 @@ vlanSystemDeltaPollTime  OBJECT-TYPE
 
 vlanTestAPIVerb    OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               -- 
+                        other(1),               --
                         add-vlan(2),            -- add a Vlan
                         delete-vlan(3),         -- delete a Vlan
                         enable-vlan(4),         -- enable a Vlan
@@ -724,7 +724,7 @@ vlanTestAPIVerb    OBJECT-TYPE
                         disable-vlan-port(9),   -- disable a Vlan for a port
                         map-vlan-port(10),      -- map a Vlan for a port
                         unmap-vlan-port(11),    -- unmap a Vlan for a port
-                        tap-vlan-port(12),      -- unsupported 
+                        tap-vlan-port(12),      -- unsupported
                         untap-vlan-port(13),    -- unsupported
                         get-vlan-info(14),      -- get Vlan info
                         get-port-info(15),      -- get port info
@@ -743,13 +743,13 @@ vlanTestAPIVlanName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the Virtual LAN to be acted upon."
         ::= { vlanTestAPI 2 }
 
 
 vlanTestAPIPort  OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -757,7 +757,7 @@ vlanTestAPIPort  OBJECT-TYPE
         ::= { vlanTestAPI 3 }
 
 vlanTestAPIVlanId  OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -803,15 +803,15 @@ vlanTestAPIOutputIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The primary index to the VLAN Test API Output table." 
+                "The primary index to the VLAN Test API Output table."
         ::= { vlanTestAPIOutputEntry 1 }
-        
+
 vlanTestAPIOutputVlanName    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the Virtual LAN by name." 
+                "Specifies the Virtual LAN by name."
         ::= { vlanTestAPIOutputEntry 2 }
 
 vlanTestAPIOutputUserCnt    OBJECT-TYPE
@@ -819,13 +819,13 @@ vlanTestAPIOutputUserCnt    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the number of users on this Vlan." 
+                "Specifies the number of users on this Vlan."
         ::= { vlanTestAPIOutputEntry 3 }
 
 vlanTestAPIOutputStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               
-                        disabled(2),             
+                        other(1),
+                        disabled(2),
                         enabled(3)
         }
         ACCESS  read-only
@@ -836,8 +836,8 @@ vlanTestAPIOutputStatus     OBJECT-TYPE
 
 vlanTestAPIOutputPolicy     OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               
-                        normal(2),               
+                        other(1),
+                        normal(2),
                         secure(3)
         }
         ACCESS  read-only
@@ -851,13 +851,13 @@ vlanTestAPIOutputPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the Vlan port." 
+                "Specifies the Vlan port."
         ::= { vlanTestAPIOutputEntry 6 }
 
 vlanTestAPIOutputMap     OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               
-                        unmapped(2),             
+                        other(1),
+                        unmapped(2),
                         mapped(3)
         }
         ACCESS  read-only
@@ -868,8 +868,8 @@ vlanTestAPIOutputMap     OBJECT-TYPE
 
 vlanTestAPIOutputAble     OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               
-                        disabled(2),             
+                        other(1),
+                        disabled(2),
                         enabled(3)
         }
         ACCESS  read-only
@@ -880,8 +880,8 @@ vlanTestAPIOutputAble     OBJECT-TYPE
 
 vlanTestAPIOutputTap     OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),               
-                        untapped(2),             
+                        other(1),
+                        untapped(2),
                         tapped(3)
         }
         ACCESS  read-only
@@ -895,7 +895,7 @@ vlanTestAPIOutputVlanId    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the Vlan Id." 
+                "Specifies the Vlan Id."
         ::= { vlanTestAPIOutputEntry 10 }
 
 
@@ -906,7 +906,7 @@ vlanCountAPITotal    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanCountAPI 1 }
 
 vlanCountAPIAdmin    OBJECT-TYPE
@@ -914,7 +914,7 @@ vlanCountAPIAdmin    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanCountAPI 2 }
 
 vlanCountAPIAutoreg    OBJECT-TYPE
@@ -922,7 +922,7 @@ vlanCountAPIAutoreg    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanCountAPI 3 }
 
 
@@ -933,7 +933,7 @@ vlanAMRRulesTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "This table displays the on/off status of each individual AMR Rule." 
+                "This table displays the on/off status of each individual AMR Rule."
         ::= { vlanAMRRules 1 }
 
 vlanAMRRulesEntry       OBJECT-TYPE
@@ -941,14 +941,14 @@ vlanAMRRulesEntry       OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         INDEX   { vlanAMRRulesRule }
         ::= { vlanAMRRulesTable 1 }
 
 VlanAMRRulesEntry ::=
         SEQUENCE {
                 vlanAMRRulesRule          INTEGER,
-        vlanAMRRulesStatus        INTEGER  
+        vlanAMRRulesStatus        INTEGER
       }
 
 vlanAMRRulesRule    OBJECT-TYPE
@@ -984,7 +984,7 @@ vlanAMRRulesStatus    OBJECT-TYPE
 --  This table displays miscellaneous stats about the state of AMR rule.
 
 vlanAMRStatsNumRulesEnabled    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -992,11 +992,11 @@ vlanAMRStatsNumRulesEnabled    OBJECT-TYPE
         ::= { vlanAMRStats 1 }
 
 vlanAMRStatsSingleMask    OBJECT-TYPE
-        SYNTAX  IpAddress       
+        SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays the mask that is used with the IP-Subnet AMR rule" 
+                "Displays the mask that is used with the IP-Subnet AMR rule"
         ::= { vlanAMRStats 2 }
 
 
@@ -1005,7 +1005,7 @@ vlanAMRStatsSingleMask    OBJECT-TYPE
 --  This table displays miscellaneous stats about the state of AMR rule.
 
 vlanAMRSubnetsPrefix    OBJECT-TYPE
-        SYNTAX  IpAddress       
+        SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1013,11 +1013,11 @@ vlanAMRSubnetsPrefix    OBJECT-TYPE
         ::= { vlanAMRSubnets 1 }
 
 vlanAMRSubnetsMask    OBJECT-TYPE
-        SYNTAX  IpAddress       
+        SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanAMRSubnets 2 }
 
 
@@ -1028,7 +1028,7 @@ vlanPortTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPort 1 }
 
 vlanPortEntry   OBJECT-TYPE
@@ -1036,7 +1036,7 @@ vlanPortEntry   OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         INDEX   { vlanPortPortNum }
         ::= { vlanPortTable 1 }
 
@@ -1055,13 +1055,13 @@ VlanPortEntry ::=
                 vlanPortLayer3Learning      INTEGER
      }
 
- 
+
 vlanPortPortNum    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The primary index to the VlanPort table." 
+                "The primary index to the VlanPort table."
         ::= { vlanPortEntry 1 }
 
 vlanPortPortStatus    OBJECT-TYPE
@@ -1073,7 +1073,7 @@ vlanPortPortStatus    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 2 }
 
 vlanPortPortPolicy    OBJECT-TYPE
@@ -1085,7 +1085,7 @@ vlanPortPortPolicy    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 3 }
 
 vlanPortVlanName    OBJECT-TYPE
@@ -1093,7 +1093,7 @@ vlanPortVlanName    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 4 }
 
 vlanPortAdminStatus    OBJECT-TYPE
@@ -1105,7 +1105,7 @@ vlanPortAdminStatus    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 5 }
 
 vlanPortUniPolicy    OBJECT-TYPE
@@ -1117,7 +1117,7 @@ vlanPortUniPolicy    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 6 }
 
 vlanPortFloodPolicy    OBJECT-TYPE
@@ -1129,7 +1129,7 @@ vlanPortFloodPolicy    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 7 }
 
 vlanPortRouterPort    OBJECT-TYPE
@@ -1141,7 +1141,7 @@ vlanPortRouterPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 8 }
 
 vlanPortVlanId    OBJECT-TYPE
@@ -1149,7 +1149,7 @@ vlanPortVlanId    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 9 }
 
 vlanPortRelayAgent    OBJECT-TYPE
@@ -1157,7 +1157,7 @@ vlanPortRelayAgent    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 10 }
 
 vlanPortLayer3Learning    OBJECT-TYPE
@@ -1169,7 +1169,7 @@ vlanPortLayer3Learning    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { vlanPortEntry 11 }
 
-END 
+END

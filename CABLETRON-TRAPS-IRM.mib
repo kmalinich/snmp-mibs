@@ -2,7 +2,7 @@ CABLETRON-TRAPS-IRM DEFINITIONS ::= BEGIN
 
         --  cabletron-traps-irm.txt
         --  Revision: 01.00.00
-        --  Part Number:  
+        --  Part Number:
         --  Date: May 31, 1995
 
         --  Cabletron Systems, Inc.
@@ -18,15 +18,15 @@ CABLETRON-TRAPS-IRM DEFINITIONS ::= BEGIN
         --
 
         --  Cabletron Systems reserves the right to make changes in
-        --  specification and other information contained in this document 
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -47,8 +47,8 @@ IMPORTS
         enterprises
                         FROM RFC1155-SMI
 
-        deviceTimeBase, devTrafficThreshold, 
-        devCollsThreshold, devErrorThreshold, 
+        deviceTimeBase, devTrafficThreshold,
+        devCollsThreshold, devErrorThreshold,
         devErrorSource, deviceSrcAddrLocked,
         devBroadThreshold
                         FROM REPEATER-MIB-2
@@ -66,8 +66,8 @@ srcAddressPortGrpLockStatusChange TRAP-TYPE
         VARIABLES { boardIndex,
                       boardSrcAddrLocked }
         DESCRIPTION
-                "This trap is generated when a change to the 
-                source address locking is detected at the port 
+                "This trap is generated when a change to the
+                source address locking is detected at the port
                 group level."
         ::= 308 -- 0x0134
 
@@ -94,7 +94,7 @@ deviceErrorThresholdExceeded TRAP-TYPE
         DESCRIPTION
                 "This  trap  will  be  generated  when  packets  of
                 the selected error  type exceeds  a threshold
-                percentage of the good packets for a particular 
+                percentage of the good packets for a particular
                 interval for the entire MMAC."
             --#SUMMARY 'Device Error Threshold Exceeded: Threshold $1, Timebase $2'
             --#SEVERITY MINOR

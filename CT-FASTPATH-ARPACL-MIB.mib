@@ -64,15 +64,15 @@ ctFastPathArpAclMIB MODULE-IDENTITY
 
 
 --**************************************************************************************
---    ctAgentArpAclGroup -> contains MIB objects for ARP ACLs 
+--    ctAgentArpAclGroup -> contains MIB objects for ARP ACLs
 --
 --*************************************************************************************
-    
+
    ctAgentArpAclGroup                OBJECT IDENTIFIER ::= {ctFastPathArpAclMIB 1 }
-    
-    
+
+
 --*********************** ARP ACL Config Table ***********************
-    
+
     ctAgentArpAclTable OBJECT-TYPE
          SYNTAX      SEQUENCE OF CtAgentArpAclEntry
          MAX-ACCESS  not-accessible
@@ -80,7 +80,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
          DESCRIPTION
                      "A table of the ARP ACL entries"
          ::= { ctAgentArpAclGroup 1 }
-    
+
     ctAgentArpAclEntry OBJECT-TYPE
          SYNTAX      CtAgentArpAclEntry
          MAX-ACCESS  not-accessible
@@ -89,14 +89,14 @@ ctFastPathArpAclMIB MODULE-IDENTITY
                      "Represents entry for an ARP ACL"
          INDEX       { ctAgentArpAclName }
          ::= { ctAgentArpAclTable 1 }
-    
+
     CtAgentArpAclEntry ::= SEQUENCE {
           ctAgentArpAclName
               DisplayString,
           ctAgentArpAclRowStatus
               RowStatus
           }
-    
+
     ctAgentArpAclName OBJECT-TYPE
          SYNTAX      DisplayString (SIZE(1..31))
          MAX-ACCESS  read-create
@@ -106,7 +106,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
                       characters and uniquely identify this ARP ACL. This object must
                       be set to complete a new ARP ACL row instance."
          ::= { ctAgentArpAclEntry 1 }
-    
+
     ctAgentArpAclRowStatus OBJECT-TYPE
          SYNTAX      RowStatus
          MAX-ACCESS  read-create
@@ -114,15 +114,15 @@ ctFastPathArpAclMIB MODULE-IDENTITY
          DESCRIPTION
                      "The status of this conceptual row. Entries can not be deleted until all rows in
                      arpAclRuleTable with corresponding values of arpAclIndex have been deleted.
-                     
+
                      active(1)       - this ACL instance is active
                      createAndGo(4)  - set to this value to create an instance
                      destroy(6)      - set to this value to delete an instance"
          ::= { ctAgentArpAclEntry 2 }
-    
-    
+
+
 --*********************** ARP ACL Rule Config Table ***********************
-    
+
     ctAgentArpAclRuleTable OBJECT-TYPE
          SYNTAX      SEQUENCE OF CtAgentArpAclRuleEntry
          MAX-ACCESS  not-accessible
@@ -130,7 +130,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
          DESCRIPTION
                      "A table of the ARP ACL Rule entries"
          ::= { ctAgentArpAclGroup 2 }
-    
+
     ctAgentArpAclRuleEntry OBJECT-TYPE
          SYNTAX      CtAgentArpAclRuleEntry
          MAX-ACCESS  not-accessible
@@ -139,7 +139,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
                      "Represents entry for a set of ARP ACL-match rules"
          INDEX       { ctAgentArpAclName, ctAgentArpAclRuleMatchSenderIpAddr, ctAgentArpAclRuleMatchSenderMacAddr }
          ::= { ctAgentArpAclRuleTable 1 }
-    
+
     CtAgentArpAclRuleEntry ::= SEQUENCE {
           ctAgentArpAclRuleMatchSenderIpAddr
               IpAddress,
@@ -148,7 +148,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
           ctAgentArpAclRuleRowStatus
               RowStatus
           }
-    
+
     ctAgentArpAclRuleMatchSenderIpAddr OBJECT-TYPE
          SYNTAX      IpAddress
          MAX-ACCESS  read-create
@@ -156,7 +156,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
          DESCRIPTION
                      "Sender IP address match value for the ARP ACL."
          ::= { ctAgentArpAclRuleEntry 1 }
-    
+
     ctAgentArpAclRuleMatchSenderMacAddr OBJECT-TYPE
          SYNTAX      MacAddress
          MAX-ACCESS  read-create
@@ -164,7 +164,7 @@ ctFastPathArpAclMIB MODULE-IDENTITY
          DESCRIPTION
                      "Sender MAC address match value for the ARP ACL."
          ::= { ctAgentArpAclRuleEntry 2 }
-    
+
     ctAgentArpAclRuleRowStatus OBJECT-TYPE
          SYNTAX      RowStatus
          MAX-ACCESS  read-create

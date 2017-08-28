@@ -43,12 +43,12 @@ IMPORTS
       TimeTicks
 --      Gauge
                 FROM RFC1155-SMI
- 
+
 
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.8
         sfpsCentersFacility, sfpsVNSFacility, sfpsVLANFacility,
         sfpsDiagFacility, sfpsRAFacility, sfpsBetaFacility,
-        sfpsCallTapFacility, sfpsFabricFacility, sfpsLiteFacility, 
+        sfpsCallTapFacility, sfpsFabricFacility, sfpsLiteFacility,
         sfpsFpcFacility, sfpsMcastFacility, sfpsUpLinkFacility
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
@@ -56,13 +56,13 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 -- SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 --SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
      HexInteger ::= INTEGER
 --  display this integer in hex format
 
@@ -102,7 +102,7 @@ sfpsCentersFacilityAddress      OBJECT-TYPE
         SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 1 }
 
@@ -110,7 +110,7 @@ sfpsCentersFacilityMetric       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 2 }
 
@@ -118,7 +118,7 @@ sfpsCentersFacilityElementName  OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 3 }
 
@@ -133,7 +133,7 @@ sfpsCentersFacilityOperStatus   OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 4 }
 
@@ -146,7 +146,7 @@ sfpsCentersFacilityAdminStatus  OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 5 }
 
@@ -154,7 +154,7 @@ sfpsCentersFacilityStatusTime   OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 6 }
 
@@ -162,7 +162,7 @@ sfpsCentersFacilityRequests     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 7 }
 
@@ -170,7 +170,7 @@ sfpsCentersFacilityResponses    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCentersFacilityEntry 8 }
 
@@ -206,7 +206,7 @@ sfpsBetaFacilityHashIndex       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsBetaFacilityEntry 1 }
 
@@ -214,7 +214,7 @@ sfpsBetaFacilityElementName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsBetaFacilityEntry 2 }
 
@@ -227,7 +227,7 @@ sfpsBetaFacilityAdminStatus     OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsBetaFacilityEntry 3 }
 
@@ -242,7 +242,7 @@ sfpsBetaFacilityOperStatus      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsBetaFacilityEntry 4 }
 
@@ -250,10 +250,10 @@ sfpsBetaFacilityStatusTime      OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsBetaFacilityEntry 5 }
- 
+
 
 --  Call Tap Facility
 
@@ -287,7 +287,7 @@ sfpsCallTapFacilityHashIndex    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCallTapFacilityEntry 1 }
 
@@ -295,7 +295,7 @@ sfpsCallTapFacilityElementName  OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCallTapFacilityEntry 2 }
 
@@ -308,7 +308,7 @@ sfpsCallTapFacilityAdminStatus  OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCallTapFacilityEntry 3 }
 
@@ -323,7 +323,7 @@ sfpsCallTapFacilityOperStatus   OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCallTapFacilityEntry 4 }
 
@@ -331,10 +331,10 @@ sfpsCallTapFacilityStatusTime   OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsCallTapFacilityEntry 5 }
- 
+
 
 sfpsDiagFacilityTable   OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsDiagFacilityEntry
@@ -366,7 +366,7 @@ sfpsDiagFacilityHashIndex       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDiagFacilityEntry 1 }
 
@@ -374,7 +374,7 @@ sfpsDiagFacilityElementName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDiagFacilityEntry 2 }
 
@@ -387,7 +387,7 @@ sfpsDiagFacilityAdminStatus     OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDiagFacilityEntry 3 }
 
@@ -402,7 +402,7 @@ sfpsDiagFacilityOperStatus      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDiagFacilityEntry 4 }
 
@@ -410,7 +410,7 @@ sfpsDiagFacilityStatusTime      OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDiagFacilityEntry 5 }
 
@@ -447,7 +447,7 @@ sfpsFabricFacilityHashIndex     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFabricFacilityEntry 1 }
 
@@ -455,7 +455,7 @@ sfpsFabricFacilityElementName   OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFabricFacilityEntry 2 }
 
@@ -468,7 +468,7 @@ sfpsFabricFacilityAdminStatus   OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFabricFacilityEntry 3 }
 
@@ -483,7 +483,7 @@ sfpsFabricFacilityOperStatus    OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFabricFacilityEntry 4 }
 
@@ -491,7 +491,7 @@ sfpsFabricFacilityStatusTime    OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFabricFacilityEntry 5 }
 
@@ -527,7 +527,7 @@ sfpsLiteFacilityHashIndex       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsLiteFacilityEntry 1 }
 
@@ -535,7 +535,7 @@ sfpsLiteFacilityElementName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsLiteFacilityEntry 2 }
 
@@ -548,7 +548,7 @@ sfpsLiteFacilityAdminStatus     OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsLiteFacilityEntry 3 }
 
@@ -563,7 +563,7 @@ sfpsLiteFacilityOperStatus      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsLiteFacilityEntry 4 }
 
@@ -571,10 +571,10 @@ sfpsLiteFacilityStatusTime      OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsLiteFacilityEntry 5 }
- 
+
 --  Facility
 
 sfpsFpcFacilityTable    OBJECT-TYPE
@@ -607,7 +607,7 @@ sfpsFpcFacilityHashIndex        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFpcFacilityEntry 1 }
 
@@ -615,7 +615,7 @@ sfpsFpcFacilityElementName      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFpcFacilityEntry 2 }
 
@@ -628,7 +628,7 @@ sfpsFpcFacilityAdminStatus      OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFpcFacilityEntry 3 }
 
@@ -643,7 +643,7 @@ sfpsFpcFacilityOperStatus       OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFpcFacilityEntry 4 }
 
@@ -651,10 +651,10 @@ sfpsFpcFacilityStatusTime       OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsFpcFacilityEntry 5 }
- 
+
 
 --  Multicast Facility
 
@@ -688,7 +688,7 @@ sfpsMcastFacilityHashIndex      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsMcastFacilityEntry 1 }
 
@@ -696,7 +696,7 @@ sfpsMcastFacilityElementName    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsMcastFacilityEntry 2 }
 
@@ -709,7 +709,7 @@ sfpsMcastFacilityAdminStatus    OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsMcastFacilityEntry 3 }
 
@@ -724,7 +724,7 @@ sfpsMcastFacilityOperStatus     OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsMcastFacilityEntry 4 }
 
@@ -732,7 +732,7 @@ sfpsMcastFacilityStatusTime     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsMcastFacilityEntry 5 }
 
@@ -766,7 +766,7 @@ sfpsVLANFacilityHashIndex       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVLANFacilityEntry 1 }
 
@@ -774,7 +774,7 @@ sfpsVLANFacilityElementName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVLANFacilityEntry 2 }
 
@@ -787,7 +787,7 @@ sfpsVLANFacilityAdminStatus     OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVLANFacilityEntry 3 }
 
@@ -802,7 +802,7 @@ sfpsVLANFacilityOperStatus      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVLANFacilityEntry 4 }
 
@@ -810,11 +810,11 @@ sfpsVLANFacilityStatusTime      OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVLANFacilityEntry 5 }
 
- 
+
 
 sfpsVNSFacilityTable    OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsVNSFacilityEntry
@@ -846,7 +846,7 @@ sfpsVNSFacilityHashIndex        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVNSFacilityEntry 1 }
 
@@ -854,7 +854,7 @@ sfpsVNSFacilityElementName      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVNSFacilityEntry 2 }
 
@@ -867,7 +867,7 @@ sfpsVNSFacilityAdminStatus      OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVNSFacilityEntry 3 }
 
@@ -882,7 +882,7 @@ sfpsVNSFacilityOperStatus       OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVNSFacilityEntry 4 }
 
@@ -890,11 +890,11 @@ sfpsVNSFacilityStatusTime       OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsVNSFacilityEntry 5 }
 
- 
+
 
 
 -- Redundant Access Facility - RAFacility
@@ -929,7 +929,7 @@ sfpsRAFacilityHashIndex OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsRAFacilityEntry 1 }
 
@@ -937,7 +937,7 @@ sfpsRAFacilityName      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsRAFacilityEntry 2 }
 
@@ -950,7 +950,7 @@ sfpsRAFacilityAdminStatus       OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsRAFacilityEntry 3 }
 
@@ -965,7 +965,7 @@ sfpsRAFacilityOperStatus        OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsRAFacilityEntry 4 }
 
@@ -973,7 +973,7 @@ sfpsRAFacilityStatusTime        OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsRAFacilityEntry 5 }
 
@@ -1009,7 +1009,7 @@ sfpsUplinkFacilityHashIndex     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsUplinkFacilityEntry 1 }
 
@@ -1017,7 +1017,7 @@ sfpsUplinkFacilityName  OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsUplinkFacilityEntry 2 }
 
@@ -1030,7 +1030,7 @@ sfpsUplinkFacilityAdminStatus   OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsUplinkFacilityEntry 3 }
 
@@ -1045,7 +1045,7 @@ sfpsUplinkFacilityOperStatus    OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsUplinkFacilityEntry 4 }
 
@@ -1053,7 +1053,7 @@ sfpsUplinkFacilityStatusTime    OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsUplinkFacilityEntry 5 }
 

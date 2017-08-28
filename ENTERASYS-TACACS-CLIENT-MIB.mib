@@ -64,8 +64,8 @@ etsysTacacsClientMIB MODULE-IDENTITY
          TACACS+ client configuration."
 
     REVISION    "201002011702Z"  -- Mon Feb  1 17:02 UTC 2010
-    DESCRIPTION "Corrected DESCRIPTION clause for the 
-                 etsysTacacsClientSesnAuthValue object." 
+    DESCRIPTION "Corrected DESCRIPTION clause for the
+                 etsysTacacsClientSesnAuthValue object."
 
     REVISION    "200502101757Z"  -- Thu Feb 10 17:57 GMT 2005
     DESCRIPTION "The initial version of this MIB module."
@@ -76,16 +76,16 @@ etsysTacacsClientMIB MODULE-IDENTITY
 -- Branches of the Enterasys TACACS+ Client MIB
 -- -------------------------------------------------------------
 
-etsysTacacsClientObjects     OBJECT IDENTIFIER 
+etsysTacacsClientObjects     OBJECT IDENTIFIER
         ::= { etsysTacacsClientMIB 1 }
 
-etsysTacacsClientControl     OBJECT IDENTIFIER 
+etsysTacacsClientControl     OBJECT IDENTIFIER
         ::= { etsysTacacsClientObjects 1 }
 
-etsysTacacsClientSesnAuth    OBJECT IDENTIFIER 
+etsysTacacsClientSesnAuth    OBJECT IDENTIFIER
         ::= { etsysTacacsClientObjects 2 }
 
-etsysTacacsClientServer      OBJECT IDENTIFIER 
+etsysTacacsClientServer      OBJECT IDENTIFIER
         ::= { etsysTacacsClientObjects 3 }
 
 
@@ -222,7 +222,7 @@ etsysTacacsClientSesnAuthValue OBJECT-TYPE
         "The value part of the attribute-value pair for this access
          level.
 
-         To allow the leveraging of existing Cisco 'enable' mode 
+         To allow the leveraging of existing Cisco 'enable' mode
          configurations.  When
 
          1.)  the etsysTacacsClientSesnAuthService object has the value
@@ -289,7 +289,7 @@ etsysTacacsClientServerIndex OBJECT-TYPE
          in the etsysTacacsClientServerTable.
 
          In the event of an agent restart, the same value of
-         etsysTacacsClientServerIndex must be used to identify 
+         etsysTacacsClientServerIndex must be used to identify
          each conceptual row in etsysTacacsClientServerTable
          as prior to the restart."
     ::= { etsysTacacsClientServerEntry 1 }
@@ -353,7 +353,7 @@ etsysTacacsClientServerSecret  OBJECT-TYPE
     MAX-ACCESS     read-create
     STATUS         current
     DESCRIPTION
-        "This object is the secret shared between the TACACS+ 
+        "This object is the secret shared between the TACACS+
          server and TACACS+ client."
     ::= { etsysTacacsClientServerEntry 6 }
 
@@ -369,12 +369,12 @@ etsysTacacsClientServerStatus OBJECT-TYPE
     SYNTAX         RowStatus
     MAX-ACCESS     read-create
     STATUS         current
-    DESCRIPTION   
+    DESCRIPTION
         "Lets users create and delete TACACS+ server entries on
          systems that support this capability.
-            
+
          Rules
-        
+
             1. When creating a TACACS+ client, it is up to the
                management station to determine a suitable
                etsysTacacsClientServerIndex.  To facilitate
@@ -391,8 +391,8 @@ etsysTacacsClientServerStatus OBJECT-TYPE
                need to be set to 'notInService' in order to modify
                a writable object in the same conceptual row.
 
-            4. etsysTacacsClientServer entries whose 
-               status is 'notReady' or 'notInService' will 
+            4. etsysTacacsClientServer entries whose
+               status is 'notReady' or 'notInService' will
                not be used for authentication."
 
     ::= { etsysTacacsClientServerEntry 8 }

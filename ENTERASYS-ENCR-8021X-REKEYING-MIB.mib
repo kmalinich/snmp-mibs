@@ -6,7 +6,7 @@ ENTERASYS-ENCR-8021X-REKEYING-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' encrypted IEEE 802.1x rapid rekeying MIB.
 
 --
@@ -25,12 +25,12 @@ ENTERASYS-ENCR-8021X-REKEYING-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright March, 2002 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE
         FROM SNMPv2-SMI
 --  TruthValue
@@ -67,12 +67,12 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                                    N O T I C E
 
               Use of this MIB in any product requires the approval
-              of the Office of the CTO, Enterasys Networks, Inc.  
-              Permission to use this MIB will not be granted for 
+              of the Office of the CTO, Enterasys Networks, Inc.
+              Permission to use this MIB will not be granted for
               products in which SNMPv3 is now, or will soon be,
               implemented.  Permission to use this MIB in products
-              that are never scheduled to implement SNMPv3 will be 
-              granted on a case-by-case basis, depending on what 
+              that are never scheduled to implement SNMPv3 will be
+              granted on a case-by-case basis, depending on what
               other suitable, secure means of configuration are
               available in the product.
 
@@ -83,7 +83,7 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
          data from an encrypted OCTET STRING.  (These methods are the
          same as for the Enterasys Networks encrypted RADIUS Client
          MIB.)
-          
+
          The encryption/decryption methods make use of an agreed-upon
          Secret and an Authenticator shared between the SNMP network
          management system and the entity that implements the MIB.
@@ -120,14 +120,14 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |   String ...
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
              Type
-  
+
                 The data type of the non-encrypted 'native' data:
 
                 1 = Integer32
                 2 = OCTET STRING
-          
+
              Length
 
                 The length in octets of the native object sub-field of
@@ -147,7 +147,7 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                 The most significant bit (leftmost) of the Salt field
                 MUST be set (1).  The contents of each Salt field in a
                 given SNMP packet must be unique.
-          
+
              String
 
        0                   1                   2                   3
@@ -163,7 +163,7 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |  Object/Padding ...
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
                 The plain-text String field consists of six logical
                 sub-fields: the CRC, OID-tail, Time Stamp, Source IP
                 address and native Object sub-fields (all of which are
@@ -171,7 +171,7 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                 String field MUST be treated as a counted-string of
                 undistinguished octets, and not as a standard
                 C/UNIX-style null-terminated, printable ASCII string.
-          
+
                 CRC Sub-field
 
                   The CRC sub-field contains a 32-bit CRC (CRC-32)
@@ -180,16 +180,16 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                   Address and unpadded native Object fields.  The CRC
                   sub-field acts as an integrity check on the decrypted
                   data.
-          
+
                 OID-tail Sub-field
-          
+
                   The OID-tail sub-field contains the least significant
                   four octets of the Object ID of the varbind.  This
                   field is included as an integrity check on the OID of
                   the varbind.
-          
+
                 Time Stamp Sub-field
-          
+
                   The Time Stamp sub-field contains a 32-bit unsigned
                   integer value representing the time the encrypted
                   message was assembled.  This field acts as an
@@ -200,9 +200,9 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                   Time Stamp is relative time, in units of seconds,
                   referenced to the sysUpTime object of the managed
                   entity.
-          
+
                 Source IP Address Sub-field
-          
+
                   The Source IP Address sub-field contains an unsigned
                   32-bit representation of the IPv4 address of the
                   source of the encrypted message.  This is an added
@@ -212,13 +212,13 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                 The CRC, OID-tail, Time Stamp, and Source IP Address
                 sub-fields are collectively hereinafter refered to as
                 the Integrity Check (IC) sub-fields.
-          
+
                 Object/Padding Sub-field
 
-                  Object 
+                  Object
                     The Object sub-field contains the actual or native
                     object data followed by padding, if necessary.
-          
+
                   Padding
                     If the combined length (in octets) of the
                     non-encrypted CRC, OID-tail, Time Stamp, Source IP
@@ -227,12 +227,12 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                     present.  If it is present, the length of the
                     Padding sub-field is variable, between 1 and 15
                     octets.  The value of the pad octets SHOULD be zero.
-          
+
              Encrypting/Decrypting the String Field
 
                 The entire String field MUST be encrypted as follows,
                 prior to transmission:
-          
+
                 Construct a plain-text version of the String field by
                 concatenating the CRC, OID-tail, Time Stamp, Source IP
                 address, and native Object sub-fields.  If necessary,
@@ -248,9 +248,9 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                       interface of the managed device (containing the
                       RADIUS Client).  The MAC address is represented
                       as up-cased, dashed-ASCII, e.g. 08-00-2B-11-22-33.
-          
+
                   Authenticator
-          
+
                       The 128-bit authenticator is a pre-defined
                       constant.  The default value of the authenticator
                       is an Enterasys Networks trade secret.  This value
@@ -258,23 +258,23 @@ etsysEncr8021xRekeyingMIB MODULE-IDENTITY
                       from the default value after initial configuration
                       of the system.  Contact the MIB author for
                       additional information on the default value.
-          
-                Call the shared secret S, the [pseudo-random] 128-bit 
-                Authenticator R, and the contents of the Salt field A.  
-                Break P into 16 octet chunks p(1), p(2)...p(i), 
-                where i = len(P)/16.  Call the cipher-text blocks 
+
+                Call the shared secret S, the [pseudo-random] 128-bit
+                Authenticator R, and the contents of the Salt field A.
+                Break P into 16 octet chunks p(1), p(2)...p(i),
+                where i = len(P)/16.  Call the cipher-text blocks
                 c(1), c(2)...c(i) and the final cipher-text C.
                 Intermediate values b(1), b(2)...c(i) are required.
                 Encryption is performed in the following manner ('+'
                 indicates concatenation):
-          
+
             b(1) = MD5(S + R + A)   c(1) = p(1) xor b(1)   C = c(1)
             b(2) = MD5(S + c(1))    c(2) = p(2) xor b(2)   C = C + c(2)
                          .                       .
                          .                       .
                          .                       .
             b(i) = MD5(S + c(i-1))  c(i) = p(i) xor b(i)   C = C + c(i)
-          
+
                 The resulting encrypted String field will contain
                 c(1)+c(2)+...+c(i).
 
@@ -328,7 +328,7 @@ etsysEncrDot1xRekeyConfigEntry OBJECT-TYPE
     ::= { etsysEncrDot1xRekeyConfigTable 1 }
 
 EtsysEncrDot1xRekeyConfigEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
                etsysEncrDot1xRekeyEnabled           OCTET STRING,
                etsysEncrDot1xRekeyPeriod            OCTET STRING,
                etsysEncrDot1xRekeyLength            OCTET STRING,
@@ -440,7 +440,7 @@ etsysEncrDot1xRekeyAsymmetric OBJECT-TYPE
 etsysEncrDot1xRekeyingConformance
     OBJECT IDENTIFIER ::= { etsysEncr8021xRekeyingMIB 2 }
 
-etsysEncrDot1xRekeyingGroups      
+etsysEncrDot1xRekeyingGroups
     OBJECT IDENTIFIER ::= { etsysEncrDot1xRekeyingConformance 1 }
 
 etsysEncrDot1xRekeyingCompliances

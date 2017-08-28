@@ -49,7 +49,7 @@ ieee8021SpanningTreeMib MODULE-IDENTITY
     REVISION     "201103240000Z" -- March 24, 2011
     DESCRIPTION
           "Minor edits to contact information and addition of
-          fragile bridge as part of 2011 revision of 
+          fragile bridge as part of 2011 revision of
           IEEE Std 802.1Q."
 
     REVISION     "200810150000Z" -- October 15, 2008
@@ -523,9 +523,9 @@ ieee8021SpanningTreePortState OBJECT-TYPE
         will place that port into the broken(6) state.  For
         ports that are disabled (see
         ieee8021SpanningTreePortEnabled), this object will have a
-        value of disabled(1).  The values disabled, blocking, 
-        listening, and broken correspond to the Clause 12 port 
-        state of 'Discarding'. The value learning corresponds to 
+        value of disabled(1).  The values disabled, blocking,
+        listening, and broken correspond to the Clause 12 port
+        state of 'Discarding'. The value learning corresponds to
         the Clause 12 port state of 'Learning'. The value forwarding
         corresponds to the Clause 12 port state of 'Forwarding'."
 
@@ -712,15 +712,15 @@ ieee8021SpanningTreePortExtensionEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "A list of additional objects containing information 
-         maintained by every port about the Spanning Tree 
+        "A list of additional objects containing information
+         maintained by every port about the Spanning Tree
          Protocol state for that port."
    AUGMENTS { ieee8021SpanningTreePortEntry }
     ::= { ieee8021SpanningTreePortExtensionTable 1 }
 
 Ieee8021SpanningTreePortExtensionEntry ::=
     SEQUENCE {
- 
+
         ieee8021SpanningTreeRstpPortAutoEdgePort
             TruthValue,
         ieee8021SpanningTreeRstpPortAutoIsolatePort
@@ -735,13 +735,13 @@ ieee8021SpanningTreeRstpPortAutoEdgePort OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The administrative value of the Auto Edge Port parameter.
-         A value of true(1) indicates if the bridge detection state 
+         A value of true(1) indicates if the bridge detection state
          machine (BDM, 13.31) is to detect other bridges
-         attached to the LAN, and set 
+         attached to the LAN, and set
          ieee8021SpanningTreeRstpPortOperEdgePort automatically.
          The default value is true(1)
 
-	 This is optional and provided only by implementations 
+	 This is optional and provided only by implementations
 	 that support the automatic identification of edge ports.
 
          The value of this object MUST be retained across
@@ -754,16 +754,16 @@ ieee8021SpanningTreeRstpPortAutoIsolatePort OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The operational value of the Isolate Port parameter.  
+        "The operational value of the Isolate Port parameter.
 
-	 A value of true(1) indicates a Designated Port will 
-	 transition to discarding if both 
-	 ieee8021SpanningTreeRstpPortAdminEdgePort and 
-	 ieee8021SpanningTreeRstpPortAutoEdgePort are FALSE and 
-	 the other bridge presumed to be attached to the same 
+	 A value of true(1) indicates a Designated Port will
+	 transition to discarding if both
+	 ieee8021SpanningTreeRstpPortAdminEdgePort and
+	 ieee8021SpanningTreeRstpPortAutoEdgePort are FALSE and
+	 the other bridge presumed to be attached to the same
 	 point-to-point LAN does not transmit periodic BPDUs.
 
-	 This is optional and provided only by implementations 
+	 This is optional and provided only by implementations
 	 that support the automatic identification of edge ports."
     REFERENCE   "12.8.2.1.3"
     ::= { ieee8021SpanningTreePortExtensionEntry 2 }
@@ -773,10 +773,10 @@ ieee8021SpanningTreeRstpPortIsolatePort OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The operational value of the Isolate Port parameter.  
- 
-	 A value of true(1), Set by the bridge detection state 
-         machine (BDM, 13.31), indicates when the Spanning Tree 
+        "The operational value of the Isolate Port parameter.
+
+	 A value of true(1), Set by the bridge detection state
+         machine (BDM, 13.31), indicates when the Spanning Tree
          Protocol Entity of a neighboring bridge has apparently
 	 failed ."
     REFERENCE   "12.8.2.1.3"

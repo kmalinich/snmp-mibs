@@ -6,7 +6,7 @@ ENTERASYS-IEEE8023-LAG-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IEEE8023-LAG-MIB extension MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-IEEE8023-LAG-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright January, 2003 Enterasys Networks, Inc.
@@ -68,7 +68,7 @@ etsysIeee8023LagMibExtMIB MODULE-IDENTITY
     DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 35 } 
+    ::= { etsysModules 35 }
 
 etsysIeee8023LagMibExt
     OBJECT IDENTIFIER ::= { etsysIeee8023LagMibExtMIB 1 }
@@ -110,9 +110,9 @@ etsysDot3adAggGlobalFormSinglePortLags   OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The ability of forming single port Link Aggregation 
-         Groups on this entity. If enabled(1) Link Aggregation 
-         Groups can form with 1 port, otherwise 2 or more ports 
+        "The ability of forming single port Link Aggregation
+         Groups on this entity. If enabled(1) Link Aggregation
+         Groups can form with 1 port, otherwise 2 or more ports
          are required."
     REFERENCE
         "IEEE Standard 802.3-2002, Section 3, part 43."
@@ -145,7 +145,7 @@ etsysDot3adAggPortEntry OBJECT-TYPE
     ::= { etsysDot3adAggPortTable 1 }
 
 EtsysDot3adAggPortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysDot3adAggPortEnable    INTEGER
     }
 
@@ -230,7 +230,7 @@ etsysIeee8023LagCompliance MODULE-COMPLIANCE
         DESCRIPTION
             "Support for this group is optional and only applies
              to products that wish to support the enabling and
-             disabling of IEEE 802.3ad Aggregation functionality 
+             disabling of IEEE 802.3ad Aggregation functionality
              on a global basis."
 
         GROUP       etsysDot3adAggPortGroup

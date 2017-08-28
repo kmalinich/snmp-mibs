@@ -2,7 +2,7 @@ CTRON-SFPS-COMMON-MIB DEFINITIONS ::= BEGIN
 
 --  sfps-common-mib.txt
 --  Revision: 0.0.13
---              
+--
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
@@ -33,23 +33,23 @@ CTRON-SFPS-COMMON-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
 --      TimeTicks
 --              FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.2
          sfpsSystemGenerics, sfpsDiagEventLog, sfpsAOProperties,
          sfpsAOPropertiesAPI
-        
-        
+
+
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
@@ -67,7 +67,7 @@ sfpsGenericVersionTable     OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Table describing the SFS generics and their versions
-                that are contained within this image." 
+                that are contained within this image."
         ::= { sfpsSystemGenerics 1 }
 
 sfpsGenericVersionEntry    OBJECT-TYPE
@@ -93,7 +93,7 @@ sfpsGenericVersionHash    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Hash of the name to make it a unique entry." 
+                "Hash of the name to make it a unique entry."
         ::= { sfpsGenericVersionEntry 1 }
 
 sfpsGenericVersionName     OBJECT-TYPE
@@ -101,7 +101,7 @@ sfpsGenericVersionName     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Name of the Generic." 
+                "Name of the Generic."
         ::= { sfpsGenericVersionEntry 2 }
 
 sfpsGenericVersionVersion      OBJECT-TYPE
@@ -120,7 +120,7 @@ sfpsGenericVersionMIBRev      OBJECT-TYPE
                 "MIB version of the generic component."
         ::= { sfpsGenericVersionEntry 4 }
 
- 
+
 --  SFPS Diagnostics Group                              (Experiment)
 --  This group contains the objects that pertain to the SFPS Diagnostics group.
 
@@ -128,7 +128,7 @@ sfpsGenericVersionMIBRev      OBJECT-TYPE
 --  This group contains the objects that pertain to the Event Logger
 --  of the Diagnostics group.
 
- 
+
 sfpsDiagLogConfigTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsDiagLogConfigEntry
         ACCESS  not-accessible
@@ -144,34 +144,34 @@ sfpsDiagLogConfigEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains configuration data."
-        INDEX   { sfpsDiagLogConfigInstance } 
+        INDEX   { sfpsDiagLogConfigInstance }
         ::= { sfpsDiagLogConfigTable 1 }
 
 SfpsDiagLogConfigEntry ::=
         SEQUENCE {
-                sfpsDiagLogConfigInstance               INTEGER,  
-                sfpsDiagLogConfigStatus                 INTEGER,  
-                sfpsDiagLogConfigIndex                  INTEGER,  
-                sfpsDiagLogConfigStart                  INTEGER,  
-                sfpsDiagLogConfigStop                   INTEGER,  
-                sfpsDiagLogConfigLogIndex               INTEGER,  
-                sfpsDiagLogConfigFilterMatch            INTEGER,  
-                sfpsDiagLogConfigFilterStart            INTEGER,  
-                sfpsDiagLogConfigFilterStop             INTEGER,  
-                sfpsDiagLogAccessPortControl            HexInteger,  
-                sfpsDiagLogCallIdleTime         INTEGER,  
-                sfpsDiagLogFilterAddTimer               INTEGER,  
-                sfpsDiagLogRedirectorWakeup             INTEGER,  
+                sfpsDiagLogConfigInstance               INTEGER,
+                sfpsDiagLogConfigStatus                 INTEGER,
+                sfpsDiagLogConfigIndex                  INTEGER,
+                sfpsDiagLogConfigStart                  INTEGER,
+                sfpsDiagLogConfigStop                   INTEGER,
+                sfpsDiagLogConfigLogIndex               INTEGER,
+                sfpsDiagLogConfigFilterMatch            INTEGER,
+                sfpsDiagLogConfigFilterStart            INTEGER,
+                sfpsDiagLogConfigFilterStop             INTEGER,
+                sfpsDiagLogAccessPortControl            HexInteger,
+                sfpsDiagLogCallIdleTime         INTEGER,
+                sfpsDiagLogFilterAddTimer               INTEGER,
+                sfpsDiagLogRedirectorWakeup             INTEGER,
                 sfpsDiagLogRedirectorNumPackets         INTEGER,
                 sfpsDiagLogEndSystemTimeout             INTEGER,
                 sfpsDiagLogSwitchIdleInterval           INTEGER,
-                sfpsDiagLogInlnFltrAgeTime                      INTEGER,  
-                sfpsDiagLogConfigDebug9                 INTEGER, 
-                sfpsDiagLogSignalThrottle               INTEGER, 
-                sfpsDiagLogConfigOther                  INTEGER, 
-                sfpsDiagLogConfigSoftReset              INTEGER, 
-                sfpsDiagLogConfigSFPSVlan               INTEGER 
-        }  
+                sfpsDiagLogInlnFltrAgeTime                      INTEGER,
+                sfpsDiagLogConfigDebug9                 INTEGER,
+                sfpsDiagLogSignalThrottle               INTEGER,
+                sfpsDiagLogConfigOther                  INTEGER,
+                sfpsDiagLogConfigSoftReset              INTEGER,
+                sfpsDiagLogConfigSFPSVlan               INTEGER
+        }
 
 
 sfpsDiagLogConfigInstance   OBJECT-TYPE
@@ -184,9 +184,9 @@ sfpsDiagLogConfigInstance   OBJECT-TYPE
 
 sfpsDiagLogConfigStatus   OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),              
-                        disabled(2),          
-                        enabled(3)               
+                        other(1),
+                        disabled(2),
+                        enabled(3)
                 }
         ACCESS  read-write
         STATUS  mandatory
@@ -199,7 +199,7 @@ sfpsDiagLogConfigIndex   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The current index in the circular buffer where events are 
+                "The current index in the circular buffer where events are
                  being logged."
         ::= { sfpsDiagLogConfigEntry 3 }
 
@@ -232,7 +232,7 @@ sfpsDiagLogConfigFilterMatch   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The specified Event Id to log. A value of 0 will 
+                "The specified Event Id to log. A value of 0 will
                  cause every event to be logged."
         ::= { sfpsDiagLogConfigEntry 7 }
 
@@ -306,7 +306,7 @@ sfpsDiagLogEndSystemTimeout   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Leaf to be used to set a debug variable. (Default : 
+                "Leaf to be used to set a debug variable. (Default :
                  10 minutes) (in seconds)"
         DEFVAL { 600 }
         ::= { sfpsDiagLogConfigEntry 15 }
@@ -349,13 +349,13 @@ sfpsDiagLogSignalThrottle   OBJECT-TYPE
 
 sfpsDiagLogConfigOther   OBJECT-TYPE
         SYNTAX  INTEGER {
-                        string(1),              
-                        integer(2)          
+                        string(1),
+                        integer(2)
                 }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Dictates the format of the Event to be displayed (either 
+                "Dictates the format of the Event to be displayed (either
                  Text or Integer values)."
         ::= { sfpsDiagLogConfigEntry 20 }
 
@@ -382,7 +382,7 @@ sfpsAOPropertiesTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOProperties 1 }
 
 sfpsAOPropertiesEntry    OBJECT-TYPE
@@ -413,7 +413,7 @@ sfpsAOPropertiesTag    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 1 }
 
 sfpsAOPropertiesTagDescriptor    OBJECT-TYPE
@@ -421,7 +421,7 @@ sfpsAOPropertiesTagDescriptor    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 2 }
 
 sfpsAOPropertiesPrettyType    OBJECT-TYPE
@@ -429,7 +429,7 @@ sfpsAOPropertiesPrettyType    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 3 }
 
 sfpsAOPropertiesNumBytes    OBJECT-TYPE
@@ -437,7 +437,7 @@ sfpsAOPropertiesNumBytes    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 4 }
 
 sfpsAOPropertiesIsLimit    OBJECT-TYPE
@@ -448,7 +448,7 @@ sfpsAOPropertiesIsLimit    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 5 }
 
 sfpsAOPropertiesIsMobile    OBJECT-TYPE
@@ -459,7 +459,7 @@ sfpsAOPropertiesIsMobile    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 6 }
 
 sfpsAOPropertiesIsSingle    OBJECT-TYPE
@@ -470,7 +470,7 @@ sfpsAOPropertiesIsSingle    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 7 }
 
 sfpsAOPropertiesNoBlock    OBJECT-TYPE
@@ -481,7 +481,7 @@ sfpsAOPropertiesNoBlock    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 8 }
 
 sfpsAOPropertiesNoDelta    OBJECT-TYPE
@@ -492,41 +492,41 @@ sfpsAOPropertiesNoDelta    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesEntry 9 }
 
 -- AO Properties API
 
 sfpsAOPropertiesAPITag    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 1 }
 
 sfpsAOPropertiesAPITagString    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 2 }
 
 sfpsAOPropertiesAPIPrettyType    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 3 }
 
 sfpsAOPropertiesAPINumBytes    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 4 }
 
 sfpsAOPropertiesAPIIsLimit    OBJECT-TYPE
@@ -538,7 +538,7 @@ sfpsAOPropertiesAPIIsLimit    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 5 }
 
 sfpsAOPropertiesAPIIsMobile    OBJECT-TYPE
@@ -550,7 +550,7 @@ sfpsAOPropertiesAPIIsMobile    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 6 }
 
 sfpsAOPropertiesAPIIsSingle    OBJECT-TYPE
@@ -562,7 +562,7 @@ sfpsAOPropertiesAPIIsSingle    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 7 }
 
 sfpsAOPropertiesAPINoBlock    OBJECT-TYPE
@@ -574,7 +574,7 @@ sfpsAOPropertiesAPINoBlock    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 8 }
 
 sfpsAOPropertiesAPINoDelta    OBJECT-TYPE
@@ -586,7 +586,7 @@ sfpsAOPropertiesAPINoDelta    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 9 }
 
 sfpsAOPropertiesAPIAction    OBJECT-TYPE
@@ -597,7 +597,7 @@ sfpsAOPropertiesAPIAction    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAOPropertiesAPI 10 }
 
 END

@@ -75,31 +75,31 @@ etsysMACLockingMIB MODULE-IDENTITY
     REVISION "200705211304Z"  -- Mon May 21 13:04 UTC 2007
     DESCRIPTION
         "Added the etsysMACLockingViolationSyslogEnable leaf
-         to control the sending of syslog messages for violating 
+         to control the sending of syslog messages for violating
          MAC addresses."
 
     REVISION "200705171255Z"  -- Thu May 17 12:55 UTC 2007
     DESCRIPTION
         "Clarify that only static MAC lock entries that are in the
-         active(1) state, should be represented in the 
+         active(1) state, should be represented in the
          etsysMACLockingStationTable."
-    
+
     REVISION "200705091924Z"  -- Wed May  9 19:24 UTC 2007
     DESCRIPTION
-        "Added the etsysMACLockingRemoveStation object to allow for the 
+        "Added the etsysMACLockingRemoveStation object to allow for the
          removal of any current locked MAC address.
 
-         Added the agingFirstArrival enumeration to represent first 
+         Added the agingFirstArrival enumeration to represent first
          arrival entries that are aging."
-    
+
     REVISION "200704161526Z"  -- Mon Apr 16 15:26 UTC 2007
     DESCRIPTION
-        "Added the etsysMACLockingFirstArrivalAging object to control the 
+        "Added the etsysMACLockingFirstArrivalAging object to control the
          aging of first arrival entries on a per-port basis."
 
     REVISION "200307301545Z"  -- Wed Jul 30 15:45 GMT 2003
     DESCRIPTION
-        "Updated the description clause for the 
+        "Updated the description clause for the
          etsysMACLockingMoveFirstArrivalToStatic object."
 
     REVISION "200301172114Z"  -- Fri Jan 17 21:14 GMT 2003
@@ -175,9 +175,9 @@ etsysMACLockingPortTable OBJECT-TYPE
          of MAC Locking for each port. Regardless of
          the value of etsysMACLockingSystemEnable,
          this table is automatically populated with
-         one row per supported port.  
-         MAC Locking is not supported on media types 
-         whose addresses cannot be adequately 
+         one row per supported port.
+         MAC Locking is not supported on media types
+         whose addresses cannot be adequately
          represented by the MacAddress convention"
     ::= { etsysMACLockingPortConfigBranch 1 }
 
@@ -204,7 +204,7 @@ EtsysMACLockingPortEntry::=
      etsysMACLockingFirstArrivalStationsAllocated   Unsigned32,
      etsysMACLockingStaticStationsAllowed           Unsigned32,
      etsysMACLockingStaticStationsAllocated         Unsigned32,
-     etsysMACLockingMoveFirstArrivalToStatic        TruthValue, 
+     etsysMACLockingMoveFirstArrivalToStatic        TruthValue,
      etsysMACLockingStaticStationsCount             Unsigned32,
      etsysMACLockingClearStaticStations             TruthValue,
      etsysMACLockingFirstArrivalAging               TruthValue,
@@ -231,8 +231,8 @@ etsysMACLockingEnable  OBJECT-TYPE
          received on this port are locked, where n is equal to
          etsysMACLockingFirstArrivalStationsAllocated.
 
-         When set to disabled(2), all entries in the 
-         etsysMACLockingStationTable are cleared, and 
+         When set to disabled(2), all entries in the
+         etsysMACLockingStationTable are cleared, and
          the port forwards without regard to MAC locking."
     DEFVAL { disabled }
     ::= { etsysMACLockingPortEntry 2 }
@@ -321,16 +321,16 @@ etsysMACLockingMoveFirstArrivalToStatic OBJECT-TYPE
     STATUS        current
     DESCRIPTION
         "When set to true(1), moves First Arrival MACs locked on
-         the port, in lexicographical order, into Statically Locked 
-         MACs on the port. The move continues until all First 
-         Arrival MACs are moved or until the number of allowable 
-         static entries (etsysMACLockingStaticStationsAllocated) 
-         has been exhausted.  If there is an insufficient number 
-         Static entries available to accommodate all the First 
-         Arrival MACs, then only the First Arrival MACs already 
-         moved to statically locked MACs will be static entries, 
+         the port, in lexicographical order, into Statically Locked
+         MACs on the port. The move continues until all First
+         Arrival MACs are moved or until the number of allowable
+         static entries (etsysMACLockingStaticStationsAllocated)
+         has been exhausted.  If there is an insufficient number
+         Static entries available to accommodate all the First
+         Arrival MACs, then only the First Arrival MACs already
+         moved to statically locked MACs will be static entries,
          the remaining First Arrival MACs will remain as First
-         Arrival entries and a MIB_ERROR is returned. When read this 
+         Arrival entries and a MIB_ERROR is returned. When read this
          object will always return false(2)."
     ::= { etsysMACLockingPortEntry 9 }
 
@@ -339,7 +339,7 @@ etsysMACLockingStaticStationsCount OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-        "Returns the number of Statically Locked MACs currently 
+        "Returns the number of Statically Locked MACs currently
          locked on the port."
     ::= { etsysMACLockingPortEntry 10 }
 
@@ -348,11 +348,11 @@ etsysMACLockingClearStaticStations OBJECT-TYPE
     MAX-ACCESS    read-write
     STATUS        current
     DESCRIPTION
-        "When set to true(1), clears out all the Statically 
+        "When set to true(1), clears out all the Statically
          Locked MACs on this port.  When read this object will
          always return false(2)."
     ::= { etsysMACLockingPortEntry 11 }
-    
+
 etsysMACLockingFirstArrivalAging OBJECT-TYPE
     SYNTAX        TruthValue
     MAX-ACCESS    read-write
@@ -371,9 +371,9 @@ etsysMACLockingViolationSyslogEnable OBJECT-TYPE
         "When set to enabled(1), the agent issues syslog messages
          for violations detected by the agent.
 
-         Arrival of violation syslog messages at the management 
-         station is not guaranteed and the messages generation rate is 
-         not required to match the violation detection rate. A best 
+         Arrival of violation syslog messages at the management
+         station is not guaranteed and the messages generation rate is
+         not required to match the violation detection rate. A best
          effort delivery is acceptable.  When disabled(2), no syslog
          messages are sent as a result of MAC locking violations."
     DEFVAL { disabled }
@@ -384,13 +384,13 @@ etsysMACLockingThresholdEnable OBJECT-TYPE
     MAX-ACCESS    read-write
     STATUS        current
     DESCRIPTION
-        "When set to enabled(1), the agent issues a trap when the MAC 
-         address threshold as defined in the 
-         etsysMACLockingFirstArrivalStationsAllocated object has been 
+        "When set to enabled(1), the agent issues a trap when the MAC
+         address threshold as defined in the
+         etsysMACLockingFirstArrivalStationsAllocated object has been
          reached.
-         
-         Arrival of these traps at the management station is not 
-         guaranteed and the trap generation rate is not required to 
+
+         Arrival of these traps at the management station is not
+         guaranteed and the trap generation rate is not required to
          match the detection rate. A best effort delivery is acceptable.
 
          When disabled(2), no traps are sent as a result of the
@@ -403,13 +403,13 @@ etsysMACLockingThresholdSyslogEnable OBJECT-TYPE
     MAX-ACCESS    read-write
     STATUS        current
     DESCRIPTION
-        "When set to enabled(1), the agent issues a syslog message 
-         when the MAC address threshold as defined in the 
-         etsysMACLockingFirstArrivalStationsAllocated object has been 
+        "When set to enabled(1), the agent issues a syslog message
+         when the MAC address threshold as defined in the
+         etsysMACLockingFirstArrivalStationsAllocated object has been
          reached.
-         
-         Arrival of these messages is not guaranteed and the message 
-         generation rate is not required to match the detection rate. 
+
+         Arrival of these messages is not guaranteed and the message
+         generation rate is not required to match the detection rate.
          A best effort delivery is acceptable.
 
          When disabled(2), no messages are sent as a result of the
@@ -519,7 +519,7 @@ etsysMACLockingStationTable OBJECT-TYPE
 
          Additionally, management may explicitly lock a MAC to
          a port by using the etsysMACLockingStationStaticTable.
-         For each entry in the static table that is active(1), 
+         For each entry in the static table that is active(1),
          a corresponding entry appears in this table with its
          etsysMACLockingLockedEntryCause object set to static(1)."
     ::= { etsysMACLockingStationBranch 1 }
@@ -557,7 +557,7 @@ etsysMACLockingLockedEntryCause OBJECT-TYPE
          port, then this object is returns static(1).  If
          this MAC was dynamically locked, then this object returns
          firstArrival(2).  If first arrival aging is enabled
-         on the port and the MAC address is dynamically locked, then 
+         on the port and the MAC address is dynamically locked, then
          this object returns agingFirstArrival(3)."
     ::= { etsysMACLockingStationEntry 1 }
 
@@ -567,12 +567,12 @@ etsysMACLockingRemoveStation OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When this is object is set to true(1) the MAC
-         address specified by the indexing will be removed from 
-         etsysMACLockingStationTable.  If the 
-         etsysMACLockingLockedEntryCause leaf for this table entry 
+         address specified by the indexing will be removed from
+         etsysMACLockingStationTable.  If the
+         etsysMACLockingLockedEntryCause leaf for this table entry
          is of type static(1), then the associated entry will also be
          removed from the etsysMACLockingStaticStationTable.
-         A set to false(2) will have no effect.  This object will 
+         A set to false(2) will have no effect.  This object will
          always return false(2)."
     DEFVAL      { false }
     ::= { etsysMACLockingStationEntry 2 }
@@ -593,7 +593,7 @@ etsysMACLockingMACViolation NOTIFICATION-TYPE
     ::= { etsysMACLockingTrapBranch 1 }
 
 etsysMACLockingMACThreshold NOTIFICATION-TYPE
-    OBJECTS { etsysMACLockingFirstArrivalStationsAllocated } 
+    OBJECTS { etsysMACLockingFirstArrivalStationsAllocated }
     STATUS current
     DESCRIPTION
         "MAC database threshold notification.  The device will send this
@@ -663,7 +663,7 @@ etsysMACLockingStaticStationGroup OBJECT-GROUP
          This group is mandatory if static MAC locking
          is supported, otherwise it is optional."
     ::= { etsysMACLockingGroups 4 }
-                           
+
 etsysMACLockingPortFirstArrivalGroup OBJECT-GROUP
     OBJECTS { etsysMACLockingFirstArrivalAging }
     STATUS  current
@@ -673,9 +673,9 @@ etsysMACLockingPortFirstArrivalGroup OBJECT-GROUP
     ::= { etsysMACLockingGroups 5 }
 
 etsysMACLockingStationGroup2 OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysMACLockingLockedEntryCause,
-        etsysMACLockingRemoveStation 
+        etsysMACLockingRemoveStation
             }
     STATUS  current
     DESCRIPTION
@@ -702,7 +702,7 @@ etsysMACLockingPortMessageGroup OBJECT-GROUP
     STATUS  current
     DESCRIPTION
         "A collection of objects providing port based
-         configuration and status for MAC Locking syslog 
+         configuration and status for MAC Locking syslog
          messages and notifications."
     ::= { etsysMACLockingGroups 8 }
 
@@ -730,7 +730,7 @@ etsysMACLockingCompliance MODULE-COMPLIANCE
 etsysMACLockingPortFirstArrivalCompliance MODULE-COMPLIANCE
     STATUS      current
     DESCRIPTION
-        "The compliance statement for all devices that support 
+        "The compliance statement for all devices that support
          aging first arrival mac lock entries on a per port basis."
 
     MODULE

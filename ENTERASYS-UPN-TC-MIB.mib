@@ -6,7 +6,7 @@ ENTERASYS-UPN-TC-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' UPN textual conventions.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-UPN-TC-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February 2004 Enterasys Networks, Inc.
@@ -49,22 +49,22 @@ etsysUpnTcMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
-        "This MIB module defines textual conventions related to 
-         the management of User Personalized Networks.  The 
+        "This MIB module defines textual conventions related to
+         the management of User Personalized Networks.  The
          conventions defined below are applicable for use in all
          Enterasys Networks' MIB definitions."
 
     REVISION    "200402032200Z"  -- Tue Feb  3 22:00 GMT 2004
-    DESCRIPTION 
+    DESCRIPTION
         "Changed naming from StationIdentifier to StationAddress to
          align naming with ongoing work in the IETF."
 
     REVISION    "200402031533Z"  -- Tue Feb  3 15:33 GMT 2004
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 44 } 
+    ::= { etsysModules 44 }
 
 
 StationAddressType ::=  TEXTUAL-CONVENTION
@@ -72,40 +72,40 @@ StationAddressType ::=  TEXTUAL-CONVENTION
     DESCRIPTION
         "A value representing a network address that can be used
          to identify a station on the network.
- 
+
          unknown(0)  An unknown address type. This value MUST
                      be used if the value of the corresponding
                      StationAddress object is a zero-length string.
                      It may also be used to indicate an station address
                      which is not in one of the formats defined
                      below.
- 
+
          ipv4(1)     An IPv4 address as defined by the
                      InetAddressIPv4 textual convention as defined
                      in RFC3291.
- 
+
          ipv6(2)     An IPv6 address as defined by the
                      StationAddressIPv6 textual convention below.
-  
+
          mac(3)      An 802.3 MAC layer address, i.e. an
                      Ethernet address, defined by the
                      MacAddress textual convention as defined
                      in RFC2579.
-  
+
          dns(16)     A DNS domain name as defined by the
                      InetAddressDNS textual convention as defined
                      in RFC3291.
-  
-         Each definition of a concrete StationAddressType value must 
+
+         Each definition of a concrete StationAddressType value must
          be accompanied by a definition of a textual convention for use
          with that StationAddressType.
- 
-         The StationAddressType textual convention SHOULD NOT be 
+
+         The StationAddressType textual convention SHOULD NOT be
          subtyped in object type definitions to support future extensions.
          It MAY be subtyped in compliance statements in order to require
          only a subset of these address types for a compliant
          implementation."
-    REFERENCE   
+    REFERENCE
         "STD0058 (RFC2579), Textual Conventions for SMIv2.
          RFC3291, Textual Conventions for Internet Network Addresses."
     SYNTAX       INTEGER {
@@ -121,13 +121,13 @@ StationAddress ::= TEXTUAL-CONVENTION
     DESCRIPTION
         "Denotes a generic Internet address.
 
-         An StationAddress value is always interpreted within the 
+         An StationAddress value is always interpreted within the
          context of an StationAddressType value. Every usage of the
-         StationAddress textual convention is required to specify 
-         the StationAddressType object which provides the context.  
-         It is suggested that the StationAddressType object is 
-         logically registered before the object(s) which use the 
-         StationAddress textual convention if they appear in the 
+         StationAddress textual convention is required to specify
+         the StationAddressType object which provides the context.
+         It is suggested that the StationAddressType object is
+         logically registered before the object(s) which use the
+         StationAddress textual convention if they appear in the
          same logical row.
 
          The value of an StationAddress object must always be

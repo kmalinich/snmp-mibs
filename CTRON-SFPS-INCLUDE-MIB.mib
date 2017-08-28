@@ -44,7 +44,7 @@ IMPORTS
 cabletron               OBJECT IDENTIFIER ::= { enterprises 52 }
 
 mibs                    OBJECT IDENTIFIER ::= { cabletron 4 }
-                
+
 ctronExp                OBJECT IDENTIFIER ::= { mibs 2 }
 
 ctronSwitch             OBJECT IDENTIFIER ::= { ctronExp 4 }
@@ -60,7 +60,7 @@ switchSFPS              OBJECT IDENTIFIER ::= { ctronSwitch 2 }
 
 vlanSwitch              OBJECT IDENTIFIER ::= { ctVLANMib 1 }
 vlanAMRTop                      OBJECT IDENTIFIER ::= { ctVLANMib 3 }
-   
+
 --  The SFPS Switch Groups.
 
 sfpsSwitchEngine    OBJECT IDENTIFIER ::= { switchSFPS 1 }
@@ -69,7 +69,7 @@ sfpsRSVRouter       OBJECT IDENTIFIER ::= { switchSFPS 3 }
 sfpsATM             OBJECT IDENTIFIER ::= { switchSFPS 4 }
 sfpsMulticast       OBJECT IDENTIFIER ::= { switchSFPS 5 }
 sfpsChassis         OBJECT IDENTIFIER ::= { switchSFPS 6 }
-   
+
 --  The SFPS Switch Engine Groups
 
 sfpsSwitchSystem        OBJECT IDENTIFIER ::= { sfpsSwitchEngine 1 }
@@ -151,7 +151,7 @@ sfpsMcastIPSIBApi           OBJECT IDENTIFIER ::= { sfpsMcastIPSenderInfoBase 2 
 -- The SFPS Multicast Configuration Group
 
 sfpsMcastConfigApi                      OBJECT IDENTIFIER ::= { sfpsMcastConfig 1 }
- 
+
 --  The SFPS Switch System Group
 
 sfpsSystemConfig        OBJECT IDENTIFIER ::= { sfpsSwitchSystem 1 }
@@ -362,7 +362,7 @@ sfpsPathAPI              OBJECT IDENTIFIER ::= { sfpsISPPath 3 }
 sfpsStaticPath           OBJECT IDENTIFIER ::= { sfpsISPPath 4 }
 sfpsPathMaskObj          OBJECT IDENTIFIER ::= { sfpsISPPath 5 }
 sfpsDirPath              OBJECT IDENTIFIER ::= { sfpsISPPath 6 }
-sfpsDirPathAPI           OBJECT IDENTIFIER ::= { sfpsISPPath 7 }                        
+sfpsDirPathAPI           OBJECT IDENTIFIER ::= { sfpsISPPath 7 }
 sfpsAdminPath            OBJECT IDENTIFIER ::= { sfpsISPPath 8 }
 sfpsAdminPathAPI         OBJECT IDENTIFIER ::= { sfpsISPPath 9 }
 sfpsUpLinkPath           OBJECT IDENTIFIER ::= { sfpsISPPath 10 }
@@ -379,7 +379,7 @@ sfpsTableResolve        OBJECT IDENTIFIER ::= { sfpsISPResolve 6 }
 sfpsSubnetResolve       OBJECT IDENTIFIER ::= { sfpsISPResolve 7 }
 sfpsRelayAgent          OBJECT IDENTIFIER ::= { sfpsISPResolve 10 }
 
--- ISP Resolve 
+-- ISP Resolve
 
 sfpsSubnetResolveStats  OBJECT IDENTIFIER ::= { sfpsSubnetResolve 1 }
 sfpsSubnetResolveAPI    OBJECT IDENTIFIER ::= { sfpsSubnetResolve 2 }
@@ -489,6 +489,6 @@ vlanSflspTracePathInternal OBJECT IDENTIFIER ::= { vlanSflspTracePath 2 }
 vlanSflspTracePathAPI      OBJECT IDENTIFIER ::= { vlanSflspTracePathExternal 1 }
 
 vlanSpanningTreePort    OBJECT IDENTIFIER ::= { vlanSpanning 1 }
-vlanSpanningTreeSwitch  OBJECT IDENTIFIER ::= { vlanSpanning 2 } 
+vlanSpanningTreeSwitch  OBJECT IDENTIFIER ::= { vlanSpanning 2 }
 
 END

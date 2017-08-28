@@ -5,13 +5,13 @@ CTRON-SSR-L2-MIB DEFINITIONS ::= BEGIN
 --  Rochester, NH 03867-0505
 --  (603) 332-9400
 --  support@ctron.com
- 
+
 --  This module provides authoritative definitions for Cabletron's
 --  enterprise-specific schema to access SSR Layer 2 processing subsystem..
 --
 --  This module will be extended, as required.
 --
- 
+
 --  Cabletron Systems reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
@@ -27,18 +27,18 @@ CTRON-SSR-L2-MIB DEFINITIONS ::= BEGIN
 --  Cabletron grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Cabletron products.
- 
+
 --  Copyright June 1998 Cabletron Systems
- 
+
 
 IMPORTS
        MODULE-IDENTITY, OBJECT-TYPE, Counter32, TimeTicks
        FROM SNMPv2-SMI
-       PhysAddress  
+       PhysAddress
        FROM SNMPv2-TC
        MODULE-COMPLIANCE, OBJECT-GROUP
        FROM SNMPv2-CONF
-       ssrMibs 
+       ssrMibs
        FROM CTRON-SSR-SMI-MIB;
 
 l2MIB MODULE-IDENTITY
@@ -53,22 +53,22 @@ l2MIB MODULE-IDENTITY
      (603) 332-9400
      support@ctron.com
      http://www.ctron.com"
- 
+
    DESCRIPTION
      "This module defines a schema to access SSR Layer 2 processing subsystem.
-      This mib is no longer supported on ssr platforms. features of this 
-      mib now exist in standard mibs. RMON I RFC 1757 provides 
+      This mib is no longer supported on ssr platforms. features of this
+      mib now exist in standard mibs. RMON I RFC 1757 provides
       Layer 2 information and ctron-ssr-policy mib to program filter tables."
 
    REVISION "9909220000Z"
    DESCRIPTION "Firmware release 3.0 introduces full rmon I and II. this
                 enterprise mib is now obsolete."
    ::= { ssrMibs 500 }
- 
+
 
 -- The L2 Information Group
 l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
-   
+
 
    l2LearnedEntryDiscards  OBJECT-TYPE
        SYNTAX      Counter32
@@ -97,7 +97,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        DESCRIPTION
         "The total number of MAC entries. The total number
         is equal to the number of unique VLAN id and MAC
-        address pairs on the switch." 
+        address pairs on the switch."
        ::= { l2Group 2 }
 
    l2LearnedFlowEntries  OBJECT-TYPE
@@ -107,11 +107,11 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        DESCRIPTION
         "The total number of Flow entries. The total number
         is equal to the number of unique VLAN id, source MAC
-        address and destination MAC address 3-tuple on the switch." 
+        address and destination MAC address 3-tuple on the switch."
        ::= { l2Group 3 }
 
    -- The L2-Flow and Forward Database Table
-   -- This L2 table contains information on all the layer 2 
+   -- This L2 table contains information on all the layer 2
    -- flows the switch is obsoletely processing.
 
    l2ForwardTable OBJECT-TYPE
@@ -128,8 +128,8 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "An entry containing the L2 flow"
-       INDEX   { l2ForwardFilterId, 
-                 l2ForwardDstMacAddr, 
+       INDEX   { l2ForwardFilterId,
+                 l2ForwardDstMacAddr,
                  l2ForwardSrcMacAddr,
                  l2ForwardVlanId
                  }
@@ -146,13 +146,13 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        }
 
    l2ForwardFilterId  OBJECT-TYPE
-       SYNTAX      INTEGER  (0..14) 
+       SYNTAX      INTEGER  (0..14)
        MAX-ACCESS  read-only
        STATUS      obsolete
        DESCRIPTION
-        "A filter number which is used to get the next row from the 
+        "A filter number which is used to get the next row from the
         L2 Forwarding table. A zero implies no filter. When a number
-        is used, the index(s) specified in the first GET_NEXT 
+        is used, the index(s) specified in the first GET_NEXT
         is used as a filter for future GET_NEXT's using the same
         FilterId."
        -- DEFVAL  { 0 }
@@ -184,11 +184,11 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2ForwardEntry 4 }
 
    l2ForwardDstPort  OBJECT-TYPE
-       SYNTAX      INTEGER  (0..1024) 
+       SYNTAX      INTEGER  (0..1024)
        MAX-ACCESS  read-only
        STATUS      obsolete
        DESCRIPTION
-        "The physical port number in the shelf/Chassis to which the 
+        "The physical port number in the shelf/Chassis to which the
         frame will be forwarded.
         A zero implies that the frame destined to this destination
         MAC address will be forwarded to multiple ports. This
@@ -201,10 +201,10 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
              "The set of physical ports to which this entry is contained in
-              the L2 tables.  Each octet within the value of this 
-              object specifies a set of eight ports. 
-              The first octet specifying ports 1 through 8, 
-              the second octet specifying ports 9 through 16, etc.  
+              the L2 tables.  Each octet within the value of this
+              object specifies a set of eight ports.
+              The first octet specifying ports 1 through 8,
+              the second octet specifying ports 9 through 16, etc.
 
               Within each octet, the least
               significant bit represents the lowest numbered
@@ -218,12 +218,12 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
               corresponding to the port from which a frame is
               received is irrelevant.)  The default value of
               this object is a string of zeroes of appropriate
-              length. The maximum number of ports/card-module 
+              length. The maximum number of ports/card-module
               is sysHwModuleNumPorts."
        ::= { l2ForwardEntry 6 }
 
 -- The L2-Flow Priority Table
--- This L2 table contains information on all the layer 2 
+-- This L2 table contains information on all the layer 2
 -- flow priorities/Quality of Service.
 
    l2PriorityTable OBJECT-TYPE
@@ -302,8 +302,8 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "The set of physical ports which allow this source MAC address.
-        Each octet within the value of this object specifies 
-        a set of eight ports, with the first octet specifying 
+        Each octet within the value of this object specifies
+        a set of eight ports, with the first octet specifying
         ports 1 through 8, the second octet specifying ports 9
         through 16, etc.  Within each octet, the least
         significant bit represents the lowest numbered
@@ -331,22 +331,22 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        MAX-ACCESS  read-write
        STATUS      obsolete
        DESCRIPTION
-        "The priority for this L2 flow. There are four 
-        priority levels: low, medium, high and control. 
-        The highest priority class is reserved for router control traffic, 
+        "The priority for this L2 flow. There are four
+        priority levels: low, medium, high and control.
+        The highest priority class is reserved for router control traffic,
         which leaves three classes, high, medium, and low for normal
-        data flows. Buffered traffic in higher priority classes is sent ahead 
-        of pending traffic in lower priority classes, which allows latency 
-        and throughput demands to be maintained for the higher priority traffic. 
-        To prevent low priority traffic from waiting indefinitely as higher 
-        priority traffic fills the wire, a weighted fair queuing mechanism provides 
-        adjustable minimum bandwidth guarantees at each output port, thereby ensuring 
+        data flows. Buffered traffic in higher priority classes is sent ahead
+        of pending traffic in lower priority classes, which allows latency
+        and throughput demands to be maintained for the higher priority traffic.
+        To prevent low priority traffic from waiting indefinitely as higher
+        priority traffic fills the wire, a weighted fair queuing mechanism provides
+        adjustable minimum bandwidth guarantees at each output port, thereby ensuring
         that some traffic from each priority class always gets through."
        ::= { l2PriorityEntry 7 }
 
 
 -- The L2 Filter Table
--- This L2 table contains information on all the layer 2 
+-- This L2 table contains information on all the layer 2
 -- address filters, static entries & address locks
 
    l2FilterTable OBJECT-TYPE
@@ -407,51 +407,51 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
           "The types of filters, as explained below.
 
            static-entry
- 
+
                Based on the restrictions and the presence of
-               source, destination MAC address they can be of 
+               source, destination MAC address they can be of
                three types :
 
                source-static-entry - All frames with a source
-               address equal to srcMAC, coming through any of 
-               the inPorts will be allowed/disallowed to go 
+               address equal to srcMAC, coming through any of
+               the inPorts will be allowed/disallowed to go
                to any port that is a member of the outPorts
                list.
 
-               destination-static-entry - All frames with a 
-               destination address equal to dstMAC, coming 
+               destination-static-entry - All frames with a
+               destination address equal to dstMAC, coming
                through any of the inPorts  will be allowed/
-               disallowed/forced to go to any port that is a 
+               disallowed/forced to go to any port that is a
                member of the outPorts list.
 
                flow-static-entry - All frames with a source
                address equal to srcMAC and a destination address
-               equal to dstMAC, coming through any of the inPorts 
-               list will be allowed/disallowed to go to any port 
+               equal to dstMAC, coming through any of the inPorts
+               list will be allowed/disallowed to go to any port
                that is a member of the outPorts list.
 
            address-filter
- 
+
                Based on the restrictions and the presence of
-               source, destination MAC address they can be of 
+               source, destination MAC address they can be of
                three types :
 
                source-address-filter - All frames with a source
-               address equal to srcMAC, coming through any of 
+               address equal to srcMAC, coming through any of
                the inPorts will be filtered out.
 
-               destination-address-filter - All frames with a 
-               destination address equal to dstMAC, coming through 
+               destination-address-filter - All frames with a
+               destination address equal to dstMAC, coming through
                any of the inPorts will be filtered out.
 
-               flow-filter - All frames with a source address equal 
-               to srcMAC and a destination address equal to dstMAC, 
-               coming through any of the inPorts list will be 
+               flow-filter - All frames with a source address equal
+               to srcMAC and a destination address equal to dstMAC,
+               coming through any of the inPorts list will be
                filtered out.
 
            address-lock
 
-               This locks a source address to a port. It allows 
+               This locks a source address to a port. It allows
                learning of srcMAC addresses only on any of the ports
                in inPorts."
        ::= { l2FilterEntry 3 }
@@ -466,7 +466,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        MAX-ACCESS  read-write
        STATUS      obsolete
        DESCRIPTION
-          "The restrictions which are applied when the filterType 
+          "The restrictions which are applied when the filterType
           is static-entry."
        ::= { l2FilterEntry 4 }
 
@@ -501,8 +501,8 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "The set of physical ports which allow this source MAC address.
-        Each octet within the value of this object specifies 
-        a set of eight ports, with the first octet specifying 
+        Each octet within the value of this object specifies
+        a set of eight ports, with the first octet specifying
         ports 1 through 8, the second octet specifying ports 9
         through 16, etc.  Within each octet, the least
         significant bit represents the lowest numbered
@@ -526,8 +526,8 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "The set of ports which allow this destination MAC address.
-        Each octet within the value of this object specifies 
-        a set of eight ports, with the first octet specifying 
+        Each octet within the value of this object specifies
+        a set of eight ports, with the first octet specifying
         ports 1 through 8, the second octet specifying ports 9
         through 16, etc.  Within each octet, the most
         significant bit represents the lowest numbered
@@ -545,7 +545,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2FilterEntry 9 }
 
    -- The L2 Port Security Table
-   -- This L2 table contains information on all the layer 2 
+   -- This L2 table contains information on all the layer 2
    -- port security filters.
 
    l2PortSecurityTable OBJECT-TYPE
@@ -581,7 +581,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        DESCRIPTION
         "A unique index into the table."
        ::= { l2PortSecurityEntry 1 }
-   
+
    l2PortSecurityDesc  OBJECT-TYPE
        SYNTAX      OCTET STRING  (SIZE (0..25))
        MAX-ACCESS  read-write
@@ -599,13 +599,13 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "The security filters are of two types :
-                
-                source-secure 
+
+                source-secure
                    For all the ports in inPorts forward only those
                    frames that match source-static-entry filter from
                    the l2FilterTable.
-                
-                destination-secure 
+
+                destination-secure
                    For all the ports in inPorts forward only those
                    frames that match destination-static-entry filter from
                    the l2FilterTable."
@@ -625,8 +625,8 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "The set of physical ports which allow this source MAC address.
-        Each octet within the value of this object specifies 
-        a set of eight ports, with the first octet specifying 
+        Each octet within the value of this object specifies
+        a set of eight ports, with the first octet specifying
         ports 1 through 8, the second octet specifying ports 9
         through 16, etc.  Within each octet, the least
         significant bit represents the lowest numbered
@@ -680,7 +680,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
            l2PortInFrames             Counter32,
            l2PortOutFrames            Counter32
        }
-   
+
    l2Port OBJECT-TYPE
            SYNTAX  INTEGER (1..65535)
            MAX-ACCESS  read-only
@@ -689,18 +689,18 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
         "The port number of the port for which this entry
         contains Transparent bridging management information."
        ::= { l2PortEntry 1 }
- 
+
    l2PortAgingStatus OBJECT-TYPE
-           SYNTAX  INTEGER { 
-                  enabled(1), 
-                  disabled (2) 
+           SYNTAX  INTEGER {
+                  enabled(1),
+                  disabled (2)
                }
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
         "Whether aging is enabled or not on this port."
        ::= { l2PortEntry 2 }
- 
+
    l2PortAgingTime OBJECT-TYPE
            SYNTAX  INTEGER (5..1000000)
            MAX-ACCESS  read-write
@@ -712,7 +712,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        REFERENCE
            "IEEE 802.1D-1990: Section 6.7.1.1.3"
        ::= { l2PortEntry 3 }
- 
+
    l2PortDemandAgeHiBound OBJECT-TYPE
            SYNTAX  INTEGER (0..100)
            MAX-ACCESS  read-only
@@ -720,10 +720,10 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        DESCRIPTION
         "When the number of MAC entries on a physical port's L2 table reaches
         the l2PortDemandAgeHiBound (95% full), a number of MAC entries
-        based on l2PortDemandAgeLowBound percentage will be removed 
+        based on l2PortDemandAgeLowBound percentage will be removed
         (aged-out) from the table."
        ::= { l2PortEntry 4 }
- 
+
    l2PortDemandAgeLowBound OBJECT-TYPE
            SYNTAX  INTEGER (0..100)
            MAX-ACCESS  read-only
@@ -732,16 +732,16 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
         "The l2PortDemandAgeLowBound value determines how many MAC
         entries need to be aged-out. See l2PortDemandAgeHiBound. Default
         value is 85%.
-        Example: if - L2 table capacity        = 10,000 entries 
+        Example: if - L2 table capacity        = 10,000 entries
                     - l2PortDemandAgeHiBound   = 95%
                     - l2PortDemandAgeLowBound  = 85%
 
-    When the L2 table reaches 95% capacity (9500 MAC entries), 
+    When the L2 table reaches 95% capacity (9500 MAC entries),
     10% of the entries will be aged-out."
        ::= { l2PortEntry 5 }
 
    l2PortDemandAgeCount OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -750,7 +750,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortEntry 6 }
 
    l2PortLearnedEntryDiscards OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -768,7 +768,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortEntry 7 }
 
    l2PortSrcEntries OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -779,7 +779,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
         ::= { l2PortEntry 8 }
 
    l2PortDstEntries OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -790,7 +790,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortEntry 9 }
 
    l2PortMgmtEntries OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -799,7 +799,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortEntry 10 }
 
    l2PortMaxInfo OBJECT-TYPE
-           SYNTAX  INTEGER  (0..65535) 
+           SYNTAX  INTEGER  (0..65535)
            MAX-ACCESS  read-only
            STATUS  obsolete
        DESCRIPTION
@@ -809,7 +809,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortEntry 11 }
 
    l2PortInFrames OBJECT-TYPE
-        SYNTAX  Counter32 
+        SYNTAX  Counter32
         MAX-ACCESS  read-only
         STATUS  obsolete
         DESCRIPTION
@@ -848,7 +848,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        STATUS      obsolete
        DESCRIPTION
         "A table that contains information about the
-        Forward/Flow Table that is associated with this 
+        Forward/Flow Table that is associated with this
         port."
        ::= { l2Group 9 }
 
@@ -870,9 +870,9 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
            l2PortForwardVlanId                 INTEGER,
            l2PortForwardDstPort                INTEGER,
            l2PortForwardStatus                 INTEGER,
-           l2PortForwardLastDetectedTime       TimeTicks 
+           l2PortForwardLastDetectedTime       TimeTicks
        }
-   
+
    l2PortForwardPort OBJECT-TYPE
         SYNTAX  INTEGER (1..65535)
         MAX-ACCESS  read-only
@@ -882,7 +882,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
         contains Transparent bridging management
         information."
        ::= { l2PortForwardEntry 1 }
- 
+
    l2PortForwardIndex  OBJECT-TYPE
        SYNTAX      INTEGER (0..65535)
        MAX-ACCESS  read-only
@@ -917,7 +917,7 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortForwardEntry 5 }
 
    l2PortForwardDstPort  OBJECT-TYPE
-       SYNTAX      INTEGER  (0..1024) 
+       SYNTAX      INTEGER  (0..1024)
        MAX-ACCESS  read-only
        STATUS      obsolete
        DESCRIPTION
@@ -928,14 +928,14 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
        ::= { l2PortForwardEntry 6 }
 
    l2PortForwardStatus  OBJECT-TYPE
-       SYNTAX      INTEGER { 
+       SYNTAX      INTEGER {
                           other(1),
                           invalid(2),
                           learned(3),
                           self(4),
                           mgmt(5)
                       }
- 
+
        MAX-ACCESS  read-only
        STATUS      obsolete
        DESCRIPTION
@@ -989,11 +989,11 @@ l2Group        OBJECT IDENTIFIER ::= { ssrMibs 2 }
 
 
 -- ### Compliance ###
- 
+
 l2Conformance OBJECT IDENTIFIER ::= { l2MIB 2 }
 l2Compliances OBJECT IDENTIFIER ::= { l2Conformance 1 }
 l2Groups OBJECT IDENTIFIER ::= { l2Conformance 2 }
- 
+
 l2ComplianceV10 MODULE-COMPLIANCE
     STATUS obsolete
     DESCRIPTION
@@ -1001,7 +1001,7 @@ l2ComplianceV10 MODULE-COMPLIANCE
     MODULE  -- this module
         MANDATORY-GROUPS { l2ConfGroupV10 }
     ::= { l2ConfGroupV10 1 }
- 
+
 l2ConfGroupV10  OBJECT-GROUP
    OBJECTS {
         l2LearnedEntryDiscards,

@@ -3,20 +3,20 @@ CTRON-SFCS-MIB DEFINITIONS ::= BEGIN
 --  ctron-sfcs-mib.txt
 --  Revision: 1.00.01
 --  Date: March 23, 1999
- 
- 
+
+
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
 --  (603) 332-9400
 --  support@ctron.com
- 
+
 --  This module provides authoritative definitions for Cabletron's
 --  enterprise specific Secure Fast Cell Switching MIB.
 --
 --  This module will be extended, as required.
 --
- 
+
 --  Cabletron Systems reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
@@ -34,7 +34,7 @@ CTRON-SFCS-MIB DEFINITIONS ::= BEGIN
 --  with the management of Cabletron products.
 --  Copyright October 98 Cabletron Systems
 --
- 
+
 
                IMPORTS
                      OBJECT-TYPE
@@ -45,9 +45,9 @@ CTRON-SFCS-MIB DEFINITIONS ::= BEGIN
                                FROM RFC1155-SMI
                      TruthValue
                                FROM SNMPv2-TC
-                     atmVcCrossConnectIndex, atmVcCrossConnectLowIfIndex, 
-                     atmVcCrossConnectLowVpi, atmVcCrossConnectLowVci, 
-                     atmVcCrossConnectHighIfIndex, atmVcCrossConnectHighVpi, 
+                     atmVcCrossConnectIndex, atmVcCrossConnectLowIfIndex,
+                     atmVcCrossConnectLowVpi, atmVcCrossConnectLowVci,
+                     atmVcCrossConnectHighIfIndex, atmVcCrossConnectHighVpi,
                      atmVcCrossConnectHighVci
                                FROM ATM-MIB;
 
@@ -143,7 +143,7 @@ sfcsProxy               OBJECT IDENTIFIER ::= { ctSFCS 13 }
 sfcsSysConfigTable OBJECT IDENTIFIER ::= { sfcsSysConfig 1 }
 
 sfcsSysConfigEnt OBJECT IDENTIFIER ::= { sfcsSysConfigTable 1 }
-        
+
 sfcsSysConfigAdminStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                         enabled(1),          --  startup the SFCS
@@ -185,7 +185,7 @@ sfcsSysConfigOperStatus     OBJECT-TYPE
                         pending-enable(5)   --  start-up in progress
                         invalid-config(6)   --  not running,invalid config"
         ::= { sfcsSysConfigEnt 2 }
-            
+
 sfcsSysConfigOperTime  OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
@@ -294,20 +294,20 @@ sfcsSysConfigPnniNsapPrefix        OBJECT-TYPE
         ::= { sfcsSysConfigEnt 13 }
 
 sfcsSysConfigPnniNodeLevel        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This is the PNNI node level value. 
+                "This is the PNNI node level value.
                  The range can be from 0 to 104."
         ::= { sfcsSysConfigEnt 14 }
 
 sfcsSysConfigPnniAddessingMode    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This is the PNNI addressing mode - that 
+                "This is the PNNI addressing mode - that
                  can range from 0 to 2.
                  0 - Auto Mode using MAC
                  1 - Auto Mode using board#
@@ -315,7 +315,7 @@ sfcsSysConfigPnniAddessingMode    OBJECT-TYPE
         ::= { sfcsSysConfigEnt 15 }
 
 sfcsSysConfigPnniAddessingAdmnStatus    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -348,7 +348,7 @@ sfcsSysConfigMaxfreecva         OBJECT-TYPE
                 "This is the maximum number of CAC connection blocks that
         CAC will allow on its free list. The default is 1024. If too low
         CAC performance will degrade (thrashing control blocks), If too high,
-        memory exhaustion may occur. 
+        memory exhaustion may occur.
          "
         ::= { sfcsSysConfigEnt 19 }
 
@@ -357,13 +357,13 @@ sfcsSysConfigUBR         OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "For the set operation: UBR_Cfg is set across all boards in the 
+                "For the set operation: UBR_Cfg is set across all boards in the
                  chassis (that are operational and manageable).
-                 For the get operation: UBR_Cfg setting is retrived from the 
+                 For the get operation: UBR_Cfg setting is retrived from the
                  current chassis manager only (one slot only).
-                 IF boards are introduced or re-introduced to the chassis their 
-                 UBR value will be 0. In order to insure a required UBR_Cfg value 
-                 the set operation should be proformed after slot insertions or 
+                 IF boards are introduced or re-introduced to the chassis their
+                 UBR value will be 0. In order to insure a required UBR_Cfg value
+                 the set operation should be proformed after slot insertions or
                  re-insertions are completed to the chassis. "
         ::= { sfcsSysConfigEnt 20 }
 
@@ -435,17 +435,17 @@ sfcsSysStatusAllocatedBw           OBJECT-TYPE
 --  SFCS System Configuration Table set up as a SYSTEM MIB
 --  This table contains the objects that pertain to the setup and
 --  configuration of the virtual switch.
- 
+
 sfcsSysSystemCfgTable OBJECT IDENTIFIER ::= { sfcsSysSystemCfg 1 }
- 
+
 sfcsSysSystemCfgEnt OBJECT IDENTIFIER ::= { sfcsSysSystemCfgTable 1 }
- 
+
 sfcsSysConfigAdminReset      OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),            --  none of the following
                         reset(2)             --  force a reset
                 }
- 
+
    ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -456,7 +456,7 @@ sfcsSysConfigAdminReset      OBJECT-TYPE
                         other(1)     --  none of the following
                         reset(2)     --  force a reset"
         ::= { sfcsSysSystemCfgEnt 1 }
- 
+
 sfcsSysConfigATOMPersistance        OBJECT-TYPE
         SYNTAX  INTEGER {
                                 enabled (1),
@@ -469,7 +469,7 @@ sfcsSysConfigATOMPersistance        OBJECT-TYPE
                               enabled(1)
                               disabled(2)"
         ::= { sfcsSysSystemCfgEnt 2 }
- 
+
 sfcsSysConfigVcSize        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -478,7 +478,7 @@ sfcsSysConfigVcSize        OBJECT-TYPE
                 "This entry is the size of VCs allocated for all
                  VPs in the switch."
         ::= { sfcsSysSystemCfgEnt 3 }
- 
+
 sfcsSysConfigPowerUpDiags        OBJECT-TYPE
         SYNTAX  INTEGER {
                                 enabled (1),
@@ -491,26 +491,26 @@ sfcsSysConfigPowerUpDiags        OBJECT-TYPE
                               enabled(1)
                               disabled(2)"
         ::= { sfcsSysSystemCfgEnt 4 }
- 
+
 
 --  SFCS System Back Plane Table set up as a SYSTEM MIB
 --  This table contains the objects that pertain to the setup and
 --  configuration of the virtual switch.
- 
+
 sfcsSysBPTable OBJECT IDENTIFIER ::= { sfcsSysBPCfg 1 }
- 
+
 sfcsSysBPEnt OBJECT IDENTIFIER ::= { sfcsSysBPTable 1 }
 
 sfcsSysBPClkSelect        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
                 "This enables one of two backplane clocks from any slot.
                  A valid entry is any number that correspond to a slot
                  having a board supporting this mib. A write to this mib
-                 will fail if the board with the number selected is deriving 
-                 its clock from the backplane. A value of 0 indicates that no 
+                 will fail if the board with the number selected is deriving
+                 its clock from the backplane. A value of 0 indicates that no
                  board is driving the backplane."
         ::= { sfcsSysBPEnt 1 }
 
@@ -642,7 +642,7 @@ sfcsConfigOperStatus            OBJECT-TYPE
                         pending-enable(5)    --  start-up in progress
                         invalid-config(6)    --  not running,invalid config"
         ::= { sfcsConfigEntry 4 }
-            
+
 sfcsConfigOperTime              OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
@@ -746,7 +746,7 @@ sfcsConfigBwCapability          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the total bandwidth capability for this 
+                "Indicates the total bandwidth capability for this
                  switch engine expressed in Mbps."
         ::= { sfcsConfigEntry 16 }
 
@@ -760,12 +760,12 @@ sfcsConfigMasterClock1Source         OBJECT-TYPE
                    anim-four-clk(4),
                    backplane-one(5),
                    backplane-two(6)
-                       } 
+                       }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
                 "Indicates the clocking source for MasterClock1 on each board.
-                 The write will fail if it is also currently the source of the 
+                 The write will fail if it is also currently the source of the
                  backplane. The write will also fail if the board does not support
                  backplane clocking."
 
@@ -785,7 +785,7 @@ sfcsConfigMasterClock2Source         OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Indicates the clocking source for MasterClock2 on each board.
-                 The write will fail if it is also currently the source of the 
+                 The write will fail if it is also currently the source of the
                  backplane. The write will also fail if the board does not support
                  backplane clocking."
 
@@ -793,7 +793,7 @@ sfcsConfigMasterClock2Source         OBJECT-TYPE
 
 
 sfcsConfigMasterClock1Standby         OBJECT-TYPE
- 
+
         SYNTAX  INTEGER{
                    anim-one-clk(1),
                    anim-two-clk(2),
@@ -810,13 +810,13 @@ sfcsConfigMasterClock1Standby         OBJECT-TYPE
                  The write will fail if it is also currently the source of the
                  backplane. The write will also fail if the board does not support
                  backplane clocking. If this value is none(7) and an interrupt on
-                 the primary interface for MasterClock1 is received. MasterClock1 
+                 the primary interface for MasterClock1 is received. MasterClock1
                  will switch to that anims local clock."
- 
+
         ::= { sfcsConfigEntry 19 }
 
 sfcsConfigMasterClock2Standby         OBJECT-TYPE
- 
+
         SYNTAX  INTEGER{
                    anim-one-clk(1),
                    anim-two-clk(2),
@@ -833,11 +833,11 @@ sfcsConfigMasterClock2Standby         OBJECT-TYPE
                  The write will fail if it is also currently the source of the
                  backplane. The write will also fail if the board does not support
                  backplane clocking. If this value is none(7) and an interrupt on
-                 the primary interface for MasterClock1 is received. MasterClock1 
+                 the primary interface for MasterClock1 is received. MasterClock1
                  will switch to that anims local clock."
- 
+
         ::= { sfcsConfigEntry 20 }
- 
+
 --  SFCS Status Table
 --  This table contains the objects that pertain to the operational status
 --  of a single SFCS module.
@@ -879,7 +879,7 @@ sfcsStatusSlotIndex             OBJECT-TYPE
                 "The primary index to the SFCS switch table.  This
                  identifies the chassis slot number for this SFCS module."
         ::= { sfcsStatusEntry 1 }
-        
+
 sfcsStatusTdmCellCount          OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
@@ -933,7 +933,7 @@ sfcsStatusCurrCtmAgent          OBJECT-TYPE
                 "Indicates the current board number of
                  the ctm agent for this switch module."
         ::= { sfcsStatusEntry 7 }
- 
+
 --  SFCS UPC Engine Table
 
 --  This table contains the objects that pertain to UPC Engine
@@ -1335,14 +1335,14 @@ sfcsANIMConfigOperStatus     OBJECT-TYPE
         ::= { sfcsANIMConfigEntry 3 }
 
 sfcsANIMConfigANIMType     OBJECT-TYPE
-        SYNTAX         OBJECT IDENTIFIER 
+        SYNTAX         OBJECT IDENTIFIER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "Indicates the type of physical interface for this
                  ANIM. The types are described in ctron.oids"
         ::= { sfcsANIMConfigEntry 4 }
-        
+
 sfcsANIMConfigNumInterfaces     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1420,7 +1420,7 @@ SfcsANIMStatsEntry ::=
                 sfcsANIMStatsRxCells            OCTET STRING,
                 sfcsANIMStatsTxCells            OCTET STRING
         }
-        
+
 sfcsANIMStatsANIMIndex          OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1452,27 +1452,27 @@ sfcsANIMStatsTxCells            OBJECT-TYPE
 --  SFCS ANIM Pic Table
 --  This table contains the managed objects used to keep track of
 --  the PIC info for each SFCS ANIM.
- 
- 
+
+
 sfcsANIMPicTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfcsANIMPicEntry
         ACCESS  not-accessible
-        STATUS  mandatory 
+        STATUS  mandatory
         DESCRIPTION
                 "This table contains the PIC information for
                  each SFCS ANIM instance."
         ::= { sfcsANIMPic 1 }
- 
+
 sfcsANIMPicEntry    OBJECT-TYPE
         SYNTAX  SfcsANIMPicEntry
         ACCESS  not-accessible
-        STATUS  mandatory 
+        STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the SFCS PIC info for the SFCS
                 instance."
         INDEX   { sfcsANIMPicIndex }
         ::= { sfcsANIMPicTable 1 }
- 
+
 SfcsANIMPicEntry ::=
         SEQUENCE {
                 sfcsANIMPicSlot                         INTEGER,
@@ -1493,7 +1493,7 @@ SfcsANIMPicEntry ::=
                 sfcsANIMPicTLSN                         DisplayString,
                 sfcsANIMPicTLPartNumb                   DisplayString,
                 sfcsANIMPicTLSerialNumb                 DisplayString,
-                sfcsANIMPicTLReworkLocation             DisplayString,  
+                sfcsANIMPicTLReworkLocation             DisplayString,
                 sfcsANIMPicTLMfgLocation                DisplayString,
                 sfcsANIMPicTLDateCode                   DisplayString,
                 sfcsANIMPicTLRevisionCode               DisplayString,
@@ -1506,7 +1506,7 @@ SfcsANIMPicEntry ::=
                 sfcsANIMPicDcDcConverterInputPower      DisplayString,
                 sfcsANIMPicSmb1PromVersion              DisplayString
         }
-      
+
 sfcsANIMPicSlot                 OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1516,7 +1516,7 @@ sfcsANIMPicSlot                 OBJECT-TYPE
                 resides.  If the PIC is associated with the chassis
                 and not a specific module then this value will be 0."
         ::= { sfcsANIMPicEntry 1 }
- 
+
 sfcsANIMPicIndex               OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1525,7 +1525,7 @@ sfcsANIMPicIndex               OBJECT-TYPE
                 "Uniquely identifies the instance of a PIC in a particular
                  slot."
         ::= { sfcsANIMPicEntry 2 }
- 
+
 sfcsANIMPicLocation           OBJECT-TYPE
         SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
@@ -1535,7 +1535,7 @@ sfcsANIMPicLocation           OBJECT-TYPE
                 the encoding values defined below for backplane, module,
                 daughter board, brim."
         ::= { sfcsANIMPicEntry 3 }
- 
+
 sfcsANIMPicStatus             OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),
@@ -1558,7 +1558,7 @@ sfcsANIMPicStatus             OBJECT-TYPE
                         limited(6) - A limited PIC implementation only
                                 type code information is present."
         ::= { sfcsANIMPicEntry 4 }
- 
+
 sfcsANIMPicVersion            OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(2))
         ACCESS  read-only
@@ -1568,7 +1568,7 @@ sfcsANIMPicVersion            OBJECT-TYPE
                 PIC conforms to.  This has the format x.yy . If non-existent,
                 this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 5 }
- 
+
 sfcsANIMPicModuleType            OBJECT-TYPE
         SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
@@ -1577,7 +1577,7 @@ sfcsANIMPicModuleType            OBJECT-TYPE
                 "Defines the standard module type value as defined in
                 ctron-oids."
         ::= { sfcsANIMPicEntry 6 }
- 
+
 sfcsANIMPicMfgPN      OBJECT-TYPE
         SYNTAX  DisplayString   (SIZE(9))
         ACCESS  read-only
@@ -1591,7 +1591,7 @@ sfcsANIMPicMfgPN      OBJECT-TYPE
                 If any field of this object is non-existent, it will be set
                 to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 7 }
- 
+
 sfcsANIMPicMfgSN      OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(12))
         ACCESS  read-only
@@ -1607,7 +1607,7 @@ sfcsANIMPicMfgSN      OBJECT-TYPE
                 If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 8 }
- 
+
 sfcsANIMPicMfgPartNumb        OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(7))
         ACCESS  read-only
@@ -1618,7 +1618,7 @@ sfcsANIMPicMfgPartNumb        OBJECT-TYPE
                 however in a more human readable format.  If non-existent,
                 this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 9 }
- 
+
 sfcsANIMPicMfgSerialNumb      OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(4))
         ACCESS  read-only
@@ -1629,7 +1629,7 @@ sfcsANIMPicMfgSerialNumb      OBJECT-TYPE
                 however in a more human readable format.  If non-existent,
                 this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 10 }
- 
+
 sfcsANIMPicMfgReworkLocation  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(2))
         ACCESS  read-only
@@ -1641,7 +1641,7 @@ sfcsANIMPicMfgReworkLocation  OBJECT-TYPE
                 in a more human readable format.  If non-existent, this
                 object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 11 }
- 
+
 sfcsANIMPicMfgMfgLocation  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(2))
         ACCESS  read-only
@@ -1653,7 +1653,7 @@ sfcsANIMPicMfgMfgLocation  OBJECT-TYPE
                 in a more human readable format.  If non-existent, this object
                 will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 12 }
- 
+
 sfcsANIMPicMfgDateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1665,7 +1665,7 @@ sfcsANIMPicMfgDateCode OBJECT-TYPE
                 object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 13 }
- 
+
 sfcsANIMPicMfgRevisionCode  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1677,7 +1677,7 @@ sfcsANIMPicMfgRevisionCode  OBJECT-TYPE
                 readable format.  If non-existent, this object will be set
                 to all blanks (ascii 32)."
         ::= { sfcsANIMPicEntry 14 }
- 
+
 sfcsANIMPicTLPN               OBJECT-TYPE
         SYNTAX  DisplayString   (SIZE(9))
         ACCESS  read-only
@@ -1690,7 +1690,7 @@ sfcsANIMPicTLPN               OBJECT-TYPE
                 If any field of this object is non-existent, it will be set
                 to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 15 }
- 
+
 sfcsANIMPicTLSN       OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(12))
         ACCESS  read-only
@@ -1706,7 +1706,7 @@ sfcsANIMPicTLSN       OBJECT-TYPE
                 If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 16 }
- 
+
 sfcsANIMPicTLPartNumb OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(7))
         ACCESS  read-only
@@ -1717,7 +1717,7 @@ sfcsANIMPicTLPartNumb OBJECT-TYPE
                 however in a more human readable format.  If non-existent,
                 this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 17 }
- 
+
 sfcsANIMPicTLSerialNumb       OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(4))
         ACCESS  read-only
@@ -1728,7 +1728,7 @@ sfcsANIMPicTLSerialNumb       OBJECT-TYPE
                 however in a more human readable format.  If non-existent,
                 this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 18 }
- 
+
 sfcsANIMPicTLReworkLocation  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(2))
         ACCESS  read-only
@@ -1740,7 +1740,7 @@ sfcsANIMPicTLReworkLocation  OBJECT-TYPE
                 in a more human readable format.  If non-existent, this
                 object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 19 }
- 
+
 sfcsANIMPicTLMfgLocation  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(2))
         ACCESS  read-only
@@ -1752,7 +1752,7 @@ sfcsANIMPicTLMfgLocation  OBJECT-TYPE
                 in a more human readable format.  If non-existent, this object
                 will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 20 }
- 
+
 sfcsANIMPicTLDateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1764,7 +1764,7 @@ sfcsANIMPicTLDateCode OBJECT-TYPE
                 object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 21 }
- 
+
 sfcsANIMPicTLRevisionCode  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1776,7 +1776,7 @@ sfcsANIMPicTLRevisionCode  OBJECT-TYPE
                 If non-existent, this object will be set to all blanks
                 (ascii 32)."
         ::= { sfcsANIMPicEntry 22 }
- 
+
 sfcsANIMPicTLPcbRevision        OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(8))
         ACCESS  read-only
@@ -1786,7 +1786,7 @@ sfcsANIMPicTLPcbRevision        OBJECT-TYPE
                 module. If non-existent, this object will be set to all
                 blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 23 }
- 
+
 sfcsANIMPicMacAddr    OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE(0..6))
         ACCESS  read-only
@@ -1797,7 +1797,7 @@ sfcsANIMPicMacAddr    OBJECT-TYPE
                 zero length string. If non-existent, this object will be set
                 to all blanks(ascii 32)."
         ::= { sfcsANIMPicEntry 24 }
- 
+
 sfcsANIMPicNumbRsvdAddrs  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1807,7 +1807,7 @@ sfcsANIMPicNumbRsvdAddrs  OBJECT-TYPE
                 address as defined in ctPicMacAddr.  If no MAC addresses
                 are reserved this object should have a value of 0."
         ::= { sfcsANIMPicEntry 25 }
- 
+
 sfcsANIMPicBoardLevelRevision      OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1817,7 +1817,7 @@ sfcsANIMPicBoardLevelRevision      OBJECT-TYPE
                 this module.  If non-existent, this object will be set to
                 blanks (ascii 32)."
         ::= { sfcsANIMPicEntry 26 }
- 
+
 sfcsANIMPicModuleTypeString   OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(16))
         ACCESS  read-only
@@ -1827,7 +1827,7 @@ sfcsANIMPicModuleTypeString   OBJECT-TYPE
                 human readable format.  If non-existent, this object
                 will be set to blanks (ascii 32)."
         ::= { sfcsANIMPicEntry 27 }
- 
+
 sfcsANIMPicDcDcConverterType  OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(12))
         ACCESS  read-only
@@ -1838,7 +1838,7 @@ sfcsANIMPicDcDcConverterType  OBJECT-TYPE
                 If the Module does not contain a DCDC Converter
                 this object will be set to blanks (ascii 32)."
         ::= { sfcsANIMPicEntry 28 }
- 
+
 sfcsANIMPicDcDcConverterInputPower OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
@@ -1859,7 +1859,7 @@ sfcsANIMPicSmb1PromVersion    OBJECT-TYPE
                 If the Module does not contain an SMB1 prom
                 this object will be set to blanks (ascii 32)."
         ::= { sfcsANIMPicEntry 30 }
- 
+
 
 --  SFCS Switching Interface Group
 --  This group contains the managed objects used to setup and
@@ -1942,7 +1942,7 @@ sfcsInterfacePeakBufferUseage                   OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                 "An accumulated snap shot of the current peak queue depth
-                 for the configured buffer queues.  This information is 
+                 for the configured buffer queues.  This information is
                  obtained from a read/reset register."
         ::= { sfcsInterfaceConfigEntry 3 }
 
@@ -2054,7 +2054,7 @@ sfcsInterfaceStatsRxCellCnt              OBJECT-TYPE
                 "Indicates the number of receive cells on
                  this interface."
         ::= { sfcsInterfaceStatsEntry 5 }
- 
+
 
 sfcsInterfaceStatsTxCellCnt              OBJECT-TYPE
         SYNTAX          OCTET STRING
@@ -2064,7 +2064,7 @@ sfcsInterfaceStatsTxCellCnt              OBJECT-TYPE
                 "Indicates the number of transmit cells
                  on this interface."
         ::= { sfcsInterfaceStatsEntry 6 }
- 
+
 
 sfcsInterfaceStatsOverflowDropCellCnt    OBJECT-TYPE
         SYNTAX          OCTET STRING
@@ -2074,7 +2074,7 @@ sfcsInterfaceStatsOverflowDropCellCnt    OBJECT-TYPE
                 "Indicates the number of cells that were
                  dropped due to queue overflows."
         ::= { sfcsInterfaceStatsEntry 7 }
- 
+
 
 
 -- SFCS Switch Queue Group
@@ -2287,7 +2287,7 @@ sfcsQueueStatsTxCellCnt         OBJECT-TYPE
                 "Indicates the transmit cell count on a per queue basis.
                 A value of zero indicates not available"
         ::= { sfcsQueueStatsEntry 6 }
- 
+
 
 -- The SFCS Connection Group
 
@@ -2449,7 +2449,7 @@ sfcsCnxCfgUPCEnable             OBJECT-TYPE
                         l-h-tag-enabled                         (2),
                         l-h-upc-tag-enabled                     (3),
                         h-l-upc-enabled                         (4),
-                        l-h-upc-and-h-l-upc-enabled             (5), 
+                        l-h-upc-and-h-l-upc-enabled             (5),
                         l-h-Tag-and-h-l-upc-enabled             (6),
                         l-h-upc-tag-and-h-l-upc-enabled         (7),
                         h-l-tag-enabled                         (8),
@@ -2736,7 +2736,7 @@ sfcsCnxErrorEntry    OBJECT-TYPE
         INDEX   { atmVcCrossConnectIndex, atmVcCrossConnectLowIfIndex, atmVcCrossConnectLowVpi, atmVcCrossConnectLowVci, atmVcCrossConnectHighIfIndex, atmVcCrossConnectHighVpi, atmVcCrossConnectHighVci }
 --          AUGMENTS { sfcsCnxCfgEntry }
         ::= { sfcsCnxErrorTable 1 }
-    
+
 
 SfcsCnxErrorEntry ::=
         SEQUENCE {
@@ -2752,8 +2752,8 @@ sfcsCnxErrorCode        OBJECT-TYPE
         DESCRIPTION
                 "Specifies the error reason for failure of the
                  connection setup.
-                
-                
+
+
                 01 fatal_error
                 02 moe_table_out_of_range
                 03 moe_mem_not_allocated
@@ -2852,7 +2852,7 @@ sfcsCTMInterfaceConfigTable     OBJECT-TYPE
                  configured SHEMP interface.  If SFCS is not configured
                  on a port, than an entry will not exist."
         ::= { sfcsCTMInterfaceConfig 1 }
- 
+
 sfcsCTMInterfaceConfigEntry    OBJECT-TYPE
         SYNTAX  SfcsCTMInterfaceConfigEntry
         ACCESS  not-accessible
@@ -2862,7 +2862,7 @@ sfcsCTMInterfaceConfigEntry    OBJECT-TYPE
                  switch interface for which the entry exists."
         INDEX   { sfcsCTMInterfaceConfigInterfaceIndex }
         ::= { sfcsCTMInterfaceConfigTable 1 }
- 
+
 SfcsCTMInterfaceConfigEntry ::=
         SEQUENCE {
                 sfcsCTMInterfaceConfigInterfaceIndex       INTEGER,
@@ -2874,7 +2874,7 @@ SfcsCTMInterfaceConfigEntry ::=
                 sfcsCTMInterfaceConfigNextVPI              INTEGER,
                 sfcsCTMInterfaceConfigNextVCI              INTEGER
         }
- 
+
 sfcsCTMInterfaceConfigInterfaceIndex               OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -2883,7 +2883,7 @@ sfcsCTMInterfaceConfigInterfaceIndex               OBJECT-TYPE
                 "The index which specifies which interface we are
                  dealing with."
         ::= { sfcsCTMInterfaceConfigEntry 1 }
- 
+
 sfcsCTMInterfaceConfigType                         OBJECT-TYPE
         SYNTAX          INTEGER {
                             other(1),
@@ -2910,7 +2910,7 @@ sfcsCTMInterfaceConfigType                         OBJECT-TYPE
 
 "
         ::= { sfcsCTMInterfaceConfigEntry 2 }
- 
+
 sfcsCTMInterfacePeakBufferUseage                   OBJECT-TYPE
         SYNTAX          INTEGER (0..100)
         ACCESS          read-only
@@ -2918,7 +2918,7 @@ sfcsCTMInterfacePeakBufferUseage                   OBJECT-TYPE
         DESCRIPTION
                 "Indicates the number of cells in transmit buffer memory."
         ::= { sfcsCTMInterfaceConfigEntry 3 }
- 
+
 sfcsCTMInterfaceConfigNumberOfQueues               OBJECT-TYPE
         SYNTAX          INTEGER
         ACCESS          read-only
@@ -2927,7 +2927,7 @@ sfcsCTMInterfaceConfigNumberOfQueues               OBJECT-TYPE
                 "Indicates the number of priority queues configured on this
                  interface."
         ::= { sfcsCTMInterfaceConfigEntry 4 }
- 
+
 sfcsCTMInterfaceConfigSigStackID                   OBJECT-TYPE
         SYNTAX          INTEGER
         ACCESS          read-only
@@ -2935,7 +2935,7 @@ sfcsCTMInterfaceConfigSigStackID                   OBJECT-TYPE
         DESCRIPTION
                 "Indicates the user signalling stack ID for this interface."
         ::= { sfcsCTMInterfaceConfigEntry 5 }
- 
+
 sfcsCTMInterfaceConfigClocking       OBJECT-TYPE
         SYNTAX          INTEGER {
                             generated-transmit-clock(1),
@@ -2952,7 +2952,7 @@ sfcsCTMInterfaceConfigClocking       OBJECT-TYPE
                 three - use the system-master-clock
       four - option not supported by this interface"
         ::= { sfcsCTMInterfaceConfigEntry 6 }
- 
+
 sfcsCTMInterfaceConfigNextVPI                   OBJECT-TYPE
         SYNTAX          INTEGER
         ACCESS          read-only
@@ -2960,7 +2960,7 @@ sfcsCTMInterfaceConfigNextVPI                   OBJECT-TYPE
         DESCRIPTION
                 "Indicates the next vpi for this interface."
         ::= { sfcsCTMInterfaceConfigEntry 7 }
- 
+
 sfcsCTMInterfaceConfigNextVCI                   OBJECT-TYPE
         SYNTAX          INTEGER
         ACCESS          read-only
@@ -2968,13 +2968,13 @@ sfcsCTMInterfaceConfigNextVCI                   OBJECT-TYPE
         DESCRIPTION
                 "Indicates the next vci for this interface."
         ::= { sfcsCTMInterfaceConfigEntry 8 }
- 
- 
+
+
 -- SFCS SHEMP Interface Statistics Tables
 -- This table contains the objects that specify the packet and byte counters
 -- for each configured SFCS switching interface.
- 
- 
+
+
 sfcsCTMInterfaceStatsTable                 OBJECT-TYPE
         SYNTAX          SEQUENCE OF SfcsCTMInterfaceStatsEntry
         ACCESS          not-accessible
@@ -2983,7 +2983,7 @@ sfcsCTMInterfaceStatsTable                 OBJECT-TYPE
                 "This table contains the cell counts for each
                  SFCS switch interface."
         ::= { sfcsCTMInterfaceStatistics 1 }
- 
+
 sfcsCTMInterfaceStatsEntry                 OBJECT-TYPE
         SYNTAX          SfcsCTMInterfaceStatsEntry
         ACCESS          not-accessible
@@ -2993,7 +2993,7 @@ sfcsCTMInterfaceStatsEntry                 OBJECT-TYPE
                  interface for which this entry exists."
         INDEX    { sfcsCTMInterfaceStatsInterfaceIndex }
         ::= { sfcsCTMInterfaceStatsTable 1 }
- 
+
 SfcsCTMInterfaceStatsEntry ::=
         SEQUENCE {
                 sfcsCTMInterfaceStatsInterfaceIndex                INTEGER,
@@ -3004,7 +3004,7 @@ SfcsCTMInterfaceStatsEntry ::=
                 sfcsCTMInterfaceStatsTxCellCnt                     OCTET STRING,
                 sfcsCTMInterfaceStatsOverflowDropCellCnt           OCTET STRING
         }
- 
+
 sfcsCTMInterfaceStatsInterfaceIndex        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3013,7 +3013,7 @@ sfcsCTMInterfaceStatsInterfaceIndex        OBJECT-TYPE
                 "The index which specifies which interface we are
                  dealing with."
         ::= { sfcsCTMInterfaceStatsEntry 1 }
- 
+
 sfcsCTMInterfaceStatsRxErrors              OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3022,7 +3022,7 @@ sfcsCTMInterfaceStatsRxErrors              OBJECT-TYPE
                 "Indicates the number of receive path lookup
                  invalid and out of range errors."
         ::= { sfcsCTMInterfaceStatsEntry 2 }
- 
+
 sfcsCTMInterfaceStatsVPILookupInvalidErrors        OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3031,7 +3031,7 @@ sfcsCTMInterfaceStatsVPILookupInvalidErrors        OBJECT-TYPE
                 "Indicates the number of VPI lookup invalid and out of
                  range errors."
         ::= { sfcsCTMInterfaceStatsEntry 3 }
- 
+
 sfcsCTMInterfaceStatsRxCnxLookupInvalidErrors      OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3040,7 +3040,7 @@ sfcsCTMInterfaceStatsRxCnxLookupInvalidErrors      OBJECT-TYPE
                 "Indicates the number of receive connection lookup
                  invalid errors."
         ::= { sfcsCTMInterfaceStatsEntry 4 }
- 
+
 sfcsCTMInterfaceStatsRxCellCnt              OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3049,8 +3049,8 @@ sfcsCTMInterfaceStatsRxCellCnt              OBJECT-TYPE
                 "Indicates the number of receive cells on
                  this interface."
         ::= { sfcsCTMInterfaceStatsEntry 7 }
- 
- 
+
+
 sfcsCTMInterfaceStatsTxCellCnt              OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3059,8 +3059,8 @@ sfcsCTMInterfaceStatsTxCellCnt              OBJECT-TYPE
                 "Indicates the number of transmit cells
                  on this interface."
         ::= { sfcsCTMInterfaceStatsEntry 8 }
- 
- 
+
+
 sfcsCTMInterfaceStatsOverflowDropCellCnt    OBJECT-TYPE
         SYNTAX          OCTET STRING
         ACCESS          read-only
@@ -3069,13 +3069,13 @@ sfcsCTMInterfaceStatsOverflowDropCellCnt    OBJECT-TYPE
                 "Indicates the number of cells that were
                  dropped due to queue overflows."
         ::= { sfcsCTMInterfaceStatsEntry 9 }
- 
+
 
 -- SFCS SHEMP Queue Group
 -- This group contains the managed objects for maintaining SFCS Shemp Queues.
- 
+
 --  SFCS Shemp Queue Configuration Table
- 
+
 sfcsCTMQueueConfigTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfcsCTMQueueConfigEntry
         ACCESS  not-accessible
@@ -3084,7 +3084,7 @@ sfcsCTMQueueConfigTable     OBJECT-TYPE
                 "This table contains the configuration information for
                  all queues on the SFCS."
         ::= { sfcsCTMQueueConfig 1 }
- 
+
 sfcsCTMQueueConfigEntry    OBJECT-TYPE
         SYNTAX  SfcsCTMQueueConfigEntry
         ACCESS  not-accessible
@@ -3094,7 +3094,7 @@ sfcsCTMQueueConfigEntry    OBJECT-TYPE
                  SFCS switch for which the entry exists."
         INDEX   { sfcsCTMQueueConfigInterfaceIndex, sfcsQueueConfigQueueIndex }
         ::= { sfcsCTMQueueConfigTable 1 }
- 
+
 SfcsCTMQueueConfigEntry ::=
         SEQUENCE {
                 sfcsCTMQueueConfigInterfaceIndex           INTEGER,
@@ -3106,7 +3106,7 @@ SfcsCTMQueueConfigEntry ::=
                 sfcsCTMQueueConfigEFCILowThreshold         INTEGER,
                 sfcsCTMQueueConfigRMThreshold              INTEGER
         }
- 
+
 sfcsCTMQueueConfigInterfaceIndex           OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3115,7 +3115,7 @@ sfcsCTMQueueConfigInterfaceIndex           OBJECT-TYPE
                 "The index which specifies which interface we are
                  dealing with."
         ::= { sfcsCTMQueueConfigEntry 1 }
- 
+
 sfcsCTMQueueConfigQueueIndex               OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3124,7 +3124,7 @@ sfcsCTMQueueConfigQueueIndex               OBJECT-TYPE
                 "The index which specifies which transmit queue we
                  are dealing with."
         ::= { sfcsCTMQueueConfigEntry 2 }
- 
+
 sfcsCTMQueueConfigQueueSize                OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -3133,7 +3133,7 @@ sfcsCTMQueueConfigQueueSize                OBJECT-TYPE
                 "Indicates the size of the transmit queue for this
                  queue instance."
         ::= { sfcsCTMQueueConfigEntry 3 }
- 
+
 sfcsCTMQueueConfigQueueBandwidth           OBJECT-TYPE
         SYNTAX  INTEGER (0..100)
         ACCESS  read-write
@@ -3142,7 +3142,7 @@ sfcsCTMQueueConfigQueueBandwidth           OBJECT-TYPE
                 "Indicates the percentage of this interface's bandwidth
                  utilized by this particular queue."
         ::= { sfcsCTMQueueConfigEntry 4 }
- 
+
 sfcsCTMQueueConfigClpDropThreshold         OBJECT-TYPE
         SYNTAX  INTEGER (0..100)
         ACCESS  read-write
@@ -3152,7 +3152,7 @@ sfcsCTMQueueConfigClpDropThreshold         OBJECT-TYPE
                  cells for this queue.  This level is expressed as
                  the percentage of this queue's size."
         ::= { sfcsCTMQueueConfigEntry 5 }
- 
+
 sfcsCTMQueueConfigCongestionThreshold      OBJECT-TYPE
         SYNTAX  INTEGER (0..100)
         ACCESS  read-write
@@ -3162,7 +3162,7 @@ sfcsCTMQueueConfigCongestionThreshold      OBJECT-TYPE
                  This level is expressed as the percentage of this
                  queue's size."
         ::= { sfcsCTMQueueConfigEntry 6 }
- 
+
 sfcsCTMQueueConfigEFCILowThreshold         OBJECT-TYPE
         SYNTAX  INTEGER (0..100)
         ACCESS  read-write
@@ -3172,7 +3172,7 @@ sfcsCTMQueueConfigEFCILowThreshold         OBJECT-TYPE
                  this queue instance.  This level is expressed as
                  the percentage of this queue's size."
         ::= { sfcsCTMQueueConfigEntry 7 }
- 
+
 sfcsCTMQueueConfigRMThreshold              OBJECT-TYPE
         SYNTAX  INTEGER (0..100)
         ACCESS  read-write
@@ -3183,12 +3183,12 @@ sfcsCTMQueueConfigRMThreshold              OBJECT-TYPE
                  hit, a management message is sent to the sender notifying it
                  to slow down."
         ::= { sfcsCTMQueueConfigEntry 8 }
- 
- 
- 
- 
+
+
+
+
 --  SFCS Shemp Queue Stats Table
- 
+
 sfcsCTMQueueStatsTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfcsCTMQueueStatsEntry
         ACCESS  not-accessible
@@ -3197,7 +3197,7 @@ sfcsCTMQueueStatsTable     OBJECT-TYPE
                 "This table contains the statistics information for all
                  queues on the SFCS."
         ::= { sfcsCTMQueueStatistics 1 }
- 
+
 sfcsCTMQueueStatsEntry    OBJECT-TYPE
         SYNTAX  SfcsCTMQueueStatsEntry
         ACCESS  not-accessible
@@ -3207,7 +3207,7 @@ sfcsCTMQueueStatsEntry    OBJECT-TYPE
                  SFCS switch for which the entry exists."
         INDEX   { sfcsCTMQueueStatsInterfaceIndex, sfcsQueueStatsQueue }
         ::= { sfcsCTMQueueStatsTable 1 }
- 
+
 SfcsCTMQueueStatsEntry ::=
         SEQUENCE {
                 sfcsCTMQueueStatsInterfaceIndex            INTEGER,
@@ -3217,7 +3217,7 @@ SfcsCTMQueueStatsEntry ::=
                 sfcsCTMQueueStatsQueuePeakLevel            INTEGER,
                 sfcsCTMQueueStatsTxCellCnt                 OCTET STRING
         }
- 
+
 sfcsCTMQueueStatsInterfaceIndex    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3226,7 +3226,7 @@ sfcsCTMQueueStatsInterfaceIndex    OBJECT-TYPE
                 "The index which specifies which interface we are
                  dealing with."
         ::= { sfcsCTMQueueStatsEntry 1 }
- 
+
 sfcsCTMQueueStatsQueue    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3235,7 +3235,7 @@ sfcsCTMQueueStatsQueue    OBJECT-TYPE
                 "The index which specifies which queue we are
                  dealing with."
         ::= { sfcsCTMQueueStatsEntry 2 }
- 
+
 sfcsCTMQueueStatsTxClpCellsDiscarded    OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
@@ -3244,7 +3244,7 @@ sfcsCTMQueueStatsTxClpCellsDiscarded    OBJECT-TYPE
                 "Indicates the number of cells with CLP=1 that were
                  discarded for this queue instance."
         ::= { sfcsCTMQueueStatsEntry 3 }
- 
+
 sfcsCTMQueueStatsTxCellsDropped    OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
@@ -3253,7 +3253,7 @@ sfcsCTMQueueStatsTxCellsDropped    OBJECT-TYPE
                 "Indicates the number of cells that overflowed the
                  buffer for this queue instance."
         ::= { sfcsCTMQueueStatsEntry 4 }
- 
+
 sfcsCTMQueueStatsQueuePeakLevel    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -3262,7 +3262,7 @@ sfcsCTMQueueStatsQueuePeakLevel    OBJECT-TYPE
                 "Indicates the peak level since last read for this
                  queue instance."
         ::= { sfcsCTMQueueStatsEntry 5 }
- 
+
 sfcsCTMQueueStatsTxCellCnt         OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
@@ -3271,8 +3271,8 @@ sfcsCTMQueueStatsTxCellCnt         OBJECT-TYPE
                 "Indicates the transmit cell count on a per queue basis.
                 A value of zero indicates not available"
         ::= { sfcsCTMQueueStatsEntry 6 }
- 
- 
+
+
 
 --  The SFCS Switch Host Group
 
@@ -3281,7 +3281,7 @@ sfcsCTMQueueStatsTxCellCnt         OBJECT-TYPE
 -- SFCS Switch Bandwidth Management Group
 -- This group contains the managed objects and functions used to setup and
 -- configure the SFCS Bandwidth Manager.  This group contains four sub-groups
--- Nim Tables, Port Tables, Bandwidth Pool elements and Buffer Tables. 
+-- Nim Tables, Port Tables, Bandwidth Pool elements and Buffer Tables.
 
 -- SFCS ANIM Bandwidth Management Nim Table
 -- This table contains contains information about the administration status of the Nim.
@@ -3536,7 +3536,7 @@ sfcsBwPortPoolLimitsBwAllocStrat      OBJECT-TYPE
    STATUS   mandatory
    DESCRIPTION
       "  Determines which of 3 sets of formulas will be used for computing
-         the amount of variable bandwidth to be allocated. 
+         the amount of variable bandwidth to be allocated.
          Conservative allocates the full amount of variable bandwidth,
          Moderate allocates approximately half of the variable bandwidth,
          Liberal supports very aggressive allocation and should only be
@@ -3548,7 +3548,7 @@ sfcsBwPortPoolLimitsBwConstant      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in formulas for computing the amount of variable 
+      " A ratio used in formulas for computing the amount of variable
         bandwidth to be allocated. Valid values are 1-255 which is the
         numerator of a fraction whose fixed denominator is 256. Thus
         the value 255 is really 255/256 the most conservative value;
@@ -3561,7 +3561,7 @@ sfcsBwPortPoolLimitsCBRLimitFwd      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to CBR. The values are 1-255.
         For a more detailed description of value useage see
@@ -3575,7 +3575,7 @@ sfcsBwPortPoolLimitsCBRLimitRev      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to CBR. The values are 1-255.
         For a more detailed description of value useage see
@@ -3589,7 +3589,7 @@ sfcsBwPortPoolLimitsABRLimitFwd      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to ABR. The values are 1-255.
         For a more detailed description of value useage see
@@ -3603,7 +3603,7 @@ sfcsBwPortPoolLimitsABRLimitRev      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to ABR. The values are 1-255.
         For a more detailed description of value useage see
@@ -3617,18 +3617,18 @@ sfcsBwPortPoolLimitsVBRLimitFwd      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to VBR. The values are 1-255.
         For a more detailed description of value useage see
         sfcsBwPortPoolLimitsBwConstant. Total of all service classes for a
         given direction should not exceed 256. (If it has never been set,
         the value will be -1.)
-        WARNING - Setting this limit to an arbitrarily low value may 
+        WARNING - Setting this limit to an arbitrarily low value may
         cause the switch to become inoperable as an SVC switch. PNNI
         establishes VBR connections for switch to switch communications.
         If an arbitrarily low limit is established, it may preclude
-        PNNI inter-switch operability." 
+        PNNI inter-switch operability."
    ::= { sfcsBwPortPoolLimitsEntry 11 }
 
 sfcsBwPortPoolLimitsVBRLimitRev      OBJECT-TYPE
@@ -3636,17 +3636,17 @@ sfcsBwPortPoolLimitsVBRLimitRev      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to VBR. The values are 1-255.
         For a more detailed description of value useage see
         sfcsBwPortPoolLimitsBwConstant. Total of all service classes for a
         given direction should not exceed 256. (If it has never been set,
         the value will be -1.)
-        WARNING - Setting this limit to an arbitrarily low value may 
-        cause the switch to become inoperable as an SVC switch. PNNI 
+        WARNING - Setting this limit to an arbitrarily low value may
+        cause the switch to become inoperable as an SVC switch. PNNI
         establishes VBR connections for switch to switch communications.
-        If an arbitrarily low limit is established, it may preclude 
+        If an arbitrarily low limit is established, it may preclude
         PNNI inter-switch operability."
    ::= { sfcsBwPortPoolLimitsEntry 12 }
 
@@ -3655,19 +3655,19 @@ sfcsBwPortPoolLimitsUBRLimitFwd      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to UBR. The values are 1-255.
         For a more detailed description of value useage see
         sfcsBwPortPoolLimitsBwConstant. Total of all service classes for a
         given direction should not exceed 256. (If it has never been set,
         the value will be -1.)
-        WARNING - Setting this limit to an arbitrarily low value may 
+        WARNING - Setting this limit to an arbitrarily low value may
         cause the switch to become inoperable as an SVC switch. Many
         internal management functions use UBR connections to establish
-        connections with neighboring switches for keep alive and 
-        discovery functions.  
-        If an arbitrarily low limit is established, it may preclude 
+        connections with neighboring switches for keep alive and
+        discovery functions.
+        If an arbitrarily low limit is established, it may preclude
         SVC inter-switch operability."
    ::= { sfcsBwPortPoolLimitsEntry 13 }
 
@@ -3676,19 +3676,19 @@ sfcsBwPortPoolLimitsUBRLimitRev      OBJECT-TYPE
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
-      " A ratio used in allocating the allocatable bandwidth among the 
+      " A ratio used in allocating the allocatable bandwidth among the
         various Service classes. This value is the amount of the overall
         allocatable bw that can be allocated to UBR. The values are 1-255.
         For a more detailed description of value useage see
         sfcsBwPortPoolLimitsBwConstant. Total of all service classes for a
         given direction should not exceed 256. (If it has never been set,
         the value will be -1.)
-        WARNING - Setting this limit to an arbitrarily low value may 
-        cause the switch to become inoperable as an SVC switch. Many 
+        WARNING - Setting this limit to an arbitrarily low value may
+        cause the switch to become inoperable as an SVC switch. Many
         internal management functions use UBR connections to establish
-        connections with neighboring switches for keep alive and 
-        discovery functions. 
-        If an arbitrarily low limit is established, it may preclude 
+        connections with neighboring switches for keep alive and
+        discovery functions.
+        If an arbitrarily low limit is established, it may preclude
         SVC inter-switch operability."
    ::= { sfcsBwPortPoolLimitsEntry 14 }
 
@@ -3727,7 +3727,7 @@ sfcsBwPortPoolStatTable   OBJECT-TYPE
 
 sfcsBwPortPoolStatEntry   OBJECT-TYPE
    SYNTAX   SfcsBwPortPoolStatEntry
-   ACCESS   not-accessible 
+   ACCESS   not-accessible
    STATUS   mandatory
    DESCRIPTION
       "Each entry contains "
@@ -3872,7 +3872,7 @@ sfcsBwPortPoolStatPeakBwFwd   OBJECT-TYPE
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
-        " The peak amount of allocated Bw in the forward direction since the 
+        " The peak amount of allocated Bw in the forward direction since the
       port was initialized OR the switch was reset."
    ::= { sfcsBwPortPoolStatEntry 9 }
 
@@ -3881,7 +3881,7 @@ sfcsBwPortPoolStatPeakBwRev   OBJECT-TYPE
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
-    " The peak amount of allocated Bw in the reverse direction since the 
+    " The peak amount of allocated Bw in the reverse direction since the
       port was initialized OR the switch was reset."
    ::= { sfcsBwPortPoolStatEntry 10 }
 
@@ -3890,7 +3890,7 @@ sfcsBwPortPoolStatRejConnFwd   OBJECT-TYPE
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
-        " The number of connections which were rejected because of 
+        " The number of connections which were rejected because of
       insufficient forward bandwidth since the port was initialized or
       the switch was reset last."
    ::= { sfcsBwPortPoolStatEntry 11 }
@@ -3900,7 +3900,7 @@ sfcsBwPortPoolStatRejConnRev   OBJECT-TYPE
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
-    " The number of connections which were rejected because of 
+    " The number of connections which were rejected because of
       insufficient reverse bandwidth since the port was initialized or
       the switch was reset last."
    ::= { sfcsBwPortPoolStatEntry 12 }
@@ -3966,7 +3966,7 @@ sfcsBwPortPoolStatCBRConnRejFwd   OBJECT-TYPE
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
-        " The number of CBR forward connections rejected since the port was 
+        " The number of CBR forward connections rejected since the port was
       initialized or the switch was reset last."
    ::= { sfcsBwPortPoolStatEntry 19 }
 
@@ -4383,7 +4383,7 @@ sfcsBwPortPoolTrapMgmtPoolIndex   OBJECT-TYPE
    DESCRIPTION
       "This index specifies which Pool within Port we are dealing
        with.  This reference is in the same format as MIB II's
-       Interface index. (If it has never been set, the value will 
+       Interface index. (If it has never been set, the value will
        be -1.)"
    ::= { sfcsBwPortPoolTrapMgmtEntry 2 }
 
@@ -4393,8 +4393,8 @@ sfcsBwPortPoolTrapMgmtAllocBwTholdHiFwd   OBJECT-TYPE
    STATUS   mandatory
    DESCRIPTION
       "The upper threshold for the Alloc BW fwd trap. When an allocation
-       causes the currently allocated bw to exceed this value the trap 
-       is generated. (If it has never been set, the value will 
+       causes the currently allocated bw to exceed this value the trap
+       is generated. (If it has never been set, the value will
        be -1.)"
    ::= { sfcsBwPortPoolTrapMgmtEntry 3 }
 
@@ -4404,7 +4404,7 @@ sfcsBwPortPoolTrapMgmtAllocBwTholdHiRev   OBJECT-TYPE
    STATUS   mandatory
    DESCRIPTION
     " The upper threshold for the Alloc BW rev trap. When an allocation
-      causes the currently allocated bw to exceed this value the trap 
+      causes the currently allocated bw to exceed this value the trap
       is generated. (If it has never been set, the value will
       be -1.)"
    ::= { sfcsBwPortPoolTrapMgmtEntry 4 }
@@ -4415,7 +4415,7 @@ sfcsBwPortPoolTrapMgmtAllocBwTholdLoFwd   OBJECT-TYPE
    STATUS   mandatory
    DESCRIPTION
     " The lower threshold for the Alloc BW fwd trap. When an allocation
-      causes the currently allocated bw be below this value the trap 
+      causes the currently allocated bw be below this value the trap
       is generated. (If it has never been set, the value will
       be -1.)"
    ::= { sfcsBwPortPoolTrapMgmtEntry 5 }
@@ -4426,7 +4426,7 @@ sfcsBwPortPoolTrapMgmtAllocBwTholdLoRev   OBJECT-TYPE
    STATUS   mandatory
    DESCRIPTION
     " The lower threshold for the Alloc BW rev trap. When an allocation
-      causes the currently allocated bw be below this value the trap 
+      causes the currently allocated bw be below this value the trap
       is generated. (If it has never been set, the value will
       be -1.)"
    ::= { sfcsBwPortPoolTrapMgmtEntry 6 }
@@ -4798,7 +4798,7 @@ sfcsBWPortPoolTrapMgmtBuffUpThold            OBJECT-TYPE
       " The upper threshold for buffer allocation trap ."
    ::= { sfcsBwPortPoolTrapMgmtEntry 42 }
 
-sfcsBWPortPoolTrapMgmtBuffLoThold            OBJECT-TYPE 
+sfcsBWPortPoolTrapMgmtBuffLoThold            OBJECT-TYPE
    SYNTAX   INTEGER
    ACCESS   read-write
    STATUS   mandatory
@@ -4822,13 +4822,13 @@ sfcsBWPortPoolTrapMgmtConnRejThold           OBJECT-TYPE
 --  The primary index is the ifindex of the port that owns these row entries
 --  The secondary index is the priority number for the row
 
---  
+--
 sfcsBuffPrioTable   OBJECT-TYPE
    SYNTAX   SEQUENCE OF SfcsBuffPrioEntry
    ACCESS   not-accessible
    STATUS   mandatory
    DESCRIPTION
-      "This table contains the rows of all the buffer pools." 
+      "This table contains the rows of all the buffer pools."
    ::= { sfcsBuffPools 1 }
 
 sfcsBuffPrioEntry   OBJECT-TYPE
@@ -4839,7 +4839,7 @@ sfcsBuffPrioEntry   OBJECT-TYPE
       "Each entry contains the rows of all the buffer pools."
    INDEX   { sfcsBuffPrioPortIndex, sfcsBuffPrioPriority }
    ::= { sfcsBuffPrioTable 1 }
- 
+
 SfcsBuffPrioEntry ::=
    SEQUENCE {
       sfcsBuffPrioPortIndex    INTEGER,
@@ -4866,7 +4866,7 @@ sfcsBuffPrioPortIndex    OBJECT-TYPE
        with.  This reference is in the same format as MIB II's
        Interface index."
    ::= { sfcsBuffPrioEntry 1 }
- 
+
 sfcsBuffPrioPriority     OBJECT-TYPE
    SYNTAX   INTEGER
    ACCESS   read-only
@@ -5228,12 +5228,12 @@ sfcsProxyTransVCI      OBJECT-TYPE
    ::= { sfcsProxyTransEntry 4 }
 
 sfcsProxyTransPTI   OBJECT-TYPE
-   SYNTAX   INTEGER (0..7)         
+   SYNTAX   INTEGER (0..7)
    ACCESS   read-write
    STATUS   mandatory
    DESCRIPTION
       "Payload Type Indicator: the value of the 3 bit Payload Type
-      field in the header.  The most signifigant bit indicates user or 
+      field in the header.  The most signifigant bit indicates user or
       control data, the next bit indicates congestion, and the
       last bit indicates AAL encoding."
    ::= { sfcsProxyTransEntry 5 }
@@ -5296,7 +5296,7 @@ sfcsProxyTransPayloadAdaptionLayer   OBJECT-TYPE
 sfcsProxyTransMpxMethod   OBJECT-TYPE
    SYNTAX   INTEGER
 --{
---   enumerate me!!      
+--   enumerate me!!
 --      }
    ACCESS   read-write
    STATUS   mandatory
@@ -5430,12 +5430,12 @@ sfcsProxyReadVCI      OBJECT-TYPE
    ::= { sfcsProxyReadEntry 6 }
 
 sfcsProxyReadPTI   OBJECT-TYPE
-   SYNTAX   INTEGER (0..7)         
+   SYNTAX   INTEGER (0..7)
    ACCESS   read-only
    STATUS   mandatory
    DESCRIPTION
       "Payload Type Indicator: the value of the 3 bit Payload Type
-      field in the header.  The most signifigant bit indicates user or 
+      field in the header.  The most signifigant bit indicates user or
       control data, the next bit indicates congestion, and the
       last bit indicates AAL encoding."
    ::= { sfcsProxyReadEntry 7 }

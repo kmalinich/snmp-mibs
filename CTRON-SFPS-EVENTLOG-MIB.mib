@@ -43,7 +43,7 @@ IMPORTS
 --       Counter, Gauge
          TimeTicks
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt
         sfpsEventLogStats, sfpsEventLogGenConfig,
         sfpsEventLogClientConfig, sfpsEventLogClientConfigAPI,
@@ -54,13 +54,13 @@ IMPORTS
 
 SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 --SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 --SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 HexInteger ::= INTEGER
 --  display this integer in hex format
 
@@ -88,17 +88,17 @@ sfpsEventLogStatsEntry    OBJECT-TYPE
 
 SfpsEventLogStatsEntry ::=
         SEQUENCE {
-                sfpsEventLogStatsSwInst               SfpsSwitchInstance,  
-                sfpsEventLogWindowStart               INTEGER,  
-                sfpsEventLogIndex                             INTEGER,  
-                sfpsEventLogClientName                DisplayString,  
-                sfpsEventLogLevel                     DisplayString,  
-                sfpsEventLogMessageString             DisplayString,  
-                sfpsEventLogTime                          TimeTicks,  
-                sfpsEventLogCallTag                   HexInteger,  
-                sfpsEventLogInfo1                     HexInteger,  
-                sfpsEventLogInfo2                     HexInteger 
-        }  
+                sfpsEventLogStatsSwInst               SfpsSwitchInstance,
+                sfpsEventLogWindowStart               INTEGER,
+                sfpsEventLogIndex                             INTEGER,
+                sfpsEventLogClientName                DisplayString,
+                sfpsEventLogLevel                     DisplayString,
+                sfpsEventLogMessageString             DisplayString,
+                sfpsEventLogTime                          TimeTicks,
+                sfpsEventLogCallTag                   HexInteger,
+                sfpsEventLogInfo1                     HexInteger,
+                sfpsEventLogInfo2                     HexInteger
+        }
 
 sfpsEventLogStatsSwInst   OBJECT-TYPE
         SYNTAX  SfpsSwitchInstance
@@ -201,23 +201,23 @@ sfpsEventLogGenConfigEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains event log configuration parameters."
-        INDEX   { sfpsEventLogGenConfigSwInst } 
+        INDEX   { sfpsEventLogGenConfigSwInst }
                       ::= { sfpsEventLogGenConfigTable 1 }
 
 SfpsEventLogGenConfigEntry ::=
         SEQUENCE {
-                sfpsEventLogGenConfigSwInst                     SfpsSwitchInstance,  
-                sfpsEventLogGenConfigWindowStart                INTEGER (1..20000),  
-                sfpsEventLogGenConfigLoggingIndex               INTEGER (1..20000), 
-                sfpsEventLogGenConfigMessageFilter              DisplayString, 
-                sfpsEventLogGenConfigCallTagFilter              HexInteger, 
-                sfpsEventLogGenConfigAdminStatus                INTEGER, 
-                sfpsEventLogGenConfigOperStatus                 INTEGER, 
-                sfpsEventLogGenConfigOperTime                   TimeTicks, 
-                sfpsEventLogGenConfigAutoFreeze                 INTEGER, 
+                sfpsEventLogGenConfigSwInst                     SfpsSwitchInstance,
+                sfpsEventLogGenConfigWindowStart                INTEGER (1..20000),
+                sfpsEventLogGenConfigLoggingIndex               INTEGER (1..20000),
+                sfpsEventLogGenConfigMessageFilter              DisplayString,
+                sfpsEventLogGenConfigCallTagFilter              HexInteger,
+                sfpsEventLogGenConfigAdminStatus                INTEGER,
+                sfpsEventLogGenConfigOperStatus                 INTEGER,
+                sfpsEventLogGenConfigOperTime                   TimeTicks,
+                sfpsEventLogGenConfigAutoFreeze                 INTEGER,
                 sfpsEventLogGenConfigDisplayWrapDetect          INTEGER,
                 sfpsEventLogGenConfigAdvertiseAddr              IpAddress
-        }  
+        }
 
 sfpsEventLogGenConfigSwInst   OBJECT-TYPE
         SYNTAX  SfpsSwitchInstance
@@ -355,12 +355,12 @@ sfpsEventLogClientConfigEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains event log client configuration parameters."
-        INDEX   { sfpsEventLogClientConfigId } 
+        INDEX   { sfpsEventLogClientConfigId }
                       ::= { sfpsEventLogClientConfigTable 1 }
 
 SfpsEventLogClientConfigEntry ::=
         SEQUENCE {
-                sfpsEventLogClientConfigId              INTEGER,  
+                sfpsEventLogClientConfigId              INTEGER,
                 sfpsEventLogClientConfigName            DisplayString,
                 sfpsEventLogClientLogStatus             INTEGER,
                 sfpsEventLogClientDisplayStatus         INTEGER,
@@ -374,7 +374,7 @@ SfpsEventLogClientConfigEntry ::=
                 sfpsEventLogClientInfoDisplayStatus     INTEGER,
                 sfpsEventLogClientDebugLogStatus        INTEGER,
                 sfpsEventLogClientDebugDisplayStatus    INTEGER
-        }  
+        }
 
 sfpsEventLogClientConfigId   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -557,7 +557,7 @@ sfpsEventLogClientConfigAPIVerb   OBJECT-TYPE
                 allLogLevels(6),
                 allClients(7),
                 masterLog(8)
-        }  
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -569,7 +569,7 @@ sfpsEventLogClientConfigAPIAdminStatus   OBJECT-TYPE
                 other(1),
                 disable(2),
                 enable(3)
-        }    
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -577,7 +577,7 @@ sfpsEventLogClientConfigAPIAdminStatus   OBJECT-TYPE
         ::= { sfpsEventLogClientConfigAPI 2 }
 
 sfpsEventLogClientConfigAPIClientName   OBJECT-TYPE
-        SYNTAX  DisplayString       
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -585,7 +585,7 @@ sfpsEventLogClientConfigAPIClientName   OBJECT-TYPE
         ::= { sfpsEventLogClientConfigAPI 3 }
 
 sfpsEventLogClientConfigAPIClientID   OBJECT-TYPE
-        SYNTAX  INTEGER       
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -598,7 +598,7 @@ sfpsEventLogClientConfigAPILogDisplay   OBJECT-TYPE
                 logAndDisplay(2),
                 logOnly(3),
                 displayOnly(4)
-        }  
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -774,4 +774,4 @@ sfpsTrapTableLastSent      OBJECT-TYPE
         ""
     ::= { sfpsTrapTable 4 }
 
-END 
+END

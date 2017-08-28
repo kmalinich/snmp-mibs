@@ -5,7 +5,7 @@
 --
 -- Copyright (c) 1993-2001 by Super Micro Computer Inc.
 -- All rights reserved.
--- 
+--
 -- *****************************************************************
 
 SUPERMICRO-HEALTH-MIB DEFINITIONS ::= BEGIN
@@ -132,7 +132,7 @@ smHealthMonitorHighLimit OBJECT-TYPE
 	MAX-ACCESS  read-write
 	STATUS	    current
 	DESCRIPTION
-		"Indicates the value for the High limitation 
+		"Indicates the value for the High limitation
 		for the Monitor device that are currently in use on the
 		managed device.
 		Apply to Temperature and Voltage deivces only.
@@ -145,7 +145,7 @@ smHealthMonitorLowLimit OBJECT-TYPE
 	MAX-ACCESS  read-write
 	STATUS	    current
 	DESCRIPTION
-		"Indicates the value for the Low limitation 
+		"Indicates the value for the Low limitation
 		for the Monitor device that are currently in use on the
 		managed device.
 		FAN limit is in unit of RPM,
@@ -158,7 +158,7 @@ smHealthMonitorMaxReading OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS	    current
 	DESCRIPTION
-		"Indicates the value for the possible Maximum reading value 
+		"Indicates the value for the possible Maximum reading value
 		for the Monitor device that are currently in use on the
 		managed device.
 		FAN reading is in unit of RPM,
@@ -171,7 +171,7 @@ smHealthMonitorMinReading OBJECT-TYPE
 	MAX-ACCESS  read-only
 	STATUS	    current
 	DESCRIPTION
-		"Indicates the value for the possible Minimum reading value 
+		"Indicates the value for the possible Minimum reading value
 		for the Monitor device that are currently in use on the
 		managed device.
 		FAN reading is in unit of RPM,
@@ -194,11 +194,11 @@ smHealthMonitorMonitor OBJECT-TYPE
 	MAX-ACCESS  read-write
 	STATUS	    current
 	DESCRIPTION
-		"Indicates the monitoring status for the Fan device 
+		"Indicates the monitoring status for the Fan device
 		that are currently in use on the managed device.
 		1 = monitor, 2=do not monitor"
 	::= { smHealthMonitorEntry 10 }
-                                      
+
 -- notifications
 
 smHealthNotifications OBJECT IDENTIFIER ::= { smHealthMIB 2 }

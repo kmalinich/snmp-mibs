@@ -67,8 +67,8 @@ switchNumber  OBJECT-TYPE
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "The total number of switches present on this system." 
-        ::= { switchInfo 1 } 
+            "The total number of switches present on this system."
+        ::= { switchInfo 1 }
 
 
 switchInfoTable OBJECT-TYPE
@@ -161,8 +161,8 @@ swPortNumber       OBJECT-TYPE
         STATUS      current
         DESCRIPTION
             "The total port number of this switch
-             (including expansion slot)." 
-        ::= { switchInfoEntry 7 } 
+             (including expansion slot)."
+        ::= { switchInfoEntry 7 }
 
 swPowerStatus      OBJECT-TYPE
         SYNTAX     INTEGER {
@@ -173,7 +173,7 @@ swPowerStatus      OBJECT-TYPE
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Indicates the switch using internalPower(1), 
+            "Indicates the switch using internalPower(1),
              redundantPower(2) or both(3)"
         ::= { switchInfoEntry 8 }
 
@@ -188,7 +188,7 @@ swExpansionSlot1   OBJECT-TYPE
               thousandBaseGBIC(7),
               stackingModule2GB(8),
               other(9),
-              notPresent(10)                        
+              notPresent(10)
         }
         MAX-ACCESS  read-only
         STATUS      current
@@ -207,7 +207,7 @@ swExpansionSlot2    OBJECT-TYPE
               thousandBaseGBIC(7),
               stackingModule2GB(8),
               other(9),
-              notPresent(10)                        
+              notPresent(10)
         }
         MAX-ACCESS  read-only
         STATUS      current
@@ -323,7 +323,7 @@ swPortMgtIndex      OBJECT-TYPE
         DESCRIPTION
             "This object identifies the port within the switch
              for which this entry contains information."
-        ::= { switchPortMgtEntry 1 } 
+        ::= { switchPortMgtEntry 1 }
 
 swPortMgtPortType   OBJECT-TYPE
         SYNTAX      INTEGER {
@@ -351,7 +351,7 @@ swPortMgtSpeedDpxAdmin  OBJECT-TYPE
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "Set the port speed and duplex mode as follows:       
+            "Set the port speed and duplex mode as follows:
                 halfDuplex10(1)    - 10Mbps and half duplex mode
                 fullDuplex10(2)    - 10Mbps and full duplex mode
                 halfDuplex100(3)   - 100Mbps and half duplex mode
@@ -374,7 +374,7 @@ swPortMgtSpeedDpxAdmin  OBJECT-TYPE
                 thousandBaseSX port can be set as
                              halfDuplex1000(5)
                              fullDuplex1000(6)
-                             autoNegotiation(7)       
+                             autoNegotiation(7)
 
              The actual operating speed and duplex of the port is
              given by swPortMgtSpeedDpxInUse."
@@ -414,13 +414,13 @@ swPortMgtFlowCtrlAdmin OBJECT-TYPE
                      When the port is operating in fullDuplex mode,
                        the port uses IEEE 802.3x flow control mechanism.
 
-                 If the port type is hundredBaseFX: 
-                     When the port is operating in halfDuplex mode, the 
+                 If the port type is hundredBaseFX:
+                     When the port is operating in halfDuplex mode, the
                          port uses backPressure flow control mechanism. When
                          the port is operating in fullDuplex mode, Flow
                          control mechanism will not function.
 
-             (2) Flow control mechanism is disabled. 
+             (2) Flow control mechanism is disabled.
 
              (3) Flow control mechanism is backPressure.
 
@@ -467,15 +467,15 @@ swPortMgtFlowCtrlInUse  OBJECT-TYPE
 --
 
 systemSTAStatus     OBJECT-TYPE
-        SYNTAX      INTEGER { 
+        SYNTAX      INTEGER {
               enabled(1),
-              disabled(2) 
+              disabled(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "Global spanning tree status. 
-               (1) Spanning tree protocol is enabled. 
+            "Global spanning tree status.
+               (1) Spanning tree protocol is enabled.
                (2) Spanning tree protocol is disabled. "
         DEFVAL  { enabled }
         ::= { systemSTAMgt 1 }
@@ -488,8 +488,8 @@ tftpDownloadServerIP OBJECT-TYPE
         SYNTAX      IpAddress
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
-            "The IP address of a TFTP server from which a 
+        DESCRIPTION
+            "The IP address of a TFTP server from which a
              firmware image can be downloaded."
         DEFVAL { '00000000'H }
         ::= { tftpDownloadMgt 1 }
@@ -503,13 +503,13 @@ tftpDownloadServerIP OBJECT-TYPE
 --        ::= { tftpDownloadMgt 2 }
 
 --tftpDownloadMainBoardFwSelected OBJECT-TYPE
---        SYNTAX     INTEGER { 
---              selected(1), 
---              notSelected(2) 
+--        SYNTAX     INTEGER {
+--              selected(1),
+--              notSelected(2)
 --        }
 --        MAX-ACCESS read-write
 --        STATUS     current
---        DESCRIPTION 
+--        DESCRIPTION
 --            "Setting this object as selected. The system will download
 --             main board firmware when the download action be trigged."
 --        DEFVAL { notSelected }
@@ -524,13 +524,13 @@ tftpDownloadAgentBoardFwFileName OBJECT-TYPE
         ::= { tftpDownloadMgt 2 }
 
 tftpDownloadAgentBoardFwDownloadNode OBJECT-TYPE
-        SYNTAX      INTEGER { 
-              permanent(1), 
-              temporary(2) 
+        SYNTAX      INTEGER {
+              permanent(1),
+              temporary(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "Indicates whether a newly upgraded firmware
              version should write to flash.  When this object
              is temporary(2), following a successful upgrade
@@ -546,26 +546,26 @@ tftpDownloadAgentBoardFwDownloadNode OBJECT-TYPE
         ::= { tftpDownloadMgt 3 }
 
 --tftpDownloadAgentBoardFwSelected  OBJECT-TYPE
---        SYNTAX     INTEGER { 
---              selected(1), 
---              notSelected(2) 
+--        SYNTAX     INTEGER {
+--              selected(1),
+--              notSelected(2)
 --        }
 --        MAX-ACCESS read-write
 --        STATUS      current
---        DESCRIPTION 
+--        DESCRIPTION
 --            "Setting this object as selected. The system will download
 --             agent board firmware when the download action be trigged."
 --        DEFVAL { notSelected }
 --        ::= { tftpDownloadMgt 4 }
 
 tftpDownloadStatus OBJECT-TYPE
-        SYNTAX     INTEGER { 
-              active(1), 
-              notActive(2) 
+        SYNTAX     INTEGER {
+              active(1),
+              notActive(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "Setting this object to active(1) trigger the TFTP
              download action.  Setting this object to notActive(2)
              has no effect.  The system always returns the value
@@ -577,66 +577,66 @@ tftpDownloadStatus OBJECT-TYPE
 --
 
 restartOptionPOST  OBJECT-TYPE
-        SYNTAX     INTEGER { 
+        SYNTAX     INTEGER {
               enabled(1),
               disabled(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
-            "Setting this object as enabled. The system will do POST 
+        DESCRIPTION
+            "Setting this object as enabled. The system will do POST
              when it restart"
         DEFVAL { enabled }
         ::= { restartMgt 1 }
 
 restartOptionReloadFactoryDefault   OBJECT-TYPE
-        SYNTAX      INTEGER { 
+        SYNTAX      INTEGER {
               enabled(1),
               disabled(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "Setting this object as enabled. The system will do
              factory reset when it restart"
         DEFVAL { disabled }
         ::= { restartMgt 2 }
 
 restartOptionKeepIpSetting   OBJECT-TYPE
-        SYNTAX      INTEGER { 
+        SYNTAX      INTEGER {
               enabled(1),
               disabled(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "Setting this object as enabled. The system will keep IP
              setting when it do factory reset."
         DEFVAL { enabled }
         ::= { restartMgt 3 }
 
 restartOptionKeepUserAuthentication   OBJECT-TYPE
-        SYNTAX      INTEGER { 
+        SYNTAX      INTEGER {
               enabled(1),
               disabled(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "Setting this object as enabled. The system will keep
              user authentication setting when it do factory reset."
         DEFVAL { enabled }
         ::= { restartMgt 4 }
 
 restartAction   OBJECT-TYPE
-        SYNTAX      INTEGER { 
-              active(1), 
-              notActive(2) 
+        SYNTAX      INTEGER {
+              active(1),
+              notActive(2)
         }
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
-            "Setting this object to active(1) trigger the system 
+        DESCRIPTION
+            "Setting this object to active(1) trigger the system
              restart.  Setting this object to notActive(2) has
              no effect.  The system always returns the value
              notActive(2) when this object is read."
@@ -647,7 +647,7 @@ restartAction   OBJECT-TYPE
 --
 
 portMirrorStatus    OBJECT-TYPE
-        SYNTAX      INTEGER { 
+        SYNTAX      INTEGER {
               enabled(1),
               disabled(2)
         }
@@ -677,7 +677,7 @@ portMirrorMirroredPort  OBJECT-TYPE
         STATUS      current
         DESCRIPTION
             "Linear port number of mirrored port. The traffic of
-             mirrored port will be 'copied' to sniffer port." 
+             mirrored port will be 'copied' to sniffer port."
         ::= { portMirrorMgt 3 }
 
 --
@@ -715,8 +715,8 @@ igmpReportDelay     OBJECT-TYPE
         DESCRIPTION
             "Timeout value(mins) between IGMP reports received on a port
              for an IP Multicast Address that can pass before the system
-             sends an IGMP Query out the port and removes it from the 
-             list(default is 5 minutes)." 
+             sends an IGMP Query out the port and removes it from the
+             list(default is 5 minutes)."
         ::= { igmpMgt 3 }
 
 END

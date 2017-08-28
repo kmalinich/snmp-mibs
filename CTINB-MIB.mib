@@ -1,19 +1,19 @@
 CTINB-MIB  DEFINITIONS ::= BEGIN
- 
+
         --  ctinb-info-mib
         --  Revision:   01.00.00
         --  Date: October 14, 1996
- 
+
         --  Cabletron Systems, Inc.
         --  35 Industrial Way, P.O. Box 5005
         --  Rochester, NH 03867-0505
         --  (603) 332-9400
         --  support@ctron.com
- 
+
         --
         --  This module will be extended, as needed.
         --
- 
+
         --  Cabletron Systems reserves the right to make changes in
         --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
@@ -29,15 +29,15 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
         --  Cabletron grants vendors, end-users, and other interested parties
         --  a non-exclusive license to use this Specification in connection
         --  with the management of Cabletron products.
- 
+
         --  Copyright August 96 Cabletron Systems
 
-        IMPORTS 
+        IMPORTS
                 Counter, TimeTicks
                         FROM RFC1155-SMI
                 OBJECT-TYPE
                         FROM RFC-1212
-                ctINBinfo 
+                ctINBinfo
                         FROM CTRON-MIB-NAMES ;
 
 
@@ -48,13 +48,13 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
 --
         inbMonarchSystem      OBJECT IDENTIFIER ::= { ctINBinfo 1 }
 
-        inbMonarchSystemTable  OBJECT-TYPE 
+        inbMonarchSystemTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF InbMonarchSystemEntry
             ACCESS  not-accessible
             STATUS  mandatory
             ::= { inbMonarchSystem 1 }
 
-        inbMonarchSystemEntry  OBJECT-TYPE 
+        inbMonarchSystemEntry  OBJECT-TYPE
             SYNTAX  InbMonarchSystemEntry
             ACCESS  not-accessible
             STATUS  mandatory
@@ -62,7 +62,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
             ::= { inbMonarchSystemTable 1 }
 
         InbMonarchSystemEntry ::=
-            SEQUENCE { 
+            SEQUENCE {
                 inbMonarchSystemINB
                     INTEGER,
                 inbMonarchStatusTimeStamp
@@ -86,7 +86,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
              }
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION 
+            DESCRIPTION
                     "Two physical INB's may exist on a module. This
                     object distinquishes which INB, INB-A or INB-B."
             ::= { inbMonarchSystemEntry 1 }
@@ -99,7 +99,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                     "This object represents the value of sysUptime when
                      the Monarch last changed."
             ::= { inbMonarchSystemEntry 2 }
- 
+
          inbMonarchBandwidth OBJECT-TYPE
             SYNTAX  INTEGER
             ACCESS  read-only
@@ -117,16 +117,16 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                     "The automatic TDM mode overides any preset TDM
-                     allocation. All boards get an equal number of 
+                     allocation. All boards get an equal number of
                      pre-allocated TDM slots, adding up to 100% of total
                      INB bandwidth, and have Round Robin enabled. The
                      automatic mode will, in effect, provide each board
                      with a 1/(number of boards) minimum guarantee
                      INB bandwidth.
- 
+
                      The userPolicy mode will have the per board policy
                      enforced. Each board will have a level of service
-                     (TDM slots, Round Robin arbitration from the 
+                     (TDM slots, Round Robin arbitration from the
                      inbMonarchTable) associated with it to take effect
                      when this object is set to user_policy. Newly
                      inserted boards will default to Round Robin and
@@ -171,13 +171,13 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
 --
         inbMonarch            OBJECT IDENTIFIER ::= { ctINBinfo 2 }
 
-        inbMonarchTable  OBJECT-TYPE 
+        inbMonarchTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF InbMonarchEntry
             ACCESS  not-accessible
             STATUS  mandatory
             ::= { inbMonarch 1 }
 
-        inbMonarchEntry  OBJECT-TYPE 
+        inbMonarchEntry  OBJECT-TYPE
             SYNTAX  InbMonarchEntry
             ACCESS  not-accessible
             STATUS  mandatory
@@ -186,7 +186,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
             ::= { inbMonarchTable 1 }
 
         InbMonarchEntry ::=
-            SEQUENCE { 
+            SEQUENCE {
                 inbMonarchSlot
                     INTEGER,
                 inbMonarchINB
@@ -205,27 +205,27 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                     INTEGER
             }
 
-        inbMonarchSlot  OBJECT-TYPE 
+        inbMonarchSlot  OBJECT-TYPE
             SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "The slot number containing this module."
             ::= { inbMonarchEntry 1 }
 
-        inbMonarchINB  OBJECT-TYPE 
+        inbMonarchINB  OBJECT-TYPE
             SYNTAX  INTEGER{
                inbA(1),
                inbB(2)
              }
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Two physical INB interfaces may exist on a module. This
                     object distinquishes which INB, INB-A or INB-B."
             ::= { inbMonarchEntry 2 }
 
-        inbMonarchStatus  OBJECT-TYPE 
+        inbMonarchStatus  OBJECT-TYPE
             SYNTAX  INTEGER {
                standBy(1),
                sysUndefined(2),
@@ -233,7 +233,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
              }
             ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                     "Application state of the monarch application on this
                     module. Standby - indicates this module is not the
                     monarch but can be. SysUndefined - indicates this
@@ -248,7 +248,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
              }
             ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                     "This object describes the state of the backplane. LinkUp
                      is when this INB detects the clock on the backplane.
                      LinkDown is when no backplane clock has been detected."
@@ -258,11 +258,11 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
             SYNTAX  INTEGER
             ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                     "The bandwidth capacity of this board in Megabytes."
             ::= { inbMonarchEntry 5 }
 
- 
+
         inbMonarchTDMSlotRequest OBJECT-TYPE
             SYNTAX  INTEGER
             ACCESS  read-write
@@ -288,14 +288,14 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                      chassis entered userPolicy mode."
             ::= { inbMonarchEntry 7 }
 
-        inbMonarchRoundRobinControl  OBJECT-TYPE 
+        inbMonarchRoundRobinControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enabled(1),
                         disabled(2)
                     }
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "This object enables or disable this INB the ability to
                      participate in the Round Robin arbitration phase."
             ::= { inbMonarchEntry 8 }
@@ -314,13 +314,13 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
 
         inbStats              OBJECT IDENTIFIER ::= { ctINBinfo 3 }
 
-        inbStatsTable  OBJECT-TYPE 
+        inbStatsTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF InbStatsEntry
             ACCESS  not-accessible
             STATUS  mandatory
             ::= { inbStats 1 }
 
-        inbStatsEntry  OBJECT-TYPE 
+        inbStatsEntry  OBJECT-TYPE
             SYNTAX  InbStatsEntry
             ACCESS  not-accessible
             STATUS  mandatory
@@ -329,7 +329,7 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
             ::= { inbStatsTable 1 }
 
         InbStatsEntry ::=
-            SEQUENCE { 
+            SEQUENCE {
                 inbStatsSlot
                     INTEGER,
                 inbStatsINB
@@ -360,22 +360,22 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                     Counter
             }
 
-        inbStatsSlot  OBJECT-TYPE 
+        inbStatsSlot  OBJECT-TYPE
             SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "The slot number containing this module."
             ::= { inbStatsEntry 1 }
 
-        inbStatsINB  OBJECT-TYPE 
+        inbStatsINB  OBJECT-TYPE
             SYNTAX  INTEGER {
                  inbA(1),
                  inbB(2)
              }
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Two physical INB interfaces may exist on a module. This
                     object distinquishes which INB, INB-A or INB-B."
             ::= { inbStatsEntry 2 }
@@ -385,41 +385,41 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                    "The interface number of the INB. The interface 
+                    "The interface number of the INB. The interface
                      identified by a particular value of this
                      object is the same interface as identified by the
                      same value of the ifIndex object defined in RFC 1213."
             ::= { inbStatsEntry 3 }
 
-        inbStatsUniCastCells  OBJECT-TYPE 
+        inbStatsUniCastCells  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of UniCast INB cells received from the backplane."
             ::= { inbStatsEntry 4 }
 
-        inbStatsMultiCastCells  OBJECT-TYPE 
+        inbStatsMultiCastCells  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of multi-cast INB cells received from the backplane."
             ::= { inbStatsEntry 5 }
 
-        inbStatsBroadCastCells  OBJECT-TYPE 
+        inbStatsBroadCastCells  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of broadcast INB cells received from the backplane."
             ::= { inbStatsEntry 6 }
 
-        inbStatsXmitCells  OBJECT-TYPE 
+        inbStatsXmitCells  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of INB cells transmitted to the backplane."
             ::= { inbStatsEntry 7 }
 
@@ -459,15 +459,15 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                      number of cells that were not forwarded to the FPS."
             ::= { inbStatsEntry 11 }
 
-        inbStatsFromInbErrs  OBJECT-TYPE 
+        inbStatsFromInbErrs  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of INB receive errors from the backplane. This
                      includes FPSC xmit errors(inbStatsxmitToFps), INBC
                      receive sequence errors (inbStatsRecvSeqErrs)
-                     and INBC checksum errors(inbStatsRecvChksumErrs)." 
+                     and INBC checksum errors(inbStatsRecvChksumErrs)."
             ::= { inbStatsEntry 12 }
 
         inbStatsToINBDrops  OBJECT-TYPE
@@ -480,13 +480,13 @@ CTINB-MIB  DEFINITIONS ::= BEGIN
                      backplane."
             ::= { inbStatsEntry 13 }
 
-        inbStatsToInbErrs  OBJECT-TYPE 
+        inbStatsToInbErrs  OBJECT-TYPE
             SYNTAX  Counter
             ACCESS  read-only
             STATUS  mandatory
-            DESCRIPTION  
+            DESCRIPTION
                     "Number of INB backplane transmit errors. This includes
                      FPSC receive timeout errors"
             ::= { inbStatsEntry 14 }
 
-END 
+END

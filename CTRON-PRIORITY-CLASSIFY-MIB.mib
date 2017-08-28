@@ -93,18 +93,18 @@ CtPriClassifyType ::= TEXTUAL-CONVENTION
         --               framed packets
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..65535) further limitations
-        --               may exist on an implementation by  
+        --               may exist on an implementation by
         --               implementation basis (DSAP must equal
-        --               SSAP for example)                    
+        --               SSAP for example)
         --     DataMask: Mask not used (0)
         -- -----------------------------------------------------
         llcDsapSsap(2),
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  The Type of Service field present in IP
-        --               packets (3 bits of precedence, plus     
+        --               packets (3 bits of precedence, plus
         --               bits for delay, throughput, and reli-
-        --               ability)                              
+        --               ability)
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..255)
         --     DataMask: Mask not used (0)
@@ -113,7 +113,7 @@ CtPriClassifyType ::= TEXTUAL-CONVENTION
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  The IP Protocol field (ref. RFC 1700)
-        --               examples include (TCP,UDP,ICMP,etc)                                             
+        --               examples include (TCP,UDP,ICMP,etc)
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..255)
         --     DataMask: Mask not used (0)
@@ -121,9 +121,9 @@ CtPriClassifyType ::= TEXTUAL-CONVENTION
         ipProtocolType(4),
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  Transmission control used by IPX 
+        -- DESCRIPTION:  Transmission control used by IPX
         --               routers, set to zero before network
-        --               transmision.                       
+        --               transmision.
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..255)
         --     DataMask: Mask not used (0)
@@ -132,10 +132,10 @@ CtPriClassifyType ::= TEXTUAL-CONVENTION
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  IPX packet type, administered by Novell
-        --               0 ...... Hello or SAP                      
+        --               0 ...... Hello or SAP
         --               1 ...... RIP
-        --               2 ...... Echo Packet                      
-        --               3 ...... Error Packet                      
+        --               2 ...... Echo Packet
+        --               3 ...... Error Packet
         --               4 ...... Netware 386 or SAP
         --               5 ...... Sequenced Packet Protocol
         --               17 ..... Netware 286
@@ -176,7 +176,7 @@ CtPriClassifyType ::= TEXTUAL-CONVENTION
         ipAddressBilateral(9),   -- Both Source and Dest IP.
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  The network number assigned to this 
+        -- DESCRIPTION:  The network number assigned to this
         --               IPX network (zero is the local network)
         --
         -- LIMITATIONS:  While the distinction of Source/
@@ -445,7 +445,7 @@ ctPriClassifyDataVal OBJECT-TYPE
     DESCRIPTION
         "The data value associated with ctPriClassifyDataMeaning.
         The explicit range of this value is any unsigned 32-bit
-        integer(0..4294967295).  This range may vary, however, 
+        integer(0..4294967295).  This range may vary, however,
         depending upon the value of ctPriClassifyDataMeaning.
         Illegal values should not be allowed."
     ::= { ctPriClassifyEntry 3 }
@@ -524,7 +524,7 @@ ctPriClassifyRowStatus OBJECT-TYPE
             may be retrieved to obtain a plain English explanation
             of why this row cannot be activated.  createAndWait is
             the preferred method for this reason.
-        
+
         Both methods described above leave ctPriClassifyIngressList
         in it's default state, requiring an additional set operation
         in order to modify it.  An even more optimal twist on the

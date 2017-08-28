@@ -44,7 +44,7 @@ LAN-EMULATION-CLIENT-MIB DEFINITIONS ::= BEGIN
                 Tel: 415-578-6860
                 E-mail: info@atmforum.com"
         DESCRIPTION
-            "This module defines a portion of the management 
+            "This module defines a portion of the management
              information base (MIB) for managing ATM LAN Emulation
              Client nodes.  It is meant to be used in connection with
              the AToM MIB and MIB-II / RFC 1573 'ifTable' entries
@@ -2144,7 +2144,7 @@ leClientMIBConformance  OBJECT IDENTIFIER ::= { leClientMIB 2 }
 
 leClientMIBGroups       OBJECT IDENTIFIER ::=
                                            { leClientMIBConformance 1 }
-leClientMIBCompliances  OBJECT IDENTIFIER ::= 
+leClientMIBCompliances  OBJECT IDENTIFIER ::=
                                            { leClientMIBConformance 2 }
 
 -- Compliance Statements

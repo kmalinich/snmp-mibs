@@ -39,7 +39,7 @@ IMPORTS
 --      DisplayString
 --                FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
+--      IpAddress,
       TimeTicks
                 FROM RFC1155-SMI
 
@@ -52,20 +52,20 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 --SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 --HexInteger ::= INTEGER
 --  display this integer in hex format
 
 
 
 
---  SFPS Chassis RIP Table 
+--  SFPS Chassis RIP Table
 
 
 
@@ -168,4 +168,4 @@ sfpsChassisRipAPINumInTable   OBJECT-TYPE
                 ""
         ::= { sfpsChassisRipAPI 5 }
 
-END 
+END

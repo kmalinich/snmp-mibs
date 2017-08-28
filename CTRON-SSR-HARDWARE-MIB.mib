@@ -4,7 +4,7 @@ CTRON-SSR-HARDWARE-MIB DEFINITIONS ::= BEGIN
 --  enterprise-specific schema to access SSR Hardware configuration.
 --
 --  This module will be extended, as required.
- 
+
 --  Cabletron Systems reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
@@ -20,19 +20,19 @@ CTRON-SSR-HARDWARE-MIB DEFINITIONS ::= BEGIN
 --  Cabletron grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Cabletron products.
- 
+
 --  Copyright June 1998-2000 Cabletron Systems
- 
+
 
 IMPORTS
    MODULE-IDENTITY, OBJECT-TYPE, Counter64, TimeTicks
    FROM SNMPv2-SMI
-   TEXTUAL-CONVENTION        
+   TEXTUAL-CONVENTION
    FROM SNMPv2-TC
    MODULE-COMPLIANCE, OBJECT-GROUP
    FROM SNMPv2-CONF
-   ssrMibs 
-   FROM CTRON-SSR-SMI-MIB; 
+   ssrMibs
+   FROM CTRON-SSR-SMI-MIB;
 
 hardwareMIB MODULE-IDENTITY
     LAST-UPDATED "200007170000Z"  -- July 17, 2000
@@ -60,7 +60,7 @@ hardwareMIB MODULE-IDENTITY
 
     REVISION     "200005310000Z"
     DESCRIPTION
-      "Modify SSRPortConnectorType for GBIC connector in 4.0 and update sysHwModuleService  
+      "Modify SSRPortConnectorType for GBIC connector in 4.0 and update sysHwModuleService
        by appending the board serial number for 4.0 for RS-32000."
 
     REVISION     "200003200000Z"
@@ -78,7 +78,7 @@ hardwareMIB MODULE-IDENTITY
     REVISION     "9808040000Z"
     DESCRIPTION
        "First Revision of SSR Hardware mib. "
-        ::= { ssrMibs 200 }   
+        ::= { ssrMibs 200 }
 
    -- InterfaceIndex contains the semantics of ifIndex and
    -- should be used for any objects defined on other mib
@@ -99,12 +99,12 @@ hardwareMIB MODULE-IDENTITY
    SSRModuleType ::= TEXTUAL-CONVENTION
        STATUS       current
        DESCRIPTION
-        "A unique value, greater than zero, for each module 
+        "A unique value, greater than zero, for each module
         type supported by the SSR series of products."
        SYNTAX       INTEGER {
                 controlModule(1),     -- The Control Module type I
                 ether100TX(2),        -- 10 or 100 Mbps Ethernet, 8 port RJ45
-                ether100FX(3),        -- 100 Mbps Ethernet Fiber  
+                ether100FX(3),        -- 100 Mbps Ethernet Fiber
                 gigabitSX(4),         -- Gigabit SX Fiber (1000 Mbps Ethernet)
                 gigabitLX(5),         -- Gigabit LX Fiber (1000 Mbps Ethernet)
                 serial4port(6),       -- WAN DS1 speed 4 ports
@@ -113,15 +113,15 @@ hardwareMIB MODULE-IDENTITY
                 gigabitLLX(9),        -- Gigabit LLX Fiber (1000 Mbps Ethernet) 2 port
                 none(10),             -- no card present in slot
                 controlModule2(11),   -- Control Module type II (Elan)
-                gigabitLLX2P(12),     -- Gigabit LLX Fiber (1000 Mbps Ethernet) 1 port          
-                serial2port(13),      -- WAN DS1 2 ports 
+                gigabitLLX2P(12),     -- Gigabit LLX Fiber (1000 Mbps Ethernet) 1 port
+                serial2port(13),      -- WAN DS1 2 ports
                 cmts1x4port(15),      -- Cable Modem Termination System 1 downstream 4 upstream
                 fddi2port(16),
                 controlModule3(17),   -- Control Module type III (Esprit)
                 serial4portCE(20),    -- WAN 4 port Serial Compression & Encrpytion
                 ether100TX16port(21), -- 10 or 100 Mbps Ethernet 16 port
                 gigabitTX(22),        -- Gigabit SX TX (1000 Mbps Ethernet over copper)
-                atm155(24),           -- ATM 1.5-155 2 port with modular physical port connectors  
+                atm155(24),           -- ATM 1.5-155 2 port with modular physical port connectors
                 sonet4PortOc3(25),    -- Packet over SONET 4 ports Oc3
                 sonet2PortOc12(26),   -- Packet over SONET 2 ports Oc12
                 gigabitFX4P(27),      -- 4 Port Gigabit Ethernet short haul
@@ -155,9 +155,9 @@ hardwareMIB MODULE-IDENTITY
        SYNTAX   INTEGER {
                 etherFast(1),  -- 10 Mbps Ethernet or 100 Mbps Fast Ethernet capable port
                 gigEther(2),   -- Gigabit (1000 Mbps Ethernet)
-                hssi(3),       -- WAN HSSI Interface 
-                serial(4),     -- WAN T1 High Speed Serial Interface 
-                unknown(5),    -- unknown Port Type 
+                hssi(3),       -- WAN HSSI Interface
+                serial(4),     -- WAN T1 High Speed Serial Interface
+                unknown(5),    -- unknown Port Type
                 sonet(6),      -- Synchronous Optical Network Interface
                 ds1(7),        -- Digital Signal 1 aka T1
                 ds3(8),        -- Digital Signal 3 aka T3
@@ -190,7 +190,7 @@ hardwareMIB MODULE-IDENTITY
                 rs44x(14),         -- RS-449/442 shared 60 pin connector, female  connector
                 x21(15),           -- X.21 shared 60 pin connector, female  connector
                 hssi(16),          -- HSSI 50 pin connector, female connector
-                unknown(17),       -- unknown connector 
+                unknown(17),       -- unknown connector
                 fiberScSM(18),     -- Fiber optics SC connector Single Mode, female
                 fiberMTRjMM(19),   -- Fiber optics Female MTRJ connector, Single Mode, female connector
                 fiberMTRjSM(20),   -- Fiber optics Female MTRJ connector, Single Mode, female connector
@@ -204,7 +204,7 @@ hardwareMIB MODULE-IDENTITY
        STATUS       current
        DESCRIPTION
         "A string that is unique to a module in production. This string
-         is used by Cabletron Service and Manufacturing as 
+         is used by Cabletron Service and Manufacturing as
          to identify shipped inventory."
        SYNTAX OCTET STRING (SIZE (0..7))
 
@@ -219,19 +219,19 @@ hardwareMIB MODULE-IDENTITY
    SSRSwitchingFabricInfo ::= TEXTUAL-CONVENTION
        STATUS       current
        DESCRIPTION
-        "A bit string that represents the status of Switching Fabric 
-         in the shelf/chassis. Switching Fabric #1 is first 2 bits 0-1,  
+        "A bit string that represents the status of Switching Fabric
+         in the shelf/chassis. Switching Fabric #1 is first 2 bits 0-1,
          #2 is 2-3.
 
-         For example, given a 16 slot SSR 8600 which has one 
-         Switching Fabric in Switching Fabric Slot #1 
+         For example, given a 16 slot SSR 8600 which has one
+         Switching Fabric in Switching Fabric Slot #1
          (lowest full length midplane slot) the
          integer value 0x00000007 translates into (bits):
-               0 0 0 0 0 1 1 1 
+               0 0 0 0 0 1 1 1
                        | | | |
                        | | | +--- switching fabric #1 is present
                        | | +----- switching fabric is primary
-                       | + ------ switching fabric #2 is present 
+                       | + ------ switching fabric #2 is present
                        +--------- switching fabric is standby"
        SYNTAX       INTEGER (0..63)
 
@@ -241,9 +241,9 @@ hardwareMIB MODULE-IDENTITY
         "A bit string that represents the status of the active Control Module.
          Each LED occupies a bit. The value 1 indicates LED is on, 0 is off.
                The integer value 0x00000015 translates into (bits):
-               0 0 0 0 1 1 1 1 
+               0 0 0 0 1 1 1 1
                        | | | |
-                       | | | +- System OK  -- SYS OK 
+                       | | | +- System OK  -- SYS OK
                        | | +--- Heartbeat  -- HB
                        | +----- Error      -- ERR
                        + ------ Diagnostic -- Diag"
@@ -254,16 +254,16 @@ hardwareMIB MODULE-IDENTITY
        DESCRIPTION
         "A enumeration that represents the state of the backup control module.
 
-         A backup control module prom will boot the system firmware to an 
+         A backup control module prom will boot the system firmware to an
          intermediate state and begins sending hello messages to the main cpu
-         and assume the monitor(3) state. If the prom does not boot the 
+         and assume the monitor(3) state. If the prom does not boot the
          backup control module, the active control module will report the
-         status as inactive(2). inactive(2) indicates a failed state as it 
+         status as inactive(2). inactive(2) indicates a failed state as it
          means the backup control module can not take over for the active
          control module.
 
-         If the main cpu fails to respond to the backup control module's 
-         periodic status checks and the backup control module is in the 
+         If the main cpu fails to respond to the backup control module's
+         periodic status checks and the backup control module is in the
          standby(3) state, the backup control module will reset the active
          control module, then reset all line cards and then finish a normal
          boot sequence so that it becomes the master. At this point, the
@@ -299,8 +299,8 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
    -- the Slot Table
 
    -- The Slot table contains information on the entity's
-   -- plugged in modules.  Each slot can have a module plugged in with 
-   -- different network interfaces and versions.  
+   -- plugged in modules.  Each slot can have a module plugged in with
+   -- different network interfaces and versions.
    -- The system show hardware command reports the same data as this table
 
    sysHwModuleTable OBJECT-TYPE
@@ -355,7 +355,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        STATUS      current
        DESCRIPTION
         "The description of the module with it's version number etc.
-        For the Control Module it should have the software version, the 
+        For the Control Module it should have the software version, the
         amount of dynamic RAM, flash RAM."
        ::= { sysHwModuleEntry 3 }
 
@@ -368,7 +368,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        ::= { sysHwModuleEntry 4 }
 
    sysHwModuleVersion OBJECT-TYPE
-       SYNTAX      OCTET STRING  (SIZE (1)) 
+       SYNTAX      OCTET STRING  (SIZE (1))
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -395,7 +395,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        ::= { sysHwModuleEntry 8 }
 
    sysHwModuleStatus OBJECT-TYPE
-       SYNTAX      SSRModuleStatus 
+       SYNTAX      SSRModuleStatus
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -405,7 +405,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
    -- the Module Port Table
 
    -- The Module table contains information on the entity's
-   -- ports belonging to various modules.  
+   -- ports belonging to various modules.
 
    sysHwPortTable OBJECT-TYPE
        SYNTAX      SEQUENCE OF SysHwPortEntry
@@ -467,14 +467,14 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        ::= { sysHwPortEntry 4 }
 
    sysHwPortIfIndex OBJECT-TYPE
-       SYNTAX      SSRInterfaceIndex 
+       SYNTAX      SSRInterfaceIndex
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
         "The value of ifIndex used to access this port in the Interface MIB."
        ::= { sysHwPortEntry 5 }
- 
-   
+
+
    -- SSR 8 system hardware group
 
    PowerSupplyBits ::= TEXTUAL-CONVENTION
@@ -499,7 +499,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        SYNTAX       INTEGER (0..255)
 
    sysHwPowerSupply OBJECT-TYPE
-           SYNTAX  PowerSupplyBits 
+           SYNTAX  PowerSupplyBits
            MAX-ACCESS  read-only
            STATUS  current
            DESCRIPTION
@@ -547,7 +547,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        DESCRIPTION
         "Status of Switching Fabric in shelf/chassis."
        ::= { sysHwGroup 19 }
- 
+
    sysHwControlModuleLED  OBJECT-TYPE
        SYNTAX   SSRCmLedState
        MAX-ACCESS  read-only
@@ -561,7 +561,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-        "Status of the the backup Control Module as interpreted from the 
+        "Status of the the backup Control Module as interpreted from the
          active control module. CLI: system show hardware will present
          the following data: Redundant CPU slot : Not present"
        ::= { sysHwGroup 21 }
@@ -631,7 +631,7 @@ sysHwGroup  OBJECT IDENTIFIER   ::= { ssrMibs 1 }
 hwConformance OBJECT IDENTIFIER ::= { hardwareMIB 2 }
 hwCompliances OBJECT IDENTIFIER ::= { hwConformance 1 }
 hwGroups OBJECT IDENTIFIER ::= { hwConformance 2 }
- 
+
 hwComplianceV10 MODULE-COMPLIANCE
     STATUS deprecated
     DESCRIPTION
@@ -657,14 +657,14 @@ hwComplianceV12 MODULE-COMPLIANCE
     ::= { hwConfGroupV11 3 }
 
 hwComplianceV30 MODULE-COMPLIANCE
-    STATUS current 
+    STATUS current
     DESCRIPTION
             "The compliance statement for the SSR-HARDWARE-MIB."
     MODULE  -- this module
     MANDATORY-GROUPS { hwConfGroupV30 }
     ::= { hwConfGroupV11 4 }
 
-hwConfGroupV10  OBJECT-GROUP 
+hwConfGroupV10  OBJECT-GROUP
    OBJECTS {
         sysHwNumSlots,
         sysHwModuleSlotNumber,
@@ -691,9 +691,9 @@ hwConfGroupV10  OBJECT-GROUP
   STATUS deprecated
   DESCRIPTION
   "A set of managed objects that make up version 1.0 of the SSR Hardware mib."
-   ::= { hwGroups 1 } 
+   ::= { hwGroups 1 }
 
-hwConfGroupV11  OBJECT-GROUP 
+hwConfGroupV11  OBJECT-GROUP
    OBJECTS {
         sysHwNumSlots,
 
@@ -704,7 +704,7 @@ hwConfGroupV11  OBJECT-GROUP
         sysHwModuleVersion,
         sysHwModuleMemory,
         sysHwModuleService,
-        
+
         sysHwPortSlotNumber,
         sysHwPortNumber,
         sysHwPortType,
@@ -717,15 +717,15 @@ hwConfGroupV11  OBJECT-GROUP
         sysHwChassisId,
 
         sysHwSwitchingFabric,
-        sysHwControlModuleLED   
+        sysHwControlModuleLED
 }
   STATUS deprecated
   DESCRIPTION
   "A set of managed objects that make up version 1.1 of the SSR Hardware mib."
-   ::= { hwGroups 2 } 
+   ::= { hwGroups 2 }
 
 
-hwConfGroupV12  OBJECT-GROUP 
+hwConfGroupV12  OBJECT-GROUP
    OBJECTS {
         sysHwNumSlots,
 
@@ -736,7 +736,7 @@ hwConfGroupV12  OBJECT-GROUP
         sysHwModuleVersion,
         sysHwModuleMemory,
         sysHwModuleService,
-        sysHwModuleStatus,         
+        sysHwModuleStatus,
 
         sysHwPortSlotNumber,
         sysHwPortNumber,
@@ -750,15 +750,15 @@ hwConfGroupV12  OBJECT-GROUP
         sysHwChassisId,
 
         sysHwSwitchingFabric,
-        sysHwControlModuleLED   
+        sysHwControlModuleLED
 }
   STATUS deprecated
   DESCRIPTION
   "A set of managed objects that make up version 1.2 of the SSR Hardware mib."
-   ::= { hwGroups 3 } 
+   ::= { hwGroups 3 }
 
 
-hwConfGroupV30  OBJECT-GROUP 
+hwConfGroupV30  OBJECT-GROUP
    OBJECTS {
         sysHwNumSlots,
         sysHwModuleSlotNumber,
@@ -768,7 +768,7 @@ hwConfGroupV30  OBJECT-GROUP
         sysHwModuleVersion,
         sysHwModuleMemory,
         sysHwModuleService,
-        sysHwModuleStatus,         
+        sysHwModuleStatus,
 
         sysHwPortSlotNumber,
         sysHwPortNumber,
@@ -789,6 +789,6 @@ hwConfGroupV30  OBJECT-GROUP
   STATUS current
   DESCRIPTION
   "A set of managed objects that make up version 3.0 of the SSR Hardware mib."
-   ::= { hwGroups 4 } 
+   ::= { hwGroups 4 }
 
 END

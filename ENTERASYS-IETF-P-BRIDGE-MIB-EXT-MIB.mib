@@ -6,7 +6,7 @@ ENTERASYS-IETF-P-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IETF P-BRIDGE-MIB extension MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-IETF-P-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright December, 2002 Enterasys Networks, Inc.
@@ -62,7 +62,7 @@ etsysIetfpBridgeMibExtMIB MODULE-IDENTITY
     DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 33 } 
+    ::= { etsysModules 33 }
 
 etsysIetfpBridgeMibExt
     OBJECT IDENTIFIER ::= { etsysIetfpBridgeMibExtMIB 1 }
@@ -101,7 +101,7 @@ etsysDot1dPortPriorityEntry OBJECT-TYPE
     ::= { etsysDot1dPortPriorityTable 1 }
 
 EtsysDot1dPortPriorityEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysDot1dPortPriorityRewrite    INTEGER
     }
 

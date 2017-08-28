@@ -28,8 +28,8 @@ etsysSyslogClientMIB  MODULE-IDENTITY
          WWW:     http://www.enterasys.com"
 
     DESCRIPTION
-        "This MIB module defines a portion of the SNMP enterprise 
-         MIBs under the Enterasys enterprise OID pertaining to the 
+        "This MIB module defines a portion of the SNMP enterprise
+         MIBs under the Enterasys enterprise OID pertaining to the
          configuration of the generation of Syslog compatible
          diagnostic messages for Enterasys products."
 
@@ -37,29 +37,29 @@ etsysSyslogClientMIB  MODULE-IDENTITY
     DESCRIPTION
         "Added etsysSyslogSecureLogArchiveNotification and
          etsysSyslogSecureLogDroppedMsgNotification to notify an
-         administrator when a secure log file should be archived 
+         administrator when a secure log file should be archived
          or messages destined for a secure log file have been dropped.
          Also added etsysSyslogClientControlSecurePersistentLogging
          option to object etsysSyslogClientControl to enable secure
          syslog event logging to a secure file.  Also added
          etsysSyslogServerSecureFile as an option for the object
-         etsysSyslogApplicationAllowedServers as a possible 
+         etsysSyslogApplicationAllowedServers as a possible
          destination for syslog events."
 
     REVISION "200907171438Z"  -- Fri Jul 17 14:38 UTC 2009
     DESCRIPTION
         "Reversed shifting of BIT assignments in
-         etsysSyslogApplicationAllowedServers for backwards 
+         etsysSyslogApplicationAllowedServers for backwards
          compatability."
-    
+
     REVISION "200902172053Z"  -- Tue Feb 17 20:53 UTC 2009
     DESCRIPTION
-        "Fixed a typographical syntax error in 
+        "Fixed a typographical syntax error in
          etsysSyslogApplicationAllowedServers object."
 
     REVISION "200901161859Z"  -- Fri Jan 16 18:59 UTC 2009
     DESCRIPTION
-        "Augmented the BITS definition in the 
+        "Augmented the BITS definition in the
          etsysSyslogApplicationAllowedServers leaf with correct
          numbering of the bits for the servers and adding bits for
          the console and file destinations."
@@ -70,7 +70,7 @@ etsysSyslogClientMIB  MODULE-IDENTITY
 
     REVISION "200307311419Z"  -- Thu Jul 31 14:19 GMT 2003
     DESCRIPTION
-        "Augmented etsysSyslogClientControl to support the option 
+        "Augmented etsysSyslogClientControl to support the option
          of logging to non-volatile memory, added a DEFVAL clause
          to etsysSyslogClientControl, and added an object,
          etsysSyslogApplicationAllowedServers, to control which
@@ -137,24 +137,24 @@ SyslogSeverity  ::=  TEXTUAL-CONVENTION
 -- etsysSyslogClientMIB  groupings
 -- -------------------------------------------------------------
 
-etsysSyslogClient          OBJECT IDENTIFIER 
+etsysSyslogClient          OBJECT IDENTIFIER
                       ::= { etsysSyslogClientMIB 1 }
 
-etsysSyslogServer          OBJECT IDENTIFIER 
+etsysSyslogServer          OBJECT IDENTIFIER
                       ::= { etsysSyslogClientMIB 2 }
 
-etsysSyslogApplication     OBJECT IDENTIFIER 
+etsysSyslogApplication     OBJECT IDENTIFIER
                       ::= { etsysSyslogClientMIB 3 }
 
 etsysSyslogNotification    OBJECT IDENTIFIER
                       ::= { etsysSyslogClientMIB 5 }
 
 -- -------------------------------------------------------------
--- etsysSyslogClient group           
+-- etsysSyslogClient group
 -- -------------------------------------------------------------
 
 etsysSyslogClientMessages OBJECT-TYPE
-    SYNTAX      Counter32 
+    SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -164,7 +164,7 @@ etsysSyslogClientMessages OBJECT-TYPE
     ::= { etsysSyslogClient 1 }
 
 etsysSyslogClientMessagesDropped OBJECT-TYPE
-    SYNTAX      Counter32 
+    SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -174,7 +174,7 @@ etsysSyslogClientMessagesDropped OBJECT-TYPE
     ::= { etsysSyslogClient 2 }
 
 etsysSyslogClientLastMessageTime OBJECT-TYPE
-    SYNTAX      TimeStamp 
+    SYNTAX      TimeStamp
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -201,7 +201,7 @@ etsysSyslogClientControl OBJECT-TYPE
     ::= { etsysSyslogClient 4 }
 
 etsysSyslogClientSecureMessagesDropped OBJECT-TYPE
-    SYNTAX      Counter32 
+    SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -224,7 +224,7 @@ etsysSyslogServerMaxEntries OBJECT-TYPE
     ::= { etsysSyslogServer 1 }
 
 etsysSyslogServerNumEntries OBJECT-TYPE
-    SYNTAX      Gauge32 
+    SYNTAX      Gauge32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -237,7 +237,7 @@ etsysSyslogServerTableNextAvailableIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This object indicates the numerically lowest available 
+        "This object indicates the numerically lowest available
          index within this entity, which may be used for the
          value of etsysSyslogServerIndex in the creation of a
          new entry in the etsysSyslogServerTable.
@@ -250,7 +250,7 @@ etsysSyslogServerTableNextAvailableIndex OBJECT-TYPE
          A value of zero indicates that all of the entries in the
          etsysSyslogServerTable are currently in use.
 
-         This value should only be considered a guideline for 
+         This value should only be considered a guideline for
          management creation of etsysSyslogServerEntries, there
          is no requirement on management to create entries based
          upon this index value."
@@ -284,13 +284,13 @@ etsysSyslogServerEntry OBJECT-TYPE
 
 EtsysSyslogServerEntry ::=
     SEQUENCE {
-        etsysSyslogServerIndex   
+        etsysSyslogServerIndex
              Unsigned32,
-        etsysSyslogServerDescription   
+        etsysSyslogServerDescription
              SnmpAdminString,
-        etsysSyslogServerAddressType   
+        etsysSyslogServerAddressType
              InetAddressType,
-        etsysSyslogServerAddress   
+        etsysSyslogServerAddress
              InetAddress,
         etsysSyslogServerUdpPort
              SyslogUdpPort,
@@ -300,7 +300,7 @@ EtsysSyslogServerEntry ::=
              SyslogSeverity,
         etsysSyslogServerMessagesIgnored
              Counter32,
-        etsysSyslogServerRowStatus      
+        etsysSyslogServerRowStatus
              RowStatus
     }
 
@@ -317,7 +317,7 @@ etsysSyslogServerDescription OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "Administratively assigned textual description of this 
+        "Administratively assigned textual description of this
          syslog server."
     ::= { etsysSyslogServerEntry 2 }
 
@@ -403,7 +403,7 @@ etsysSyslogServerMessagesIgnored OBJECT-TYPE
     ::= { etsysSyslogServerEntry 8 }
 
 etsysSyslogServerRowStatus OBJECT-TYPE
-    SYNTAX      RowStatus 
+    SYNTAX      RowStatus
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
@@ -418,7 +418,7 @@ etsysSyslogServerRowStatus OBJECT-TYPE
          The agent should not delete a row, except in the case of
          the loss of persistent storage.
 
-         Refer to the RowStatus convention for further details on 
+         Refer to the RowStatus convention for further details on
          the behavior of this object."
     REFERENCE
         "RFC2579 (Textual Conventions for SMIv2)"
@@ -442,7 +442,7 @@ etsysSyslogServerDefaultUdpPort OBJECT-TYPE
 
          1.)  no value is specified for etsysSyslogServerUdpPort, or
 
-         2.)  etsysSyslogServerUdpPort is implemented read-only. 
+         2.)  etsysSyslogServerUdpPort is implemented read-only.
 
          If etsysSyslogServerUdpPort is implemented read-only,
          and this value is changed, it should affect the UDP
@@ -467,7 +467,7 @@ etsysSyslogServerDefaultFacility OBJECT-TYPE
 
          1.)  no value is specified for etsysSyslogServerFacility, or
 
-         2.)  etsysSyslogServerFacility is implemented read-only. 
+         2.)  etsysSyslogServerFacility is implemented read-only.
 
          If etsysSyslogServerFacility is implemented read-only,
          and this value is changed, it should affect the syslog
@@ -492,7 +492,7 @@ etsysSyslogServerDefaultSeverity OBJECT-TYPE
 
          1.)  no value is specified for etsysSyslogServerSeverity, or
 
-         2.)  etsysSyslogServerSeverity is implemented read-only. 
+         2.)  etsysSyslogServerSeverity is implemented read-only.
 
          The higher the severity level, the less critical it is.
 
@@ -506,7 +506,7 @@ etsysSyslogServerDefaultSeverity OBJECT-TYPE
     ::= { etsysSyslogServer 7 }
 
 -- -------------------------------------------------------------
--- etsysSyslogApplication group            
+-- etsysSyslogApplication group
 -- -------------------------------------------------------------
 
 etsysSyslogApplicationTable OBJECT-TYPE
@@ -537,13 +537,13 @@ EtsysSyslogApplicationEntry ::=
     SEQUENCE {
         etsysSyslogApplicationIndex
              Unsigned32,
-        etsysSyslogApplicationDescription   
+        etsysSyslogApplicationDescription
              SnmpAdminString,
-        etsysSyslogApplicationMnemonic   
+        etsysSyslogApplicationMnemonic
              SnmpAdminString,
-        etsysSyslogApplicationSeverity   
+        etsysSyslogApplicationSeverity
              SyslogSeverity,
-        etsysSyslogApplicationAllowedServers 
+        etsysSyslogApplicationAllowedServers
              BITS
     }
 
@@ -614,7 +614,7 @@ etsysSyslogApplicationAllowedServers OBJECT-TYPE
          the etsysSyslogServerTable. Bit positions that are set, but for
          which the corresponding etsysSyslogServerRowStatus object is
          not active, will be ignored."
-    DEFVAL  { { 
+    DEFVAL  { {
                 etsysSyslogServerIndex1, etsysSyslogServerIndex2,
                 etsysSyslogServerIndex3, etsysSyslogServerIndex4,
                 etsysSyslogServerIndex5, etsysSyslogServerIndex6,
@@ -625,14 +625,14 @@ etsysSyslogApplicationAllowedServers OBJECT-TYPE
 
 
 -- -------------------------------------------------------------
--- etsysSyslogNotification branch            
+-- etsysSyslogNotification branch
 -- -------------------------------------------------------------
 etsysSyslogSecureLogArchiveNotification NOTIFICATION-TYPE
     STATUS  current
     DESCRIPTION
         "Syslog security log archive notification.  The device will send
-         this notification when the secure syslog file should be 
-         archived offline." 
+         this notification when the secure syslog file should be
+         archived offline."
     ::= { etsysSyslogNotification 1 }
 
 etsysSyslogSecureLogDroppedMsgNotification NOTIFICATION-TYPE
@@ -650,13 +650,13 @@ etsysSyslogSecureLogDroppedMsgNotification NOTIFICATION-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysSyslogClientConformance OBJECT IDENTIFIER 
+etsysSyslogClientConformance OBJECT IDENTIFIER
                           ::= { etsysSyslogClientMIB 4 }
 
-etsysSyslogClientGroups OBJECT IDENTIFIER 
+etsysSyslogClientGroups OBJECT IDENTIFIER
                           ::= { etsysSyslogClientConformance 1 }
 
-etsysSyslogClientCompliances OBJECT IDENTIFIER 
+etsysSyslogClientCompliances OBJECT IDENTIFIER
                           ::= { etsysSyslogClientConformance 2 }
 
 
@@ -732,7 +732,7 @@ etsysSyslogNotificationGroup NOTIFICATION-GROUP
                   }
     STATUS        current
     DESCRIPTION
-        "A collection of supported notifications regarding syslog 
+        "A collection of supported notifications regarding syslog
          events."
     ::= { etsysSyslogClientGroups 5 }
 
@@ -829,7 +829,7 @@ etsysSyslogClientCompliance MODULE-COMPLIANCE
         "Write access is not required for implementations that
          do not support configuring the syslog facility at all,
          or do not support specification of allowable servers
-         per application."                    
+         per application."
 
     ::= { etsysSyslogClientCompliances 1 }
 

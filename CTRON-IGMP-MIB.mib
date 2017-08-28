@@ -64,7 +64,7 @@ ctIGMP  MODULE-IDENTITY
     REVISION    "200505092030Z"  -- Mon May  9 20:30 GMT 2005
     DESCRIPTION
             " Added the IgmpProtocolClassTc, and IgmpProtocolIdTc
-              TEXTUAL CONVENTIONS, added the 
+              TEXTUAL CONVENTIONS, added the
               ctIGMPProtocolClassificationTable."
 
     REVISION    "200503152038Z"  -- Tue Mar 15 20:38 GMT 2005
@@ -145,13 +145,13 @@ IgmpProtocolIdTc ::= TEXTUAL-CONVENTION
         meritInp    (32), -- MERIT Internodal Protocol             [HWB]
         sep         (33), -- Sequential Exchange Protocol        [JC120]
         x3pc        (34), -- Third Party Connect Protocol         [SAF3]
-        idpr        (35), -- Inter-Domain Policy Routing Protocol [MXS1] 
+        idpr        (35), -- Inter-Domain Policy Routing Protocol [MXS1]
         xtp         (36), -- XTP                                   [GXC]
         ddp         (37), -- Datagram Delivery Protocol            [WXC]
         idprCmtp    (38), -- IDPR Control Message Transport Proto [MXS1]
         tpPlusPlus  (39), -- TP++ Transport Protocol               [DXF]
         il          (40), -- IL Transport Protocol            [Presotto]
-        ipv6        (41), -- Ipv6                              [Deering]    
+        ipv6        (41), -- Ipv6                              [Deering]
         sdrp        (42), -- Source Demand Routing Protocol       [DXE1]
         ipv6Route   (43), -- Routing Header for IPv6           [Deering]
         ipv6Frag    (44), -- Fragment Header for IPv6          [Deering]
@@ -227,7 +227,7 @@ IgmpProtocolIdTc ::= TEXTUAL-CONVENTION
         pgm        (113), -- PGM Reliable Transport Protocol  [Speakman]
         ipProt114  (114), -- any 0-hop protocol                   [IANA]
         l2tp       (115), -- Layer Two Tunneling Protocol        [Aboba]
-        ddx        (116), -- D-II Data Exchange (DDX)           [Worley] 
+        ddx        (116), -- D-II Data Exchange (DDX)           [Worley]
         iatp       (117), -- Interactive Agent Transfer Protocol [Murphy]
         stp        (118), -- Schedule Transfer Protocol            [JMP]
         srp        (119), -- SpectraLink Radio Protocol       [Hamilton]
@@ -241,7 +241,7 @@ IgmpProtocolIdTc ::= TEXTUAL-CONVENTION
         crudp      (127), -- Combat Radio User Datagram        [Sautter]
         sscopmce   (128), --                                     [Waber]
         iplt       (129), --                                  [Hollbach]
-        sps        (130), -- Secure Packet Shield             [McIntosh] 
+        sps        (130), -- Secure Packet Shield             [McIntosh]
         pipe       (131), -- Private IP Encapsulation within IP  [Petri]
         sctp       (132), -- Stream Control Transmission Protocol [Stewart]
         fc         (133), -- Fibre Channel                   [Rajagopal]
@@ -364,8 +364,8 @@ IgmpProtocolIdTc ::= TEXTUAL-CONVENTION
         ipProto250 (250), -- Unassigned                           [IANA]
         ipProto251 (251), -- Unassigned                           [IANA]
         ipProto252 (252), -- Unassigned                           [IANA]
-        ipProto253 (253), -- Use for experimentation and testing [RFC3692] 
-        ipProto254 (254), -- Use for experimentation and testing [RFC3692] 
+        ipProto253 (253), -- Use for experimentation and testing [RFC3692]
+        ipProto254 (254), -- Use for experimentation and testing [RFC3692]
         ipProto255 (255)  -- Reserved                             [IANA]
     }
 --
@@ -380,9 +380,9 @@ ctIGMPNewDefaultState OBJECT-TYPE
      MAX-ACCESS read-write
      STATUS     current
      DESCRIPTION
-          "This object defines the state in which IGMP will view new VLAN IDs 
+          "This object defines the state in which IGMP will view new VLAN IDs
            added to the system.  A value of Enable (1), indicates that IGMP will
-           create entries for all new VLANs in the ENABLE state.  A value of 
+           create entries for all new VLANs in the ENABLE state.  A value of
            Disable (2), indicates IGMP will create entries for all new VLANs in
            the DISABLED or 'not in service' state."
      DEFVAL { disable }
@@ -725,7 +725,7 @@ ctIGMPPolicyEntry           OBJECT-TYPE
      ::= { ctIGMPPolicyTable 1 }
 
 CtIGMPPolicyEntry      ::= SEQUENCE {
-             
+
         ctIGMPPolicyAddress     IpAddress,
         ctIGMPPolicyVlanId      Integer32,
         ctIGMPPolicyIfIndex     InterfaceIndex,
@@ -1051,7 +1051,7 @@ ctIGMPExtCacheOutPortList OBJECT-TYPE
      DESCRIPTION
           " The set of bridge ports for this multicast group, VLAN, and
            source IP address, to which multicast group-addressed
-           data frames are being forwarded." 
+           data frames are being forwarded."
      ::= { ctIGMPExtCacheEntry 8 }
 
 ctIGMPExtCacheSrcPort OBJECT-TYPE
@@ -1104,7 +1104,7 @@ ctIGMPDiscoveredRouterPortList OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-         "The set of bridge ports that IGMP has seen routing 
+         "The set of bridge ports that IGMP has seen routing
           protocols, IGMP queries, or ICMP Router Discovery frames on."
     ::= { ctIGMPDiscoveredRouterEntry 3 }
 
@@ -1351,8 +1351,8 @@ ctIGMPProtocolIdentifier OBJECT-TYPE
            Example: If this set has protocols(bits) 1 and 5 set to a
            '1', and the classification is 'multicastData', this will
            force IGMP to treat received frames with IP protocol ids of
-           1 and 5 as 'multicast data', and forward those frames to 
-           IGMP joined clients. Similarly if ids 1 and 5 were set to 
+           1 and 5 as 'multicast data', and forward those frames to
+           IGMP joined clients. Similarly if ids 1 and 5 were set to
            'routing protocol' then IGMP would treat received frames with
            these ids as routing protocols, etc. "
     ::= { ctIGMPProtocolClassificationEntry 2}

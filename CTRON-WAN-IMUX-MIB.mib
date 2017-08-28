@@ -2,7 +2,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
 
         --  ctron-wan-imux-mib.txt  The Cabletron Wide area Inverse Mux MIB.
         --  Revision: 01.00.03
-        --  Part Number: 
+        --  Part Number:
         --  Date:  August 22, 1997
 
         --  Cabletron Systems, Inc.
@@ -20,16 +20,16 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -64,7 +64,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
         ctWANMuxGeneralGroup OBJECT IDENTIFIER ::= { ctWanMux 1 }
 
         ctWANMuxMaxNumGroups    OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
@@ -88,8 +88,8 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                         Application.  This object is used to enable/disable
                         Inverse Multiplexing for the entire device.  Inverse
                         Multiplexer Groups may be enabled/disabled independently
-                        using ctWanMuxGroupAdmin.  This object must be set to 
-                        enabled for any inverse multiplexing to occur on the 
+                        using ctWanMuxGroupAdmin.  This object must be set to
+                        enabled for any inverse multiplexing to occur on the
                         device."
                 ::= { ctWANMuxGeneralGroup 2}
 
@@ -109,17 +109,17 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                         "Information describing the configured parameters
                         of one of the Inverse Multiplexer groups."
                 ::= { ctWanMux 2 }
-        
+
         ctWanMuxGroupEntry OBJECT-TYPE
                 SYNTAX      CtWanMuxGroupEntry
                 ACCESS      not-accessible
                 STATUS      mandatory
                 DESCRIPTION
-                        "A description of a single Inverse Multiplexer group 
+                        "A description of a single Inverse Multiplexer group
                         entry."
                 INDEX       { ctWanMuxGroupId }
                 ::= { ctWanMuxGroupTable 1 }
-        
+
         CtWanMuxGroupEntry ::=
                 SEQUENCE {
                         ctWanMuxGroupId
@@ -133,19 +133,19 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                         ctWanMuxGroupDelChannel
                         INTEGER
                         }
-        
+
         ctWanMuxGroupId    OBJECT-TYPE
                 SYNTAX      INTEGER (1..65535)
                 ACCESS      read-only
                 STATUS      mandatory
                 DESCRIPTION
                         "A unique value identifying an element in a sequence of
-                        groups which belong to the WAN Inverse Multiplexer.  
-                        This value ranges from 1 to the maximum number of 
+                        groups which belong to the WAN Inverse Multiplexer.
+                        This value ranges from 1 to the maximum number of
                         programmable groups as described by
                         ctWANMuxMaxNumGroups."
                 ::= { ctWanMuxGroupEntry 1 }
-        
+
         ctWanMuxGroupAdmin      OBJECT-TYPE
                 SYNTAX  INTEGER {
                         disabled(1),
@@ -156,24 +156,24 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "Used to enable and disable an Inverse Multiplexer
                         group which evenly distributes data traffic in a
-                        properly sequenced fashion, over two or more single 
-                        channel Wide Area Network connections such as DS1, 
-                        E1, DDS, or SYNC.  Each of the single channel 
-                        connections must be configured with an appropriate 
-                        datalink protocol. A minimum of two channels, each 
+                        properly sequenced fashion, over two or more single
+                        channel Wide Area Network connections such as DS1,
+                        E1, DDS, or SYNC.  Each of the single channel
+                        connections must be configured with an appropriate
+                        datalink protocol. A minimum of two channels, each
                         assigned to it's own physical interface, is required
                         before the Inverse Multiplexer group can be enabled."
                 ::= { ctWanMuxGroupEntry 2}
 
         ctWanMuxGroupNumChannels        OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
                         "Get the number of channels currently
-                        associated with this Inverse Multiplexer group. A 
+                        associated with this Inverse Multiplexer group. A
                         minimum of two channels, each assigned to it's own
-                        physical interface, is required before the Inverse 
+                        physical interface, is required before the Inverse
                         Multiplexer group can be enabled."
                 ::= { ctWanMuxGroupEntry 3}
 
@@ -183,7 +183,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 STATUS      mandatory
                 DESCRIPTION
                         "Add a channel to the channel list used by this Inverse
-                        Multiplexer group.  Before a channel is added, the 
+                        Multiplexer group.  Before a channel is added, the
                         channel must be assigned a MIB II ifindex, and an
                         acceptable Datalink Protocol. When this object is set,
                         it is set with the ifindex value. This object is always
@@ -191,23 +191,23 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 REFERENCE
                         "rfc-1213"
                 ::= { ctWanMuxGroupEntry 4 }
-          
+
         ctWanMuxGroupDelChannel   OBJECT-TYPE
                 SYNTAX      INTEGER
                 ACCESS      read-write
                 STATUS      mandatory
                 DESCRIPTION
-                        "Delete a channel to the channel list used by this 
+                        "Delete a channel to the channel list used by this
                         Inverse Multiplexer group.  Before a channel is
                         deleted, the channel must exist in the Inverse
                         Multiplexer group's channel table.  When this object
                         is set, it is set with the ifindex value of the channel
-                        the user wishes to delete from the channel table. This 
+                        the user wishes to delete from the channel table. This
                         object is always read as a 1."
                 REFERENCE
                         "rfc-1213"
                 ::= { ctWanMuxGroupEntry 5 }
-          
+
 --
 -- Inverse Multiplexer Channel Table
 --
@@ -220,11 +220,11 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 ACCESS      not-accessible
                 STATUS      mandatory
                 DESCRIPTION
-                        "Table containing ifindex values, representing WAN 
-                        channels, used by the Inverse Multiplexer. The table 
+                        "Table containing ifindex values, representing WAN
+                        channels, used by the Inverse Multiplexer. The table
                         also contains statistics reported about each channel."
                 ::= { ctWanMux 3 }
-        
+
         ctWanMuxChannelEntry OBJECT-TYPE
                 SYNTAX      CtWanMuxChannelEntry
                 ACCESS      not-accessible
@@ -233,7 +233,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                         "A description of a single entry."
                 INDEX       { ctWanMuxChannelGroupId, ctWanMuxChannelId }
                 ::= { ctWanMuxChannelTable 1 }
-        
+
         CtWanMuxChannelEntry ::=
                 SEQUENCE {
                         ctWanMuxChannelGroupId
@@ -251,29 +251,29 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                         ctWanMuxChannelStatus
                         INTEGER
                         }
-        
+
         ctWanMuxChannelGroupId    OBJECT-TYPE
                 SYNTAX      INTEGER (1..65535)
                 ACCESS      read-only
                 STATUS      mandatory
                 DESCRIPTION
-                        "A unique value identifying an element in a sequence 
+                        "A unique value identifying an element in a sequence
                         of groups which belong to the WAN Inverse Multiplexer.
-                        This value ranges from 1 to the maximum number of 
+                        This value ranges from 1 to the maximum number of
                         programmable groups as described by
                         ctWANMuxMaxNumGroups."
                 ::= { ctWanMuxChannelEntry 1 }
-        
+
         ctWanMuxChannelId    OBJECT-TYPE
                 SYNTAX      INTEGER (1..65535)
                 ACCESS      read-only
                 STATUS      mandatory
                 DESCRIPTION
                         "A unique value identifying an element in a sequence of
-                        member channel ifindex values which belong to a WAN 
+                        member channel ifindex values which belong to a WAN
                         Inverse Multiplexer group."
                 ::= { ctWanMuxChannelEntry 2 }
-          
+
         ctWanMuxChannelIfIndex    OBJECT-TYPE
                 SYNTAX      INTEGER
                 ACCESS      read-only
@@ -288,7 +288,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 ACCESS      read-only
                 STATUS      mandatory
                 DESCRIPTION
-                        "Returns a unique physical connection identifier 
+                        "Returns a unique physical connection identifier
                         associated with this channel's physical WAN
                         connection."
                 ::= { ctWanMuxChannelEntry 4 }
@@ -298,8 +298,8 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 ACCESS      read-only
                 STATUS      mandatory
                 DESCRIPTION
-                        "Returns a value which represents the available 
-                        bandwidth for transmitting data existing for the 
+                        "Returns a value which represents the available
+                        bandwidth for transmitting data existing for the
                         physical WAN connection associated with this channel.
                         The value is represented in bits/sec."
                 ::= { ctWanMuxChannelEntry 5 }
@@ -310,7 +310,7 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 STATUS      mandatory
                 DESCRIPTION
                         "Returns a value which represents a cumulative count
-                        of bytes transmitted out from this interface.  The 
+                        of bytes transmitted out from this interface.  The
                         count includes any bytes transmitted across the
                         physical medium, less physical medium framing."
                 ::= { ctWanMuxChannelEntry 6 }
@@ -324,10 +324,10 @@ CTRON-WAN-IMUX-MIB DEFINITIONS ::= BEGIN
                 STATUS      mandatory
                 DESCRIPTION
                         "Returns the current status of the channel associated
-                        with an inverse multiplexer group.  The channel is 
-                        active when the group admin status is enabled, and 
-                        the channel is operational.  The channel is inactive 
-                        when either the group admin status is disabled, or 
+                        with an inverse multiplexer group.  The channel is
+                        active when the group admin status is enabled, and
+                        the channel is operational.  The channel is inactive
+                        when either the group admin status is disabled, or
                         the channel is not operational."
                 ::= { ctWanMuxChannelEntry 7 }
 

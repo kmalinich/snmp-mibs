@@ -360,7 +360,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
         "The value of this object is the administrative status
          of the CMM board.
-         
+
          down(1) -- all modems that belong to this board are to be
                     removed from service immediately
          leave-service(2) -- each modem that belongs to this board is
@@ -386,7 +386,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
         "The value of this object is the operational status of
          the CMM board.
-         
+
          initializing(1) -- all modules that belong to this board are booting
                             up or in the process of a software upgrade
          active(2) -- all modules that belong to this board are available
@@ -532,7 +532,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
         "The value of this object is the administrative status
          of the CMM module.
-         
+
          down(1) -- all modems that belong to this module are to be
                     removed from service immediately
          leave-service(2) -- each modem that belongs to this module is
@@ -547,7 +547,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          faulty(6) -- the entire module is to be immediately removed from
                       service and considered unusable"
       ::= { cmmModuleEntry 10 }
-      
+
    cmmModuleOperStatus  OBJECT-TYPE
          SYNTAX  INTEGER {
                          initializing(1),
@@ -562,7 +562,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
         "The value of this object is the operational status of
          the CMM module.
-         
+
          initializing(1) -- the module is booting up or in the process of
                             a software upgrade
          active(2) -- all modems that belong to this module are available
@@ -647,7 +647,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
                   cmmTDMSlot            INTEGER,
                   cmmResetModemStats    INTEGER,
                   cmmModemAdminStatus   INTEGER,
-                  cmmModemOperStatus    INTEGER 
+                  cmmModemOperStatus    INTEGER
                   }
 
    cmmBoardID  OBJECT-TYPE
@@ -793,7 +793,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
         "This object contains an enumerated value that indicates the type
          of error correction that was negotiated."
       ::= { cmmModemEntry 14 }
-   
+
    cmmCompressionType OBJECT-TYPE
          SYNTAX      INTEGER {
                              none(1),
@@ -873,7 +873,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
       ::= { cmmModemEntry 22 }
 
    cmmNumOutHostAcks OBJECT-TYPE
-         SYNTAX     Gauge 
+         SYNTAX     Gauge
          ACCESS  read-only
          STATUS      mandatory
          DESCRIPTION
@@ -882,7 +882,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
       ::= { cmmModemEntry 23 }
 
    cmmNumOutCmmAcks OBJECT-TYPE
-         SYNTAX     Gauge 
+         SYNTAX     Gauge
          ACCESS  read-only
          STATUS      mandatory
          DESCRIPTION
@@ -1082,12 +1082,12 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          STATUS      mandatory
          DESCRIPTION
         "This object contains the administrative status of a modem.
-         
+
          down(1) -- the modem is to be removed from service immediately
          leave-service(2) -- the modem is to be removed from service at
                              the completion of its current call, if any
          up(3) -- the modem is to become available for accepting calls
-         run-diagnostics(4) -- the modem is to run a series of 
+         run-diagnostics(4) -- the modem is to run a series of
                                comprehensive on-line diagnostic tests
          reset(5) -- the modem is to be physically reset
          faulty(6) -- the modem is to be immediately removed from
@@ -1109,7 +1109,7 @@ CT-CMMPHYS-MIB DEFINITIONS ::= BEGIN
          STATUS      mandatory
          DESCRIPTION
         "This object contains the operational status of a modem.
-        
+
          initializing(1) -- the module to which the modem belongs is booting
                             up or in the process of a software upgrade
          idle(2) -- the modem is available for accepting calls but has no

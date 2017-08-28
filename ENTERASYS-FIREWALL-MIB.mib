@@ -6,7 +6,7 @@ ENTERASYS-FIREWALL-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Firewall MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-FIREWALL-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright April, 2003 Enterasys Networks, Inc.
@@ -34,7 +34,7 @@ IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Integer32, Counter32,
         Unsigned32, Gauge32
         FROM SNMPv2-SMI
-    RowStatus, StorageType, TruthValue, TimeStamp, 
+    RowStatus, StorageType, TruthValue, TimeStamp,
         VariablePointer, DateAndTime
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
@@ -59,10 +59,10 @@ etsysFirewallMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          the configuration, policy, and monitoring of firewall
          network devices."
 
@@ -70,7 +70,7 @@ etsysFirewallMIB MODULE-IDENTITY
     DESCRIPTION
         "The initial version of this MIB module."
 
-    ::= { etsysModules 37 } 
+    ::= { etsysModules 37 }
 
 
 -- -------------------------------------------------------------
@@ -92,7 +92,7 @@ etsysFWPolicyFilters    OBJECT IDENTIFIER ::= { etsysFWPolicyObjects 5 }
 -- -------------------------------------------------------------
 
 etsysFWFirewallEnabled OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -184,7 +184,7 @@ etsysFWRPCMicrosoftTimeout OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The idle session timeout on packet inspection for Remote 
+        "The idle session timeout on packet inspection for Remote
         Procedure Call (RPC) -based applications. This Application Level
         Gateway (ALG) supports two types of RPCs - SUN (used by most UNIX
         systems) and Microsoft. If the RPC-based session is idle for the
@@ -198,7 +198,7 @@ etsysFWRPCSunTimeout OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The idle session timeout on packet inspection for Remote 
+        "The idle session timeout on packet inspection for Remote
         Procedure Call (RPC) -based applications. This Application Level
         Gateway (ALG) supports two types of RPCs - SUN (used by most UNIX
         systems) and Microsoft. If the RPC-based session is idle for the
@@ -208,7 +208,7 @@ etsysFWRPCSunTimeout OBJECT-TYPE
 
 -- -------------------------------------------------------------
 -- -------------------------------------------------------------
--- Interface to Firewall State Table 
+-- Interface to Firewall State Table
 -- -------------------------------------------------------------
 
 etsysFWFirewallOnIntfLastChange OBJECT-TYPE
@@ -270,7 +270,7 @@ EtsysFWFirewallOnIntfEntry ::=
     }
 
 etsysFWFirewallOnIntfEnabled OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
@@ -299,7 +299,7 @@ etsysFWFirewallOnIntfRowStatus OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The status of this conceptual row.
-          
+
          The value of this object has no effect on whether other
          objects in this conceptual row can be modified."
     ::= { etsysFWFirewallOnIntfEntry 3 }
@@ -307,7 +307,7 @@ etsysFWFirewallOnIntfRowStatus OBJECT-TYPE
 
 -- -------------------------------------------------------------
 -- -------------------------------------------------------------
--- Interface to Firewall Filter Table 
+-- Interface to Firewall Filter Table
 -- -------------------------------------------------------------
 
 etsysFWFirewallIntfFilterLastChange OBJECT-TYPE
@@ -315,7 +315,7 @@ etsysFWFirewallIntfFilterLastChange OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The sysUpTime at which the etsysFWFirewallIntfFilterTable 
+        "The sysUpTime at which the etsysFWFirewallIntfFilterTable
          was last modified."
     ::= { etsysFWConfigurationObjects 12 }
 
@@ -324,8 +324,8 @@ etsysFWFirewallIntfFilterTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This table defines the IP filters applied to 
-         individual interfaces. 
+        "This table defines the IP filters applied to
+         individual interfaces.
 
          The implementation may choose to allow modifications to this
          table only under certain SNMP contexts.  The
@@ -367,14 +367,14 @@ etsysFWFirewallIntfFilterType OBJECT-TYPE
         "The type of IP filter that applies on a particular interface.
 
              ipBroadcast -
-                This filter type allows incoming/outgoing IP packets 
-                through the firewall with 255.255.255.255 set as the 
-                destination address. It enables broadcast protocols 
+                This filter type allows incoming/outgoing IP packets
+                through the firewall with 255.255.255.255 set as the
+                destination address. It enables broadcast protocols
                 such as DHCP to traverse the firewall.
 
              ipMulticast -
                 This filter type allows incoming/outgoing IP packets
-                with a multicast destination address through the 
+                with a multicast destination address through the
                 firewall. It enables multicast protocols such as RIP
                 and OSPF to traverse the firewall.
 
@@ -382,39 +382,39 @@ etsysFWFirewallIntfFilterType OBJECT-TYPE
                 All IP options allowed.
 
              ipOptionOther -
-                Any IP option other than those explicitly supported 
+                Any IP option other than those explicitly supported
                 by the command.
 
             ipOptionLooseSourceRoute -
-                Requests routing that includes the specified routers. 
-                This routing path includes a sequence of IP addresses 
-                a datagram must follow to its destination but allows 
-                multiple network hops between successive addresses on 
+                Requests routing that includes the specified routers.
+                This routing path includes a sequence of IP addresses
+                a datagram must follow to its destination but allows
+                multiple network hops between successive addresses on
                 the list.
 
             ipOptionRecordRoute -
-                Traces a route. It allows the source to create an 
-                empty list of IP addresses and arrange for each 
-                router that router that handles a datagram to add 
-                its IP address to the list. When a datagram arrives, 
-                the destination device can extract and and process 
+                Traces a route. It allows the source to create an
+                empty list of IP addresses and arrange for each
+                router that router that handles a datagram to add
+                its IP address to the list. When a datagram arrives,
+                the destination device can extract and and process
                 the list of addresses.
 
             ipOptionStrictSourceRoute -
-                Specifies an exact route through the Internet. 
-                This routing path includes a sequence of IP addresses 
-                a datagram must follow, hop by hop, from its source 
-                to destination. The path between two successive 
-                addresses in the list must consist of a single 
+                Specifies an exact route through the Internet.
+                This routing path includes a sequence of IP addresses
+                a datagram must follow, hop by hop, from its source
+                to destination. The path between two successive
+                addresses in the list must consist of a single
                 physical network.
 
             ipOptionTimeStamp -
-                Records timestamps along a route. It is similar to 
-                the record route option in that every router from 
-                source to destination adds its IP address, and a 
-                timestamp, to the list. The timestamp notes the 
-                time and date a router handled the datagram, 
-                expressed in milliseconds since midnight, 
+                Records timestamps along a route. It is similar to
+                the record route option in that every router from
+                source to destination adds its IP address, and a
+                timestamp, to the list. The timestamp notes the
+                time and date a router handled the datagram,
+                expressed in milliseconds since midnight,
                 Universal Time."
     ::= { etsysFWFirewallIntfFilterEntry 1 }
 
@@ -428,11 +428,11 @@ etsysFWFirewallIntfFilterDirection OBJECT-TYPE
     DESCRIPTION
         "The direction which the filter is applied.
             none - Denies the packet that matched the filter type.
-            in   - Allows the packet that matched the filter type 
+            in   - Allows the packet that matched the filter type
                    to enter the interface.
-            out  - Allows the packet that matched the filter type 
+            out  - Allows the packet that matched the filter type
                    to exit the interface.
-            both - Allows the packet that matched the filter type 
+            both - Allows the packet that matched the filter type
                    to enter and exit the interface."
     DEFVAL { none }
     ::= { etsysFWFirewallIntfFilterEntry 2 }
@@ -453,7 +453,7 @@ etsysFWFirewallIntfFilterRowStatus OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The status of this conceptual row.
-          
+
          The value of this object has no effect on whether other
          objects in this conceptual row can be modified."
     ::= { etsysFWFirewallIntfFilterEntry 4 }
@@ -478,14 +478,14 @@ etsysFWSystemPolicyGroupName OBJECT-TYPE
          and the default policy of 'allow' should be executed until one
          is imposed by either this object or by the interface processing
          the packet.
-         
+
          Since policy group names are unique, the
          etsysFWSystemPolicyGroupName MUST NOT be equal to any
          etsysFWIntfToGroupName objects."
     ::= { etsysFWPolicyGroups 1 }
 
 -- -------------------------------------------------------------
--- Interface to Policy Group Table 
+-- Interface to Policy Group Table
 -- -------------------------------------------------------------
 
 etsysFWIntfToGroupLastChange OBJECT-TYPE
@@ -552,7 +552,7 @@ etsysFWIntfToGroupName  OBJECT-TYPE
          etsysFWIntfToGroupName should be used as index into the
          etsysFWGroupPolicyTable to determine the list of rules that
          MUST be applied to this interface.
-         
+
          Since policy group names are unique, the etsysFWIntfToGroupName
          MUST NOT be equal to the etsysFWSystemPolicyGroupName object."
     ::= { etsysFWIntfToGroupEntry 2 }
@@ -649,8 +649,8 @@ etsysFWGroupPolicyPriority  OBJECT-TYPE
     DESCRIPTION
         "The priority of rule in the group.  The firewall applies the
          rules from the lowest to the highest priority.
-         Priority can only be in the range of 0 to the maximum number of 
-         policyRuleDef in the group + 1. i.e. If there are 5 policies in 
+         Priority can only be in the range of 0 to the maximum number of
+         policyRuleDef in the group + 1. i.e. If there are 5 policies in
          the group. The maximum priority the user can create is 6."
     ::= { etsysFWGroupPolicyEntry 3 }
 
@@ -942,13 +942,13 @@ etsysFWNetworkGroupTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "A table defining a group of network objects from the 
+        "A table defining a group of network objects from the
          etsysFWNetworkTable or a network group in
          etsysFWNetworkGroupTable. The networks contained in the group
          are defined in the etsysFWNetwkInNetGrpTable.
 
          The implementation may choose to allow modifications to this
-         table only under certain SNMP contexts.  The 
+         table only under certain SNMP contexts.  The
          etsysFWNetworkGroupStorageType for a given SNMP context may be
          readOnly, meaning the row cannot be modified or deleted. In
          another SNMP context, the etsysFWNetworkGroupStorageType value
@@ -999,7 +999,7 @@ etsysFWNetworkGroupRowStatus OBJECT-TYPE
          objects in this conceptual row can be modified.
 
          Once active, it MAY NOT have its value changed if any active
-         rows in the etsysFWNetwkInNetGrpTable or the 
+         rows in the etsysFWNetwkInNetGrpTable or the
          etsysFWFilterDefTable are currently pointing at this row."
     ::= { etsysFWNetworkGroupEntry 3 }
 
@@ -1031,11 +1031,11 @@ etsysFWNetwkInNetGrpTable OBJECT-TYPE
     DESCRIPTION
         "A table defining the networks in a network group.
          All etsysFWNetwkInNetGrpSubNetwork objects in a
-         etsysFWNetworkGroupName must have the same 
+         etsysFWNetworkGroupName must have the same
          etsysFWNetworkIPVersion and etsysFWNetworkRealm.
 
          The implementation may choose to allow modifications to this
-         table only under certain SNMP contexts.  The 
+         table only under certain SNMP contexts.  The
          etsysFWNetwkInNetGrpStorageType for a given SNMP context may be
          readOnly, meaning the row cannot be modified or deleted. In
          another SNMP context, the etsysFWNetwkInNetGrpStorageType value
@@ -1065,12 +1065,12 @@ etsysFWNetwkInNetGrpSubNetwork OBJECT-TYPE
     DESCRIPTION
         "The location of the contained network.  The MIB defines the
          following tables which may be pointed to by this column:
-         
+
                  etsysFWNetworkTable
-                 
+
          Implementations should prevent recursion and return the
          inconsistentName exception if the SnmpAdminString value
-         references an etsysFWNetworkGroupTable row that already 
+         references an etsysFWNetworkGroupTable row that already
          contains the etsysFWNetworkGroupName of this row.
 
          If this column is set to a SnmpAdminString value which
@@ -1099,8 +1099,8 @@ etsysFWNetwkInNetGrpRowStatus OBJECT-TYPE
 
          The value of this object has no effect on whether other
          objects in this conceptual row can be modified.
-         
-         This object cannot be made active until the network or 
+
+         This object cannot be made active until the network or
          network group referenced by the etsysFWNetwkInNetGrpSubNetwork
          is both defined and is active.  An attempt to do so will
          result in an inconsistentValue error."
@@ -1205,7 +1205,7 @@ etsysFWNetworkRangeOrMask OBJECT-TYPE
         "When set to useIpAddrRange, the etsysFWNetworkIPAddrBegin
          and etsysFWNetworkIPAddrEnd define the network object in this
          row.
-         When set to useIpAddrMask, the etsysFWNetworkIPAddrBegin 
+         When set to useIpAddrMask, the etsysFWNetworkIPAddrBegin
          and etsysFWNetworkIPAddrMask define the network object in this
          row."
     ::= { etsysFWNetworkEntry 3 }
@@ -1252,7 +1252,7 @@ etsysFWNetworkIPAddressMask OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When etsysFWNetworkRangeOrMask is set to useIpAddrMask, this
-         is the mask that define the IP network.  To define a single 
+         is the mask that define the IP network.  To define a single
          host set this to all 1's."
     ::= { etsysFWNetworkEntry 7 }
 
@@ -1274,9 +1274,9 @@ etsysFWNetworkRowStatus OBJECT-TYPE
 
          The value of this object has no effect on whether other
          objects in this conceptual row can be modified.
-         
+
          Once active, it MAY NOT have its value changed if any active
-         rows in the etsysFWNetwkInNetGrpTable or the 
+         rows in the etsysFWNetwkInNetGrpTable or the
          etsysFWFilterDefTable are currently pointing at this row."
     ::= { etsysFWNetworkEntry 9 }
 
@@ -1317,13 +1317,13 @@ etsysFWServiceGroupTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "A table defining a group of service objects from the 
+        "A table defining a group of service objects from the
          etsysFWServiceTable or a service group in
          etsysFWServiceGroupTable. The services contained in the group
          are defined in the etsysFWNetwkInNetGrpTable.
 
          The implementation may choose to allow modifications to this
-         table only under certain SNMP contexts.  The 
+         table only under certain SNMP contexts.  The
          etsysFWServiceGroupStorageType for a given SNMP context may be
          readOnly, meaning the row cannot be modified or deleted. In
          another SNMP context, the etsysFWServiceGroupStorageType value
@@ -1374,7 +1374,7 @@ etsysFWServiceGroupRowStatus OBJECT-TYPE
          objects in this conceptual row can be modified.
 
          Once active, it MAY NOT have its value changed if any active
-         rows in the etsysFWNetwkInNetGrpTable or the 
+         rows in the etsysFWNetwkInNetGrpTable or the
          etsysFWFilterDefTable are currently pointing at this row."
     ::= { etsysFWServiceGroupEntry 3 }
 
@@ -1407,7 +1407,7 @@ etsysFWServiceInSvcGrpTable OBJECT-TYPE
         "A table defining the services in a service group.
 
          The implementation may choose to allow modifications to this
-         table only under certain SNMP contexts.  The 
+         table only under certain SNMP contexts.  The
          etsysFWServiceInSvcGrpStorageType for a given SNMP context may be
          readOnly, meaning the row cannot be modified or deleted. In
          another SNMP context, the etsysFWServiceInSvcGrpStorageType value
@@ -1437,12 +1437,12 @@ etsysFWServiceInSvcGrpSubService OBJECT-TYPE
     DESCRIPTION
         "The location of the contained service.  The MIB defines the
          following tables which may be pointed to by this column:
-         
+
                  etsysFWServiceTable
-                 
+
          Implementations should prevent recursion and return the
          inconsistentName exception if the SnmpAdminString value
-         references an etsysFWServiceGroupTable row that already 
+         references an etsysFWServiceGroupTable row that already
          contains the etsysFWServiceGroupName of this row.
 
          If this column is set to a SnmpAdminString value which
@@ -1471,8 +1471,8 @@ etsysFWServiceInSvcGrpRowStatus OBJECT-TYPE
 
          The value of this object has no effect on whether other
          objects in this conceptual row can be modified.
-         
-         This object cannot be made active until the service or 
+
+         This object cannot be made active until the service or
          service group referenced by the etsysFWNetwkInNetGrpSubService
          is both defined and is active.  An attempt to do so will
          result in an inconsistentValue error."
@@ -2536,7 +2536,7 @@ etsysFWDoSBlockedAttacks OBJECT-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysFirewallConformance    OBJECT IDENTIFIER 
+etsysFirewallConformance    OBJECT IDENTIFIER
     ::= { etsysFirewallMIB 4 }
 
 etsysFirewallGroups         OBJECT IDENTIFIER
@@ -2557,8 +2557,8 @@ etsysFWFirewallEnabledGroup OBJECT-GROUP
     STATUS current
     DESCRIPTION
         "The Firewall Enabled Group."
-    ::= { etsysFirewallGroups 1 } 
-    
+    ::= { etsysFirewallGroups 1 }
+
 etsysFWFirewallConfigGroup OBJECT-GROUP
     OBJECTS {
         etsysFWTcpTimeout,
@@ -2590,8 +2590,8 @@ etsysFWFirewallIntfGroup OBJECT-GROUP
     DESCRIPTION
         "The Firewall on Interface Enabled Group for enabling
          the firewall on individual interfaces."
-    ::= { etsysFirewallGroups 3 }     
-                
+    ::= { etsysFirewallGroups 3 }
+
 
 etsysFWSystemPolicyNameGroup OBJECT-GROUP
     OBJECTS {
@@ -2603,7 +2603,7 @@ etsysFWSystemPolicyNameGroup OBJECT-GROUP
     ::= { etsysFirewallGroups 4 }
 
 etsysFWInterfacePolicyGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysFWIntfToGroupLastChange,
         etsysFWIntfToGroupStorageType,
         etsysFWIntfToGroupRowStatus
@@ -2646,7 +2646,7 @@ etsysFWPolicyRuleDefGroup OBJECT-GROUP
     ::= { etsysFirewallGroups 7 }
 
 etsysFWNetworkGroupGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysFWNetworkGroupMaxEntries,
         etsysFWNetworkGroupNumEntries,
         etsysFWNetworkGroupLastChange,
@@ -2682,7 +2682,7 @@ etsysFWNetworkGroup OBJECT-GROUP
     ::= { etsysFirewallGroups 9 }
 
 etsysFWServiceGroupGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysFWServiceGroupMaxEntries,
         etsysFWServiceGroupNumEntries,
         etsysFWServiceGroupLastChange,
@@ -2699,7 +2699,7 @@ etsysFWServiceGroupGroup OBJECT-GROUP
     ::= { etsysFirewallGroups 10 }
 
 etsysFWServiceGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysFWServiceMaxEntries,
         etsysFWServiceNumEntries,
         etsysFWServiceLastChange,
@@ -2773,8 +2773,8 @@ etsysFWPolicyRuleTrueGroup OBJECT-GROUP
     STATUS current
     DESCRIPTION
         "The Policy Rule True Table Group."
-    ::= { etsysFirewallGroups 15 } 
-    
+    ::= { etsysFirewallGroups 15 }
+
 etsysFWSessionTotalsGroup OBJECT-GROUP
     OBJECTS {
         etsysFWSessionTotalsNumEntries,
@@ -2799,7 +2799,7 @@ etsysFWIpSessionGroup OBJECT-GROUP
         etsysFWIpSessionIPVersion,
         etsysFWIpSessionSrcAddress,
         etsysFWIpSessionDstAddress,
-        etsysFWIpSessionSrcPort, 
+        etsysFWIpSessionSrcPort,
         etsysFWIpSessionDstPort,
         etsysFWIpSessionProtocolID,
         etsysFWIpSessionCreation
@@ -2892,7 +2892,7 @@ etsysFirewallCompliance MODULE-COMPLIANCE
         GROUP etsysFWServiceGroup
         DESCRIPTION
             "This group is mandatory for firewall policy
-             implementations which support service 
+             implementations which support service
              defined in this MIB."
 
         GROUP etsysFWFilterGroup
@@ -2914,8 +2914,8 @@ etsysFirewallCompliance MODULE-COMPLIANCE
         DESCRIPTION
             "This group is mandatory for firewall implementations
             which support a counter for the number of times a
-            policy rule is true."  
-            
+            policy rule is true."
+
         GROUP etsysFWSessionTotalsGroup
         DESCRIPTION
             "This group is mandatory for firewall implementations

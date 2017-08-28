@@ -39,7 +39,7 @@ CTRON-ELAN-MIB DEFINITIONS ::= BEGIN
 IMPORTS
     ctAtmfLanEmulation
             FROM CTRON-MIB-NAMES
-    IpAddress 
+    IpAddress
             FROM RFC1155-SMI
     DisplayString
             FROM RFC1213-MIB
@@ -97,15 +97,15 @@ ctElanConfEntry OBJECT-TYPE
     ::= { ctElanConfTable 1 }
 
 CtElanConfEntry ::= SEQUENCE {
-    ctElanConfIndex 
+    ctElanConfIndex
          ElanLocalIndex,
-    ctElanConfUnitNumber 
+    ctElanConfUnitNumber
          INTEGER,
-    ctElanConfPolicy 
+    ctElanConfPolicy
          INTEGER,
-    ctElanConfDelPolicyWithElan 
+    ctElanConfDelPolicyWithElan
          INTEGER,
-    ctElanConfRowStatus 
+    ctElanConfRowStatus
         INTEGER
     }
 
@@ -144,7 +144,7 @@ ctElanConfPolicy OBJECT-TYPE
          communication by restricting directory
          services learning or lookups.  The secure(1)
          mode also restricts the bus from proxy
-         broadcast resolution, also know as the 
+         broadcast resolution, also know as the
          protocol preprocessor.  When in nonsecure(2)
          mode, the ELAN will allow cut through
          operation, Directory Services advertisement,
@@ -207,9 +207,9 @@ ctElanSFDSPeerEntry OBJECT-TYPE
     ::= { ctElanSFDSPeerTable 1 }
 
 CtElanSFDSPeerEntry ::= SEQUENCE {
-    ctElanSFDSPeerIP 
+    ctElanSFDSPeerIP
          IpAddress,
-    ctElanSFDSPeerRowStatus 
+    ctElanSFDSPeerRowStatus
          INTEGER
     }
 

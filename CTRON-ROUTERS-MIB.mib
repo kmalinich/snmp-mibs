@@ -42,7 +42,7 @@ CTRON-ROUTERS-MIB DEFINITIONS ::= BEGIN
 
 
 IMPORTS
-        OBJECT-TYPE     
+        OBJECT-TYPE
                 FROM RFC-1212
         DisplayString
                 FROM RFC1213-MIB
@@ -108,7 +108,7 @@ nwRtrStdMibTable  OBJECT-TYPE
                 entries in this table to determine which standard MIBs are
                 present. An entry exists for each standard MIB that is
                 present. The index into this table is an arbitrary ordinal
-                value." 
+                value."
         ::= { nwRtrStandardMibs 1 }
 
 nwRtrStdMibEntry  OBJECT-TYPE
@@ -121,14 +121,14 @@ nwRtrStdMibEntry  OBJECT-TYPE
         INDEX   { nwRtrStdMibIndex }
         ::= { nwRtrStdMibTable 1 }
 
-NwRtrStdMibEntry ::= 
+NwRtrStdMibEntry ::=
         SEQUENCE {
                 nwRtrStdMibIndex        INTEGER,
                 nwRtrStdMibIdentifier   OBJECT IDENTIFIER
                 }
 
 nwRtrStdMibIndex  OBJECT-TYPE
-        SYNTAX    INTEGER 
+        SYNTAX    INTEGER
         ACCESS    read-only
         STATUS    mandatory
         DESCRIPTION
@@ -137,7 +137,7 @@ nwRtrStdMibIndex  OBJECT-TYPE
         ::= { nwRtrStdMibEntry 1 }
 
 nwRtrStdMibIdentifier  OBJECT-TYPE
-        SYNTAX         OBJECT IDENTIFIER 
+        SYNTAX         OBJECT IDENTIFIER
         ACCESS         read-only
         STATUS         mandatory
         DESCRIPTION
@@ -147,9 +147,9 @@ nwRtrStdMibIdentifier  OBJECT-TYPE
 
 
 --  The Router High-Level View Group.
---  This group provides a high-level Configuration Change Flag to indicate 
+--  This group provides a high-level Configuration Change Flag to indicate
 --  whether further device interrogation is required and a version number
---  indicating the version of Cabletron Routing services.  This group also 
+--  indicating the version of Cabletron Routing services.  This group also
 --  provides tables to discover the routed protocols, routing protocols and
 --  components which are dynamically instanciated at device power up.
 --  These tables allow discovery of routing components on both the system and
@@ -183,7 +183,7 @@ nwRouterSystemTable   OBJECT-TYPE
                 "This table contains an entry for each routing service present
                 within the routing services enabled device."
         ::= { nwRtrApplicationSystem 2 }
- 
+
 nwRouterEntry   OBJECT-TYPE
         SYNTAX  NwRouterEntry
         ACCESS  not-accessible
@@ -194,7 +194,7 @@ nwRouterEntry   OBJECT-TYPE
         INDEX   { nwRouterInstance }
         ::= { nwRouterSystemTable 1 }
 
-NwRouterEntry ::= 
+NwRouterEntry ::=
         SEQUENCE {
                 nwRouterInstance        INTEGER,
                 nwRouterAdminStatus     INTEGER,
@@ -207,7 +207,7 @@ NwRouterEntry ::=
                 }
 
 nwRouterInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -227,7 +227,7 @@ nwRouterAdminStatus     OBJECT-TYPE
                 "Indicates the current administrative state of the routing
                 service for which the entry exists."
         ::= { nwRouterEntry 2 }
-                            
+
 nwRouterOperStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),             --  none of the following
@@ -245,7 +245,7 @@ nwRouterOperStatus     OBJECT-TYPE
         ::= { nwRouterEntry 3 }
 
 nwRouterOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -254,17 +254,17 @@ nwRouterOperationalTime  OBJECT-TYPE
         ::= { nwRouterEntry 4 }
 
 nwRouterEntMibGroup OBJECT-TYPE
-        SYNTAX  OBJECT IDENTIFIER 
+        SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "Identifies the starting OID for the Cabletron Enterprise MIB
-                that implements the managed objects for the routing service for 
+                that implements the managed objects for the routing service for
                 which the entry exists."
         ::= { nwRouterEntry 5 }
 
 nwRouterName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -273,7 +273,7 @@ nwRouterName OBJECT-TYPE
         ::= { nwRouterEntry 6 }
 
 nwRouterVersion  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -282,11 +282,11 @@ nwRouterVersion  OBJECT-TYPE
         ::= { nwRouterEntry 7 }
 
 nwRouterIdentifier  OBJECT-TYPE
-        SYNTAX  OBJECT IDENTIFIER 
+        SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Identifies the OID in the Cabletron ctNetwork naming tree 
+                "Identifies the OID in the Cabletron ctNetwork naming tree
                 MIB used to uniquely identify the routing service for which the
                 entry exists. Read the value indicated to obtain the name of the
                 routing service for which this entry exists."
@@ -319,9 +319,9 @@ nwRouterIfTable   OBJECT-TYPE
                 "This table contains an entry for each routing service running
                 on each router port. Essentially, this table gives a
                 high-level view of the configuration and administrative state
-                of each of the routing service running on each router port." 
+                of each of the routing service running on each router port."
         ::= { nwRtrApplicationInterfaces 1 }
- 
+
 nwRouterIfEntry   OBJECT-TYPE
         SYNTAX  NwRouterIfEntry
         ACCESS  not-accessible
@@ -343,7 +343,7 @@ NwRouterIfEntry ::=
                 }
 
 nwRouterIfIndex          OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -352,7 +352,7 @@ nwRouterIfIndex          OBJECT-TYPE
         ::= { nwRouterIfEntry 1 }
 
 nwRouterIfInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -390,10 +390,10 @@ nwRouterIfOperStatus     OBJECT-TYPE
         DESCRIPTION
               "Indicates the current operating condition of the routing
                service on the router port for which the entry exists."
-        ::= { nwRouterIfEntry 4 }                   
+        ::= { nwRouterIfEntry 4 }
 
 nwRouterIfOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -403,11 +403,11 @@ nwRouterIfOperationalTime  OBJECT-TYPE
         ::= { nwRouterIfEntry 5 }
 
 nwRouterIfName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the name of the routing service that is operating on 
+                "Indicates the name of the routing service that is operating on
                  the router port for which the entry exists."
         ::= { nwRouterIfEntry 6 }
 
@@ -436,7 +436,7 @@ nwRtgProtocolTable   OBJECT-TYPE
                 two instances show the hierarchical relationship between each
                 routing service and its supported routing protocols."
         ::= { nwRtrRoutingSystem 1 }
- 
+
 nwRtgProtocolEntry   OBJECT-TYPE
         SYNTAX  NwRtgProtocolEntry
         ACCESS  not-accessible
@@ -462,7 +462,7 @@ NwRtgProtocolEntry ::=
 
 
 nwRtgProtocolRtrInstance  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -470,11 +470,11 @@ nwRtgProtocolRtrInstance  OBJECT-TYPE
                 as established in the nwRouterSystemTable. This essentially
                 is the key that maps all routing protocols supported by the
                 same routing service to the same value for
-                nwRtgProtocolRtrInstance." 
+                nwRtgProtocolRtrInstance."
         ::= { nwRtgProtocolEntry 1 }
 
 nwRtgProtocolInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -513,7 +513,7 @@ nwRtgProtocolOperStatus     OBJECT-TYPE
         ::= { nwRtgProtocolEntry 4 }
 
 nwRtgProtocolOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -526,7 +526,7 @@ nwRtgProtocolEntMibGroup OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Identifies the starting OID of the subtree or branch of 
+                "Identifies the starting OID of the subtree or branch of
                                 the Cabletron Enterprise MIB that implements the
                 managed objects for the routing service for which the entry
                 exists."
@@ -534,7 +534,7 @@ nwRtgProtocolEntMibGroup OBJECT-TYPE
 
 
 nwRtgProtocolName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -544,7 +544,7 @@ nwRtgProtocolName OBJECT-TYPE
 
 
 nwRtgProtocolVersion  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -553,7 +553,7 @@ nwRtgProtocolVersion  OBJECT-TYPE
         ::= { nwRtgProtocolEntry 8 }
 
 nwRtgProtocolIdentifier  OBJECT-TYPE
-        SYNTAX  OBJECT IDENTIFIER 
+        SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -577,13 +577,13 @@ nwRtgProtocolIfTable   OBJECT-TYPE
                 services enabled device."
         ::= { nwRtrRoutingInterfaces 1 }
 
- 
+
 nwRtgProtocolIfEntry   OBJECT-TYPE
         SYNTAX  NwRtgProtocolIfEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "Each entry describes a routing protocols that is running on 
+                "Each entry describes a routing protocols that is running on
                 the router port for which the entry exists."
         INDEX   { nwRtgProtocolIfIndex, nwRtgProtocolIfRtrInstance,
                 nwRtgProtocolIfInstance }
@@ -601,7 +601,7 @@ NwRtgProtocolIfEntry ::=
                 }
 
 nwRtgProtocolIfIndex          OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -613,7 +613,7 @@ nwRtgProtocolIfIndex          OBJECT-TYPE
 
 
 nwRtgProtocolIfRtrInstance  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -621,11 +621,11 @@ nwRtgProtocolIfRtrInstance  OBJECT-TYPE
                 as established in nwRouterSystemTable, running on the router
                 port for which the entry exists. All router ports running
                 the same routing services will have the same value for
-                nwRtgProtocolIfRtrInstance." 
+                nwRtgProtocolIfRtrInstance."
         ::= { nwRtgProtocolIfEntry 2 }
 
 nwRtgProtocolIfInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -662,12 +662,12 @@ nwRtgProtocolIfOperStatus     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current operating condition of the routing 
+                "Indicates the current operating condition of the routing
                 protocol on this router port for which the entry exists."
 ::= { nwRtgProtocolIfEntry 5 }
 
 nwRtgProtocolIfOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -677,7 +677,7 @@ nwRtgProtocolIfOperationalTime  OBJECT-TYPE
         ::= { nwRtgProtocolIfEntry 6 }
 
 nwRtgProtocolIfName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -705,7 +705,7 @@ nwComponentTable   OBJECT-TYPE
                 configuration and state of each of the component protocol
                 running within each routing service."
         ::= { nwRtrComponentSystem 1 }
- 
+
 nwComponentEntry   OBJECT-TYPE
         SYNTAX  NwComponentEntry
         ACCESS  not-accessible
@@ -729,7 +729,7 @@ NwComponentEntry ::=
                 }
 
 nwComponentRtrInstance  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -741,7 +741,7 @@ nwComponentRtrInstance  OBJECT-TYPE
         ::= { nwComponentEntry 1 }
 
 nwComponentInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -779,7 +779,7 @@ nwComponentOperStatus     OBJECT-TYPE
         ::= { nwComponentEntry 4 }
 
 nwComponentOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -801,7 +801,7 @@ nwComponentEntMibGroup OBJECT-TYPE
         ::= { nwComponentEntry 6 }
 
 nwComponentName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -811,7 +811,7 @@ nwComponentName OBJECT-TYPE
 
 
 nwComponentVersion  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -820,7 +820,7 @@ nwComponentVersion  OBJECT-TYPE
         ::= { nwComponentEntry 8 }
 
 nwComponentIdentifier  OBJECT-TYPE
-        SYNTAX  OBJECT IDENTIFIER 
+        SYNTAX  OBJECT IDENTIFIER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -867,7 +867,7 @@ NwComponentIfEntry ::=
                 }
 
 nwComponentIfIndex          OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -876,7 +876,7 @@ nwComponentIfIndex          OBJECT-TYPE
         ::= { nwComponentIfEntry 1 }
 
 nwComponentIfRtrInstance  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -887,7 +887,7 @@ nwComponentIfRtrInstance  OBJECT-TYPE
         ::= { nwComponentIfEntry 2 }
 
 nwComponentIfInstance        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -922,12 +922,12 @@ nwComponentIfOperStatus     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the current operating condition of the 
+                "Indicates the current operating condition of the
                 components on the router port for which the entry exists."
         ::= { nwComponentIfEntry 5 }
 
 nwComponentIfOperationalTime  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -936,7 +936,7 @@ nwComponentIfOperationalTime  OBJECT-TYPE
         ::= { nwComponentIfEntry 6 }
 
 nwComponentIfName OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1027,7 +1027,7 @@ nwComponentIfName OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                 "Indicates the total number of Routed Protocol packets that have been
-                 received, during  System Operational Time, on the 
+                 received, during  System Operational Time, on the
                  router port for which this entry exists."
         ::= {  nwRtrIfFwdCtrEntry 3 }
 
@@ -1068,7 +1068,7 @@ nwComponentIfName OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
            "Indicates the total number of Routed Protocol packets that have been
-                discarded (dropped), during  System Operational Time, 
+                discarded (dropped), during  System Operational Time,
                 on the  router port for which the entry exists."
         ::= {  nwRtrIfFwdCtrEntry 7 }
 
@@ -1079,7 +1079,7 @@ nwComponentIfName OBJECT-TYPE
         DESCRIPTION
                 "Indicates the total number of Routed Protocol packets that have been
                 discarded, because of Routed Protocol addressing errors in the
-            Routed Protocol header, during  System Operational Time, on the 
+            Routed Protocol header, during  System Operational Time, on the
                 router port for which the entry exists."
         ::= {  nwRtrIfFwdCtrEntry 8 }
 
@@ -1090,7 +1090,7 @@ nwComponentIfName OBJECT-TYPE
         DESCRIPTION
                 "Indicates the total number of Routed Protocol packets that have been
                 discarded, because an invalid packet length was contained
-                in the Routed Protocol header, during  System Operational Time, on 
+                in the Routed Protocol header, during  System Operational Time, on
                 the  router port for which the entry exists."
         ::= {  nwRtrIfFwdCtrEntry 9 }
 
@@ -1110,8 +1110,8 @@ nwComponentIfName OBJECT-TYPE
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
-                "Indicates the total number of bytes in the Routed Protocol packets 
-                that have been received, during  System Operational Time, on the 
+                "Indicates the total number of bytes in the Routed Protocol packets
+                that have been received, during  System Operational Time, on the
             router port for which the entry exists."
         ::= {  nwRtrIfFwdCtrEntry 11 }
 
@@ -1203,7 +1203,7 @@ nwComponentIfName OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                 "Indicates the total number of bytes in the Routed Protocol packets
-                that have been forwarded by the local host, during      
+                that have been forwarded by the local host, during
                  System Operational Time, on the  router port for which the entry
             exists."
         ::= {  nwRtrIfFwdCtrEntry 20 }
@@ -1215,7 +1215,7 @@ nwComponentIfName OBJECT-TYPE
         DESCRIPTION
                 "Indicates the total number of bytes in the Routed Protocol packets
                 that have been discarded by the local host, that were
-                received, during  System Operational Time, on the 
+                received, during  System Operational Time, on the
                 router port for which the entry exists."
         ::= {  nwRtrIfFwdCtrEntry 21 }
 

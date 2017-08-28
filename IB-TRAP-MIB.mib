@@ -46,16 +46,16 @@ ibTrapOneModule MODULE-IDENTITY
                        remove entry for vNIOS master candidate"
 
          REVISION     "201210010000Z"  -- October. 1, 2012
-         DESCRIPTION  "Add trap for RIR SWIP API failure" 
+         DESCRIPTION  "Add trap for RIR SWIP API failure"
 
          REVISION     "201208140000Z"  -- Aug. 14, 2012
          DESCRIPTION  "Add LDAP traps."
-         
+
          REVISION     "201207130000Z"  -- July. 13, 2012
-         DESCRIPTION  "Add trap for vNIOS master candidate" 
+         DESCRIPTION  "Add trap for vNIOS master candidate"
 
          REVISION     "201207090000Z"  -- July. 9, 2012
-         DESCRIPTION  "Add trap for LB device states" 
+         DESCRIPTION  "Add trap for LB device states"
 
          REVISION     "201206260000Z"  -- June. 26, 2012
          DESCRIPTION  "Add trap for Reporting alert triggered, and
@@ -163,7 +163,7 @@ IbState ::= TEXTUAL-CONVENTION
                    nac-server-group-up      (22), -- NAC Authentication server group is up
                    mgm-service-up           (23), --MGM service is active
                    mgm-service-down         (24), --MGM service is inactive
-                   ha-active-active         (25), -- HA Pair in Dual Active 
+                   ha-active-active         (25), -- HA Pair in Dual Active
                    ftp-service-working      (26), -- FTP service is working
                    ftp-service-failed       (27), -- FTP service is failed
                    ftp-service-inactive     (28), -- FTP service is inactive
@@ -196,7 +196,7 @@ IbState ::= TEXTUAL-CONVENTION
                    hsm-group-down            (56), -- HSM service is down
                    hsm-group-up              (57), -- HSM service is up
                    reporting-service-working (59), -- Reporting service is working
-                   reporting-service-failed  (60), -- Reporting service failed 
+                   reporting-service-failed  (60), -- Reporting service failed
                    reporting-service-inactive(61), -- Reporting service active
                    dns-cache-acceleration-working(62), -- DNS cache acceleration service is working
                    dns-cache-acceleration-failed(63), -- DNS cache acceleration service is failed

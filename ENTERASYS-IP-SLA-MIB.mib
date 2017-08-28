@@ -6,7 +6,7 @@ ENTERASYS-IP-SLA-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IP SLA functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-IP-SLA-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2013 Enterasys Networks, Inc.
@@ -350,7 +350,7 @@ etsysIpSlaConfigHistorySamples OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "Specifies the static depth of each bucket.  Modifying this 
+        "Specifies the static depth of each bucket.  Modifying this
          value changes the depth for current and future buckets.
          Previous buckets MUST NOT be modified.
 
@@ -401,7 +401,7 @@ etsysIpSlaConfigHistoryWrap OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "Specifies whether to replace the oldest history collection with
-         a newer data set, or stop collecting history data when the 
+         a newer data set, or stop collecting history data when the
          collection limit is reached.
 
          wrap(1)   - When the history collection reaches its limit, the
@@ -420,7 +420,7 @@ etsysIpSlaConfigDistributionCount OBJECT-TYPE
         "The number of statistical distributions to keep data for.  This
          object only accumulates round-trip-time data calculations.
 
-         This objects works in conjunction with the 
+         This objects works in conjunction with the
          etsysIpSlaConfigDistributionInterval object.  The last interval
          accumulates statistical distributions for all the entries from
          its interval start point to infinity (maximum value for a
@@ -1133,7 +1133,7 @@ etsysIpSlaPdvDataMinNegativeSD OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The negative PDV values are stored as absolute values.  The
-         value of this object is the minimum value from the set of 
+         value of this object is the minimum value from the set of
          absolute values for packets sent from the source to the
          destination."
     ::= { etsysIpSlaPdvDataEntry 7 }
@@ -1144,7 +1144,7 @@ etsysIpSlaPdvDataMaxNegativeSD OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The negative PDV values are stored as absolute values.  The
-         value of this object is the maximum value from the set of 
+         value of this object is the maximum value from the set of
          absolute values for packets sent from the source to the
          destination."
     ::= { etsysIpSlaPdvDataEntry 8 }
@@ -1227,7 +1227,7 @@ etsysIpSlaPdvDataMinNegativeDS OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The negative PDV values are stored as absolute values.  The
-         value of this object is the minimum value from the set of 
+         value of this object is the minimum value from the set of
          absolute values for packets sent from the destination to the
          source."
     ::= { etsysIpSlaPdvDataEntry 17 }
@@ -1238,7 +1238,7 @@ etsysIpSlaPdvDataMaxNegativeDS OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The negative PDV values are stored as absolute values.  The
-         value of this object is the maximum value from the set of 
+         value of this object is the maximum value from the set of
          absolute values for packets sent from the destination to the
          source."
     ::= { etsysIpSlaPdvDataEntry 18 }
@@ -1519,7 +1519,7 @@ etsysIpSlaRttGroup OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "This group defines the round-trip-time data objects defined 
+        "This group defines the round-trip-time data objects defined
          for the IP SLA entries used by the Enterasys IP SLA
          functionality."
     ::= { etsysIpSlaGroups 5 }

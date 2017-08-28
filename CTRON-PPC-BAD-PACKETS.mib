@@ -67,7 +67,7 @@ ctPPCBadPktsTxTable  OBJECT-TYPE
      ACCESS not-accessible
      STATUS mandatory
      DESCRIPTION
-       "Provides traffic error statistics (Transmit side)" 
+       "Provides traffic error statistics (Transmit side)"
      ::= { ctPPCBadPkts 3 }
 
 
@@ -81,7 +81,7 @@ ctPPCBadPktsTxEntry  OBJECT-TYPE
     INDEX { ctPPCBadPktsTxIndex }
     ::= { ctPPCBadPktsTxTable 1 }
 
-CtPPCBadPktsTxEntry ::= 
+CtPPCBadPktsTxEntry ::=
   SEQUENCE {
       ctPPCBadPktsTxIndex
             INTEGER,
@@ -123,7 +123,7 @@ ctPPCBadPktsTxQDepthTable  OBJECT-TYPE
      ACCESS not-accessible
      STATUS mandatory
      DESCRIPTION
-       "Provides the current usage for each Tx Queue" 
+       "Provides the current usage for each Tx Queue"
      ::= { ctPPCBadPkts 4 }
 
 
@@ -182,7 +182,7 @@ ctPPCBadPktsRxTable  OBJECT-TYPE
      ACCESS not-accessible
      STATUS mandatory
      DESCRIPTION
-       "Provides traffic error statistics (receive side)" 
+       "Provides traffic error statistics (receive side)"
      ::= { ctPPCBadPkts 5 }
 
 
@@ -236,7 +236,7 @@ ctPPCBadPktsRxTotalErrors OBJECT-TYPE
 
 
 ctPPCBadPktsRxDescHigh OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -244,7 +244,7 @@ ctPPCBadPktsRxDescHigh OBJECT-TYPE
     ::= { ctPPCBadPktsRxEntry 3 }
 
 ctPPCBadPktsRxDescLow OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -252,7 +252,7 @@ ctPPCBadPktsRxDescLow OBJECT-TYPE
     ::= { ctPPCBadPktsRxEntry 4 }
 
 ctPPCBadPktsRxDaSa0 OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -260,7 +260,7 @@ ctPPCBadPktsRxDaSa0 OBJECT-TYPE
     ::= { ctPPCBadPktsRxEntry 5 }
 
 ctPPCBadPktsRxDaSa1 OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -268,7 +268,7 @@ ctPPCBadPktsRxDaSa1 OBJECT-TYPE
     ::= { ctPPCBadPktsRxEntry 6 }
 
 ctPPCBadPktsRxDaSa2 OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -276,7 +276,7 @@ ctPPCBadPktsRxDaSa2 OBJECT-TYPE
     ::= { ctPPCBadPktsRxEntry 7 }
 
 ctPPCBadPktsRxData OBJECT-TYPE
-    SYNTAX INTEGER 
+    SYNTAX INTEGER
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION

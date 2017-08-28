@@ -41,9 +41,9 @@ CTFRAMER-CONFIG-MIB DEFINITIONS ::= BEGIN
 IMPORTS
 
 -- In the orignal text at ctron:/user/ctron/mibs/enterprise/release/ctframer-mib.txt
--- ctFramerConfig was imported from CTRON-MIB-NAMES. But in this document 
--- ctFramerConfig is imported from CTIF-EXT-MIB since this MIB is part 
--- of the default database loaded by the Spectrum Browser and also contains 
+-- ctFramerConfig was imported from CTRON-MIB-NAMES. But in this document
+-- ctFramerConfig is imported from CTIF-EXT-MIB since this MIB is part
+-- of the default database loaded by the Spectrum Browser and also contains
 -- defintion for ctFramerConfig.
 
         ctFramerConfig, ctIfPortPortNumber
@@ -66,7 +66,7 @@ ctFramerDS3Config         OBJECT IDENTIFIER ::= { ctFramerConfig 3 }
 
 --
 --=====================================================================
--- This table allows a user to configure the chip on the physical 
+-- This table allows a user to configure the chip on the physical
 -- medium. This chip is responsible for framing the bits in the correct
 -- manner for the wire.
 
@@ -117,15 +117,15 @@ ctFramerStatsConfig OBJECT-TYPE
           Note: Setting this to 'on' will permit gathering of framer
           statistics at the expense of processing time. However, it might
           be a valuable debugging aid to turn on the framer MIB.
- 
+
           Setting this object to 'off' will deactivate the respective
           framer MIBs, thus saving processing time.
- 
+
           It is emphasized that collection of statistics for the framer
           is resource (processor, memory) intensive.
- 
+
           This object is persistent."
-     DEFVAL  { off } 
+     DEFVAL  { off }
      ::= { ctFramerConfigEntry 1 }
 
 ctFramerAlarmsConfig OBJECT-TYPE
@@ -139,15 +139,15 @@ ctFramerAlarmsConfig OBJECT-TYPE
          "This object activates/deactivates the detection and initiation
           of framer alarms.
 
-          for SONET/SDH framed physical ports: 
-              RDI - remote defect indicator 
+          for SONET/SDH framed physical ports:
+              RDI - remote defect indicator
               AIS - alarm indication signal
 
-          for DS3 framed physical ports: 
+          for DS3 framed physical ports:
               yellow signal alarms
- 
+
           This object is persistent."
-     DEFVAL  { off } 
+     DEFVAL  { off }
      ::= { ctFramerConfigEntry 2 }
 
 ctFramerMediumConfig OBJECT-TYPE
@@ -160,12 +160,12 @@ ctFramerMediumConfig OBJECT-TYPE
      DESCRIPTION
          "This object controls whether a SONET or a SDH signal is used
           across this physical port.
- 
+
           sonet - synchronous optical network
           sdh - synchronous digital heirarchy
 
           This object is persistent."
-     DEFVAL  { sonet } 
+     DEFVAL  { sonet }
      ::= { ctFramerConfigEntry 3 }
 
 ctFramerIdleCellsConfig OBJECT-TYPE

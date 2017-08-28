@@ -63,7 +63,7 @@ etsysConfigurationManagementMIB MODULE-IDENTITY
     REVISION "201302041600Z"  -- Mon Feb  4 16:00 UTC 2013
     DESCRIPTION
         "Added the etsysConfigMgmtReadyNotification NOTIFICATION."
-    
+
     REVISION "200812051413Z"  -- Fri Dec  5 14:13 UTC 2008
     DESCRIPTION
         "Added Secure Copy (SCP) as a supported URL type."
@@ -294,7 +294,7 @@ etsysConfigMgmtPersistentStorageStatus OBJECT-TYPE
     DESCRIPTION
       "A descriptive status of any current failures of any of
       the persistent storage facilities on this entity.  When
-      this information is unavailable return a null string. 
+      this information is unavailable return a null string.
       'operational' should be returned if there are no problems.
       Transitional information MAY be reported as well."
     DEFVAL { ''H }
@@ -355,7 +355,7 @@ etsysConfigMgmtChangeSupportedURLs OBJECT-TYPE
        etsysConfigMgmtFile(4),
        etsysConfigMgmtBootP(5),
        etsysConfigMgmtScp(6)
-       
+
     }
     MAX-ACCESS  read-only
     STATUS      current
@@ -441,7 +441,7 @@ etsysConfigMgmtChangeNextAvailableIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This object indicates the numerically lowest available 
+        "This object indicates the numerically lowest available
          index within this entity, which may be used for the
          value of etsysConfigMgmtChangeIndex in the creation
          of a new entry in the etsysConfigMgmtChangeTable.
@@ -454,7 +454,7 @@ etsysConfigMgmtChangeNextAvailableIndex OBJECT-TYPE
          A value of zero indicates that all of the entries in the
          etsysConfigMgmtChangeTable are currently in use.
 
-         This value should only be considered a guideline for 
+         This value should only be considered a guideline for
          management creation of etsysConfigMgmtChangeTable
          entries, there is no requirement on management to
          create entries based upon this index value."
@@ -681,7 +681,7 @@ etsysConfigMgmtChangeRowStatus OBJECT-TYPE
 
 
 -- -------------------------------------------------------------
--- Notifications  
+-- Notifications
 -- -------------------------------------------------------------
 etsysConfigMgmtReadyNotification NOTIFICATION-TYPE
     STATUS      current
@@ -779,7 +779,7 @@ etsysConfigMgmtCompliance2 MODULE-COMPLIANCE
         Implementation of this MIB is based on individual product
         needs."
     MODULE      -- this module
-    MANDATORY-GROUPS { 
+    MANDATORY-GROUPS {
             etsysConfigMgmtStatusGroup,
             etsysConfigMgmtChangeGroup,
             etsysConfigMgmtNotificationsGroup

@@ -42,7 +42,7 @@ IMPORTS
 --       IpAddress, Counter, Gauge
        TimeTicks
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.2
         sfpsTopologyNodes, sfpsTopologyAliases, sfpsTopologyDAPITest, sfpsTopologyDAPI,
         sfpsTopologyDirStats, sfpsServiceCenter, sfpsTopologyRemoteNodes, sfpsDirFilterAPI
@@ -52,28 +52,28 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 HexInteger ::= INTEGER
 --  display this integer in hex format
 
 
 --  SFPS Switch Agent Topology Groups
---  This group contains the objects that pertain to the discovery and 
---  mapping of end systems (behind access ports) and adjacent switch systems 
---  (behind network ports).  End systems are discovered passively through 
---  the switch's listen capability.  Adjacent systems are discovered actively 
+--  This group contains the objects that pertain to the discovery and
+--  mapping of end systems (behind access ports) and adjacent switch systems
+--  (behind network ports).  End systems are discovered passively through
+--  the switch's listen capability.  Adjacent systems are discovered actively
 --  through the switch's hello protocol.
 
 
 --  SFPS Switch Agent Topology Node Table Group
---  This group contains the objects that pertain to the discovery and 
---  mapping of network base addresses to nodes (end-systems) discovered 
+--  This group contains the objects that pertain to the discovery and
+--  mapping of network base addresses to nodes (end-systems) discovered
 --  on access ports.  This allows the location of nodes based on their
 --  controlling switch and port.
 
@@ -83,8 +83,8 @@ sfpsNodeTable  OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table of bottom layer protocol addresses and related 
-                information of recently or curently active nodes 
+                "A table of bottom layer protocol addresses and related
+                information of recently or curently active nodes
                 (end-stations).  This table replaces the sfpsEndSystemTable."
         ::= { sfpsTopologyNodes 1 }
 
@@ -126,7 +126,7 @@ sfpsNodeTableBaseHash  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A hash of the sfpsNodeTableAddress used to identify the 
+                "A hash of the sfpsNodeTableAddress used to identify the
                 instance."
         ::= { sfpsNodeTableEntry 1 }
 
@@ -193,7 +193,7 @@ sfpsNodeTableCallTag  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The tag, reference number, associated with the 
+                "The tag, reference number, associated with the
                 packet responsible for the generation of this entry"
         ::= { sfpsNodeTableEntry 9 }
 
@@ -219,7 +219,7 @@ sfpsNodeTableAliasCount  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The number of higher layer protocol addresses learned 
+                "The number of higher layer protocol addresses learned
                 about this node from the same packet it was discovered from."
         ::= { sfpsNodeTableEntry 12 }
 
@@ -281,11 +281,11 @@ sfpsNodeTablePrev  OBJECT-TYPE
 --
 
 --  SFPS Switch Agent Topology Alias Table Group
---  This group contains the objects that pertain to the discovery and 
---  mapping of upper-layer network services and entities (IP, IPX addresses) 
---  as well as abstract group types (eg. VLAN), in use by nodes connected to 
---  the switching fabric.  This table allows the mapping of these aliases or 
---  groups to the nodes they are associated with and to the location of their 
+--  This group contains the objects that pertain to the discovery and
+--  mapping of upper-layer network services and entities (IP, IPX addresses)
+--  as well as abstract group types (eg. VLAN), in use by nodes connected to
+--  the switching fabric.  This table allows the mapping of these aliases or
+--  groups to the nodes they are associated with and to the location of their
 --  controlling switch and port (via the node table).
 
 
@@ -295,8 +295,8 @@ sfpsAliasTable  OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "A table of upper layer protocol addresses (aliases) and
-                abstract group names related to the bottom layer protocol 
-                addresses (nodes) found in the sfpsNodeTable.  This table 
+                abstract group names related to the bottom layer protocol
+                addresses (nodes) found in the sfpsNodeTable.  This table
                 replaces the sfpsEntitiesTable."
         ::= { sfpsTopologyAliases 1 }
 
@@ -307,8 +307,8 @@ sfpsAliasTableEntry  OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information pertaining to upper
                 layer protocol addresses."
-        INDEX   { sfpsAliasTableAliasHash, 
-                  sfpsAliasTableBaseHash, 
+        INDEX   { sfpsAliasTableAliasHash,
+                  sfpsAliasTableBaseHash,
                   sfpsAliasTableHashIndex }
         ::= { sfpsAliasTable 1 }
 
@@ -343,7 +343,7 @@ sfpsAliasTableAliasHash  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A hash of the sfpsAliasTableAliasAddress used to 
+                "A hash of the sfpsAliasTableAliasAddress used to
                 identify the instance."
         ::= { sfpsAliasTableEntry 1 }
 
@@ -361,7 +361,7 @@ sfpsAliasTableHashIndex  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A count of the non-unique pairs of sfpsAliasTableAliasHash  
+                "A count of the non-unique pairs of sfpsAliasTableAliasHash
                 and sfpsAliasTableNodeHash used to identify the instance."
         ::= { sfpsAliasTableEntry 3 }
 
@@ -379,7 +379,7 @@ sfpsAliasTableSwitchAddress  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The bottom layer address value (formatted in printable 
+                "The bottom layer address value (formatted in printable
                 characters) of the switch on which this node was found."
         ::= { sfpsAliasTableEntry 5 }
 
@@ -404,7 +404,7 @@ sfpsAliasTableBaseAddress  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The bottom layer address value (formatted in printable 
+                "The bottom layer address value (formatted in printable
                 characters) of the node."
         ::= { sfpsAliasTableEntry 8 }
 
@@ -426,11 +426,11 @@ sfpsAliasTableAliasAddress  OBJECT-TYPE
         ::= { sfpsAliasTableEntry 10 }
 
 sfpsAliasTableAliasAge  OBJECT-TYPE
-        SYNTAX  TimeTicks     
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The elapsed time since this alias was discovered and 
+                "The elapsed time since this alias was discovered and
                 made visible in this table."
         ::= { sfpsAliasTableEntry 11 }
 
@@ -439,7 +439,7 @@ sfpsAliasTableSwitchOctets  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The base address of the switch on which the node 
+                "The base address of the switch on which the node
                 associated with this alias entry was found."
         ::= { sfpsAliasTableEntry 12 }
 
@@ -457,7 +457,7 @@ sfpsAliasTableAliasOctets  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The higher layer address (alias), or the abstract 
+                "The higher layer address (alias), or the abstract
                 group value."
         ::= { sfpsAliasTableEntry 14 }
 
@@ -479,7 +479,7 @@ sfpsAliasTableVlanPolicy  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The way in which this user was assigned to a vlan. 
+                "The way in which this user was assigned to a vlan.
                 Inherited(2) signifies that the user was assigned its vlan
                 based on the default for its port.  Auto-Registered(3)
                 indicates that the user was assigned to its vlan based on
@@ -487,7 +487,7 @@ sfpsAliasTableVlanPolicy  OBJECT-TYPE
                 the user was assigned its vlan by the vlan manager application."
         ::= { sfpsAliasTableEntry 16 }
 
- 
+
 sfpsAliasTableBaseLock OBJECT-TYPE
         SYNTAX  INTEGER {
                         false(1),
@@ -547,12 +547,12 @@ sfpsAliasTablePrev  OBJECT-TYPE
                 ""
         ::= { sfpsAliasTableEntry 22 }
 
- 
+
 --
 
 --  SFPS Switch Agent Topology Alias Delta Table Group
 --  This group is used to maintain a table of newly discovered/lost aliases.
---  This Delta Table resembles the Alias Table with one additional field to 
+--  This Delta Table resembles the Alias Table with one additional field to
 --  distinguish those entries which are newly found from those which are newly
 --  lost.
 
@@ -562,9 +562,9 @@ sfpsAliasDeltaTable  OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table of of newly discovered/lost upper layer protocol 
-                addresses (aliases) related to the bottom layer protocol 
-                addresses (nodes) found in the sfpsNodeTable."  
+                "A table of of newly discovered/lost upper layer protocol
+                addresses (aliases) related to the bottom layer protocol
+                addresses (nodes) found in the sfpsNodeTable."
         ::= { sfpsTopologyAliases 2 }
 
 sfpsAliasDeltaTableEntry  OBJECT-TYPE
@@ -625,7 +625,7 @@ sfpsAliasDeltaTableAlias  OBJECT-TYPE
         ::= { sfpsAliasDeltaTableEntry 4 }
 
 sfpsAliasDeltaTableAliasLength  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -637,7 +637,7 @@ sfpsAliasDeltaTableOpaqueTag  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A textual identifier for the type of alias this entry 
+                "A textual identifier for the type of alias this entry
                 represents."
         ::= { sfpsAliasDeltaTableEntry 6 }
 
@@ -652,7 +652,7 @@ sfpsAliasDeltaTableAliasState  OBJECT-TYPE
         DESCRIPTION
                 "This enumeration describes the state of the delta table entry.
                 A value of (2) indicates the entry has been added to the alias
-                table.  A value of (3) indicates the entry has been deleted 
+                table.  A value of (3) indicates the entry has been deleted
                 from the alias table."
         ::= { sfpsAliasDeltaTableEntry 7 }
 
@@ -679,7 +679,7 @@ sfpsAliasDeltaTableAliasLock  OBJECT-TYPE
         ::= { sfpsAliasDeltaTableEntry 9 }
 
 sfpsAliasDeltaTableTimestamp  OBJECT-TYPE
-        SYNTAX  TimeTicks 
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -689,7 +689,7 @@ sfpsAliasDeltaTableTimestamp  OBJECT-TYPE
 --
 
 --  SFPS Switch Agent Topology Alias Delta Table Information
---  These two oids are used to check the status of the Delta Table and 
+--  These two oids are used to check the status of the Delta Table and
 --  clear the Delta Table with a set.
 
 sfpsAliasDeltaCount  OBJECT-TYPE
@@ -756,7 +756,7 @@ sfpsDAPITestSwitchMac    OBJECT-TYPE
     SYNTAX           SfpsAddress
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION 
+    DESCRIPTION
            "Specifies the actual user's MAC value for the action."
     ::= { sfpsTopologyDAPITest 2 }
 
@@ -764,7 +764,7 @@ sfpsDAPITestPort         OBJECT-TYPE
     SYNTAX           SfpsSwitchPort
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "Specifies the Source Port os a user when mapping a user"
     ::= { sfpsTopologyDAPITest 3 }
 
@@ -834,7 +834,7 @@ sfpsDAPITestAddrTwoTag   OBJECT-TYPE
                }
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
             "Indicates the address tag of the user."
     ::= { sfpsTopologyDAPITest 6 }
 
@@ -852,18 +852,18 @@ sfpsDAPITestCallTag      OBJECT-TYPE
     STATUS           mandatory
     DESCRIPTION
           "Specify the Call Tag value of the user."
-    ::= { sfpsTopologyDAPITest 8 }         
+    ::= { sfpsTopologyDAPITest 8 }
 
 sfpsDAPITestOutputTable       OBJECT-TYPE
     SYNTAX       SEQUENCE OF SfpsDAPITestOutputEntry
     ACCESS       not-accessible
     STATUS       mandatory
-    DESCRIPTION  
+    DESCRIPTION
            "A Table of the DAPITest switch ports, both input and output."
     ::= { sfpsTopologyDAPITest 9 }
 
 sfpsDAPITestOutputEntry  OBJECT-TYPE
-    SYNTAX       SfpsDAPITestOutputEntry 
+    SYNTAX       SfpsDAPITestOutputEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION
@@ -888,7 +888,7 @@ sfpsDAPITestOutputIndex  OBJECT-TYPE
      SYNTAX     INTEGER
      ACCESS     read-only
      STATUS     mandatory
-     DESCRIPTION 
+     DESCRIPTION
            "Index of entries in the DAPITest Output Table."
      ::= { sfpsDAPITestOutputEntry 1 }
 
@@ -975,7 +975,7 @@ sfpsDAPITestOutputAddrTwoTag   OBJECT-TYPE
                }
     ACCESS           read-only
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
             "Indicates the address tag of the user."
     ::= { sfpsDAPITestOutputEntry 6 }
 
@@ -1028,7 +1028,7 @@ sfpsDAPIPort         OBJECT-TYPE
     SYNTAX           INTEGER
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "Describes the port of the entry."
     ::= { sfpsTopologyDAPI 2 }
 
@@ -1036,7 +1036,7 @@ sfpsDAPINodeType     OBJECT-TYPE
     SYNTAX           OCTET STRING
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "Describes the node type with a well-known string."
     ::= { sfpsTopologyDAPI 3 }
 
@@ -1044,7 +1044,7 @@ sfpsDAPINodeValue    OBJECT-TYPE
     SYNTAX           OCTET STRING
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "The value of the node address (i.e., base MAC) for this entry."
     ::= { sfpsTopologyDAPI 4 }
 
@@ -1052,7 +1052,7 @@ sfpsDAPIAliasType    OBJECT-TYPE
     SYNTAX           OCTET STRING
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "Describes the alias type associated with this node. This must be
            a well-known string."
     ::= { sfpsTopologyDAPI 5 }
@@ -1061,7 +1061,7 @@ sfpsDAPIAliasValue   OBJECT-TYPE
     SYNTAX           OCTET STRING
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "The value of the alias (i.e., protocol address) for this entry."
     ::= { sfpsTopologyDAPI 6 }
 
@@ -1069,7 +1069,7 @@ sfpsDAPIAge         OBJECT-TYPE
     SYNTAX           INTEGER
     ACCESS           read-write
     STATUS           mandatory
-    DESCRIPTION      
+    DESCRIPTION
            "In minutes"
     ::= { sfpsTopologyDAPI 7 }
 
@@ -1090,24 +1090,24 @@ sfpsServiceCenterDirectoryEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Directory Entry."
-        INDEX   { sfpsServiceCenterDirectoryHashLeaf } 
+        INDEX   { sfpsServiceCenterDirectoryHashLeaf }
         ::= { sfpsServiceCenterDirectoryTable 1 }
 
 SfpsServiceCenterDirectoryEntry ::=
         SEQUENCE {
-                sfpsServiceCenterDirectoryHashLeaf      HexInteger,  
-                sfpsServiceCenterDirectoryMetric        INTEGER,  
-                sfpsServiceCenterDirectoryName          DisplayString,  
-                sfpsServiceCenterDirectoryOperStatus    INTEGER,  
+                sfpsServiceCenterDirectoryHashLeaf      HexInteger,
+                sfpsServiceCenterDirectoryMetric        INTEGER,
+                sfpsServiceCenterDirectoryName          DisplayString,
+                sfpsServiceCenterDirectoryOperStatus    INTEGER,
                 sfpsServiceCenterDirectoryAdminStatus     INTEGER,
                 sfpsServiceCenterDirectoryStatusTime    TimeTicks,
                 sfpsServiceCenterDirectoryRequests      INTEGER,
                 sfpsServiceCenterDirectoryResponses     INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterDirectoryHashLeaf   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1183,12 +1183,12 @@ sfpsServiceCenterDirectoryResponses   OBJECT-TYPE
         ::= { sfpsServiceCenterDirectoryEntry 8 }
 
 --
- 
+
 sfpsTopologyDirStatsTotalUsage  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes used by the Directory."
         ::= { sfpsTopologyDirStats 1 }
 
@@ -1196,7 +1196,7 @@ sfpsTopologyDirStatsDynamicUsage        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes dynamically used by the Directory."
         ::= { sfpsTopologyDirStats 2 }
 
@@ -1204,7 +1204,7 @@ sfpsTopologyDirStatsNumOfNodes  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Current number of nodes in the Directory."
         ::= { sfpsTopologyDirStats 3 }
 
@@ -1212,7 +1212,7 @@ sfpsTopologyDirStatsNodeUsage   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes used by the nodes."
         ::= { sfpsTopologyDirStats 4 }
 
@@ -1220,7 +1220,7 @@ sfpsTopologyDirStatsNumLocalNodes       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of nodes local to the switch."
         ::= { sfpsTopologyDirStats 5 }
 
@@ -1228,7 +1228,7 @@ sfpsTopologyDirStatsLocalNodeUsage      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes used by the local nodes."
         ::= { sfpsTopologyDirStats 6 }
 
@@ -1236,7 +1236,7 @@ sfpsTopologyDirStatsMaxLocalNodes       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The maximum number of local nodes that resided in Directory
                 since the switch initiated."
         ::= { sfpsTopologyDirStats 7 }
@@ -1245,7 +1245,7 @@ sfpsTopologyDirStatsNumRemoteNodes      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of remote nodes in the Directory."
         ::= { sfpsTopologyDirStats 8 }
 
@@ -1253,7 +1253,7 @@ sfpsTopologyDirStatsRemoteNodeUsage     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes used for the Remote nodes."
         ::= { sfpsTopologyDirStats 9 }
 
@@ -1261,7 +1261,7 @@ sfpsTopologyDirStatsMaxRemoteNodes      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The maximum number of remote nodes that resided in Directory
                 since the switch initiated."
         ::= { sfpsTopologyDirStats 10 }
@@ -1270,9 +1270,9 @@ sfpsTopologyDirStatsNumOfAliases        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of aliases in the Directory. An alias is an entry
-                that maps to a node. It may be layer 3 information, Vlan 
+                that maps to a node. It may be layer 3 information, Vlan
                 information, etc. There can be several alias entries which
                 bind to on node entry."
         ::= { sfpsTopologyDirStats 11 }
@@ -1281,7 +1281,7 @@ sfpsTopologyDirStatsAliasUsage  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes used by the aliases in the Directory."
         ::= { sfpsTopologyDirStats 12 }
 
@@ -1290,7 +1290,7 @@ sfpsTopologyDirStatsStaticUsage OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of bytes statically used for Directory."
         ::= { sfpsTopologyDirStats 14 }
 
@@ -1298,7 +1298,7 @@ sfpsTopologyDirStatsObjectsUsage        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of objects used in Directory."
         ::= { sfpsTopologyDirStats 15 }
 
@@ -1306,7 +1306,7 @@ sfpsTopologyDirStatsNodeTableSize       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of node entries in Node Table."
         ::= { sfpsTopologyDirStats 16 }
 
@@ -1314,7 +1314,7 @@ sfpsTopologyDirStatsNodeTableUsage      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of bytes used for Node Table."
         ::= { sfpsTopologyDirStats 17 }
 
@@ -1322,7 +1322,7 @@ sfpsTopologyDirStatsAliasTableSize      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of alias entries in Alias Table."
         ::= { sfpsTopologyDirStats 18 }
 
@@ -1330,7 +1330,7 @@ sfpsTopologyDirStatsAliasTableUsage     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of bytes used for Alias Table."
         ::= { sfpsTopologyDirStats 19 }
 
@@ -1338,7 +1338,7 @@ sfpsTopologyDirStatsNodeCollisions      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of collisions - Node Table."
         ::= { sfpsTopologyDirStats 20 }
 
@@ -1346,7 +1346,7 @@ sfpsTopologyDirStatsNodeLongestChain    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 21 }
 
@@ -1354,7 +1354,7 @@ sfpsTopologyDirStatsAliasCollisions     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Total number of collisions - Alias Table."
         ::= { sfpsTopologyDirStats 22 }
 
@@ -1362,7 +1362,7 @@ sfpsTopologyDirStatsAliasLongestChain   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 23 }
 
@@ -1370,7 +1370,7 @@ sfpsTopologyDirStatsLocalAddsRefused    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of adds into the Directory of local nodes which
                 were refused."
         ::= { sfpsTopologyDirStats 24 }
@@ -1379,7 +1379,7 @@ sfpsTopologyDirStatsAliasRemotesReplaced        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of remote entries which had to be replaced in
                 the Directory."
         ::= { sfpsTopologyDirStats 25 }
@@ -1388,7 +1388,7 @@ sfpsTopologyDirStatsAliasMultiPortClears        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of times the Directory entries were cleared for
                 multiple ports. Used for debugging."
         ::= { sfpsTopologyDirStats 26 }
@@ -1397,7 +1397,7 @@ sfpsTopologyDirStatsReservedForRemoteNodes      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of entries in the Directory reserved for Remote
                 nodes. Remote nodes may exceed this reserved area but if
                 the Directory becomes full from local nodes, then the remote
@@ -1408,7 +1408,7 @@ sfpsTopologyDirStatsNumSwitches OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 28 }
 
@@ -1416,7 +1416,7 @@ sfpsTopologyDirStatsSwitchUsage OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 29 }
 
@@ -1424,7 +1424,7 @@ sfpsTopologyDirStatsMaxSwitches OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 30 }
 
@@ -1432,7 +1432,7 @@ sfpsTopologyDirStatsSwitchTableSize     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 31 }
 
@@ -1440,7 +1440,7 @@ sfpsTopologyDirStatsSwitchTableUsage    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 32 }
 
@@ -1448,7 +1448,7 @@ sfpsTopologyDirStatsSwitchLookups       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 33 }
 
@@ -1456,7 +1456,7 @@ sfpsTopologyDirStatsSwitchCacheHits     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 34 }
 
@@ -1464,7 +1464,7 @@ sfpsTopologyDirStatsNumVlans    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 35 }
 
@@ -1472,7 +1472,7 @@ sfpsTopologyDirStatsVlanUsage   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 36 }
 
@@ -1480,7 +1480,7 @@ sfpsTopologyDirStatsMaxVlans    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 37 }
 
@@ -1488,7 +1488,7 @@ sfpsTopologyDirStatsVlanTableSize       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 38 }
 
@@ -1496,7 +1496,7 @@ sfpsTopologyDirStatsVlanTableUsage      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 39 }
 
@@ -1504,7 +1504,7 @@ sfpsTopologyDirStatsVlanLookups OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 40 }
 
@@ -1512,7 +1512,7 @@ sfpsTopologyDirStatsVlanCacheHits       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 41 }
 
@@ -1520,7 +1520,7 @@ sfpsTopologyDirStatsNodeAliasMax        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 42 }
 
@@ -1528,7 +1528,7 @@ sfpsTopologyDirStatsLocalAliasRefused   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 43 }
 
@@ -1536,7 +1536,7 @@ sfpsTopologyDirStatsRemoteAliasRemoved  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsTopologyDirStats 44 }
 
@@ -1573,7 +1573,7 @@ sfpsDirAliasStatsAliasType      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "A number which correlates to an alias name."
         ::= { sfpsDirAliasStatsEntry 1 }
 
@@ -1581,7 +1581,7 @@ sfpsDirAliasStatsAliasName      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "A human readable name which represents the Alias type."
         ::= { sfpsDirAliasStatsEntry 2 }
 
@@ -1589,7 +1589,7 @@ sfpsDirAliasStatsNumOfAliases   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The current number of alias entries of this AliasType."
         ::= { sfpsDirAliasStatsEntry 3 }
 
@@ -1597,8 +1597,8 @@ sfpsDirAliasStatsAliasUsage     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
-                "The amount of memory (bytes) used by entries of this alias 
+        DESCRIPTION
+                "The amount of memory (bytes) used by entries of this alias
                 type."
         ::= { sfpsDirAliasStatsEntry 4 }
 
@@ -1606,7 +1606,7 @@ sfpsDirAliasStatsMaxAliases     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The maximum number of entries of this Alias Type that have
                 been in the Directory."
         ::= { sfpsDirAliasStatsEntry 5 }
@@ -1668,7 +1668,7 @@ sfpsDirFilterAliasLockCount     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 1 }
 
@@ -1676,7 +1676,7 @@ sfpsDirFilterAliasAliasHash     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 2 }
 
@@ -1684,7 +1684,7 @@ sfpsDirFilterAliasBaseHash      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 3 }
 
@@ -1692,7 +1692,7 @@ sfpsDirFilterAliasHashIndex     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 4 }
 
@@ -1700,7 +1700,7 @@ sfpsDirFilterAliasDomain        OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 5 }
 
@@ -1708,7 +1708,7 @@ sfpsDirFilterAliasChassisType   OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 6 }
 
@@ -1716,7 +1716,7 @@ sfpsDirFilterAliasChassisLoad   OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 7 }
 
@@ -1724,7 +1724,7 @@ sfpsDirFilterAliasSwitchType    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 8 }
 
@@ -1732,7 +1732,7 @@ sfpsDirFilterAliasSwitchLoad    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 9 }
 
@@ -1740,7 +1740,7 @@ sfpsDirFilterAliasInPort        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 10 }
 
@@ -1748,7 +1748,7 @@ sfpsDirFilterAliasBaseType      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 11 }
 
@@ -1756,7 +1756,7 @@ sfpsDirFilterAliasBaseLoad      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 12 }
 
@@ -1764,7 +1764,7 @@ sfpsDirFilterAliasNodeState     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 13 }
 
@@ -1772,7 +1772,7 @@ sfpsDirFilterAliasNodeAge       OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 14 }
 
@@ -1783,7 +1783,7 @@ sfpsDirFilterAliasNodeLock      OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 15 }
 
@@ -1791,7 +1791,7 @@ sfpsDirFilterAliasLinkType      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 16 }
 
@@ -1799,7 +1799,7 @@ sfpsDirFilterAliasLinkLoad      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 17 }
 
@@ -1807,7 +1807,7 @@ sfpsDirFilterAliasLinkAge       OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 18 }
 
@@ -1818,7 +1818,7 @@ sfpsDirFilterAliasLinkLock      OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 19 }
 
@@ -1831,7 +1831,7 @@ sfpsDirFilterAliasVlanLearned   OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 20 }
 
@@ -1839,7 +1839,7 @@ sfpsDirFilterAliasOpaqueTag     OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 21 }
 
@@ -1847,7 +1847,7 @@ sfpsDirFilterAliasChassisOctets OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 22 }
 
@@ -1855,7 +1855,7 @@ sfpsDirFilterAliasSwitchOctets  OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 23 }
 
@@ -1863,7 +1863,7 @@ sfpsDirFilterAliasNodeOctets    OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 24 }
 
@@ -1871,7 +1871,7 @@ sfpsDirFilterAliasLinkOctets    OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 25 }
 
@@ -1882,7 +1882,7 @@ sfpsDirFilterAliasNodeLocal     OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 26 }
 
@@ -1895,7 +1895,7 @@ sfpsDirFilterAliasLinkState     OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAliasEntry 27 }
 
@@ -1955,7 +1955,7 @@ sfpsDirFilterNodeLockCount      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 1 }
 
@@ -1963,7 +1963,7 @@ sfpsDirFilterNodeNodeIndex      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 2 }
 
@@ -1971,7 +1971,7 @@ sfpsDirFilterNodeLinkIndex      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 3 }
 
@@ -1979,7 +1979,7 @@ sfpsDirFilterNodeNodeCount      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 4 }
 
@@ -1987,7 +1987,7 @@ sfpsDirFilterNodeLinkCount      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 5 }
 
@@ -1995,7 +1995,7 @@ sfpsDirFilterNodeDomainName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 6 }
 
@@ -2003,7 +2003,7 @@ sfpsDirFilterNodeChassisType    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 7 }
 
@@ -2011,7 +2011,7 @@ sfpsDirFilterNodeChassisLoad    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 8 }
 
@@ -2019,7 +2019,7 @@ sfpsDirFilterNodeSwitchType     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 9 }
 
@@ -2027,7 +2027,7 @@ sfpsDirFilterNodeSwitchLoad     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 10 }
 
@@ -2035,7 +2035,7 @@ sfpsDirFilterNodeInPort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 11 }
 
@@ -2043,7 +2043,7 @@ sfpsDirFilterNodeBaseType       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 12 }
 
@@ -2051,7 +2051,7 @@ sfpsDirFilterNodeBaseLoad       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 13 }
 
@@ -2059,7 +2059,7 @@ sfpsDirFilterNodeNodeState      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 14 }
 
@@ -2067,7 +2067,7 @@ sfpsDirFilterNodeNodeAge        OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 15 }
 
@@ -2078,7 +2078,7 @@ sfpsDirFilterNodeNodeLock       OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 16 }
 
@@ -2086,7 +2086,7 @@ sfpsDirFilterNodeLinkType       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 17 }
 
@@ -2094,7 +2094,7 @@ sfpsDirFilterNodeLinkLoad       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 18 }
 
@@ -2102,7 +2102,7 @@ sfpsDirFilterNodeLinkAge        OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 19 }
 
@@ -2113,7 +2113,7 @@ sfpsDirFilterNodeLinkLock       OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 20 }
 
@@ -2126,7 +2126,7 @@ sfpsDirFilterNodeVlanLearned    OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 21 }
 
@@ -2134,7 +2134,7 @@ sfpsDirFilterNodeOpaqueTag      OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 22 }
 
@@ -2142,7 +2142,7 @@ sfpsDirFilterNodeChassisOctets  OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 23 }
 
@@ -2150,7 +2150,7 @@ sfpsDirFilterNodeSwitchOctets   OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 24 }
 
@@ -2158,7 +2158,7 @@ sfpsDirFilterNodeNodeOctets     OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 25 }
 
@@ -2166,7 +2166,7 @@ sfpsDirFilterNodeLinkOctets     OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 26 }
 
@@ -2177,7 +2177,7 @@ sfpsDirFilterNodeNodeLocal      OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 27 }
 
@@ -2190,7 +2190,7 @@ sfpsDirFilterNodeLinkState      OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterNodeEntry 28 }
 
@@ -2204,7 +2204,7 @@ sfpsDirFilterAPILockAdmin       OBJECT-TYPE
         }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 1 }
 
@@ -2216,48 +2216,48 @@ sfpsDirFilterAPILockStatus      OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 2 }
 
 sfpsDirFilterAPILockCount       OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 3 }
 
 sfpsDirFilterAPIValueType       OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 4 }
 
 sfpsDirFilterAPIValue   OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 5 }
 
 sfpsDirFilterAPILockTimeOut     OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 6 }
 
 sfpsDirFilterAPILockTimeElapsed OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsDirFilterAPI 7 }
 
-END 
+END

@@ -42,17 +42,17 @@ IMPORTS
 --       Counter, Gauge
        IpAddress, TimeTicks
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.2
         sfpsTopologyVNSNeighbors, sfpsServiceCenter, sfpsTopologyPortManager,
-        sfpsTopologyAgentCommon, sfpsTopologyFCL, sfpsTPMPortTableAPIIn, 
+        sfpsTopologyAgentCommon, sfpsTopologyFCL, sfpsTPMPortTableAPIIn,
         sfpsTPMPortTableAPIOut, sfpsNeighborEvents, sfpsRATopologyAgent,
         sfpsRATopAgentPortTableAPIIn, sfpsRATopAgentPortTableAPIOut,
         sfpsVMTopologyServer, sfpsTAPITestIn, sfpsTAPITestOut,
         sfpsTopologyServerTestIn, sfpsTopologyServerTest, sfpsVLANTopologyAgent,
-        sfpsVLANTopAgentPortTableAPIIn, sfpsDirViolation, sfpsDirLockConfig, 
-        sfpsDirLockStats, sfpsDirViolationAPI, sfpsDirViolationDeltaAPI, 
-        sfpsDirRestriction, sfpsDapiNvramStats, sfpsESPTopologyAgent, 
+        sfpsVLANTopAgentPortTableAPIIn, sfpsDirViolation, sfpsDirLockConfig,
+        sfpsDirLockStats, sfpsDirViolationAPI, sfpsDirViolationDeltaAPI,
+        sfpsDirRestriction, sfpsDapiNvramStats, sfpsESPTopologyAgent,
         sfpsRestrictedMobility, sfpsRestrictedMobilityAPI, sfpsTopologyServerPortEventRelay
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
@@ -60,13 +60,13 @@ IMPORTS
 
 HexInteger ::= INTEGER
 --  display this integer in hex format
- 
+
 -- SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 
 
 -- TOPOLOGY
@@ -85,24 +85,24 @@ sfpsServiceCenterTopologyEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Topology Entry."
-        INDEX   { sfpsServiceCenterTopologyHashLeaf } 
+        INDEX   { sfpsServiceCenterTopologyHashLeaf }
         ::= { sfpsServiceCenterTopologyTable 1 }
 
 SfpsServiceCenterTopologyEntry ::=
         SEQUENCE {
-                sfpsServiceCenterTopologyHashLeaf       HexInteger,  
-                sfpsServiceCenterTopologyMetric         INTEGER,  
-                sfpsServiceCenterTopologyName           DisplayString,  
-                sfpsServiceCenterTopologyOperStatus     INTEGER,  
+                sfpsServiceCenterTopologyHashLeaf       HexInteger,
+                sfpsServiceCenterTopologyMetric         INTEGER,
+                sfpsServiceCenterTopologyName           DisplayString,
+                sfpsServiceCenterTopologyOperStatus     INTEGER,
                 sfpsServiceCenterTopologyAdminStatus     INTEGER,
                 sfpsServiceCenterTopologyStatusTime     TimeTicks,
                 sfpsServiceCenterTopologyRequests       INTEGER,
                 sfpsServiceCenterTopologyResponses      INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterTopologyHashLeaf   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -176,7 +176,7 @@ sfpsServiceCenterTopologyResponses   OBJECT-TYPE
         DESCRIPTION
                 "GOOD replies by server."
         ::= { sfpsServiceCenterTopologyEntry 8 }
- 
+
 --  History Topology Server Table
 
 sfpsHistoryTopologyServerTable     OBJECT-TYPE
@@ -193,7 +193,7 @@ sfpsHistoryTopologyServerEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsHistoryTopologyServerIndex } 
+        INDEX   { sfpsHistoryTopologyServerIndex }
                         ::= { sfpsHistoryTopologyServerTable 1 }
 
 SfpsHistoryTopologyServerEntry ::=
@@ -210,7 +210,7 @@ SfpsHistoryTopologyServerEntry ::=
                         sfpsHistoryTopologyServerCurrentOptionsMask  INTEGER,
                         sfpsHistoryTopologyServerFCL              INTEGER,
                         sfpsHistoryTopologyServerSysTime          TimeTicks
-        }  
+        }
 
 sfpsHistoryTopologyServerIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -338,7 +338,7 @@ sfpsTPMPortEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsTPMPortLogicalPort} 
+        INDEX   { sfpsTPMPortLogicalPort}
 
         ::= { sfpsTPMPortTable 1 }
 
@@ -350,7 +350,7 @@ SfpsTPMPortEntry ::=
                         sfpsTPMPortVlanAttributes       INTEGER,
                         sfpsTPMPortNVRAMStatus          INTEGER,
                         sfpsTPMPortCorePortVID          INTEGER
-        }  
+        }
 
 sfpsTPMPortLogicalPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -439,7 +439,7 @@ sfpsTPMPortTableAPIInLogicalPort    OBJECT-TYPE
         ::= { sfpsTPMPortTableAPIIn 2 }
 
 sfpsTPMPortTableAPIInTopologyAgent    OBJECT-TYPE
-         SYNTAX  INTEGER 
+         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -471,7 +471,7 @@ sfpsTPMPortTableAPIInAdminPortDown   OBJECT-TYPE
         ::= { sfpsTPMPortTableAPIIn 5 }
 
 sfpsTPMPortTableAPIInCorePortVID  OBJECT-TYPE
-         SYNTAX  INTEGER  
+         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -514,7 +514,7 @@ sfpsCommonNeighborEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsCommonNeighborLogicalPort, sfpsCommonNeighborSwitchID} 
+        INDEX   { sfpsCommonNeighborLogicalPort, sfpsCommonNeighborSwitchID}
 
         ::= { sfpsCommonNeighborTable 1 }
 
@@ -546,7 +546,7 @@ SfpsCommonNeighborEntry ::=
                         sfpsCommonNeighborSendPortState     INTEGER,
                         sfpsCommonNeighborCompatibility         INTEGER,
                         sfpsCommonNeighborCorePortVID           INTEGER
-        }  
+        }
 
 sfpsCommonNeighborLogicalPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -829,7 +829,7 @@ sfpsTopologyFCLEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsTopologyFCLFunctionalLevel} 
+        INDEX   { sfpsTopologyFCLFunctionalLevel}
 
         ::= { sfpsTopologyFCLTable 1 }
 
@@ -839,7 +839,7 @@ SfpsTopologyFCLEntry ::=
                         sfpsTopologyFCLCompatability            INTEGER,
                         sfpsTopologyFCLThisPortState            INTEGER,
                         sfpsTopologyFCLSendPortState            INTEGER
-        }  
+        }
 
 sfpsTopologyFCLFunctionalLevel    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -931,7 +931,7 @@ sfpsRATopAgentNeighborEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsRATopAgentNeighborInPort, sfpsRATopAgentNeighborSwitchID } 
+        INDEX   { sfpsRATopAgentNeighborInPort, sfpsRATopAgentNeighborSwitchID }
 
         ::= { sfpsRATopAgentNeighborTable 1 }
 
@@ -947,7 +947,7 @@ SfpsRATopAgentNeighborEntry ::=
                         sfpsRATopAgentNeighborNetHelloAgeTimeOuts               INTEGER,
                         sfpsRATopAgentNeighborNetHelloNetPortLosses             INTEGER,
                         sfpsRATopAgentNeighborNetHelloNetPortChanges    INTEGER
-        }  
+        }
 
 sfpsRATopAgentNeighborInPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1046,7 +1046,7 @@ sfpsRATopAgentPortEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsRATopAgentPortLogicalPort } 
+        INDEX   { sfpsRATopAgentPortLogicalPort }
 
         ::= { sfpsRATopAgentPortTable 1 }
 
@@ -1060,9 +1060,9 @@ SfpsRATopAgentPortEntry ::=
                         sfpsRATopAgentPortPortState                 INTEGER,
                         sfpsRATopAgentPortPrimarySwitch         SfpsAddress,
                         sfpsRATopAgentPortNetHelloRecvFreq  INTEGER,
-                        sfpsRATopAgentPortStateChangeCount      INTEGER, 
+                        sfpsRATopAgentPortStateChangeCount      INTEGER,
                         sfpsRATopAgentPortNVRAMStatus           INTEGER
-        }  
+        }
 
 sfpsRATopAgentPortLogicalPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1321,7 +1321,7 @@ sfpsVMTopServerDeltaEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Logical port neighboring switch was discovered on"
-        INDEX   { sfpsVMTopServerDeltaIndex } 
+        INDEX   { sfpsVMTopServerDeltaIndex }
 
         ::= { sfpsVMTopServerDeltaTable 1 }
 
@@ -1333,7 +1333,7 @@ SfpsVMTopServerDeltaEntry ::=
                         sfpsVMTopServerDeltaState               INTEGER,
                         sfpsVMTopServerDeltaIPAddress           IpAddress,
                         sfpsVMTopServerDeltaAgent               DisplayString
-        }  
+        }
 
 sfpsVMTopServerDeltaIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1470,7 +1470,7 @@ sfpsTAPITestInVerb    OBJECT-TYPE
         ::= { sfpsTAPITestIn 1 }
 
 sfpsTAPITestInLogicalPort    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1478,7 +1478,7 @@ sfpsTAPITestInLogicalPort    OBJECT-TYPE
         ::= { sfpsTAPITestIn 2 }
 
 sfpsTAPITestInSwitchID    OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1486,7 +1486,7 @@ sfpsTAPITestInSwitchID    OBJECT-TYPE
         ::= { sfpsTAPITestIn 3 }
 
 sfpsTAPITestInMAC    OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1513,7 +1513,7 @@ sfpsTAPITestInPortTypeState    OBJECT-TYPE
         ::= { sfpsTAPITestIn 5 }
 
 sfpsTAPITestInTopologyAgentID    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1521,7 +1521,7 @@ sfpsTAPITestInTopologyAgentID    OBJECT-TYPE
         ::= { sfpsTAPITestIn 6 }
 
 sfpsTAPITestInUNIT321    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1531,7 +1531,7 @@ sfpsTAPITestInUNIT321    OBJECT-TYPE
 -- TAPI Test Out
 
 sfpsTAPITestOutOutputInteger    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1539,7 +1539,7 @@ sfpsTAPITestOutOutputInteger    OBJECT-TYPE
         ::= { sfpsTAPITestOut 1 }
 
 sfpsTAPITestOutOutPutString    OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1564,7 +1564,7 @@ sfpsTopologyServerTestInVerb    OBJECT-TYPE
         ::= { sfpsTopologyServerTestIn 1 }
 
 sfpsTopologyServerTestInServer    OBJECT-TYPE
-        SYNTAX  DisplayString   
+        SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1572,7 +1572,7 @@ sfpsTopologyServerTestInServer    OBJECT-TYPE
         ::= { sfpsTopologyServerTestIn 2 }
 
 sfpsTopologyServerTestInNumberOfRelays    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1595,7 +1595,7 @@ sfpsTopologyServerTestEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "A toprelay plus its index"
-        INDEX   { sfpsTopologyServerTestRelayNumber } 
+        INDEX   { sfpsTopologyServerTestRelayNumber }
 
         ::= { sfpsTopologyServerTestTable 1 }
 
@@ -1610,7 +1610,7 @@ SfpsTopologyServerTestEntry ::=
                         sfpsTopologyServerTestOldState          INTEGER,
                         sfpsTopologyServerTestNewState          INTEGER,
                         sfpsTopologyServerTestTopologyAgent     DisplayString
-        }  
+        }
 
 sfpsTopologyServerTestRelayNumber   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1727,7 +1727,7 @@ sfpsVLANTopAgentNeighborEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Neighboring switch descriptors"
-        INDEX   { sfpsVLANTopAgentNeighborInPort, sfpsVLANTopAgentNeighborSwitchID } 
+        INDEX   { sfpsVLANTopAgentNeighborInPort, sfpsVLANTopAgentNeighborSwitchID }
 
         ::= { sfpsVLANTopAgentNeighborTable 1 }
 
@@ -1737,7 +1737,7 @@ SfpsVLANTopAgentNeighborEntry ::=
                         sfpsVLANTopAgentNeighborSwitchID        DisplayString,
                         sfpsVLANTopAgentNeighborOptions         INTEGER
 
-        }  
+        }
 
 sfpsVLANTopAgentNeighborInPort   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1779,7 +1779,7 @@ sfpsVLANTopAgentPortEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Entry into VLANTopAgentPortTable - Logical port information"
-        INDEX   { sfpsVLANTopAgentPortPort } 
+        INDEX   { sfpsVLANTopAgentPortPort }
 
         ::= { sfpsVLANTopAgentPortTable 1 }
 
@@ -1792,7 +1792,7 @@ SfpsVLANTopAgentPortEntry ::=
                         sfpsVLANTopAgentPortPortOptions         INTEGER,
                         sfpsVLANTopAgentPortNVRAMStatus         INTEGER
 
-        }  
+        }
 
 sfpsVLANTopAgentPortPort   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1872,7 +1872,7 @@ sfpsVLANTopAgentPortTableAPIInLogicalPort   OBJECT-TYPE
         ::= { sfpsVLANTopAgentPortTableAPIIn 2 }
 
 sfpsVLANTopAgentPortTableAPIInHelloVersion   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1911,7 +1911,7 @@ sfpsIncompatibleNeighborEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsIncompatibleNeighborLogicalPort, sfpsIncompatibleNeighborSwitchID} 
+        INDEX   { sfpsIncompatibleNeighborLogicalPort, sfpsIncompatibleNeighborSwitchID}
 
         ::= { sfpsIncompatibleNeighborTable 1 }
 
@@ -1942,7 +1942,7 @@ SfpsIncompatibleNeighborEntry ::=
                         sfpsIncompatibleNeighborLocalPortState  INTEGER,
                         sfpsIncompatibleNeighborRemotePortState INTEGER,
                         sfpsIncompatibleNeighborCompatibility           INTEGER
-        }  
+        }
 
 sfpsIncompatibleNeighborLogicalPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2196,7 +2196,7 @@ sfpsDirViolationEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsDirViolationHash, sfpsDirViolationHashIndex } 
+        INDEX   { sfpsDirViolationHash, sfpsDirViolationHashIndex }
 
         ::= { sfpsDirViolationTable 1 }
 
@@ -2214,7 +2214,7 @@ SfpsDirViolationEntry ::=
                         sfpsDirViolationFirstSeen       TimeTicks,
                         sfpsDirViolationSrcMac          OCTET STRING,
                         sfpsDirViolationCPId            OCTET STRING
-        }  
+        }
 
 sfpsDirViolationHash    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2423,7 +2423,7 @@ sfpsDirViolationDeltaEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsDirViolationDeltaIndex } 
+        INDEX   { sfpsDirViolationDeltaIndex }
 
         ::= { sfpsDirViolationDeltaTable 1 }
 
@@ -2434,7 +2434,7 @@ SfpsDirViolationDeltaEntry ::=
                         sfpsDirViolationDeltaAOType                 INTEGER,
                         sfpsDirViolationDeltaAOValue                INTEGER,
                         sfpsDirViolationDeltaEntryType              INTEGER
-        }  
+        }
 
 sfpsDirViolationDeltaIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2517,8 +2517,8 @@ sfpsDirViolationDeltaAPINumEntries    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Set the state of the Violation Table.  When the table is locked,
-                 no changes to the Violation Table will be allowed. Events that occur 
-                 while the table is locked will not be logged when the table is 
+                 no changes to the Violation Table will be allowed. Events that occur
+                 while the table is locked will not be logged when the table is
                  subsequently unlocked."
         ::= { sfpsDirViolationDeltaAPI 2 }
 
@@ -2540,7 +2540,7 @@ sfpsRestrictedPortEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsRestrictedPortPort, sfpsRestrictedPortHash, sfpsRestrictedPortHashIndex } 
+        INDEX   { sfpsRestrictedPortPort, sfpsRestrictedPortHash, sfpsRestrictedPortHashIndex }
 
         ::= { sfpsRestrictedPortTable 1 }
 
@@ -2550,7 +2550,7 @@ SfpsRestrictedPortEntry ::=
                 sfpsRestrictedPortHash                INTEGER,
             sfpsRestrictedPortHashIndex           INTEGER,
             sfpsRestrictedPortSrcMac              DisplayString
-        }  
+        }
 
 sfpsRestrictedPortPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2772,7 +2772,7 @@ sfpsESPTopAgentPortEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsESPTopAgentPortPort } 
+        INDEX   { sfpsESPTopAgentPortPort }
 
         ::= { sfpsESPTopAgentPortTable 1 }
 
@@ -2782,7 +2782,7 @@ SfpsESPTopAgentPortEntry ::=
                         sfpsESPTopAgentPortHelloVersion         INTEGER,
                         sfpsESPTopAgentPortSendFrequency        INTEGER,
                         sfpsESPTopAgentPortRecvFrequency        INTEGER
-        }  
+        }
 
 sfpsESPTopAgentPortPort    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2837,7 +2837,7 @@ sfpsTopologyServerTestTopRelayEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "A top relay plus its index"
-        INDEX   { sfpsTopologyServerTestTopRelayRelayNumber } 
+        INDEX   { sfpsTopologyServerTestTopRelayRelayNumber }
 
         ::= { sfpsTopologyServerTestTopRelayTable 1 }
 
@@ -2854,7 +2854,7 @@ SfpsTopologyServerTestTopRelayEntry ::=
                 sfpsTopologyServerTestTopRelayChassisIP IpAddress,
                 sfpsTopologyServerTestTopRelayFLevel    INTEGER,
                 sfpsTopologyServerTestTopRelayTopologyAgent     OCTET STRING
-          }  
+          }
 
 sfpsTopologyServerTestTopRelayRelayNumber   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -2958,7 +2958,7 @@ sfpsTopologyServerTestTopRelayTopologyAgent   OBJECT-TYPE
         ::= { sfpsTopologyServerTestTopRelayEntry 11 }
 
 
--- 
+--
 
 sfpsRestrictedMobilityTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsRestrictedMobilityEntry
@@ -2974,7 +2974,7 @@ sfpsRestrictedMobilityEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsRestrictedMobilityHash, sfpsRestrictedMobilityPort, sfpsRestrictedMobilityHashIndex } 
+        INDEX   { sfpsRestrictedMobilityHash, sfpsRestrictedMobilityPort, sfpsRestrictedMobilityHashIndex }
 
         ::= { sfpsRestrictedMobilityTable 1 }
 
@@ -2985,7 +2985,7 @@ SfpsRestrictedMobilityEntry ::=
                 sfpsRestrictedMobilityHashIndex INTEGER,
                 sfpsRestrictedMobilitySrcMac    OCTET STRING,
                 sfpsRestrictedMobilitySwitch    SfpsAddress
-          }  
+          }
 
 sfpsRestrictedMobilityHash   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -3043,7 +3043,7 @@ sfpsRestrictedMobilityAPIVerb   OBJECT-TYPE
         ::= { sfpsRestrictedMobilityAPI 1 }
 
 sfpsRestrictedMobilityAPISourcePort   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3051,7 +3051,7 @@ sfpsRestrictedMobilityAPISourcePort   OBJECT-TYPE
         ::= { sfpsRestrictedMobilityAPI 2 }
 
 sfpsRestrictedMobilityAPISrcMac   OBJECT-TYPE
-        SYNTAX  SfpsAddress     
+        SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3059,7 +3059,7 @@ sfpsRestrictedMobilityAPISrcMac   OBJECT-TYPE
         ::= { sfpsRestrictedMobilityAPI 3 }
 
 sfpsRestrictedMobilityAPISwitch   OBJECT-TYPE
-        SYNTAX  SfpsAddress     
+        SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3069,7 +3069,7 @@ sfpsRestrictedMobilityAPISwitch   OBJECT-TYPE
 -- sfps
 
 sfpsTopologyServerPortEventRelayLogicalPort   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3113,4 +3113,4 @@ sfpsTopologyServerPortEventRelayNewState   OBJECT-TYPE
                 ""
         ::= { sfpsTopologyServerPortEventRelay 3 }
 
-END 
+END

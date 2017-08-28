@@ -30,7 +30,7 @@ IMPORTS
 ieee8023lldpV2Xdot3MIB MODULE-IDENTITY
     LAST-UPDATED "201304110000Z" -- April 11, 2013
     ORGANIZATION "IEEE 802.3 Working Group"
-    CONTACT-INFO 
+    CONTACT-INFO
             "WG-URL: http://www.ieee802.org/3/index.html
             WG-EMail: STDS-802-3-MIB@LISTSERV.IEEE.ORG
 
@@ -57,9 +57,9 @@ ieee8023lldpV2Xdot3MIB MODULE-IDENTITY
 
 
 
-   ::= { org ieee(111) 
-         standards-association-numbers-series-standards(2) 
-         lan-man-stds(802)ieee802dot3(3) ieee802dot3dot1mibs(1) 5 } 
+   ::= { org ieee(111)
+         standards-association-numbers-series-standards(2)
+         lan-man-stds(802)ieee802dot3(3) ieee802dot3dot1mibs(1) 5 }
 
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ lldpV2Xdot3PortConfigTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "A table that controls selection of LLDP TLVs to be transmitted 
+            "A table that controls selection of LLDP TLVs to be transmitted
             on individual ports."
     ::= { lldpV2Xdot3Config 1 }
 
@@ -126,7 +126,7 @@ lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
     SYNTAX      BITS {
             macPhyConfigStatus(0),
             powerViaMDI(1),
-            unused(2), --avoids re-use of the old link agg bit number 
+            unused(2), --avoids re-use of the old link agg bit number
             maxFrameSize(3)
     }
     MAX-ACCESS  read-write
@@ -156,7 +156,7 @@ lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
 
             The value of this object is restored from non-volatile
             storage after a re-initialization of the management system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.1.1.1"
     DEFVAL  { { } }
     ::= { lldpV2Xdot3PortConfigEntry  1 }
@@ -164,7 +164,7 @@ lldpV2Xdot3PortConfigTLVsTxEnable  OBJECT-TYPE
 
 
 ------------------------------------------------------------------------------
--- IEEE 802.3 - Local Device Information 
+-- IEEE 802.3 - Local Device Information
 ------------------------------------------------------------------------------
 
 ---
@@ -206,7 +206,7 @@ lldpV2Xdot3LocPortAutoNegSupported OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the given port
             (associated with the local system) supports Auto-negotiation."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.1"
     ::= { lldpV2Xdot3LocPortEntry 1 }
 
@@ -218,7 +218,7 @@ lldpV2Xdot3LocPortAutoNegEnabled  OBJECT-TYPE
             "The truth value used to indicate whether port
             Auto-negotiation is enabled on the given port associated
             with the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.2"
     ::= { lldpV2Xdot3LocPortEntry 2 }
 
@@ -231,7 +231,7 @@ lldpV2Xdot3LocPortAutoNegAdvertisedCap OBJECT-TYPE
             ifMauAutoNegCapAdvertisedBits object (defined in IETF RFC
             3636) which is associated with the given port on the
             local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.3"
     ::= { lldpV2Xdot3LocPortEntry 3 }
 
@@ -244,15 +244,15 @@ lldpV2Xdot3LocPortOperMauType  OBJECT-TYPE
             of the given port on the local system.
 
             This object contains the integer value derived from the
-            list position of the corresponding dot3MauType as listed 
-            in Clause 13 and is equal to the last number in the 
+            list position of the corresponding dot3MauType as listed
+            in Clause 13 and is equal to the last number in the
             respective dot3MauType OID.
-           
+
             For example, if the ifMauType object is dot3MauType1000BaseTHD
             which corresponds to {dot3MauType 29}, the numerical value of
-            this field is 29. For MAU types not listed in Clause 13, 
+            this field is 29. For MAU types not listed in Clause 13,
             the value of this field shall be set to zero."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.4"
     ::= { lldpV2Xdot3LocPortEntry 4 }
 
@@ -270,7 +270,7 @@ lldpV2Xdot3LocPowerTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of power Ethernet 
+            "This table contains one row per port of power Ethernet
             information (as a part of the LLDP IEEE 802.3 organizational
             extension) on the local system known to this agent."
     ::= { lldpV2Xdot3LocalData 2 }
@@ -299,7 +299,7 @@ LldpV2Xdot3LocPowerEntry ::= SEQUENCE {
          lldpV2Xdot3LocResponseTime             Integer32,
          lldpV2Xdot3LocReady                    TruthValue,
          lldpV2Xdot3LocReducedOperationPowerValue  Integer32
-} 
+}
 
 
 lldpV2Xdot3LocPowerPortClass  OBJECT-TYPE
@@ -309,7 +309,7 @@ lldpV2Xdot3LocPowerPortClass  OBJECT-TYPE
     DESCRIPTION
             "The value that identifies the port Class of the given port
             associated with the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.5"
     ::= { lldpV2Xdot3LocPowerEntry 1 }
 
@@ -320,7 +320,7 @@ lldpV2Xdot3LocPowerMDISupported  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the MDI power is
             supported on the given port associated with the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.6"
     ::= { lldpV2Xdot3LocPowerEntry 2 }
 
@@ -331,7 +331,7 @@ lldpV2Xdot3LocPowerMDIEnabled  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to identify whether MDI power is
             enabled on the given port associated with the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.7"
     ::= { lldpV2Xdot3LocPowerEntry 3 }
 
@@ -345,7 +345,7 @@ lldpV2Xdot3LocPowerPairControlable  OBJECT-TYPE
             Clause 8) and is used to indicate whether the pair selection
             can be controlled on the given port associated with the
             local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.8"
     ::= { lldpV2Xdot3LocPowerEntry 4 }
 
@@ -357,7 +357,7 @@ lldpV2Xdot3LocPowerPairs  OBJECT-TYPE
             "This object contains the value of the pethPsePortPowerPairs
             object (defined in Clause 8) which is associated with
             the given port on the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.9"
     ::= { lldpV2Xdot3LocPowerEntry 5 }
 
@@ -367,10 +367,10 @@ lldpV2Xdot3LocPowerClass  OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "This object contains the value of the
-            pethPsePortPowerClassifications object (defined in 
+            pethPsePortPowerClassifications object (defined in
             Clause 8) which is associated with the given port on the
             local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.10"
     ::= { lldpV2Xdot3LocPowerEntry 6 }
 
@@ -386,7 +386,7 @@ lldpV2Xdot3LocPowerType  OBJECT-TYPE
     DESCRIPTION
             "A GET returns an integer indicating whether the local
              system is a PSE or a PD and whether it is Type 1 or Type 2."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.14"
     ::= { lldpV2Xdot3LocPowerEntry 7 }
 
@@ -402,12 +402,12 @@ lldpV2Xdot3LocPowerSource  OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "A GET returns an integer indicating the power sources of the 
-            local system. A PSE indicates whether it is being powered by 
-            a primary power source; a backup power source; or unknown. A PD 
-            indicates whether it is being powered by a PSE and locally; 
+            "A GET returns an integer indicating the power sources of the
+            local system. A PSE indicates whether it is being powered by
+            a primary power source; a backup power source; or unknown. A PD
+            indicates whether it is being powered by a PSE and locally;
             by a PSE only; or unknown."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.15"
     ::= { lldpV2Xdot3LocPowerEntry 8 }
 
@@ -421,89 +421,89 @@ lldpV2Xdot3LocPowerPriority  OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-            "A GET returns the priority of a PD system. For a PSE, this 
-            is the priority that the PSE assigns to the PD. For a PD, this 
-            is the priority that the PD requests from the PSE. A SET 
-            operation changes the priority of the PD system to the indicated 
+            "A GET returns the priority of a PD system. For a PSE, this
+            is the priority that the PSE assigns to the PD. For a PD, this
+            is the priority that the PD requests from the PSE. A SET
+            operation changes the priority of the PD system to the indicated
             value."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.16"
     ::= { lldpV2Xdot3LocPowerEntry 9 }
 
 lldpV2Xdot3LocPDRequestedPowerValue  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "A GET returns the PD requested power value. 
+            "A GET returns the PD requested power value.
             For a PD, it is the power value that the PD has currently
-            requested from the remote system. PD requested power value 
+            requested from the remote system. PD requested power value
             is the maximum input average power the PD ever draws under
             this power allocation if accepted. For a PSE, it is the power
-            value that the PSE mirrors back to the remote system. This is 
+            value that the PSE mirrors back to the remote system. This is
             the PD requested power value that was used by the PSE to compute
-            the power it has currently allocated to the remote system. 
-            The PD requested power value is encoded according to 
+            the power it has currently allocated to the remote system.
+            The PD requested power value is encoded according to
             IEEE Std 802.3 Equation (79?1), where X is the decimal value of
             aLldpXdot3LocPDRequestedPowerValue."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.17"
     ::= { lldpV2Xdot3LocPowerEntry 10 }
 
 lldpV2Xdot3LocPSEAllocatedPowerValue  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "A GET returns the PSE allocated power value.
-            For a PSE, it is the power value that the PSE has currently 
+            For a PSE, it is the power value that the PSE has currently
             allocated to the remote system. The PSE allocated power value
             is the maximum input average power that the PSE wants the PD
-            to ever draw under this allocation if it is accepted. For a PD, 
+            to ever draw under this allocation if it is accepted. For a PD,
             it is the power value that the PD mirrors back to the remote
             system. This is the PSE allocated power value that was used by
             the PD to compute the power that it has currently requested from
             the remote system. The PSE allocated power value is encoded
             according to IEEE Std 802.3 Equation (79?2), where X is the
             decimal value of aLldpXdot3LocPSEAllocatedPowerValue."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.18"
     ::= { lldpV2Xdot3LocPowerEntry 11 }
 
 lldpV2Xdot3LocResponseTime  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "A GET returns the response time in seconds of the local system.
-            For a PD, it is the maximum time required to update the value of 
-            lldpV2Xdot3LocPDRequestedPowerValue when the remote system 
-            requests the PD to change its max power draw. For a PSE, it is 
-            the maximum time required to update the value of 
-            lldpV2Xdot3LocPDRequestedPowerValue when the remote system 
+            For a PD, it is the maximum time required to update the value of
+            lldpV2Xdot3LocPDRequestedPowerValue when the remote system
+            requests the PD to change its max power draw. For a PSE, it is
+            the maximum time required to update the value of
+            lldpV2Xdot3LocPDRequestedPowerValue when the remote system
             requests of the PSE a new power value."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.19"
     ::= { lldpV2Xdot3LocPowerEntry 12 }
 
 lldpV2Xdot3LocReady  OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "The truth value used to identify whether the local Data Link Layer 
+            "The truth value used to identify whether the local Data Link Layer
             classification engine has completed initialization and is ready to
             receive and transmit LLDPDUs."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.20"
     ::= { lldpV2Xdot3LocPowerEntry 13 }
 
 lldpV2Xdot3LocReducedOperationPowerValue  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "A GET returns the reduced operation power value. For a PD, it 
+            "A GET returns the reduced operation power value. For a PD, it
             is a power value that is lower than the currently requested
             power value. This reduced operation power value represents a
             power state in which the PD could continue to operate, but with
@@ -511,18 +511,18 @@ lldpV2Xdot3LocReducedOperationPowerValue  OBJECT-TYPE
             The PSE could optionally use this information in the event that
             the PSE subsequently requests a lower PD power value than the
             PD requested power value. For a PSE, it is a power value that the
-            PSE could ask the PD to move to if the PSE wants the PD to move 
+            PSE could ask the PD to move to if the PSE wants the PD to move
             to a lower power state. The definition and encoding of PD
             requested power value is the same as described in
             lldpV2Xdot3LocPDRequestedPowerValue. The default value for this
             field is the hexadecimal value FFFF"
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.21"
-    ::= { lldpV2Xdot3LocPowerEntry 14 }        
+    ::= { lldpV2Xdot3LocPowerEntry 14 }
 
 ---
 ---
---- lldpV2Xdot3LocMaxFrameSizeTable: Maximum Frame Size information 
+--- lldpV2Xdot3LocMaxFrameSizeTable: Maximum Frame Size information
 --- V2 modified to be indexed by ifIndex.
 ---
 ---
@@ -531,7 +531,7 @@ lldpV2Xdot3LocMaxFrameSizeTable  OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of maximum frame 
+            "This table contains one row per port of maximum frame
             size information (as a part of the LLDP IEEE 802.3 organizational
             extension) on the local system known to this agent."
     ::= { lldpV2Xdot3LocalData 3 }
@@ -548,16 +548,16 @@ lldpV2Xdot3LocMaxFrameSizeEntry OBJECT-TYPE
 
 LldpV2Xdot3LocMaxFrameSizeEntry ::= SEQUENCE {
         lldpV2Xdot3LocMaxFrameSize             Unsigned32
-} 
+}
 
 lldpV2Xdot3LocMaxFrameSize OBJECT-TYPE
     SYNTAX      Unsigned32(0..65535)
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "An integer value indicating the maximum supported frame 
+            "An integer value indicating the maximum supported frame
              size in octets on the given port of the local system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.2.1.13"
     ::= { lldpV2Xdot3LocMaxFrameSizeEntry 1 }
 
@@ -573,7 +573,7 @@ lldpV2Xdot3LocEEETable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of Energy Efficient Ethernet 
+            "This table contains one row per port of Energy Efficient Ethernet
             information (as a part of the LLDP IEEE 802.3 organizational
             extension) on the local system known to this agent."
     ::= { lldpV2Xdot3LocalData 4 }
@@ -596,13 +596,13 @@ LldpV2Xdot3LocEEEEntry ::= SEQUENCE {
          lldpV2Xdot3TxDllReady                  TruthValue,
          lldpV2Xdot3RxDllReady                  TruthValue,
          lldpV2Xdot3LocDllEnabled               TruthValue
-} 
+}
 
 lldpV2Xdot3LocTxTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that the local system
             can support in the transmit direction.
             This object maps to the variable LocTxSystemValue as defined
@@ -615,7 +615,7 @@ lldpV2Xdot3LocTxTwSysEcho      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that the remote system is
             advertising that it can support in the transmit direction and is
             echoed by the local system under the control of the EEE DLL receiver
@@ -629,7 +629,7 @@ lldpV2Xdot3LocRxTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that
             the local system is requesting in the receive direction.
             This object maps to the variable LocRxSystemValue as
@@ -642,7 +642,7 @@ lldpV2Xdot3LocRxTwSysEcho      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that
             the remote system is advertising that it is requesting in the
             receive direction and is echoed by the local system under the
@@ -657,7 +657,7 @@ lldpV2Xdot3LocFbTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of the fallback Tw_sys_tx
             that the local system is advertising to the remote system.
             This object maps to the variable LocFbSystemValue as defined
@@ -670,8 +670,8 @@ lldpV2Xdot3TxDllReady      OBJECT-TYPE
     SYNTAX      TruthValue
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-            "The truth value used to identify whether the local Data Link Layer 
+    DESCRIPTION
+            "The truth value used to identify whether the local Data Link Layer
             EEE layer management function has completed initialization and
             is ready to receive and transmit LLDPDUs."
     REFERENCE
@@ -682,8 +682,8 @@ lldpV2Xdot3RxDllReady      OBJECT-TYPE
     SYNTAX      TruthValue
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
-            "The truth value used to identify whether the local Data Link Layer 
+    DESCRIPTION
+            "The truth value used to identify whether the local Data Link Layer
             EEE layer management function has completed initialization and
             is ready to receive and transmit LLDPDUs."
     REFERENCE
@@ -694,7 +694,7 @@ lldpV2Xdot3LocDllEnabled      OBJECT-TYPE
     SYNTAX      TruthValue
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "The truth value used to identify whether the local system has
             completed auto-negotiation with a link partner that has
             indicated at leat one EEE capability."
@@ -732,7 +732,7 @@ lldpV2Xdot3RemPortEntry OBJECT-TYPE
     DESCRIPTION
             "Information about a particular physical network connection."
     INDEX   { lldpV2RemTimeMark,
-              lldpV2RemLocalIfIndex, 
+              lldpV2RemLocalIfIndex,
               lldpV2RemLocalDestMACAddress,
               lldpV2RemIndex }
     ::= { lldpV2Xdot3RemPortTable 1 }
@@ -742,7 +742,7 @@ LldpV2Xdot3RemPortEntry ::= SEQUENCE {
               lldpV2Xdot3RemPortAutoNegEnabled       TruthValue,
               lldpV2Xdot3RemPortAutoNegAdvertisedCap OCTET STRING,
               lldpV2Xdot3RemPortOperMauType          Unsigned32
-} 
+}
 
 
 lldpV2Xdot3RemPortAutoNegSupported OBJECT-TYPE
@@ -752,7 +752,7 @@ lldpV2Xdot3RemPortAutoNegSupported OBJECT-TYPE
     DESCRIPTION
             "The truth value used to indicate whether the given port
             (associated with remote system) supports Auto-negotiation."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.1"
     ::= { lldpV2Xdot3RemPortEntry 1 }
 
@@ -764,7 +764,7 @@ lldpV2Xdot3RemPortAutoNegEnabled  OBJECT-TYPE
             "The truth value used to indicate whether port
             Auto-negotiation is enabled on the given port associated
             with the remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.2"
     ::= { lldpV2Xdot3RemPortEntry 2 }
 
@@ -777,7 +777,7 @@ lldpV2Xdot3RemPortAutoNegAdvertisedCap  OBJECT-TYPE
             ifMauAutoNegCapAdvertisedBits object (defined in IETF RFC
             3636) which is associated with the given port on the
             remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.3"
     ::= { lldpV2Xdot3RemPortEntry 3 }
 
@@ -791,14 +791,14 @@ lldpV2Xdot3RemPortOperMauType OBJECT-TYPE
 
             This object contains the integer value derived from the
             list position of the corresponding dot3MauType as listed in
-            in Clause 13 and is equal to the last number in 
+            in Clause 13 and is equal to the last number in
             the respective dot3MauType OID.
-           
+
             For example, if the ifMauType object is dot3MauType1000BaseTHD
             which corresponds to {dot3MauType 29}, the numerical value of
-            this field is 29. For MAU types not listed in Clause 13, 
+            this field is 29. For MAU types not listed in Clause 13,
             the value of this field shall be set to zero."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.4"
     ::= { lldpV2Xdot3RemPortEntry 4 }
 
@@ -844,7 +844,7 @@ LldpV2Xdot3RemPowerEntry ::= SEQUENCE {
               lldpV2Xdot3RemPowerPriority            INTEGER,
               lldpV2Xdot3RemPDRequestedPowerValue    Integer32,
               lldpV2Xdot3RemPSEAllocatedPowerValue   Integer32
-} 
+}
 
 
 lldpV2Xdot3RemPowerPortClass  OBJECT-TYPE
@@ -854,7 +854,7 @@ lldpV2Xdot3RemPowerPortClass  OBJECT-TYPE
     DESCRIPTION
             "The value that identifies the port Class of the given port
             associated with the remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.5"
     ::= { lldpV2Xdot3RemPowerEntry 1 }
 
@@ -866,7 +866,7 @@ lldpV2Xdot3RemPowerMDISupported  OBJECT-TYPE
             "The truth value used to indicate whether the MDI power
             is supported on the given port associated with the remote
             system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.6"
     ::= { lldpV2Xdot3RemPowerEntry 2 }
 
@@ -877,7 +877,7 @@ lldpV2Xdot3RemPowerMDIEnabled  OBJECT-TYPE
     DESCRIPTION
             "The truth value used to identify whether MDI power is
             enabled on the given port associated with the remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.7"
     ::= { lldpV2Xdot3RemPowerEntry 3 }
 
@@ -891,7 +891,7 @@ lldpV2Xdot3RemPowerPairControlable  OBJECT-TYPE
             Clause 8) and is used to indicate whether the pair selection
             can be controlled on the given port associated with the
             remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.8"
     ::= { lldpV2Xdot3RemPowerEntry 4 }
 
@@ -903,7 +903,7 @@ lldpV2Xdot3RemPowerPairs  OBJECT-TYPE
             "This object contains the value of the pethPsePortPowerPairs
             object (defined in Clause 8) which is associated with
             the given port on the remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.9"
     ::= { lldpV2Xdot3RemPowerEntry 5 }
 
@@ -916,7 +916,7 @@ lldpV2Xdot3RemPowerClass  OBJECT-TYPE
             pethPsePortPowerClassifications object (defined in
             Clause 8) which is associated with the given port on the
             remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.10"
     ::= { lldpV2Xdot3RemPowerEntry 6 }
 
@@ -933,7 +933,7 @@ lldpV2Xdot3RemPowerType  OBJECT-TYPE
     DESCRIPTION
             "A GET returns an integer indicating whether the remote
              system is a PSE or a PD and whether it is Type 1 or Type 2."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.14"
     ::= { lldpV2Xdot3RemPowerEntry 7 }
 
@@ -950,13 +950,13 @@ lldpV2Xdot3RemPowerSource  OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "A GET returns an integer indicating the power sources of the 
-            remote system. When the remote system is a PSE, it indicates 
+            "A GET returns an integer indicating the power sources of the
+            remote system. When the remote system is a PSE, it indicates
             whether it is being powered by a primary power source; a backup
             power source; or unknown. When the remote system is a PD, it
             indicates whether it is being powered by a PSE and locally;
             locally only; by a PSE only; or unknown."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.15"
     ::= { lldpV2Xdot3RemPowerEntry 8 }
 
@@ -970,15 +970,15 @@ lldpV2Xdot3RemPowerPriority  OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-            "A GET returns the priority of a PD system. For a PSE, this 
-            is the priority that the remote system requests. For a PD, this 
+            "A GET returns the priority of a PD system. For a PSE, this
+            is the priority that the remote system requests. For a PD, this
             is the priority that the remote system has assigned."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.16"
     ::= { lldpV2Xdot3RemPowerEntry 9 }
 
 lldpV2Xdot3RemPDRequestedPowerValue  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -988,12 +988,12 @@ lldpV2Xdot3RemPDRequestedPowerValue  OBJECT-TYPE
             power value received from the remote system. The definition and
             encoding of PD requested power value is the same as described in
             lldpV2Xdot3LocPDRequestedPowerValue."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.17"
     ::= { lldpV2Xdot3RemPowerEntry 10 }
 
 lldpV2Xdot3RemPSEAllocatedPowerValue  OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -1004,12 +1004,12 @@ lldpV2Xdot3RemPSEAllocatedPowerValue  OBJECT-TYPE
             is the PSE allocated power value received from the remote system.
             The definition and encoding of PSE allocated power value is
             the same as described in lldpV2Xdot3LocPSEAllocatedPowerValue."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.18"
     ::= { lldpV2Xdot3RemPowerEntry 11 }
 
 ---
---- lldpV2Xdot3RemMaxFrameSizeTable: Maximum Frame Size information 
+--- lldpV2Xdot3RemMaxFrameSizeTable: Maximum Frame Size information
 --- V2 modified to be indexed by ifIndex and destination MAC address.
 ---
 ---
@@ -1020,8 +1020,8 @@ lldpV2Xdot3RemMaxFrameSizeTable  OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "This table contains one row per port/destination
-            address pair of maximum frame 
-            size information (as a part of the LLDP IEEE 802.3 
+            address pair of maximum frame
+            size information (as a part of the LLDP IEEE 802.3
             organizational extension) of the remote system."
     ::= { lldpV2Xdot3RemoteData 3 }
 
@@ -1047,10 +1047,10 @@ lldpV2Xdot3RemMaxFrameSize OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-            "An integer value indicating the maximum supported frame 
-             size in octets on the port component associated with the 
+            "An integer value indicating the maximum supported frame
+             size in octets on the port component associated with the
              remote system."
-    REFERENCE 
+    REFERENCE
             "IEEE Std 802.3 30.12.3.1.13"
     ::= { lldpV2Xdot3RemMaxFrameSizeEntry 1 }
 
@@ -1066,7 +1066,7 @@ lldpV2Xdot3RemEEETable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-            "This table contains one row per port of Energy Efficient Ethernet 
+            "This table contains one row per port of Energy Efficient Ethernet
             information (as a part of the LLDP IEEE 802.3 organizational
             extension) on the local system known to this agent."
     ::= { lldpV2Xdot3RemoteData 4 }
@@ -1086,14 +1086,14 @@ LldpV2Xdot3RemEEEEntry ::= SEQUENCE {
          lldpV2Xdot3RemRxTwSys                  Integer32,
          lldpV2Xdot3RemRxTwSysEcho              Integer32,
          lldpV2Xdot3RemFbTwSys                  Integer32
-} 
+}
 
 
 lldpV2Xdot3RemTxTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that the remote system
             can support in the transmit direction.
             This object maps to the variable RemTxSystemValue as defined
@@ -1106,7 +1106,7 @@ lldpV2Xdot3RemTxTwSysEcho      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that the local system is
             advertising that it can support in the transmit direction as
              echoed by the remote system under the control of the EEE DLL receiver
@@ -1120,7 +1120,7 @@ lldpV2Xdot3RemRxTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that
             the remote system is requesting in the receive direction.
             This object maps to the variable RemRxSystemValue as
@@ -1133,7 +1133,7 @@ lldpV2Xdot3RemRxTwSysEcho      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of Tw_sys_tx that
             the local system is advertising that it is requesting in the
             receive direction and is echoed by the remote system under the
@@ -1148,7 +1148,7 @@ lldpV2Xdot3RemFbTwSys      OBJECT-TYPE
     SYNTAX      Integer32
     MAX-ACCESS  read-only
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
             "A GET returns the value of the fallback Tw_sys_tx
             that the remote system is advertising.
             This object maps to the variable RemFbSystemValue as defined
@@ -1175,13 +1175,13 @@ lldpV2Xdot3TxRxCompliance MODULE-COMPLIANCE
             "A compliance statement for SNMP entities that implement
             the LLDP IEEE 802.3 organizational extension MIB.
 
-            This group is mandatory for all agents that implement the 
+            This group is mandatory for all agents that implement the
             LLDP IEEE 802.3 organizational extension in TX and/or RX mode.
 
             This version defines compliance requirements for
             V2 of the LLDP MIB."
     MODULE  -- this module
-        MANDATORY-GROUPS { lldpV2Xdot3ConfigGroup, 
+        MANDATORY-GROUPS { lldpV2Xdot3ConfigGroup,
                            ifGeneralInformationGroup
         }
     ::= { lldpV2Xdot3Compliances 1 }
@@ -1192,7 +1192,7 @@ lldpV2Xdot3TxCompliance MODULE-COMPLIANCE
             "The compliance statement for SNMP entities that implement
             the LLDP IEEE 802.3 organizational extension MIB.
 
-            This group is mandatory for agents that implement the 
+            This group is mandatory for agents that implement the
             LLDP IEEE 802.3 organizational extension in the TX mode.
 
             This version defines compliance requirements for
@@ -1207,7 +1207,7 @@ lldpV2Xdot3RxCompliance MODULE-COMPLIANCE
             "The compliance statement for SNMP entities that implement
             the LLDP IEEE 802.3 organizational extension MIB.
 
-            This group is mandatory for agents that implement the 
+            This group is mandatory for agents that implement the
             LLDP IEEE 802.3 organizational extension in the RX mode.
 
             This version defines compliance requirements for

@@ -39,7 +39,7 @@ IMPORTS
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
-      IpAddress, 
+      IpAddress,
       TimeTicks
                 FROM RFC1155-SMI
 
@@ -54,13 +54,13 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 --SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 --HexInteger ::= INTEGER
 --  display this integer in hex format
 
@@ -253,7 +253,7 @@ sfpsMcastIPRouterTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsMcastIPRouterEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 ""
        ::= { sfpsMcastIPRouter 1 }
 
@@ -362,13 +362,13 @@ sfpsMcastIPRouterAPIVlanId   OBJECT-TYPE
         ::= { sfpsMcastIPRouter 6 }
 
 
---  SFPS Multicast IP Receiver Information Base 
+--  SFPS Multicast IP Receiver Information Base
 
 sfpsMcastIPRIBTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsMcastIPRIBEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 ""
        ::= { sfpsMcastIPReceiverInfoBase 1 }
 
@@ -477,7 +477,7 @@ sfpsMcastConfigApiSenderTableSize   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This is the number of entries that are allocated in the 
+                "This is the number of entries that are allocated in the
                  multicast connection table at startup.  Changing the
                  value will not take effect until blade is reset.
                  Values can be set between 0 and 2048."
@@ -498,13 +498,13 @@ sfpsMcastConfigApiRDRetryBuffs   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This number determines the number of packet objects that 
+                "This number determines the number of packet objects that
                  will be allocated by the reliable control packet transport
                  agent.  The packet object does not allocate space for the
                  packet, it just manages the packet delivery machine.
                  Each increment of this oid allocates space for 128
                  packet management objects which are 82 bytes in size.
-                 Therefore each increment allocates about 10k of memory. 
+                 Therefore each increment allocates about 10k of memory.
                  Value will not take effect until blade is reset."
         ::= { sfpsMcastConfigApi 3 }
 
@@ -513,11 +513,11 @@ sfpsMcastConfigApiRDPktBuffs   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This number determines the number of packet buffers that 
+                "This number determines the number of packet buffers that
                  will be allocated by the reliable control packet transport
                  agent.  Each increment of this oid allocates space for 128
                  packets which are 512 bytes in size.
-                 Therefore each increment allocates about 65k of memory. 
+                 Therefore each increment allocates about 65k of memory.
                  Value will not take effect until blade is reset."
         ::= { sfpsMcastConfigApi 4 }
 
@@ -532,12 +532,12 @@ sfpsMcastConfigApiPendingMaps   OBJECT-TYPE
                  resolve.  The effect of this setting is most evident
                  when a link or switch is lost thru which may multicast
                  connections were passing.  An attempt to reconnect is made
-                 after the delay specified in MC_CONFIG_API_REMAP_DELAY.  
-                 Only the number of MC_CONFIG_API_PENDING_MAPS will be 
+                 after the delay specified in MC_CONFIG_API_REMAP_DELAY.
+                 Only the number of MC_CONFIG_API_PENDING_MAPS will be
                  deferred. If you lose 100 connections and this number is
                  set to 20,  at best you'll reconnect 20 streams after the
-                 delay.  The rest of the connections will be reestablished 
-                 after the receivers respond to sender announcements which 
+                 delay.  The rest of the connections will be reestablished
+                 after the receivers respond to sender announcements which
                  happen every MC_CONFIG_API_REFRESH_INTERVAL interval.
                  Value will not take effect until blade is reset."
         ::= { sfpsMcastConfigApi 5 }
@@ -548,7 +548,7 @@ sfpsMcastConfigApiSndrAgeOut   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "This is the interval in seconds that the age timer
-                 runs.  It is used to determine if a sender is still 
+                 runs.  It is used to determine if a sender is still
                  sending.  After one age out interval, the sender is
                  placed in a dying state and the local switch starts to
                  listen for traffic from that sender on a specific
@@ -566,7 +566,7 @@ sfpsMcastConfigApiRefreshInterval   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "This is the interval at which sender announcements will be
-                transmitted by the switch that the sender is locally 
+                transmitted by the switch that the sender is locally
                 attached.  All sender refreshes will occur within 12 seconds.
                 If this number is set to 60, 1/2 of the senders will
                 be announced every 60 seconds.  If this number is 30,
@@ -607,7 +607,7 @@ sfpsMcastConfigApiStaticTblSize   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "This is the number of static entries that can be made to
-                 the sender database (multicast connection table). 
+                 the sender database (multicast connection table).
                  Typically there would be no entries in this table.
                  Value will not take effect until blade is reset."
         ::= { sfpsMcastConfigApi 10 }
@@ -618,7 +618,7 @@ sfpsMcastConfigApiMcribSize   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "This is the number of static entries that can be made to
-                 the receiver database.  Typically there would be 
+                 the receiver database.  Typically there would be
                  very few entries in this table.
                  Value will not take effect until blade is reset."
         ::= { sfpsMcastConfigApi 11 }
@@ -633,7 +633,7 @@ sfpsMcastConfigApiMcastMode   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Multicast operates in three vlan checking modes.
-                Mode 1 - Do no vlan checking.  The sender and 
+                Mode 1 - Do no vlan checking.  The sender and
                         receivers do not have to be on the same vlan.
                         Multicast connections in this mode disregard
                         whether or not the sender or receiver is in a
@@ -662,7 +662,7 @@ sfpsMcastConfigApiRemapDelay   OBJECT-TYPE
                 a wait is sometimes incurred when pending on a switch
                 resolve response.  Additionally, when topology events
                 occur that cause a redirection of the connection tree,
-                time must be allowed for the topology agents in the 
+                time must be allowed for the topology agents in the
                 domain to be notified before a new path can be
                 requested.  This is the number of seconds that will
                 elaspe before remapping will be attempted.
@@ -702,7 +702,7 @@ sfpsMcastIPSIBTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsMcastIPSIBEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 ""
        ::= { sfpsMcastIPSenderInfoBase 1 }
 
@@ -791,4 +791,4 @@ sfpsMcastIPSibApiVerb   OBJECT-TYPE
                 ""
         ::= { sfpsMcastIPSIBApi 3 }
 
-END 
+END

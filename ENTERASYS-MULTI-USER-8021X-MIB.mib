@@ -25,7 +25,7 @@ ENTERASYS-MULTI-USER-8021X-MIB DEFINITIONS ::= BEGIN
 --  Copyright February, 2013 Enterasys Networks, Inc.
 
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Counter32, Counter64, Unsigned32,
     TimeTicks
         FROM SNMPv2-SMI
@@ -33,7 +33,7 @@ IMPORTS
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
         FROM SNMPv2-CONF
-    SnmpAdminString 
+    SnmpAdminString
         FROM SNMP-FRAMEWORK-MIB
     dot1xPaePortNumber
         FROM IEEE8021-PAE-MIB
@@ -53,10 +53,10 @@ etsysMultiUser8021xMIB MODULE-IDENTITY
          Phone:   +1 603 952 5000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-  
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          Multi-User IEEE 802.1X authentication.
 
          This MIB is designed to supplement and be used in connection
@@ -93,10 +93,10 @@ etsysMulti1xSystemAccountEnable OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "When enabled(1), RADIUS accounting start, interim and 
+        "When enabled(1), RADIUS accounting start, interim and
          stop frames are sent to the configured RADIUS server(s).
-         
-         When disabled(2), accounting packets are not sent to 
+
+         When disabled(2), accounting packets are not sent to
          the RADIUS server."
     DEFVAL { enabled }
     ::= { etsysMultiUser8021xSystem 1 }
@@ -268,7 +268,7 @@ etsysMulti1xAccessEntityStatsEntry OBJECT-TYPE
     ::= { etsysMulti1xAccessEntityStatsTable 1 }
 
 EtsysMulti1xAccessEntityStatsEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysMulti1xAeEapolFramesRx             Counter32,
         etsysMulti1xAeEapolFramesTx             Counter32,
         etsysMulti1xAeEapolStartFramesRx        Counter32,
@@ -428,7 +428,7 @@ etsysMulti1xAeDiagEntry OBJECT-TYPE
     ::= { etsysMulti1xAeDiagTable 1 }
 
 EtsysMulti1xAeDiagEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysMulti1xAeEntersConnecting                     Counter32,
         etsysMulti1xAeEapLogoffsWhileConnecting            Counter32,
         etsysMulti1xAeEntersAuthenticating                 Counter32,
@@ -1155,6 +1155,6 @@ etsysMulti8021xCompliance2 MODULE-COMPLIANCE
         etsysMultiUser8021xActiveAccessEntityGroup,
         etsysMultiUser8021xSystemGroup
     }
-   ::= { etsysMultiUser8021xCompliances 2 }   
+   ::= { etsysMultiUser8021xCompliances 2 }
 
 END

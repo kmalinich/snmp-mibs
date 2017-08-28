@@ -17,16 +17,16 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -59,10 +59,10 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                     "If this object is set to Reset it will cause a reset
                      of the front panel redundancy. Setting this object to
-                     NoReset will do nothing. This object will always be 
+                     NoReset will do nothing. This object will always be
                      read as NoReset."
              ::= { ctFpRedund 1 }
- 
+
         ctFpRedundPollInterval  OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-write
@@ -71,7 +71,7 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
                     "Get/Set the number of seconds between polls for front
                      panel redundancy."
              ::= { ctFpRedund 2 }
-        
+
         ctFpRedundRetrys    OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-write
@@ -80,7 +80,7 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
                     "Get/Set the the number of unanswered polls allowed for
                      the front panel redundancy before it switches ports."
             ::= { ctFpRedund 3 }
-        
+
         ctFpRedundNumAddr   OBJECT-TYPE
             SYNTAX      INTEGER
             ACCESS      read-only
@@ -89,7 +89,7 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
                     "Get the number of IP Addresses associated with front panel
                      redundancy."
             ::= { ctFpRedund 4 }
-        
+
         ctFpRedundAddAddr   OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-write
@@ -98,13 +98,13 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
                     "Add an IP Address to the polling list for the front panel
                      redundancy."
             ::= { ctFpRedund 5 }
-          
+
         ctFpRedundDelAddr   OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-write
             STATUS      mandatory
             DESCRIPTION
-                    "Delete an IP Address from the polling list for the 
+                    "Delete an IP Address from the polling list for the
                      front panel redundancy."
             ::= { ctFpRedund 6 }
 
@@ -113,10 +113,10 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
             ACCESS      read-write
             STATUS      mandatory
             DESCRIPTION
-                    "Get/Set the front panel port you want to be active 
+                    "Get/Set the front panel port you want to be active
                      when front panel redundancy is enabled."
             ::= { ctFpRedund 7 }
-        
+
         ctFpRedundEnable    OBJECT-TYPE
             SYNTAX      INTEGER {
                         disable(1),
@@ -126,10 +126,10 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                     "If this object is set to enable, the front panel
-                     redundancy will be activated. If this object is set 
-                     to disable,  the front panel redundancy will be 
-                     deactivated.  When read, this object will returns the 
-                     state of the object based on the last request 
+                     redundancy will be activated. If this object is set
+                     to disable,  the front panel redundancy will be
+                     deactivated.  When read, this object will returns the
+                     state of the object based on the last request
                      made."
             ::= { ctFpRedund 8 }
 
@@ -140,7 +140,7 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                     ""
             ::= { ctFpRedund 9 }
-        
+
         ctFpRedundAddrEntry OBJECT-TYPE
             SYNTAX      CtFpRedundAddrEntry
             ACCESS      not-accessible
@@ -149,7 +149,7 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
                     ""
             INDEX       { ctFpRedundAddrId }
             ::= { ctFpRedundAddrTable 1 }
-        
+
         CtFpRedundAddrEntry ::=
           SEQUENCE {
              ctFpRedundAddrId
@@ -157,19 +157,19 @@ CTRON-FRONTPANEL-MIB DEFINITIONS ::= BEGIN
              ctFpRedundAddrIPAddr
                   NetworkAddress
           }
-        
+
         ctFpRedundAddrId    OBJECT-TYPE
             SYNTAX      INTEGER (1..65535)
             ACCESS      read-only
             STATUS      mandatory
             DESCRIPTION
                     "A unique value identifying an element in a sequence of
-                     member IP Addresses which belong to the front panel 
-                     redundancy.  This value goes from 1 to the maximum 
-                     number of IP Addresses which may be included in  
+                     member IP Addresses which belong to the front panel
+                     redundancy.  This value goes from 1 to the maximum
+                     number of IP Addresses which may be included in
                      front panel redundancy."
             ::= { ctFpRedundAddrEntry 1 }
-          
+
         ctFpRedundAddrIPAddr    OBJECT-TYPE
             SYNTAX      NetworkAddress
             ACCESS      read-only

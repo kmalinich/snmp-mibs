@@ -6,7 +6,7 @@ ENTERASYS-QUARANTINE-AGENT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Quarantine Agent functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-QUARANTINE-AGENT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February 2013 Enterasys Networks, Inc.
@@ -56,11 +56,11 @@ etsysQuarantineAgentMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          configuration of the Quarantine Agent on a device."
 
     REVISION    "201302111857Z"  -- Mon Feb 11 18:57 UTC 2013
-    DESCRIPTION "Addition of Accounting enable and disable."     
+    DESCRIPTION "Addition of Accounting enable and disable."
 
     REVISION    "201302111557Z"  -- Mon Feb 11 15:57 UTC 2013
     DESCRIPTION "OBJECT IDENTIFIER disambiguation."
@@ -106,10 +106,10 @@ etsysQuarantineAgentSystemAccountEnable OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "When enabled(1), RADIUS accounting start, interim and 
+        "When enabled(1), RADIUS accounting start, interim and
          stop frames are sent to the configured RADIUS server(s).
-         
-         When disabled(2), accounting packets are not sent to 
+
+         When disabled(2), accounting packets are not sent to
          the RADIUS server."
     DEFVAL { disabled }
     ::= { etsysQuarantineAgentSystem 2 }
@@ -156,7 +156,7 @@ etsysQuarantineAgentPortEnable OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When set to enabled(1), a platform dependent triggering
-         mechanism allows for quarantined sessions on this 
+         mechanism allows for quarantined sessions on this
          port.
          When disabled(2), quarantined sessions are disabled
          and all currently quarantined sessions or those in
@@ -209,9 +209,9 @@ etsysQuarantineAgentPortIdleTimeout OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "The maximum number of consecutive seconds a quarantined 
-         session may be idle before termination of the session.  A 
-         value of zero indicates that the global 
+        "The maximum number of consecutive seconds a quarantined
+         session may be idle before termination of the session.  A
+         value of zero indicates that the global
          etsysMultiAuthSessionTimeout value will be used."
     REFERENCE
         "RFC 2865, 'Remote Authentication Dial In User Service (RADIUS)',

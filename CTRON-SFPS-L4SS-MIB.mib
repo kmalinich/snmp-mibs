@@ -34,7 +34,7 @@ CTRON-SFPS-L4SS-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
@@ -44,7 +44,7 @@ IMPORTS
                 FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt
-      switchSFPS       
+      switchSFPS
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 
@@ -116,12 +116,12 @@ sfpsL4CPFlowEntry    OBJECT-TYPE
                   sfpsL4CPFlowSecMatchAnyDyn,
                   sfpsL4CPFlowPrimMatchAnyDyn,
                   sfpsL4CPFlowSecProtPort,
-                  sfpsL4CPFlowPrimProtPort } 
+                  sfpsL4CPFlowPrimProtPort }
         ::= { sfpsL4CPFlowTable 1 }
 
 SfpsL4CPFlowEntry ::=
         SEQUENCE {
-                sfpsL4CPFlowCnxIndex         INTEGER,  
+                sfpsL4CPFlowCnxIndex         INTEGER,
                 sfpsL4CPFlowSecL3Address     DisplayString,
                 sfpsL4CPFlowPrimL3Address    DisplayString,
                 sfpsL4CPFlowSubprotocol      HexInteger,
@@ -138,14 +138,14 @@ SfpsL4CPFlowEntry ::=
                 sfpsL4CPFlowFlowAge          TimeTicks,
                 sfpsL4CPFlowFlowLastUse      TimeTicks,
                 sfpsL4CPFlowID               INTEGER
-         }  
+         }
 
 sfpsL4CPFlowCnxIndex   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Index (1-based) of the SFPSGAPI connection table entry 
+                "Index (1-based) of the SFPSGAPI connection table entry
                  to which this flow belongs."
         ::= { sfpsL4CPFlowEntry 1 }
 
@@ -172,8 +172,8 @@ sfpsL4CPFlowSubprotocol   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This value identifies the Layer 4 protocol.  It 
-                 corresponds to the IP 'Protocol' field as described 
+                "This value identifies the Layer 4 protocol.  It
+                 corresponds to the IP 'Protocol' field as described
                  in the 'Assigned Numbers' RFC."
         ::= { sfpsL4CPFlowEntry 4 }
 
@@ -317,18 +317,18 @@ sfpsL4CPMACAddrSubEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains the MAC address substitution information
                  associated with a specific destination IP address."
-        INDEX   { sfpsL4CPMACAddrSubDestIP } 
+        INDEX   { sfpsL4CPMACAddrSubDestIP }
         ::= { sfpsL4CPMACAddrSubTable 1 }
 
 SfpsL4CPMACAddrSubEntry ::=
         SEQUENCE {
-                sfpsL4CPMACAddrSubDestIP     IpAddress,  
-                sfpsL4CPMACAddrSubNextHopMAC PhysAddress,  
+                sfpsL4CPMACAddrSubDestIP     IpAddress,
+                sfpsL4CPMACAddrSubNextHopMAC PhysAddress,
                 sfpsL4CPMACAddrSubRefCount   INTEGER
-         }  
+         }
 
 sfpsL4CPMACAddrSubDestIP   OBJECT-TYPE
-        SYNTAX  IpAddress  
+        SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -359,7 +359,7 @@ sfpsL4CPNetAddrUserTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "This table associates user information with network 
+                "This table associates user information with network
                  addresses."
         ::= { sfpsL4CP 7 }
 
@@ -371,25 +371,25 @@ sfpsL4CPNetAddrUserEntry    OBJECT-TYPE
                 "Each entry contains the user information
                  associated with a specific network address."
         INDEX   { sfpsL4CPNetAddrUserProtocol,
-                  sfpsL4CPNetAddrUserNetAddr } 
+                  sfpsL4CPNetAddrUserNetAddr }
         ::= { sfpsL4CPNetAddrUserTable 1 }
 
 SfpsL4CPNetAddrUserEntry ::=
         SEQUENCE {
-                sfpsL4CPNetAddrUserProtocol   INTEGER,  
-                sfpsL4CPNetAddrUserNetAddr    DisplayString,  
+                sfpsL4CPNetAddrUserProtocol   INTEGER,
+                sfpsL4CPNetAddrUserNetAddr    DisplayString,
                 sfpsL4CPNetAddrUserLoginID    INTEGER,
                 sfpsL4CPNetAddrUserUserID     INTEGER,
                 sfpsL4CPNetAddrUserUserName   DisplayString
-         }  
+         }
 
 sfpsL4CPNetAddrUserProtocol   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "The network-layer protocol associated with this entry.  Values
-                 correspond to the 'aoAddressTag' enumeration 
+                 correspond to the 'aoAddressTag' enumeration
                  (see aoproperties.h)."
         ::= { sfpsL4CPNetAddrUserEntry 1 }
 
@@ -446,13 +446,13 @@ sfpsL4CPIPRouteEntry    OBJECT-TYPE
                 "Each entry contains the IP route information
                  associated with a specific device."
         INDEX   { sfpsL4CPIPRouteSubnetMask,
-                  sfpsL4CPIPRouteSubnet } 
+                  sfpsL4CPIPRouteSubnet }
         ::= { sfpsL4CPIPRouteTable 1 }
 
 SfpsL4CPIPRouteEntry ::=
         SEQUENCE {
-                sfpsL4CPIPRouteSubnetMask     IpAddress,  
-                sfpsL4CPIPRouteSubnet         IpAddress,  
+                sfpsL4CPIPRouteSubnetMask     IpAddress,
+                sfpsL4CPIPRouteSubnet         IpAddress,
                 sfpsL4CPIPRouteRouteID        INTEGER,
                 sfpsL4CPIPRouteRouteSubsystem INTEGER,
                 sfpsL4CPIPRouteDeviceID       INTEGER,
@@ -460,14 +460,14 @@ SfpsL4CPIPRouteEntry ::=
                 sfpsL4CPIPRouteMACAddress     SfpsAddress,
                 sfpsL4CPIPRouteMetric         INTEGER,
                 sfpsL4CPIPRouteCallable       INTEGER
-         }  
+         }
 
 sfpsL4CPIPRouteSubnetMask   OBJECT-TYPE
-        SYNTAX  IpAddress  
+        SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The subnet mask associated with this route." 
+                "The subnet mask associated with this route."
         ::= { sfpsL4CPIPRouteEntry 1 }
 
 sfpsL4CPIPRouteSubnet   OBJECT-TYPE
@@ -556,25 +556,25 @@ sfpsL4CPPortEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information about
                  one of this access server's ports."
-        INDEX   { sfpsL4CPPortNum } 
+        INDEX   { sfpsL4CPPortNum }
         ::= { sfpsL4CPPortTable 1 }
 
 SfpsL4CPPortEntry ::=
         SEQUENCE {
-                sfpsL4CPPortNum              INTEGER,  
-                sfpsL4CPPortID               INTEGER,  
+                sfpsL4CPPortNum              INTEGER,
+                sfpsL4CPPortID               INTEGER,
                 sfpsL4CPPortApplyPolicyIn    INTEGER,
                 sfpsL4CPPortApplyPolicyOut   INTEGER,
                 sfpsL4CPPortDefaultUserID    INTEGER,
                 sfpsL4CPPortDefaultUserName  DisplayString
-         }  
+         }
 
 sfpsL4CPPortNum   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The logical port number of this port." 
+                "The logical port number of this port."
         ::= { sfpsL4CPPortEntry 1 }
 
 sfpsL4CPPortID   OBJECT-TYPE
@@ -643,18 +643,18 @@ sfpsL4CPCallableDeviceEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information about
                  one of this access server's ports."
-        INDEX   { sfpsL4CPCallableDeviceDeviceID } 
+        INDEX   { sfpsL4CPCallableDeviceDeviceID }
         ::= { sfpsL4CPCallableDeviceTable 1 }
 
 SfpsL4CPCallableDeviceEntry ::=
         SEQUENCE {
-                sfpsL4CPCallableDeviceDeviceID         INTEGER,  
-                sfpsL4CPCallableDeviceDeviceName       DisplayString,  
+                sfpsL4CPCallableDeviceDeviceID         INTEGER,
+                sfpsL4CPCallableDeviceDeviceName       DisplayString,
                 sfpsL4CPCallableDeviceDefaultUserName  DisplayString
-         }  
+         }
 
 sfpsL4CPCallableDeviceDeviceID   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -699,13 +699,13 @@ sfpsL4CDRActiveFlowEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information about
                  one flow that has CDR enabled."
-        INDEX   { sfpsL4CDRActiveFlowFlowID } 
+        INDEX   { sfpsL4CDRActiveFlowFlowID }
         ::= { sfpsL4CDRActiveFlowTable 1 }
 
 SfpsL4CDRActiveFlowEntry ::=
         SEQUENCE {
-                sfpsL4CDRActiveFlowFlowID               INTEGER,  
-                sfpsL4CDRActiveFlowSubProtocol          INTEGER,  
+                sfpsL4CDRActiveFlowFlowID               INTEGER,
+                sfpsL4CDRActiveFlowSubProtocol          INTEGER,
                 sfpsL4CDRActiveFlowEtherType            INTEGER,
                 sfpsL4CDRActiveFlowSourceUser           DisplayString,
                 sfpsL4CDRActiveFlowSourceMACAddr        DisplayString,
@@ -728,10 +728,10 @@ SfpsL4CDRActiveFlowEntry ::=
                 sfpsL4CDRActiveFlowOutPkts              Counter,
                 sfpsL4CDRActiveFlowDemandAccessConnMade INTEGER,
                 sfpsL4CDRActiveFlowFlowRecordState      INTEGER
-         }  
+         }
 
 sfpsL4CDRActiveFlowFlowID   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -968,13 +968,13 @@ sfpsL4CDRTermedFlowEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information about
                  one flow that had CDR enabled."
-        INDEX   { sfpsL4CDRTermedFlowFlowID } 
+        INDEX   { sfpsL4CDRTermedFlowFlowID }
         ::= { sfpsL4CDRTermedFlowTable 1 }
 
 SfpsL4CDRTermedFlowEntry ::=
         SEQUENCE {
-                sfpsL4CDRTermedFlowFlowID               INTEGER,  
-                sfpsL4CDRTermedFlowSubProtocol          INTEGER,  
+                sfpsL4CDRTermedFlowFlowID               INTEGER,
+                sfpsL4CDRTermedFlowSubProtocol          INTEGER,
                 sfpsL4CDRTermedFlowEtherType            INTEGER,
                 sfpsL4CDRTermedFlowSourceUser           DisplayString,
                 sfpsL4CDRTermedFlowSourceMACAddr        DisplayString,
@@ -997,10 +997,10 @@ SfpsL4CDRTermedFlowEntry ::=
                 sfpsL4CDRTermedFlowOutPkts              Counter,
                 sfpsL4CDRTermedFlowDemandAccessConnMade INTEGER,
                 sfpsL4CDRTermedFlowFlowRecordState      INTEGER
-         }  
+         }
 
 sfpsL4CDRTermedFlowFlowID   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1236,21 +1236,21 @@ sfpsL4CDRFlowIndexEntry    OBJECT-TYPE
         DESCRIPTION
                 "Each entry contains information about
                  one flow that has CDR enabled."
-        INDEX   { sfpsL4CDRFlowIndexFlowID } 
+        INDEX   { sfpsL4CDRFlowIndexFlowID }
         ::= { sfpsL4CDRFlowIndexTable 1 }
 
 SfpsL4CDRFlowIndexEntry ::=
         SEQUENCE {
-                sfpsL4CDRFlowIndexFlowID               INTEGER,  
-                sfpsL4CDRFlowIndexSFPSFlowTblIndex     INTEGER,  
+                sfpsL4CDRFlowIndexFlowID               INTEGER,
+                sfpsL4CDRFlowIndexSFPSFlowTblIndex     INTEGER,
                 sfpsL4CDRFlowIndexSFlowStatsPtr        INTEGER,
                 sfpsL4CDRFlowIndexStaticFlowInfoPtr    INTEGER,
                 sfpsL4CDRFlowIndexFlowTblEntryPtr      INTEGER,
                 sfpsL4CDRFlowIndexFlowState            INTEGER
-         }  
+         }
 
 sfpsL4CDRFlowIndexFlowID   OBJECT-TYPE
-        SYNTAX  INTEGER(0..'7FFFFFFF'h)  
+        SYNTAX  INTEGER(0..'7FFFFFFF'h)
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION

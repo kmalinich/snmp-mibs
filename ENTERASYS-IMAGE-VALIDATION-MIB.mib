@@ -96,7 +96,7 @@ etsysImageValidationPeriod  OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The maximum number of seconds to monitor the new image 
+        "The maximum number of seconds to monitor the new image
          after it has booted.  If any of the selected validation
          operations are not successfully completed within this
          interval, a reset will be issued to load the prior
@@ -118,14 +118,14 @@ etsysImageValidationOperations OBJECT-TYPE
 
          etsysImageValidationConfig -
 
-            The successful loading of the start-up configuration. 
+            The successful loading of the start-up configuration.
 
-         etsysImageValidationIcmp - 
+         etsysImageValidationIcmp -
 
             The successful reception of an ICMP echo reply from the
             host specified in etsysImageValidationIcmpAddress.
 
-         etsysImageValidationSnmp - 
+         etsysImageValidationSnmp -
 
             The successful reception of an SNMP request from the
             host specified in etsysImageValidationSnmpAddress.
@@ -231,5 +231,5 @@ etsysImageValidationCompliance MODULE-COMPLIANCE
         MANDATORY-GROUPS { etsysImageValidationConfigGroup }
 
     ::= { etsysImageValidationCompliances 1 }
- 
+
 END

@@ -48,9 +48,9 @@ ieee8021TcMib MODULE-IDENTITY
          see the draft itself for full legal notices."
     REVISION     "201102270000Z" -- February 27, 2011
     DESCRIPTION
-         "Minor edits to contact information etc. as part of 
+         "Minor edits to contact information etc. as part of
           2011 revision of IEEE Std 802.1Q."
-          
+
     REVISION     "200811180000Z" -- November 18, 2008
     DESCRIPTION
          "Added textual conventions needed to support the IEEE 802.1
@@ -150,8 +150,8 @@ IEEE8021PbbIngressEgress ::= TEXTUAL-CONVENTION
 IEEE8021PriorityCodePoint ::= TEXTUAL-CONVENTION
     STATUS       current
     DESCRIPTION
-        "Bridge ports may encode or decode the PCP value of the 
-        frames that traverse the port. This textual convention 
+        "Bridge ports may encode or decode the PCP value of the
+        frames that traverse the port. This textual convention
         names the possible encoding and decoding schemes that
         the port may use.  The priority and drop_eligible
         parameters are encoded in the Priority Code Point (PCP)
@@ -413,7 +413,7 @@ IEEE8021PbbTeProtectionGroupId ::= TEXTUAL-CONVENTION
     DISPLAY-HINT "d"
     STATUS       current
     DESCRIPTION
-        "The PbbTeProtectionGroupId identifier is used to distinguish 
+        "The PbbTeProtectionGroupId identifier is used to distinguish
          protection group instances present in the B Component of
          an IB-BEB."
     REFERENCE "12.19.2"
@@ -450,7 +450,7 @@ IEEE8021PbbTeProtectionGroupConfigAdmin ::= TEXTUAL-CONVENTION
         "This textual convention is used to represent administrative
         commands that can be issued to a protection group.  The value
         noAdmin(1) is used to indicate that no administrative action
-        is to be performed."  
+        is to be performed."
     REFERENCE "26.10.3.3.5
                26.10.3.3.6
                26.10.3.3.7

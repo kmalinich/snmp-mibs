@@ -6,7 +6,7 @@ ENTERASYS-NETFLOW-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Netflow functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-NETFLOW-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February 2007 Enterasys Networks, Inc.
@@ -38,7 +38,7 @@ IMPORTS
     ifIndex, InterfaceIndex
         FROM IF-MIB
     etsysModules
-        FROM ENTERASYS-MIB-NAMES;    
+        FROM ENTERASYS-MIB-NAMES;
 
 etsysNetflowMIB MODULE-IDENTITY
     LAST-UPDATED "200702071949Z"  -- Wed Feb  7 19:49 UTC 2007
@@ -51,31 +51,31 @@ etsysNetflowMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          configuration of Netflow on a device."
 
     REVISION    "200702071949Z"  -- Wed Feb  7 19:49 UTC 2007
-    DESCRIPTION 
-        "Clarify that the translation provided by this MIB is 
+    DESCRIPTION
+        "Clarify that the translation provided by this MIB is
          only applicable to NetFlow Version 5 export frames."
 
     REVISION    "200603222136Z"  -- Wed Mar 22 21:36 UTC 2006
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 61 } 
+    ::= { etsysModules 61 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysNetflowObjects        OBJECT IDENTIFIER 
+etsysNetflowObjects        OBJECT IDENTIFIER
                            ::= { etsysNetflowMIB 1 }
 
-etsysNetflowInterfaceMap   OBJECT IDENTIFIER 
+etsysNetflowInterfaceMap   OBJECT IDENTIFIER
                            ::= { etsysNetflowObjects 1 }
 
 -- -------------------------------------------------------------
@@ -87,16 +87,16 @@ etsysNetflowExportIntfMapTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table of mappings from the Netflow version 5 export record 
+        "A table of mappings from the Netflow version 5 export record
          interfaces to MIB-II ifIndex."
     ::= {  etsysNetflowInterfaceMap 1 }
-    
+
 etsysNetflowExportIntfMapEntry OBJECT-TYPE
     SYNTAX       EtsysNetflowExportIntfMapEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "An entry containing per interface mapping of Netflow version 
+        "An entry containing per interface mapping of Netflow version
          5 export record interfaces to MIB-II ifIndex."
     INDEX  { etsysNetflowExportIntf }
     ::= { etsysNetflowExportIntfMapTable 1 }
@@ -123,7 +123,7 @@ etsysNetflowIfIndex OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The MIB-II ifIndex of the interface bound to 
+        "The MIB-II ifIndex of the interface bound to
          etsysNetflowExportIntf."
     ::= { etsysNetflowExportIntfMapEntry 2 }
 
@@ -132,7 +132,7 @@ etsysNetflowIfIndexMapTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table of mappings from MIB-II ifIndex to Netflow export record 
+        "A table of mappings from MIB-II ifIndex to Netflow export record
          interfaces."
     ::= {  etsysNetflowInterfaceMap 2 }
 
@@ -158,7 +158,7 @@ etsysNetflowExportInterface OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The 16 bit interface number used in the interface fields of
-         Netflow version 5 export records that is bound to the specified 
+         Netflow version 5 export records that is bound to the specified
          ifIndex."
     ::= { etsysNetflowIfIndexMapEntry 1 }
 
@@ -200,6 +200,6 @@ etsysNetflowIntfMapCompliance MODULE-COMPLIANCE
         MANDATORY-GROUPS {
             etsysNetflowIntfMapGroup
         }
-    ::= { etsysNetflowCompliances 1 }   
+    ::= { etsysNetflowCompliances 1 }
 
 END

@@ -2,8 +2,8 @@ NETLINK-SPECIFIC-MIB DEFINITIONS ::= BEGIN
 
 -- **************************************************************************
 -- *                                                                        *
--- *  CSI Netlink                                                           *   
--- *                                                                        *   
+-- *  CSI Netlink                                                           *
+-- *                                                                        *
 -- * File: netlink-mib.txt                                                  *
 -- * Release: 4.0.0 (with some pre 4.0.2 Voice Additions                    *
 -- * Release Date:  April 3, 1998                                           *
@@ -102,7 +102,7 @@ netstat OBJECT IDENTIFIER ::=     { network 1 }
 --
 --  The netstat group is used to describe network status information for
 --  a node. It only applies to the FRX8000 nodes since the FRX4000s and
---  FRX6000s have no knowledge of any other nodes.               
+--  FRX6000s have no knowledge of any other nodes.
 --
 
 nsMaxNeigh OBJECT-TYPE
@@ -110,7 +110,7 @@ nsMaxNeigh OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "Maximum number of neighbor nodes. This value is currently
-        always 64 for FRX8000 and 20 for an N7400 or 7500. 
+        always 64 for FRX8000 and 20 for an N7400 or 7500.
         A neighbor is the closest node in a path from the local node."
         ::= { netstat 1 }
 
@@ -133,7 +133,7 @@ nsEntry OBJECT-TYPE
         SYNTAX NsEntry
         ACCESS not-accessible
         STATUS mandatory
-        DESCRIPTION "Each entry of the node table is indexed by 
+        DESCRIPTION "Each entry of the node table is indexed by
         node number."
         INDEX { nsNodNum }
         ::= { nsNodTable 1 }
@@ -160,7 +160,7 @@ nsStatus OBJECT-TYPE
         SYNTAX INTEGER
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION "The operational status of the node. The status is 
+        DESCRIPTION "The operational status of the node. The status is
         given as:
             1 = Node is defined in the database;
             9 = Node is operational;"
@@ -185,7 +185,7 @@ nsNeighEntry OBJECT-TYPE
         SYNTAX NsNeighEntry
         ACCESS not-accessible
         STATUS mandatory
-        DESCRIPTION "The table entries are indexed by the node number and 
+        DESCRIPTION "The table entries are indexed by the node number and
         the neighbors node number."
         INDEX { nsNTNode, nsNTNeigh }
         ::= { nsNeighTable 1 }
@@ -308,8 +308,8 @@ tpAddress OBJECT-TYPE
         ::= { tpAdrEntry 2 }
 
 tpAdrFlag OBJECT-TYPE
-        SYNTAX INTEGER { disableTraps(1), 
-                         enableTraps(2), 
+        SYNTAX INTEGER { disableTraps(1),
+                         enableTraps(2),
                          delete(3) }
         ACCESS read-write
         STATUS mandatory
@@ -326,7 +326,7 @@ tpAdrSLev OBJECT-TYPE
                          informational(4) }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Lowest severity level traps that will be sent to 
+        DESCRIPTION "Lowest severity level traps that will be sent to
         this Address; 1 is the highest, 4 is the lowest."
         ::= { tpAdrEntry 4 }
 
@@ -431,7 +431,7 @@ rlpLIC1Type OBJECT-TYPE
                                          universal(8),
                                          t1(10),
                                          e1(11),
-                                         voice(13) 
+                                         voice(13)
                 }
         ACCESS read-only
         STATUS mandatory
@@ -449,7 +449,7 @@ rlpLIC2Type OBJECT-TYPE
                                          universal(8),
                                          t1(10),
                                          e1(11),
-                                         voice(13) 
+                                         voice(13)
         }
         ACCESS read-only
         STATUS mandatory
@@ -460,11 +460,11 @@ rlpProtocol OBJECT-TYPE
         SYNTAX OCTET STRING
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "The protocols configured on this RLP. This is an OCTET 
+        DESCRIPTION "The protocols configured on this RLP. This is an OCTET
         STRING where each octet represents a protocol type. The size of this
         is the maximum number of protocols allowed on an RLP (rlpMaxProtos).
         The protocol types are defined as:
-                00 = none 
+                00 = none
                 01 = X.25
                 02 = Frame Relay
                 03 = Async
@@ -496,7 +496,7 @@ rlpGroupResponsibility OBJECT-TYPE
         SYNTAX INTEGER {
                 primary (1),
                 secondary (2)
-        }       
+        }
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION "The responsibility of this RLP within its group, always
@@ -573,22 +573,22 @@ portPhyX25AdminConnector    OBJECT-TYPE
         ::= { portPhyX25AdminEntry 1 }
 
 portPhyX25AdminSpeed      OBJECT-TYPE
-        SYNTAX      INTEGER 
+        SYNTAX      INTEGER
         ACCESS      read-write
         STATUS      mandatory
         DESCRIPTION
                 "This object defines the speed of the X25 port.  The speed may
-                only be set to one of a series of reasonable values, and if an attempt 
+                only be set to one of a series of reasonable values, and if an attempt
                 is made to set the speed to a value which is within the valid range
-                but not equal to one of these values, the speed will be rounded up. 
+                but not equal to one of these values, the speed will be rounded up.
                 If the connector type of the port is RS232, the port could be a
                 standard port or a high speed port.  If the port is a high speed
-                RS232 port, the maximum valid speed is 256000.  If the port is a 
-                standard RS232 port, the maximum valid speed is 64000 on the 
+                RS232 port, the maximum valid speed is 256000.  If the port is a
+                standard RS232 port, the maximum valid speed is 64000 on the
                 FRX4000/SS1840 and 19200 on all other products.  It may be possible
                 to set the speed of a standard RS232 port to a speed which is valid
                 for a high speed RS232 port but invalid for a standard RS232 port.
-                In this case, the port may not end up having the invalid speed.  
+                In this case, the port may not end up having the invalid speed.
                 The default speed for a standard RS232 port on the FRX6000 is 19200."
         DEFVAL { 64000 }
 
@@ -624,14 +624,14 @@ portPhyX25AdminDialOut      OBJECT-TYPE
         SYNTAX  INTEGER {
                none(1),
                dialIn(2),
-                           dialOut(3) 
+                           dialOut(3)
                }
         ACCESS      read-write
         STATUS      mandatory
         DESCRIPTION
                         "This flag indicates whether the port is connected to a dial
                         modem, and whethter connections will be initiated through
-                        dial-in or dial-out calls." 
+                        dial-in or dial-out calls."
                 DEFVAL { none }
         ::= { portPhyX25AdminEntry 5 }
 
@@ -794,22 +794,22 @@ portPhyX25OperConnector    OBJECT-TYPE
         ::= { portPhyX25OperEntry 1 }
 
 portPhyX25OperSpeed      OBJECT-TYPE
-        SYNTAX      INTEGER 
+        SYNTAX      INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
                 "This object defines the speed of the X25 port.  The speed may
-                only be set to one of a series of reasonable values, and if an attempt 
+                only be set to one of a series of reasonable values, and if an attempt
                 is made to set the speed to a value which is within the valid range
-                but not equal to one of these values, the speed will be rounded up. 
+                but not equal to one of these values, the speed will be rounded up.
                 If the connector type of the port is RS232, the port could be a
                 standard port or a high speed port.  If the port is a high speed
-                RS232 port, the maximum valid speed is 256000.  If the port is a 
-                standard RS232 port, the maximum valid speed is 64000 on the 
+                RS232 port, the maximum valid speed is 256000.  If the port is a
+                standard RS232 port, the maximum valid speed is 64000 on the
                 FRX4000/SS1840 and 19200 on all other products.  It may be possible
                 to set the speed of a standard RS232 port to a speed which is valid
                 for a high speed RS232 port but invalid for a standard RS232 port.
-                In this case, the port may not end up having the invalid speed.  
+                In this case, the port may not end up having the invalid speed.
                 The default speed for a standard RS232 port on the FRX6000 is 19200."
         ::= { portPhyX25OperEntry 2 }
 
@@ -848,7 +848,7 @@ portPhyX25OperDialOut      OBJECT-TYPE
         DESCRIPTION
                         "This flag indicates whether the port is connected to a dial
                         modem, and whethter connections will be initiated through
-                        dial-in or dial-out calls." 
+                        dial-in or dial-out calls."
         ::= { portPhyX25OperEntry 5 }
 
 portPhyX25OperInactivityTimer      OBJECT-TYPE
@@ -941,7 +941,7 @@ PortLogicalX25AdminEntry  ::= SEQUENCE
         portLogicalX25AdminCxnPriority INTEGER,
         portLogicalX25AdminRfc1490      INTEGER,
         portLogicalX25AdminBAG          INTEGER,
-        portLogicalX25AdminRowStatus    RowStatus 
+        portLogicalX25AdminRowStatus    RowStatus
 }
 
 portLogicalX25AdminFrDlci      OBJECT-TYPE
@@ -1389,7 +1389,7 @@ portX25OperTable  OBJECT-TYPE
                restarted depending on the details of the
                implementation.
 
-               The objects in this read-only table 
+               The objects in this read-only table
                corresponding read-only objects in the
                portX25OperTable that return the current
                operating value.
@@ -2633,7 +2633,7 @@ portBsciAdminRowStatus OBJECT-TYPE
         SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the portBsciAdminTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -2685,7 +2685,7 @@ portBsciAdminActivateConnectionWithoutPoll OBJECT-TYPE
                                 }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Only valid if pad type is TPAD.  If yes, will active the 
+        DESCRIPTION "Only valid if pad type is TPAD.  If yes, will active the
                      TPAD connection without a poll of the connected device."
         DEFVAL { no }
         ::= { portBsciAdminEntry 30 }
@@ -3021,7 +3021,7 @@ portBsciOperActivateConnectionWithoutPoll OBJECT-TYPE
                                 }
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION "Only valid if pad type is TPAD.  If yes, will active the 
+        DESCRIPTION "Only valid if pad type is TPAD.  If yes, will active the
                      TPAD connection without a poll of the connected device."
         ::= { portBsciOperEntry 29 }
 
@@ -3121,7 +3121,7 @@ bsciSubscrAdminRowStatus OBJECT-TYPE
         SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the bsciDevAdminTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -3332,7 +3332,7 @@ bsciDevAdminRowStatus OBJECT-TYPE
         SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the bsciDevAdminTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -3488,16 +3488,16 @@ portSdlcAdminTable  OBJECT-TYPE
                             "This table contains Netlink Enterprise specific
                             objects to manage SDLC port. Changing on of the
                             these parameters may take effect in the operating
-                            port immediately or may wait until the interface is                             restarted depending on the details of the 
+                            port immediately or may wait until the interface is                             restarted depending on the details of the
                             implementation.
 
-                            Most of the objects in this read-write table have 
-                            corresponding read-only objects in the 
-                            portSdlcOperTable that return the current 
+                            Most of the objects in this read-write table have
+                            corresponding read-only objects in the
+                            portSdlcOperTable that return the current
                             operating value.
 
-                            The operating values may be different from these 
-                            configured values if a configured parameter was 
+                            The operating values may be different from these
+                            configured values if a configured parameter was
                             configured afterthe interface was started."
                     ::= { portSdlcGroup 1 }
 
@@ -3549,8 +3549,8 @@ portSdlcAdminMAXRetries  OBJECT-TYPE
                              "This object defines the max. number of retries
                              to a non-responding Link station, before putting
                              the Link station to slow-poll list if it is not
-                             Normal response Mode OR disconnecting the link 
-                             station if it is data txfr state." 
+                             Normal response Mode OR disconnecting the link
+                             station if it is data txfr state."
 
                          DEFVAL { 5 }
                          ::= { portSdlcAdminEntry 2 }
@@ -3560,7 +3560,7 @@ portSdlcAdminMAXOut      OBJECT-TYPE
                          ACCESS      read-write
                          STATUS      mandatory
                          DESCRIPTION
-                             "This object defines the number of outstanding 
+                             "This object defines the number of outstanding
                              frames for triggering window full condition."
 
                          DEFVAL { 7 }
@@ -3647,7 +3647,7 @@ portSdlcAdminDisableRequestDisconnect      OBJECT-TYPE
                                            ACCESS      read-write
                                            STATUS      mandatory
                                            DESCRIPTION
-                                    "This object defines if a Request To  
+                                    "This object defines if a Request To
                                     Disconnect(RD) will be sent when remote
                                     PAD clear the connection"
 
@@ -3656,7 +3656,7 @@ portSdlcAdminDisableRequestDisconnect      OBJECT-TYPE
 
 portSdlcAdminLPDASupport     OBJECT-TYPE
                              SYNTAX      INTEGER
-                             {  
+                             {
                                         none (1),
                                         lpda-1 (2),
                                         lpda-2 (3)
@@ -3672,7 +3672,7 @@ portSdlcAdminLPDASupport     OBJECT-TYPE
 
 portSdlcAdminConnector     OBJECT-TYPE
                              SYNTAX      INTEGER
-                             {  
+                             {
                                         rs232 (3),
                                                                                 v35 (5),
                                                                                 rs449 (6),
@@ -3694,14 +3694,14 @@ portSdlcAdminSpeed     OBJECT-TYPE
                        STATUS      mandatory
                        DESCRIPTION
                         "This object defines the speed of the SDLC port.  The speed may
-                         only be set to one of a series of reasonable values, and if an attempt is made 
-                         to set the speed to a value which is within the valid range but not equal to one 
-                         of these values, the speed will be rounded up.  If the connector type of the port 
-                         is RS232, the port could be a standard port or a high speed port.  If the port is 
-                         a high speed RS232 port, the maximum valid speed is 256000.  If the port is a standard 
+                         only be set to one of a series of reasonable values, and if an attempt is made
+                         to set the speed to a value which is within the valid range but not equal to one
+                         of these values, the speed will be rounded up.  If the connector type of the port
+                         is RS232, the port could be a standard port or a high speed port.  If the port is
+                         a high speed RS232 port, the maximum valid speed is 256000.  If the port is a standard
                          RS232 port, the maximum valid speed is 64000 on the FRX4000/SS1840 and 19200
-                         on all other products.  It may be possible to set the speed of a standard RS232 port 
-                         to a speed which is valid for a high speed RS232 port but invalid for a standard 
+                         on all other products.  It may be possible to set the speed of a standard RS232 port
+                         to a speed which is valid for a high speed RS232 port but invalid for a standard
                          RS232 port. In this case, the port may not end up having the invalid speed.  The default
                          speed for a standard RS232 port on the FRX6000 is 19200."
                          DEFVAL { 64000 }
@@ -3841,8 +3841,8 @@ portSdlcOperMAXRetries  OBJECT-TYPE
                              "This object defines the max. number of retries
                              to a non-responding Link station, before putting
                              the Link station to slow-poll list if it is not
-                             Normal response Mode OR disconnecting the link 
-                             station if it is data txfr state." 
+                             Normal response Mode OR disconnecting the link
+                             station if it is data txfr state."
                         ::= { portSdlcOperEntry 2 }
 
 portSdlcOperMAXOut      OBJECT-TYPE
@@ -3850,7 +3850,7 @@ portSdlcOperMAXOut      OBJECT-TYPE
                         ACCESS      read-only
                         STATUS      mandatory
                         DESCRIPTION
-                             "This object defines the number of outstanding 
+                             "This object defines the number of outstanding
                              frames for triggering window full condition."
 
                         ::= { portSdlcOperEntry 3 }
@@ -3929,14 +3929,14 @@ portSdlcOperDisableRequestDisconnect      OBJECT-TYPE
                                           ACCESS      read-only
                                           STATUS      mandatory
                                           DESCRIPTION
-                                    "This object defines if a Request To  
+                                    "This object defines if a Request To
                                     Disconnect(RD) will be sent when remote
                                     PAD clear the connection"
                                           ::= { portSdlcOperEntry 9 }
 
 portSdlcOperLPDASupport     OBJECT-TYPE
                             SYNTAX      INTEGER
-                            {  
+                            {
                                        none (1),
                                        lpda-1 (2),
                                        lpda-2 (3)
@@ -3950,7 +3950,7 @@ portSdlcOperLPDASupport     OBJECT-TYPE
 
 portSdlcOperConnector     OBJECT-TYPE
                              SYNTAX      INTEGER
-                             {  
+                             {
                                         rs232 (3),
                                         v35 (5),
                                         rs449 (6),
@@ -4022,7 +4022,7 @@ portSdlcOperL1Duplex          OBJECT-TYPE
 -- from the database file, but will remain known to the node until it is
 -- rebooted or until an online update of the port is performed. This is
 -- consistent with the way PU information is handled when configuring
--- through the user interface menu system. 
+-- through the user interface menu system.
 
 lSSdlcAdminTable  OBJECT-TYPE
                   SYNTAX      SEQUENCE OF LSSdlcAdminEntry
@@ -4100,7 +4100,7 @@ lSSdlcAdminRetryTime      OBJECT-TYPE
                           ACCESS      read-write
                           STATUS      mandatory
                           DESCRIPTION
-                              "This object is used, only when 
+                              "This object is used, only when
                               lSSdlcAdminAutoCall object is yes. This defines
                               the time interval measured in seconds in which
                               the connection request is retried"
@@ -4113,7 +4113,7 @@ lSSdlcAdminRetryCount     OBJECT-TYPE
                           ACCESS      read-write
                           STATUS      mandatory
                           DESCRIPTION
-                              "This object is used, only when 
+                              "This object is used, only when
                               lSSdlcAdminAutoCall object is yes. This defines
                               the number of times the connection initiation
                               is retried before given up. The value of Zero(0)
@@ -4131,7 +4131,7 @@ lSSdlcAdminLlc2Conversion   OBJECT-TYPE
                             ACCESS      read-write
                             STATUS      mandatory
                             DESCRIPTION
-                                "This object defines if this link station 
+                                "This object defines if this link station
                                 connects to a LLC2 device/host."
 
                             DEFVAL { no }
@@ -4272,7 +4272,7 @@ lSSdlcOperRetryTime      OBJECT-TYPE
                          ACCESS      read-only
                          STATUS      mandatory
                          DESCRIPTION
-                              "This object is valid, only when 
+                              "This object is valid, only when
                               lSSdlcAdminAutoCall object is yes. This defines
                               the time interval measured in seconds in which
                               the connection request is retried"
@@ -4283,7 +4283,7 @@ lSSdlcOperRetryCount     OBJECT-TYPE
                          ACCESS      read-only
                          STATUS      mandatory
                          DESCRIPTION
-                              "This object is used, only when 
+                              "This object is used, only when
                               lSSdlcAdminAutoCall object is yes. This defines
                               the number of times the connection initiation
                               is retried before given up. The value of Zero(0)
@@ -4299,7 +4299,7 @@ lSSdlcOperLlc2Conversion   OBJECT-TYPE
                            ACCESS      read-only
                            STATUS      mandatory
                            DESCRIPTION
-                                "This object defines if this link station 
+                                "This object defines if this link station
                                 connects to a LLC2 device/host."
                            ::= { lSSdlcOperEntry 6 }
 
@@ -4332,7 +4332,7 @@ lSSdlcLlc2AdminTable  OBJECT-TYPE
                       STATUS      mandatory
                       DESCRIPTION
                           "This table contains the LLC2 related parameters
-                          used to configure LLC2 session, when the SDLC 
+                          used to configure LLC2 session, when the SDLC
                           station is connected to a LLC2 device at the remote
                           end"
                      ::= { portSdlcGroup 5 }
@@ -4352,7 +4352,7 @@ lSSdlcLlc2AdminEntry  OBJECT-TYPE
 -- from the database file, but will remain known to the node until it is
 -- rebooted or until an online update of the port is performed. This is
 -- consistent with the way PU information is handled when configuring
--- through the user interface menu system. 
+-- through the user interface menu system.
 
 LSSdlcLlc2AdminEntry  ::= SEQUENCE
 {
@@ -4377,7 +4377,7 @@ lSSdlcLlc2AdminLocalSap      OBJECT-TYPE
                              ACCESS      read-write
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines Local SAP 
+                                 "This object defines Local SAP
                                  address (multiple of 4)"
                              DEFVAL { 4 }
                              ::= { lSSdlcLlc2AdminEntry 1 }
@@ -4473,7 +4473,7 @@ lSSdlcLlc2AdminBAG           OBJECT-TYPE
                              ACCESS      read-write
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines bandwidth allocation 
+                                 "This object defines bandwidth allocation
                                  group"
                              DEFVAL { 0 }
                              ::= { lSSdlcLlc2AdminEntry 11 }
@@ -4483,7 +4483,7 @@ lSSdlcLlc2AdminPriority      OBJECT-TYPE
                              ACCESS      read-write
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines priority for traffic 
+                                 "This object defines priority for traffic
                                  within the node"
                              DEFVAL { 0 }
                              ::= { lSSdlcLlc2AdminEntry 12 }
@@ -4585,7 +4585,7 @@ lSSdlcLlc2OperLocalSap       OBJECT-TYPE
                              ACCESS      read-only
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines Local SAP 
+                                 "This object defines Local SAP
                                  address (multiple of 4)"
                              ::= { lSSdlcLlc2OperEntry 1 }
 
@@ -4670,7 +4670,7 @@ lSSdlcLlc2OperBAG            OBJECT-TYPE
                              ACCESS      read-only
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines bandwidth allocation 
+                                 "This object defines bandwidth allocation
                                  group"
                              ::= { lSSdlcLlc2OperEntry 11 }
 
@@ -4679,7 +4679,7 @@ lSSdlcLlc2OperPriority       OBJECT-TYPE
                              ACCESS      read-only
                              STATUS      mandatory
                              DESCRIPTION
-                                 "This object defines priority for traffic 
+                                 "This object defines priority for traffic
                                  within the node"
                              ::= { lSSdlcLlc2OperEntry 12 }
 
@@ -4801,7 +4801,7 @@ portT1AdminLineBuildOut OBJECT-TYPE
         ::= { portT1AdminEntry 6 }
 
 portT1AdminRowStatus OBJECT-TYPE
-        SYNTAX RowStatus        
+        SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION ""
@@ -6079,7 +6079,7 @@ nlInterfaces OBJECT IDENTIFIER ::=  { local 4 }
 --
 -- This table is used to correlate an RLP and Port number to a MIB-II
 -- Interface Table entry and a Netlink Interface Table entry. The table
--- is indexed by RLP and port number. 
+-- is indexed by RLP and port number.
 -- The range of RLP numbers can be:
 --     1-8 = RLP cards
 --     250 = IP Interfaces
@@ -6103,7 +6103,7 @@ nlIfTable OBJECT-TYPE
         ACCESS not-accessible
         STATUS mandatory
         DESCRIPTION "A Table to describe each interface on a node.
-        This table is indexed by RLP and Port number and can be used to 
+        This table is indexed by RLP and Port number and can be used to
         identify the corresponding MIB-II ifIndex of a Port as well as
         additional port information maintained by Netlink."
         ::= { nlInterfaces 1 }
@@ -6152,8 +6152,8 @@ nlIfPort OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "The Port number on the RLP. Port numbers 1-8 are
-        known to be physical ports, and 9-64 are logical ports. If the 
-        RLP number identifies an IP, IPX or LLC2 interface, then the port 
+        known to be physical ports, and 9-64 are logical ports. If the
+        RLP number identifies an IP, IPX or LLC2 interface, then the port
         number can be 1-257 (IP), 1-64 (IPX), or 1-96 (LLC2)."
         ::= { nlIfEntry 2 }
 
@@ -6221,7 +6221,7 @@ nlIfType OBJECT-TYPE
                            ip(205),             -- NETLINK: IP interface
                            ipx(206),             -- NETLINK: IPX interface
                            llc2(207),            -- NETLINK: LLC2 interface
-                           voice(208) 
+                           voice(208)
                    }
         ACCESS read-only
         STATUS mandatory
@@ -6241,7 +6241,7 @@ nlIfTableIndex OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "The associated index into an enterprise table used to
-        describe additional information for this port. See nlIfTableOid as the 
+        describe additional information for this port. See nlIfTableOid as the
         pointer to the actual table."
         ::= { nlIfEntry 5 }
 
@@ -6261,11 +6261,11 @@ nlIfConnectorType OBJECT-TYPE
                                          v35(5),
                                          rs449(6),
                                          rs530(7),
-                                         x21(8),        
+                                         x21(8),
                                          csudsu(9),
                                          t1(10),
                                          e1(11),
-                                         voice(13) 
+                                         voice(13)
                                         }
 
         ACCESS read-only
@@ -6296,7 +6296,7 @@ nlIfPortStatus OBJECT-TYPE
                                          offHook(19),
                                          dialing(20),
                                          activeVoiceCall(21),
-                                         onHookPending(22) 
+                                         onHookPending(22)
                                    }
         ACCESS read-only
         STATUS mandatory
@@ -6339,7 +6339,7 @@ NlIfLlc2LANEntry ::=
                 nlIfLlc2LANRlp                          INTEGER,
                 nlIfLlc2LANPort                         INTEGER,
                 nlIfLlc2LANType                         INTEGER,
-                nlIfLlc2LANCard                         INTEGER,        
+                nlIfLlc2LANCard                         INTEGER,
                 nlIfLlc2LANID                           INTEGER,
                 nlIfLlc2LANInterface                    INTEGER,
                 nlIfLlc2LANRowStatus                    RowStatus,
@@ -6474,7 +6474,7 @@ NlIfLlc2FrEntry ::=
                 nlIfLlc2FrRlp                           INTEGER,
                 nlIfLlc2FrPort                          INTEGER,
                 nlIfLlc2FrDLCI                          INTEGER,
-                nlIfLlc2FrFormat                        INTEGER,        
+                nlIfLlc2FrFormat                        INTEGER,
                 nlIfLlc2FrPriority                      INTEGER,
                 nlIfLlc2FrBAG                           INTEGER,
                 nlIfLlc2FrHostMACAddress                MacAddress,
@@ -6504,7 +6504,7 @@ nlIfLlc2FrDLCI  OBJECT-TYPE
                 SYNTAX INTEGER (16..991)
                 ACCESS read-only
                 STATUS mandatory
-                DESCRIPTION "The DLCI number used to identify the entry in the table. 
+                DESCRIPTION "The DLCI number used to identify the entry in the table.
                 The range is 16-991. "
                 ::= { nlIfLlc2FrEntry 3 }
 
@@ -6542,7 +6542,7 @@ nlIfLlc2FrHostMACAddress OBJECT-TYPE
                          SYNTAX MacAddress
                          ACCESS read-write
                          STATUS mandatory
-                         DESCRIPTION "The MAC address of the host or workstation to which 
+                         DESCRIPTION "The MAC address of the host or workstation to which
                          the remote device needs to connect.  Valid only if the format is
                          native-llc2."
                          DEFVAL { '400000000001'H }    -- 40:00:00:00:00:01
@@ -6553,7 +6553,7 @@ nlIfLlc2FrSessionType   OBJECT-TYPE
                                 terminated (1),
                                 originated (2),
                                 not-applicable (3)
-                        }                               
+                        }
                         ACCESS read-write
                         STATUS mandatory
                         DESCRIPTION "If originated, means that LLC2 connects from the configured
@@ -6574,7 +6574,7 @@ nlIfLlc2FrLANID         OBJECT-TYPE
                         ::= { nlIfLlc2FrEntry 9 }
 
 nlIfLlc2FrInterface     OBJECT-TYPE
-                        SYNTAX INTEGER 
+                        SYNTAX INTEGER
                         ACCESS read-only
                         STATUS mandatory
                         DESCRIPTION "LLC2 interface number."
@@ -6623,7 +6623,7 @@ nlIfLlc2FrBlockedPortFlag       OBJECT-TYPE
                                 DESCRIPTION
                                         "The blocked port flag."
                                 DEFVAL { no }
-                                ::= { nlIfLlc2FrEntry 12 }      
+                                ::= { nlIfLlc2FrEntry 12 }
 
 ipxConfig OBJECT IDENTIFIER ::=    { nlInterfaces 3 }
 ipxConfigRouting OBJECT IDENTIFIER ::= { ipxConfig 1 }
@@ -6632,7 +6632,7 @@ ipxConfigRouting OBJECT IDENTIFIER ::= { ipxConfig 1 }
 
 -- Static Route Config Table
 --  The static route config table contains an entry for each static route entry
---  in the system 
+--  in the system
 
 ipxStaticRouteConfigTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF IPXStaticRouteConfigEntry
@@ -6663,30 +6663,30 @@ IPXStaticRouteConfigEntry ::= SEQUENCE {
                                 RowStatus
 }
 
-ipxStaticRouteConfigCircIndex OBJECT-TYPE 
+ipxStaticRouteConfigCircIndex OBJECT-TYPE
         SYNTAX  INTEGER (1..65535)
-        ACCESS  read-only 
+        ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION     "The unique identifier of the circuit used to reach the
                                 first hop in the static route"
         ::= {ipxStaticRouteConfigEntry 1}
 
-ipxStaticRouteConfigNetNum OBJECT-TYPE 
-        SYNTAX  OCTET STRING (SIZE(4))    
-        ACCESS  read-only 
+ipxStaticRouteConfigNetNum OBJECT-TYPE
+        SYNTAX  OCTET STRING (SIZE(4))
+        ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION     "The IPX network number of the route's destination"
         ::= {ipxStaticRouteConfigEntry 2}
 
 ipxStaticRouteConfigRouter OBJECT-TYPE
-        SYNTAX  OCTET STRING (SIZE(6)) 
+        SYNTAX  OCTET STRING (SIZE(6))
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     "The hex value of the node address of the router that will forward a packet when this route is used. 
+        DESCRIPTION     "The hex value of the node address of the router that will forward a packet when this route is used.
                                  If Novell's IPXWAN is used on the interface, this field will be ignored "
         ::= {ipxStaticRouteConfigEntry 3}
 
-ipxStaticRouteConfigRowStatus OBJECT-TYPE 
+ipxStaticRouteConfigRowStatus OBJECT-TYPE
         SYNTAX  RowStatus
         ACCESS  read-write
         STATUS  mandatory
@@ -6721,7 +6721,7 @@ ipxStaticRouteConfigRowStatus OBJECT-TYPE
 
 -- Static SAP Config Table
 --  The static SAP config table contains an entry for each SAP route entry
---  in the system 
+--  in the system
 
 ipxServConfigTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF IPXServConfigEntry
@@ -6747,79 +6747,79 @@ IPXServConfigEntry ::= SEQUENCE {
                         ipxServConfigServName
                                 OCTET STRING,
                         ipxServConfigServNetworkAddress
-                                INTEGER, 
-                        ipxServConfigServNodeAddress 
-                                OCTET STRING, 
-                        ipxServConfigServSocketNumber 
-                                INTEGER, 
-                        ipxServConfigInterveningNetworks 
                                 INTEGER,
-                        ipxServConfigGatewayAddress 
-                                OCTET STRING, 
-                        ipxServConfigInterface 
+                        ipxServConfigServNodeAddress
+                                OCTET STRING,
+                        ipxServConfigServSocketNumber
+                                INTEGER,
+                        ipxServConfigInterveningNetworks
+                                INTEGER,
+                        ipxServConfigGatewayAddress
+                                OCTET STRING,
+                        ipxServConfigInterface
                                 INTEGER,
                         ipxServConfigRowStatus
                                 RowStatus
 }
 
-ipxServConfigServiceType  OBJECT-TYPE 
-        SYNTAX  INTEGER (1..65535) 
-        ACCESS  read-only 
+ipxServConfigServiceType  OBJECT-TYPE
+        SYNTAX  INTEGER (1..65535)
+        ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION     "The Service Type, a SAP service code "
         ::= {ipxServConfigEntry 1}
 
-ipxServConfigServName  OBJECT-TYPE 
-        SYNTAX  OCTET STRING (SIZE(1..48)) 
-        ACCESS  read-only 
+ipxServConfigServName  OBJECT-TYPE
+        SYNTAX  OCTET STRING (SIZE(1..48))
+        ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION     "The Sercice Name, identifies a specific server in the IPX network. "
         ::= {ipxServConfigEntry 2}
 
-ipxServConfigServNetworkAddress OBJECT-TYPE 
-        SYNTAX  INTEGER  
+ipxServConfigServNetworkAddress OBJECT-TYPE
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The IPX network number portion of the IPX address of the server identified by ServName "
-        DEFVAL { 1 } 
+        DEFVAL { 1 }
         ::= {ipxServConfigEntry 3}
 
-ipxServConfigServNodeAddress OBJECT-TYPE 
+ipxServConfigServNodeAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE(6))
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The  node portion of the IPX address of the service"
         ::= {ipxServConfigEntry 4}
 
-ipxServConfigServSocketNumber OBJECT-TYPE 
+ipxServConfigServSocketNumber OBJECT-TYPE
         SYNTAX  INTEGER (0..65535)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The socket portion of the IPX address of the service"
-        DEFVAL { 0 } 
+        DEFVAL { 0 }
         ::= {ipxServConfigEntry 5}
 
-ipxServConfigInterveningNetworks OBJECT-TYPE 
+ipxServConfigInterveningNetworks OBJECT-TYPE
         SYNTAX  INTEGER (1..65535)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The number of routers that a packet must pass through t reach the server"
-        DEFVAL { 1 } 
+        DEFVAL { 1 }
         ::= {ipxServConfigEntry 6}
 
-ipxServConfigGatewayAddress  OBJECT-TYPE 
+ipxServConfigGatewayAddress  OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE(6))
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The node address of the router thar will forward a packet"
         ::= {ipxServConfigEntry 7}
 
-ipxServConfigInterface  OBJECT-TYPE 
-        SYNTAX  INTEGER (0..65535) 
+ipxServConfigInterface  OBJECT-TYPE
+        SYNTAX  INTEGER (0..65535)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION     "The IPX network number assigned to the interface used to send packets that are destined for this server"
-        DEFVAL { 0 } 
+        DEFVAL { 0 }
         ::= {ipxServConfigEntry 8}
 
 ipxServConfigRowStatus OBJECT-TYPE
@@ -6862,46 +6862,46 @@ ipxConfigInterface OBJECT IDENTIFIER ::= { ipxConfig 2 }
 -- Interface Table
 
 ipxInterfaceTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF IPXInterfaceEntry 
+        SYNTAX SEQUENCE OF IPXInterfaceEntry
         ACCESS  not-accessible
-        STATUS  mandatory 
+        STATUS  mandatory
         DESCRIPTION "The IPX Interface Table"
-        ::= {ipxConfigInterface 6} 
+        ::= {ipxConfigInterface 6}
 
 ipxInterfaceEntry OBJECT-TYPE
-        SYNTAX  IPXInterfaceEntry 
-        ACCESS  not-accessible 
-        STATUS  mandatory 
+        SYNTAX  IPXInterfaceEntry
+        ACCESS  not-accessible
+        STATUS  mandatory
         DESCRIPTION ""
-        INDEX   {ipxInterfaceNumber 
-                        } 
+        INDEX   {ipxInterfaceNumber
+                        }
 
-        ::= {ipxInterfaceTable 1} 
+        ::= {ipxInterfaceTable 1}
 
 IPXInterfaceEntry ::= SEQUENCE {
         ipxInterfaceNumber INTEGER,
         ipxInterfaceBlockedPortFlag INTEGER,
         ipxInterfaceType INTEGER,
-        ipxInterfaceFrameType INTEGER, 
-        ipxInterfaceMaxTransUnit INTEGER, 
-        ipxInterfaceNetworkAddress INTEGER, 
-        ipxInterfaceBandwidthAllocGroup INTEGER, 
-        ipxInterfacePortDiagEnabled INTEGER, 
-        ipxInterfaceNetBIOSEnabled INTEGER, 
-        ipxInterfaceNetBIOSHops INTEGER, 
-        ipxInterfacePeriodicRIPEnabled INTEGER, 
-        ipxInterfacePeriodicRIPTimer INTEGER, 
-        ipxInterfacePeriodicSAPEnabled INTEGER, 
-        ipxInterfacePeriodicSAPTimer INTEGER, 
-        ipxInterfaceRIPEnabled INTEGER, 
-        ipxInterfaceRIPAgeTimer INTEGER, 
-        ipxInterfaceRIPMaxSize INTEGER, 
-        ipxInterfaceSAPEnabled INTEGER, 
-        ipxInterfaceSAPAgeTimer INTEGER, 
-        ipxInterfaceTransportTime INTEGER, 
-        ipxInterfaceSerializationEnabled INTEGER, 
-        ipxInterfaceWatchdogSpoofingEnabled INTEGER, 
-        ipxInterfaceLanCardNumber INTEGER, 
+        ipxInterfaceFrameType INTEGER,
+        ipxInterfaceMaxTransUnit INTEGER,
+        ipxInterfaceNetworkAddress INTEGER,
+        ipxInterfaceBandwidthAllocGroup INTEGER,
+        ipxInterfacePortDiagEnabled INTEGER,
+        ipxInterfaceNetBIOSEnabled INTEGER,
+        ipxInterfaceNetBIOSHops INTEGER,
+        ipxInterfacePeriodicRIPEnabled INTEGER,
+        ipxInterfacePeriodicRIPTimer INTEGER,
+        ipxInterfacePeriodicSAPEnabled INTEGER,
+        ipxInterfacePeriodicSAPTimer INTEGER,
+        ipxInterfaceRIPEnabled INTEGER,
+        ipxInterfaceRIPAgeTimer INTEGER,
+        ipxInterfaceRIPMaxSize INTEGER,
+        ipxInterfaceSAPEnabled INTEGER,
+        ipxInterfaceSAPAgeTimer INTEGER,
+        ipxInterfaceTransportTime INTEGER,
+        ipxInterfaceSerializationEnabled INTEGER,
+        ipxInterfaceWatchdogSpoofingEnabled INTEGER,
+        ipxInterfaceLanCardNumber INTEGER,
         ipxInterfaceWanEnabled INTEGER,
         ipxInterfaceSourceSubscriber OCTET STRING,
         ipxInterfaceDestinationSubscriber OCTET STRING,
@@ -6911,19 +6911,19 @@ IPXInterfaceEntry ::= SEQUENCE {
         ipxInterfacePVCConnection INTEGER,
         ipxInterfaceSourceCard INTEGER,
         ipxInterfaceSourcePort INTEGER,
-        ipxInterfaceSourceDLCI INTEGER, 
-        ipxInterfaceRowStatus RowStatus 
+        ipxInterfaceSourceDLCI INTEGER,
+        ipxInterfaceRowStatus RowStatus
 }
 
-ipxInterfaceNumber OBJECT-TYPE 
-        SYNTAX INTEGER (1..64) 
-        ACCESS read-only 
+ipxInterfaceNumber OBJECT-TYPE
+        SYNTAX INTEGER (1..64)
+        ACCESS read-only
         STATUS mandatory
         DESCRIPTION "The Interface Number, a sequential number to identify the interface"
         ::= {ipxInterfaceEntry 1}
 
-ipxInterfaceBlockedPortFlag OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceBlockedPortFlag OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
                         }
@@ -6934,7 +6934,7 @@ ipxInterfaceBlockedPortFlag OBJECT-TYPE
                                  will remain in that state until this parameter is changed"
         ::= {ipxInterfaceEntry 2}
 
-ipxInterfaceType OBJECT-TYPE 
+ipxInterfaceType OBJECT-TYPE
         SYNTAX INTEGER
                         { ethernet(1),
                           eight025(2),
@@ -6947,7 +6947,7 @@ ipxInterfaceType OBJECT-TYPE
         DESCRIPTION "The interface type. 802.5 is not valid on FRX4000"
         ::= {ipxInterfaceEntry 3}
 
-ipxInterfaceFrameType OBJECT-TYPE 
+ipxInterfaceFrameType OBJECT-TYPE
         SYNTAX INTEGER
                         { typeII(1),
                           raw(2),
@@ -6956,14 +6956,14 @@ ipxInterfaceFrameType OBJECT-TYPE
                         }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "The frame type - depends on the interfece type. Valid combinations are: 
+        DESCRIPTION "The frame type - depends on the interfece type. Valid combinations are:
                                  Ethernet, 802.5  - typeII, raw, llc, snap
                                  Frame relay, X25 - typeII"
         DEFVAL { typeII }
         ::= {ipxInterfaceEntry 4}
 
-ipxInterfaceMaxTransUnit OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceMaxTransUnit OBJECT-TYPE
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Maximum frame size that can be transmitted or received over the IPX interface.: Valid ranges are:
@@ -6973,58 +6973,58 @@ ipxInterfaceMaxTransUnit OBJECT-TYPE
         DEFVAL { 4096 }
         ::= {ipxInterfaceEntry 5}
 
-ipxInterfaceNetworkAddress OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceNetworkAddress OBJECT-TYPE
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Identifies the local interface to the Novell Network"
         DEFVAL { 0 }
         ::= {ipxInterfaceEntry 6}
 
-ipxInterfaceBandwidthAllocGroup OBJECT-TYPE 
-        SYNTAX INTEGER (1..16)  
+ipxInterfaceBandwidthAllocGroup OBJECT-TYPE
+        SYNTAX INTEGER (1..16)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Assigns the IPX interface to one of sixteen groups whose parameters regulate bandwidth usage"
         DEFVAL { 1 }
         ::= {ipxInterfaceEntry 7}
 
-ipxInterfacePortDiagEnabled OBJECT-TYPE 
+ipxInterfacePortDiagEnabled OBJECT-TYPE
         SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Enables/Disables the IPX interface's ability to handle Novell diagonistics packets"
         DEFVAL { no }
         ::= {ipxInterfaceEntry 8}
 
-ipxInterfaceNetBIOSEnabled OBJECT-TYPE 
+ipxInterfaceNetBIOSEnabled OBJECT-TYPE
         SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Determines whether Novell-encapsulated NetBIOS 
+        DESCRIPTION "Determines whether Novell-encapsulated NetBIOS
                                  frames received on the interface will be processed"
         DEFVAL { no }
         ::= {ipxInterfaceEntry 9}
 
-ipxInterfaceNetBIOSHops OBJECT-TYPE 
-        SYNTAX INTEGER (0..255)  
+ipxInterfaceNetBIOSHops OBJECT-TYPE
+        SYNTAX INTEGER (0..255)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Maximum number of hops allowed for routing a Novell-encapsulated NetBIOS frame"
         DEFVAL { 8 }
         ::= {ipxInterfaceEntry 10}
 
-ipxInterfacePeriodicRIPEnabled OBJECT-TYPE 
-        SYNTAX INTEGER  
+ipxInterfacePeriodicRIPEnabled OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Determines whether the node will originate periodic IPX Routing Information Protocol messages
@@ -7032,19 +7032,19 @@ ipxInterfacePeriodicRIPEnabled OBJECT-TYPE
         DEFVAL { no }
         ::= {ipxInterfaceEntry 11}
 
-ipxInterfacePeriodicRIPTimer OBJECT-TYPE 
-        SYNTAX INTEGER (1..65535)  
+ipxInterfacePeriodicRIPTimer OBJECT-TYPE
+        SYNTAX INTEGER (1..65535)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "This is the interval between the periodic IPX RIP broadcasts from this interface"
         DEFVAL { 60 }
         ::= {ipxInterfaceEntry 12}
 
-ipxInterfacePeriodicSAPEnabled OBJECT-TYPE 
+ipxInterfacePeriodicSAPEnabled OBJECT-TYPE
         SYNTAX INTEGER  {
                                                 no(1),
                                                 yes(2)
-                                        } 
+                                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Determines whether the node will originate periodic IPX SAP messages
@@ -7052,27 +7052,27 @@ ipxInterfacePeriodicSAPEnabled OBJECT-TYPE
         DEFVAL { no }
         ::= {ipxInterfaceEntry 13}
 
-ipxInterfacePeriodicSAPTimer OBJECT-TYPE 
-        SYNTAX INTEGER (1..65535)  
+ipxInterfacePeriodicSAPTimer OBJECT-TYPE
+        SYNTAX INTEGER (1..65535)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "The interval between the periodic SAP broadcasts from this interface"
         DEFVAL { 60 }
         ::= {ipxInterfaceEntry 14}
 
-ipxInterfaceRIPEnabled OBJECT-TYPE 
-        SYNTAX INTEGER  
+ipxInterfaceRIPEnabled OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Datermines whether this interface will support RIP proceswsing "
         DEFVAL { no }
         ::= {ipxInterfaceEntry 15}
 
-ipxInterfaceRIPAgeTimer OBJECT-TYPE 
-        SYNTAX INTEGER (0..65535) 
+ipxInterfaceRIPAgeTimer OBJECT-TYPE
+        SYNTAX INTEGER (0..65535)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "This is used to delete route entries in the routing information table. The timer starts/restarts
@@ -7081,27 +7081,27 @@ ipxInterfaceRIPAgeTimer OBJECT-TYPE
         DEFVAL { 180 }
         ::= {ipxInterfaceEntry 16}
 
-ipxInterfaceRIPMaxSize OBJECT-TYPE 
-        SYNTAX INTEGER  (54..446) 
+ipxInterfaceRIPMaxSize OBJECT-TYPE
+        SYNTAX INTEGER  (54..446)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Maximum possible RIP packet size "
         DEFVAL { 446 }
         ::= {ipxInterfaceEntry 17}
 
-ipxInterfaceSAPEnabled OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceSAPEnabled OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Determines whether the interface will support SAP or not "
         DEFVAL { no }
         ::= {ipxInterfaceEntry 18}
 
-ipxInterfaceSAPAgeTimer OBJECT-TYPE 
-        SYNTAX INTEGER (0..65535) 
+ipxInterfaceSAPAgeTimer OBJECT-TYPE
+        SYNTAX INTEGER (0..65535)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "This is used to delete route entries from the router information table. The timer starts/restars
@@ -7110,8 +7110,8 @@ ipxInterfaceSAPAgeTimer OBJECT-TYPE
         DEFVAL { 180 }
         ::= {ipxInterfaceEntry 19}
 
-ipxInterfaceTransportTime OBJECT-TYPE 
-        SYNTAX INTEGER (1..255) 
+ipxInterfaceTransportTime OBJECT-TYPE
+        SYNTAX INTEGER (1..255)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "is the time (in 55 milliseconds unit) that will normally take to forward frames out of interface.
@@ -7121,24 +7121,24 @@ ipxInterfaceTransportTime OBJECT-TYPE
         DEFVAL { 1 }
         ::= {ipxInterfaceEntry 20}
 
-ipxInterfaceSerializationEnabled OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceSerializationEnabled OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Determines whether NetWare file server serialization security frames will be 
+        DESCRIPTION "Determines whether NetWare file server serialization security frames will be
                                  forwarded on the interface. These broadcasts frames are used by Novell to hold informations regarding the
                                  licensing of the file server executables "
         DEFVAL { no }
         ::= {ipxInterfaceEntry 21}
 
-ipxInterfaceWatchdogSpoofingEnabled OBJECT-TYPE 
-        SYNTAX INTEGER 
+ipxInterfaceWatchdogSpoofingEnabled OBJECT-TYPE
+        SYNTAX INTEGER
                         { no(1),
                           yes(2)
-                        } 
+                        }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Determines whether this interface will be used by the local node to respond to (keep alive) messages on
@@ -7148,11 +7148,11 @@ ipxInterfaceWatchdogSpoofingEnabled OBJECT-TYPE
         ::= {ipxInterfaceEntry 22}
 
 ipxInterfaceLanCardNumber OBJECT-TYPE
-        SYNTAX INTEGER (0..1)  
+        SYNTAX INTEGER (0..1)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "The card number installed in an FRX6000. The first or only LAN card installed is always 0,
-                                 and the second is card 1" 
+                                 and the second is card 1"
         DEFVAL { 0 }
         ::= {ipxInterfaceEntry 23}
 
@@ -7160,102 +7160,102 @@ ipxInterfaceWanEnabled OBJECT-TYPE
         SYNTAX INTEGER
                         { no(1),
                           yes(2),
-                          not-applicable(3) 
-                        } 
+                          not-applicable(3)
+                        }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Determines whether Novell's IPXWAN protocol will be used on the interface. IPXWAN specifies a method 
-                                 for IPX routers to communicate across WAN links. FRX6000 and FRX4000 implement IPXWAN running over RFC 
-                                 1490-complaint frame relay and RFC1356-complaint X.25" 
+        DESCRIPTION "Determines whether Novell's IPXWAN protocol will be used on the interface. IPXWAN specifies a method
+                                 for IPX routers to communicate across WAN links. FRX6000 and FRX4000 implement IPXWAN running over RFC
+                                 1490-complaint frame relay and RFC1356-complaint X.25"
         DEFVAL { no }
         ::= {ipxInterfaceEntry 24}
 
 ipxInterfaceSourceSubscriber OBJECT-TYPE
-        SYNTAX OCTET STRING (SIZE(0..15)) 
+        SYNTAX OCTET STRING (SIZE(0..15))
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Subscruber id that defines an IPX interface in the node, by associating itself with port 66 (a
-                                 number reserved for the IPXinterface) on the RLP that has an IPX installed on it. 
-                                 .. Valid only for type X.25 " 
+                                 number reserved for the IPXinterface) on the RLP that has an IPX installed on it.
+                                 .. Valid only for type X.25 "
         ::= {ipxInterfaceEntry 25}
 
 ipxInterfaceDestinationSubscriber OBJECT-TYPE
-        SYNTAX OCTET STRING (SIZE(0..15)) 
+        SYNTAX OCTET STRING (SIZE(0..15))
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Subscriber ID associated with the physical X.25 port that will be used for the IPX interface .
-                                 .. Valid only for type X.25 " 
+                                 .. Valid only for type X.25 "
         ::= {ipxInterfaceEntry 26}
 
 ipxInterfaceSVCRetryTimer OBJECT-TYPE
-        SYNTAX INTEGER (5..60) 
+        SYNTAX INTEGER (5..60)
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "The frequency with which calls will be placed to try to establish a connection 
-                                 .. Valid only for type X.25 " 
+        DESCRIPTION "The frequency with which calls will be placed to try to establish a connection
+                                 .. Valid only for type X.25 "
         DEFVAL { 20 }
         ::= {ipxInterfaceEntry 27}
 
 ipxInterfaceSVCIdleTimer OBJECT-TYPE
-        SYNTAX INTEGER (0..5) 
+        SYNTAX INTEGER (0..5)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "is a period that an IPX connection can remain active with no traffic before the connection is cleared.
-                                 .. Valid only for type X.25 " 
+                                 .. Valid only for type X.25 "
         DEFVAL { 1 }
         ::= {ipxInterfaceEntry 28}
 
 ipxInterfaceMaxVC OBJECT-TYPE
-        SYNTAX INTEGER (1..8) 
+        SYNTAX INTEGER (1..8)
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "This specifies a number of virtual circuits over which IPX traffic will be transmitted in parallel.  
-                                 .. Valid only for type X.25 " 
+        DESCRIPTION "This specifies a number of virtual circuits over which IPX traffic will be transmitted in parallel.
+                                 .. Valid only for type X.25 "
         DEFVAL { 1 }
         ::= {ipxInterfaceEntry 29 }
 
 ipxInterfacePVCConnection OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
                         { no(1),
-                          yes(2), 
-                          not-applicable(3) 
-                        } 
+                          yes(2),
+                          not-applicable(3)
+                        }
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION "Identifies this interface as one of a PVC.  
-                                 .. Valid only for type X.25 " 
+        DESCRIPTION "Identifies this interface as one of a PVC.
+                                 .. Valid only for type X.25 "
         DEFVAL { no }
         ::= {ipxInterfaceEntry 30}
 
 ipxInterfaceSourceCard OBJECT-TYPE
-        SYNTAX INTEGER (0..7) 
+        SYNTAX INTEGER (0..7)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Identifies the location of this end of the frame relay IPX interface.
-                                 .. Valid only for frame relay " 
+                                 .. Valid only for frame relay "
         DEFVAL { 0 }
         ::= {ipxInterfaceEntry 31}
 
 ipxInterfaceSourcePort OBJECT-TYPE
-        SYNTAX INTEGER (0..7) 
+        SYNTAX INTEGER (0..7)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Identifies the location of this end of the frame relay IPX interface.
-                                 .. Valid only for frame relay " 
+                                 .. Valid only for frame relay "
         DEFVAL { 0 }
         ::= {ipxInterfaceEntry 32}
 
 ipxInterfaceSourceDLCI OBJECT-TYPE
-        SYNTAX INTEGER (16..991)  
+        SYNTAX INTEGER (16..991)
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Identifies the location of this end of the frame relay IPX interface.
-                                 .. Valid only for frame relay " 
+                                 .. Valid only for frame relay "
         DEFVAL { 16 }
         ::= {ipxInterfaceEntry 33}
 
-ipxInterfaceRowStatus OBJECT-TYPE 
-        SYNTAX RowStatus  
+ipxInterfaceRowStatus OBJECT-TYPE
+        SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
     DESCRIPTION
@@ -7287,19 +7287,19 @@ ipxInterfaceRowStatus OBJECT-TYPE
             a genErr response is returned."
         ::= {ipxInterfaceEntry 34}
 
--- The Node Default Group 
+-- The Node Default Group
 
 ipxConfigNodeDefault OBJECT IDENTIFIER ::= {ipxConfig 3}
 
-ipxNodeDefaultConfigNetworkAddress OBJECT-TYPE 
-    SYNTAX      INTEGER  
+ipxNodeDefaultConfigNetworkAddress OBJECT-TYPE
+    SYNTAX      INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION "Identifies the node to the IPX network" 
+        DESCRIPTION "Identifies the node to the IPX network"
         ::= {ipxConfigNodeDefault 1}
 
 ipxNodeDefaultConfigRIPSAPGap OBJECT-TYPE
-    SYNTAX      INTEGER (0..100) 
+    SYNTAX      INTEGER (0..100)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION "The minimum delay between consecutive RIP and SAP transmissions"
@@ -7309,7 +7309,7 @@ ipxNodeDefaultConfigRouterName OBJECT-TYPE
     SYNTAX  OCTET STRING (SIZE(1..48))
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION "An unique identifier within the IPX network" 
+        DESCRIPTION "An unique identifier within the IPX network"
         ::= {ipxConfigNodeDefault 3}
 
 --
@@ -8021,8 +8021,8 @@ nlLocalSubscriberId OBJECT-TYPE
         STATUS mandatory
         DESCRIPTION "The Subscriber ID.  A valid subscriber ID is a string of
                 numeric digits represented by their ASCII equivalents.  The
-                ASCII equivalents of the wildcard characters '*' and '?' are 
-                also allowed.  A '*' is a wildcard that matches any number of 
+                ASCII equivalents of the wildcard characters '*' and '?' are
+                also allowed.  A '*' is a wildcard that matches any number of
                 digits, including zero. A '?' is a wildcard that matches any single digit."
         ::= { nlLocalSubscriberEntry 1 }
 
@@ -8030,7 +8030,7 @@ nlLocalSubscriberName OBJECT-TYPE
         SYNTAX DisplayString (SIZE (0..31))
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION "The Subscriber name.  The subscriber name is not accessible from 
+        DESCRIPTION "The Subscriber name.  The subscriber name is not accessible from
                      SNMP, and a blank string is always returned."
         ::= { nlLocalSubscriberEntry 2 }
 
@@ -8071,7 +8071,7 @@ nlLocalSubscriberSystematicRedirect OBJECT-TYPE
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Systematic Redirection."
-    DEFVAL { no }       
+    DEFVAL { no }
         ::= { nlLocalSubscriberEntry 4 }
 
 nlLocalSubscriberRedirectBusy OBJECT-TYPE
@@ -8083,7 +8083,7 @@ nlLocalSubscriberRedirectBusy OBJECT-TYPE
         STATUS mandatory
         DESCRIPTION "Redirect calls according to Redirection Addresses if the
                 primary subscriber device is busy."
-    DEFVAL { no }       
+    DEFVAL { no }
         ::= { nlLocalSubscriberEntry 5 }
 
 nlLocalSubscriberRedirectOO OBJECT-TYPE
@@ -8095,7 +8095,7 @@ nlLocalSubscriberRedirectOO OBJECT-TYPE
         STATUS mandatory
         DESCRIPTION "Redirect calls according to Redirection Addresses if the
                 primary subscriber device is out of order."
-    DEFVAL { no }       
+    DEFVAL { no }
         ::= { nlLocalSubscriberEntry 6 }
 
 nlLocalSubscriberPriority OBJECT-TYPE
@@ -8103,14 +8103,14 @@ nlLocalSubscriberPriority OBJECT-TYPE
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Allows setting a priority for traffic within the node."
-    DEFVAL { 0 }        
+    DEFVAL { 0 }
         ::= { nlLocalSubscriberEntry 7 }
 
 nlLocalSubscriberRowStatus OBJECT-TYPE
         SYNTAX      RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the nlLocalSubscriberTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -8187,14 +8187,14 @@ nlLocalSubscriberRouteConf OBJECT-TYPE
         ::= { nlLocalSubscriberRouteEntry 2 }
 
 nlLocalSubscriberRouteLP OBJECT-TYPE
-        SYNTAX INTEGER  
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Instance of the LP that makes up the routing path"
         ::= { nlLocalSubscriberRouteEntry 3 }
 
 nlLocalSubscriberRoutePort OBJECT-TYPE
-        SYNTAX INTEGER  
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Instance of the port that makes up the routing path"
@@ -8204,7 +8204,7 @@ nlLocalSubscriberRouteRowStatus OBJECT-TYPE
         SYNTAX      RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the nlLocalSubscriberRouteTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -8277,7 +8277,7 @@ nlLocalSubscriberRedirRowStatus OBJECT-TYPE
         SYNTAX      RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the nlLocalSubscriberRedirTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -8565,7 +8565,7 @@ nlLlc2TermConnectionRowStatus OBJECT-TYPE
         SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the nlLlc2TermConnectionTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -8645,7 +8645,7 @@ nlLlc2OrigConnectionType OBJECT-TYPE
         SYNTAX INTEGER {
                 sdlc(1),
                 llc2(2)
-                } 
+                }
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION "Specifies Remote subscriber device type"
@@ -8667,7 +8667,7 @@ nlLlc2OrigConnectionRemoteSubscriberId OBJECT-TYPE
         ::= { nlLlc2OrigConnectionEntry 5 }
 
 nlLlc2OrigConnectionIDBLK OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "This field is obsolete"
@@ -8675,7 +8675,7 @@ nlLlc2OrigConnectionIDBLK OBJECT-TYPE
         ::= { nlLlc2OrigConnectionEntry 6 }
 
 nlLlc2OrigConnectionIDNUM OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "This field is obsolete"
@@ -8683,7 +8683,7 @@ nlLlc2OrigConnectionIDNUM OBJECT-TYPE
         ::= { nlLlc2OrigConnectionEntry 7 }
 
 nlLlc2OrigConnectionMAXDATA OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "This field is obsolete"
@@ -8691,7 +8691,7 @@ nlLlc2OrigConnectionMAXDATA OBJECT-TYPE
         ::= { nlLlc2OrigConnectionEntry 8 }
 
 nlLlc2OrigConnectionMAXIN OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION "This field is obsolete"
@@ -8702,7 +8702,7 @@ nlLlc2OrigConnectionRowStatus OBJECT-TYPE
         SYNTAX RowStatus
         ACCESS read-write
         STATUS mandatory
-        DESCRIPTION 
+        DESCRIPTION
             "This variable is used to manage the creation and deletion
             of conceptual rows in the nlLlc2OrigConnectionTable and follows the
             SNMPv2 RowStatus conventions by supporting the following values:
@@ -8754,7 +8754,7 @@ pinStatusTable OBJECT-TYPE
         SYNTAX SEQUENCE OF PortPinEntry
         ACCESS not-accessible
         STATUS mandatory
-        DESCRIPTION "A Table to describe the status of each pin on a 
+        DESCRIPTION "A Table to describe the status of each pin on a
         physical port. This table is indexed by RLP and Port"
         ::= { status 4 }
 
@@ -8989,7 +8989,7 @@ portStatsLogicalRejects OBJECT-TYPE
         SYNTAX Counter
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION "The sum of Rejects and Frame Rejects. 
+        DESCRIPTION "The sum of Rejects and Frame Rejects.
         A value consistently greater than zero indicates line probelms."
         ::= { portStatsEntry 7 }
 
@@ -9938,7 +9938,7 @@ PortThreshEntry ::=
                         INTEGER,
                 portThreshRtxFramesPerSec
                         INTEGER,
-                portThreshFCSErrPerSec  
+                portThreshFCSErrPerSec
                         INTEGER,
                 portThreshLogRejPerSec
                         INTEGER,
@@ -10038,7 +10038,7 @@ bridgeAdminVirtualLANID         OBJECT-TYPE
                                 SYNTAX INTEGER (0..4095)
                                 ACCESS read-write
                                 STATUS mandatory
-                                DESCRIPTION 
+                                DESCRIPTION
                                         "LAN id inserted into token ring RIF field representing
                                          internal virtual ring, for LLC2 or bridged traffic"
                                 ::= { bridge 1 }
@@ -10047,7 +10047,7 @@ bridgeOperVirtualLANID  OBJECT-TYPE
                         SYNTAX INTEGER (0..4095)
                         ACCESS read-only
                         STATUS mandatory
-                        DESCRIPTION 
+                        DESCRIPTION
                                         "LAN id inserted into token ring RIF field representing
                                          internal virtual ring, for LLC2 or bridged traffic"
                         ::= { bridge 2 }
@@ -10059,7 +10059,7 @@ bridgeEnabled   OBJECT-TYPE
                 }
                 ACCESS read-write
                 STATUS mandatory
-                DESCRIPTION 
+                DESCRIPTION
                         "When yes the spanning tree algorithm is in effect and all
                          traffic types may be bridged. When no only llc/2 terminated
                          traffic is allowed on bridge interfaces."
@@ -10070,7 +10070,7 @@ bridgeMaxSizeForwardingTable    OBJECT-TYPE
                                 SYNTAX INTEGER (128..65535)
                                 ACCESS read-write
                                 STATUS mandatory
-                                DESCRIPTION 
+                                DESCRIPTION
                                         "Number of entries allowed in the bridge forwarding
                                          table"
                                 DEFVAL { 65535 }
@@ -10083,7 +10083,7 @@ bridgeIPEnabled OBJECT-TYPE
                 }
                 ACCESS read-write
                 STATUS mandatory
-                DESCRIPTION 
+                DESCRIPTION
                                 "When yes, and BRIDGING ENABLED, IP traffic will be bridged,
                                  otherwise IP traffic will be routed."
                 DEFVAL { no }
@@ -10096,7 +10096,7 @@ bridgeIPXEnabled        OBJECT-TYPE
                         }
                         ACCESS read-write
                         STATUS mandatory
-                        DESCRIPTION 
+                        DESCRIPTION
                                 "When yes, and BRIDGING ENABLED, IPX traffic will be bridged,
                                  otherwise IPX traffic will be routed."
                         DEFVAL { no }
@@ -10106,18 +10106,18 @@ bridgeAdminSRBID        OBJECT-TYPE
                         SYNTAX INTEGER (0..15)
                         ACCESS read-write
                         STATUS mandatory
-                        DESCRIPTION 
-                                "bridge ID to be inserted into token ring RIF field, 
+                        DESCRIPTION
+                                "bridge ID to be inserted into token ring RIF field,
                                 this bridge"
-                        DEFVAL { 0 } 
+                        DEFVAL { 0 }
                         ::= { bridge 7 }
 
 bridgeOperSRBID OBJECT-TYPE
                 SYNTAX INTEGER (0..15)
                 ACCESS read-only
                 STATUS mandatory
-                DESCRIPTION 
-                                "bridge ID to be inserted into token ring RIF field, 
+                DESCRIPTION
+                                "bridge ID to be inserted into token ring RIF field,
                                 this bridge"
                 ::= { bridge 8 }
 
@@ -10128,8 +10128,8 @@ bridgeDefaultEthernetFrameType  OBJECT-TYPE
                                 }
                                 ACCESS      read-write
                                 STATUS      mandatory
-                                DESCRIPTION 
-                                                                "default frame type to be used when 
+                                DESCRIPTION
+                                                                "default frame type to be used when
                                                                  forwarding traffic on ethernet interfaces."
                                 DEFVAL { type-II }
                                 ::= { bridge 9 }

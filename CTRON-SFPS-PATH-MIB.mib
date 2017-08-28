@@ -33,21 +33,21 @@ CTRON-SFPS-PATH-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
         DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
         TimeTicks
                 FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt
         sfpsISPSwitchPath, sfpsPathAPI, sfpsStaticPath, sfpsPathMaskObj, sfpsSwitchPathStats,
-    sfpsSwitchPathAPI, sfpsSwitchPath, sfpsChassisRIPPath       
+    sfpsSwitchPathAPI, sfpsSwitchPath, sfpsChassisRIPPath
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
@@ -75,24 +75,24 @@ sfpsServiceCenterPathEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Path Entry."
-        INDEX   { sfpsServiceCenterPathHashLeaf } 
+        INDEX   { sfpsServiceCenterPathHashLeaf }
         ::= { sfpsServiceCenterPathTable 1 }
 
 SfpsServiceCenterPathEntry ::=
         SEQUENCE {
-                sfpsServiceCenterPathHashLeaf           HexInteger,  
-                sfpsServiceCenterPathMetric             INTEGER,  
-                sfpsServiceCenterPathName               DisplayString,  
-                sfpsServiceCenterPathOperStatus         INTEGER,  
+                sfpsServiceCenterPathHashLeaf           HexInteger,
+                sfpsServiceCenterPathMetric             INTEGER,
+                sfpsServiceCenterPathName               DisplayString,
+                sfpsServiceCenterPathOperStatus         INTEGER,
                 sfpsServiceCenterPathAdminStatus        INTEGER,
                 sfpsServiceCenterPathStatusTime         TimeTicks,
                 sfpsServiceCenterPathRequests           INTEGER,
                 sfpsServiceCenterPathResponses          INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterPathHashLeaf   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -166,23 +166,23 @@ sfpsServiceCenterPathResponses   OBJECT-TYPE
         DESCRIPTION
                 "GOOD replies by server."
         ::= { sfpsServiceCenterPathEntry 8 }
- 
+
 
 -- Path API
 
 
 sfpsPathAPIVerb    OBJECT-TYPE
         SYNTAX  INTEGER {
-                        other(1),                
-                        add(2),                  
-                        delete(3),               
-                        uplink(4),               
-                        downlink(5),             
-                        diameter(6),             
-                        flood-add(7),            
-                        flood-delete(8),         
+                        other(1),
+                        add(2),
+                        delete(3),
+                        uplink(4),
+                        downlink(5),
+                        diameter(6),
+                        flood-add(7),
+                        flood-delete(8),
                         force-idle-traffic(9),
-                        remove-traffic-cnx(10)  
+                        remove-traffic-cnx(10)
                  }
         ACCESS  read-write
         STATUS  mandatory
@@ -195,7 +195,7 @@ sfpsPathAPISwitchMac     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 2 }
 
@@ -204,7 +204,7 @@ sfpsPathAPIPortName     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 3 }
 
@@ -212,7 +212,7 @@ sfpsPathAPICost     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 4 }
 
@@ -220,7 +220,7 @@ sfpsPathAPIHop     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 5 }
 
@@ -228,7 +228,7 @@ sfpsPathAPIID     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 6 }
 
@@ -236,7 +236,7 @@ sfpsPathAPIInPort     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 7 }
 
@@ -244,7 +244,7 @@ sfpsPathAPISrcMac     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 8 }
 
@@ -252,7 +252,7 @@ sfpsPathAPIDstMac     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathAPI 9 }
 
@@ -273,7 +273,7 @@ sfpsStaticPathEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 ""
-        INDEX   { sfpsStaticPathPort } 
+        INDEX   { sfpsStaticPathPort }
         ::= { sfpsStaticPathTable 1 }
 
 SfpsStaticPathEntry ::=
@@ -283,9 +283,9 @@ SfpsStaticPathEntry ::=
         sfpsStaticPathUplinkEnabled     INTEGER,
         sfpsStaticPathDownlinkEnabled   INTEGER
                 }
-                                                          
+
 sfpsStaticPathPort   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -296,7 +296,7 @@ sfpsStaticPathFloodEnabled   OBJECT-TYPE
         SYNTAX  INTEGER {
                 disabled(2),
                 enabled(3)
-                } 
+                }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -307,7 +307,7 @@ sfpsStaticPathUplinkEnabled   OBJECT-TYPE
         SYNTAX  INTEGER {
                 disabled(2),
                 enabled(3)
-                } 
+                }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -318,7 +318,7 @@ sfpsStaticPathDownlinkEnabled   OBJECT-TYPE
         SYNTAX  INTEGER {
                 disabled(2),
                 enabled(3)
-                } 
+                }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -331,7 +331,7 @@ sfpsPathMaskObjLogPortMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 1 }
 
@@ -339,7 +339,7 @@ sfpsPathMaskObjPhysPortMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 2 }
 
@@ -347,7 +347,7 @@ sfpsPathMaskObjLogResolveMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 3 }
 
@@ -355,7 +355,7 @@ sfpsPathMaskObjLogFloodNoINB     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 4 }
 
@@ -363,7 +363,7 @@ sfpsPathMaskObjPhysResolveMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 5 }
 
@@ -371,7 +371,7 @@ sfpsPathMaskObjPhysFloodNoINB     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 6 }
 
@@ -379,7 +379,7 @@ sfpsPathMaskObjOldLogPortMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 7 }
 
@@ -387,7 +387,7 @@ sfpsPathMaskObjPathChangeEvent     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 8 }
 
@@ -395,7 +395,7 @@ sfpsPathMaskObjPathChangeCounter     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 9 }
 
@@ -403,7 +403,7 @@ sfpsPathMaskObjLastChangeTime     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 10 }
 
@@ -411,7 +411,7 @@ sfpsPathMaskObjPathCounterReset     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 11 }
 
@@ -420,7 +420,7 @@ sfpsPathMaskObjIsolatedSwitchMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 12 }
 
@@ -428,7 +428,7 @@ sfpsPathMaskObjPyhsIsolatedSwitchMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 13 }
 
@@ -436,7 +436,7 @@ sfpsPathMaskObjLogDownlinkMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 14 }
 
@@ -444,7 +444,7 @@ sfpsPathMaskObjCoreUplinkMask     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 15 }
 
@@ -455,7 +455,7 @@ sfpsPathMaskObjOverrideFloodMask     OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsPathMaskObj 16 }
 
@@ -464,7 +464,7 @@ sfpsPathMaskObjOverrideFloodMask     OBJECT-TYPE
 --  Switch Path Statistics
 
 sfpsSwitchPathStatsNumEntries   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -472,7 +472,7 @@ sfpsSwitchPathStatsNumEntries   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 1 }
 
 sfpsSwitchPathStatsMaxEntries   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -480,7 +480,7 @@ sfpsSwitchPathStatsMaxEntries   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 2 }
 
 sfpsSwitchPathStatsTableSize   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -488,7 +488,7 @@ sfpsSwitchPathStatsTableSize   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 3 }
 
 sfpsSwitchPathStatsMemUsage   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -496,7 +496,7 @@ sfpsSwitchPathStatsMemUsage   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 4 }
 
 sfpsSwitchPathStatsActiveLocal   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -504,7 +504,7 @@ sfpsSwitchPathStatsActiveLocal   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 5 }
 
 sfpsSwitchPathStatsActiveRemote   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -512,7 +512,7 @@ sfpsSwitchPathStatsActiveRemote   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 6 }
 
 sfpsSwitchPathStatsStaticRemote   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -520,7 +520,7 @@ sfpsSwitchPathStatsStaticRemote   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 7 }
 
 sfpsSwitchPathStatsDeadLocal   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -528,7 +528,7 @@ sfpsSwitchPathStatsDeadLocal   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 8 }
 
 sfpsSwitchPathStatsDeadRemote   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -536,7 +536,7 @@ sfpsSwitchPathStatsDeadRemote   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 9 }
 
 sfpsSwitchPathStatsReapReady   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -544,7 +544,7 @@ sfpsSwitchPathStatsReapReady   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 10 }
 
 sfpsSwitchPathStatsReapAt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -552,7 +552,7 @@ sfpsSwitchPathStatsReapAt   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 11 }
 
 sfpsSwitchPathStatsReapCount   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -560,7 +560,7 @@ sfpsSwitchPathStatsReapCount   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 12 }
 
 sfpsSwitchPathStatsPathReq   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -568,7 +568,7 @@ sfpsSwitchPathStatsPathReq   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 13 }
 
 sfpsSwitchPathStatsPathAck   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -576,7 +576,7 @@ sfpsSwitchPathStatsPathAck   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 14 }
 
 sfpsSwitchPathStatsPathNak   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -584,7 +584,7 @@ sfpsSwitchPathStatsPathNak   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 15 }
 
 sfpsSwitchPathStatsPathUnk   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -592,7 +592,7 @@ sfpsSwitchPathStatsPathUnk   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 16 }
 
 sfpsSwitchPathStatsLocateReq   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -600,7 +600,7 @@ sfpsSwitchPathStatsLocateReq   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 17 }
 
 sfpsSwitchPathStatsLocateAck   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -608,7 +608,7 @@ sfpsSwitchPathStatsLocateAck   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 18 }
 
 sfpsSwitchPathStatsLocateNak   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -616,7 +616,7 @@ sfpsSwitchPathStatsLocateNak   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 19 }
 
 sfpsSwitchPathStatsLocateUnk   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -624,7 +624,7 @@ sfpsSwitchPathStatsLocateUnk   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 20 }
 
 sfpsSwitchPathStatsSndDblBack   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -632,7 +632,7 @@ sfpsSwitchPathStatsSndDblBack   OBJECT-TYPE
         ::= { sfpsSwitchPathStats 21 }
 
 sfpsSwitchPathStatsRcdDblBack   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -659,7 +659,7 @@ sfpsSwitchPathAPIVerb   OBJECT-TYPE
         ::= { sfpsSwitchPathAPI 1 }
 
 sfpsSwitchPathAPIPort   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -675,7 +675,7 @@ sfpsSwitchPathAPIBaseMAC   OBJECT-TYPE
         ::= { sfpsSwitchPathAPI 3 }
 
 sfpsSwitchPathAPIReapAt   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -683,7 +683,7 @@ sfpsSwitchPathAPIReapAt   OBJECT-TYPE
         ::= { sfpsSwitchPathAPI 4 }
 
 sfpsSwitchPathAPIMaxRcvDblBack   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -706,33 +706,33 @@ sfpsSwitchPathTableEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "."
-        INDEX   { sfpsSwitchPathTableSwitchMAC, sfpsSwitchPathTablePort } 
+        INDEX   { sfpsSwitchPathTableSwitchMAC, sfpsSwitchPathTablePort }
         ::= { sfpsSwitchPathTable 1 }
 
 SfpsSwitchPathTableEntry ::=
         SEQUENCE {
-                sfpsSwitchPathTableSwitchMAC      SfpsAddress,  
-                sfpsSwitchPathTablePort           INTEGER,  
-                sfpsSwitchPathTableIsActive       INTEGER,  
-                sfpsSwitchPathTableIsStatic       INTEGER,  
-                sfpsSwitchPathTableIsLocal        INTEGER,  
-                sfpsSwitchPathTableRefCnt         INTEGER,  
-                sfpsSwitchPathTableRefTime        TimeTicks,  
-                sfpsSwitchPathTableFoundCnt       INTEGER,  
-                sfpsSwitchPathTableFoundTime      TimeTicks,  
-                sfpsSwitchPathTableLostCnt        INTEGER,  
-                sfpsSwitchPathTableLostTime       TimeTicks,  
-                sfpsSwitchPathTableSrcDblBackCnt  INTEGER,  
+                sfpsSwitchPathTableSwitchMAC      SfpsAddress,
+                sfpsSwitchPathTablePort           INTEGER,
+                sfpsSwitchPathTableIsActive       INTEGER,
+                sfpsSwitchPathTableIsStatic       INTEGER,
+                sfpsSwitchPathTableIsLocal        INTEGER,
+                sfpsSwitchPathTableRefCnt         INTEGER,
+                sfpsSwitchPathTableRefTime        TimeTicks,
+                sfpsSwitchPathTableFoundCnt       INTEGER,
+                sfpsSwitchPathTableFoundTime      TimeTicks,
+                sfpsSwitchPathTableLostCnt        INTEGER,
+                sfpsSwitchPathTableLostTime       TimeTicks,
+                sfpsSwitchPathTableSrcDblBackCnt  INTEGER,
                 sfpsSwitchPathTableSrcDblBackTime TimeTicks,
-                sfpsSwitchPathTableRcvDblBackCnt  INTEGER,  
-                sfpsSwitchPathTableRcvDblBackTime TimeTicks,  
-                sfpsSwitchPathTableDirReapCnt     INTEGER,  
-                sfpsSwitchPathTableDirReapTime    TimeTicks  
-                  
-         }  
+                sfpsSwitchPathTableRcvDblBackCnt  INTEGER,
+                sfpsSwitchPathTableRcvDblBackTime TimeTicks,
+                sfpsSwitchPathTableDirReapCnt     INTEGER,
+                sfpsSwitchPathTableDirReapTime    TimeTicks
+
+         }
 
 sfpsSwitchPathTableSwitchMAC   OBJECT-TYPE
-        SYNTAX  SfpsAddress  
+        SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -740,7 +740,7 @@ sfpsSwitchPathTableSwitchMAC   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 1 }
 
 sfpsSwitchPathTablePort   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -748,7 +748,7 @@ sfpsSwitchPathTablePort   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 2 }
 
 sfpsSwitchPathTableIsActive   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -756,7 +756,7 @@ sfpsSwitchPathTableIsActive   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 3 }
 
 sfpsSwitchPathTableIsStatic   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -764,7 +764,7 @@ sfpsSwitchPathTableIsStatic   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 4 }
 
 sfpsSwitchPathTableIsLocal   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -772,7 +772,7 @@ sfpsSwitchPathTableIsLocal   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 5 }
 
 sfpsSwitchPathTableRefCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -780,7 +780,7 @@ sfpsSwitchPathTableRefCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 6 }
 
 sfpsSwitchPathTableRefTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -788,7 +788,7 @@ sfpsSwitchPathTableRefTime   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 7 }
 
 sfpsSwitchPathTableFoundCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -796,7 +796,7 @@ sfpsSwitchPathTableFoundCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 8 }
 
 sfpsSwitchPathTableFoundTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -804,7 +804,7 @@ sfpsSwitchPathTableFoundTime   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 9 }
 
 sfpsSwitchPathTableLostCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -812,7 +812,7 @@ sfpsSwitchPathTableLostCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 10 }
 
 sfpsSwitchPathTableLostTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -820,7 +820,7 @@ sfpsSwitchPathTableLostTime   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 11 }
 
 sfpsSwitchPathTableSrcDblBackCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -828,7 +828,7 @@ sfpsSwitchPathTableSrcDblBackCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 12 }
 
 sfpsSwitchPathTableSrcDblBackTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -836,7 +836,7 @@ sfpsSwitchPathTableSrcDblBackTime   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 13 }
 
 sfpsSwitchPathTableRcvDblBackCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -844,7 +844,7 @@ sfpsSwitchPathTableRcvDblBackCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 14 }
 
 sfpsSwitchPathTableRcvDblBackTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -852,7 +852,7 @@ sfpsSwitchPathTableRcvDblBackTime   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 15 }
 
 sfpsSwitchPathTableDirReapCnt   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -860,7 +860,7 @@ sfpsSwitchPathTableDirReapCnt   OBJECT-TYPE
         ::= { sfpsSwitchPathTableEntry 16 }
 
 sfpsSwitchPathTableDirReapTime   OBJECT-TYPE
-        SYNTAX  TimeTicks  
+        SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -870,7 +870,7 @@ sfpsSwitchPathTableDirReapTime   OBJECT-TYPE
 --  Chassis RIP Path Statistics
 
 sfpsChassisRIPPathNumInTable   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -879,7 +879,7 @@ sfpsChassisRIPPathNumInTable   OBJECT-TYPE
 
 
 sfpsChassisRIPPathNumRequests   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -888,7 +888,7 @@ sfpsChassisRIPPathNumRequests   OBJECT-TYPE
 
 
 sfpsChassisRIPPathNumReplyAck   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -897,7 +897,7 @@ sfpsChassisRIPPathNumReplyAck   OBJECT-TYPE
 
 
 sfpsChassisRIPPathNumReplyUnk   OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION

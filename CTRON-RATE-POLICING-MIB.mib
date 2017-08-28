@@ -53,7 +53,7 @@ ctRatePolicing MODULE-IDENTITY
     DESCRIPTION
         "The Enterasys Rate Policing MIB module allows the user to
         set maximum ingress rates on a per port, per priority basis."
-    
+
     REVISION    "200304101518Z"  -- Thu Apr 10 15:18 GMT 2003
     DESCRIPTION "Added display hint to CtPriList."
 
@@ -63,10 +63,10 @@ ctRatePolicing MODULE-IDENTITY
                  was also changed from Integer32 to INTEGER with
                  enumeration values that map to the prior bit positions."
 
-    REVISION    "200011281551Z"  
+    REVISION    "200011281551Z"
     DESCRIPTION "Changed the CONTACT-INFO portion of the MODULE-IDENTITY
                  to reflect the company name change to Enterasys Networks.
-                 Added ranges to the ctRatePolicingThreshHoldMin and 
+                 Added ranges to the ctRatePolicingThreshHoldMin and
                  ctRatePolicingThreshHold leaves."
 
     REVISION    "199906210000Z"
@@ -91,7 +91,7 @@ CtPriList ::= TEXTUAL-CONVENTION
         the value of this object.  If that bit has a value of '1'
         then that priority is included in the set of priorities; the
         priority is not included if its bit has a value of '0'."
-    SYNTAX      INTEGER (0..255) 
+    SYNTAX      INTEGER (0..255)
 
 CtRatePolActionList ::= TEXTUAL-CONVENTION
     STATUS      current
@@ -176,20 +176,20 @@ ctRatePolicingConfigEntry  OBJECT-TYPE
     INDEX { dot1dBasePort, ctRatePolicingResourceIndex }
     ::= { ctRatePolicingConfigTable 1 }
 
-CtRatePolicingConfigEntry ::= 
+CtRatePolicingConfigEntry ::=
    SEQUENCE {
       ctRatePolicingResourceIndex
             INTEGER,
       ctRatePolicingActionsAllowed
             CtRatePolActionList,
       ctRatePolicingAction
-            CtRatePolActionList, 
+            CtRatePolActionList,
       ctRatePolicingThreshHoldMin
             Integer32,
       ctRatePolicingThreshHold
             Integer32,
       ctRatePolicingPriorityList
-            CtPriList, 
+            CtPriList,
       ctRatePolicingRuleStatus
             INTEGER,
       ctRatePolicingActionsTaken
@@ -236,7 +236,7 @@ ctRatePolicingAction OBJECT-TYPE
     ::= { ctRatePolicingConfigEntry 3 }
 
 ctRatePolicingThreshHoldMin OBJECT-TYPE
-    SYNTAX      Integer32 (0..2147483647) 
+    SYNTAX      Integer32 (0..2147483647)
     UNITS       "kilobytes"
     MAX-ACCESS  read-only
     STATUS      current
@@ -245,7 +245,7 @@ ctRatePolicingThreshHoldMin OBJECT-TYPE
     ::= { ctRatePolicingConfigEntry 4 }
 
 ctRatePolicingThreshHold OBJECT-TYPE
-    SYNTAX      Integer32 (0..2147483647) 
+    SYNTAX      Integer32 (0..2147483647)
     UNITS       "kilobytes"
     MAX-ACCESS  read-write
     STATUS      current
@@ -257,7 +257,7 @@ ctRatePolicingThreshHold OBJECT-TYPE
     ::= { ctRatePolicingConfigEntry 5 }
 
 ctRatePolicingPriorityList OBJECT-TYPE
-    SYNTAX      CtPriList 
+    SYNTAX      CtPriList
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -308,7 +308,7 @@ ctRatePolicingDirection OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "This specifies the direction of the traffic flow that 
+        "This specifies the direction of the traffic flow that
         will be limited."
     ::= { ctRatePolicingConfigEntry 10 }
 

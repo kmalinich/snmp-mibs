@@ -5,11 +5,11 @@ IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE,
     Unsigned32                           FROM SNMPv2-SMI
     TruthValue, TEXTUAL-CONVENTION       FROM SNMPv2-TC
-    MODULE-COMPLIANCE, 
+    MODULE-COMPLIANCE,
     OBJECT-GROUP                         FROM SNMPv2-CONF
     EnabledStatus                        FROM P-BRIDGE-MIB
     PortList                             FROM Q-BRIDGE-MIB
-    ifIndex                              FROM IF-MIB 
+    ifIndex                              FROM IF-MIB
     etsysModules                         FROM ENTERASYS-MIB-NAMES;
 
 
@@ -20,20 +20,20 @@ enterasysESwitchMIB MODULE-IDENTITY
     "Postal:        Enterasys Networks
                     35 Industrial Way, P.O. Box 5005
                     Rochester, NH 03867-0505
-                
+
     Phone:          +1-603-332-9400
     E-Mail:         support@enterasys.com
     WWW:            http://www.enterasys.com"
-   
+
     DESCRIPTION
-       "The Enterasys Networks Proprietary MIB module for 
+       "The Enterasys Networks Proprietary MIB module for
         entities implementing the Extended Switch Objects."
 
     REVISION "200203071950Z"  -- Thu Mar  7 19:50 GMT 2002
     DESCRIPTION
        "Imported etsysModules from the correct MIB."
 
-    REVISION "200102131100Z" 
+    REVISION "200102131100Z"
     DESCRIPTION
        "The initial version of this MIB module."
 
@@ -44,18 +44,18 @@ enterasysESwitchMIB MODULE-IDENTITY
 --  Textual Conventions (i.e., these do not affect object encoding):
 -- ----------------------------------------------------------------------------
 --
---  "DURABLE":   
+--  "DURABLE":
 --  Objects that are saved across a system reset and/or power cycle
 --  are noted as "DURABLE" for convenience in the DESCRIPTION
 --  section of the object definition.  Code must be explicitly
 --  written to implement these DURABLE objects.
---     
---  "PERSISTENT": 
---  This keyword is used to define persistent NVM+ objects (i.e., 
+--
+--  "PERSISTENT":
+--  This keyword is used to define persistent NVM+ objects (i.e.,
 --  object values that survive a system "reset to factory
 --  defaults").
 --
-    
+
 -- ----------------------------------------------------------------------------
 --  Enterasys Extended Switch MIB-OIDs for Access Point.
 -- ----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ enterasysESwitchMIB MODULE-IDENTITY
 -- ****************************************************************************
 
     etsysESwitchParams          OBJECT IDENTIFIER   ::= { etsysESwitchObjects 1 }
-    etsysESwitchRateLimiting    OBJECT IDENTIFIER   ::= { etsysESwitchObjects 2 } 
+    etsysESwitchRateLimiting    OBJECT IDENTIFIER   ::= { etsysESwitchObjects 2 }
     etsysESwitchFilter          OBJECT IDENTIFIER   ::= { etsysESwitchObjects 3 }
     etsysESwitchProtocolObjects OBJECT IDENTIFIER   ::= { etsysESwitchObjects 4 }
 
@@ -73,42 +73,42 @@ enterasysESwitchMIB MODULE-IDENTITY
 
 --
 --  etsysESwitchParams - The Extended system module
---  This group consists of objects that detremine the state of 
+--  This group consists of objects that detremine the state of
 --  the Access Piont.
 --
 
      etsysESwitchAdminStatus OBJECT-TYPE
-        SYNTAX      EnabledStatus 
+        SYNTAX      EnabledStatus
         MAX-ACCESS  read-write
         STATUS      current
-        DESCRIPTION 
+        DESCRIPTION
             "DURABLE:
             The meanings of the values are:
 
-            enabled(1) - setting this object to enabled causes the 
-                device to begin it's power up sequence and attempt to 
+            enabled(1) - setting this object to enabled causes the
+                device to begin it's power up sequence and attempt to
                 enter its operational state.  If the value of this object
                 was disabled, then the non-volatile value of this object
-                is changed to enabled.  As part of the power up sequence, 
-                the device's management parameters may or may not be 
-                reset.  (In other words, the device may go through the 
-                equivalent of a reset or before returning to the online state.  
+                is changed to enabled.  As part of the power up sequence,
+                the device's management parameters may or may not be
+                reset.  (In other words, the device may go through the
+                equivalent of a reset or before returning to the online state.
                 If the device is capable of going directly from the disabled
                 state to the enabled state without resetting any of its
-                management parameters, then it may do so.  Such action is 
+                management parameters, then it may do so.  Such action is
                 product specific.)
 
-            disabled(2) - setting this object to offline causes the 
-                device to cease network activity and enter a quiescent 
-                state.  A disabled device must still be able to respond 
-                to management messages.  
+            disabled(2) - setting this object to offline causes the
+                device to cease network activity and enter a quiescent
+                state.  A disabled device must still be able to respond
+                to management messages.
 
                 The value enable(1) or disable(2) shall be stored
                 in non-volatile memory for the initial reset value
                 of this variable.  The factory default NV value is enable(1)."
 
         ::= { etsysESwitchParams 1 }
- 
+
 
 -- ****************************************************************************
 
@@ -118,14 +118,14 @@ enterasysESwitchMIB MODULE-IDENTITY
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
-            "This table allows rate limiting of multicast frames 
-             received on bridge ports. A typical application of this 
-             might be to limit a broadcast storm to the confines 
+            "This table allows rate limiting of multicast frames
+             received on bridge ports. A typical application of this
+             might be to limit a broadcast storm to the confines
              of the LAN connected by the bridge.
-             
-             All objects in this table must be saved across a system 
+
+             All objects in this table must be saved across a system
              reset and/or a power cycle."
-        
+
         ::= {  etsysESwitchRateLimiting 1 }
 
     etsysESwitchRateLimitingEntry OBJECT-TYPE
@@ -134,47 +134,47 @@ enterasysESwitchMIB MODULE-IDENTITY
         STATUS current
         DESCRIPTION
             "An Entry (conceptual row) in the RateLimiting Table.
-             A collection of objects containing information for  
-             enabling and configuring RateLimiting."             
-             
+             A collection of objects containing information for
+             enabling and configuring RateLimiting."
+
         INDEX {ifIndex}
-        
+
         ::= {  etsysESwitchRateLimitingTable 1 }
 
     EtsysESwitchRateLimitingEntry ::=
         SEQUENCE {
                     etsysESwitchRateLimitSwitch         TruthValue,
-                    etsysESwitchRateLimit               Unsigned32          
-                 }  
-  
+                    etsysESwitchRateLimit               Unsigned32
+                 }
+
 
     etsysESwitchRateLimitSwitch OBJECT-TYPE
         SYNTAX          TruthValue
         MAX-ACCESS      read-write
-        STATUS          current        
+        STATUS          current
         DESCRIPTION
             "DURABLE:
             By default, rate limiting will be disabled.  It can be
             enabled by setting this object to 'true(1)'."
-         
+
         ::= { etsysESwitchRateLimitingEntry 1 }
 
     etsysESwitchRateLimit OBJECT-TYPE
         SYNTAX          Unsigned32
         MAX-ACCESS      read-write
-        STATUS          current        
+        STATUS          current
         DESCRIPTION
             "DURABLE:
             This is the maximum number of rate-limited frames per second
             that the bridge will forward per second."
-        ::= { etsysESwitchRateLimitingEntry 2 }        
+        ::= { etsysESwitchRateLimitingEntry 2 }
 
 -- ***********************************************************************
 
 
 --
 --  etsysESwitchFilter - The Extended Switch Filter group
---  These are bridge objects implemented in Enterasys Extended Switch 
+--  These are bridge objects implemented in Enterasys Extended Switch
 --  over and above what is required by the Standard Bridge MIBs
 --
 --  etsysESwitchFilter - per-port address filtering switches
@@ -515,7 +515,7 @@ etsysESwitchProtocolPreempted OBJECT-TYPE
          its associated resources (e.g., to support 802.1x authentication)."
     ::= { etsysESwitchProtocolEntry 8 }
 
-  
+
 -- ----------------------------------------------------------------------------
 -- Conformance Information
 -- ----------------------------------------------------------------------------
@@ -530,7 +530,7 @@ etsysESwitchConformance     OBJECT IDENTIFIER ::= { enterasysESwitchMIB 2 }
 -- ----------------------------------------------------------------------------
 
     etsysESwitchBaseGroup   OBJECT-GROUP
-        OBJECTS {   
+        OBJECTS {
             etsysESwitchAdminStatus,
             etsysESwitchRateLimitSwitch,
             etsysESwitchRateLimit,
@@ -565,7 +565,7 @@ etsysESwitchConformance     OBJECT IDENTIFIER ::= { enterasysESwitchMIB 2 }
             "A collection of objects for configuring protocol-based filtering."
         ::= { etsysESwitchGroups 3 }
 
-   
+
 -- ----------------------------------------------------------------------------
 -- Compliance statements
 -- ----------------------------------------------------------------------------
@@ -573,7 +573,7 @@ etsysESwitchConformance     OBJECT IDENTIFIER ::= { enterasysESwitchMIB 2 }
     etsysESwitchCompliance MODULE-COMPLIANCE
         STATUS      current
         DESCRIPTION
-            "The compliance statement for devices that support 
+            "The compliance statement for devices that support
             Extended Switch."
         MODULE      ENTERASYS-ESWITCH-MIB
                     MANDATORY-GROUPS { etsysESwitchBaseGroup }
@@ -594,13 +594,13 @@ etsysESwitchConformance     OBJECT IDENTIFIER ::= { enterasysESwitchMIB 2 }
                     OBJECT      etsysESwitchEtherTypeStatus
                         MIN-ACCESS  read-only
                         DESCRIPTION
-                            "Write access is not required.  An implementation does 
+                            "Write access is not required.  An implementation does
                             not need to support all possible status types."
 
                     OBJECT      etsysESwitchProtocolConstraint
                         MIN-ACCESS  read-only
                         DESCRIPTION
-                             "Write access is not required.  An implementation does 
+                             "Write access is not required.  An implementation does
                              not need to support all possible constraint types."
 
                     OBJECT      etsysESwitchProtocolAllowedToGoTo
@@ -616,9 +616,9 @@ etsysESwitchConformance     OBJECT IDENTIFIER ::= { enterasysESwitchMIB 2 }
                     OBJECT      etsysESwitchProtocolStatus
                         MIN-ACCESS  read-only
                         DESCRIPTION
-                             "Write access is not required.  An implementation does 
+                             "Write access is not required.  An implementation does
                              not need to support all possible status types."
-     
+
         ::= { etsysESwitchCompliances 1 }
- 
+
 END

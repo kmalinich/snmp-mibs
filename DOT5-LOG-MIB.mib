@@ -17,16 +17,16 @@ DOT5-LOG-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -198,17 +198,17 @@ DESCRIPTION
  ::= { tRingMgmtRing 9 }
 
 tRingMgmtRingSpeed              OBJECT-TYPE
-SYNTAX     INTEGER 
+SYNTAX     INTEGER
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
     "Returns the ring speed of the ring, if known.  The speed is
      designated by the value returned:
-         
+
      unknown..............0
      fourMegaBits.........4
      sixteenMegaBits.....16
-         
+
      "
  ::= { tRingMgmtRing 10 }
 
@@ -239,14 +239,14 @@ SYNTAX     INTEGER {
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-    "This object controls the operation of beacon recovery.  A write of disable 
-     to this object will cause the beacon recovery process to become inactive 
-     on this host.  A write of enable will cause the beacon recovery process 
+    "This object controls the operation of beacon recovery.  A write of disable
+     to this object will cause the beacon recovery process to become inactive
+     on this host.  A write of enable will cause the beacon recovery process
      to become active.  If beacon recovery is inoperable on the managing device
-     this object will return 'BADSETINFO'.  A read of this object will return 
+     this object will return 'BADSETINFO'.  A read of this object will return
      the current value of this object, reflecting either the last request made
-     or, in the case of a device which is unable to manage beacon recovery, 
-     invalid.  This object either defaults to enabled or invalid, depending on 
+     or, in the case of a device which is unable to manage beacon recovery,
+     invalid.  This object either defaults to enabled or invalid, depending on
      whether the device can or cannot manage beacon recovery."
  ::= { tRingMgmtRing 13 }
 
@@ -258,7 +258,7 @@ DESCRIPTION
     "This object defines the number of times a token ring ring port
      will be re-enabled after it has been determined that the port is
      causing the ring to beacon. Values other than 0-100 and 999 will
-     result in MIB bad value.  
+     result in MIB bad value.
 
      Default of object is product dependent.
      Refer to individual product documentation.
@@ -334,7 +334,7 @@ DESCRIPTION
         999 ...retry MIM board un-bypass infinite times
      Default value is 1."
 ::= { tRingMgmtRing 18 }
- 
+
 tRingMgmtBcnRecBrdBypassRetryDelay              OBJECT-TYPE
 SYNTAX     INTEGER ( 0..100 )
 ACCESS     read-write
@@ -346,7 +346,7 @@ DESCRIPTION
      Setting this object to zero disables retry queue.  Non-zero value
      is delay in seconds with a delay resolution of 1 second."
 ::= { tRingMgmtRing 19 }
- 
+
 tRingMgmtBcnRecBrdWrapRetryCount                OBJECT-TYPE
 SYNTAX     INTEGER ( 0..999 )
 ACCESS     read-write
@@ -363,7 +363,7 @@ DESCRIPTION
         999 ...retry MIM board un-bypass infinite times
      Default value is 1."
 ::= { tRingMgmtRing 20 }
- 
+
 tRingMgmtBcnRecBrdWrapRetryDelay                OBJECT-TYPE
 SYNTAX     INTEGER ( 0..100 )
 ACCESS     read-write
@@ -396,7 +396,7 @@ DESCRIPTION
      which is unable to manage ring poll failure  recovery, invalid.
      This  object defaults to enabled."
 ::= { tRingMgmtRing 22 }
- 
+
 
 --
 -- ============================================================
@@ -418,7 +418,7 @@ SYNTAX     SEQUENCE OF TRingMgmtStnEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of the stations, by MAC address, participating in the ring 
+    "A list of the stations, by MAC address, participating in the ring
      poll process of this ring."
  ::= { tRingMgmtStn 1 }
 
@@ -518,7 +518,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
     "A read of this object returns the physical location of the station.
-     A write of this object assigns a user-defined value indicative of the 
+     A write of this object assigns a user-defined value indicative of the
      physical location, or drop, of the station.  If the location is unknown
      or cannot be determined, a zero is returned."
  ::= { tRingMgmtStnEntry 7 }
@@ -610,9 +610,9 @@ ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
     "A read of this object will return the last error status returned by
-     the adapter.  The status is the sum of the applicable error codes 
+     the adapter.  The status is the sum of the applicable error codes
      listed below:
-         
+
      No Problem Detected..................0
      Ring Recovery.......................32
      Single Station......................64
@@ -625,7 +625,7 @@ DESCRIPTION
      Hard Error.......................16384
      Signal Loss......................32768
      No Status, Open Not Completed...131072
-         
+
      "
  ::= { tRingMgmtHost 3 }
 
@@ -658,7 +658,7 @@ ACCESS     read-write
 STATUS     deprecated
 DESCRIPTION
     "A read of this object returns the MAC address assigned to the
-     interface attached to this network.  A write of this object provides 
+     interface attached to this network.  A write of this object provides
      for a locally administered MAC address."
  ::= { tRingMgmtHost 6 }
 
@@ -684,10 +684,10 @@ SYNTAX     INTEGER {
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-    "A write to this object will either disable the security feature, enable 
+    "A write to this object will either disable the security feature, enable
      Station Added trap being sent, or enable security withecurity feature with
      the remove station MAC frame being sent in addition to sending the Station
-     Removed trap.  A read of this object will return the setting of this 
+     Removed trap.  A read of this object will return the setting of this
      object."
 
  ::=  { tRingMgmtSecurity 1}
@@ -697,10 +697,10 @@ SYNTAX     OCTET STRING (SIZE(6))
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-    "A write to this object will add a station's MAC address to the current 
-     secure station list within the device. The source routing bit within the 
-     MAC address is ignored.  If the security list has reached its maximum 
-     number of entries, a BAD_VALUE error is returned. A read of this object 
+    "A write to this object will add a station's MAC address to the current
+     secure station list within the device. The source routing bit within the
+     MAC address is ignored.  If the security list has reached its maximum
+     number of entries, a BAD_VALUE error is returned. A read of this object
      will return a MAC address of 00-00-00-00-00-00."
 
  ::=  { tRingMgmtSecurity 2}
@@ -710,10 +710,10 @@ SYNTAX     OCTET STRING (SIZE(6))
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-    "A write to this object will remove a station's MAC address from the 
+    "A write to this object will remove a station's MAC address from the
      current secure station list within the device.   The source routing bit
      within the MAC address is ignored.  If a station is not found on the
-     list, a BAD_VALUE error is returned. A read of this object will return a 
+     list, a BAD_VALUE error is returned. A read of this object will return a
      MAC address of 00-00-00-00-00-00."
 
  ::=  { tRingMgmtSecurity 3}
@@ -786,7 +786,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the total number of all LLC frames that have passed 
+    "Returns the total number of all LLC frames that have passed
      around this ring.  If this value cannot be determined, a zero
      is returned."
  ::= { tRingStatsRingErrs 1 }
@@ -796,7 +796,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the total number of kilobytes from LLC frames that have passed 
+    "Returns the total number of kilobytes from LLC frames that have passed
      around this ring.  If this value cannot be determined, a zero is
      returned."
  ::= { tRingStatsRingErrs 2 }
@@ -958,12 +958,12 @@ DESCRIPTION
     "Returns the type of beaconing frames last seen on the ring."
  ::= { tRingStatsRingErrs 19 }
 
-tRingStatsRingPollFailureNoRecovery OBJECT-TYPE 
+tRingStatsRingPollFailureNoRecovery OBJECT-TYPE
 SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-     "Returns the number of times this ring could not recover from a ring poll 
+     "Returns the number of times this ring could not recover from a ring poll
       failure since the last time this object was reset."
 ::= {  tRingStatsRingErrs 20  }
 
@@ -973,7 +973,7 @@ ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
     "Returns the number of times this device has detected Neighbor Notification
-     Incomplete MAC frames on the ring since the last time this object was 
+     Incomplete MAC frames on the ring since the last time this object was
      reset"
 ::= {  tRingStatsRingErrs 21 }
 
@@ -982,18 +982,18 @@ SYNTAX     OCTET STRING (SIZE(6))
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the MAC address of the ring station that last successfully 
-     participated in the ring poll process during and after the ring poll 
-     failure process has executed.  A value of 00-00-00-00-00-00 indicates 
+    "Returns the MAC address of the ring station that last successfully
+     participated in the ring poll process during and after the ring poll
+     failure process has executed.  A value of 00-00-00-00-00-00 indicates
      that a ring poll  has been detected."
 ::= {  tRingStatsRingErrs 22 }
 
-tRingStatsRingPollFailureLastNNIFrameTime OBJECT-TYPE 
+tRingStatsRingPollFailureLastNNIFrameTime OBJECT-TYPE
 SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-     "Returns the timestamp of the last time a Neighbor Notification Complete 
+     "Returns the timestamp of the last time a Neighbor Notification Complete
       MAC frame was received  since the last time this object was reset.  A
       value of zero indicates that no NNI frame was received."
 ::= {  tRingStatsRingErrs 23  }
@@ -1113,7 +1113,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the count of frames between 64 bytes and 127 bytes in size seen 
+    "Returns the count of frames between 64 bytes and 127 bytes in size seen
      on this ring."
  ::= { tRingStatsRingSizes 2 }
 
@@ -1122,7 +1122,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the count of frames between 128 bytes and 255 bytes in size seen 
+    "Returns the count of frames between 128 bytes and 255 bytes in size seen
      on this ring."
  ::= { tRingStatsRingSizes 3 }
 
@@ -1131,7 +1131,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the count of frames between 256 bytes and 511 bytes in size seen 
+    "Returns the count of frames between 256 bytes and 511 bytes in size seen
      on this ring."
  ::= { tRingStatsRingSizes 4 }
 
@@ -1167,7 +1167,7 @@ SYNTAX     Counter
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Returns the count of frames greater than 4096 bytes in size seen on this 
+    "Returns the count of frames greater than 4096 bytes in size seen on this
      ring."
  ::= { tRingStatsRingSizes 8 }
 
@@ -1198,7 +1198,7 @@ SYNTAX     TRingStatsStnEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of statistical objects reported by a station which is participating 
+    "A list of statistical objects reported by a station which is participating
      in the ring poll process of this ring."
 INDEX      { tRingStatsStnAddress }
  ::= { tRingStatsStnTable 1 }
@@ -1359,7 +1359,7 @@ ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
         "This object returns the sum of all errors reported by this
-     table (tRingStatsStnEntry 4 thru tRingStatsStnEntry 13) that 
+     table (tRingStatsStnEntry 4 thru tRingStatsStnEntry 13) that
      have been detected by this station."
  ::= { tRingStatsStnEntry 14 }
 
@@ -1437,7 +1437,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Ring Purges threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 2 }
 
 tRingAlarmsRingAMPErrsEnable            OBJECT-TYPE
@@ -1448,7 +1448,7 @@ SYNTAX     INTEGER {
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-        "A write of value 2 will enable the Active Monitor Error threshold 
+        "A write of value 2 will enable the Active Monitor Error threshold
          alarm. A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 3 }
 
@@ -1461,7 +1461,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Token Errors threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 4 }
 
 tRingAlarmsRingClaimTknErrsEnable       OBJECT-TYPE
@@ -1473,7 +1473,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Claim Token Errors threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 5 }
 
 tRingAlarmsRingLostFramesEnable         OBJECT-TYPE
@@ -1485,7 +1485,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Lost Frames threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 6 }
 
 tRingAlarmsRingBeaconStateEnable        OBJECT-TYPE
@@ -1497,7 +1497,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Beacon State threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 7 }
 
 tRingAlarmsRingFrameCountEnable         OBJECT-TYPE
@@ -1509,7 +1509,7 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the total Frame Count threshold alarm.
-        A write of value 1 will disable this threshold alarm (default)."        
+        A write of value 1 will disable this threshold alarm (default)."
  ::= { tRingAlarmsRingEnbl 8 }
 
 --
@@ -1612,7 +1612,7 @@ SYNTAX     SEQUENCE OF TRingAlarmsStnEnblEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of alarm enabling objects pertaining to the stations participating 
+    "A list of alarm enabling objects pertaining to the stations participating
      in the ring poll process on this ring."
  ::= { tRingAlarmsStnEnbl 1 }
 
@@ -1661,7 +1661,7 @@ STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Line Errors threshold alarm
         for this station. A write of value 1 will disable this threshold
-        alarm (default)."       
+        alarm (default)."
  ::= { tRingAlarmsStnEnblEntry 2 }
 
 tRingAlarmsStnEnblInternalErrsEnable    OBJECT-TYPE
@@ -1674,7 +1674,7 @@ STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Internal Errors threshold alarm
         for this station. A write of value 1 will disable this threshold
-        alarm (default)."       
+        alarm (default)."
  ::= { tRingAlarmsStnEnblEntry 3 }
 
 tRingAlarmsStnEnblBurstErrsEnable       OBJECT-TYPE
@@ -1687,7 +1687,7 @@ STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Burst Errors threshold alarm
         for this station. A write of value 1 will disable this threshold
-        alarm (default)."       
+        alarm (default)."
  ::= { tRingAlarmsStnEnblEntry 4 }
 
 tRingAlarmsStnEnblACErrsEnable          OBJECT-TYPE
@@ -1700,7 +1700,7 @@ STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Address Recognized/Frame Copied
         Errors threshold alarm for this station. A write of value 1 will
-        disable this threshold alarm (default)."        
+        disable this threshold alarm (default)."
  ::= { tRingAlarmsStnEnblEntry 5 }
 
 tRingAlarmsStnEnblRcvrCongestEnable     OBJECT-TYPE
@@ -1713,7 +1713,7 @@ STATUS     mandatory
 DESCRIPTION
         "A write of value 2 will enable the Receiver Congestion threshold
         alarm for this station. A write of value 1 will disable this threshold
-        alarm (default)."       
+        alarm (default)."
  ::= { tRingAlarmsStnEnblEntry 6 }
 
 --
@@ -1734,7 +1734,7 @@ SYNTAX     SEQUENCE OF TRingAlarmsStnThrshEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of threshold alarm objects pertaining to the stations participating 
+    "A list of threshold alarm objects pertaining to the stations participating
      in the ring poll process on this ring."
  ::= { tRingAlarmsStnThrsh 1 }
 
@@ -1835,7 +1835,7 @@ SYNTAX     SEQUENCE OF TRingPortGrpEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of port group management objects which pertains to a 
+    "A list of port group management objects which pertains to a
      collection of port groups making up this ring."
  ::= { tRingPortGrp 1 }
 
@@ -1844,7 +1844,7 @@ SYNTAX     TRingPortGrpEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of port group management objects which pertains to a 
+    "A list of port group management objects which pertains to a
      single instance of a port group residing on this ring."
 INDEX      { tRingPortGrpId }
  ::= { tRingPortGrpTable 1 }
@@ -1893,7 +1893,7 @@ SYNTAX     DisplayString (SIZE(20))
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-        "An ASCII name assigned to this port group.  The default name is 
+        "An ASCII name assigned to this port group.  The default name is
          Board n', where n is a number 1 through n."
  ::= { tRingPortGrpEntry 2 }
 
@@ -1925,7 +1925,7 @@ STATUS     mandatory
 DESCRIPTION
     "Setting this object to enable will cause all the station ports
      in this port group to be enabled.  Setting this object to noEnable
-     will have no effect on the station ports in this port group.  When 
+     will have no effect on the station ports in this port group.  When
      read this object will always return noEnable."
  ::= { tRingPortGrpEntry 5 }
 
@@ -1939,7 +1939,7 @@ STATUS     mandatory
 DESCRIPTION
     "Setting this object to enable will cause all the ring ports
      in this port group to be enabled.  Setting this object to noEnable
-     will have no effect on the ring ports in this port group.  When 
+     will have no effect on the ring ports in this port group.  When
      read this object will always return noEnable."
  ::= { tRingPortGrpEntry 6 }
 
@@ -1973,9 +1973,9 @@ DESCRIPTION
      board is using its hardware defaults. The default values of the
      board are all ports enabled, speed selected by the HW jumper on
      the board, the FNB attempts to attach left and right and not
-     bypassed, ring port phantom current (if applicable) is controlled 
+     bypassed, ring port phantom current (if applicable) is controlled
      via a HW switch, and selectable media (if applicable) is managed
-     also via a HW switch.  In Management Mode, the hardware defaults 
+     also via a HW switch.  In Management Mode, the hardware defaults
      may be overridden by network or local management."
  ::= { tRingPortGrpEntry 9 }
 
@@ -1987,7 +1987,7 @@ SYNTAX     INTEGER {
 ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
-    "This object sets the speed of the board.  On devices with a MAC 
+    "This object sets the speed of the board.  On devices with a MAC
      interface this object is read-only, and will return NO SUCH
      NAME on write requests."
  ::= { tRingPortGrpEntry 10 }
@@ -2047,7 +2047,7 @@ SYNTAX     SEQUENCE OF TRingPortMgmtEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of port management objects which pertains to a collection of 
+    "A list of port management objects which pertains to a collection of
      ports in a port group residing on this ring."
  ::= { tRingPortMgmt 1 }
 
@@ -2139,10 +2139,10 @@ SYNTAX     OBJECT IDENTIFIER
 ACCESS     read-only
 STATUS     mandatory
 DESCRIPTION
-    "Uniquely defines the station or ring port type.  An authoritative 
-     identification for a token ring station or ring port type.  By 
-     convention, this value is allocated within the SMI enterprises 
-     subtree (1.3.6.1.4.1), and provides an easy and unambiguous means 
+    "Uniquely defines the station or ring port type.  An authoritative
+     identification for a token ring station or ring port type.  By
+     convention, this value is allocated within the SMI enterprises
+     subtree (1.3.6.1.4.1), and provides an easy and unambiguous means
      to determine the type of a token ring station or ring port."
  ::= { tRingPortMgmtEntry 6 }
 
@@ -2170,9 +2170,9 @@ ACCESS     read-write
 STATUS     mandatory
 DESCRIPTION
     "This object, when written, permits the port to function as
-     either a ring out port or a station port, if available.  If this 
-     selection is not supported by this port, then any write to this 
-     object will return a BADSETINFO error.  When read, this object 
+     either a ring out port or a station port, if available.  If this
+     selection is not supported by this port, then any write to this
+     object will return a BADSETINFO error.  When read, this object
      will return the state of the port with respect to this mode of
      operation.  The default state of this object, if available, is
      disabled; otherwise it is notAvailable."
@@ -2203,7 +2203,7 @@ SYNTAX     TRingPortStnEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of station port management objects which pertains to a single 
+    "A list of station port management objects which pertains to a single
      instance of a station port in a port group residing on this ring."
 INDEX      { tRingPortStnPortId, tRingPortStnPortGrpId }
  ::= { tRingPortStnTable 1 }
@@ -2276,9 +2276,9 @@ DESCRIPTION
     "A write of mappingEnabled to this object permits a station port
      to be associated, or mapped, to a station participating in the
      ring poll process on this ring.  A write of mappingDisabled prevents
-     this association from taking place.  This object is intended to be 
-     used when a network monitoring device, such as Network General's 
-     Sniffer (tm), is inserted on a ring but is not actively participating 
+     this association from taking place.  This object is intended to be
+     used when a network monitoring device, such as Network General's
+     Sniffer (tm), is inserted on a ring but is not actively participating
      in the ring poll.  The default value of this object is mappingEnabled."
  ::= { tRingPortStnEntry 5 }
 
@@ -2302,7 +2302,7 @@ DESCRIPTION
     "A write of enabled to this object permits the port inserted and
      port deinserted traps to be sent when phantom current has been
      asserted or removed, respectively, on this station port.  A write
-     of disabled prevents the traps from being sent.  The default state 
+     of disabled prevents the traps from being sent.  The default state
      of this object is disabled."
  ::= { tRingPortStnEntry 7 }
 
@@ -2322,7 +2322,7 @@ SYNTAX     SEQUENCE OF TRingPortRingEntry
 ACCESS     not-accessible
 STATUS     mandatory
 DESCRIPTION
-    "A list of ring port management objects which pertains to a collection of 
+    "A list of ring port management objects which pertains to a collection of
      ring ports in a port group residing on this ring."
  ::= { tRingPortRing 1 }
 
@@ -2512,7 +2512,7 @@ DESCRIPTION
 --  n) tRingMgmtStnURPBoard has been removed.
 --  o) tRingMgmtStnURPPort has been removed.
 --  p) tRingStatsRingBeaconStates is now called tRingStatsRingBeaconEvents.
---  q) The syntax for tRingStatsRingLongest Beacon and tRingStatsRingLastBeacon 
+--  q) The syntax for tRingStatsRingLongest Beacon and tRingStatsRingLastBeacon
 --     has been changed from INTEGER to Timeticks.
 --  r) tRingStatsStnErrorTimer is described to only allow a set if the device
 --     is configured to function as the CRS.
@@ -2591,10 +2591,10 @@ DESCRIPTION
 --  d) tRingAlarmsStnThrshAddress changed from read-write to read-only.
 --
 -- Rev 1.06
---  a) Broke the ring statistics down into errors (original statistical objects), frames sizes, 
+--  a) Broke the ring statistics down into errors (original statistical objects), frames sizes,
 --     and protocols.  Also, each statistical group is now an optional group in its own right.
 --  b) Specified what the defaults are for network names, Port group names, and port names.
---  c) Modified the description of tRingMgmtRingNumber such that it reflects the fact that this 
+--  c) Modified the description of tRingMgmtRingNumber such that it reflects the fact that this
 --     object is no longer settable.
 --  d) Moved the enable/disable beacon recovery function from host management to ring mgmt.
 --  e) Removed the tRingMgmtHostMgmtFunctions object.
@@ -2604,7 +2604,7 @@ DESCRIPTION
 --  h) Clarified what errors are summed in the ring and station total error counters.
 --  i) Specified what the default timebase interval is for the tRingAlarmsRingTimebase object..
 --  j) Reclassified the syntax of the tRingPortMgmtPortType object, from integer to object identifier.
---  k) Modified the descriptions for tRingStatsRingFrames and tRingStatsRingBytes to state that 
+--  k) Modified the descriptions for tRingStatsRingFrames and tRingStatsRingBytes to state that
 --     if the data cannot be counted then a zero is returned.
 --  l) Added the value invalid to tRingMgmtBeaconRecovery to cover the case where an out-of-band
 --     chassis manager is managing a token ring.

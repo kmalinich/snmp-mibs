@@ -20,16 +20,16 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -39,8 +39,8 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
         --  Copyright August 95 Cabletron Systems
 
 
-        -- 
-        -- 
+        --
+        --
         IMPORTS
                         OBJECT-TYPE                     FROM RFC-1212
                         ctPModuleETWMIM                 FROM CTRON-MIB-NAMES;
@@ -54,7 +54,7 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        "Denotes whether a T1 daughter board is attached to the 
+                        "Denotes whether a T1 daughter board is attached to the
                          Etwmim card being managed"
                 ::= { ctPModuleETWMIM 1 }
 
@@ -70,8 +70,8 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
                          this object to 1 will cause the WAN port to use the
                          daughterboard T1 port. Setting this object to 2
                          will cause the WAN port to use the synchronous port"
-                ::= { ctPModuleETWMIM 2 }       
-        
+                ::= { ctPModuleETWMIM 2 }
+
         etwDbFracToggle OBJECT-TYPE
                 SYNTAX  INTEGER {
                                 update-table(1),
@@ -92,9 +92,9 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
                         changes being entered.  Setting this object to 4, will
                         cause any changes that have been made to the fractional
                         table since the last update-table to be deleted."
-                REFERENCE 
+                REFERENCE
                         "IETF RFC 1232"
-                ::= { ctPModuleETWMIM 3 }       
+                ::= { ctPModuleETWMIM 3 }
 
         etwFWRev        OBJECT-TYPE
                 SYNTAX  OCTET STRING (SIZE(8))
@@ -132,12 +132,12 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
                 ::=  { ctPModuleETWMIM 6 }
 
         etwEpimType             OBJECT-TYPE
-                SYNTAX  OBJECT IDENTIFIER 
+                SYNTAX  OBJECT IDENTIFIER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
                         "Identifies the type of EPIM that is present in the
-                        EPIM slot. The value is allocated in the Ctron naming 
+                        EPIM slot. The value is allocated in the Ctron naming
                         tree."
                 ::=     { ctPModuleETWMIM 7 }
 
@@ -159,12 +159,12 @@ CTRON-ETWMIM-MIB DEFINITIONS ::= BEGIN
                 ::=     { ctPModuleETWMIM 8 }
 
         etwClearNvramOnBoot     OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
                         "When set to a 1, the system will clear all persistant
-                         objects, except for the download objects,  from nvram 
+                         objects, except for the download objects,  from nvram
                          on the next system boot"
                 ::=     { ctPModuleETWMIM 9 }
 

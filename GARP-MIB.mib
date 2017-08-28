@@ -84,7 +84,7 @@ GarpApplicationEntry ::=
                 }
 
 garpApplicationAppType    OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -110,7 +110,7 @@ garpApplicationFailedRegistrations OBJECT-TYPE
         ::= { garpApplicationEntry 3 }
 
 garpApplicationOperationStatus OBJECT-TYPE
-        SYNTAX  INTEGER     
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -148,7 +148,7 @@ GarpPortOperationEntry ::=
         }
 
 garpPortOperationAppType         OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -165,11 +165,11 @@ garpPortOperationPort    OBJECT-TYPE
         ::= { garpPortOperationEntry 2 }
 
 garpPortOperationStatus  OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The port operational status for this application. A 
+                "The port operational status for this application. A
                  1 represents enabled and 2 represents disabled."
         ::= { garpPortOperationEntry 3 }
 
@@ -206,11 +206,11 @@ GarpTimerEntry ::=
                 }
 
 garpTimerAttributeAppType        OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Protocol that this timer belongs to. A 
+                "Protocol that this timer belongs to. A
                  1 represents GMRP and a 2 represents GVRP."
         ::= { garpTimerEntry 1 }
 
@@ -290,7 +290,7 @@ GarpAttributeEntry ::=
                 }
 
 garpAttributeAppType    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION

@@ -161,11 +161,11 @@ ctActionDescription OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-        "This text string allows the end-user to provide a description 
+        "This text string allows the end-user to provide a description
         of the action; it must not contain anything but printable
         ASCII characters."
     ::= { ctEventActionEntry 5 }
-        
+
 ctActionOrder       OBJECT-TYPE
     SYNTAX      INTEGER(1..65535)
     ACCESS      read-write
@@ -276,7 +276,7 @@ ctActionExtensionAdminStatus    OBJECT-TYPE
     ACCESS      read-write
     STATUS      deprecated
     DESCRIPTION
-        "Defines the desired state for this particular action 
+        "Defines the desired state for this particular action
         extension entry.
 
         An extension may be enabled by setting a value of enable(1)

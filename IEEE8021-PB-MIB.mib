@@ -42,19 +42,19 @@ ieee8021PbMib MODULE-IDENTITY
          Copyright (C) IEEE.
          This version of this MIB module is part of IEEE802.1Q;
          see the draft itself for full legal notices."
-         
+
     REVISION     "201102270000Z" -- February 27, 2011
     DESCRIPTION
          "Change to ieee8021PbEdgePortAcceptableFrameTypes
-          permissible values, addition of 
+          permissible values, addition of
           IEEE8021BridgePortNumberOrZero to IMPORTS,
           as part of 2011 revision of IEEE Std 802.1Q."
-  
+
     REVISION     "201008260000Z" -- August 26, 2010
     DESCRIPTION
-         "Minor edits to contact information etc. as part of 
+         "Minor edits to contact information etc. as part of
           revision of Std 802.1Q."
-          
+
     REVISION     "200810150000Z" -- October 15, 2008
     DESCRIPTION
         "Initial version."
@@ -98,7 +98,7 @@ ieee8021PbVidTranslationEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "An entry for the S-VID translation table which includes 
+        "An entry for the S-VID translation table which includes
         both the Local and Relay S-VIDs between which the PNP or CNP
         translates.
 
@@ -573,7 +573,7 @@ ieee8021PbCepEntry OBJECT-TYPE
             ieee8021BridgeBasePort }
     ::= { ieee8021PbCepTable 1 }
 
-Ieee8021PbCepEntry ::= 
+Ieee8021PbCepEntry ::=
     SEQUENCE {
         ieee8021PbCepCComponentId  IEEE8021PbbComponentIdentifierOrZero,
         ieee8021PbCepCepPortNumber IEEE8021BridgePortNumberOrZero,

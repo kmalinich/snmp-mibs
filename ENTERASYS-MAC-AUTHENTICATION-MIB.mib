@@ -54,7 +54,7 @@ etsysMACAuthenticationMIB MODULE-IDENTITY
              9 Northeastern Blvd.
              Salem, NH 03079 USA
 
-     Phone:  +1 603 952 5000 
+     Phone:  +1 603 952 5000
      E-mail: support@enterasys.com
      WWW:    http://www.enterasys.com"
 
@@ -132,7 +132,7 @@ etsysMACAuthenticationMACUserPassword OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "This is the string to be used as a password credential
-         when authenticating a MAC address when 
+         when authenticating a MAC address when
          etsysMACAuthenticationMode is set to sharedSecret(1)."
     DEFVAL { "NOPASSWORD" }
     ::= { etsysMACAuthenticationSystem 2 }
@@ -161,16 +161,16 @@ etsysMACAuthenticationMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "This object is used to determine the type of password credential 
+        "This object is used to determine the type of password credential
          to use when authenticating a MAC address.
 
-         password(1)       - Attempt to authenticate a user with the 
-                           password credential provided by 
+         password(1)       - Attempt to authenticate a user with the
+                           password credential provided by
                            etsysMACAuthenticationMACUserPassword.
 
          radiusUsername(2) - Attempt to authenticate a user with a password
-                           credential that is the same as their radius 
-                           username credential."     
+                           credential that is the same as their radius
+                           username credential."
     DEFVAL { password }
     ::= { etsysMACAuthenticationSystem 4 }
 
@@ -179,10 +179,10 @@ etsysMACAuthenticationSystemAccountEnable OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "When enabled(1), RADIUS accounting start, interim and 
+        "When enabled(1), RADIUS accounting start, interim and
          stop frames are sent to the configured RADIUS server(s).
-         
-         When disabled(2), accounting packets are not sent to 
+
+         When disabled(2), accounting packets are not sent to
          the RADIUS server."
     DEFVAL { enabled }
     ::= { etsysMACAuthenticationSystem 5 }
@@ -594,7 +594,7 @@ etsysMACAuthenticationSystemGroup2 OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "Global object controlling this feature. 
+        "Global object controlling this feature.
          Global objects that affect how the credentials are
          presented to the authentication server."
     ::= { etsysMACAuthenticationGroups 5 }

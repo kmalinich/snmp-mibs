@@ -1,11 +1,11 @@
 CTRON-SSR-POLICY-MIB DEFINITIONS ::= BEGIN
- 
+
 --  This module provides authoritative definitions for Enterasys
 --  Networks' enterprise-specific Smart Switch Router specific MIB
 --  branches.
 --
 --  This module will be extended, as required.
- 
+
 --  Enterasys Networks reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Enterasys Networks
@@ -21,9 +21,9 @@ CTRON-SSR-POLICY-MIB DEFINITIONS ::= BEGIN
 --  Enterasys Networks grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Enterasys products.
- 
+
 --  Copyright 1998-2003 Enterasys Networks, Inc.
- 
+
 
 IMPORTS
    MODULE-IDENTITY, OBJECT-TYPE, TimeTicks, IpAddress, Counter32, Gauge32,
@@ -33,9 +33,9 @@ IMPORTS
    FROM SNMPv2-TC
    MODULE-COMPLIANCE, OBJECT-GROUP
    FROM SNMPv2-CONF
-   dot1qVlanStaticEntry 
+   dot1qVlanStaticEntry
    FROM Q-BRIDGE-MIB
-   ssrMibs 
+   ssrMibs
    FROM CTRON-SSR-SMI-MIB;
 
 policyMIB MODULE-IDENTITY
@@ -80,7 +80,7 @@ policyMIB MODULE-IDENTITY
     REVISION     "9808040000Z"
     DESCRIPTION
          "Revision #1. Define Layer 3 flow objects in polL3Group."
-        ::= { ssrMibs 210 }   
+        ::= { ssrMibs 210 }
 
 
 -- ### Textual conventions
@@ -124,7 +124,7 @@ policyMIB MODULE-IDENTITY
        DESCRIPTION
 	"Comparison operator used by ACL's to permit src/dst port addresses."
        SYNTAX     INTEGER {
-            notused(1), -- no port comparison to be made	
+            notused(1), -- no port comparison to be made
             eq(2),   -- equals
             neq(3),  -- not equals
             lt(4),   -- less than
@@ -165,14 +165,14 @@ policyMIB MODULE-IDENTITY
 
    SSRPortList ::= TEXTUAL-CONVENTION
        STATUS       current
-       DESCRIPTION 
+       DESCRIPTION
          "List of ifIndexes that make up the ports to apply a layer 2 filter to.
           The ifIndexes are numbered sparsely starting from 1. An example string
-          might be: 
-                1,2,32 
+          might be:
+                1,2,32
                 1,6,9,
-          Each ifIndex must represent a physical port or link aggregation aka Smart 
-          Trunk ifType of propMultiplexor(54). Note ifIndexes may change across 
+          Each ifIndex must represent a physical port or link aggregation aka Smart
+          Trunk ifType of propMultiplexor(54). Note ifIndexes may change across
           system resets per RFC 2233."
       SYNTAX    OCTET STRING (SIZE (0..255))
 
@@ -186,11 +186,11 @@ SSRFlowPolicyType ::= TEXTUAL-CONVENTION
 SSRFlowPolicyAction ::= TEXTUAL-CONVENTION
     STATUS      current
     DESCRIPTION
-        "When deciding when to apply policy there are three potential methods. 
-         policyBeforeRouteLookup provides a way to special case normal traffic patterns 
-         so that certain traffic can be routed according to policy. 
+        "When deciding when to apply policy there are three potential methods.
+         policyBeforeRouteLookup provides a way to special case normal traffic patterns
+         so that certain traffic can be routed according to policy.
          policyAfterRouteLookup is useful when a default route does not exist and the traffic
-         to route does not match existing route tables. 
+         to route does not match existing route tables.
          useOnlyPolicyLookup bypasses normal route lookup altogether."
     SYNTAX  INTEGER { policyBeforeRouteLookup(1), policyAfterRouteLookup(2), useOnlyPolicyLookup(3) }
 
@@ -211,7 +211,7 @@ SSRFlowNextHopList  ::= TEXTUAL-CONVENTION
 SSRFlowLoadPolicy  ::= TEXTUAL-CONVENTION
     STATUS      current
     DESCRIPTION
-         "round robin evenly distributes flows among the next hops. firstAvailable 
+         "round robin evenly distributes flows among the next hops. firstAvailable
           will make flows go to the first available next hop in the ordered list."
     SYNTAX  INTEGER { firstAvailable(2), roundRobin(3) }
 
@@ -226,14 +226,14 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        MAX-ACCESS  read-write
        STATUS      current
        DESCRIPTION
-	"This is true when Access Control Lists (ACLs) are defined by a 
+	"This is true when Access Control Lists (ACLs) are defined by a
          Policy Server else false.
-	 At boot, this value is false. After the first valid set of any 
+	 At boot, this value is false. After the first valid set of any
          policy object, the value changes to true."
        ::= { polL3Group 1 }
 
    polAclNumber  OBJECT-TYPE
-       SYNTAX      INTEGER (0..2147483647) 
+       SYNTAX      INTEGER (0..2147483647)
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -284,7 +284,7 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
            polAclDstOperator	SSRPortComparator,
            polAclSrcHighRange	INTEGER,
            polAclDstHighRange	INTEGER,
-           polAclAuditTrail     TruthValue, 
+           polAclAuditTrail     TruthValue,
            polAclCheckpoint     INTEGER,
            polAclRowStatus      RowStatus
        }
@@ -302,8 +302,8 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "This row's unique identifier within a given ACL set. Member of the ACL set 
-                are numbered from 1 to 256. If Item is set to 0, and rowStatus is destroy, 
+               "This row's unique identifier within a given ACL set. Member of the ACL set
+                are numbered from 1 to 256. If Item is set to 0, and rowStatus is destroy,
                 all rows for this set are destroyed."
        ::= { polAclEntry 2 }
 
@@ -400,7 +400,7 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        DEFVAL { eq }
        ::= { polAclEntry 13 }
 
-       
+
    polAclSrcHighRange OBJECT-TYPE
        SYNTAX     INTEGER (-1..65535)
        MAX-ACCESS  read-write
@@ -418,7 +418,7 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        STATUS      current
        DESCRIPTION
                "The high range destination L3 IP port. Used
-                only when SrcOperator == range. polAclDstPort is 
+                only when SrcOperator == range. polAclDstPort is
                 used as the lower bounds of the range."
        DEFVAL { -1 }
        ::= { polAclEntry 15 }
@@ -433,12 +433,12 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
 
    polAclCheckpoint  OBJECT-TYPE
        SYNTAX      INTEGER  {
-                      hourly(1), 
-                      daily(2), 
-                      weekly(3), 
+                      hourly(1),
+                      daily(2),
+                      weekly(3),
                       monthly(4),
-                      endofcall(5)  
-       } 
+                      endofcall(5)
+       }
        MAX-ACCESS  read-write
        STATUS      current
        DESCRIPTION
@@ -502,11 +502,11 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        }
 
    polAclServiceIfIndex  OBJECT-TYPE
-       SYNTAX     InterfaceIndex  
+       SYNTAX     InterfaceIndex
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-	"The ifIndex of the IP Interface the ACL is applied to. 
+	"The ifIndex of the IP Interface the ACL is applied to.
          An SSR IP Interface has ifType 142"
        ::= { polAclServiceEntry 1 }
 
@@ -538,14 +538,14 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
 	"SNMP V2 RowStatus control for this table."
        ::= { polAclServiceEntry 6 }
 
--- List of IP Interfaces and their policy status 
+-- List of IP Interfaces and their policy status
 
    polAclRemoteAllowed  OBJECT-TYPE
        SYNTAX      TruthValue
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-	"Remote Policy Configuration is allowed when true only 
+	"Remote Policy Configuration is allowed when true only
          local (to SSR) policy may be applied."
        ::= { polL3Group 9 }
 
@@ -591,7 +591,7 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
        }
 
    polAclInterfaceIfIndex  OBJECT-TYPE
-       SYNTAX     InterfaceIndex  
+       SYNTAX     InterfaceIndex
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -631,7 +631,7 @@ polL3Group  OBJECT IDENTIFIER   ::= { ssrMibs 12 }
 polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
 
    polL2FilterNumber  OBJECT-TYPE
-       SYNTAX      INTEGER (0..2147483647) 
+       SYNTAX      INTEGER (0..2147483647)
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -683,14 +683,14 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
        MAX-ACCESS  not-accessible
        STATUS      current
        DESCRIPTION
-	"A unique index into the table representing a single filter entry. This value 
+	"A unique index into the table representing a single filter entry. This value
           will remain unique and the relationship between the index and the underlying filter
           is valid until the next reboot."
        ::= { polL2FilterEntry 1 }
 
    polL2FilterDesc  OBJECT-TYPE
        SYNTAX       DisplayString (SIZE (0..25))
-       MAX-ACCESS   read-create	
+       MAX-ACCESS   read-create
        STATUS      current
        DESCRIPTION
          "A string used to describe the filter. It should contain
@@ -713,55 +713,55 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
           "The types of filters, as explained below.
 
            static-entry
- 
+
                Based on the restrictions and the presence of
-               source, destination MAC address they can be of 
+               source, destination MAC address they can be of
                three types :
 
                source-static-entry - All frames with a source
-               address equal to srcMAC, coming through any of 
-               the inPorts will be allowed/disallowed to go 
+               address equal to srcMAC, coming through any of
+               the inPorts will be allowed/disallowed to go
                to any port that is a member of the outPorts
                list.
 
-               destination-static-entry - All frames with a 
-               destination address equal to dstMAC, coming 
+               destination-static-entry - All frames with a
+               destination address equal to dstMAC, coming
                through any of the inPorts  will be allowed/
-               disallowed/forced to go to any port that is a 
+               disallowed/forced to go to any port that is a
                member of the outPorts list.
 
                flow-static-entry - All frames with a source
                address equal to srcMAC and a destination address
-               equal to dstMAC, coming through any of the inPorts 
-               list will be allowed/disallowed to go to any port 
+               equal to dstMAC, coming through any of the inPorts
+               list will be allowed/disallowed to go to any port
                that is a member of the outPorts list. Ports
                must be in flow-bridging mode in order to use
-               filters with both src and dst mac specified.               
+               filters with both src and dst mac specified.
 
            address-filter
- 
+
                Based on the restrictions and the presence of
-               source, destination MAC address they can be of 
+               source, destination MAC address they can be of
                three types :
 
                source-address-filter - All frames with a source
-               address equal to srcMAC, coming through any of 
+               address equal to srcMAC, coming through any of
                the inPorts will be filtered out.
 
-               destination-address-filter - All frames with a 
-               destination address equal to dstMAC, coming through 
+               destination-address-filter - All frames with a
+               destination address equal to dstMAC, coming through
                any of the inPorts will be filtered out.
 
-               flow-filter - All frames with a source address equal 
-               to srcMAC and a destination address equal to dstMAC, 
-               coming through any of the inPorts list will be 
+               flow-filter - All frames with a source address equal
+               to srcMAC and a destination address equal to dstMAC,
+               coming through any of the inPorts list will be
                filtered out. Ports must be in flow mode in order
-               to set a filter using both source and destination 
+               to set a filter using both source and destination
                address.
 
            port-address-lock
 
-               This locks a source address to a port. It allows 
+               This locks a source address to a port. It allows
                learning of srcMAC addresses only on any of the ports
                in inPorts. The following objects are mandatory
                and must be set by mgmt station to activate a row:
@@ -793,7 +793,7 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
        MAX-ACCESS  read-create
        STATUS      current
        DESCRIPTION
-          "The first 3 restrictions, allow, disallow, force apply when the filterType 
+          "The first 3 restrictions, allow, disallow, force apply when the filterType
           is static-entry. When polL2FilterType is addressFilter or portAddressLock,
           this object does not apply. For securePort, the blockIngress, blockEgress
           values apply.
@@ -828,7 +828,7 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
        MAX-ACCESS  read-create
        STATUS      current
        DESCRIPTION
-       "The VLAN the destination MAC address belongs to. The default VLAN 
+       "The VLAN the destination MAC address belongs to. The default VLAN
         is id 1 on SSR.
 
         This object may not be modified if the associated.
@@ -872,7 +872,7 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
        STATUS      current
        DESCRIPTION
 	"SMIv2 RowStatus control for this table. Use createAndWait or createAndGo
-         to create a filter, use destroy to remove an entry or notInService to 
+         to create a filter, use destroy to remove an entry or notInService to
          disengage a filter without destroying it. A row in the notReady state has
          not had all the mandatory objects set."
        ::= { polL2FilterEntry 11 }
@@ -921,9 +921,9 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
        MAX-ACCESS  read-create
        STATUS      current
        DESCRIPTION
-        "Specifies the types of traffic that will be forwarded on this VLAN.  
+        "Specifies the types of traffic that will be forwarded on this VLAN.
          Protocols not set in this definition will be filtered. The types of protocols
-         supported on this VLAN corresponds to the type option in the CLI command 
+         supported on this VLAN corresponds to the type option in the CLI command
          vlan create <vlan name> <type>. If no protocols are specified, all
          protocols are forwarded. This corresponds to the port-based CLI
          option.
@@ -947,9 +947,9 @@ polL2Dot1qVlanStaticL4Bridging  OBJECT-TYPE
        STATUS      current
        DESCRIPTION
         "If this object has a value of false(2), the L4 Bridging feature is not
-         enabled on this VLAN. If this object has a value of true(1), the L4 Bridging 
+         enabled on this VLAN. If this object has a value of true(1), the L4 Bridging
          feature is enabled for this VLAN. This corresponds to the CLI command
-         vlan enable l4-bridging." 
+         vlan enable l4-bridging."
        DEFVAL { true }
        ::= { polL2Dot1qVlanStaticEntry 2 }
 
@@ -979,15 +979,15 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-	"The value of sysUpTime when a row was last added 
+	"The value of sysUpTime when a row was last added
          or deleted from polL4NextHopTable."
        ::= { polL4Group 10 }
-  
+
 
    --
    -- the Next Hop Control Table
    --
-   -- The Next Hop Control table contains information on 
+   -- The Next Hop Control table contains information on
    -- what next hop routers can be used to redirect existing L4 IP Flows
 
    polL4NextHopTable OBJECT-TYPE
@@ -1010,7 +1010,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
    PolL4NextHopEntry ::=
        SEQUENCE {
            polL4NextHopRouter            IpAddress,
-           polL4NextHopState             INTEGER,          
+           polL4NextHopState             INTEGER,
            polL4NextHopPortOfExit        InterfaceIndexOrZero,
            polL4NextHopMacAddress        MacAddress,
            polL4NextHopLastChange        TimeTicks
@@ -1035,10 +1035,10 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-         "The current status of the polL4NextHopRouter. 
-          If no entry found when a policy route is activated, 
-          then arp for the request the state will be waitingForArp(2). 
-          If a reply is found the state will go to macAcquired(3) 
+         "The current status of the polL4NextHopRouter.
+          If no entry found when a policy route is activated,
+          then arp for the request the state will be waitingForArp(2).
+          If a reply is found the state will go to macAcquired(3)
           else noArpReply(4). If NextHop is not local, mac is actual
           nexthop router."
        ::= { polL4NextHopEntry 2 }
@@ -1072,7 +1072,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 -- Layer 4 Flow Control Table
 --
 -- This table provides a means to redirect a given flow next hop router from the next hop Router Table
--- 
+--
 
    polL4lowControlTableLastChange  OBJECT-TYPE
        SYNTAX      TimeTicks
@@ -1106,7 +1106,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
        DESCRIPTION
                "This table is an ordered collection of route policies. For SSR, this maps
                 to the command: ip-policy Name [permit|deny] acl acl-list"
-       INDEX {  
+       INDEX {
           polL4PolicyName,
           polL4PolicySequence,
           polL4PolicyInstance
@@ -1121,8 +1121,8 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 
            polL4PolicyType       SSRFlowPolicyType,
            polL4PolicyAction     SSRFlowPolicyAction,
-           polL4PolicyMatch      SSRFlowPolicyAclList,   
-          
+           polL4PolicyMatch      SSRFlowPolicyAclList,
+
            polL4PolicyNextHops   SSRFlowNextHopList,
            polL4PolicyLoading    SSRFlowLoadPolicy,
            polL4PolicyWatch      TruthValue,
@@ -1157,7 +1157,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 	   MAX-ACCESS  not-accessible
 	   STATUS  current
 	   DESCRIPTION
-           "The sequence of this policy based route. Lower numbers have higher precedence 
+           "The sequence of this policy based route. Lower numbers have higher precedence
             than higher numbers."
        ::= { polL4lowControlEntry 3 }
 
@@ -1187,7 +1187,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 	  "Up to twenty (20) separate ACLs may be defined to match for this policy.
            This object is mandatory. Use active row from polAclTable."
        ::= { polL4lowControlEntry 6 }
- 
+
    polL4PolicyNextHops OBJECT-TYPE
    	   SYNTAX  SSRFlowNextHopList
 	   MAX-ACCESS  read-create
@@ -1197,7 +1197,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
            If more than one next hop ip address is specified, the default load balancing
            scheme is round robin. This object is mandatory. Use objects from polL4NextHopTable."
        ::= { polL4lowControlEntry 7 }
- 
+
    polL4PolicyLoading OBJECT-TYPE
    	   SYNTAX  SSRFlowLoadPolicy
 	   MAX-ACCESS  read-create
@@ -1206,13 +1206,13 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 	  "When more than one next hop is defined and available, set loading policy here."
           DEFVAL { firstAvailable }
        ::= { polL4lowControlEntry 8 }
-   
+
    polL4PolicyWatch OBJECT-TYPE
    	   SYNTAX  TruthValue
 	   MAX-ACCESS  read-create
 	   STATUS  current
 	   DESCRIPTION
-	  "When True, use icmp echo to actively maintain status of next hop. This 
+	  "When True, use icmp echo to actively maintain status of next hop. This
            is useful to prevent data sinks with static routes."
            DEFVAL { false }
        ::= { polL4lowControlEntry 9 }
@@ -1248,7 +1248,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
        DESCRIPTION
 	"Entries in active state cause a flow to remain programmed with the next hop router specified.
 	 If the next hop router goes down, the rowStatus will become inactive. New flows that match this
-         specification will assume this next hop router over any other route directive. 
+         specification will assume this next hop router over any other route directive.
          This assumes polL4PolicyBasedRouteState value is true."
        ::= { polL4lowControlEntry 13 }
 
@@ -1258,7 +1258,7 @@ polL4Group  OBJECT IDENTIFIER   ::= { ssrMibs 15 }
 polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
 
 	polL4lowLostRouters OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1266,7 +1266,7 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
        ::= { polL4GroupStats 1 }
 
 	polL4lowControlTableActivates OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1274,7 +1274,7 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
        ::= { polL4GroupStats 2 }
 
 	polL4lowControlTableActivateFails OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1282,7 +1282,7 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
        ::= { polL4GroupStats 3 }
 
        polL4lowArpMappingChanges OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1291,7 +1291,7 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
        ::= { polL4GroupStats 4 }
 
        polL4lowIcmpRedirects OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1301,7 +1301,7 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
        ::= { polL4GroupStats 16 }
 
        polL4lowMatchAttempts OBJECT-TYPE
-   	   SYNTAX  Counter32 
+   	   SYNTAX  Counter32
 	   MAX-ACCESS  read-only
 	   STATUS  current
 	   DESCRIPTION
@@ -1311,12 +1311,12 @@ polL4GroupStats  OBJECT IDENTIFIER   ::= { polL4Group 35 }
 
 
 
--- Compliance Statements 
+-- Compliance Statements
 
 polConformance OBJECT IDENTIFIER ::= { policyMIB 2 }
 polCompliances OBJECT IDENTIFIER ::= { polConformance 1 }
 polGroups OBJECT IDENTIFIER ::= { polConformance 2 }
- 
+
 polComplianceV10 MODULE-COMPLIANCE
     STATUS deprecated
     DESCRIPTION
@@ -1341,7 +1341,7 @@ polComplianceV12 MODULE-COMPLIANCE
     MODULE  -- this module
         MANDATORY-GROUPS { polGroupV12 }
     ::= { polCompliances 3 }
- 
+
 polComplianceV13 MODULE-COMPLIANCE
     STATUS current
     DESCRIPTION
@@ -1349,7 +1349,7 @@ polComplianceV13 MODULE-COMPLIANCE
     MODULE  -- this module
         MANDATORY-GROUPS { polGroupV13 }
     ::= { polCompliances 4 }
- 
+
 polGroupV10  OBJECT-GROUP
    OBJECTS {
    polAclServer,
@@ -1377,7 +1377,7 @@ polGroupV10  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1420,7 +1420,7 @@ polGroupV11  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1477,7 +1477,7 @@ polGroupV12  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1560,7 +1560,7 @@ polGroupV13  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 

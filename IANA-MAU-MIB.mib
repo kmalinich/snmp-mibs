@@ -60,19 +60,19 @@ IANA-MAU-MIB DEFINITIONS ::= BEGIN
          http://www.ietf.org/copyrights/ianamib.html"
 
        REVISION     "201108120000Z"  -- August 12, 2011
-       DESCRIPTION  "Added MAU types and associated AutoNeg capability 
-                     bits specified in amendments to IEEE Std 
-                     802.3-2008: IEEE Std 802.3ba-2010 and IEEE Std 
+       DESCRIPTION  "Added MAU types and associated AutoNeg capability
+                     bits specified in amendments to IEEE Std
+                     802.3-2008: IEEE Std 802.3ba-2010 and IEEE Std
                      802.3bg-2011."
 
        REVISION     "201002230000Z"  -- February 23, 2010
-       DESCRIPTION  "Added assignments that will be included in 
+       DESCRIPTION  "Added assignments that will be included in
                      Clause 14 of IEEE P802.3.1."
-                     
+
        REVISION     "200704210000Z"  -- April 21, 2007
        DESCRIPTION  "Initial version of this MIB as published in
                      RFC 4836."
-                                   
+
        ::= { mib-2 154 }
 
      -- Textual Conventions
@@ -919,63 +919,63 @@ IANA-MAU-MIB DEFINITIONS ::= BEGIN
 
        dot3MauType40GbaseKR4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "40GBASE-R PCS/PMA over an electrical 
+         DESCRIPTION "40GBASE-R PCS/PMA over an electrical
                       backplane"
          REFERENCE   "IEEE Std 802.3, Clause 84"
          ::= { dot3MauType 70 }
 
        dot3MauType40GbaseCR4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "40GBASE-R PCS/PMA over 4 lane shielded 
+         DESCRIPTION "40GBASE-R PCS/PMA over 4 lane shielded
                       copper balanced cable"
          REFERENCE   "IEEE Std 802.3, Clause 85"
          ::= { dot3MauType 71 }
 
        dot3MauType40GbaseSR4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "40GBASE-R PCS/PMA over 4 lane multimode 
+         DESCRIPTION "40GBASE-R PCS/PMA over 4 lane multimode
                       fiber"
          REFERENCE   "IEEE Std 802.3, Clause 86"
          ::= { dot3MauType 72 }
 
        dot3MauType40GbaseFR OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "40GBASE-R PCS/PMA over single mode 
+         DESCRIPTION "40GBASE-R PCS/PMA over single mode
                       fiber"
          REFERENCE   "IEEE Std 802.3, Clause 89"
          ::= { dot3MauType 73 }
 
        dot3MauType40GbaseLR4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "40GBASE-R PCS/PMA over 4 WDM lane 
+         DESCRIPTION "40GBASE-R PCS/PMA over 4 WDM lane
                       single mode fiber"
          REFERENCE   "IEEE Std 802.3, Clause 87"
          ::= { dot3MauType 74 }
 
        dot3MauType100GbaseCR10 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "100GBASE-R PCS/PMA over 10 lane 
+         DESCRIPTION "100GBASE-R PCS/PMA over 10 lane
                       shielded copper balanced cable"
          REFERENCE   "IEEE Std 802.3, Clause 85"
          ::= { dot3MauType 75 }
 
        dot3MauType100GbaseSR10 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "100GBASE-R PCS/PMA over 10 lane 
+         DESCRIPTION "100GBASE-R PCS/PMA over 10 lane
                       multimode fiber"
          REFERENCE   "IEEE Std 802.3, Clause 86"
          ::= { dot3MauType 76 }
 
        dot3MauType100GbaseLR4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "100GBASE-R PCS/PMA over 4 WDM lane 
+         DESCRIPTION "100GBASE-R PCS/PMA over 4 WDM lane
                       single mode fiber, long reach"
          REFERENCE   "IEEE Std 802.3, Clause 88"
          ::= { dot3MauType 77 }
 
        dot3MauType100GbaseER4 OBJECT-IDENTITY
          STATUS      current
-         DESCRIPTION "100GBASE-R PCS/PMA over 4 WDM lane 
+         DESCRIPTION "100GBASE-R PCS/PMA over 4 WDM lane
                       single mode fiber PMD, extended reach"
          REFERENCE   "IEEE Std 802.3, Clause 88"
          ::= { dot3MauType 78 }

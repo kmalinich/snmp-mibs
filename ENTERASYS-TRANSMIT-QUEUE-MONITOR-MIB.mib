@@ -1,6 +1,6 @@
 ENTERASYS-TRANSMIT-QUEUE-MONITOR-MIB DEFINITIONS ::= BEGIN
 
---  enterasys-transmit-queue-monitor-mib.txt 
+--  enterasys-transmit-queue-monitor-mib.txt
 --
 --  Part Number:
 --
@@ -81,7 +81,7 @@ etsysTxqMonitorPort
     OBJECT IDENTIFIER ::= { etsysTxqMonitorObjects 2 }
 
 -- -------------------------------------------------------------
--- Objects in the etsysTxqMonitor 
+-- Objects in the etsysTxqMonitor
 -- -------------------------------------------------------------
 
 etsysTxqMonitorDownTime OBJECT-TYPE
@@ -89,8 +89,8 @@ etsysTxqMonitorDownTime OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS current
     DESCRIPTION
-        "The number of sample intervals that ports disabled by 
-         Transmit Queue Monitor may be held down. A value of zero 
+        "The number of sample intervals that ports disabled by
+         Transmit Queue Monitor may be held down. A value of zero
          will set the down time to forever."
     DEFVAL { 0 }
     ::= { etsysTxqMonitor 1 }
@@ -100,8 +100,8 @@ etsysTxqMonitorIgnorePauseTime OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS current
     DESCRIPTION
-        "The number of sample intervals that ports ignoring RX pause 
-         by Transmit Queue Monitor may be held in this state. A value 
+        "The number of sample intervals that ports ignoring RX pause
+         by Transmit Queue Monitor may be held in this state. A value
          of zero will set the ignore RX pause time to forever."
     DEFVAL { 0 }
     ::= { etsysTxqMonitor 2 }
@@ -111,7 +111,7 @@ etsysTxqMonitorMinRate OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS current
     DESCRIPTION
-        "The minimum rate of transmitted packets in a 
+        "The minimum rate of transmitted packets in a
          sampling interval."
     DEFVAL { 1 }
     ::= { etsysTxqMonitor 3 }
@@ -135,7 +135,7 @@ etsysTxqMonitorTrapStatus OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS current
     DESCRIPTION
-        "Trap status for transmit queue monitoring. When enabled, 
+        "Trap status for transmit queue monitoring. When enabled,
          traps will be sent when each of enabled thresholds are
          reached."
     DEFVAL { 2 }
@@ -147,7 +147,7 @@ etsysTxqMonitorLoggingThreshold OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Threshold levels for the number of sequential failures
-         before triggering logging action. A value of 0 
+         before triggering logging action. A value of 0
          disables the action."
     DEFVAL { 2 }
     ::= { etsysTxqMonitor 6 }
@@ -158,7 +158,7 @@ etsysTxqMonitorIgnorePauseThreshold OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Threshold levels for the number of sequential failures
-         before triggering ignore pause action. A value of 0 
+         before triggering ignore pause action. A value of 0
          disables the action."
     DEFVAL { 5 }
     ::= { etsysTxqMonitor 7 }
@@ -169,7 +169,7 @@ etsysTxqMonitorDisablePortThreshold OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Threshold levels for the number of sequential failures
-         before triggering disable port action. A value of 0 
+         before triggering disable port action. A value of 0
          disables the action."
     DEFVAL { 10 }
     ::= { etsysTxqMonitor 8 }
@@ -185,7 +185,7 @@ etsysTxqMonitorEnableState OBJECT-TYPE
         "Transmit monitoring global state. If enabled(1), all ports
          will monitor the transmit queues for stalled ports. If a port
          is detected as stalled, the configured action will take effect."
-    DEFVAL { 1 } 
+    DEFVAL { 1 }
     ::= { etsysTxqMonitor 9 }
 
 etsysTxqMonitorPortTable OBJECT-TYPE
@@ -201,7 +201,7 @@ etsysTxqMonitorPortEntry OBJECT-TYPE
     SYNTAX      EtsysTxqMonitorPortEntry
     MAX-ACCESS  not-accessible
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
         "An entry in the Port Table contains Transmit Queue
          Monitor operational status and state."
     INDEX { ifIndex }
@@ -221,7 +221,7 @@ etsysTxqMonitorPortConsecutiveStalled OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The number of times the port has reached a stalled 
+        "The number of times the port has reached a stalled
          state consecutively."
     ::= { etsysTxqMonitorPortEntry 1 }
 
@@ -231,7 +231,7 @@ etsysTxqMonitorPortTotalStalled OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of times the port has reached a 
+        "The total number of times the port has reached a
          stalled state."
     ::= { etsysTxqMonitorPortEntry 2 }
 
@@ -267,7 +267,7 @@ etsysTxqMonitorPortOperationalStatus OBJECT-TYPE
 
 
 etsysTxqMonitorPortReset OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -277,7 +277,7 @@ etsysTxqMonitorPortReset OBJECT-TYPE
          etsysTxqMonitorPortOperationalStatus will
          be set to normal if transmit queue monitoring is enabled
          otherwise disabled."
-    DEFVAL { false } 
+    DEFVAL { false }
     ::= { etsysTxqMonitorPortEntry 4 }
 
 etsysTxqMonitorPortCapabilities OBJECT-TYPE
@@ -357,7 +357,7 @@ etsysTxqMonitorSettings OBJECT-GROUP
     }
     STATUS current
     DESCRIPTION
-        "A collection of objects for configuring and reporting 
+        "A collection of objects for configuring and reporting
          Transmit Queue Monitoring."
     ::= {etsysTxqMonitorGroups 1 }
 
@@ -370,7 +370,7 @@ etsysTxqMonitorNotificationGroup NOTIFICATION-GROUP
     }
     STATUS    current
     DESCRIPTION
-        "A collection of objects required for reporting 
+        "A collection of objects required for reporting
          exceeding transmit queue monitoring thresholds."
     ::= { etsysTxqMonitorGroups 2 }
 

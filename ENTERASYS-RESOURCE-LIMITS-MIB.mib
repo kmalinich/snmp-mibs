@@ -1,6 +1,6 @@
 ENTERASYS-RESOURCE-LIMITS-MIB DEFINITIONS ::= BEGIN
 
--- enterasys-resource-limits-mib.txt 
+-- enterasys-resource-limits-mib.txt
 --
 --  Part Number:
 --
@@ -68,7 +68,7 @@ etsysResourceLimitsMIB MODULE-IDENTITY
 EtsysResourceLimitsProfiles ::= TEXTUAL-CONVENTION
     STATUS  current
     DESCRIPTION
-        "This textual convention defines the list of profiles for 
+        "This textual convention defines the list of profiles for
          setting the limits of the resource allocation.
 
             default(0) - Limits of resource allocation is based on what
@@ -107,7 +107,7 @@ etsysResourceLimitsProfile
 -- -------------------------------------------------------------
 
 etsysResourceLimitsProfileAdmin OBJECT-TYPE
-    SYNTAX      EtsysResourceLimitsProfiles 
+    SYNTAX      EtsysResourceLimitsProfiles
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -156,7 +156,7 @@ etsysResourceLimitsProfileTable OBJECT-TYPE
     ::= { etsysResourceLimitsProfile 4 }
 
 etsysResourceLimitsProfileEntry OBJECT-TYPE
-    SYNTAX      EtsysResourceLimitsProfileEntry 
+    SYNTAX      EtsysResourceLimitsProfileEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -166,7 +166,7 @@ etsysResourceLimitsProfileEntry OBJECT-TYPE
 
 EtsysResourceLimitsProfileEntry ::=
     SEQUENCE {
-        etsysResourceLimitsProfileIndex 
+        etsysResourceLimitsProfileIndex
             EtsysResourceLimitsProfiles,
         etsysResourceLimitsProfileAuthenticatedUsers
             Unsigned32,
@@ -197,7 +197,7 @@ EtsysResourceLimitsProfileEntry ::=
     }
 
 etsysResourceLimitsProfileIndex OBJECT-TYPE
-    SYNTAX      EtsysResourceLimitsProfiles 
+    SYNTAX      EtsysResourceLimitsProfiles
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -366,7 +366,7 @@ etsysResourceLimitsProfileCompliance MODULE-COMPLIANCE
         MANDATORY-GROUPS {
            etsysResourceLimitsProfileGroup,
            etsysResourceLimitsProfileTableGroup
-        } 
+        }
     ::= { etsysResourceLimitsCompliances 1 }
 
 END

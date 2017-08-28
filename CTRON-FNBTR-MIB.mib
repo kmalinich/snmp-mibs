@@ -17,16 +17,16 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -95,7 +95,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                     "An unique value for each Token Ring subsystem.  Its
-                     value ranges between 1 and 'chNumSlots' defined in 
+                     value ranges between 1 and 'chNumSlots' defined in
                      chassis-mib.txt."
             ::= { ctronFnbTREntry 1 }
 
@@ -143,7 +143,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
                     "Denotes the bypass status of the current Token Ring
                     board."
             ::= { ctronFnbTREntry 4 }
-        
+
         ctronFnbRPBypass  OBJECT-TYPE
         SYNTAX  INTEGER {
                 other(1),
@@ -214,7 +214,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "An unique value for each Token Ring subsystem.  Its
-                value ranges between 1 and 'chNumSlots' defined in 
+                value ranges between 1 and 'chNumSlots' defined in
                 chassis-mib.txt."
             ::= { ctronMultiFnbTREntry 1 }
 
@@ -223,9 +223,9 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "An unique value representing an instance of an FNB ring path 
-                attachment.  Its value ranges between 1 and n, where n equals 
-                the maximum number of FNB ring paths available in a given 
+                "An unique value representing an instance of an FNB ring path
+                attachment.  Its value ranges between 1 and n, where n equals
+                the maximum number of FNB ring paths available in a given
                 chassis.  For an MMAC chassis with an FNB, this number is 4."
             ::= { ctronMultiFnbTREntry 2 }
 
@@ -240,7 +240,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "Denotes the connection status of the left attach circuitry for
-                a particular FNB ring path attachment on this Token Ring 
+                a particular FNB ring path attachment on this Token Ring
                 oard."
             ::= { ctronMultiFnbTREntry 3 }
 
@@ -267,8 +267,8 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-write
             STATUS  mandatory
             DESCRIPTION
-                "Denotes the connection status of the bypass circuitry for a 
-                particular backplane ring path attachment on this Token Ring 
+                "Denotes the connection status of the bypass circuitry for a
+                particular backplane ring path attachment on this Token Ring
                 board."
             ::= { ctronMultiFnbTREntry 5 }
 
@@ -281,7 +281,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-write
             STATUS  mandatory
             DESCRIPTION
-                "Denotes the connection status of the ring port bypass 
+                "Denotes the connection status of the ring port bypass
                 circuitry for a particular backplane ring path attachment on
                 his Token Ring board.  If this capability is not available on
                 this board, the value 'other' is returned when read, and
@@ -296,7 +296,7 @@ CTRON-FNBTR-MIB DEFINITIONS ::= BEGIN
 --
 -- a) Added ctronMultiFnbTR branch at { ctTokenRingFnb 2 } in support of port switched
 --    Token Ring MIMs.
--- b) Made the access policy for the objects ctronMultiFnbConnectLeft and 
+-- b) Made the access policy for the objects ctronMultiFnbConnectLeft and
 --    ctronMultiFnbConnectRight read-only.
 -- c) Modified the copyright date.
 --

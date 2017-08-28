@@ -3,13 +3,13 @@ ENTERASYS-R2MGMT-MIB DEFINITIONS ::= BEGIN
 IMPORTS
 
     MODULE-IDENTITY, OBJECT-TYPE,
-    Counter32, Integer32, 
+    Counter32, Integer32,
     TimeTicks, IpAddress                   FROM SNMPv2-SMI
     TruthValue                             FROM SNMPv2-TC
-    MODULE-COMPLIANCE, 
+    MODULE-COMPLIANCE,
     OBJECT-GROUP                           FROM SNMPv2-CONF
     EnabledStatus                          FROM P-BRIDGE-MIB
-    SnmpAdminString                        FROM SNMP-FRAMEWORK-MIB 
+    SnmpAdminString                        FROM SNMP-FRAMEWORK-MIB
     etsysModules                           FROM ENTERASYS-MIB-NAMES;
 
 enterasysR2MgmtMIB MODULE-IDENTITY
@@ -38,12 +38,12 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         "Imported etsysModules from the correct MIB and corrected
          range for INTEGER."
 
-    REVISION "200106261730Z" 
+    REVISION "200106261730Z"
     DESCRIPTION
         "The initial version of this MIB module"
 
     ::= { etsysModules 11 }
- 
+
 -- ----------------------------------------------------------------------------
 --  Enterasys Extended Switch MIB-OIDs for Access Point.
 -- ----------------------------------------------------------------------------
@@ -55,16 +55,16 @@ enterasysR2MgmtMIB MODULE-IDENTITY
     etsysR2MgmtParams        OBJECT IDENTIFIER   ::= { etsysR2MgmtObjects 1 }
     etsysR2MgmtCounters      OBJECT IDENTIFIER   ::= { etsysR2MgmtObjects 2 }
     etsysR2MgmtErrorLog      OBJECT IDENTIFIER   ::= { etsysR2MgmtObjects 3 }
-    etsysR2MgmtLoader        OBJECT IDENTIFIER   ::= { etsysR2MgmtObjects 4 } 
+    etsysR2MgmtLoader        OBJECT IDENTIFIER   ::= { etsysR2MgmtObjects 4 }
 
 
 -- ****************************************************************************
 
 --
 --  etsysR2MgmtParams - The Extended system module
---  This group consists of objects to configure the 
+--  This group consists of objects to configure the
 --  R2 Access Point.
---        
+--
     etsysR2MgmtMemorySize OBJECT-TYPE
         SYNTAX  Integer32
         MAX-ACCESS  read-only
@@ -74,23 +74,23 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         ::= { etsysR2MgmtParams 1 }
 
     etsysR2MgmtWEBInterface OBJECT-TYPE
-        SYNTAX      EnabledStatus 
+        SYNTAX      EnabledStatus
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "Determines whether or not WEB Management
              is enabled or disabled."
-        ::= { etsysR2MgmtParams 2 }        
-        
+        ::= { etsysR2MgmtParams 2 }
+
     etsysR2MgmtTelnetInterface OBJECT-TYPE
-        SYNTAX      EnabledStatus 
+        SYNTAX      EnabledStatus
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "Determines whether or not Telnet Management
              is enabled or disabled."
         ::= { etsysR2MgmtParams 3 }
-    
+
     etsysR2MgmtVlan OBJECT-TYPE
         SYNTAX       INTEGER (0..4094)
         MAX-ACCESS   read-write
@@ -104,14 +104,14 @@ enterasysR2MgmtMIB MODULE-IDENTITY
              e.g., management on VLAN 1."
         ::= { etsysR2MgmtParams 4 }
 
-        
--- ***********************************************************************  
+
+-- ***********************************************************************
 --
 --  etsysR2MgmtCounters - The systems Counter group
 --  This group consists of counters that measure operational
 --  events and errors.
 --
-   
+
     etsysR2MgmtPowerups   OBJECT-TYPE
         SYNTAX      Counter32
         MAX-ACCESS  read-only
@@ -130,7 +130,7 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         DESCRIPTION
             "PERSISTENT:
             Number of times the device was initialized with a
-            management command.  Power Ups, Management Resets 
+            management command.  Power Ups, Management Resets
             and Unsolicited Resets are all mutually exclusive."
         ::= { etsysR2MgmtCounters 2 }
 
@@ -141,18 +141,18 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         DESCRIPTION
             "PERSISTENT:
             Number of times the device initialized itself after
-            encountering a fatal error.  Power Ups, Management 
+            encountering a fatal error.  Power Ups, Management
             Resets & Unsolicited Resets are all mutually exclusive."
         ::= { etsysR2MgmtCounters 3 }
 
 -- ****************************************************************************
 
 --
---  The system Error Logs group.  
+--  The system Error Logs group.
 --
 --  This group is optional, but highly recommended for all Enterasys products.
 --  The group contains objects pertaining to system failures.  Though publicly
---  available, the objects are designed primarily for use by Enterasys.  
+--  available, the objects are designed primarily for use by Enterasys.
 --  All objects are non-volatile:  they maintain their values across resets.
 --
 --  The errLogTable is a ring.  If a maximum of 8 entries are supported
@@ -169,7 +169,7 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         DESCRIPTION
             "PERSISTENT:
             The number of entries in the etsysR2MgmtErrLogTable.  The value of
-            this object is initially zero.  It is incremented as 
+            this object is initially zero.  It is incremented as
             etsysR2MgmtErrLogEntries are added, to a maximum value.  The maximum
             value is implementation specific."
         ::= { etsysR2MgmtErrorLog 1 }
@@ -206,7 +206,7 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         STATUS      current
         DESCRIPTION
             "PERSISTENT:
-            The value of this object uniquely identifies an 
+            The value of this object uniquely identifies an
             entry in the etsysR2MgmtErrLogTable."
             ::= { etsysR2MgmtErrLogEntry 1 }
 
@@ -216,7 +216,7 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         STATUS      current
         DESCRIPTION
             "PERSISTENT:
-            The value of sysUpTime at the time in which the 
+            The value of sysUpTime at the time in which the
             error is logged."
             ::= { etsysR2MgmtErrLogEntry 2 }
 
@@ -226,8 +226,8 @@ enterasysR2MgmtMIB MODULE-IDENTITY
         STATUS      current
         DESCRIPTION
             "PERSISTENT:
-            The number of resets which have occurred at the time 
-            in which the error is logged.  (This is the sum of 
+            The number of resets which have occurred at the time
+            in which the error is logged.  (This is the sum of
             etsysR2MgmtPowerups, etsysR2MgmtMgmtResets, and
             etsysR2MgmtUnsolicitedResets.)"
             ::= { etsysR2MgmtErrLogEntry 3 }
@@ -243,16 +243,16 @@ enterasysR2MgmtMIB MODULE-IDENTITY
 
 -- ***********************************************************************
 
--- 
+--
 --     Objects to support manual configuration of the primitive loader.
 --     These objects make it possible to do firmware upgrades and crash
 --     dump uploads even if there is no BootP server on the same subnet
 --     as the AccessPoint.
--- 
+--
 --     Note that you MUST configure the AccessPoint's IP address if you
 --     want a manually-configured TFTP transfer to work.  (You may also
 --     need to specify a subnet mask and default gateway IP address.)
-        
+
     etsysR2MgmtCrashUploadUseBootp OBJECT-TYPE
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
@@ -280,7 +280,7 @@ enterasysR2MgmtMIB MODULE-IDENTITY
             The IP address of the TFTP server that should be used for
             crash dump uploads.
 
-            This value will be ignored when 
+            This value will be ignored when
             'etsysR2MgmtCrashUploadUseBootp' is 'false(2)'."
         ::= { etsysR2MgmtLoader 2 }
 
@@ -293,19 +293,19 @@ enterasysR2MgmtMIB MODULE-IDENTITY
             The name of the remote directory to which all crash dumps
             should be uploaded.
 
-            This value will be ignored when 
+            This value will be ignored when
             'etsysR2MgmtCrashUploadUseBootp' is 'false(2)'."
-        ::= { etsysR2MgmtLoader 3 }     
-        
+        ::= { etsysR2MgmtLoader 3 }
+
     etsysR2MgmtUplineDumpMode OBJECT-TYPE
-        SYNTAX      EnabledStatus 
+        SYNTAX      EnabledStatus
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "Determines whether or not a dump file
             is created on an Access Point crash."
         ::= { etsysR2MgmtLoader 4 }
-        
+
 
 -- ***********************************************************************
 
@@ -324,7 +324,7 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
 -- ----------------------------------------------------------------------------
 
     etsysR2MgmtBaseGroup   OBJECT-GROUP
-        OBJECTS { 
+        OBJECTS {
             etsysR2MgmtMemorySize,
             etsysR2MgmtWEBInterface,
             etsysR2MgmtTelnetInterface
@@ -332,10 +332,10 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
         STATUS      deprecated
         DESCRIPTION
             "The basic etsysR2Mgmt objects."
-        ::= { etsysR2MgmtGroups 1 }                
-        
+        ::= { etsysR2MgmtGroups 1 }
+
        etsysR2MgmtCountersGroup   OBJECT-GROUP
-        OBJECTS {   
+        OBJECTS {
             etsysR2MgmtPowerups,
             etsysR2MgmtResets,
             etsysR2MgmtUnsolicitedResets
@@ -346,7 +346,7 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
         ::= { etsysR2MgmtGroups 2 }
 
        etsysR2MgmtErrLogGroup   OBJECT-GROUP
-        OBJECTS {   
+        OBJECTS {
             etsysR2MgmtErrLogNumEntries,
             etsysR2MgmtErrLogIndex,
             etsysR2MgmtErrLogTimeStamp,
@@ -359,7 +359,7 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
         ::= { etsysR2MgmtGroups 3 }
 
        etsysR2MgmtLoaderGroup   OBJECT-GROUP
-        OBJECTS {   
+        OBJECTS {
             etsysR2MgmtCrashUploadUseBootp,
             etsysR2MgmtCrashUploadServerIP,
             etsysR2MgmtCrashUploadDirectory,
@@ -369,9 +369,9 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
         DESCRIPTION
             "The Crash Upload objects."
         ::= { etsysR2MgmtGroups 4 }
-        
+
     etsysR2MgmtBaseGroupV2   OBJECT-GROUP
-        OBJECTS { 
+        OBJECTS {
             etsysR2MgmtMemorySize,
             etsysR2MgmtWEBInterface,
             etsysR2MgmtTelnetInterface,
@@ -380,8 +380,8 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
         STATUS      current
         DESCRIPTION
             "The basic etsysR2Mgmt objects."
-        ::= { etsysR2MgmtGroups 5 }                
-        
+        ::= { etsysR2MgmtGroups 5 }
+
 -- ----------------------------------------------------------------------------
 -- Compliance statements
 -- ----------------------------------------------------------------------------
@@ -389,45 +389,45 @@ etsysR2MgmtConformance     OBJECT IDENTIFIER ::= { enterasysR2MgmtMIB 2 }
     etsysR2MgmtCompliance MODULE-COMPLIANCE
         STATUS      deprecated
         DESCRIPTION
-            "The compliance statement for devices that support 
+            "The compliance statement for devices that support
             Extended Switch."
         MODULE      ENTERASYS-R2MGMT-MIB
                     MANDATORY-GROUPS { etsysR2MgmtBaseGroup }
-                    GROUP  etsysR2MgmtCountersGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Reset 
+                    GROUP  etsysR2MgmtCountersGroup
+                         DESCRIPTION
+                            "This group may be implemented if Reset
                              Counters are required."
-                    GROUP  etsysR2MgmtErrLogGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Error 
+                    GROUP  etsysR2MgmtErrLogGroup
+                         DESCRIPTION
+                            "This group may be implemented if Error
                              Logging is required."
-                    GROUP  etsysR2MgmtLoaderGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Crash 
+                    GROUP  etsysR2MgmtLoaderGroup
+                         DESCRIPTION
+                            "This group may be implemented if Crash
                              Uploading is required."
-                    
+
         ::= { etsysR2MgmtCompliances 1 }
 
     etsysR2MgmtComplianceV2 MODULE-COMPLIANCE
         STATUS      current
         DESCRIPTION
-            "The compliance statement for devices that support 
+            "The compliance statement for devices that support
             Extended Switch."
         MODULE      ENTERASYS-R2MGMT-MIB
                     MANDATORY-GROUPS { etsysR2MgmtBaseGroupV2 }
-                    GROUP  etsysR2MgmtCountersGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Reset 
+                    GROUP  etsysR2MgmtCountersGroup
+                         DESCRIPTION
+                            "This group may be implemented if Reset
                              Counters are required."
-                    GROUP  etsysR2MgmtErrLogGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Error 
+                    GROUP  etsysR2MgmtErrLogGroup
+                         DESCRIPTION
+                            "This group may be implemented if Error
                              Logging is required."
-                    GROUP  etsysR2MgmtLoaderGroup 
-                         DESCRIPTION 
-                            "This group may be implemented if Crash 
+                    GROUP  etsysR2MgmtLoaderGroup
+                         DESCRIPTION
+                            "This group may be implemented if Crash
                              Uploading is required."
-                    
+
         ::= { etsysR2MgmtCompliances 2 }
- 
+
 END

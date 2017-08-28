@@ -6,7 +6,7 @@ ENTERASYS-TLS-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Secure Socket, Transport Layer Security (TLS) MIB.
 
 --
@@ -25,18 +25,18 @@ ENTERASYS-TLS-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright August, 2002 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Unsigned32, IpAddress
         FROM SNMPv2-SMI
     TruthValue, DisplayString
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
-        FROM SNMPv2-CONF   
+        FROM SNMPv2-CONF
     etsysModules
         FROM ENTERASYS-MIB-NAMES;
 
@@ -54,15 +54,15 @@ etsysTlsMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
-         Transport Layer Security (TLS) system [RFC2246] management 
-         functionality, specifically for embedded system 
-         implementations.  This is a subset of the objects that 
-         would be required for a full-featured, host-based 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
+         Transport Layer Security (TLS) system [RFC2246] management
+         functionality, specifically for embedded system
+         implementations.  This is a subset of the objects that
+         would be required for a full-featured, host-based
          implementation.
 
          It provides configuration controls for Enterasys Networks'
-         Secure Socket system management -- a feature that enhances 
+         Secure Socket system management -- a feature that enhances
          system security by authenticating and encrypting the remote
          system management function."
 
@@ -100,9 +100,9 @@ etsysTlsServerKeyBranch
 -- ---------------------------------------------------------- --
 
 etsysTlsEnabled OBJECT-TYPE
-    SYNTAX        INTEGER { 
-                      enable (1), 
-                      disable (2), 
+    SYNTAX        INTEGER {
+                      enable (1),
+                      disable (2),
                       reinitialize (3)
                   }
     MAX-ACCESS    read-write
@@ -136,7 +136,7 @@ etsysTlsNumHardConnects OBJECT-TYPE
     DESCRIPTION
         "The hard limit for the maximum number of concurrent connections.
          If a new connection is initiated and it would exceed the hard
-         limit, the connection is closed unconditionally.  Managed 
+         limit, the connection is closed unconditionally.  Managed
          entities are free to enforce implementation specific limits on
          the upper limit of this object."
     DEFVAL { 50 }
@@ -181,10 +181,10 @@ etsysTlsHttpsPort OBJECT-TYPE
 -- ---------------------------------------------------------- --
 
 etsysTlsGenerateKeys OBJECT-TYPE
-    SYNTAX        INTEGER { 
-                      notInitiated (1), 
-                      completed (2), 
-                      failed (3), 
+    SYNTAX        INTEGER {
+                      notInitiated (1),
+                      completed (2),
+                      failed (3),
                       generate (4),
                       completedPending (5)
                   }
@@ -194,9 +194,9 @@ etsysTlsGenerateKeys OBJECT-TYPE
         "Causes the host to generate a new key pair using the
          cipher algorithm currently selected in etsysTlsAdminKeyType.
          Note that this can be compute intensive on many platforms.
-        
+
          The meaning of the values are as follows:
-        
+
          notInitiated (1) On a write, this is a no-operation,
                           on a read, it indicates that no key
                           material generation operation has
@@ -204,15 +204,15 @@ etsysTlsGenerateKeys OBJECT-TYPE
                           the last reset to factory defaults
                           initialization of the managed entity.
                           No key material exists.
-        
+
          completed (2)    On a write, this is a no-operation,
                           on a read, this indicates that a key
                           pair has been successfully generated.
-                         
+
          failed (3)       On a write, this is a no-operation,
                           on a read, it indicates that the key
-                          generation operation has failed.                 
-                         
+                          generation operation has failed.
+
          generate (4)     On a write, this causes the managed
                           entity to generate a new key pair,
                           on a read, it indicates that the
@@ -229,47 +229,47 @@ etsysTlsGenerateKeys OBJECT-TYPE
     ::= { etsysTlsServerKeyBranch 1 }
 
 etsysTlsAdminKeyType OBJECT-TYPE
-    SYNTAX        INTEGER { 
-                      dsa512  (1),  
+    SYNTAX        INTEGER {
+                      dsa512  (1),
                       rsa512  (2),
-                      dsa768  (3),  
+                      dsa768  (3),
                       rsa768  (4),
-                      dsa1024 (5), 
-                      rsa1024 (6), 
-                      dsa2048 (7), 
-                      rsa2048 (8), 
-                      dsa3072 (9), 
-                      rsa3072 (10) 
+                      dsa1024 (5),
+                      rsa1024 (6),
+                      dsa2048 (7),
+                      rsa2048 (8),
+                      dsa3072 (9),
+                      rsa3072 (10)
                   }
     MAX-ACCESS    read-write
     STATUS        current
     DESCRIPTION
         "Determines the type of the key to be (re)created
-         on the next key (re)creation operation.  The 
+         on the next key (re)creation operation.  The
          etsysTlsOperKeyType object returns the type of
          key that is currently being used by the TLS server."
     DEFVAL { rsa512 }
     ::= { etsysTlsServerKeyBranch 2 }
 
 etsysTlsOperKeyType OBJECT-TYPE
-    SYNTAX        INTEGER { 
-                      dsa512  (1),  
-                      rsa512  (2),  
-                      dsa768  (3),  
-                      rsa768  (4),  
-                      dsa1024 (5), 
-                      rsa1024 (6), 
-                      dsa2048 (7), 
-                      rsa2048 (8), 
-                      dsa3072 (9), 
+    SYNTAX        INTEGER {
+                      dsa512  (1),
+                      rsa512  (2),
+                      dsa768  (3),
+                      rsa768  (4),
+                      dsa1024 (5),
+                      rsa1024 (6),
+                      dsa2048 (7),
+                      rsa2048 (8),
+                      dsa3072 (9),
                       rsa3072 (10),
-                      none    (99) 
+                      none    (99)
                   }
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
         "Indicates the type of the key pair currently in
-         effect on the managed entity.  The value of the 
+         effect on the managed entity.  The value of the
          etsysTlsAdminKeyType object is copied to the
          etsysTlsOperKeyType object upon successful completion
          of the (re)creation of a key pair."
@@ -277,26 +277,26 @@ etsysTlsOperKeyType OBJECT-TYPE
     ::= { etsysTlsServerKeyBranch 3 }
 
 etsysTlsSignatureType OBJECT-TYPE
-    SYNTAX        INTEGER { 
-                      dhAnon (1), 
-                      dsaSha1 (2), 
+    SYNTAX        INTEGER {
+                      dhAnon (1),
+                      dsaSha1 (2),
                       dsaSha (3),
-                      rsaSha1 (4), 
+                      rsaSha1 (4),
                       rsaMd2 (5),
-                      rsaMd5 (6) 
+                      rsaMd5 (6)
                   }
     MAX-ACCESS    read-write
     STATUS        current
     DESCRIPTION
-        "Denotes the signature method that is used for 
+        "Denotes the signature method that is used for
          authenticating the exchange of keys.
-         
-         DSS (Digital Signature Standard)              
-         DSA (Digital Signature Algorithm, DSS compliant)         
+
+         DSS (Digital Signature Standard)
+         DSA (Digital Signature Algorithm, DSS compliant)
          RSA (Rivest, Shamir and Adelman)
          Sha (Secure Hash Algorithm)
          Md5 (Message Digest 5)
-         
+
          dhAnon  (1) - Anonymous Diffie Hellmen, no signatures
          dsaSha1 (2) - DSS , Sha-1 Hash
          dsaSha  (3) - DSS signatures, Sha Hash
@@ -315,7 +315,7 @@ etsysTlsSignatureType OBJECT-TYPE
 etsysTlsConformance
     OBJECT IDENTIFIER ::= { etsysTlsMIB 2 }
 
-etsysTlsGroups      
+etsysTlsGroups
     OBJECT IDENTIFIER ::= { etsysTlsConformance 1 }
 
 etsysTlsCompliances
@@ -329,7 +329,7 @@ etsysTlsBaseGroup OBJECT-GROUP
     OBJECTS {
             etsysTlsEnabled,
             etsysTlsNumSoftConnects,
-            etsysTlsNumHardConnects,  
+            etsysTlsNumHardConnects,
             etsysTlsMaxHardConnects,
             etsysTlsKeepOpenTimeout,
             etsysTlsHttpsPort,
@@ -359,7 +359,7 @@ etsysTlsCompliance MODULE-COMPLIANCE
     GROUP    etsysTlsBaseGroup
     DESCRIPTION
         "Mandatory for all implementations."
-         
+
     ::= { etsysTlsCompliances 1 }
 
 END

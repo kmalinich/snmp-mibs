@@ -6,7 +6,7 @@ ENTERASYS-MGMD-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' MGMD Extension MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-MGMD-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright August, 2010-2013 Enterasys Networks, Inc.
@@ -39,7 +39,7 @@ IMPORTS
         FROM SNMPv2-CONF
     SnmpAdminString
         FROM SNMP-FRAMEWORK-MIB
-    InetAddressType, InetAddress 
+    InetAddressType, InetAddress
         FROM INET-ADDRESS-MIB
     ifIndex
         FROM IF-MIB
@@ -49,7 +49,7 @@ IMPORTS
         FROM Q-BRIDGE-MIB
     EnabledStatus
         FROM P-BRIDGE-MIB
-    etsysModules 
+    etsysModules
         FROM ENTERASYS-MIB-NAMES;
 
 etsysMgmdExtMIB MODULE-IDENTITY
@@ -63,14 +63,14 @@ etsysMgmdExtMIB MODULE-IDENTITY
          Phone:   +1 603 952 5000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          IGMP operation on a device.
 
          This MIB contains Enterasys proprietary MGMD information that
-         goes above and beyond any IETF multicast MIBs. It is intended 
+         goes above and beyond any IETF multicast MIBs. It is intended
          to cover any Enterasys value added features and configurations."
 
     REVISION    "201308081728Z"  -- Thu Aug  8 17:28 UTC 2013
@@ -87,7 +87,7 @@ etsysMgmdExtMIB MODULE-IDENTITY
     REVISION    "201002081408Z"  -- Mon Feb  8 14:08 UTC 2010
     DESCRIPTION "The initial version of this MIB module"
 
-    ::= { etsysModules 71 } 
+    ::= { etsysModules 71 }
 
 
 
@@ -99,7 +99,7 @@ etsysMgmdExtMIB MODULE-IDENTITY
               number of groups size selection. None means no flows are
               currently supported. The rest of the settings are
               dependent on which hardware platform you are running on.
-              Please see the users manual for your device to see what 
+              Please see the users manual for your device to see what
               these values mean."
         SYNTAX  INTEGER  {
                             none(1),
@@ -182,13 +182,13 @@ etsysMgmdExtMIB MODULE-IDENTITY
             meritInp    (32), -- MERIT Internodal Protocol             [HWB]
             sep         (33), -- Sequential Exchange Protocol        [JC120]
             x3pc        (34), -- Third Party Connect Protocol         [SAF3]
-            idpr        (35), -- Inter-Domain Policy Routing Protocol [MXS1] 
+            idpr        (35), -- Inter-Domain Policy Routing Protocol [MXS1]
             xtp         (36), -- XTP                                   [GXC]
             ddp         (37), -- Datagram Delivery Protocol            [WXC]
             idprCmtp    (38), -- IDPR Control Message Transport Proto [MXS1]
             tpPlusPlus  (39), -- TP++ Transport Protocol               [DXF]
             il          (40), -- IL Transport Protocol            [Presotto]
-            ipv6        (41), -- Ipv6                              [Deering]    
+            ipv6        (41), -- Ipv6                              [Deering]
             sdrp        (42), -- Source Demand Routing Protocol       [DXE1]
             ipv6Route   (43), -- Routing Header for IPv6           [Deering]
             ipv6Frag    (44), -- Fragment Header for IPv6          [Deering]
@@ -264,7 +264,7 @@ etsysMgmdExtMIB MODULE-IDENTITY
             pgm        (113), -- PGM Reliable Transport Protocol  [Speakman]
             ipProt114  (114), -- any 0-hop protocol                   [IANA]
             l2tp       (115), -- Layer Two Tunneling Protocol        [Aboba]
-            ddx        (116), -- D-II Data Exchange (DDX)           [Worley] 
+            ddx        (116), -- D-II Data Exchange (DDX)           [Worley]
             iatp       (117), -- Interactive Agent Transfer Protocol [Murphy]
             stp        (118), -- Schedule Transfer Protocol            [JMP]
             srp        (119), -- SpectraLink Radio Protocol       [Hamilton]
@@ -278,7 +278,7 @@ etsysMgmdExtMIB MODULE-IDENTITY
             crudp      (127), -- Combat Radio User Datagram        [Sautter]
             sscopmce   (128), --                                     [Waber]
             iplt       (129), --                                  [Hollbach]
-            sps        (130), -- Secure Packet Shield             [McIntosh] 
+            sps        (130), -- Secure Packet Shield             [McIntosh]
             pipe       (131), -- Private IP Encapsulation within IP  [Petri]
             sctp       (132), -- Stream Control Transmission Protocol [Stewart]
             fc         (133), -- Fibre Channel                   [Rajagopal]
@@ -401,8 +401,8 @@ etsysMgmdExtMIB MODULE-IDENTITY
             ipProto250 (250), -- Unassigned                           [IANA]
             ipProto251 (251), -- Unassigned                           [IANA]
             ipProto252 (252), -- Unassigned                           [IANA]
-            ipProto253 (253), -- Use for experimentation and testing [RFC3692] 
-            ipProto254 (254), -- Use for experimentation and testing [RFC3692] 
+            ipProto253 (253), -- Use for experimentation and testing [RFC3692]
+            ipProto254 (254), -- Use for experimentation and testing [RFC3692]
             ipProto255 (255)  -- Reserved                             [IANA]
         }
 
@@ -584,7 +584,7 @@ etsysMgmdExtInterfaceApplication OBJECT-TYPE
          "The multicast application this object refers to.
           ipv4(1) refers to IGMP, ipv6(2) refers to MLD."
     ::= {etsysMgmdExtInterfaceEntry 1 }
-     
+
 etsysMgmdExtInterfaceQueryEnableState OBJECT-TYPE
     SYNTAX     EnabledStatus
     MAX-ACCESS read-create
@@ -604,24 +604,24 @@ etsysMgmdExtInterfaceFastLeaveState OBJECT-TYPE
      ::= { etsysMgmdExtInterfaceEntry 3 }
 
 etsysMgmdExtInterfaceClearGroups OBJECT-TYPE
-     SYNTAX    TruthValue 
+     SYNTAX    TruthValue
      MAX-ACCESS read-write
      STATUS     current
      DESCRIPTION
-          "A mechanism to flush the database of IP group members maintained 
-           by the IGMP snooping application on this interface.  Setting the 
+          "A mechanism to flush the database of IP group members maintained
+           by the IGMP snooping application on this interface.  Setting the
            value to true will clear the group members.  Setting the value
            to false will have no effect.  This value will always read false"
      ::= { etsysMgmdExtInterfaceEntry 4 }
 
 etsysMgmdExtRtrAlertRequired OBJECT-TYPE
-     SYNTAX    TruthValue 
+     SYNTAX    TruthValue
      MAX-ACCESS read-write
      STATUS     current
      DESCRIPTION
-          "A mechanism to allow backward compatibility with older 
-           implementations of IGMPv2 that may be present on this interface. 
-           The default setting of this value to true will cause IGMPv2 
+          "A mechanism to allow backward compatibility with older
+           implementations of IGMPv2 that may be present on this interface.
+           The default setting of this value to true will cause IGMPv2
            messages missing the router alert IP option to be discarded.
            Setting this value to false will cause the router alert requirement
            for IGMPv2 messages heard on this interface to be ignored."
@@ -634,7 +634,7 @@ etsysMgmdExtInterfaceFilterId OBJECT-TYPE
      MAX-ACCESS read-write
      STATUS     current
      DESCRIPTION
-           " The IGMP/MLD input filter from etsysMgmdExtInputFilterGroup, to 
+           " The IGMP/MLD input filter from etsysMgmdExtInputFilterGroup, to
             apply to this interface. This will apply the given input filter
             to all input on this interface."
      ::= { etsysMgmdExtInterfaceEntry 6 }
@@ -935,7 +935,7 @@ etsysMgmdExtDiscoveredRouterBridgePortAgeTime OBJECT-TYPE
          "An entry representing the binding of bridge port to multicast group
           IP address, interface, and source IP address."
     INDEX { dot1dBasePort,
-            etsysMgmdExtPortMode,   
+            etsysMgmdExtPortMode,
             etsysMgmdExtPortIPAddressType,
             etsysMgmdExtPortTableGroupIPAddress,
             ifIndex,
@@ -1029,13 +1029,13 @@ etsysMgmdExtPortFastLeaveState OBJECT-TYPE
 
 -- -------------------------------------------------------------
 -- etsysMgmdExtStatsCntrsGroup
--- -------------------------------------------------------------     
+-- -------------------------------------------------------------
 etsysMgmdExtStatsCntrsTable OBJECT-TYPE
     SYNTAX        SEQUENCE OF EtsysMgmdExtStatsCntrsEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION
-         "The (conceptual) table listing counters and statistics seen on the 
+         "The (conceptual) table listing counters and statistics seen on the
           given multicast application."
     ::= { etsysMgmdExtStatsCntrsGroup 1 }
 
@@ -1259,7 +1259,7 @@ etsysMgmdExtStatsCntrsNumCurrentStateRecRcvd OBJECT-TYPE
     STATUS        current
     DESCRIPTION
          " The number of current state records this device
-           has received."    
+           has received."
     ::= { etsysMgmdExtStatsCntrsEntry 20 }
 
 etsysMgmdExtStatsCntrsNumFilterModeChangeRecRcvd OBJECT-TYPE
@@ -1268,7 +1268,7 @@ etsysMgmdExtStatsCntrsNumFilterModeChangeRecRcvd OBJECT-TYPE
     STATUS        current
     DESCRIPTION
          " The number of filter mode change records this device
-           has received."    
+           has received."
     ::= { etsysMgmdExtStatsCntrsEntry 21 }
 
 etsysMgmdExtStatsCntrsNumSrcListChgRecRcvd OBJECT-TYPE
@@ -1277,7 +1277,7 @@ etsysMgmdExtStatsCntrsNumSrcListChgRecRcvd OBJECT-TYPE
     STATUS        current
     DESCRIPTION
          " The number of source list change records this device
-           has received."    
+           has received."
     ::= { etsysMgmdExtStatsCntrsEntry 22 }
 
 etsysMgmdExtStatsCntrsDropsDueToInvalidSrcIP OBJECT-TYPE
@@ -1288,7 +1288,7 @@ etsysMgmdExtStatsCntrsDropsDueToInvalidSrcIP OBJECT-TYPE
          " The number of packets dropped due to receiving
            an invalid src IP in a frame."
     ::= { etsysMgmdExtStatsCntrsEntry 23 }
-  
+
 etsysMgmdExtStatsCntrsDropsDueToBeingDisabled OBJECT-TYPE
     SYNTAX        Counter32
     MAX-ACCESS    read-only
@@ -1349,7 +1349,7 @@ etsysMgmdExtStatsCntrsDropsDueToZeroSipIPQuery OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-         " The number of query packets dropped due to having 
+         " The number of query packets dropped due to having
            a 0.0.0.0 or 0::0 source IP address."
     ::= { etsysMgmdExtStatsCntrsEntry 30 }
 
@@ -1419,7 +1419,7 @@ etsysMgmdExtStatsCntrsDropReportsDueToTooManySrcs OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-         " Number of IGMPv3/MLDv2 reports dropped due to having 
+         " Number of IGMPv3/MLDv2 reports dropped due to having
            greater than 64 source addresses. All sources after 64
            are dropped."
     ::= { etsysMgmdExtStatsCntrsEntry 38 }
@@ -1477,8 +1477,8 @@ etsysMgmdExtProtocolIdentifier OBJECT-TYPE
           Example: If this set has protocols(bits) 1 and 5 set to a
           '1', and the classification is 'multicastData', this will
           force IGMP to treat received frames with IP protocol ids of
-          1 and 5 as 'multicast data', and forward those frames to 
-          IGMP joined clients. Similarly if ids 1 and 5 were set to 
+          1 and 5 as 'multicast data', and forward those frames to
+          IGMP joined clients. Similarly if ids 1 and 5 were set to
           'routing protocol' then IGMP would treat received frames with
           these ids as routing protocols, etc. "
     ::= { etsysMgmdExtProtocolClassificationEntry 2}
@@ -1566,7 +1566,7 @@ etsysMgmdExtInputFilterProtocolAction OBJECT-TYPE
     MAX-ACCESS read-write
     STATUS     current
     DESCRIPTION
-         "The action to perform for any protocol frame with 
+         "The action to perform for any protocol frame with
           destination IP falling in the range of startIP to
           end IP. Refer to the MGMDInputFilterProtocolActionsTc
           textual convention."
@@ -1588,7 +1588,7 @@ etsysMgmdExtInputFilterRuleHitCounter OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS     current
     DESCRIPTION
-         "The counter representing the number of times this 
+         "The counter representing the number of times this
           rule has be hit."
     ::= {etsysMgmdExtInputFilterEntry 8}
 
@@ -1781,7 +1781,7 @@ etsysMgmdExtWriteBaseGroup OBJECT-GROUP
                 etsysMgmdExtPortFastLeaveState,
                 etsysMgmdExtProtocolIdentifier
             }
-    STATUS      deprecated        
+    STATUS      deprecated
     DESCRIPTION
         " The write MGMD data that must be supported."
     ::= { etsysMgmdExtGroups 11 }
@@ -1949,7 +1949,7 @@ etsysMgmdExtWriteBaseGroup2 OBJECT-GROUP
                 etsysMgmdExtInputFilterFlowAction,
                 etsysMgmdExtInputFilterRowStatus
             }
-    STATUS      current        
+    STATUS      current
     DESCRIPTION
         " The write MGMD data that must be supported."
     ::= { etsysMgmdExtGroups 17 }
@@ -1961,7 +1961,7 @@ etsysMgmdExtWriteBaseGroup2 OBJECT-GROUP
 etsysMgmdExtReadCompliance MODULE-COMPLIANCE
     STATUS      deprecated
     DESCRIPTION
-        "The compliance statement for devices that support reads from 
+        "The compliance statement for devices that support reads from
          the etsysMgmdExt MIB."
 
     MODULE
@@ -1972,7 +1972,7 @@ etsysMgmdExtReadCompliance MODULE-COMPLIANCE
 etsysMgmdExtWriteCompliance MODULE-COMPLIANCE
     STATUS      deprecated
     DESCRIPTION
-        "The compliance statement for device that support writes to the 
+        "The compliance statement for device that support writes to the
          etsysMgmdExt MIB."
     MODULE
         MANDATORY-GROUPS { etsysMgmdExtWriteBaseGroup }
@@ -1984,7 +1984,7 @@ etsysMgmdExtReadCompliance2 MODULE-COMPLIANCE
     DESCRIPTION
         "The compliance statement for devices that support reads from
          the etsysMgmdExt MIB."
-    
+
     MODULE
         MANDATORY-GROUPS { etsysMgmdExtReadBaseGroup2 }
 
@@ -2005,9 +2005,9 @@ etsysMgmdExtiBaseCompliance MODULE-COMPLIANCE
     DESCRIPTION
         "The compliance statement for device that support etsysMgmdExt MIB."
     MODULE
-        MANDATORY-GROUPS { 
+        MANDATORY-GROUPS {
             etsysMgmdExtStaticCacheGroups,
-            etsysMgmdExtCacheGroups, 
+            etsysMgmdExtCacheGroups,
             etsysMgmdExtDiscoveredRouterGroups,
             etsysMgmdExtPortGroups,
             etsysMgmdExtPortFastLeaveGroups,

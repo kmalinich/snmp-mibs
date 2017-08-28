@@ -41,7 +41,7 @@ IMPORTS
         FROM SNMPv2-TC
     EnabledStatus
         FROM P-BRIDGE-MIB
-    Dot1agCfmLowestAlarmPri, dot1agCfmMepEntry, dot1agCfmMdIndex, 
+    Dot1agCfmLowestAlarmPri, dot1agCfmMepEntry, dot1agCfmMdIndex,
     dot1agCfmMaIndex, Dot1agCfmFngState, Dot1agCfmHighestDefectPri,
     Dot1agCfmMepDefects, Dot1agCfmMDLevel, Dot1agCfmMpDirection
         FROM IEEE8021-CFM-MIB
@@ -399,7 +399,7 @@ etsysIeee8021CfmExtMepRxCcmCount OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of CFM Continuity Check PDUs 
+        "The total number of CFM Continuity Check PDUs
          received since the last reboot.
 
          This value should not be maintained across reboot."
@@ -410,8 +410,8 @@ etsysIeee8021CfmExtMepRxCcmErrCount OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of CFM Continuity Check PDUs 
-         that triggered a Remote MEP Error received since 
+        "The total number of CFM Continuity Check PDUs
+         that triggered a Remote MEP Error received since
          the last reboot.
 
          This value should not be maintained across reboot."
@@ -422,8 +422,8 @@ etsysIeee8021CfmExtMepRxCcmXconCount OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of CFM Continuity Check PDUs 
-         that triggered a MEP Cross Connect defect received 
+        "The total number of CFM Continuity Check PDUs
+         that triggered a MEP Cross Connect defect received
          since the last reboot.
 
          This value should not be maintained across reboot."
@@ -434,7 +434,7 @@ etsysIeee8021CfmExtMepTxCcmCount OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of CFM Continuity Check PDUs 
+        "The total number of CFM Continuity Check PDUs
          transmitted since the last reboot.
 
          This value should not be maintained across reboot."
@@ -445,8 +445,8 @@ etsysIeee8021CfmExtMepTxCcmErrCount OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of outbound CFM Continuity Check 
-         PDUs that could not be transmitted because of errors 
+        "The total number of outbound CFM Continuity Check
+         PDUs that could not be transmitted because of errors
          since the last reboot.
 
          This value should not be maintained across reboot."
@@ -559,7 +559,7 @@ etsysIeee8021CfmMipCcmDbTable OBJECT-TYPE
     STATUS      current
     DESCRIPTION
        "The MIP CCM Database. A database, maintained by every
-        MEP and MHF, that maintains Continuity Check information  
+        MEP and MHF, that maintains Continuity Check information
         about other MEPs in the Maintenance Domain.
        "
     REFERENCE
@@ -611,7 +611,7 @@ etsysIeee8021CfmMipCcmDbMpIdentifier OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-       "Identifier of a MP whose information from the MIP 
+       "Identifier of a MP whose information from the MIP
         CCM Database is to be returned.
        "
     ::= { etsysIeee8021CfmMipCcmDbEntry 1 }
@@ -702,7 +702,7 @@ etsysIeee8021CfmMipCcmDbPrimarySelectorType OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-       "Type of the Primary Service Selector identifier indicated by 
+       "Type of the Primary Service Selector identifier indicated by
         etsysIeee8021CfmMipCcmDbPrimarySelector. See textual
         convention IEEE8021ServiceSelectorType for details.
        "

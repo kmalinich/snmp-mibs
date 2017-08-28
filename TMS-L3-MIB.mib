@@ -4,20 +4,20 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 ------------------------------------------------------------------------------
 --
 --  File         : tmsL3Mib.mi2
---  Description  : Sample TMS Layer 3 Enterprise MIB - Hardware Independent 
+--  Description  : Sample TMS Layer 3 Enterprise MIB - Hardware Independent
 --  Version      : 0.14
---  Date         : April 12, 2001     
+--  Date         : April 12, 2001
 --
 --  Copyright (c) 2000-2001 Wind River Systems, Inc.  All Rights Reserved.
 --
 --  Reproduction of this document is authorized on condition that this
 --  copyright notice is included.  This sample TMS Layer 3 Enterprise MIB
---  embodies proprietary intellectual property of Wind River Systems (WRS). 
+--  embodies proprietary intellectual property of Wind River Systems (WRS).
 --  WRS retains all title and ownership in the specification, including any
 --  revisions.
 --
 --  It is the intent of WRS to encourage the widespread use of this
---  specification in connection with the management of TMS-based products.  
+--  specification in connection with the management of TMS-based products.
 --  WRS grants vendors, end-users, and other interested parties a
 --  non-exclusive license to use this specification in connection with the
 --  management of TMS products.
@@ -41,11 +41,11 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 --
 --  The following groups are supported in the WRS TMS L3 Enterprise MIB:
 --   - tmsL3Mib             TMS Generic Layer 3 Routing MIB:
---      - tmsL3IpMisc       Configure and retrieve global L3 objects   
---      - tmsL3IpSubnet     Configure and retrieve IP subnet objects   
---      - tmsL3IpStatic     Configure and retrieve IP static routes   
---      - tmsL3IpDynamic    Configure and retrieve IP dynamic routes   
---      - tmsL3IpRoute      Configure and retrieve IP routing info   
+--      - tmsL3IpMisc       Configure and retrieve global L3 objects
+--      - tmsL3IpSubnet     Configure and retrieve IP subnet objects
+--      - tmsL3IpStatic     Configure and retrieve IP static routes
+--      - tmsL3IpDynamic    Configure and retrieve IP dynamic routes
+--      - tmsL3IpRoute      Configure and retrieve IP routing info
 --
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -55,13 +55,13 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         Counter32, Gauge32,
         Unsigned32, Integer32,
         IpAddress                               FROM SNMPv2-SMI
-        
-        RowStatus, TruthValue, 
+
+        RowStatus, TruthValue,
         DisplayString, MacAddress               FROM SNMPv2-TC
-        
+
         MODULE-COMPLIANCE, OBJECT-GROUP         FROM SNMPv2-CONF
-        
-        tmsGeneric                              FROM WRS-MASTER-MIB;       
+
+        tmsGeneric                              FROM WRS-MASTER-MIB;
 
     tmsL3Mib MODULE-IDENTITY
         LAST-UPDATED    "200104120000Z"  -- April 12, 2001
@@ -133,8 +133,8 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              Note that static routing is still functional even when this
              object is set to none(1)."
         ::= { tmsL3IpMisc 2 }
-        
-        
+
+
     tmsL3IpMiscOspfv2Config OBJECT-TYPE
         SYNTAX OCTET STRING (SIZE (0..4096))
         MAX-ACCESS read-only
@@ -143,13 +143,13 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              "This object is used for retrieving the RFC1850
               Open Shortest Path First version 2 (OSPFv2) nonvolatile
               (NVM) configuration data in an ASCII character string format."
-             
+
         REFERENCE
               "RFC1583 OSPFv2,
-               RFC1850 OSPFv2 MIB, 
+               RFC1850 OSPFv2 MIB,
                WindNet OSPFv2 1.1 Release Notes,
-               WindNet OSPFv2 1.1 User's Guide, Section 6 Configuration" 
-        ::= { tmsL3IpMisc 3 }        
+               WindNet OSPFv2 1.1 User's Guide, Section 6 Configuration"
+        ::= { tmsL3IpMisc 3 }
 
 
 ------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              VLAN ID (VID) from 1 to 4094 or 0 if the VID is unassigned.
              For a L3 only switch, this object contains the actual switch
              interface from 1 to 4094 or 0 if unassigned.
-             
+
              Changing this object for this row causes all rows with the same
              'tmsL3IpSubnetIfIndex' as this row to be changed to this new
              'tmsL3IpSubnetVidIface' value."
@@ -294,7 +294,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              (i.e., createAndGo(4) is not supported).  This object can only
              be set to active(1) after all objects for this row are valid.
              The 'tmsL3IpSubnetName' is optional.
-             
+
              Note that the notInService(2) state is not supported.  Objects
              in this table row can be changed when this object is notReady(3)
              or active(1)."
@@ -311,7 +311,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 --      architecture.  It indicates how many Host IDs and Subnet IDs that
 --      the hardware can directly support, if any.  In general, hardware
 --      entries route much faster than software entries.
---      
+--
 --      The user can choose to reserve zero, some, or all of the available
 --      hardware entries for use as static routes.  The remaining entries,
 --      if any, are reserved for dynamic routes (e.g., RIP, OSPF, etc.).
@@ -331,9 +331,9 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
             "The maximum number, if any, of hosts that the hardware
              can support in its routing table.
-             
+
              Note that if the hardware supports both hosts and subnets
-             in the same table, this number represents both and 
+             in the same table, this number represents both and
              'tmsL3IpStaticMaxHwSubnets' is zero (0)."
         ::= { tmsL3IpStatic 1 }
 
@@ -347,7 +347,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              would like to reserve for static routes.  A SNMPv1 badValue
              or SNMPv2 wrongValue is returned if the user attempts to use
              a value less than zero or greater than 'tmsL3IpStaticMaxHwHosts'.
-             
+
              WARNING: This value is only used during system initialization
              (i.e., after a reset)."
         ::= { tmsL3IpStatic 2 }
@@ -374,7 +374,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              would like to reserve for static routes.  An A SNMPv1 badValue
              or SNMPv2 wrongValue is returned if the user attempts to use a
              value less than zero or greater than 'tmsL3IpStaticMaxHwSubnets'.
-             
+
              WARNING: This value is only used during system initialization
              (i.e., after a reset)."
         ::= { tmsL3IpStatic 4 }
@@ -384,7 +384,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "The maximum possible number of rows in the 
+            "The maximum possible number of rows in the
              'tmsL3IpStaticRouteTable'."
         ::= { tmsL3IpStatic 5 }
 
@@ -444,7 +444,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              bit positions for the net and subnet IDs and 0's in the
              bit positions for host ID.  The 1's must be contiguous,
              starting with the left most bit.
-             
+
              Note that a host route uses a 255.255.255.255 mask."
         ::= { tmsL3IpStaticRouteEntry 2 }
 
@@ -523,7 +523,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              (i.e., createAndGo(4) is not supported).  This object can only
              be set to active(1) after all objects for this row are valid.
              The 'tmsL3IpStaticName' is optional.
-             
+
              Note that the notInService(2) state is not supported.  Objects
              in this table row can be changed when this object is notReady(3)
              or active(1)."
@@ -541,7 +541,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 --       - TCP/IP stack creating host routes for existing subnets
 --
 --      It is independent of the underlying switch hardware and architecture.
---      
+--
 --      This table allows the user to add, modify, and delete "dynamic"
 --      routes, but none of these dynamic routes are saved in NVM.  Use the
 --      'tmsL3IpStaticRouteTable' to set up static routes that can be saved
@@ -550,7 +550,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 --      When a subnet is removed from the 'tmsL3IpSubnetTable', the associated
 --      dynamic route entry, and any other entries resulting from that subnet,
 --      are automatically removed from this table.
---      
+--
 --      Note that the default route entry (0.0.0.0) cannot be placed in this
 --      table.  If the default route was ever placed into the hardware route
 --      table, unknown routes would never be sent to the CPU (i.e., this would
@@ -615,7 +615,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              bit positions for the net and subnet IDs and 0's in the
              bit positions for host ID.  The 1's must be contiguous,
              starting with the left most bit.
-             
+
              Note that a host route uses a 255.255.255.255 mask."
         ::= { tmsL3IpDynamicRouteEntry 2 }
 
@@ -690,7 +690,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              (i.e., createAndGo(4) is not supported).  This object can only
              be set to active(1) after all objects for this row are valid.
              The 'tmsL3IpDynamicName' is optional.
-             
+
              Note that the notInService(2) state is not supported.  Objects
              in this table row can be changed when this object is notReady(3)
              or active(1)."
@@ -700,7 +700,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
 ------------------------------------------------------------------------------
 --
 --  tmsL3IpRoute:
---      The MIB II Routing Table (ipRouteTable) does not include the 
+--      The MIB II Routing Table (ipRouteTable) does not include the
 --      information required to support the UNIX style "netstat -nr" command.
 --      This group replicates some of the ipRouteTable objects and adds
 --      additional objects to support the "netstat -nr" functionality.
@@ -733,7 +733,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
             "The number of hardware host routing table entries currently
              in use.  If the hardware does not have routing table support,
              this value is zero (0).
-             
+
              If the hardware supports both hosts and subnets
              in the same table, this number represents both and
              'tmsL3IpRouteCurrentHwSubnets' is zero (0)."
@@ -821,7 +821,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
             0.0.0.0.  It should be noted that all IP routing
             subsystems implicitly use this mechanism."
         ::= { tmsL3IpRouteEntry 2 }
-        
+
     tmsL3IpRouteNextHopIp OBJECT-TYPE
         SYNTAX  IpAddress
         MAX-ACCESS  read-create
@@ -862,7 +862,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
             other(1),       -- none of the following
             invalid(2),     -- an invalidated route
             direct(3),      -- route to directly connected (sub-)network
-            indirect(4)     -- route to a non-local 
+            indirect(4)     -- route to a non-local
                             -- host/network/sub-network
                 }
         MAX-ACCESS  read-create
@@ -961,7 +961,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
             "This object is true(1) if this route is defined in the
             'tmsL3IpStaticRouteTable'.  This object is false(2) if this
             route was created dynamically (e.g., with RIP, OSPF) or was
-            manually created using this table ('tmsL3IpRouteTable') or 
+            manually created using this table ('tmsL3IpRouteTable') or
             the RFC1213 'ipRouteTable'."
         ::= { tmsL3IpRouteEntry 11 }
 
@@ -971,10 +971,10 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         STATUS  current
         DESCRIPTION
             "Not implemented.  Returns '0'.
-             
+
              Contains the information required for a netstat-like
              'Flags' field.
-             
+
              The flags field represents a decimal value of the flags
              specified for a given route.  The following is a list of
              currently available flag values:
@@ -1006,7 +1006,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         STATUS  current
         DESCRIPTION
             "Not implemented.  Returns '0'.
-            
+
              Contains the information required for the netstat 'Ref'
              field, which indicates the number active uses for this
              route."
@@ -1018,7 +1018,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         STATUS  current
         DESCRIPTION
             "Not implemented.  Returns '0'.
-            
+
              Contains the information required for the netstat 'Use'
              field, which indicates the number of packets sent with
              this route."
@@ -1036,7 +1036,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
              value after the 'tmsL3IpRouteMask' and 'tmsL3IpRouteNextHop'
              objects for this row are valid.  Setting 'tmsL3IpRouteType' is
              optional.
-             
+
              Note that the notInService(2) state is not supported.  Objects
              in this table row can be changed when this object is notReady(3)
              or active(1)."
@@ -1062,7 +1062,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
            "This group configures and retrieves global, miscellaneous
             L3 objects."
         ::= { tmsL3MibGroups 1 }
-    
+
     tmsL3IpSubnetGroup  OBJECT-GROUP
         OBJECTS {
             tmsL3IpSubnetMaxRows,
@@ -1076,7 +1076,7 @@ TMS-L3-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
            "This group configures and retrieves IP subnet objects."
         ::= { tmsL3MibGroups 2 }
-    
+
     tmsL3IpStaticGroup  OBJECT-GROUP
         OBJECTS {
             tmsL3IpStaticMaxHwHosts,

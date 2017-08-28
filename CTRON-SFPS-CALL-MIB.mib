@@ -3,7 +3,7 @@ CTRON-SFPS-CALL-MIB DEFINITIONS ::= BEGIN
 --  sfps-call-mib.txt
 --  Revision: 0.0.16
 --
---  Part Number: 
+--  Part Number:
 --  Date: August 9, 1994
 
 
@@ -37,21 +37,21 @@ CTRON-SFPS-CALL-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
       TimeTicks
                 FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.2
         sfpsSap, sfpsSapAPI, sfpsCallByTuple, sfpsCallTableStats
-        
+
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
@@ -64,7 +64,7 @@ HexInteger ::= INTEGER
 --  SFPS Switch Agent Redirector Group
 --  This group contains the objects that pertain to the SFPS Redirector.
 --  This object receives redirected packets from the switch engine and
---  forwards them to the appropriate call processor stack. 
+--  forwards them to the appropriate call processor stack.
 
 
 
@@ -118,7 +118,7 @@ sfpsSapTableHash        OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A hash of the sfpsSapTableAddress used to identify the 
+                "A hash of the sfpsSapTableAddress used to identify the
                 instance."
         ::= { sfpsSapTableEntry 2 }
 
@@ -235,7 +235,7 @@ sfpsSapTableNVStatus   OBJECT-TYPE
         ::= { sfpsSapTableEntry 14 }
 
 
--- SAP Table API                                                             
+-- SAP Table API
 
 sfpsSapAPIVerb   OBJECT-TYPE
         SYNTAX  INTEGER {
@@ -271,14 +271,14 @@ sfpsSapAPIVerb   OBJECT-TYPE
                 6 - enable -- Enable the Current SAP Entry.
                 This does not effect the Status of this Entry in Nvram.
                 7 - enableInNvram -- Set the Current SAP Entries status to
-                Enabled in Nvram - This does not effect the Current Admin 
+                Enabled in Nvram - This does not effect the Current Admin
                 Status for this SAP Entry.
-                8 - clearFromNvram -- Clear the Current SAP Entry from Nvram 
+                8 - clearFromNvram -- Clear the Current SAP Entry from Nvram
                 (if set).
                 9 - clearAllNvram -- Clear all SAP Entries from Nvram.
                 10 - resetStats -- Resets the Accepted/Dropped Stats for the
                 Current/Entered SAP Entry.
-                11 - resetAllStats -- Resets the Accepted/Dropped Stats for 
+                11 - resetAllStats -- Resets the Accepted/Dropped Stats for
                 all SAP Entries."
         ::= { sfpsSapAPI 1 }
 
@@ -318,7 +318,7 @@ sfpsSapAPINVStatus   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Displays the Current Admin Status of this SAP Entry saved 
+                "Displays the Current Admin Status of this SAP Entry saved
                 in Nvram."
         ::= { sfpsSapAPI 5 }
 
@@ -359,7 +359,7 @@ sfpsSapAPINVTotal   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Total number of entries allocated in NVRAM. The 
+                "Total number of entries allocated in NVRAM. The
                 switch will always allocate enough space in NVRAM for
                 the number of elements. That is, NvTotal will always be
                 greater than or equal to NvSet."
@@ -401,7 +401,7 @@ sfpsSapAPIDefaultStatus   OBJECT-TYPE
 --  SFPS Agent Call Processor Groups
 
 --  SFPS Call by Tuple  Group
---  This group contains the objects that pertain to call tag. 
+--  This group contains the objects that pertain to call tag.
 --  This group should eventually replace the Call tag table
 
 sfpsCallByTupleTable    OBJECT-TYPE
@@ -409,8 +409,8 @@ sfpsCallByTupleTable    OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "This table contains the call tags, and call states 
-                indexed (indirectly) by switch tuple (in port, src 
+                "This table contains the call tags, and call states
+                indexed (indirectly) by switch tuple (in port, src
                 address, dst address)"
         ::= { sfpsCallByTuple 1 }
 
@@ -450,7 +450,7 @@ sfpsCallByTupleInPort   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Port of the switch on which the packet associated with 
+                "Port of the switch on which the packet associated with
                 this call tag was seen."
         ::= { sfpsCallByTupleEntry 1 }
 
@@ -459,7 +459,7 @@ sfpsCallByTupleSrcHash  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A hash of sfpsCallByTupleBotSrcAddress used to identify the 
+                "A hash of sfpsCallByTupleBotSrcAddress used to identify the
                 instance."
         ::= { sfpsCallByTupleEntry 2 }
 
@@ -468,7 +468,7 @@ sfpsCallByTupleDstHash  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A hash of sfpsCallByTupleTopDstAddress used to identify the 
+                "A hash of sfpsCallByTupleTopDstAddress used to identify the
                 instance."
         ::= { sfpsCallByTupleEntry 3 }
 
@@ -477,7 +477,7 @@ sfpsCallByTupleHashIndex        OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A count of non-unique sfpsCallByTupleSrcHash and 
+                "A count of non-unique sfpsCallByTupleSrcHash and
                 sfpsCallByTupleDstHash pairs used to identify the instance."
         ::= { sfpsCallByTupleEntry 4 }
 
@@ -486,7 +486,7 @@ sfpsCallByTupleBotSrcType OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The source address type of the lowest known protocol 
+                "The source address type of the lowest known protocol
                 layer."
         ::= { sfpsCallByTupleEntry 5 }
 
@@ -495,7 +495,7 @@ sfpsCallByTupleBotSrcAddress    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The source address value of the lowest known protocol 
+                "The source address value of the lowest known protocol
                 layer."
         ::= { sfpsCallByTupleEntry 6 }
 
@@ -504,7 +504,7 @@ sfpsCallByTupleBotDstType OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The destination address type of the lowest known 
+                "The destination address type of the lowest known
                 protocol layer."
         ::= { sfpsCallByTupleEntry 7 }
 
@@ -513,7 +513,7 @@ sfpsCallByTupleBotDstAddress    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The destination address value of the lowest known 
+                "The destination address value of the lowest known
                 protocol layer."
         ::= { sfpsCallByTupleEntry 8 }
 
@@ -522,7 +522,7 @@ sfpsCallByTupleTopSrcType OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The source address type of the highest learned protocol 
+                "The source address type of the highest learned protocol
                 layer."
         ::= { sfpsCallByTupleEntry 9 }
 
@@ -531,7 +531,7 @@ sfpsCallByTupleTopSrcAddress    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The source address value of the highest learned protocol 
+                "The source address value of the highest learned protocol
                 layer."
         ::= { sfpsCallByTupleEntry 10 }
 
@@ -540,7 +540,7 @@ sfpsCallByTupleTopDstType OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The destination address type of the highest learned 
+                "The destination address type of the highest learned
                 protocol layer."
         ::= { sfpsCallByTupleEntry 11 }
 
@@ -549,7 +549,7 @@ sfpsCallByTupleTopDstAddress    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The destination address value of the highest learned 
+                "The destination address value of the highest learned
                 protocol layer."
         ::= { sfpsCallByTupleEntry 12 }
 
@@ -558,7 +558,7 @@ sfpsCallByTupleCallProcName     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The name of the call processor responsible for all 
+                "The name of the call processor responsible for all
                 signaling for this packet/call tag."
         ::= { sfpsCallByTupleEntry 13 }
 
@@ -567,7 +567,7 @@ sfpsCallByTupleCallTag  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The number used to reference this packet and its 
+                "The number used to reference this packet and its
                 associated calls."
         ::= { sfpsCallByTupleEntry 14 }
 
@@ -593,7 +593,7 @@ sfpsCallTableStatsRam   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of bytes used by the Call Table."
         ::= { sfpsCallTableStats 1 }
 
@@ -601,7 +601,7 @@ sfpsCallTableStatsSize  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of entries in the Call Table."
         ::= { sfpsCallTableStats 2 }
 
@@ -609,7 +609,7 @@ sfpsCallTableStatsInUse OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The current number of calls in use. A call goes into this
                 table only if it is being blocked (waiting for resolve or
                 sent new user)."
@@ -619,7 +619,7 @@ sfpsCallTableStatsMax   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The maximum number of calls that the switch maintained."
         ::= { sfpsCallTableStats 4 }
 
@@ -627,7 +627,7 @@ sfpsCallTableStatsTotMisses     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The number of times that there were no calls available
                  in the Call Table. This would be the number of calls that
                  had to be dropped."
@@ -637,7 +637,7 @@ sfpsCallTableStatsMissStart     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Time when last miss occurred"
         ::= { sfpsCallTableStats 7 }
 
@@ -645,7 +645,7 @@ sfpsCallTableStatsMissStop      OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Time when missing stopped"
         ::= { sfpsCallTableStats 8 }
 
@@ -653,7 +653,7 @@ sfpsCallTableStatsLastMiss      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of calls dropped in last miss,  also write 0 to files"
         ::= { sfpsCallTableStats 9 }
 

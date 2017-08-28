@@ -33,14 +33,14 @@ CTRON-SFPS-PKTMGR-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
 --      DisplayString
 --              FROM RFC1213-MIB
---      enterprises, 
---      IpAddress, 
+--      enterprises,
+--      IpAddress,
 --      Counter, TimeTicks, Gauge
 --              FROM RFC1155-SMI
 
@@ -48,7 +48,7 @@ IMPORTS
         sfpsSwitchSfpsPacket, sfpsCSPPacket, sfpsPktDispatchStats
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
- 
+
 --  Textual Conventions
 
 SfpsSwitchInstance ::= INTEGER
@@ -154,7 +154,7 @@ sfpsPacketMgrNotFound           OBJECT-TYPE
         DESCRIPTION
                 "The number of times a packet was requested and the
                  packetmanager did not have a packet of its size or
-                 larger" 
+                 larger"
         ::= { sfpsPacketMgrEntry 8 }
 
 sfpsPacketMgrTooLarge           OBJECT-TYPE
@@ -162,7 +162,7 @@ sfpsPacketMgrTooLarge           OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPacketMgrEntry 9 }
 
 sfpsPacketMgrToCreate           OBJECT-TYPE
@@ -170,7 +170,7 @@ sfpsPacketMgrToCreate           OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Changes the number of packets in the PacketManager" 
+                "Changes the number of packets in the PacketManager"
         ::= { sfpsPacketMgrEntry 10 }
 
 sfpsPacketMgrReInit             OBJECT-TYPE
@@ -182,7 +182,7 @@ sfpsPacketMgrReInit             OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The lowest number of packets ever in the
-                packetmanager" 
+                packetmanager"
         ::= { sfpsPacketMgrEntry 11 }
 --
 --
@@ -207,7 +207,7 @@ sfpsPacketListEntry    OBJECT-TYPE
         ::= { sfpsPacketListTable 1 }
 
 SfpsPacketListEntry ::=
-        SEQUENCE 
+        SEQUENCE
         {
         sfpsPacketListPacketType    HexInteger,
         sfpsPacketListSize                      INTEGER,
@@ -278,7 +278,7 @@ sfpsPacketListLowWater          OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The lowest number of packets ever in the
-                packetmanager" 
+                packetmanager"
         ::= { sfpsPacketListEntry 7 }
 
 sfpsPacketListNotFound          OBJECT-TYPE
@@ -288,7 +288,7 @@ sfpsPacketListNotFound          OBJECT-TYPE
         DESCRIPTION
                 "The number of times a packet was requested and the
                  packetmanager did not have a packet of its size or
-                 larger" 
+                 larger"
         ::= { sfpsPacketListEntry 8 }
 
 sfpsPacketListStatus            OBJECT-TYPE
@@ -327,7 +327,7 @@ sfpsPacketSizeEntry    OBJECT-TYPE
         ::= { sfpsPacketSizeTable 1 }
 
 SfpsPacketSizeEntry ::=
-        SEQUENCE 
+        SEQUENCE
         {
         sfpsPacketSizeSwitchInstance    SfpsSwitchInstance,
         sfpsPacketSizeSize                  INTEGER,
@@ -367,8 +367,8 @@ sfpsPacketSizeNotFound          OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The number of times a packet was requested and the
-                 packetmanager did not have a packet of its size or 
-                 Larger"                 
+                 packetmanager did not have a packet of its size or
+                 Larger"
         ::= { sfpsPacketSizeEntry 4 }
 
 --
@@ -391,14 +391,14 @@ sfpsPacketQEntry    OBJECT-TYPE
         ::= { sfpsPacketQTable 1 }
 
 SfpsPacketQEntry ::=
-        SEQUENCE 
+        SEQUENCE
         {
         sfpsPacketQPriorityQ            INTEGER,
                 sfpsPacketQTotalPackets INTEGER,
                 sfpsPacketQCurrent      INTEGER,
                 sfpsPacketQHighWater    INTEGER
         }
-        
+
 sfpsPacketQPriorityQ            OBJECT-TYPE
         SYNTAX  INTEGER {
                   low(1),
@@ -408,35 +408,35 @@ sfpsPacketQPriorityQ            OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPacketQEntry 1 }
- 
+
 
 sfpsPacketQTotalPackets         OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPacketQEntry 2 }
- 
+
 
 sfpsPacketQCurrent              OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPacketQEntry 3 }
- 
+
 sfpsPacketQHighWater            OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPacketQEntry 4 }
- 
+
 --  CSP Packet Statistics
 
 sfpsCSPPacketStatsPacketsSentBad                OBJECT-TYPE
@@ -444,31 +444,31 @@ sfpsCSPPacketStatsPacketsSentBad                OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsCSPPacket 1 }
- 
+
 sfpsCSPPacketStatsPacketsSentGood               OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsCSPPacket 2 }
- 
+
 sfpsCSPPacketStatsPacketsReceivedBad    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsCSPPacket 3 }
- 
+
 sfpsCSPPacketStatsPacketsReceivedGood   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsCSPPacket 4 }
 
 -- SFPS Packet Dispatch Statistics keeps track of all packets dropped
@@ -481,7 +481,7 @@ sfpsPktDispatchStatsVerb        OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 1 }
 
 
@@ -490,7 +490,7 @@ numHPMInvalidFrameTypeDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 2 }
 
 numHPMFilterMgtPortDrops                OBJECT-TYPE
@@ -498,7 +498,7 @@ numHPMFilterMgtPortDrops                OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 3 }
 
 numHPMPhysToLogPortDrops                OBJECT-TYPE
@@ -506,7 +506,7 @@ numHPMPhysToLogPortDrops                OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 4 }
 
 numHPMNullSFPSPktDrops          OBJECT-TYPE
@@ -514,7 +514,7 @@ numHPMNullSFPSPktDrops          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 5 }
 
 numHPM81fdThrottleDrops         OBJECT-TYPE
@@ -522,7 +522,7 @@ numHPM81fdThrottleDrops         OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 6 }
 
 numHPM81ffThrottleDrops         OBJECT-TYPE
@@ -530,7 +530,7 @@ numHPM81ffThrottleDrops         OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 7 }
 
 numHPMPhysStandbyMaskDrops              OBJECT-TYPE
@@ -538,7 +538,7 @@ numHPMPhysStandbyMaskDrops              OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 8 }
 
 numBSInvSrcPortDrops            OBJECT-TYPE
@@ -546,7 +546,7 @@ numBSInvSrcPortDrops            OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 9 }
 
 numBSSourceBlockDrops           OBJECT-TYPE
@@ -554,7 +554,7 @@ numBSSourceBlockDrops           OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 10 }
 
 numBSViolationDrops             OBJECT-TYPE
@@ -562,7 +562,7 @@ numBSViolationDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 11 }
 
 numBSUnknownPortDrops           OBJECT-TYPE
@@ -570,7 +570,7 @@ numBSUnknownPortDrops           OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 12 }
 
 numBSStandbyPortDrops           OBJECT-TYPE
@@ -578,7 +578,7 @@ numBSStandbyPortDrops           OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 13 }
 
 numBSFabricNghbrPortDrops               OBJECT-TYPE
@@ -586,7 +586,7 @@ numBSFabricNghbrPortDrops               OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 14 }
 
 numBSGoingToAccessPortDrops             OBJECT-TYPE
@@ -594,7 +594,7 @@ numBSGoingToAccessPortDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 15 }
 
 numBSInvPortTypeDrops           OBJECT-TYPE
@@ -602,7 +602,7 @@ numBSInvPortTypeDrops           OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 16 }
 
 numBSNullCallDrops              OBJECT-TYPE
@@ -610,7 +610,7 @@ numBSNullCallDrops              OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 17 }
 
 numBSNullBottomCPDrops          OBJECT-TYPE
@@ -618,7 +618,7 @@ numBSNullBottomCPDrops          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 18 }
 
 numBSInvCSPTypeDrops            OBJECT-TYPE
@@ -626,7 +626,7 @@ numBSInvCSPTypeDrops            OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 19 }
 
 numBSNonHello81fdDrops          OBJECT-TYPE
@@ -634,7 +634,7 @@ numBSNonHello81fdDrops          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 20 }
 
 numBSCSPCtrlDisableDrops                OBJECT-TYPE
@@ -642,7 +642,7 @@ numBSCSPCtrlDisableDrops                OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 21 }
 
 numBSCSPCtrlIndexDrops          OBJECT-TYPE
@@ -650,7 +650,7 @@ numBSCSPCtrlIndexDrops          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 22 }
 
 numBCPNullCallDrops             OBJECT-TYPE
@@ -658,7 +658,7 @@ numBCPNullCallDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 23 }
 
 numBCPCPFaultedDrops            OBJECT-TYPE
@@ -666,7 +666,7 @@ numBCPCPFaultedDrops            OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 24 }
 
 numBCPGleanFailDrops            OBJECT-TYPE
@@ -674,7 +674,7 @@ numBCPGleanFailDrops            OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 25 }
 
 numBCPCPHaltedDrops             OBJECT-TYPE
@@ -682,7 +682,7 @@ numBCPCPHaltedDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 26 }
 
 numBCPSwitchedBCADrops          OBJECT-TYPE
@@ -690,7 +690,7 @@ numBCPSwitchedBCADrops          OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 27 }
 
 numBCPCallNotAcceptedDrops              OBJECT-TYPE
@@ -698,16 +698,16 @@ numBCPCallNotAcceptedDrops              OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 28 }
 
- 
+
 numHPM81fdNullPktDrops          OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 29 }
 
 numHPM81fdHelloNullPktDrops             OBJECT-TYPE
@@ -715,7 +715,7 @@ numHPM81fdHelloNullPktDrops             OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                ""               
+                ""
         ::= { sfpsPktDispatchStats 30 }
 
 END

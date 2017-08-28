@@ -27,7 +27,7 @@ CTRON-SSR-SERVICE-STATUS-MIB DEFINITIONS ::= BEGIN
 IMPORTS
        MODULE-IDENTITY, OBJECT-TYPE
        FROM SNMPv2-SMI
-       TEXTUAL-CONVENTION        
+       TEXTUAL-CONVENTION
        FROM SNMPv2-TC
        MODULE-COMPLIANCE, OBJECT-GROUP
        FROM SNMPv2-CONF
@@ -45,7 +45,7 @@ serviceStatusMIB MODULE-IDENTITY
      (603) 332-9400
      support@enterasys.com
      http://www.enterasys.com"
- 
+
    DESCRIPTION
      "This module describes a schema for accessing the
       Smart Switch Router subsystems."
@@ -71,7 +71,7 @@ serviceStatusMIB MODULE-IDENTITY
        DISPLAY-HINT "d"
        STATUS       current
        DESCRIPTION
-       "The current state of the service: started indicates 
+       "The current state of the service: started indicates
         the service is configured and running. Stopped indicates
         the service is administratively down. notWorking indicates
         the service has failed."
@@ -170,11 +170,11 @@ serviceStatusMIB MODULE-IDENTITY
        ::= { serviceStatusGroup 11 }
 
 -- ### Compliance ###
- 
+
 ssConformance OBJECT IDENTIFIER ::= { serviceStatusMIB 2 }
 ssCompliances OBJECT IDENTIFIER ::= { ssConformance 1 }
 ssGroups OBJECT IDENTIFIER ::= { ssConformance 2 }
- 
+
 ssComplianceV10 MODULE-COMPLIANCE
     STATUS obsolete
     DESCRIPTION
@@ -207,7 +207,7 @@ STATUS obsolete
 DESCRIPTION
   "A set of managed objects that make up version 1.0 of the SSR Service Status mib."
    ::= { ssGroups 1 }
- 
+
 ssConfGroupV11  OBJECT-GROUP
    OBJECTS {
         serviceStatusRip,
@@ -220,7 +220,7 @@ ssConfGroupV11  OBJECT-GROUP
         serviceStatusIpxRip,
         serviceStatusIpxSap,
         serviceStatusLfap,
-        serviceStatusRmon  
+        serviceStatusRmon
 }
 STATUS current
 DESCRIPTION

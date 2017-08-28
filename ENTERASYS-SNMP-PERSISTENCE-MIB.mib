@@ -169,9 +169,9 @@ etsysSnmpPersistenceStatus OBJECT-TYPE
                           saved to persistent storage.
 
          savingChanges  - The value returned during the process of
-                          writing the current configuration to 
+                          writing the current configuration to
                           persistent storage.
-               
+
          saveSucceeded  - The value returned after the process of
                           writing the current configuration to
                           persistent storage has succeeded.

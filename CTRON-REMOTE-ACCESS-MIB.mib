@@ -1,9 +1,9 @@
 CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
 --  ctron-remote-access-mib.txt  The Cabletron Remote Access MIB.
---  Revision: 1.00.04 
---  Part Number: 
---  Date:  November 24, 1998 
+--  Revision: 1.00.04
+--  Part Number:
+--  Date:  November 24, 1998
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
@@ -19,16 +19,16 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --  of this naming tree are defined.
 --
 
---  Cabletron Systems reserves the right to make changes in 
---  specification and other information contained in this document 
+--  Cabletron Systems reserves the right to make changes in
+--  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
 --  to determine whether any such changes have been made.
 --
---  In no event shall Cabletron Systems be liable for any incidental, 
---  indirect, special, or consequential damages whatsoever (including 
+--  In no event shall Cabletron Systems be liable for any incidental,
+--  indirect, special, or consequential damages whatsoever (including
 --  but not limited to lost profits) arising out of or related to this
 --  document or the information contained in it, even if Cabletron
---  Systems has been advised of, known, or should have known, the 
+--  Systems has been advised of, known, or should have known, the
 --  possibility of such damages.
 --
 --  Cabletron grants vendors, end-users, and other interested parties
@@ -87,7 +87,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
         ctPPPExt                OBJECT IDENTIFIER ::= { ctRemoteAccess 6 }
 --                      1.3.6.1.4.1.52.4.1.2.7.2.6
-    
+
         ctWanalyzer             OBJECT IDENTIFIER ::= { ctRemoteAccess 7 }
 --                      1.3.6.1.4.1.52.4.1.2.7.2.7
 
@@ -96,7 +96,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
     ctIPPQFilters  OBJECT IDENTIFIER  ::= { ctRemoteAccess 9 }
 --                      1.3.6.1.4.1.52.4.1.2.7.2.9
-        
+
         ctDs3Ext                OBJECT IDENTIFIER ::= { ctRemoteAccess 10 }
 --                      1.3.6.1.4.1.52.4.1.2.7.2.10
 
@@ -109,14 +109,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This object describes the number of physical remote 
+                "This object describes the number of physical remote
                 access connections on the platform."
         ::= { ctRemoteConnection 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.1
 
         ctRemPhysPortTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF CtRemPhysPortEntry
-        ACCESS  not-accessible  
+        ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
                 "A list of the descriptions of the physical remote access
@@ -250,7 +250,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION   
+        DESCRIPTION
                 "This object identifies the maximum number of IFO's
                 that can be created on this physical interface."
         ::= { ctRemPhysPortEntry 7 }
@@ -271,12 +271,12 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Whenever the physical port is configured for nailed-up 
-                PPP this object specifies the time the physical port 
-                must remain in a failed state as a condition to begin 
-                the backup procedure. The backup procedure is begun for 
+                "Whenever the physical port is configured for nailed-up
+                PPP this object specifies the time the physical port
+                must remain in a failed state as a condition to begin
+                the backup procedure. The backup procedure is begun for
                 any active interface(s) that were connected over the
-                failed physical port and which have been configured for 
+                failed physical port and which have been configured for
                 backup."
         ::= { ctRemPhysPortEntry 9 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.2.1.9
@@ -301,8 +301,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The interface table for Cabletron remote interfaces.
                 It is a list of items that are pertinant to the interfaces
-                that are part of remote physical ports. The number of 
-                entries is dependent upon the total number of remote 
+                that are part of remote physical ports. The number of
+                entries is dependent upon the total number of remote
                 interfaces configured."
         ::= { ctRemoteConnection 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3
@@ -352,7 +352,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -391,7 +391,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This flag will indicate whether compression has been 
+                "This flag will indicate whether compression has been
                 nogotiated on this interface."
         ::= { ctRemInterfaceEntry 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3.1.4
@@ -401,14 +401,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The MTU to be negotiated for this interface. This will 
-                not be updated with the actual MTU, which can be found 
+                "The MTU to be negotiated for this interface. This will
+                not be updated with the actual MTU, which can be found
                 in the ifTable."
         ::= { ctRemInterfaceEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3.1.5
 
         ctRemIntEntCongestion OBJECT-TYPE
-        SYNTAX  INTEGER { 
+        SYNTAX  INTEGER {
                                 enabled(1),
                                 disabled(2)
                                         }
@@ -416,8 +416,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "This object identifies the Leaky Bucket algorithm flag for
-                a Frame Relay circuit on this intertface. The option is 
-                supported when this flag is enabled, and not supported 
+                a Frame Relay circuit on this intertface. The option is
+                supported when this flag is enabled, and not supported
                 when this flag is disabled."
         DEFVAL { disabled }
         ::= { ctRemInterfaceEntry 6 }
@@ -443,9 +443,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object identifies the idle timeout value in which a 
-                packet needs to be transmitted before the interface is 
-                automatically disconnected. Allowed values are in 
+                "This object identifies the idle timeout value in which a
+                packet needs to be transmitted before the interface is
+                automatically disconnected. Allowed values are in
                 increments of five seconds including zero."
         ::= { ctRemInterfaceEntry 8 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3.1.8
@@ -457,8 +457,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object identifies the idle timeout in which a packet
                 needs to be received before the interface is automatically
-                disconnected. Allowed values are in increments of five 
-                seconds including zero."        
+                disconnected. Allowed values are in increments of five
+                seconds including zero."
         ::= { ctRemInterfaceEntry 9 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3.1.9
 
@@ -493,7 +493,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This flag will indicate whether Encryption has been 
+                "This flag will indicate whether Encryption has been
                 nogotiated on this interface."
         ::= { ctRemInterfaceEntry 12 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.3.1.12
@@ -505,8 +505,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The interface table for Cabletron remote interfaces.
                 It is a list of items that are pertinant to the interfaces
-                that are part of remote physical ports. The number of 
-                entries is dependent upon the total number of remote 
+                that are part of remote physical ports. The number of
+                entries is dependent upon the total number of remote
                 interfaces configured."
         ::= { ctRemoteConnection 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.4
@@ -536,7 +536,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -548,7 +548,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object specifies the interval in seconds between retries 
+                "This object specifies the interval in seconds between retries
                 for restoring the primary interface."
         DEFVAL { 30 }
         ::= { ctRemPrimaryInterfaceEntry 2 }
@@ -561,8 +561,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The interface table for Cabletron remote interfaces.
                 It is a list of items that are pertinant to the interfaces
-                that are part of remote physical ports. The number of 
-                entries is dependent upon the total number of remote 
+                that are part of remote physical ports. The number of
+                entries is dependent upon the total number of remote
                 interfaces configured."
         ::= { ctRemoteConnection 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.5
@@ -604,7 +604,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -673,7 +673,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object specifies the number of tries to bring-up the 
+                "This object specifies the number of tries to bring-up the
                 backup interface before giving up."
         ::= { ctRemBackupInterfaceEntry 7 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.5.1.7
@@ -683,14 +683,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object specifies the interval in seconds between retries 
+                "This object specifies the interval in seconds between retries
                 for bringing up backup interface before giving up."
         ::= { ctRemBackupInterfaceEntry 8 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.1.5.1.8
 
         ctRemExtPhysPortTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF CtRemExtPhysPortEntry
-        ACCESS  not-accessible  
+        ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
                 "A list of the descriptions of the physical remote access
@@ -801,7 +801,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION   
+        DESCRIPTION
                 "This object identifies the maximum number of IFO's
                 that can be created on this physical interface."
         ::= { ctRemExtPhysPortEntry 6 }
@@ -829,7 +829,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
 
 -- Cabletron Ds1 Extensions Group
--- This group is required for any platforms that have a t1 or e1 physical 
+-- This group is required for any platforms that have a t1 or e1 physical
 -- port.
 
         ctDs1ExtensionsTable OBJECT-TYPE
@@ -927,14 +927,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Setting this object to 1 will cause the Ds1 Fractional 
+                "Setting this object to 1 will cause the Ds1 Fractional
                 Table to be updated with the new values, as entered.
 
-                Setting this object to 2, will cause the Ds1 Fractional 
+                Setting this object to 2, will cause the Ds1 Fractional
                 Table to view as the table being entered.
 
-                Setting this object to 3, will cause the Ds1 Fractional 
-                Table to be the table that is currently in use, regardless 
+                Setting this object to 3, will cause the Ds1 Fractional
+                Table to be the table that is currently in use, regardless
                 of any changes being entered.
 
                 Setting this object to 4, will cause any changes that have
@@ -977,7 +977,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The length of time (in seconds), that the ds1 port will
                 remain in the Carrier Failure Alarm state after the
-                alarm condition has cleared. For those Ds1 ports not 
+                alarm condition has cleared. For those Ds1 ports not
                 supporting Carrier Failure Alarm duration, this object
                 always returns 1, and setting the object has no effect."
         ::= { ctDs1ExtensionsEntry 5 }
@@ -992,15 +992,15 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "Enables or disables Drop and Insert functionality on a
-                D/I WPIM.  If enabled, all zero assigned timeslots will 
-                designate D/I interface channels, if disabled all zero 
+                D/I WPIM.  If enabled, all zero assigned timeslots will
+                designate D/I interface channels, if disabled all zero
                 channels will designate dummy channels as on a T1 or E1."
         DEFVAL { enable }
         ::= { ctDs1ExtensionsEntry 6 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.6
 
         ctDs1ExtensionsTotalValidIntervals OBJECT-TYPE
-        SYNTAX  Counter 
+        SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1025,10 +1025,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object is used to request that a type of
                 process be in control of the testing function.
-                This is used to differentiate between automated test 
-                procedures and those manually controlled by a user.  
-                When read, this object reflects which type of process 
-                is actually in control of the testing function.  The 
+                This is used to differentiate between automated test
+                procedures and those manually controlled by a user.
+                When read, this object reflects which type of process
+                is actually in control of the testing function.  The
                 implementation is free to prioritize or deny requests
                 in a proprietary manner."
         ::= { ctDs1ExtensionsEntry 8 }
@@ -1042,14 +1042,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS      read-write
         STATUS      mandatory
         DESCRIPTION
-                "Controls the sending of test data over this physical 
-                port.  The data is a pattern described by 
-                wanDs1ExtensionsBertTestPattern." 
+                "Controls the sending of test data over this physical
+                port.  The data is a pattern described by
+                wanDs1ExtensionsBertTestPattern."
         ::= { ctDs1ExtensionsEntry 9 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.9
 
     wanDs1ExtensionsBertCurrentResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
@@ -1060,7 +1060,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.10
 
     wanDs1ExtensionsBertCumulativeResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
@@ -1070,26 +1070,26 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.11
 
     wanDs1ExtensionsBertPeakResults   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
-                "Indicates the highest value of 
-                wanDs1ExtensionsBertCurrentResults since the testing 
-                was enabled.  A non-negative number is the error rate 
-                in bits per million bits." 
+                "Indicates the highest value of
+                wanDs1ExtensionsBertCurrentResults since the testing
+                was enabled.  A non-negative number is the error rate
+                in bits per million bits."
         ::= { ctDs1ExtensionsEntry 12 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.12
 
     wanDs1ExtensionsBertAverageResult   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS      read-only
         STATUS      mandatory
         DESCRIPTION
-                "Indicates the average value of 
-                wanDs1ExtensionsBertCurrentResults since the testing 
-                was enabled.  A non-negative number is the error rate 
-                in bits per million bits." 
+                "Indicates the average value of
+                wanDs1ExtensionsBertCurrentResults since the testing
+                was enabled.  A non-negative number is the error rate
+                in bits per million bits."
         ::= { ctDs1ExtensionsEntry 13 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.13
 
@@ -1106,7 +1106,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object is used to specify the pattern of the 
+                "This object is used to specify the pattern of the
                 test data."
         ::= { ctDs1ExtensionsEntry 14 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.14
@@ -1118,7 +1118,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object is the duration of time in seconds at
                 which the current test results will be periodically
-                written to wanDs1ExtensionsBertCurrentResults.  The 
+                written to wanDs1ExtensionsBertCurrentResults.  The
                 range is 1 to 3600, with a default value of 10."
         ::= { ctDs1ExtensionsEntry 15 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.1.1.15
@@ -1168,9 +1168,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "This table is an extension to the standard ds1 
-                configuration table. It is a list of items that are 
-                pertinant to the hdlc driver on a platform. There is 
+                "This table is an extension to the standard ds1
+                configuration table. It is a list of items that are
+                pertinant to the hdlc driver on a platform. There is
                 one entry per ds1 physical port on the platform."
         ::= { ctDs1Ext 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.2
@@ -1213,7 +1213,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A unique value for each channel on a wan driver on the 
+                "A unique value for each channel on a wan driver on the
                 platform."
         ::= { ctDs1WanDriverEntry 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.2.2.1.2
@@ -1228,7 +1228,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object controls the individual channels line coding 
+                "This object controls the individual channels line coding
                 on a wan driver device on the platform."
         DEFVAL { none }
         ::= { ctDs1WanDriverEntry 3 }
@@ -1243,7 +1243,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object controls the individual channels CRC bits 
+                "This object controls the individual channels CRC bits
                 generation on a wan driver device on the platform."
         DEFVAL { crc16 }
         ::= { ctDs1WanDriverEntry 4 }
@@ -1273,7 +1273,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A rs232-like extensions entry containing objects relating 
+                "A rs232-like extensions entry containing objects relating
                 to the particular rs232-like physical port."
         INDEX   { ctRs232ExtensionsEntryIndex }
         ::= { ctRs232ExtensionsTable 1 }
@@ -1311,10 +1311,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object indicates  whether the platform should 
-                generate CTS. When disabled the platform will not 
-                generate CTS, when enabled, the platform will generate 
-                CTS.  The actual state of the CTS line is available 
+                "This object indicates  whether the platform should
+                generate CTS. When disabled the platform will not
+                generate CTS, when enabled, the platform will generate
+                CTS.  The actual state of the CTS line is available
                 in the rs-232 like mib."
         REFERENCE
                 "rfc-1317"
@@ -1330,10 +1330,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object indicates whether the platform should 
-                generate DSR. When disabled the platform will not 
-                generate DSR, when enabled, the platform will generate 
-                DSR.  The actual state of the DSR line is available 
+                "This object indicates whether the platform should
+                generate DSR. When disabled the platform will not
+                generate DSR, when enabled, the platform will generate
+                DSR.  The actual state of the DSR line is available
                 in the rs-232 like mib."
         REFERENCE
                 "rfc-1317 "
@@ -1349,10 +1349,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object indicates  whether the platform should 
-                generate RTS. When disabled the platform will not 
-                generate RTS, when enabled, the platform will generate 
-                RTS.  The actual state of the RTS line is available 
+                "This object indicates  whether the platform should
+                generate RTS. When disabled the platform will not
+                generate RTS, when enabled, the platform will generate
+                RTS.  The actual state of the RTS line is available
                 in the rs-232 like mib."
         REFERENCE
                 "rfc-1317"
@@ -1368,10 +1368,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object indicates whether the platform should 
-                generate DTR. When disabled the platform will not 
-                generate DSR, when enabled, the platform will generate 
-                DTR.  The actual state of the DTR line is available 
+                "This object indicates whether the platform should
+                generate DTR. When disabled the platform will not
+                generate DSR, when enabled, the platform will generate
+                DTR.  The actual state of the DTR line is available
                 in the rs-232 like mib."
         REFERENCE
                 "rfc-1317 "
@@ -1380,7 +1380,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.3.1.1.5
 
 --  ctFrDcp Group
---  This group is mandatory to support Data Compression Protocol 
+--  This group is mandatory to support Data Compression Protocol
 --  (DCP following FRF.9) for per virtual circuit basis
 
         frDcpCircuitTable OBJECT-TYPE
@@ -1388,9 +1388,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table containing data compression information about 
-                specific Data Link Connection Identifiers and 
-                corresponding virtual circuit. This information is used 
+                "A table containing data compression information about
+                specific Data Link Connection Identifiers and
+                corresponding virtual circuit. This information is used
                 to support the frCircuitTable following RFC-1315."
         ::= { ctFrDcp 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.4.1
@@ -1400,7 +1400,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "The data compression information regarding a single Data 
+                "The data compression information regarding a single Data
                 Link Connection Identifier."
         INDEX { frDcpCircuitIfIndex, frDcpCircuitDlci }
         ::= { frDcpCircuitTable 1 }
@@ -1425,7 +1425,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex value of ifEntry that this DCP virtual 
+                "The ifIndex value of ifEntry that this DCP virtual
                 circuit object is layered onto."
         ::= { frDcpCircuitEntry 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.4.1.1.1
@@ -1435,10 +1435,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The Data Link Connection Identifier for this DCP virtual 
+                "The Data Link Connection Identifier for this DCP virtual
                 circuit object."
         REFERENCE
-                "Draft American National Standard T1.618-1991, 
+                "Draft American National Standard T1.618-1991,
                 Section 3.3.6"
         ::= { frDcpCircuitEntry 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.4.1.1.2
@@ -1478,8 +1478,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The ratio of uncompressed to compressed transmitted data. 
-                If the data compression status is off, 1:1 will be 
+                "The ratio of uncompressed to compressed transmitted data.
+                If the data compression status is off, 1:1 will be
                 displayed."
         ::= { frDcpCircuitEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.4.1.1.5
@@ -1533,7 +1533,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "A unique value for each ds1 physical port on the 
+                "A unique value for each ds1 physical port on the
                 platform."
         ::= { ctDDSConfigEntry 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.1
@@ -1558,17 +1558,17 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "DDS-PRI is full duplex 56k link, No framing in loop data
                 so loop speed is also 56k. Data stream:
-                        --d1 d2 d3 d4 d5 d6 d7--        
-                DDS-SC is also full duplex 56k link, requires framing bits 
+                        --d1 d2 d3 d4 d5 d6 d7--
+                DDS-SC is also full duplex 56k link, requires framing bits
                 to distinguish between primary and secondary channels.
                         --d1 d2 d3 d4 d5 d6 d7 F C/S--
-                where F is framing bit and C/S for secondary channel as 
+                where F is framing bit and C/S for secondary channel as
                 well as used for control bit.
-                With these two extra bits the loop speed is increased to 
+                With these two extra bits the loop speed is increased to
                 72k.  primary channel rate is 56k.
 
-                DDS-CC is full duplex 64k link. Does not require framing 
-                bit but uses a same format as SC, nineth bit position is 
+                DDS-CC is full duplex 64k link. Does not require framing
+                bit but uses a same format as SC, nineth bit position is
                 lumped with primary channel and not used for control.
                 Loop speed is 72k, Primary channel rate is 64k.
                         --d1 d2 d3 d4 d5 d6 d7 F d8--"
@@ -1584,10 +1584,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This object describes the variety of Zero Code 
-                suppression on this interface.  JBZS refers to Jammed 
-                Bit Zero suppresion, which forces a 1 bit every 8 bit 
-                periods. None refers to a mode in which some other 
+                "This object describes the variety of Zero Code
+                suppression on this interface.  JBZS refers to Jammed
+                Bit Zero suppresion, which forces a 1 bit every 8 bit
+                periods. None refers to a mode in which some other
                 means is used to insure pulse density requirements."
         ::= { ctDDSConfigEntry 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.4
@@ -1602,12 +1602,12 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "This variable represents the loopback configuration 
-                of the DDS interface.  ddsNoLoop means the interface 
-                is not in loopback state, ddsLocalLoop means the signal 
-                is transmitted and looped back to the same interface, 
-                ddsLineLoop means the received signal at this interface 
-                does not go through the device but is looped back out, 
+                "This variable represents the loopback configuration
+                of the DDS interface.  ddsNoLoop means the interface
+                is not in loopback state, ddsLocalLoop means the signal
+                is transmitted and looped back to the same interface,
+                ddsLineLoop means the received signal at this interface
+                does not go through the device but is looped back out,
                 and ddsOtherLoop represents a loop not defined here."
         ::= { ctDDSConfigEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.5
@@ -1624,7 +1624,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This variable describes the current operational status of
                 DDS line."
-        ::= { ctDDSConfigEntry 6 }      
+        ::= { ctDDSConfigEntry 6 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.6
 
         ctDDSTxClockSource OBJECT-TYPE
@@ -1640,10 +1640,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 'ddsLoopTiming' indicates that the recovered receive clock
                 is used as transmit clock.
 
-                'ddsLocalTiming' indicates that a local clock source is 
+                'ddsLocalTiming' indicates that a local clock source is
                 used.
 
-                'ddsThroughTiming' indicates that recovered receive clock 
+                'ddsThroughTiming' indicates that recovered receive clock
                 from another interface is used as transmit clock."
         ::= { ctDDSConfigEntry 7 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.7
@@ -1658,7 +1658,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 based entirely on DDS type (CC or PRI)."
         ::= { ctDDSConfigEntry 8 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.5.1.1.8
-   
+
         ctDDSPortOutSpeed OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1702,13 +1702,13 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         INDEX { ctPppCountersIfIndex }
         ::= { ctPppCountersTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.1.1
-        
+
         CtPppCountersEntry ::= SEQUENCE {
                         ctPppCountersIfIndex
                         INTEGER,
                         ctPppCountersMaxTerminate
                         INTEGER,
-                        ctPppCountersMaxConfigure               
+                        ctPppCountersMaxConfigure
                         INTEGER,
                         ctPppCountersMaxFailure
                         INTEGER,
@@ -1721,7 +1721,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -1746,7 +1746,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "MaxConfigure indicates the number of Configure-
                 Request packets sent without receiving a Configure-Ack,
-                Configre-Nak or Configure-Reject before assuming that 
+                Configre-Nak or Configure-Reject before assuming that
                 the peer in unable to respond."
         ::= { ctPppCountersEntry 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.1.1.3
@@ -1760,7 +1760,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 packets sent without sending a Configure-Ack
                 before assuming that the configuration is not
                 converging.  Any further Configure-Reject packets
-                for peer requested options are converted to 
+                for peer requested options are converted to
                 Configure-Reject packets, and locally desires options
                 are no longer appended."
         ::= { ctPppCountersEntry 4 }
@@ -1784,15 +1784,15 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
 -- The following object reflect the values of the
 -- LCP parameters not included in RFCs for this PPP link.
---              
+--
 --              ctPppLcpExtIfIndex
 --              ctPppLcpExtAuthenticationProt
---              ctPppLcpExtQualityProt  
---              ctPppLcpExtPFC          
---              ctPppLcpExtACFC 
+--              ctPppLcpExtQualityProt
+--              ctPppLcpExtPFC
+--              ctPppLcpExtACFC
 --              ctPppLcpExtSelfDescribePadding
---              ctPppLcpExtCallback             
---              ctPppLcpExtCompoundFrames       
+--              ctPppLcpExtCallback
+--              ctPppLcpExtCompoundFrames
 --              ctPppLcpExtMru
 --              ctPppLcpExtAccm
 --              ctPppLcpExtEchoRequest
@@ -1819,23 +1819,23 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         INDEX { ctPppLcpExtIfIndex }
         ::= { ctPppLcpExtTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1
-        
+
         CtPppLcpExtEntry ::= SEQUENCE {
                                         ctPppLcpExtIfIndex
                                         INTEGER,
                                         ctPppLcpExtAuthenticationProt
                                         INTEGER,
-                                        ctPppLcpExtQualityProt  
+                                        ctPppLcpExtQualityProt
                                         INTEGER,
-                                        ctPppLcpExtPFC          
+                                        ctPppLcpExtPFC
                                         INTEGER,
-                                        ctPppLcpExtACFC 
+                                        ctPppLcpExtACFC
                                         INTEGER,
                                         ctPppLcpExtSelfDescribePadding
                                         INTEGER,
-                                        ctPppLcpExtCallback             
+                                        ctPppLcpExtCallback
                                         INTEGER,
-                                        ctPppLcpExtCompoundFrames       
+                                        ctPppLcpExtCompoundFrames
                                         INTEGER,
                                         ctPppLcpExtMru
                                         INTEGER,
@@ -1854,7 +1854,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -1862,9 +1862,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.1
 
         ctPppLcpExtAuthenticationProt OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                none(1), 
-                                pap(2), 
+        SYNTAX  INTEGER {
+                                none(1),
+                                pap(2),
                                 chap(3)
                                         }
         ACCESS  read-only
@@ -1876,8 +1876,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.2
 
         ctPppLcpExtQualityProt OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                none(1), 
+        SYNTAX  INTEGER {
+                                none(1),
                                 lqr(2)
                                         }
         ACCESS  read-write
@@ -1889,8 +1889,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.3
 
         ctPppLcpExtPFC OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                enabled(1), 
+        SYNTAX  INTEGER {
+                                enabled(1),
                                 disabled(2)
                                         }
         ACCESS  read-write
@@ -1901,14 +1901,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.4
 
         ctPppLcpExtACFC OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                enabled(1), 
+        SYNTAX  INTEGER {
+                                enabled(1),
                                 disabled(2)
                                         }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Enables address and control field compression on this PPP 
+                "Enables address and control field compression on this PPP
                 link."
         ::= { ctPppLcpExtEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.5
@@ -1936,8 +1936,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.7
 
         ctPppLcpExtCompoundFrames OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                enabled(1), 
+        SYNTAX  INTEGER {
+                                enabled(1),
                                 disabled(2)
                                         }
         ACCESS  read-write
@@ -1950,8 +1950,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.8
 
         ctPppLcpExtMru OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                enabled(1), 
+        SYNTAX  INTEGER {
+                                enabled(1),
                                 disabled(2)
                                         }
         ACCESS  read-write
@@ -1962,8 +1962,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.9
 
         ctPppLcpExtAccm OBJECT-TYPE
-        SYNTAX  INTEGER { 
-                                enabled(1), 
+        SYNTAX  INTEGER {
+                                enabled(1),
                                 disabled(2)
                                         }
         ACCESS read-write
@@ -1974,17 +1974,17 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.10
 
         ctPppLcpExtEchoRequest  OBJECT-TYPE
-        SYNTAX      INTEGER (0..2147483647) 
+        SYNTAX      INTEGER (0..2147483647)
         ACCESS      read-write
         STATUS      mandatory
         DESCRIPTION
         "A zero indicated no Echo Request and any other value provides
         an interval to send Echo-Requests to the Peer.
         The Echo-Request provides a Data Link Layer loopback mechanism
-        for use in exercising both directions of the link.  This 
+        for use in exercising both directions of the link.  This
         is useful in debugging, link quality determination.  LCP
         MUST be in the OPENED state for an Echo-Request to occur."
-        
+
         ::= { ctPppLcpExtEntry 11 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.11
 
@@ -2000,16 +2000,16 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.12
 
         ctPppLcpExtMpCapable OBJECT-TYPE
-      SYNTAX      INTEGER{ 
-                        enabled(1), 
+      SYNTAX      INTEGER{
+                        enabled(1),
                         disabled(2) }
       ACCESS      read-write
       STATUS      mandatory
       DESCRIPTION
-                "Multilink Protocol (MP) option selector. Set to a value 
-                of one when MP support is desired otherwise set to a 
-                value of two. The default value is two. When set to two 
-                the attempt is made to negotiate MP support.  MP support 
+                "Multilink Protocol (MP) option selector. Set to a value
+                of one when MP support is desired otherwise set to a
+                value of two. The default value is two. When set to two
+                the attempt is made to negotiate MP support.  MP support
                 is symmetrical."
         ::= { ctPppLcpExtEntry 13 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.2.1.13
@@ -2019,8 +2019,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 
 -- The following object reflect the values of the
 -- LCP parameters not included in RFCs for this PPP link.
---              pppBncpExtIfIndex     
---              pppBncpExtCrcStatus 
+--              pppBncpExtIfIndex
+--              pppBncpExtCrcStatus
 
         ctPppBncpExtTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF CtPppBncpExtEntry
@@ -2042,7 +2042,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         INDEX { ctPppBncpExtIfIndex }
         ::= { ctPppBncpExtTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.3.1
-        
+
         CtPppBncpExtEntry ::= SEQUENCE  {
                                         ctPppBncpExtIfIndex
                                         INTEGER,
@@ -2055,7 +2055,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -2070,9 +2070,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Enables and disables CRC status. First our platform must 
-                support CRC.  If the platform does, then setting to 
-                disabled will not send CRC.  The default is enabled, 
+                "Enables and disables CRC status. First our platform must
+                support CRC.  If the platform does, then setting to
+                disabled will not send CRC.  The default is enabled,
                 which sends CRC."
         ::= { ctPppBncpExtEntry 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.3.1.2
@@ -2081,13 +2081,13 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 -- The following object reflect the values of the
 -- LCP parameters not included in RFCs for this PPP link.
 --                              ctPppMpExtIfIndex
---              ctPppLcpExtMpLUT       
+--              ctPppLcpExtMpLUT
 --              ctPppLcpExtMpHistoryTime
 --              ctPppLcpExtMpMoreBW
 --              ctPppLcpExtMpLessBW
 --              ctPppLcpExtMpMaxChannels
---              ctPppLcpExtMpChannelsToAdd 
---              ctPppLcpExtMpChannelsToRemove    
+--              ctPppLcpExtMpChannelsToAdd
+--              ctPppLcpExtMpChannelsToRemove
 
         ctPppMpExtTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF CtPppMpExtEntry
@@ -2109,7 +2109,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         INDEX { ctPppMpExtIfIndex }
         ::= { ctPppMpExtTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1
-        
+
         CtPppMpExtEntry ::= SEQUENCE    {
                                         ctPppMpExtIfIndex
                                         INTEGER,
@@ -2134,7 +2134,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -2146,10 +2146,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the Line Utilization Threshold (LUT) % value 
-                to compare against the linear weighted percentage by 
-                which to determine when more/less bandwidth is to be 
-                added/removed. Linear weighting is averaged over the 
+                "Used to set the Line Utilization Threshold (LUT) % value
+                to compare against the linear weighted percentage by
+                which to determine when more/less bandwidth is to be
+                added/removed. Linear weighting is averaged over the
                 period of time specified by ctPppLcpExtMpHistoryTime."
         ::= { ctPppMpExtEntry 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.2
@@ -2159,12 +2159,12 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the history time value in seconds for the 
-                number of line utilization reading(s) desired to compute 
-                the average line utilization. That is to say, it 
+                "Used to set the history time value in seconds for the
+                number of line utilization reading(s) desired to compute
+                the average line utilization. That is to say, it
                 specifies the window size over which to compute the
                 average line utilization."
-        ::= { ctPppMpExtEntry 3 } 
+        ::= { ctPppMpExtEntry 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.3
 
         ctPppLcpExtMpMoreBW OBJECT-TYPE
@@ -2172,9 +2172,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the number of consecutive line utilization 
-                average readings that must exceed ctPppLcpExtMpLUT as 
-                a condition of when to increase the bandwidth if more 
+                "Used to set the number of consecutive line utilization
+                average readings that must exceed ctPppLcpExtMpLUT as
+                a condition of when to increase the bandwidth if more
                 BW is permitted."
         ::= { ctPppMpExtEntry 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.4
@@ -2184,9 +2184,9 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the number of consecutive line utilization 
-                average readings that must fall below ctPppLcpExtMpLUT 
-                as a condition of when to remove possible previously 
+                "Used to set the number of consecutive line utilization
+                average readings that must fall below ctPppLcpExtMpLUT
+                as a condition of when to remove possible previously
                 added bandwidth."
         ::= { ctPppMpExtEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.5
@@ -2200,25 +2200,25 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 connection is allowed."
         ::= { ctPppMpExtEntry 6 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.6
- 
+
         ctPppLcpExtMpChannelsToAdd OBJECT-TYPE
         SYNTAX  INTEGER (1..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the number of additional channel(s) to 
-                increment by whenever the need for more bandwidth is 
+                "Used to set the number of additional channel(s) to
+                increment by whenever the need for more bandwidth is
                 determined."
         ::= { ctPppMpExtEntry 7 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.7
- 
+
         ctPppLcpExtMpChannelsToRemove OBJECT-TYPE
         SYNTAX  INTEGER (1..255)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Used to set the number of channel(s) to decrement by 
-                whenever the need for possible previously added bandwidth 
+                "Used to set the number of channel(s) to decrement by
+                whenever the need for possible previously added bandwidth
                 is determined to no longer be needed."
         ::= { ctPppMpExtEntry 8 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.4.1.8
@@ -2247,7 +2247,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         INDEX { ctPppEcpExtIfIndex }
         ::= { ctPppEcpExtTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.5.1
-        
+
         CtPppEcpExtEntry ::= SEQUENCE   {
                                         ctPppEcpExtIfIndex
                                         INTEGER,
@@ -2262,7 +2262,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -2283,13 +2283,13 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "A 64-bit initialization vector (16 hex characters) used for 
+                "A 64-bit initialization vector (16 hex characters) used for
                 the DES encryption in CBC mode."
         ::= { ctPppEcpExtEntry 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.6.5.1.3
 
 --  ctWanalyzer Group
---  This group is mandatory for all platforms which implement the 
+--  This group is mandatory for all platforms which implement the
 --  WANalyzer
 
 --              ctWanalyzerIfIndex
@@ -2343,7 +2343,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The ifIndex of the interface. This is the index of this 
+                "The ifIndex of the interface. This is the index of this
                 entry in the ifTable."
         REFERENCE
                 "rfc-1213"
@@ -2371,8 +2371,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "This Persistent Object is an integer greater than 1
-                which specifies the maximum total number of entries 
-                which the table will handle. When the WANalyzer is 
+                which specifies the maximum total number of entries
+                which the table will handle. When the WANalyzer is
                 enabled this value defaults to a value dependent on
                 the implementation unless a value is found in NVRAM."
         ::= { ctWanalyzerEntry 3         }
@@ -2394,11 +2394,11 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "When set to 2, all entries for this MIB-II interface 
-                index will be removed from the table. Upon complete 
+                "When set to 2, all entries for this MIB-II interface
+                index will be removed from the table. Upon complete
                 removal of those entries, this value is reset to 1.
                 This object is not present if the WANalyzer is disabled."
-        
+
         ::= { ctWanalyzerEntry 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.7.1.1.5
 
@@ -2411,7 +2411,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 displays only those entries in the table which were
                 received from that MIB-II interface. This value is set
                 to -1 upon initialization and indicates that entries
-                from all interfaces will be displayed. This object 
+                from all interfaces will be displayed. This object
                 is not present if the WANalyzer is disabled."
         ::= { ctWanalyzerEntry 6 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.7.1.1.6
@@ -2439,7 +2439,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table containing all of the message entries for this 
+                "A table containing all of the message entries for this
                 device. If the WANalyzer is disabled, this table will
                 not be present."
         ::= { ctWanalyzer 2 }
@@ -2495,7 +2495,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The date when this message was received by the WANalyzer 
+                "The date when this message was received by the WANalyzer
                  in the standard MMDDYY format."
         ::= { wanalyzerEntry 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.7.2.1.3
@@ -3028,7 +3028,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        Monitoring Application for all DS1 circuits on the 
+                        Monitoring Application for all DS1 circuits on the
                         device."
                 ::= { ds1AlarmsGlobalConfigGroup 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.1.1
@@ -3042,7 +3042,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        Automatic Recovery feature for all DS1 circuits on 
+                        Automatic Recovery feature for all DS1 circuits on
                         the device. For those devices that support ds1
                         alarm monitoring, but do not support the automatic
                         recovery feature, this object always returns disabled,
@@ -3059,8 +3059,8 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
-                        SNMP Trap generation feature for all DS1 circuits on 
-                        the device.  This object operates in conjunction with 
+                        SNMP Trap generation feature for all DS1 circuits on
+                        the device.  This object operates in conjunction with
                         configuration of objects in the ctron-trap-mib.txt"
                 ::= { ds1AlarmsGlobalConfigGroup 3 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.1.3
@@ -3070,11 +3070,11 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESInterval to set 
-                        the threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, 
-                        measured in minutes, is exceeded.  The default 
-                        Errored Seconds alarm condition is 100 errored seconds 
+                        "Used in conjuction with ctDs1AlarmESInterval to set
+                        the threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval,
+                        measured in minutes, is exceeded.  The default
+                        Errored Seconds alarm condition is 100 errored seconds
                         over a 6 minute time interval."
                 ::= { ds1AlarmsGlobalConfigGroup 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.1.4
@@ -3084,27 +3084,27 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ds1AlarmGlobalESCount to 
-                        set the threshold for alarm generation when the number 
-                        of Errored Seconds for a specified time interval, 
+                        "Used in conjuction with ds1AlarmGlobalESCount to
+                        set the threshold for alarm generation when the number
+                        of Errored Seconds for a specified time interval,
                         measured in minutes, is exceeded.  The default
-                        Errored Seconds alarm condition is 100 errored seconds 
+                        Errored Seconds alarm condition is 100 errored seconds
                         over a 6 minute time interval."
                 ::= { ds1AlarmsGlobalConfigGroup 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.1.5
 
-        ds1AlarmGlobalBPVErrorRate      OBJECT-TYPE 
+        ds1AlarmGlobalBPVErrorRate      OBJECT-TYPE
                 SYNTAX  INTEGER (5..9)  -- default is 6
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
                         "Used to specify the negative exponent of 10, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        over intervals defined by ds1AlarmGlobalBPVInterval.  
-                        For example, for a ds1AlarmGlobalBPVErrorRate value 
-                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, 
-                        an alarm is generated when a 15 minute period has an 
-                        average error rate which exceeds 1 Bipolar Violation 
+                        over intervals defined by ds1AlarmGlobalBPVInterval.
+                        For example, for a ds1AlarmGlobalBPVErrorRate value
+                        of 6 used with a ds1AlarmGlobalBPVInterval of 15,
+                        an alarm is generated when a 15 minute period has an
+                        average error rate which exceeds 1 Bipolar Violation
                         (Code Violation for E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not support detect bipolar
@@ -3118,13 +3118,13 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used to specify the interval, used in monitoring 
+                        "Used to specify the interval, used in monitoring
                         Bipolar Violations (Code Violations for E1)
                         with thresholds defined by ds1AlarmGlobalBPVErrorRate.
-                        For example, for a ds1AlarmGlobalBPVErrorRate value 
-                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, an 
-                        alarm is generated when a 15 minute period has an 
-                        average error rate which exceeds 1 Bipolar Violation 
+                        For example, for a ds1AlarmGlobalBPVErrorRate value
+                        of 6 used with a ds1AlarmGlobalBPVInterval of 15, an
+                        alarm is generated when a 15 minute period has an
+                        average error rate which exceeds 1 Bipolar Violation
                         (Code Violation for E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not detect bipolar
@@ -3141,7 +3141,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "To cause a manual recovery to occur on all Ds1 circuits, this
-                        object is set to a 1.  It is always read as a 1.  The recovery 
+                        object is set to a 1.  It is always read as a 1.  The recovery
                         will occur only when automatic recovery is disabled."
                 ::= { ds1AlarmsGlobalConfigGroup 8 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.1.8
@@ -3150,7 +3150,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 -- DS1 Alarms Configuration Table
 --
 --      The DS1 alarm table structure contains the same information as the
---      global configuration objects, but allows seperate configuratoin of 
+--      global configuration objects, but allows seperate configuratoin of
 --      specific DS1 circuits contained on the device
 --
         ds1AlarmConfigTable OBJECT-TYPE
@@ -3158,11 +3158,11 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS      not-accessible
                 STATUS      mandatory
                 DESCRIPTION
-                        "Table containing objects used to configure DS1 alarm 
+                        "Table containing objects used to configure DS1 alarm
                         functionality on a per DS1 basis."
                 ::= { ctDs1Alarms 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2
-        
+
         ds1AlarmConfigEntry OBJECT-TYPE
                 SYNTAX      Ds1AlarmConfigEntry
                 ACCESS      not-accessible
@@ -3172,7 +3172,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 INDEX       { ds1PhysNum }
                 ::= { ds1AlarmConfigTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2.1
-        
+
         Ds1AlarmConfigEntry ::=
                 SEQUENCE {
                         ds1PhysNum
@@ -3194,7 +3194,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         ds1AlarmManualRecovery
                         INTEGER
                         }
-        
+
         ds1PhysNum    OBJECT-TYPE
                 SYNTAX      INTEGER
                 ACCESS      read-only
@@ -3208,7 +3208,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         the same as rfc1406 dsx1LineIndex."
                 ::= { ds1AlarmConfigEntry 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2.1.1
-        
+
         ds1AlarmAdmin   OBJECT-TYPE
                 SYNTAX  INTEGER {
                         disabled(1),    -- default
@@ -3249,7 +3249,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "Used to enable and disable the DS1 Alarm
                         SNMP Trap generation feature for this DS1 circuit.
-                        This object operates in conjunction with configuration 
+                        This object operates in conjunction with configuration
                         of objects in the ctron-trap-mib.txt"
                 ::= { ds1AlarmConfigEntry 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2.1.4
@@ -3259,10 +3259,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESInterval to set 
-                        the threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, measured 
-                        in minutes, is exceeded.  The default Errored Seconds 
+                        "Used in conjuction with ctDs1AlarmESInterval to set
+                        the threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval, measured
+                        in minutes, is exceeded.  The default Errored Seconds
                         alarm condition is 100 errored seconds over a 6 minute
                         time interval."
                 ::= { ds1AlarmConfigEntry 5 }
@@ -3273,11 +3273,11 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                        "Used in conjuction with ctDs1AlarmESCount to set the 
-                        threshold for alarm generation when the number of 
-                        Errored Seconds for a specified time interval, measured 
-                        in minutes, is exceeded.  The default Errored Seconds 
-                        alarm condition is 100 errored seconds over a 6 minute 
+                        "Used in conjuction with ctDs1AlarmESCount to set the
+                        threshold for alarm generation when the number of
+                        Errored Seconds for a specified time interval, measured
+                        in minutes, is exceeded.  The default Errored Seconds
+                        alarm condition is 100 errored seconds over a 6 minute
                         time interval."
                 ::= { ds1AlarmConfigEntry 6 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2.1.6
@@ -3289,10 +3289,10 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "Used to specify the negative exponent of 10, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        over intervals defined by ds1AlarmBPVInterval.  For 
-                        example, for a ds1AlarmBPVErrorRate value of 6 used 
-                        with a ds1AlarmBPVInterval of 15, an alarm is generated 
-                        when a 15 minute period has an average error rate which 
+                        over intervals defined by ds1AlarmBPVInterval.  For
+                        example, for a ds1AlarmBPVErrorRate value of 6 used
+                        with a ds1AlarmBPVInterval of 15, an alarm is generated
+                        when a 15 minute period has an average error rate which
                         exceeds 1 Bipolar Violation (Code Violation for E1) per
                         million bits.
                         For those devices that support ds1 alarm monitoring
@@ -3309,11 +3309,11 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "Used to specify the interval, used in
                         monitoring Bipolar Violations (Code Violations for E1)
-                        with thresholds defined by ds1AlarmBPVErrorRate.  For 
-                        example, for a ds1AlarmBPVErrorRate value of 6 used 
-                        with a ds1AlarmBPVInterval of 15, an alarm is generated 
+                        with thresholds defined by ds1AlarmBPVErrorRate.  For
+                        example, for a ds1AlarmBPVErrorRate value of 6 used
+                        with a ds1AlarmBPVInterval of 15, an alarm is generated
                         when a 15 minute period has an average error rate
-                        which exceeds 1 Bipolar Violation (Code Violation for 
+                        which exceeds 1 Bipolar Violation (Code Violation for
                         E1) per million bits.
                         For those devices that support ds1 alarm monitoring
                         but who's hardware does not support detect bipolar
@@ -3330,7 +3330,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "To cause a manual recovery to occur, this object is set
-                        to a 1.  It is always read as a 1.  The recovery will 
+                        to a 1.  It is always read as a 1.  The recovery will
                         occur only when automatic recovery is disabled."
                 ::= { ds1AlarmConfigEntry 9 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.8.2.1.9
@@ -3349,7 +3349,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --      IP addresses in a filtering database.  The database
 --      of IP addresses are used when a WAN service is over
 --      subscribed, and the packet would normally be discarded.
---      If the IP PQ admin status is enabled, and the IP 
+--      If the IP PQ admin status is enabled, and the IP
 --      address of the packet to be discarded matches one
 --      programmed in the database, an attempt will be made
 --      to use high priority, reserved, resources to transmit
@@ -3381,14 +3381,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        "Returns the maximum number of IP address entries 
-                        supported by the IP Priority Queue application on 
+                        "Returns the maximum number of IP address entries
+                        supported by the IP Priority Queue application on
                         this device."
                 ::= { ipPQConfigGroup 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.1.2
 
         iPPQNumEntries  OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
@@ -3406,7 +3406,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         read as a 0.0.0.0."
                 ::= { ipPQConfigGroup 4 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.1.4
-          
+
         iPPQDelAddress OBJECT-TYPE
                 SYNTAX      IpAddress
                 ACCESS      read-write
@@ -3416,14 +3416,14 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         Always read as a 0.0.0.0."
                 ::= { ipPQConfigGroup 5 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.1.5
-          
+
 --
 --
 --
 -- IP Priority Queue Address Table
 --
---      The IP PQ table contains a list of IP adresses used with the 
---      Priority Queue filtering mechanism. 
+--      The IP PQ table contains a list of IP adresses used with the
+--      Priority Queue filtering mechanism.
 --
         ipPQAddressTable OBJECT-TYPE
                 SYNTAX      SEQUENCE OF IpPQAddressEntry
@@ -3434,7 +3434,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         IP Priority Queue Forwarding function."
                 ::= { ctIPPQFilters 2 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.2
-        
+
         ipPQAddressEntry OBJECT-TYPE
                 SYNTAX      IpPQAddressEntry
                 ACCESS      not-accessible
@@ -3444,7 +3444,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                 INDEX       { ipPQAddressId }
                 ::= { ipPQAddressTable 1 }
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.2.1
-        
+
         IpPQAddressEntry ::=
                 SEQUENCE {
                         ipPQAddressId
@@ -3452,7 +3452,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
                         ipPQIPAddress
                         IpAddress
                         }
-        
+
         ipPQAddressId    OBJECT-TYPE
                 SYNTAX      INTEGER (1..65535)
                 ACCESS      read-only
@@ -3474,7 +3474,7 @@ CTRON-REMOTE-ACCESS-MIB DEFINITIONS ::= BEGIN
 --          1.3.6.1.4.1.52.4.1.2.7.2.9.2.1.2
 
 -- Cabletron Ds3 Extensions Group
--- This group is required for any platforms that have a t3 physical 
+-- This group is required for any platforms that have a t3 physical
 -- port.
 
         ctDs3ExtensionsTable OBJECT-TYPE

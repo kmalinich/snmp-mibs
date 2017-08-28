@@ -40,8 +40,8 @@ IMPORTS
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
       TimeTicks
                 FROM RFC1155-SMI
 
@@ -50,21 +50,21 @@ IMPORTS
         sfpsBlockSourcePort, sfpsBlockSourceAPI, sfpsBlockSourceExclude,
         sfpsBlockSourceStats, sfpsBlockSourceOnly, sfpsCSPControl,
         sfpsDHCPServerVLAN, sfpsATalkAMRVLANControl
-        
+
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
 
 HexInteger ::= INTEGER
 --  display this integer in hex format
- 
+
 -- SfpsSwitchInstance ::= INTEGER
 --  this will map to chassis.module index value
 
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
- 
- 
+
+
 --
 
 
@@ -117,7 +117,7 @@ SfpsCPResourcesTableEntry       ::=
                 sfpsCPResourcesNeedProxyIn                      INTEGER,
                 sfpsCPResourcesNeedFilter                       INTEGER,
                 sfpsCPResourcesAcceptRate                       INTEGER,
-                sfpsCPResourcesTotalRate                        INTEGER,                
+                sfpsCPResourcesTotalRate                        INTEGER,
                 sfpsCPResourcesSingleFlood                      INTEGER,
         sfpsCPResourcesNeedValidNet         INTEGER,
         sfpsCPResourcesInvalidNetDrops      INTEGER,
@@ -327,7 +327,7 @@ sfpsCPResourcesConfigTime   OBJECT-TYPE
         DESCRIPTION
                 "Number of time ticks since the last configuration change."
         ::= { sfpsCPResourcesTableEntry 21 }
- 
+
 sfpsCPResourcesNeedFlood   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -343,7 +343,7 @@ sfpsCPResourcesNeedResolve   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Set to enabled(1)/disabled(0) if the Resoolve attribute 
+                "Set to enabled(1)/disabled(0) if the Resoolve attribute
                 is desired."
         ::= { sfpsCPResourcesTableEntry 23 }
 
@@ -526,7 +526,7 @@ sfpsCPResourcesAPIVerb   OBJECT-TYPE
                 "Action to perform."
         ::= { sfpsCPResourcesAPI 6 }
 
- 
+
 --
 
 
@@ -553,7 +553,7 @@ SfpsCSPControlTableEntry        ::=
                 sfpsCSPControlTableCSPType              INTEGER,
                 sfpsCSPControlTableCSPName              DisplayString,
                 sfpsCSPControlTableAdminStatus          INTEGER,
-                sfpsCSPControlTableSwitchToCallProc     INTEGER,                
+                sfpsCSPControlTableSwitchToCallProc     INTEGER,
                 sfpsCSPControlTablePktsProcessed        INTEGER,
                 sfpsCSPControlTablePktRate                      INTEGER
         }
@@ -638,24 +638,24 @@ sfpsServiceCenterFacilityEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Facility Entry."
-        INDEX   { sfpsServiceCenterFacilityHashLeaf } 
+        INDEX   { sfpsServiceCenterFacilityHashLeaf }
         ::= { sfpsServiceCenterFacilityTable 1 }
 
 SfpsServiceCenterFacilityEntry ::=
         SEQUENCE {
-                sfpsServiceCenterFacilityHashLeaf       HexInteger,  
-                sfpsServiceCenterFacilityMetric         INTEGER,  
-                sfpsServiceCenterFacilityName           DisplayString,  
-                sfpsServiceCenterFacilityOperStatus     INTEGER,  
+                sfpsServiceCenterFacilityHashLeaf       HexInteger,
+                sfpsServiceCenterFacilityMetric         INTEGER,
+                sfpsServiceCenterFacilityName           DisplayString,
+                sfpsServiceCenterFacilityOperStatus     INTEGER,
                 sfpsServiceCenterFacilityAdminStatus     INTEGER,
                 sfpsServiceCenterFacilityStatusTime     TimeTicks,
                 sfpsServiceCenterFacilityRequests       INTEGER,
                 sfpsServiceCenterFacilityReply          INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterFacilityHashLeaf   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -729,14 +729,14 @@ sfpsServiceCenterFacilityReply   OBJECT-TYPE
         DESCRIPTION
                 "GOOD replies by server."
         ::= { sfpsServiceCenterFacilityEntry 8 }
- 
+
 -- Source Blocker Table
 
 sfpsBlockSourceTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsBlockSourceEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "The SourceBlocker table lists all nodes (MAC addresses) that
                  have been heard locally on the switch. Only a certain subset
                  (if any) of the nodes in this table are blocked."
@@ -764,7 +764,7 @@ SfpsBlockSourceEntry ::=
                 sfpsBlockSourceFilterPresent            INTEGER,
                 sfpsBlockSourceNext                     INTEGER,
                 sfpsBlockSourceBlocksOnlyIndex  INTEGER
-        }  
+        }
 
 sfpsBlockSourceIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -805,7 +805,7 @@ sfpsBlockSourceElapTimeLong    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The elapsed time (seconds) in the current long-threshold 
+                "The elapsed time (seconds) in the current long-threshold
                 period."
         ::= { sfpsBlockSourceEntry 5 }
 
@@ -870,8 +870,8 @@ sfpsBlockSourceNext    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "If this node entry (instance) is part of a hash chain, the 
-                NEXT leaf will contain the index to the next node entry in 
+                "If this node entry (instance) is part of a hash chain, the
+                NEXT leaf will contain the index to the next node entry in
                 the chain. Otherwise, it will contain -1."
         ::= { sfpsBlockSourceEntry 10 }
 
@@ -896,7 +896,7 @@ sfpsBlockSourceOnlyTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsBlockSourceOnlyEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "The format of the BlockSourceOnly Table is exactly the same as the
                  SourceBlocker Table. The only difference is that the entries in
                  this table are only a subset of the entries in the SourceBlocker
@@ -926,7 +926,7 @@ SfpsBlockSourceOnlyEntry ::=
                 sfpsBlockSourceOnlyFilterPresent        INTEGER,
                 sfpsBlockSourceOnlyNext         INTEGER,
                 sfpsBlockSourceOnlyBlocksOnlyIndex      INTEGER
-        }  
+        }
 
 sfpsBlockSourceOnlyIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -967,7 +967,7 @@ sfpsBlockSourceOnlyElapTimeLong    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-               "The elapsed time (seconds) in the current long-threshold 
+               "The elapsed time (seconds) in the current long-threshold
                 period."
         ::= { sfpsBlockSourceOnlyEntry 5 }
 
@@ -1032,8 +1032,8 @@ sfpsBlockSourceOnlyNext    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "If this node entry (instance) is part of a hash chain, the 
-                NEXT leaf will contain the index to the next node entry in 
+                "If this node entry (instance) is part of a hash chain, the
+                NEXT leaf will contain the index to the next node entry in
                 the chain. Otherwise, it will contain -1."
         ::= { sfpsBlockSourceOnlyEntry 10 }
 
@@ -1057,7 +1057,7 @@ sfpsBlockSourcePortTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsBlockSourcePortEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                " The SourceBlock API allows for administratively selecting a port and
                  flagging it as 'unblockable'. The BlockSourcePort table shows which
                  ports are set to 'unblockable' and which ones remain set to the default
@@ -1077,7 +1077,7 @@ SfpsBlockSourcePortEntry ::=
         SEQUENCE {
                 sfpsBlockSourcePortPort         INTEGER,
                 sfpsBlockSourcePortBlockability INTEGER
-        }  
+        }
 
 sfpsBlockSourcePortPort   OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1085,7 +1085,7 @@ sfpsBlockSourcePortPort   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "This is the instance part of the table. There will be as many
-                 instances as there are logical ports in the device. The attributes 
+                 instances as there are logical ports in the device. The attributes
                 represented in subsequent leaves all pertain to this port instance."
         ::= { sfpsBlockSourcePortEntry 1 }
 
@@ -1097,7 +1097,7 @@ sfpsBlockSourcePortBlockability   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This leaf contains either 0-blockable or 1-unblockable, depending on 
+                "This leaf contains either 0-blockable or 1-unblockable, depending on
                 whether nodes on this port are allowed to be blocked or not."
         ::= { sfpsBlockSourcePortEntry 2 }
 
@@ -1125,21 +1125,21 @@ sfpsBlockSourceAPIVerb   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                "Other -- N/A
-                Disable -- disable the source blocker (nodes that are currently 
+                Disable -- disable the source blocker (nodes that are currently
                  blocked will remain blocked, but no additional nodes will be blocked)
                 Enable -- enable the source blocker (allow it to start blocking nodes)
-                ClearAll -- clear the entire block table (this does not remove any 
+                ClearAll -- clear the entire block table (this does not remove any
                  connection filters, and should only be used as a diagnostic tool.)
                 BlockMac -- administratively block a node (The node's MAC address
                  must be previously set in the MAC leaf.)
                 UnblockMac -- administratively unblock a node (The node's MAC address
                  must be previously set in the MAC leaf.)
-                SetMacUnblockable -- administratively mark a node as 'unblockable' 
-                 so that it cannot be blocked. (The node's MAC must be previously set 
-                 in the MAC leaf.) If the relevant node is blocked at the time the 
+                SetMacUnblockable -- administratively mark a node as 'unblockable'
+                 so that it cannot be blocked. (The node's MAC must be previously set
+                 in the MAC leaf.) If the relevant node is blocked at the time the
                 SetMacUnblockable command is issued, the node will automatically be
                  'unblocked' first.
-                SetMacBlockable -- administratively mark a node as 'blockable' so that 
+                SetMacBlockable -- administratively mark a node as 'blockable' so that
                  it can be blocked. (The node's MAC must be previously set in the MAC
                  leaf.)
                 SetPortUnblockable -- administratively mark a port as 'unblockable' so
@@ -1153,7 +1153,7 @@ sfpsBlockSourceAPIVerb   OBJECT-TYPE
       ::= { sfpsBlockSourceAPI 1 }
 
 sfpsBlockSourceAPIInputValue   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1161,7 +1161,7 @@ sfpsBlockSourceAPIInputValue   OBJECT-TYPE
         ::= { sfpsBlockSourceAPI 2 }
 
 sfpsBlockSourceAPIPort   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1170,7 +1170,7 @@ sfpsBlockSourceAPIPort   OBJECT-TYPE
         ::= { sfpsBlockSourceAPI 3 }
 
 sfpsBlockSourceAPIMAC   OBJECT-TYPE
-        SYNTAX  SfpsAddress     
+        SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1187,34 +1187,34 @@ sfpsBlockSourceAPIBlockStatus   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Status of the blocker object (enabled/disabled.) Additional nodes 
+                "Status of the blocker object (enabled/disabled.) Additional nodes
                 will be blocked only when this status leaf is in the 'enabled' state."
         ::= { sfpsBlockSourceAPI 5 }
 
 sfpsBlockSourceAPIShortThreshold   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
                 "The number of packets per a SHORTPERIOD that will result in a node
                  being blocked. This can be changed by writing directly to this leaf.
-                 The only limit imposed on this value is that it has to be positive 
-                (greater than zero.) There is no upper bound except for what is 
+                 The only limit imposed on this value is that it has to be positive
+                (greater than zero.) There is no upper bound except for what is
                 implied by the size of an integer."
         ::= { sfpsBlockSourceAPI 6 }
 
 sfpsBlockSourceAPIShortPeriod   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The sample period to use for determining if any given node has 
-                exceeded the SHORTTHRESHOLD. See SHORTTHRESHOLD for bounds checking 
+                "The sample period to use for determining if any given node has
+                exceeded the SHORTTHRESHOLD. See SHORTTHRESHOLD for bounds checking
                 for this value"
         ::= { sfpsBlockSourceAPI 7 }
 
 sfpsBlockSourceAPILongThreshold   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1223,7 +1223,7 @@ sfpsBlockSourceAPILongThreshold   OBJECT-TYPE
         ::= { sfpsBlockSourceAPI 8 }
 
 sfpsBlockSourceAPILongPeriod   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1233,7 +1233,7 @@ sfpsBlockSourceAPILongPeriod   OBJECT-TYPE
         ::= { sfpsBlockSourceAPI 9 }
 
 sfpsBlockSourceAPIReapUserCnxs   OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -1249,10 +1249,10 @@ sfpsBlockSourceExcludeTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsBlockSourceExcludeEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "The format of the UnblockableOnly Table is exactly the same as the
                  SourceBlocker Table. The only difference is that the entries in this
-                 table are only a subset of the entries in the SourceBlocker Table. 
+                 table are only a subset of the entries in the SourceBlocker Table.
                 Only the entries that have an UNBLOCKABLEFLAG set to 'unblockable'
                  will show up in this table."
         ::= { sfpsBlockSourceExclude 1 }
@@ -1279,7 +1279,7 @@ SfpsBlockSourceExcludeEntry ::=
                 sfpsBlockSourceExcludeFilterPresent     INTEGER,
                 sfpsBlockSourceExcludeNext              INTEGER,
                 sfpsBlockSourceExcludeBlockSourceOnlyIndex      INTEGER
-        }  
+        }
 
 sfpsBlockSourceExcludeIndex    OBJECT-TYPE
         SYNTAX  INTEGER
@@ -1320,7 +1320,7 @@ sfpsBlockSourceExcludeElapTimeLong    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The elapsed time (seconds) in the current long-threshold 
+                "The elapsed time (seconds) in the current long-threshold
                 period"
         ::= { sfpsBlockSourceExcludeEntry 5 }
 
@@ -1385,8 +1385,8 @@ sfpsBlockSourceExcludeNext    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "If this node entry (instance) is part of a hash chain, the 
-                NEXT leaf will contain the index to the next node entry in 
+                "If this node entry (instance) is part of a hash chain, the
+                NEXT leaf will contain the index to the next node entry in
                 the chain. Otherwise, it will contain -1"
         ::= { sfpsBlockSourceExcludeEntry 10 }
 
@@ -1419,7 +1419,7 @@ sfpsBlockSourceStatsNumCollisions    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The number of hash collisions resulting in a chain of nodes. 
+                "The number of hash collisions resulting in a chain of nodes.
                 (diagnostic only.)"
         ::= { sfpsBlockSourceStats 2 }
 
@@ -1428,8 +1428,8 @@ sfpsBlockSourceStatsLongestChain    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The maximum number of nodes in a linked list chain 
-                (including the hash bucket itself) due to hashing collisions. 
+                "The maximum number of nodes in a linked list chain
+                (including the hash bucket itself) due to hashing collisions.
                 (diagnostic only.)"
         ::= { sfpsBlockSourceStats 3 }
 
@@ -1438,7 +1438,7 @@ sfpsBlockSourceStatsNumEntries    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The number of entries in the SourceBlocker table. 
+                "The number of entries in the SourceBlocker table.
                 (Each new node that is heard has its own entry."
         ::= { sfpsBlockSourceStats 4 }
 
@@ -1447,7 +1447,7 @@ sfpsBlockSourceStatsMaxNumEntries    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-               " The maximum number of entries that can fit in the SourceBlocker Table. 
+               " The maximum number of entries that can fit in the SourceBlocker Table.
                 (This currently mirrors the size of the Directory's NodeTable.)"
         ::= { sfpsBlockSourceStats 5 }
 
@@ -1464,7 +1464,7 @@ sfpsBlockSourceStatsHashModValue    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The value that is used for the modulus operation in the 
+                "The value that is used for the modulus operation in the
                 hashing algorythm."
         ::= { sfpsBlockSourceStats 7 }
 
@@ -1497,7 +1497,7 @@ sfpsBlockSourceStatsUnblockableSize    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The amount of storage used for the Unblockable-Only index array 
+                "The amount of storage used for the Unblockable-Only index array
                 (in bytes.)"
         ::= { sfpsBlockSourceStats 11 }
 
@@ -1514,7 +1514,7 @@ sfpsBlockSourceStatsTotalHeapBytes    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The total amount of heap memory used for all data storage (above) 
+                "The total amount of heap memory used for all data storage (above)
                 including the SourceBlocker object itself (in bytes.)"
         ::= { sfpsBlockSourceStats 13 }
 

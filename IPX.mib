@@ -23,7 +23,7 @@ IPX DEFINITIONS ::= BEGIN
 -- created (especially in the area of IPX routing protocols) to contain
 -- more specific information.  Whenever possible, these additional MIBs
 -- should follow the format of this IPX MIB.  Information in these MIBs
--- should be linked to this MIB via the use of the system instance 
+-- should be linked to this MIB via the use of the system instance
 -- identifier mentioned above.
 
 
@@ -117,7 +117,7 @@ IPXBasicSysEntry ::= SEQUENCE {
                         ipxBasicSysOpenSocketFails
                            Counter
                     }
-                           
+
 ipxBasicSysInstance OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-write
@@ -193,7 +193,7 @@ ipxBasicSysInDiscards OBJECT-TYPE
    ACCESS      read-only
    STATUS      mandatory
    DESCRIPTION "The number of IPX packets received but discarded due to
-                reasons other than those accounted for by 
+                reasons other than those accounted for by
                 ipxBasicSysInHdrErrors, ipxBasicSysInUnknownSockets,
                 ipxAdvSysInDiscards, and ipxAdvSysInCompressDiscards."
    ::= {ipxBasicSysEntry 9}
@@ -321,7 +321,7 @@ IPXAdvSysEntry ::= SEQUENCE {
                      ipxAdvSysServCount
                         Counter
                     }
-                           
+
 ipxAdvSysInstance OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-write
@@ -517,7 +517,7 @@ ipxCircSysInstance OBJECT-TYPE
    ACCESS      read-write
    STATUS      mandatory
    DESCRIPTION "The unique identifier of the instance of IPX
-                to which this entry corresponds.  This value may be 
+                to which this entry corresponds.  This value may be
                 written only when creating a new entry in the table."
    ::= {ipxCircEntry 1}
 
@@ -589,7 +589,7 @@ ipxCircDialName OBJECT-TYPE
    ACCESS      read-write
    STATUS      mandatory
    DESCRIPTION "The symbolic name used to refernce the dialing information
-                used to create this circuit.  This value may be written 
+                used to create this circuit.  This value may be written
                 only when creating a new entry in the table."
    ::= {ipxCircEntry 8}
 
@@ -608,7 +608,7 @@ ipxCircCompressState OBJECT-TYPE
                        }
    ACCESS      read-write
    STATUS      mandatory
-   DESCRIPTION "The compression state on this circuit.  This value may 
+   DESCRIPTION "The compression state on this circuit.  This value may
                 be written only when creating a new entry in the table."
    DEFVAL      { off }
    ::= {ipxCircEntry 10}
@@ -617,7 +617,7 @@ ipxCircCompressSlots OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-write
    STATUS      mandatory
-   DESCRIPTION "The number of compression slots available on this 
+   DESCRIPTION "The number of compression slots available on this
                 circuit.  This value may be written only when creating a
                 new entry in the table."
    DEFVAL      { 16 }
@@ -639,7 +639,7 @@ ipxCircStaticStatus OBJECT-TYPE
                 and services reached via this circuit matches that
                 saved in permanent storage (current).  Setting the
                 value to write when it had the value changed will write
-                the currently in use information to permanent storage, 
+                the currently in use information to permanent storage,
                 if supported.  Setting the value to read when it had
                 the value changed will replace any routes and services
                 currently defined for the circuit with those read from
@@ -740,7 +740,7 @@ ipxCircDelay OBJECT-TYPE
    STATUS      mandatory
    DESCRIPTION "The period of time, in milliseconds, that it takes to
                 transmit one byte of data, excluding protocol headers,
-                to a destination on the other end of the circuit, if 
+                to a destination on the other end of the circuit, if
                 the circuit is free of other traffic."
    ::= {ipxCircEntry 25}
 
@@ -862,7 +862,7 @@ ipxDestNextHopCircIndex OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-only
    STATUS      mandatory
-   DESCRIPTION "The unique identifier of the circuit used to reach the 
+   DESCRIPTION "The unique identifier of the circuit used to reach the
                 next hop."
    ::= {ipxDestEntry 6}
 
@@ -1085,7 +1085,7 @@ ipxServHopCount OBJECT-TYPE
 
 
 -- Destination Services Table
---   This table contains the services information indexed by address, 
+--   This table contains the services information indexed by address,
 --   name, and type.
 
 ipxDestServTable OBJECT-TYPE

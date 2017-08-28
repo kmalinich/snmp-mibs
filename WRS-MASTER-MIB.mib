@@ -4,20 +4,20 @@ WRS-MASTER-MIB DEFINITIONS ::= BEGIN
 ------------------------------------------------------------------------------
 --
 --  File         : wrsMasterMib.mi2
---  Description  : Sample WRS Master OID Definition MIB 
---  Version      : 0.6 
---  Date         : August 29, 2000     
+--  Description  : Sample WRS Master OID Definition MIB
+--  Version      : 0.6
+--  Date         : August 29, 2000
 --
 --  Copyright (c) 2000 Wind River Systems, Inc.  All Rights Reserved.
 --
 --  Reproduction of this document is authorized on condition that this
 --  copyright notice is included.  This sample WRS Master Enterprise MIB
---  embodies proprietary intellectual property of Wind River Systems (WRS). 
+--  embodies proprietary intellectual property of Wind River Systems (WRS).
 --  WRS retains all title and ownership in the specification, including any
 --  revisions.
 --
 --  It is the intent of WRS to encourage the widespread use of this
---  specification in connection with the management of TMS-based products.  
+--  specification in connection with the management of TMS-based products.
 --  WRS grants vendors, end-users, and other interested parties a
 --  non-exclusive license to use this specification in connection with the
 --  management of TMS products.
@@ -43,7 +43,7 @@ WRS-MASTER-MIB DEFINITIONS ::= BEGIN
 --
 --   3. Note that the 'defined/documents' items provide a common place to
 --      define or document the required OIDs.  SMIv1 MIBs can be defined
---      here and then imported into the corresponding MIB.  The SMIv2 
+--      here and then imported into the corresponding MIB.  The SMIv2
 --      'MODULE-IDENTITY' macro does not allow the second OID parameter to
 --      be imported from an external MIB file.  The authors of these
 --      'documented' MIBs must verify, by procedure, that the values used
@@ -77,7 +77,7 @@ IMPORTS
         DESCRIPTION     "Initial MIB creation."
 
         ::= { enterprises 731 }
-    
+
 -- WRS Products
 --  tms1_0          OBJECT IDENTIFIER ::= { wrs 1 } Obsolete
     tms             OBJECT IDENTIFIER ::= { wrs 2 }
@@ -92,7 +92,7 @@ IMPORTS
     rmonMib         OBJECT IDENTIFIER ::= { idb 1 }
 --  garpMib         OBJECT IDENTIFIER ::= { idb 2 }         SMIv2
 --  stpMib          OBJECT IDENTIFIER ::= { idb 3 }         SMIv2
-    
+
 -- TMS Generic MIBs
 --  tmsCommonMib    OBJECT IDENTIFIER ::= { tmsGeneric 1 }  SMIv2
 --  tmsL3Mib        OBJECT IDENTIFIER ::= { tmsGeneric 2 }  SMIv2
