@@ -17,16 +17,16 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
     --  This module will be extended, as required.
     --
 
-    --  Cabletron Systems reserves the right to make changes in 
-    --  specification and other information contained in this document 
+    --  Cabletron Systems reserves the right to make changes in
+    --  specification and other information contained in this document
     --  without prior notice.  The reader should consult Cabletron Systems
     --  to determine whether any such changes have been made.
     --
-    --  In no event shall Cabletron Systems be liable for any incidental, 
-    --  indirect, special, or consequential damages whatsoever (including 
+    --  In no event shall Cabletron Systems be liable for any incidental,
+    --  indirect, special, or consequential damages whatsoever (including
     --  but not limited to lost profits) arising out of or related to this
     --  document or the information contained in it, even if Cabletron
-    --  Systems has been advised of, known, or should have known, the 
+    --  Systems has been advised of, known, or should have known, the
     --  possibility of such damages.
     --
     --  Cabletron grants vendors, end-users, and other interested parties
@@ -38,56 +38,56 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
 
 
     --  Abstract
- 
+
     --  This memo defines bridging management objects that are not defined
     --  in the IETF RFC:1286 - Definitions of Managed Objects for Bridges,
     --  but are supported by Cabletron bridges.
- 
- 
+
+
     --  Structure of MIB
- 
+
     --  Objects, in this MIB, are arranged into groups.  Each group is organized
     --  as a set of related objects and is described below.
- 
+
     --  The ctBridgeBase Group
- 
+
     --  This group contains objects that are common to all types of bridges.
     --  No current objects are defined in this group.
- 
+
 
     --  The ctBridgeStp Group
- 
+
     --  This group contains the objects that are specific to the Spanning
     --  Tree Protocol.  If the bridge does not support the Spanning Tree
     --  Protocol, this group will not be implemented.  This group is
     --  applicable to any transparent only, source route only, or SRT bridge
     --  which implements the Spanning Tree Protocol.
- 
+
     --  The ctBridgeSr Group
- 
+
     --  This group contains the objects that are specific to source route
     --  bridging.  If source routing is not supported this group will not
     --  be implemented.  This group is applicable to source route only, and
     --  SRT bridges.
- 
+
     --  The ctBridgeTp Group
- 
+
     --  This group contains objects that are specific to transparent
     --  bridging.  If transparent bridging is not supported this group
     --  will not be implemented.  This group is applicable to transparent
     --  only, and SRT bridges.
 
     --  The ctBridgeSdbEnet Group
- 
+
     --  This group contains objects that are specific to transparent
     --  Ethernet/802.3 bridging using Cabletron's proprietary special
     --  filter database.  If Ethernet/802.3 transparent bridging is not
     --  supported this group will not be implemented.  This group is
     --  applicable to transparent only, and SRT bridges that support
     --  Ethernet/802.3 networks.
- 
+
     --  The ctBridgeSdbTr Group
- 
+
     --  This group contains objects that are specific to transparent
     --  Token Ring bridging using Cabletron's proprietary special filter
     --  database.  If Token Ring transparent bridging is not supported
@@ -100,7 +100,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
     --  This group contains objects that are specific to the translation
     --  of packets between Token Ring and Ethernet for transparent or
     --  source route bridging.  If Token Ring to Ethernet bridging is not
-    --  supported this group will not be implemented. 
+    --  supported this group will not be implemented.
 
     --  The ctBridgeExtendedControl Group
 
@@ -112,8 +112,8 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
     --  The ctBridgeLoadShare Group
 
     --  This group contains objects that control load sharing.
-    --  This concept is also known as Multi-Link Spanning Tree.  
-    --  This group is optional. 
+    --  This concept is also known as Multi-Link Spanning Tree.
+    --  This group is optional.
 
 
     IMPORTS
@@ -179,13 +179,13 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
     -- This group is for management of switches that implement the
     -- Per-VLAN Spanning Tree (PVST) functionality, as described
     -- in Cabletron's PVST architecture specification.
- 
+
     ctBridgePvst  OBJECT IDENTIFIER ::=  { ctBridgeStp 2 }
 
     ctPvstStpMode OBJECT-TYPE
         SYNTAX INTEGER {
                dot1qMode(1),
-               pvstMode(2) 
+               pvstMode(2)
         }
         ACCESS  read-write
         STATUS  deprecated
@@ -260,35 +260,35 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
 
     CtPvstStpEntry ::=
         SEQUENCE {
-            ctPvstStpVlanId   
+            ctPvstStpVlanId
                  INTEGER,
             ctPvstStpProtocolSpecification
                  INTEGER,
-            ctPvstStpPriority      
+            ctPvstStpPriority
                  INTEGER,
-            ctPvstStpTimeSinceTopologyChange  
+            ctPvstStpTimeSinceTopologyChange
                  TimeTicks,
-            ctPvstStpTopChanges 
+            ctPvstStpTopChanges
                  Counter,
-            ctPvstStpDesignatedRoot 
+            ctPvstStpDesignatedRoot
                  BridgeId,
-            ctPvstStpRootCost 
+            ctPvstStpRootCost
                  INTEGER,
-            ctPvstStpRootPort  
+            ctPvstStpRootPort
                  INTEGER,
-            ctPvstStpMaxAge 
+            ctPvstStpMaxAge
                  INTEGER,
-            ctPvstStpHelloTime 
+            ctPvstStpHelloTime
                  INTEGER,
-            ctPvstStpHoldTime 
+            ctPvstStpHoldTime
                  INTEGER,
             ctPvstStpForwardDelay
                  INTEGER,
-            ctPvstStpBridgeMaxAge 
+            ctPvstStpBridgeMaxAge
                  INTEGER,
             ctPvstStpBridgeHelloTime
                  INTEGER,
-            ctPvstStpBridgeForwardDelay 
+            ctPvstStpBridgeForwardDelay
                  INTEGER
         }
 
@@ -539,27 +539,27 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
 
     CtPvstStpPortEntry ::=
         SEQUENCE {
-            ctPvstStpPortVlanId 
+            ctPvstStpPortVlanId
                  INTEGER,
-            ctPvstStpPort 
+            ctPvstStpPort
                  INTEGER,
-            ctPvstStpPortPriority 
+            ctPvstStpPortPriority
                  INTEGER,
-            ctPvstStpPortState 
+            ctPvstStpPortState
                  INTEGER,
-            ctPvstStpPortEnable 
+            ctPvstStpPortEnable
                  INTEGER,
-            ctPvstStpPortPathCost 
+            ctPvstStpPortPathCost
                  INTEGER,
-            ctPvstStpPortDesignatedRoot 
+            ctPvstStpPortDesignatedRoot
                  BridgeId,
-            ctPvstStpPortDesignatedCost 
+            ctPvstStpPortDesignatedCost
                  INTEGER,
-            ctPvstStpPortDesignatedBridge 
+            ctPvstStpPortDesignatedBridge
                  BridgeId,
-            ctPvstStpPortDesignatedPort 
+            ctPvstStpPortDesignatedPort
                  OCTET STRING,
-            ctPvstStpPortForwardTransitions 
+            ctPvstStpPortForwardTransitions
                  Counter
         }
 
@@ -709,7 +709,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "An entry consisting of objects specifying information
-              for the source and destination port pairs used for source 
+              for the source and destination port pairs used for source
               routing."
 
          INDEX    { ctBridgeSrPortPairSrcPort, ctBridgeSrPortPairDestPort }
@@ -762,10 +762,10 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  read-write
          STATUS  mandatory
          DESCRIPTION
-             "The state of source route bridging on this port pair.  
+             "The state of source route bridging on this port pair.
               This is the desired state of the administrator.  The
-              operational state of the port pair is determined by this 
-              state along with the states of dot1dStpPortState within 
+              operational state of the port pair is determined by this
+              state along with the states of dot1dStpPortState within
               the IETF Bridge MIB and ifOperStatus of the IETF MIB II
               for each port."
          ::= { ctBridgeSrPortPairEntry 4 }
@@ -783,7 +783,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
               given bridge port. It is used by the bridge to determine
               if conversion from a Source Routing packet to a Transparent
               packet or vice verse is required."
-         ::= { ctBridgeSr 2 } 
+         ::= { ctBridgeSr 2 }
 
 
     --=========        ctBridgeTp group            ============
@@ -804,8 +804,8 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  not-accessible
          STATUS  mandatory
          DESCRIPTION
-             "An entry consisting of objects specifying information 
-              for the source and destination port pairs used for 
+             "An entry consisting of objects specifying information
+              for the source and destination port pairs used for
               transparent bridging."
 
          INDEX    { ctBridgeTpPortPairSrcPort, ctBridgeTpPortPairDestPort }
@@ -829,7 +829,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The source port (ie the port which received the packets)
-              for which this entry has transparent bridge information." 
+              for which this entry has transparent bridge information."
          ::= { ctBridgeTpPortPairEntry 1 }
 
     ctBridgeTpPortPairDestPort OBJECT-TYPE
@@ -838,7 +838,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The destination port (ie the port which the packets
-              were transmitted out) for which this entry has 
+              were transmitted out) for which this entry has
               transparent bridge information."
          ::= { ctBridgeTpPortPairEntry 2 }
 
@@ -895,7 +895,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The process to be performed if no match is found
-              in the Ethernet special database.  The process of 
+              in the Ethernet special database.  The process of
               filtering or forwarding is for all ports.  searchFDB
               results in searching the IEEE 802.1D transparent filter
               database referenced by the IETF Bridge MIB. "
@@ -909,9 +909,9 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
              "A table containing filtering information configured into
               the bridge by (local or network) management specifying
-              the specific packet string (destination address, source 
-              address, type/length field as well as a window of 64 bytes 
-              of packet data beginning at a data offset) to be used 
+              the specific packet string (destination address, source
+              address, type/length field as well as a window of 64 bytes
+              of packet data beginning at a data offset) to be used
               for filtering decisions.  The filters are to be searched in
               the order of incrementing filter number."
          ::= { ctBridgeSdbEnet 3 }
@@ -967,17 +967,17 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The specific packet string representing the
-              destination address, source address, type/length 
-              field and a window of 64 bytes of packet data 
-              beginning at DataOffset to be used for filtering 
-              decisions. Each ASCII character of the string 
-              represents a nibble of packet data, therefore the 
+              destination address, source address, type/length
+              field and a window of 64 bytes of packet data
+              beginning at DataOffset to be used for filtering
+              decisions. Each ASCII character of the string
+              represents a nibble of packet data, therefore the
               packet string should be (14+64) * 2 = 156 characters
               long.  A value of 'x' in the packet string is
-              used to indicate a 'Don't care' and no filtering is 
-              to be performed on that nibble.  The string may be 
-              be of size 0 to 78 bytes.  If a size less than 78 
-              bytes is used, the string will still begin at the 
+              used to indicate a 'Don't care' and no filtering is
+              to be performed on that nibble.  The string may be
+              be of size 0 to 78 bytes.  If a size less than 78
+              bytes is used, the string will still begin at the
               destination address."
 
          ::= { ctBridgeSdbEnetEntry 3 }
@@ -988,7 +988,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The offset into a packet from which the bridge begins
-              its filtering decisions on the 64 byte data window. The 
+              its filtering decisions on the 64 byte data window. The
               value '0' indicates that the window begins at the first
               byte after the Ethernet MAC header. The largest value of
               DataOffset is  max_Enet_pkt - MAC header - window - 1
@@ -1005,10 +1005,10 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
               frames received from specific ports and containing the
               specific packet string (destination address, source address,
               type/length field as well as a window of 64 bytes of
-              packet data beginning at a data offset) of the corresponding 
-              filter number of SdbEnetTable are allowed to be forwarded. 
+              packet data beginning at a data offset) of the corresponding
+              filter number of SdbEnetTable are allowed to be forwarded.
               The value of '0' in this table as the RcvPort is used to
-              specify all ports which are not already specified in this 
+              specify all ports which are not already specified in this
               table for a particular entry."
          ::= { ctBridgeSdbEnet 4 }
 
@@ -1019,12 +1019,12 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The set of ports to which frames received by the RcvPort
-              and containing the specific packet string of the 
+              and containing the specific packet string of the
               corresponding filter number of SdbEnetTable are allowed
               to be forwarded."
          INDEX    { ctBridgeSdbEnetIOFtrNo, ctBridgeSdbEnetIORcvPort }
          ::= { ctBridgeSdbEnetIOTable 1 }
-         
+
     CtBridgeSdbEnetIOEntry ::=
          SEQUENCE {
              ctBridgeSdbEnetIOFtrNo
@@ -1135,8 +1135,8 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
              "A table containing filtering information configured into
               the bridge by (local or network) management specifying
-              the specific packet string (AC, FC, destination address, 
-              source address, as well as a window of 64 bytes of packet 
+              the specific packet string (AC, FC, destination address,
+              source address, as well as a window of 64 bytes of packet
               data beginning at a data offset) to be used for filtering
               decisions.  The filters are to be searched in the order of
               incrementing filter number."
@@ -1193,15 +1193,15 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The specific packet string consisting of the AC, FC,
-              destination address, source address, and a window of 
+              destination address, source address, and a window of
               64 bytes of packet data beginning at DataOffset
-              to be used for filtering decisions.  Each ASCII 
-              character of the string represents a nibble of 
-              packet data, therefore the packet string should be 
+              to be used for filtering decisions.  Each ASCII
+              character of the string represents a nibble of
+              packet data, therefore the packet string should be
               (14+64) * 2 = 156 characters long.  A value of 'x' in
-              the packet string is used to indicate a 'Don't care' 
+              the packet string is used to indicate a 'Don't care'
               and no filtering is to be performed on that nibble.
-              If a size less than 78 bytes is used, the string 
+              If a size less than 78 bytes is used, the string
               will still begin at the AC field."
          ::= { ctBridgeSdbTrEntry 3 }
 
@@ -1211,10 +1211,10 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The offset into a packet from which the bridge begins
-              its filtering decisions on the 64 byte data window. The 
+              its filtering decisions on the 64 byte data window. The
               value '0' indicates that the window begins at the first
               byte after the Token Ring MAC header. The largest value of
-              DataOffset is max_TR_pkt - MAC header - window - 1 
+              DataOffset is max_TR_pkt - MAC header - window - 1
               (17800 - 14 - 64 - 1 = 17721). "
          ::= { ctBridgeSdbTrEntry 4 }
 
@@ -1224,14 +1224,14 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  not-accessible
          STATUS  mandatory
          DESCRIPTION
-             "A table containing the set of ports to which frames 
+             "A table containing the set of ports to which frames
               received from specific ports and containing the specific
               packet string (AC, FC, destination address, source address,
-              as well as a window of 64 bytes of packet data beginning 
-              at a data offset) of the corresponding filter number of 
-              SdbTrTable are allowed to be forwarded.  The value of '0' 
+              as well as a window of 64 bytes of packet data beginning
+              at a data offset) of the corresponding filter number of
+              SdbTrTable are allowed to be forwarded.  The value of '0'
               in this table as the RcvPort is used to specify all ports
-              which are not already specified in this table for a 
+              which are not already specified in this table for a
               particular entry."
          ::= { ctBridgeSdbTr 4 }
 
@@ -1242,12 +1242,12 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The set of ports to which frames received by the RcvPort
-              and containing the specific packet string of the 
+              and containing the specific packet string of the
               corresponding filter number of SdbTrTable are allowed
               to be forwarded."
          INDEX    { ctBridgeSdbTrIOFtrNo, ctBridgeSdbTrIORcvPort }
          ::= { ctBridgeSdbTrIOTable 1 }
-         
+
     CtBridgeSdbTrIOEntry ::=
          SEQUENCE {
              ctBridgeSdbTrIOFtrNo
@@ -1354,7 +1354,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "This object selects whether dual mode is enabled.  Dual
-              mode means a bridge translates a Token Ring broadcast or 
+              mode means a bridge translates a Token Ring broadcast or
               multicast packet to both CSMA/CD frame formats (ie Ethernet
               and IEEE 802.3 w/snap) when the format has not previously
               been learned."
@@ -1369,8 +1369,8 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "This object selects the CSMA/CD frame format (ie Ethernet
-              or IEEE 802.3 w/snap) to which the bridge translates a 
-              Novell Token Ring packet.  This selection is overidden 
+              or IEEE 802.3 w/snap) to which the bridge translates a
+              Novell Token Ring packet.  This selection is overidden
               by the learned format when ctBridgeTransTrEnetAutoMode is
               enabled and the format has been learned."
          ::= { ctBridgeTransTrEnet 3 }
@@ -1383,9 +1383,9 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  read-write
          STATUS  mandatory
          DESCRIPTION
-             "This object selects the CSMA/CD frame format (ie Ethernet 
+             "This object selects the CSMA/CD frame format (ie Ethernet
               or IEEE 802.3 w/snap) to which the bridge translates an IP
-              Token Ring packet including ARP packets.  This selection is 
+              Token Ring packet including ARP packets.  This selection is
               overidden by the learned format when ctBridgeTransTrEnetAutoMode
               is enabled and the format has been learned."
          ::= { ctBridgeTransTrEnet 4 }
@@ -1407,26 +1407,26 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
 
     ctBridgeTransTrEnetNovAdd OBJECT-TYPE
          SYNTAX  INTEGER {
-                     msb(1),        
+                     msb(1),
                      lsb(2)
                  }
          ACCESS  read-write
          STATUS  mandatory
          DESCRIPTION
-             "This object selects the bit ordering of the Hardware Addresses 
-              located in the 'data field' of a Token Ring NOVELL packet. The 
-              'data field' includes all bytes of the packet excluding the MAC 
+             "This object selects the bit ordering of the Hardware Addresses
+              located in the 'data field' of a Token Ring NOVELL packet. The
+              'data field' includes all bytes of the packet excluding the MAC
               Header and CRC. The Hardware Addresses in the MAC Header are
-              always MSB for Token Ring packets. The default value is 2." 
-         ::= { ctBridgeTransTrEnet 6 } 
+              always MSB for Token Ring packets. The default value is 2."
+         ::= { ctBridgeTransTrEnet 6 }
 
     ctBridgeTransTrEnetIBMTable OBJECT-TYPE
          SYNTAX  SEQUENCE OF CtBridgeTransTrEnetIBMEntry
          ACCESS  not-accessible
          STATUS  mandatory
          DESCRIPTION
-             "A table containing SAP (Service Access Point) values of 
-              IBM protocols that the bridge will translate from Token Ring 
+             "A table containing SAP (Service Access Point) values of
+              IBM protocols that the bridge will translate from Token Ring
               (802.5 w/o snap) to Ethernet."
          ::= { ctBridgeTransTrEnet 7 }
 
@@ -1440,7 +1440,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
               that is to be translated to Ethernet. The value of the
               Ethernet type field used in the translation is 80D5.
               Only SAP values whose entry is enabled will be translated
-              to Ethernet. All other Token Ring packets not having a 
+              to Ethernet. All other Token Ring packets not having a
               snap will be translated as an 802.3/802.2 formatted packet."
          INDEX    { ctBridgeTransTrEnetIBMIndex }
          ::= { ctBridgeTransTrEnetIBMTable 1 }
@@ -1472,7 +1472,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The SAP value of an IBM protocol. The bridge will translate
-              all Token Ring/802.5 packets without a snap header having 
+              all Token Ring/802.5 packets without a snap header having
               this SAP value to Ethernet packets with the Ethernet type
               field set to 80D5. The SAP value is one octet."
          ::= { ctBridgeTransTrEnetIBMEntry 2 }
@@ -1500,7 +1500,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
              "This object selects the CSMA/CD frame format (ie Ethernet or
               IEEE 802.3 w/snap) to which the bridge translates all
               Token Ring packets with a snap header whose Ethernet type
-              resides in the ctBridgeTransTrEnetSnapTable and is enabled. 
+              resides in the ctBridgeTransTrEnetSnapTable and is enabled.
               This selection is overidden by the learned format when
               ctBridgeTransTrEnetAutoMode is enable and the format has
               been learned."
@@ -1511,10 +1511,10 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  not-accessible
          STATUS  mandatory
          DESCRIPTION
-             "A table containing Ethernet type field entries that the 
-              bridge will use to determine how to translate a Token Ring 
-              (802.5 w/snap) packet to a CSMA/CD packet. If a received 
-              Token Ring packet matches the Ethernet type field of an 
+             "A table containing Ethernet type field entries that the
+              bridge will use to determine how to translate a Token Ring
+              (802.5 w/snap) packet to a CSMA/CD packet. If a received
+              Token Ring packet matches the Ethernet type field of an
               enabled entry, the bridge will translate the Token Ring
               packet to the frame format specified by
               ctBridgeTransTrEnetSnapFormat. Else, it will translate the
@@ -1561,7 +1561,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
              "The Ethernet type field value which the bridge will translate
               all Token Ring/802.5 packets with a snap header having
-              this type to the format specified by 
+              this type to the format specified by
               ctBridgeTransTrEnetSnapFormat.  The Ethernet type field value
               is two octets."
          ::= { ctBridgeTransTrEnetSnapEntry 2 }
@@ -1632,7 +1632,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The process to be performed if no match is found
-              in the Generic special database.  The process of 
+              in the Generic special database.  The process of
               filtering or forwarding is for all ports.  searchFDB
               results in searching the IEEE 802.1D transparent filter
               database referenced by the IETF Bridge MIB. "
@@ -1646,9 +1646,9 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          DESCRIPTION
              "A table containing filtering information configured into
               the bridge by (local or network) management specifying
-              the specific packet string (destination address, source 
-              address, type/length field as well as a window of 64 bytes 
-              of packet data beginning at a data offset) to be used 
+              the specific packet string (destination address, source
+              address, type/length field as well as a window of 64 bytes
+              of packet data beginning at a data offset) to be used
               for filtering decisions.  The filters are to be searched in
               the order of incrementing filter number."
          ::= { ctBridgeSdbGeneric 3 }
@@ -1706,17 +1706,17 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The specific packet string representing the
-              destination address, source address, type/length 
-              field and a window of 64 bytes of packet data 
-              beginning at DataOffset to be used for filtering 
-              decisions. Each ASCII character of the string 
-              represents a nibble of packet data, therefore the 
+              destination address, source address, type/length
+              field and a window of 64 bytes of packet data
+              beginning at DataOffset to be used for filtering
+              decisions. Each ASCII character of the string
+              represents a nibble of packet data, therefore the
               packet string should be (14+64) * 2 = 156 characters
               long.  A value of 'x' in the packet string is
-              used to indicate a 'Don't care' and no filtering is 
-              to be performed on that nibble.  The string may be 
-              be of size 0 to 78 bytes.  If a size less than 78 
-              bytes is used, the string will still begin at the 
+              used to indicate a 'Don't care' and no filtering is
+              to be performed on that nibble.  The string may be
+              be of size 0 to 78 bytes.  If a size less than 78
+              bytes is used, the string will still begin at the
               destination address."
 
          ::= { ctBridgeSdbGenericEntry 3 }
@@ -1727,7 +1727,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The offset into a packet from which the bridge begins
-              its filtering decisions on the 64 byte data window. The 
+              its filtering decisions on the 64 byte data window. The
               value '0' indicates that the window begins at the first
               byte after the Generic MAC header. The largest value of
               DataOffset dependent upon the media type."
@@ -1761,10 +1761,10 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
               frames received from specific ports and containing the
               specific packet string (destination address, source address,
               type/length field as well as a window of 64 bytes of
-              packet data beginning at a data offset) of the corresponding 
-              filter number of SdbGenericTable are allowed to be forwarded. 
+              packet data beginning at a data offset) of the corresponding
+              filter number of SdbGenericTable are allowed to be forwarded.
               The value of '0' in this table as the RcvPort is used to
-              specify all ports which are not already specified in this 
+              specify all ports which are not already specified in this
               table for a particular entry."
          ::= { ctBridgeSdbGeneric 4 }
 
@@ -1775,12 +1775,12 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "The set of ports to which frames received by the RcvPort
-              and containing the specific packet string of the 
+              and containing the specific packet string of the
               corresponding filter number of SdbGenericTable are allowed
               to be forwarded."
          INDEX    { ctBridgeSdbGenericIOFtrNo, ctBridgeSdbGenericIORcvPort }
          ::= { ctBridgeSdbGenericIOTable 1 }
-         
+
     CtBridgeSdbGenericIOEntry ::=
          SEQUENCE {
              ctBridgeSdbGenericIOFtrNo
@@ -1853,7 +1853,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
 
     --========        ctBridgeLoadShare group       =============
 
--- This section defines a table of load share instances 
+-- This section defines a table of load share instances
 
     ctBridgeLoadShareInstanceTable OBJECT-TYPE
          SYNTAX  SEQUENCE OF CtBridgeLoadShareInstanceEntry
@@ -1967,7 +1967,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          STATUS  mandatory
          DESCRIPTION
              "A unique value indentifying a member instance in the table
-              of load share instances.  This value is similar to 
+              of load share instances.  This value is similar to
               ctBridgeLoadShareInstanceId."
          ::= { ctBridgeLoadSharePortEntry 2 }
 
@@ -1979,7 +1979,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  read-write
          STATUS  mandatory
          DESCRIPTION
-             "The administrative state of the port associated with 
+             "The administrative state of the port associated with
               this instance of load share."
          ::= { ctBridgeLoadSharePortEntry 3 }
 
@@ -2008,7 +2008,7 @@ CTRON-BRIDGE-MIB DEFINITIONS ::= BEGIN
          ACCESS  read-only
          STATUS  mandatory
          DESCRIPTION
-             "The instance that the ctLoadSharePortFowardMask 
+             "The instance that the ctLoadSharePortFowardMask
               is running on for this ctLoadSharePortNumber."
          ::= { ctBridgeLoadSharePortEntry 6 }
 

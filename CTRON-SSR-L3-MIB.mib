@@ -5,13 +5,13 @@ CTRON-SSR-L3-MIB DEFINITIONS ::= BEGIN
 --  Rochester, NH 03867-0505
 --  (603) 332-9400
 --  support@ctron.com
- 
+
 --  This module provides authoritative definitions for Cabletron's
 --  enterprise-specific schema to access SSR Layer 3 processing subsystem..
 --
 --  This module will be extended, as required.
 --
- 
+
 --  Cabletron Systems reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
@@ -27,14 +27,14 @@ CTRON-SSR-L3-MIB DEFINITIONS ::= BEGIN
 --  Cabletron grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Cabletron products.
- 
+
 --  Copyright June 1998 Cabletron Systems
- 
+
 
 IMPORTS
-       MODULE-IDENTITY, OBJECT-TYPE, Counter32, IpAddress 
+       MODULE-IDENTITY, OBJECT-TYPE, Counter32, IpAddress
        FROM SNMPv2-SMI
-       TEXTUAL-CONVENTION        
+       TEXTUAL-CONVENTION
        FROM SNMPv2-TC
        MODULE-COMPLIANCE, OBJECT-GROUP
        FROM SNMPv2-CONF
@@ -53,7 +53,7 @@ l3MIB MODULE-IDENTITY
      (603) 332-9400
      support@ctron.com
      http://www.ctron.com"
- 
+
    DESCRIPTION
      "This module defines a schema to access SSR Layer 3 processing subsystem.
        This mib is no longer supported on ssr platforms. features of this
@@ -106,13 +106,13 @@ l3MIB MODULE-IDENTITY
     meritInp(32),   -- MERIT-INP   MERIT Internodal Protocol             [HWB]
     sep(33),         -- SEP         Sequential Exchange Protocol        [JC120]
     tpc(34),         -- 3PC         Third Party Connect Protocol         [SAF3]
-    idpr(35),        -- IDPR        Inter-Domain Policy Routing Protocol [MXS1] 
+    idpr(35),        -- IDPR        Inter-Domain Policy Routing Protocol [MXS1]
     xtp(36),         -- XTP         XTP                                   [GXC]
     ddp(37),         -- DDP         Datagram Delivery Protocol            [WXC]
     idprCmtp(38),        -- IDPR-CMTP   IDPR Control Message Transport Proto [MXS1]
     tppp(39),        -- TP++        TP++ Transport Protocol               [DXF]
     il(40),          -- IL          IL Transport Protocol            [Presotto]
-    ipv6(41),        -- IPv6        Ipv6                              [Deering]    
+    ipv6(41),        -- IPv6        Ipv6                              [Deering]
     sdrp(42),        -- SDRP        Source Demand Routing Protocol       [DXE1]
     ipv6r(43),       -- IPv6-Route  Routing Header for IPv6           [Deering]
     ipv6f(44),       -- IPv6-Frag   Fragment Header for IPv6          [Deering]
@@ -161,13 +161,13 @@ l3MIB MODULE-IDENTITY
     tcf(87),         -- TCF         TCF                                  [GAL5]
     eigrp(88),       -- EIGRP       EIGRP                           [CISCO,GXS]
     ospfigp(89),     -- OSPFIGP     OSPFIGP                      [RFC1583,JTM4]
-    spriteRpc(90),  -- Sprite-RPC  Sprite RPC Protocol            [SPRITE,BXW] 
+    spriteRpc(90),  -- Sprite-RPC  Sprite RPC Protocol            [SPRITE,BXW]
     larp(91),        -- LARP        Locus Address Resolution Protocol     [BXH]
     mtp(92),         -- MTP         Multicast Transport Protocol          [SXA]
-    ax25(93),       -- AX.25       AX.25 Frames                         [BK29]         
+    ax25(93),       -- AX.25       AX.25 Frames                         [BK29]
     ipipep(94),      -- IPIP        IP-within-IP Encapsulation Protocol   [JI6]
     micp(95),        -- MICP        Mobile Internetworking Control Pro.   [JI6]
-    sccSp(96),      -- SCC-SP      Semaphore Communications Sec. Pro.    [HXH]     
+    sccSp(96),      -- SCC-SP      Semaphore Communications Sec. Pro.    [HXH]
     etherip(97),     -- ETHERIP     Ethernet-within-IP Encapsulation     [RXH1]
     encap(98),       -- ENCAP       Encapsulation Header         [RFC1241,RXB3]
     anyEncrpyt(99), -- any private encryption scheme         [JBP]
@@ -186,13 +186,13 @@ l3MIB MODULE-IDENTITY
     vrrp(112),       -- VRRP        Virtual Router Redundancy Protocol [Hinden]
     reserved(255)    --             Reserved                              [JBP]
    }
- 
- 
- 
+
+
+
    l3Group       OBJECT IDENTIFIER ::= { ssrMibs 3 }
 
    -- The L3-Flow Table
-   -- This L3 table contains information on all the layer 3 
+   -- This L3 table contains information on all the layer 3
    -- flows the switch is processing.
 
    l3FlowTable OBJECT-TYPE
@@ -209,10 +209,10 @@ l3MIB MODULE-IDENTITY
        STATUS      obsolete
        DESCRIPTION
         "An entry containing the L3 flow information"
-       INDEX   { 
+       INDEX   {
         l3FlowIndex,
         l3FlowFilterId,
-        l3FlowPortOfEntry,  
+        l3FlowPortOfEntry,
         l3FlowSrcIpAddress,
         l3FlowDstIpAddress,
         l3FlowTOS,
@@ -242,7 +242,7 @@ l3MIB MODULE-IDENTITY
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "A unique number for each flow. The encoding is 
+        "A unique number for each flow. The encoding is
         as explained.
         bit 0-15 = Table Index (0-64K)
         bit 16-18  = Table Number (0-3)
@@ -257,10 +257,10 @@ l3MIB MODULE-IDENTITY
         "A filter byte to narrow the data returned by the agent.
 
          The number of possible flows can be extremely high. An SNMP walk
-         could take a significatn resources. Using a walk with a filter will narrow the 
+         could take a significatn resources. Using a walk with a filter will narrow the
          values returned to those flows matching the fields used in the index. Currently
          only the first byte of this Integer is used.
-         This byte specifies one or more fields to compare flows in the system against the 
+         This byte specifies one or more fields to compare flows in the system against the
          index in the get-next request.
          Big endian least significant Byte is encoding is as follows:
                  bit 0 : unused
@@ -274,84 +274,84 @@ l3MIB MODULE-IDENTITY
 
          A complete walk of the mib will use the filter value of 0 as will a get Request "
        ::= { l3FlowEntry 2 }
- 
+
    l3FlowPortOfEntry OBJECT-TYPE
            SYNTAX  INTEGER  (0..1024)
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The physical port in the chassis/shelf from which this flow 
-         enters the switch." 
+        "The physical port in the chassis/shelf from which this flow
+         enters the switch."
        ::= { l3FlowEntry 3 }
- 
+
    l3FlowSrcIpAddress OBJECT-TYPE
-           SYNTAX  IpAddress 
+           SYNTAX  IpAddress
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The source IP address for this flow." 
+        "The source IP address for this flow."
        ::= { l3FlowEntry 4 }
- 
+
    l3FlowDstIpAddress OBJECT-TYPE
-           SYNTAX  IpAddress 
+           SYNTAX  IpAddress
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The destination IP address for this flow." 
+        "The destination IP address for this flow."
        ::= { l3FlowEntry 5 }
-   
+
         l3FlowTOS OBJECT-TYPE
            SYNTAX  INTEGER  (0..15)
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The Type Of Service for this flow." 
+        "The Type Of Service for this flow."
        ::= { l3FlowEntry 6 }
- 
+
    l3FlowProtocol OBJECT-TYPE
          SYNTAX  SSRProtocols
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
         "The IP protocol for this flow. Official assignments are defined in
-         ftp://ftp.isi.edu/in-notes/iana/assignments/protocol-numbers" 
+         ftp://ftp.isi.edu/in-notes/iana/assignments/protocol-numbers"
        ::= { l3FlowEntry 7 }
- 
+
    l3FlowSrcPort OBJECT-TYPE
            SYNTAX  INTEGER  (0..65535)
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The source UDP/TCP port for this flow. Official port numbers 
+        "The source UDP/TCP port for this flow. Official port numbers
          are defined in:
         ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers"
        ::= { l3FlowEntry 8 }
- 
+
    l3FlowDstPort OBJECT-TYPE
            SYNTAX  INTEGER  (0..65535)
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The destination UDP/TCP port for this flow. Official port numbers are 
+        "The destination UDP/TCP port for this flow. Official port numbers are
          defined in ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers"
        ::= { l3FlowEntry 9 }
- 
+
    l3FlowPkts OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The packets in this flow." 
+        "The packets in this flow."
        ::= { l3FlowEntry 10 }
- 
+
    l3FlowOctets OBJECT-TYPE
-           SYNTAX  Counter32 
+           SYNTAX  Counter32
            MAX-ACCESS  read-only
            STATUS  obsolete
            DESCRIPTION
-        "The number of octets in this flow." 
+        "The number of octets in this flow."
        ::= { l3FlowEntry 11 }
- 
+
    -- The L3-Flow Priority Table
    -- This L3 table contains information on priority of all
    -- the layer 3 flows the switch is processing.
@@ -388,47 +388,47 @@ l3MIB MODULE-IDENTITY
        }
 
    l3FlowPriorityIndex OBJECT-TYPE
-           SYNTAX  INTEGER  (0..4294967295) 
+           SYNTAX  INTEGER  (0..4294967295)
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "The unique entry number for this flow." 
+        "The unique entry number for this flow."
        ::= { l3FlowPriorityEntry 1 }
 
    l3FlowPriorityName OBJECT-TYPE
-           SYNTAX  OCTET STRING(SIZE(0..20)) 
+           SYNTAX  OCTET STRING(SIZE(0..20))
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "A unique name for this flow. Padded with blanks to 20 bytes." 
+        "A unique name for this flow. Padded with blanks to 20 bytes."
        ::= { l3FlowPriorityEntry 2 }
- 
+
    l3FlowPrioritySrcIpAddress OBJECT-TYPE
-           SYNTAX  IpAddress 
+           SYNTAX  IpAddress
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "The source IP address for this flow." 
+        "The source IP address for this flow."
        ::= { l3FlowPriorityEntry 3 }
- 
+
    l3FlowPrioritySrcPort OBJECT-TYPE
-           SYNTAX  INTEGER  (0..65535) 
+           SYNTAX  INTEGER  (0..65535)
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "The source UDP/TCP port for this flow. 
+        "The source UDP/TCP port for this flow.
          The Official port numbers are defined in:
-        ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers" 
+        ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers"
        ::= { l3FlowPriorityEntry 4 }
- 
+
    l3FlowPriorityDstIpAddress OBJECT-TYPE
-           SYNTAX  IpAddress 
+           SYNTAX  IpAddress
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "The destination IP address for this flow." 
+        "The destination IP address for this flow."
        ::= { l3FlowPriorityEntry 5 }
- 
+
    l3FlowPriorityDstPort OBJECT-TYPE
            SYNTAX  INTEGER  (0..65535)
            MAX-ACCESS  read-write
@@ -436,24 +436,24 @@ l3MIB MODULE-IDENTITY
            DESCRIPTION
         "The destination UDP/TCP port for this flow.
          Official port numbers are defined in
-         ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers" 
+         ftp://ftp.isi.edu/in-notes/iana/assignments/port-numbers"
        ::= { l3FlowPriorityEntry 6 }
- 
+
    l3FlowPriorityTOS OBJECT-TYPE
            SYNTAX  INTEGER  (0..15)
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
-        "The Type Of Service for this flow." 
+        "The Type Of Service for this flow."
        ::= { l3FlowPriorityEntry 7 }
- 
+
    l3FlowPriorityProtocol OBJECT-TYPE
            SYNTAX  SSRProtocols
            MAX-ACCESS  read-write
            STATUS  obsolete
            DESCRIPTION
            "The IP protocol for this flow. Official assignments are defined in
-            ftp://ftp.isi.edu/in-notes/iana/assignments/protocol-numbers" 
+            ftp://ftp.isi.edu/in-notes/iana/assignments/protocol-numbers"
        ::= { l3FlowPriorityEntry 8 }
 
    l3FlowPriorityInterface OBJECT-TYPE
@@ -473,7 +473,7 @@ l3MIB MODULE-IDENTITY
               value of this object.  If that bit has a value of
               '1' then that interface is included in the set of
               interfaces; the interface is not included if its bit has a
-              value of '0'."  
+              value of '0'."
        ::= { l3FlowPriorityEntry 9 }
 
    l3FlowPriority OBJECT-TYPE
@@ -487,16 +487,16 @@ l3MIB MODULE-IDENTITY
         MAX-ACCESS  read-write
         STATUS  obsolete
         DESCRIPTION
-        "The priority for this flow." 
+        "The priority for this flow."
        ::= { l3FlowPriorityEntry 10 }
 
 
 -- ### Compliance ###
- 
+
 l3Conformance OBJECT IDENTIFIER ::= { l3MIB 2 }
 l3Compliances OBJECT IDENTIFIER ::= { l3Conformance 1 }
 l3Groups OBJECT IDENTIFIER ::= { l3Conformance 2 }
- 
+
 l3ComplianceV10 MODULE-COMPLIANCE
     STATUS obsolete
     DESCRIPTION
@@ -504,7 +504,7 @@ l3ComplianceV10 MODULE-COMPLIANCE
     MODULE  -- this module
         MANDATORY-GROUPS { l3ConfGroupV10 }
     ::= { l3ConfGroupV10 1 }
- 
+
 l3ConfGroupV10  OBJECT-GROUP
    OBJECTS {
         l3FlowIndex,
@@ -533,5 +533,5 @@ STATUS obsolete
 DESCRIPTION
   "A set of managed objects that make up version 1.0 of the SSR Layer 3 MIB"
    ::= { l3Groups 1 }
- 
+
 END

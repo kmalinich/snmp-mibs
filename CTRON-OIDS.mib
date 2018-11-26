@@ -22,37 +22,37 @@ cabletron OBJECT IDENTIFIER ::= { enterprises 52 }
 --    LAST-UPDATED "200311041539Z"  - Tue Nov  4 15:39 GMT 2003
 --    REVISION     "200311041539Z"  - Tue Nov  4 15:39 GMT 2003
 --    DESCRIPTION  "Added OIDs for powerPC8241 and powerPC8245."
---    
+--
 --    REVISION     "September 11, 2001"
 --    DESCRIPTION  "Revision: 1.19.15"
---    
+--
 --    This module provides authoritative definitions for part
 --    of the naming tree below:
---    
+--
 --    cabletron { enterprises 52 }
---    
+--
 --    This module will be extended, as additional sub-sections
 --    of this naming tree are defined.
---    
---    Enterasys Networks reserves the right to make changes in 
---    specification and other information contained in this document 
+--
+--    Enterasys Networks reserves the right to make changes in
+--    specification and other information contained in this document
 --    without prior notice.  The reader should consult Enterasys Networks
 --    to determine whether any such changes have been made.
---    
---    In no event shall Enterasys Networks be liable for any incidental, 
---    indirect, special, or consequential damages whatsoever (including 
+--
+--    In no event shall Enterasys Networks be liable for any incidental,
+--    indirect, special, or consequential damages whatsoever (including
 --    but not limited to lost profits) arising out of or related to this
 --    document or the information contained in it, even if Enterasys
---    Networks has been advised of, known, or should have known, the 
+--    Networks has been advised of, known, or should have known, the
 --    possibility of such damages.
---     
+--
 --    Enterasys grants vendors, end-users, and other interested parties
 --    a non-exclusive license to use this Specification in connection
 --    with the management of Enterasys or Cabletron products.
---    
+--
 --    Copyright February 1999 Cabletron Systems
 --    Copyright September 2001 Enterasys Networks
---    
+--
 --    The assigned enterprise MIB tree for Cabletron System
 
 namingTree OBJECT IDENTIFIER ::= { cabletron 3 }
@@ -329,7 +329,7 @@ mtFDCMIM38 OBJECT IDENTIFIER ::= { moduleType 46 }
 --  Status
 --    mandatory
 --  Descr
---    FDDI Concentrator with 8 SMF M ports 
+--    FDDI Concentrator with 8 SMF M ports
 
 mtFDCMIM34 OBJECT IDENTIFIER ::= { moduleType 47 }
 -- OBJECT-IDENTITY
@@ -1342,7 +1342,7 @@ componentType OBJECT IDENTIFIER ::= { namingTree 5 }
 --  Descr
 --    This branch defines the different component types defined
 --    within Cabletron.
---    
+--
 --    A component is defined as major device functionality such as
 --    repeating, routing, bridging, switching, or other applications
 --    running on the device.  In general the definition of component
@@ -1358,7 +1358,7 @@ cptUnknown OBJECT IDENTIFIER ::= { componentType 1 }
 --    mandatory
 --  Descr
 --    Defines an unknown type of component.
---    
+--
 --    This may be used if a new function is defined but a component
 --    type has yet to be assigned.  Usage of this should be very
 --    limited.
@@ -1524,7 +1524,7 @@ cpt802p1Q OBJECT IDENTIFIER ::= { componentType 22 }
 --  Status
 --    mandatory
 --  Descr
---    Component type for IEEE 802.1Q refers to VLANs (industry standard 
+--    Component type for IEEE 802.1Q refers to VLANs (industry standard
 --    via IEEE).
 
 cpt802p1p OBJECT IDENTIFIER ::= { componentType 23 }
@@ -1771,8 +1771,8 @@ portSc1000SX OBJECT IDENTIFIER ::= { portGigEthernet 1 }
 --  Status
 --    mandatory
 --  Descr
---    Fixed mount 1000Base-SX port supporting multimode fiber 
---    with a SC connector. 
+--    Fixed mount 1000Base-SX port supporting multimode fiber
+--    with a SC connector.
 
 portSc1000LX OBJECT IDENTIFIER ::= { portGigEthernet 2 }
 -- OBJECT-IDENTITY
@@ -1840,7 +1840,7 @@ portVapim OBJECT IDENTIFIER ::= { portXpim 8 }
 --    mandatory
 --  Descr
 --    This branch describes all VAPIMs as port types.  VAPIMS
---    are designed to be the interface module for devices 
+--    are designed to be the interface module for devices
 --    complying with ATM VHSIM architecture.
 
 portUnknown OBJECT IDENTIFIER ::= { portEthernet 1 }
@@ -2219,7 +2219,7 @@ portEpim1002F2 OBJECT IDENTIFIER ::= { portEpim 20 }
 --  Status
 --    mandatory
 --  Descr
---    2 port 100 Base FX multi-mode expansion module 
+--    2 port 100 Base FX multi-mode expansion module
 
 portEpim1002F3 OBJECT IDENTIFIER ::= { portEpim 21 }
 -- OBJECT-IDENTITY
@@ -2448,7 +2448,7 @@ portApim39 OBJECT IDENTIFIER ::= { portApim 11 }
 portApim39LR OBJECT IDENTIFIER ::= { portApim 12 }
 -- OBJECT-IDENTITY
 --  Status
---    deprecated 
+--    deprecated
 --  Descr
 --    622 Mbps, OC12, SMF-LR, SC
 
@@ -2459,14 +2459,14 @@ portVapim31 OBJECT IDENTIFIER ::= { portVapim 1 }
 --    mandatory
 --  Descr
 --    622 Mbps, OC12, MMF, SC for ATM VHSIM
- 
+
 portVapim39 OBJECT IDENTIFIER ::= { portVapim 2 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
 --    622 Mbps, OC12, SMF-SR, SC for ATM VHSIM
-  
+
 portVapim39LR OBJECT IDENTIFIER ::= { portVapim 3 }
 -- OBJECT-IDENTITY
 --  Status
@@ -2550,7 +2550,7 @@ portWpimT1DDS OBJECT IDENTIFIER ::= { portWpim 11 }
 --  Status
 --    mandatory
 --  Descr
---    WPIM supporting mode switching from DDS to T1 
+--    WPIM supporting mode switching from DDS to T1
 --    and vice versa.
 
 portWpimRDDS OBJECT IDENTIFIER ::= { portWpim 12 }
@@ -2566,7 +2566,7 @@ portWpimRT1 OBJECT IDENTIFIER ::= { portWpim 13 }
 --    mandatory
 --  Descr
 --    Respin of WPIM supporting a T1/PRI CSU/DSU
- 
+
 portWpimRE1 OBJECT IDENTIFIER ::= { portWpim 14 }
 -- OBJECT-IDENTITY
 --  Status
@@ -2666,63 +2666,63 @@ portGpimF01 OBJECT IDENTIFIER ::= { portGpim 1 }
 --  Status
 --    mandatory
 --  Descr
---    1 Gigabit Fiber Channel with multimode fiber SC connectors. 
+--    1 Gigabit Fiber Channel with multimode fiber SC connectors.
 
 portGpimF09 OBJECT IDENTIFIER ::= { portGpim 2 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    1 Gigabit Fiber Channel with singlemode fiber SC connectors. 
+--    1 Gigabit Fiber Channel with singlemode fiber SC connectors.
 
 portGpimS41 OBJECT IDENTIFIER ::= { portGpim 3 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    1.2 Gigabit SONET with multimode fiber SC connectors. 
+--    1.2 Gigabit SONET with multimode fiber SC connectors.
 
 portGpimS49 OBJECT IDENTIFIER ::= { portGpim 4 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    1.2 Gigabit SONET with singlemode fiber SC connectors. 
+--    1.2 Gigabit SONET with singlemode fiber SC connectors.
 
 portGpimS51 OBJECT IDENTIFIER ::= { portGpim 5 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    2.4 Gigabit SONET with multimode fiber SC connectors. 
+--    2.4 Gigabit SONET with multimode fiber SC connectors.
 
 portGpimS59 OBJECT IDENTIFIER ::= { portGpim 6 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    2.4 Gigabit SONET with singlemode fiber SC connectors. 
+--    2.4 Gigabit SONET with singlemode fiber SC connectors.
 
 portGpimS31 OBJECT IDENTIFIER ::= { portGpim 7 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    622 Megabit SONET with multimode fiber SC connectors. 
+--    622 Megabit SONET with multimode fiber SC connectors.
 
 portGpimS39 OBJECT IDENTIFIER ::= { portGpim 8 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    622 Megabit SONET with singlemode fiber SC connectors. 
+--    622 Megabit SONET with singlemode fiber SC connectors.
 
 portGpim01 OBJECT IDENTIFIER ::= { portGpim 9 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    1000Base-SX with multimode fiber SC connectors. The 
+--    1000Base-SX with multimode fiber SC connectors. The
 --    laser is an 850 nanometer optical laser.
 
 portGpim04 OBJECT IDENTIFIER ::= { portGpim 10 }
@@ -2739,7 +2739,7 @@ portGpim09 OBJECT IDENTIFIER ::= { portGpim 11 }
 --  Descr
 --    1000Base-LX with single or multi-mode fiber SC
 --    connector. The laser is a 1300 nanometer optical laser
- 
+
 portGpim08 OBJECT IDENTIFIER ::= { portGpim 12 }
 -- OBJECT-IDENTITY
 --  Status
@@ -2759,35 +2759,35 @@ portAnim21p3 OBJECT IDENTIFIER ::= { portAnim 1 }
 --  Status
 --    mandatory
 --  Descr
---    3 port I/O module, 155 Mbps, OC3c, with multimode fiber SC connector. 
+--    3 port I/O module, 155 Mbps, OC3c, with multimode fiber SC connector.
 
 portAnim29p3 OBJECT IDENTIFIER ::= { portAnim 2 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    3 port I/O module, 155 Mbps, OC3c, with singlemode fiber SC connector. 
+--    3 port I/O module, 155 Mbps, OC3c, with singlemode fiber SC connector.
 
 portAnim22p4 OBJECT IDENTIFIER ::= { portAnim 3 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    4 port I/O module, 155 Mbps, STS3c, with UTP5 RJ-45 connector. 
+--    4 port I/O module, 155 Mbps, STS3c, with UTP5 RJ-45 connector.
 
 portAnim31p2 OBJECT IDENTIFIER ::= { portAnim 4 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    2 port I/O module, 622 Mbps, OC12c, with multimode fiber SC connector. 
+--    2 port I/O module, 622 Mbps, OC12c, with multimode fiber SC connector.
 
 portAnim39p2 OBJECT IDENTIFIER ::= { portAnim 5 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    2 port I/O module, 622 Mbps, OC12c, with singlemode fiber SC connector. 
+--    2 port I/O module, 622 Mbps, OC12c, with singlemode fiber SC connector.
 
 portAnim29p4LR OBJECT IDENTIFIER ::= { portAnim 6 }
 -- OBJECT-IDENTITY
@@ -2795,7 +2795,7 @@ portAnim29p4LR OBJECT IDENTIFIER ::= { portAnim 6 }
 --    mandatory
 --  Descr
 --    4 port I/O module, 155 Mbps, OC3, with long range singlemode fiber SC
---    connectors. 
+--    connectors.
 
 portAnim29p3LR OBJECT IDENTIFIER ::= { portAnim 7 }
 -- OBJECT-IDENTITY
@@ -2803,7 +2803,7 @@ portAnim29p3LR OBJECT IDENTIFIER ::= { portAnim 7 }
 --    mandatory
 --  Descr
 --    3 port I/O module, 155 Mbps, OC3, with long range singlemode fiber
---    SC connector. 
+--    SC connector.
 
 portAnim39p2LR OBJECT IDENTIFIER ::= { portAnim 8 }
 -- OBJECT-IDENTITY
@@ -3527,14 +3527,14 @@ tpELH10012  OBJECT IDENTIFIER ::= { tpStandAlone 4 }
 --    mandatory
 --  Descr
 --     12 port 10/100 TX SmartStack repeater.
- 
+
 tpELH10024  OBJECT IDENTIFIER ::= { tpStandAlone 5 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
 --     24 port 10/100 TX SmartStack repeater.
-  
+
 tpELS10024FXG  OBJECT IDENTIFIER ::= { tpStandAlone 6 }
 -- OBJECT-IDENTITY
 --  Status
@@ -3613,7 +3613,7 @@ mtCSMIMm8T1 OBJECT IDENTIFIER ::= { xylogicsMIMs 11 }
 --  Status
 --    mandatory
 --  Descr
---    Xylogics T1 communication server with 8 integrated modems and A/B/C 
+--    Xylogics T1 communication server with 8 integrated modems and A/B/C
 --    connectivity
 
 mtCSMIMm16T1 OBJECT IDENTIFIER ::= { xylogicsMIMs 12 }
@@ -3621,7 +3621,7 @@ mtCSMIMm16T1 OBJECT IDENTIFIER ::= { xylogicsMIMs 12 }
 --  Status
 --    mandatory
 --  Descr
---    Xylogics T1 communication server with 16 integrated modems and A/B/C 
+--    Xylogics T1 communication server with 16 integrated modems and A/B/C
 --    connectivity
 
 mtCSMIMm24T1 OBJECT IDENTIFIER ::= { xylogicsMIMs 13 }
@@ -3629,7 +3629,7 @@ mtCSMIMm24T1 OBJECT IDENTIFIER ::= { xylogicsMIMs 13 }
 --  Status
 --    mandatory
 --  Descr
---    Xylogics T1 communication server with 24 integrated modems and A/B/C 
+--    Xylogics T1 communication server with 24 integrated modems and A/B/C
 --    connectivity
 
 mtCSmimBri3 OBJECT IDENTIFIER ::= { xylogicsMIMs 14 }
@@ -4270,7 +4270,7 @@ mtSEH100Tx22 OBJECT IDENTIFIER ::= { mtEtherStandAlone 54 }
 --  Status
 --    mandatory
 --  Descr
---    Stackable Fast Ethernet class I non-intelligent repeater. 
+--    Stackable Fast Ethernet class I non-intelligent repeater.
 --    With 22 100BaseTX (RJ45) ports with one EPIM slot.
 
 mtSEHi100Tx22 OBJECT IDENTIFIER ::= { mtEtherStandAlone 55 }
@@ -4278,7 +4278,7 @@ mtSEHi100Tx22 OBJECT IDENTIFIER ::= { mtEtherStandAlone 55 }
 --  Status
 --    mandatory
 --  Descr
---    Stackable Fast Ethernet class I Intelligent repeater. 
+--    Stackable Fast Ethernet class I Intelligent repeater.
 --    With 22 100BaseTX (RJ45) ports with one EPIM slot.
 
 mt8H02p16 OBJECT IDENTIFIER ::= { mtEtherStandAlone 56 }
@@ -4295,8 +4295,8 @@ mt2E42p27 OBJECT IDENTIFIER ::= { mtEtherStandAlone 57 }
 --  Status
 --    mandatory
 --  Descr
---    Standalone ethernet SmartSwitch with 24 front panel 
---    RJ45 ports, 2 FE-100XX slots and one HSIM (High 
+--    Standalone ethernet SmartSwitch with 24 front panel
+--    RJ45 ports, 2 FE-100XX slots and one HSIM (High
 --    Speed Interface Module) slot.
 
 mt2E42p27R OBJECT IDENTIFIER ::= { mtEtherStandAlone 58 }
@@ -4304,8 +4304,8 @@ mt2E42p27R OBJECT IDENTIFIER ::= { mtEtherStandAlone 58 }
 --  Status
 --    mandatory
 --  Descr
---    Standalone ethernet SmartSwitch with 24 front panel 
---    RJ45 ports, 2 FE-100XX slots and one HSIM (High 
+--    Standalone ethernet SmartSwitch with 24 front panel
+--    RJ45 ports, 2 FE-100XX slots and one HSIM (High
 --    Speed Interface Module) slot. With redundant power supplies.
 
 mt2E43p27 OBJECT IDENTIFIER ::= { mtEtherStandAlone 59 }
@@ -4398,7 +4398,7 @@ mt2E48p27R OBJECT IDENTIFIER ::= { mtEtherStandAlone 68 }
 --    mandatory
 -- Descr
 --    Redundant powered Standalone SmartSwitch with 24 Multimode fiber
---    10Base-FL switch ports (via ST connectors) with one optional HSIM 
+--    10Base-FL switch ports (via ST connectors) with one optional HSIM
 --    port and two optional FE-PIM ports.
 
 mt2E48p27 OBJECT IDENTIFIER ::= { mtEtherStandAlone 69 }
@@ -4406,7 +4406,7 @@ mt2E48p27 OBJECT IDENTIFIER ::= { mtEtherStandAlone 69 }
 -- Status
 --    mandatory
 -- Descr
---    Standalone SmartSwitch with 24 Multimode fiber 10Base-FL 
+--    Standalone SmartSwitch with 24 Multimode fiber 10Base-FL
 --    switch ports (via ST connectors) with one optional HSIM port and
 --    two optional FE-PIM ports.
 
@@ -4424,8 +4424,8 @@ mt2E49p27R OBJECT IDENTIFIER ::= { mtEtherStandAlone 71 }
 -- Status
 --    mandatory
 -- Descr
---    Redundant powered Standalone SmartSwitch with 24 fixed single-mode 
---    fiber 10Mb switched ports (via ST connectors) with one optional 
+--    Redundant powered Standalone SmartSwitch with 24 fixed single-mode
+--    fiber 10Mb switched ports (via ST connectors) with one optional
 --    HSIM port and two optional 100BaseX FE-PIM ports.
 
 mt2E49p27RDC OBJECT IDENTIFIER ::= { mtEtherStandAlone 72 }
@@ -4435,7 +4435,7 @@ mt2E49p27RDC OBJECT IDENTIFIER ::= { mtEtherStandAlone 72 }
 -- Descr
 --    Redundant powered Standalone SmartSwitch with 24 fixed single-mode
 --    fiber 10Mb switched ports (via ST connectors) with one optional
---    HSIM port and two optional 100BaseX FE-PIM ports. Distributed 
+--    HSIM port and two optional 100BaseX FE-PIM ports. Distributed
 --    Chassis version.
 
 mt2M46p04R OBJECT IDENTIFIER ::= { mtEtherStandAlone 73 }
@@ -4494,7 +4494,7 @@ mt2H252p25 OBJECT IDENTIFIER ::= { mtEtherStandAlone 79 }
 --    mandatory
 --  Descr
 --    24 port Standalone workgroup Smartswitch with 24 10/100 Switch
---    ports and one optional VHSIM slot.  
+--    ports and one optional VHSIM slot.
 
 mt2H252p25R OBJECT IDENTIFIER ::= { mtEtherStandAlone 80 }
 -- OBJECT-IDENTITY
@@ -4517,7 +4517,7 @@ mt2E253p49R OBJECT IDENTIFIER ::= { mtEtherStandAlone 82 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 2200 with 48 10 Meg ports with 1 optional VHSIM 
+--    SmartSwitch 2200 with 48 10 Meg ports with 1 optional VHSIM
 --    slot.  Redundant power supplies.
 
 mt2H258p17R OBJECT IDENTIFIER ::= { mtEtherStandAlone 83 }
@@ -4534,7 +4534,7 @@ mt2H253p25R OBJECT IDENTIFIER ::= { mtEtherStandAlone 84 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 2200 with 24 10/100 BaseTX switched ports 
+--    SmartSwitch 2200 with 24 10/100 BaseTX switched ports
 --    (Telco RJ21 connector) with 1 optional VHSIM
 --    slot.  Redundant power supplies.
 
@@ -4568,14 +4568,14 @@ mtELS10082F2 OBJECT IDENTIFIER ::= { mtEtherStandAlone 87 }
 --  Status
 --    mandatory
 --  Descr
---    SmartStack with 8 RJ45 10/100 ports with no uplink. 
+--    SmartStack with 8 RJ45 10/100 ports with no uplink.
 
 -- mtELS10081F2 OBJECT IDENTIFIER ::= { mtEtherStandAlone 89 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    SmartStack with 8 RJ45 10/100 ports with 1 MultiMode 
+--    SmartStack with 8 RJ45 10/100 ports with 1 MultiMode
 --    MTRJ Fiber ports.
 
 -- mtELS10081F3 OBJECT IDENTIFIER ::= { mtEtherStandAlone 90 }
@@ -4583,7 +4583,7 @@ mtELS10082F2 OBJECT IDENTIFIER ::= { mtEtherStandAlone 87 }
 --  Status
 --    mandatory
 --  Descr
---    SmartStack with 8 RJ45 10/100 ports with 1 SingleMode 
+--    SmartStack with 8 RJ45 10/100 ports with 1 SingleMode
 --    MTRJ Fiber ports.
 
 -- mtELS10082F3 OBJECT IDENTIFIER ::= { mtEtherStandAlone 91 }
@@ -4631,7 +4631,7 @@ mtELS100012SX2M OBJECT IDENTIFIER ::= { mtEtherStandAlone 96 }
 --  Status
 --    mandatory
 --  Descr
---    SmartStack with 12 1000 Base SX ports with two expansion 
+--    SmartStack with 12 1000 Base SX ports with two expansion
 --    slots.
 
 mtELS10016FXG  OBJECT IDENTIFIER ::= { mtEtherStandAlone 97 }
@@ -4639,7 +4639,7 @@ mtELS10016FXG  OBJECT IDENTIFIER ::= { mtEtherStandAlone 97 }
 --  Status
 --    mandatory
 --  Descr
---     SmartStack with 16 port MTRJ Multimode fiber and 2 Modular 
+--     SmartStack with 16 port MTRJ Multimode fiber and 2 Modular
 --     Gigabit uplinks.
 
 mtELS100024TX2MA OBJECT IDENTIFIER ::= { mtEtherStandAlone 98 }
@@ -4647,8 +4647,8 @@ mtELS100024TX2MA OBJECT IDENTIFIER ::= { mtEtherStandAlone 98 }
 --  Status
 --    mandatory
 --  Descr
---    SmartStack with 24 RJ45 10/100 Fast Ethernet ports with two expansion 
---    modules.  
+--    SmartStack with 24 RJ45 10/100 Fast Ethernet ports with two expansion
+--    modules.
 
 mtELS10024TX1M OBJECT IDENTIFIER ::= { mtEtherStandAlone 99 }
 -- OBJECT-IDENTITY
@@ -4721,7 +4721,7 @@ mtSmartMIM216 OBJECT IDENTIFIER ::= { mtmmacEthernetSmartSwitch 1 }
 --    mandatory
 --  Descr
 --    A SmartSwitch MIM with 14 10Base-T ports and two FE-100
---    PIM slots. 
+--    PIM slots.
 
 mtEnetHSIM OBJECT IDENTIFIER ::= { mtEthernet 9 }
 -- OBJECT-IDENTITY
@@ -4736,8 +4736,8 @@ mtHSIMpG01 OBJECT IDENTIFIER ::= { mtEnetHSIM 1 }
 --    mandatory
 --  Descr
 --    1 port Gigabit Ethernet High Speed Interface Module (SmartSwitch
---    product). The 1000Base-SX interface on the front panel uses an SC 
---    connector supporting multimode fiber. The laser is an 850 nanometer 
+--    product). The 1000Base-SX interface on the front panel uses an SC
+--    connector supporting multimode fiber. The laser is an 850 nanometer
 --    optical laser.
 
 mtHSIMpG09 OBJECT IDENTIFIER ::= { mtEnetHSIM 2 }
@@ -4746,8 +4746,8 @@ mtHSIMpG09 OBJECT IDENTIFIER ::= { mtEnetHSIM 2 }
 --    mandatory
 --  Descr
 --    1 port Gigabit Ethernet High Speed Interface Module (SmartSwitch
---    product). The 1000Base-LX interface on the front panel uses an SC 
---    connector supporting Single or multi-mode fiber. The laser is a 
+--    product). The 1000Base-LX interface on the front panel uses an SC
+--    connector supporting Single or multi-mode fiber. The laser is a
 --    1300 nanometer optical laser.
 
 mtHSIMFE6 OBJECT IDENTIFIER ::= { mtEnetHSIM 3 }
@@ -4764,7 +4764,7 @@ mtVHSIMG6 OBJECT IDENTIFIER ::= { mtEnetHSIM 4 }
 --    mandatory
 --  Descr
 --    2 port Gigabit Ethernet Very High Speed Interface Module (SmartSwitch
---    product) with 2 GPIM (hot-swappable) connectors. 
+--    product) with 2 GPIM (hot-swappable) connectors.
 
 mtEnetRepeater OBJECT IDENTIFIER ::= { mtExpanded 4 }
 -- OBJECT-IDENTITY
@@ -5268,7 +5268,7 @@ mtTRXMIM54A OBJECT IDENTIFIER ::= { mtTRPortSwitch 5 }
 --    mandatory
 --  Descr
 --    Port assignment with 24 RJ45 UTP/STP station ports.
- 
+
 mtTDRMIM22A OBJECT IDENTIFIER ::= { mtTRPortSwitch 7 }
 -- OBJECT-IDENTITY
 --  Status
@@ -5483,8 +5483,8 @@ mtWanCyberSwitch200 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 1 }
 --  Status
 --    mandatory
 --  Descr
---    LAN/WAN switch which supports VLAN and SFS, with 12 
---    repeated Ethernet RJ-45 ports, a single WPIM, and an 
+--    LAN/WAN switch which supports VLAN and SFS, with 12
+--    repeated Ethernet RJ-45 ports, a single WPIM, and an
 --    optional compression/encryption internal daughter card.
 
 mtWanCyberSwitch300 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 2 }
@@ -5492,10 +5492,10 @@ mtWanCyberSwitch300 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 2 }
 --  Status
 --    mandatory
 --  Descr
---    LAN/WAN switch which supports VLAN and SFS, with 24 
---    repeated Ethernet RJ-45 ports, a stackable connector, 
---    a single WPIM, an asynchronous interface, an ISDN 
---    BRI S/T interface and an optional compression/encryption 
+--    LAN/WAN switch which supports VLAN and SFS, with 24
+--    repeated Ethernet RJ-45 ports, a stackable connector,
+--    a single WPIM, an asynchronous interface, an ISDN
+--    BRI S/T interface and an optional compression/encryption
 --    internal daughter card.
 
 mtWanCyberSwitch400 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 3 }
@@ -5504,7 +5504,7 @@ mtWanCyberSwitch400 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 3 }
 --    mandatory
 --  Descr
 --    LAN/WAN switch which supports VLAN and SFS, with 2 switched
---    Ethernet WPIM ports, 2 WPIMs and 2 optional compression/encryption 
+--    Ethernet WPIM ports, 2 WPIMs and 2 optional compression/encryption
 --    internal daughter cards.
 
 mtWanCyberSwitch150 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 4 }
@@ -5625,7 +5625,7 @@ mtWanCyberSwitchBRI4 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 16 }
 --  Status
 --    mandatory
 --  Descr
---    CyberSwitch WAN module with 4 RJ45 ports and ISDN S/T Basic Rate 
+--    CyberSwitch WAN module with 4 RJ45 ports and ISDN S/T Basic Rate
 --    connectivity.
 
 mtWanCyberSwitchPRI8  OBJECT IDENTIFIER ::= { mtWanCyberSwitch 17 }
@@ -5643,16 +5643,16 @@ mtWanCyberSwitchPRI23  OBJECT IDENTIFIER ::= { mtWanCyberSwitch 18 }
 --  Descr
 --    CyberSwitch WAN module with 1 RJ45 port and ISDN S/T Primary Rate
 --    connectivity. Provides 23 to 30 Kbps "B" channels.
-    
+
 mtWanCyberSwitchEXP  OBJECT IDENTIFIER ::= { mtWanCyberSwitch 19 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    CyberSwitch WAN expansion module with no ports and provides 
+--    CyberSwitch WAN expansion module with no ports and provides
 --    only PRI8 channel expansion up to 23 or 30 Kbps "B" channels.
 
-mtWanCyberSwitchRS232 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 20 } 
+mtWanCyberSwitchRS232 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 20 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
@@ -5660,7 +5660,7 @@ mtWanCyberSwitchRS232 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 20 }
 --    CyberSwitch Serial module with 4 DB56 ports and dedicated line
 --    connectivity.
 
-mtWanCyberSwitchV35 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 21 } 
+mtWanCyberSwitchV35 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 21 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
@@ -5668,14 +5668,14 @@ mtWanCyberSwitchV35 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 21 }
 --    CyberSwitch Serial module with 2 DB26 ports and dedicated line
 --    connectivity.
 
-mtWanCyberSwitchDIG OBJECT IDENTIFIER ::= { mtWanCyberSwitch 22 } 
+mtWanCyberSwitchDIG OBJECT IDENTIFIER ::= { mtWanCyberSwitch 22 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
 --    CyberSwitch Digital Modem module with 8 V.34+ 33.6 Kbps modems
 --    Supports Async-PPP.
-    
+
 mtWanCyberSwitchDIG24 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 23 }
 -- OBJECT-IDENTITY
 --  Status
@@ -5700,15 +5700,15 @@ mtWanCyberSwitchDIG30Plus OBJECT IDENTIFIER ::= { mtWanCyberSwitch 25 }
 --    CyberSwitch Digital Modem module with 30 V.34+ 56 Kbps modems
 --    Supports Async-PPP.
 
-mtWanCyberSwitchAUI1 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 26 } 
+mtWanCyberSwitchAUI1 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 26 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    CyberSwitch AUI/Ethernet Port Interface Module Supporting a 
+--    CyberSwitch AUI/Ethernet Port Interface Module Supporting a
 --    single Ethernet segment.
 
-mtWanCyberSwitchAUI2 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 27 } 
+mtWanCyberSwitchAUI2 OBJECT IDENTIFIER ::= { mtWanCyberSwitch 27 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
@@ -5728,7 +5728,7 @@ tpWanCyberSwitch100 OBJECT IDENTIFIER ::= { mtWanThirdParty 1 }
 --  Status
 --    mandatory
 --  Descr
---    an Ethernet to ISDN device which supports Transparent 
+--    an Ethernet to ISDN device which supports Transparent
 --    Bridging and IP/IPX routing.
 
 mtWanHsim OBJECT IDENTIFIER ::= { mtWan 4 }
@@ -5804,14 +5804,14 @@ mtWanHsimSSA710p48 OBJECT IDENTIFIER ::= { mtWanHsim 9 }
 --      A WAN dial access HSIM with a single fixed RJ-48C
 --      ISDN PRI (T1) interface and a second PRI interface.
 --      Supports 48 ports V.90 digital modems.
- 
+
 mtWanHsimSSA720p60 OBJECT IDENTIFIER ::= { mtWanHsim 10 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
 --      A WAN dial access HSIM with a single fixed RJ-48C ISDN
---      PRI (E1) interface and a second PRI interface.  Supports 60 
+--      PRI (E1) interface and a second PRI interface.  Supports 60
 --      ports V.90 digital modems.
 
 mtWanCMM OBJECT IDENTIFIER ::= { mtWan 5 }
@@ -5827,7 +5827,7 @@ mtWanCMM824 OBJECT IDENTIFIER ::= { mtWanCMM 1 }
 --    mandatory
 --  Descr
 --    Multimode modem with 3 modules of 8 modems for
---    a total of 24 modems 
+--    a total of 24 modems
 
 mtWanCMM3248 OBJECT IDENTIFIER ::= { mtWanCMM 2 }
 -- OBJECT-IDENTITY
@@ -5964,7 +5964,7 @@ mt2A000  OBJECT IDENTIFIER ::= { mtAtmStandAlone 1 }
 --  Status
 --    mandatory
 --  Descr
---    SS2500 ATM Switch w/ 2.5Gbps switch fabric and 
+--    SS2500 ATM Switch w/ 2.5Gbps switch fabric and
 --    four network module slots.
 
 mt2A000R  OBJECT IDENTIFIER ::= { mtAtmStandAlone 2 }
@@ -5972,7 +5972,7 @@ mt2A000R  OBJECT IDENTIFIER ::= { mtAtmStandAlone 2 }
 --  Status
 --    mandatory
 --  Descr
---    SS2500 ATM Switch w/ 2.5Gbps switch fabric and 
+--    SS2500 ATM Switch w/ 2.5Gbps switch fabric and
 --    four network module slots. Redundant power supplies.
 
 mtAtmNetworkModule  OBJECT IDENTIFIER ::= { mtATM 4 }
@@ -5995,7 +5995,7 @@ mtIOM22p04      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 2 }
 --  Status
 --    mandatory
 --  Descr
---    A network module with 4 Cat 5 UTP with RJ45 
+--    A network module with 4 Cat 5 UTP with RJ45
 --    connectors at 155 Mbps
 
 mtIOM29p04IR      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 3 }
@@ -6003,7 +6003,7 @@ mtIOM29p04IR      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 3 }
 --  Status
 --    mandatory
 --  Descr
---    A network module with 4 ports 1 SMF IR (intermediate reach) 
+--    A network module with 4 ports 1 SMF IR (intermediate reach)
 --    SC port at 155 Mbps and 3 MMF SC connectors at 155 Mbps
 
 mtIOM29p04LR      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 4 }
@@ -6019,7 +6019,7 @@ mtIOM31p01      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 5 }
 --  Status
 --    mandatory
 --  Descr
---    A network module with a single port OC12 (622 Mbps) MMF 
+--    A network module with a single port OC12 (622 Mbps) MMF
 --    with an SC connector
 
 mtIOM39p01      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 6 }
@@ -6035,7 +6035,7 @@ mtIOM39p01LR      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 7 }
 --  Status
 --    mandatory
 --  Descr
---    A network module with a single port OC12 (622 Mbps) SMF 
+--    A network module with a single port OC12 (622 Mbps) SMF
 --    long reach with an SC connector
 
 mtIOM67p04      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 8 }
@@ -6043,7 +6043,7 @@ mtIOM67p04      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 8 }
 --  Status
 --    mandatory
 --  Descr
---    A T3 (45 Mbps) network module with four BNC connectors. 
+--    A T3 (45 Mbps) network module with four BNC connectors.
 
 mtIOM77p04      OBJECT IDENTIFIER ::= { mtAtmNetworkModule 9 }
 -- OBJECT-IDENTITY
@@ -6173,7 +6173,7 @@ mt7T05p04 OBJECT IDENTIFIER ::= { mtFpsTR 1 }
 --  Status
 --    mandatory
 --  Descr
---    4 Port Token Ring module for FPSMIM and MMAC FPS using 
+--    4 Port Token Ring module for FPSMIM and MMAC FPS using
 --    RJ45 connectors and supporting UTP/STP.
 
 
@@ -6212,7 +6212,7 @@ mt7H02p12 OBJECT IDENTIFIER ::= { mtFpsFastEthernet 2 }
 --  Status
 --    mandatory
 --  Descr
---    12 port fast ethernet wide slot module for FPSMIM 
+--    12 port fast ethernet wide slot module for FPSMIM
 --    in 7C04-R with 11 RJ45 connectors and 1 FEPIM slot.
 
 mt7H06p2 OBJECT IDENTIFIER ::= { mtFpsFastEthernet 3 }
@@ -6220,7 +6220,7 @@ mt7H06p2 OBJECT IDENTIFIER ::= { mtFpsFastEthernet 3 }
 --  Status
 --    mandatory
 --  Descr
---    2 port fast ethernet single slot module for FPSMIM 
+--    2 port fast ethernet single slot module for FPSMIM
 --    with 2 FEPIM slots.
 
 mtCableModem OBJECT IDENTIFIER ::= { mtExpanded 14 }
@@ -6228,7 +6228,7 @@ mtCableModem OBJECT IDENTIFIER ::= { mtExpanded 14 }
 --  Status
 --    mandatory
 --  Descr
---    A line of products which bridge between the network media 
+--    A line of products which bridge between the network media
 --    technologies and CATV.
 
 mtEthernetCableModem OBJECT IDENTIFIER ::= { mtCableModem 1 }
@@ -6287,14 +6287,14 @@ mtSmartSwitchRouter8 OBJECT IDENTIFIER ::= { mtWorkGroupChassis 3}
 --   mandatory
 --  Desc
 --   8 Slot Work Group Chassis (SSR8000)
- 
+
 mtSmartSwitchRouter16 OBJECT IDENTIFIER ::= { mtWorkGroupChassis 4}
 -- OBJECT-IDENTITY
 --  Status
 --   mandatory
 --  Desc
 --   16 Slot Work Group Chassis (SSR16000)
- 
+
 mtSmartSwitchRouter32 OBJECT IDENTIFIER ::= { mtWorkGroupChassis 5 }
 -- OBJECT-IDENTITY
 --  Status
@@ -6446,8 +6446,8 @@ mt6H128p08 OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 16 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 6 fixed Multi-mode fiber 
---    100BaseFX Switched ports (via SC connectors) and two optional 
+--    SmartSwitch 6000 module with 6 fixed Multi-mode fiber
+--    100BaseFX Switched ports (via SC connectors) and two optional
 --    FE-PIM ports.
 
 mt6H129p08 OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 17 }
@@ -6455,8 +6455,8 @@ mt6H129p08 OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 17 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 6 fixed Single-mode fiber 
---    100BaseFX Switched ports (via SC connectors) and two optional 
+--    SmartSwitch 6000 module with 6 fixed Single-mode fiber
+--    100BaseFX Switched ports (via SC connectors) and two optional
 --    FE-PIM ports.
 
 mt6H122p16 OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 18 }
@@ -6510,7 +6510,7 @@ mt6H258p17  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 24 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 16 Multimode fiber 100BaseFX 
+--    SmartSwitch 6000 module with 16 Multimode fiber 100BaseFX
 --    switched ports (MT RJ connectors) with one optional
 --    VHSIM slot.
 
@@ -6519,7 +6519,7 @@ mt6H203p24  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 25 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 24 10/100 BaseTX  ports 
+--    SmartSwitch 6000 module with 24 10/100 BaseTX  ports
 --    (telco RJ21 connector).
 
 mt6H253p13  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 26 }
@@ -6535,7 +6535,7 @@ mt6H259p17  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 27 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 16 single mode 100 BaseFX 
+--    SmartSwitch 6000 module with 16 single mode 100 BaseFX
 --    ports with one optional VHSIM slot.
 
 mt6H262p18  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 28 }
@@ -6543,7 +6543,7 @@ mt6H262p18  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 28 }
 --  Status
 --    mandatory
 --  Descr
---    SmartSwitch 6000 module with 16 10/100 BaseTx ports (RJ45 
+--    SmartSwitch 6000 module with 16 10/100 BaseTx ports (RJ45
 --    connectors)  with two optional GPIM slots.
 
 mt6H202p48  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 29 }
@@ -6552,7 +6552,7 @@ mt6H202p48  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 29 }
 --    mandatory
 --  Descr
 --    SmartSwitch 6000 module with 48 100 BaseTx ports (RJ45
---    connectors).  
+--    connectors).
 
 mt6E253p49  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 30 }
 -- OBJECT-IDENTITY
@@ -6560,7 +6560,7 @@ mt6E253p49  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 30 }
 --    mandatory
 --  Descr
 --    SmartSwitch 6000 module with 48 10 BaseTx ports (telco RJ21
---    connector) with one optional VHSIM/HSIM slot.  
+--    connector) with one optional VHSIM/HSIM slot.
 
 mt6H203p48  OBJECT IDENTIFIER ::= { mtWorkGroupEthernet 31 }
 -- OBJECT-IDENTITY
@@ -6839,31 +6839,31 @@ mt9T125p08 OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 17 }
 --  Status
 --    mandatory
 --  Descr
---    Token Ring MicroLAN Extension FNB module with 8 RJ-45 port       
+--    Token Ring MicroLAN Extension FNB module with 8 RJ-45 port
 --    UTP/STP and 4 TPIMs RI/RO bridge/switch.
-     
+
 mt9T125p24 OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 18 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    Token Ring MicroLAN FNB module with 24 RJ-45 port UTP/STP        
+--    Token Ring MicroLAN FNB module with 24 RJ-45 port UTP/STP
 --    bridge/switch.
- 
+
 mt9E132p15s OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 19 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    Ethernet module, supporting LanviewSecure, with 3 networks each 
+--    Ethernet module, supporting LanviewSecure, with 3 networks each
 --    network having 1 EPIM and 4 RJ45 connectors.
- 
+
 mt9E133p36s OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 20 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    Ethernet module, supporting LanviewSecure, with 36 ports 
+--    Ethernet module, supporting LanviewSecure, with 36 ports
 --    on 3 50 pin Telcos.
 
 mt9E138p36s OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 21 }
@@ -6873,13 +6873,13 @@ mt9E138p36s OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 21 }
 --  Descr
 --    Ethernet 2 slot module, supporting LanviewSecure,
 --    with 36 fiber optic ST ports.
- 
+
 mt9E138p12s OBJECT IDENTIFIER ::= { mtMMACPlusFNBSingle 22 }
 -- OBJECT-IDENTITY
 --  Status
 --    mandatory
 --  Descr
---    Ethernet module, supporting LanviewSecure, with 
+--    Ethernet module, supporting LanviewSecure, with
 --    12 fiber optic ports.
 
 mtMMACPlusFNBDual OBJECT IDENTIFIER ::= { mtMMACPlus 6 }
@@ -7014,47 +7014,47 @@ mt9E428p12 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 10 }
 --  Status
 --    mandatory
 --  Descr
---    Ethernet 12 port bridge/switch module with INB connectivity. 
+--    Ethernet 12 port bridge/switch module with INB connectivity.
 --    12 front panel MMF ST style connectors.
 
-mt9E428p36 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 11 } 
--- OBJECT-IDENTITY 
+mt9E428p36 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 11 }
+-- OBJECT-IDENTITY
 --  Status
---    mandatory 
---  Descr 
---    Ethernet 36 port bridge/switch dual module with INB connectivity. 
+--    mandatory
+--  Descr
+--    Ethernet 36 port bridge/switch dual module with INB connectivity.
 --    36 front panel MMF ST style connectors.
- 
-mt9E429p12 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 12 } 
--- OBJECT-IDENTITY 
+
+mt9E429p12 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 12 }
+-- OBJECT-IDENTITY
 --  Status
---    mandatory 
---  Descr 
---    Ethernet 12 port bridge/switch module with INB connectivity. 
+--    mandatory
+--  Descr
+--    Ethernet 12 port bridge/switch module with INB connectivity.
 --    12 front panel SMF ST style connectors.
- 
+
 mt9E429p36 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 13 }
 -- OBJECT-IDENTITY
 --  Status
---    mandatory 
---  Descr 
+--    mandatory
+--  Descr
 --    Ethernet 36 port bridge/switch dual module with INB connectivity.
 --    36 front panel SMF ST style connectors.
 
 mt9F426p03 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 14 }
 -- OBJECT-IDENTITY
 --  Status
---    mandatory 
---  Descr 
+--    mandatory
+--  Descr
 --    FDDI 3 port bridge/switch module with INB connectivity.
 --    The 3 front panel ports can support a total of 6 FPIMs.
 
 mt9H421p12 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 15 }
 -- OBJECT-IDENTITY
 --  Status
---    mandatory 
---  Descr 
---    Fast Ethernet 12 port switch module with INB-2 connectivity. 
+--    mandatory
+--  Descr
+--    Fast Ethernet 12 port switch module with INB-2 connectivity.
 --    12 ports of 100FX SC connector multimode fiber.
 
 mt9E423p36 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 16 }
@@ -7078,7 +7078,7 @@ mt9T425p16 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 18 }
 --  Status
 --    mandatory
 --  Descr
---    Token Ring 16 RJ-45 port bridge/switch dual slot module with 
+--    Token Ring 16 RJ-45 port bridge/switch dual slot module with
 --    INB2 connectivity.
 
 mt9T425p24 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 19 }
@@ -7088,22 +7088,22 @@ mt9T425p24 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 19 }
 --  Descr
 --    Token Ring 24 RJ-45 port bridge/switch single slot module with
 --    INB2 connectivity.
-    
+
 mt9A426p01 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 20 }
--- OBJECT-IDENTITY 
---  Status 
---    mandatory 
---  Descr 
---    ATM Uplink module with INB2 and FNB connectivity and two 
+-- OBJECT-IDENTITY
+--  Status
+--    mandatory
+--  Descr
+--    ATM Uplink module with INB2 and FNB connectivity and two
 --    front panel APIMs utilizing APIM redundancy.
 
 mt9G426p02 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 21 }
--- OBJECT-IDENTITY 
---  Status 
---    mandatory 
---  Descr 
---    1 Gigabit single slot module with INB2 connectivity and  
---    interfaces for two front panel GPIMs. 
+-- OBJECT-IDENTITY
+--  Status
+--    mandatory
+--  Descr
+--    1 Gigabit single slot module with INB2 connectivity and
+--    interfaces for two front panel GPIMs.
 
 mt9H423p28 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 22 }
 -- OBJECT-IDENTITY
@@ -7153,9 +7153,9 @@ mt9G429p02 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 27 }
 --  Status
 --    mandatory
 --  Descr
---    2 port Gigabit Ethernet INB-B MMAC-PLUS module (SmartSwitch Plus 
---    product).  It uses two interfaces on the front panel that connect via 
---    Single mode or multimode Fiber.  The laser is a 1300 nanometer optical 
+--    2 port Gigabit Ethernet INB-B MMAC-PLUS module (SmartSwitch Plus
+--    product).  It uses two interfaces on the front panel that connect via
+--    Single mode or multimode Fiber.  The laser is a 1300 nanometer optical
 --    laser.
 
 mt9T428p16 OBJECT IDENTIFIER ::= { mtMMACPlusINBSingle 28 }
@@ -7212,7 +7212,7 @@ mt9F206p01 OBJECT IDENTIFIER ::= { mt3PartyFnbSingle 4 }
 --    mandatory
 --  Descr
 --    Cisco 4700 router with a FDDI DAS MIC connector on the
---    front panel.  With single FDDI-FNB connection in MMAC+ 
+--    front panel.  With single FDDI-FNB connection in MMAC+
 --    chassis.
 
 mt9T201p04 OBJECT IDENTIFIER ::= { mt3PartyFnbSingle 5 }
@@ -7239,7 +7239,7 @@ mt9A221p01 OBJECT IDENTIFIER ::= { mt3PartyFnbSingle 7 }
 --    Cisco 4700 router with 1 SC MM fiber OC-3 ATM front panel
 --    port.  With single FDDI-FNB connection in MMAC+ chassis.
 
---  mt3PartyFnbSingle 8-13 are currently reserved for future 
+--  mt3PartyFnbSingle 8-13 are currently reserved for future
 --  modules
 
 mt9A222p01 OBJECT IDENTIFIER ::= { mt3PartyFnbSingle 14 }
@@ -7312,7 +7312,7 @@ mt9A656p04 OBJECT IDENTIFIER ::= { mtMMACPOther 6 }
 --    mandatory
 --  Descr
 --    MMAC-Plus single slot 5 Gbps ATM Switch with 4
---    ANIM slots and CTM connectivity. 
+--    ANIM slots and CTM connectivity.
 
 mt9A600p04 OBJECT IDENTIFIER ::= { mtMMACPOther 7 }
 -- OBJECT-IDENTITY
@@ -7351,8 +7351,8 @@ mt9N050 OBJECT IDENTIFIER ::= { mtMMACPlusNortel 1 }
 --    mandatory
 --  Descr
 --    An MMAC-PLUS option module, which consumes six contiguous
---    slots of an MMAC-PLUS chassis.  The device provides 
---    MMAC-PLUS integration for a maximum of five, off-the-shelf, 
+--    slots of an MMAC-PLUS chassis.  The device provides
+--    MMAC-PLUS integration for a maximum of five, off-the-shelf,
 --    Northern Telecom Passport Interface modules.
 
 mtMMACPlusINBDual OBJECT IDENTIFIER ::= { mtMMACPlus 13 }
@@ -7368,7 +7368,7 @@ mt9H532p18      OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 1 }
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-TX module which supports 16 RJ45 10/100 
+--   An MMAC-PLUS 100Base-TX module which supports 16 RJ45 10/100
 --   ports and two gigabit port interfaces via GPIM's.
 
 mt9H531p18      OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 2 }
@@ -7376,8 +7376,8 @@ mt9H531p18      OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 2 }
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg MMF 
---   ports (mini MTRJ transcievers) and two gigabit port 
+--   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg MMF
+--   ports (mini MTRJ transcievers) and two gigabit port
 --   interfaces via GPIM's.
 
 mt9H539p18        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 3 }
@@ -7385,8 +7385,8 @@ mt9H539p18        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 3 }
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg SMF 
---   ports (mini MTRJ transcievers) and two gigabit port 
+--   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg SMF
+--   ports (mini MTRJ transcievers) and two gigabit port
 --   interfaces via GPIM's.
 
 mt9H532p17        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 4 }
@@ -7394,31 +7394,31 @@ mt9H532p17        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 4 }
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-TX module which supports 16 10/100  
---   ports and a VHSIM/HSIM slot.   
+--   An MMAC-PLUS 100Base-TX module which supports 16 10/100
+--   ports and a VHSIM/HSIM slot.
 
 mt9H531p17        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 5 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg MMF 
---   ports (mini MTRJ transcievers) and a VHSIM/HSIM slot.  
+--   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg MMF
+--   ports (mini MTRJ transcievers) and a VHSIM/HSIM slot.
 
 mt9H539p17        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 6 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg SMF 
---   ports (mini MTRJ transcievers) and a VHSIM/HSIM slot. 
+--   An MMAC-PLUS 100Base-FX module which supports 16 100 Meg SMF
+--   ports (mini MTRJ transcievers) and a VHSIM/HSIM slot.
 
 mt9G536p04        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 7 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS module which supports four gigabit port  
+--   An MMAC-PLUS module which supports four gigabit port
 --   interfaces via GPIM's.
 
 mt9H532p24        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 8 }
@@ -7427,15 +7427,15 @@ mt9H532p24        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 8 }
 --   mandatory
 -- Descr
 --   An MMAC-PLUS 100Base-TX module which supports 24 RJ-45
---   ports each supporting 10/100 BaseT. 
+--   ports each supporting 10/100 BaseT.
 
 mt9H531p24        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 9 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
---   An MMAC-PLUS 100Base-FX module which supports 24 100 Meg MMF 
---   ports (mini MTRJ transcievers). 
+--   An MMAC-PLUS 100Base-FX module which supports 24 100 Meg MMF
+--   ports (mini MTRJ transcievers).
 
 mt9H539p24        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 10 }
 -- OBJECT-IDENTITY
@@ -7474,7 +7474,7 @@ mt9E531p24        OBJECT IDENTIFIER ::= { mtMMACPlusINBDual 14 }
 --  Status
 --   mandatory
 --  Descr
---   A 38-Special 24 port 10Base-FL Ethernet Smartswitch module with 
+--   A 38-Special 24 port 10Base-FL Ethernet Smartswitch module with
 --   MT-RJ connectors.
 
 mtSSR OBJECT IDENTIFIER ::= { mtExpanded 33 }
@@ -7517,7 +7517,7 @@ mtSSR6Expansion OBJECT IDENTIFIER ::= { mtSSR 4 }
 --   The Smart Switch Router Expansion module naming Tree
 --   Modules under this branch are supported by the SS6000
 --   series of products.
- 
+
 mtHSIMSSR  OBJECT IDENTIFIER ::= { mtSSR 5 }
 -- OBJECT-IDENTITY
 -- Status
@@ -7676,7 +7676,7 @@ mtSSRSERCEp04 OBJECT IDENTIFIER ::= { mtSSR8Expansion 12 }
 -- Status
 --   mandatory
 -- Descr
---  Quad port serial module with compression and encryption 
+--  Quad port serial module with compression and encryption
 --  for SSR8000/8600
 
 mtSSRHSSIp02 OBJECT IDENTIFIER ::= { mtSSR8Expansion 13 }
@@ -7693,21 +7693,21 @@ mt6SSRM-02 OBJECT IDENTIFIER ::= { mtSSR6Expansion 1 }
 -- Descr
 --  SmartSwitchRouter module for the 6000 chassis.
 --  This module has two expansion slots for line cards.
- 
+
 mt6SSRLC-LX OBJECT IDENTIFIER ::= { mtSSR6Expansion 2 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
 --  2 port 1000 Base-LX expansion module for 6SSRM-02 module.
- 
+
 mt6SSRLC-TX OBJECT IDENTIFIER ::= { mtSSR6Expansion 3 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
 --  8 port 10/100 Base-TX expansion module for 6SSRM-02 module
- 
+
 mt6SSRLC-FX OBJECT IDENTIFIER ::= { mtSSR6Expansion 4 }
 -- OBJECT-IDENTITY
 -- Status
@@ -7722,21 +7722,21 @@ mt6SSRLC-SX OBJECT IDENTIFIER ::= { mtSSR6Expansion 5 }
 --   mandatory
 -- Descr
 --  2 port 1000 Base-SX expansion module for 6SSRM-02 module
- 
+
 mt6SSRLC-SER OBJECT IDENTIFIER ::= { mtSSR6Expansion 6 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
 --  Dual port serial module for 6SSRM-02 module.
- 
+
 mt6SSRLC-SERC OBJECT IDENTIFIER ::= { mtSSR6Expansion 7 }
 -- OBJECT-IDENTITY
 -- Status
 --   mandatory
 -- Descr
 --  4 port serial module with compression for 6SSRM-02 module.
- 
+
 mt6SSRLC-SERCE OBJECT IDENTIFIER ::= { mtSSR6Expansion 8 }
 -- OBJECT-IDENTITY
 -- Status
@@ -7751,7 +7751,7 @@ mt6SSRLC-LX70  OBJECT IDENTIFIER ::= { mtSSR6Expansion 9 }
 --   mandatory
 -- Descr
 --  Single port 1000Base-LX (70 km)Line Card for 6SSRM-02 module.
- 
+
 mtSSR2B OBJECT IDENTIFIER ::= { mtSSRStandAlone 1 }
 -- OBJECT-IDENTITY
 -- Status
@@ -7798,7 +7798,7 @@ mtSSR600S OBJECT IDENTIFIER ::= { mtSSRStandAlone 6 }
 --   mandatory
 -- Descr
 --  A 4 port standalone SmartSwitchRouter supporting 2 RJ45 10/100 Base-TX
---  ports and 2 SWPIM slots. 
+--  ports and 2 SWPIM slots.
 
 mtSSR600D OBJECT IDENTIFIER ::= { mtSSRStandAlone 7 }
 -- OBJECT IDENTITY
@@ -7834,14 +7834,14 @@ mtSSR720 OBJECT IDENTIFIER ::= { mtSSRStandAlone 10 }
 --  ports and 8 T1/E1 synchronous WAN ports.
 
 
- 
+
 mtHSIMSSR600 OBJECT IDENTIFIER ::= { mtHSIMSSR 1 }
 -- OBJECT IDENTITY
 -- Status
 --   mandatory
 -- Descr
 --  A 3 port HSIM SmartSwitchRouter module supporting 1 RJ45 10/100 Base-TX
---  ports and 2 SWPIM slots. 
+--  ports and 2 SWPIM slots.
 
 ctIfTypes OBJECT IDENTIFIER ::= { namingTree 10 }
 -- OBJECT-IDENTITY
@@ -7961,7 +7961,7 @@ ctCTM OBJECT IDENTIFIER ::= { ctResourceType 9 }
 --  Status
 --    mandatory
 --  Descr
---    The MMAC plus Cell Transfer Matrix. 
+--    The MMAC plus Cell Transfer Matrix.
 
 ctWorkGroupBPport OBJECT IDENTIFIER ::= { ctResourceType 10 }
 -- OBJECT-IDENTITY
@@ -8022,7 +8022,7 @@ ctMMACPlusBPport OBJECT IDENTIFIER ::= { ctResourceType 14 }
  --  Status
  --    mandatory
  --  Descr
- --    A branch for the backplane port resource types for the 
+ --    A branch for the backplane port resource types for the
  --    MMAC Plus chassis.  Initially, the types in this branch are only
  --    used for the new 9x5xx-xx boards.
 
@@ -8033,7 +8033,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 1 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport2 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 2 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8041,7 +8041,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 2 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport3 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 3 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8049,7 +8049,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 3 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport4 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 4 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8057,7 +8057,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 4 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport5 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 5 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8065,7 +8065,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 5 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport6 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 6 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8073,7 +8073,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 6 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport7 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 7 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8081,7 +8081,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 7 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport8 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 8 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8089,7 +8089,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 8 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport9 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 9 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8097,7 +8097,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 9 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport10 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 10 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8105,7 +8105,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 10 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport11 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 11 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8113,7 +8113,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 11 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport12 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 12 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8121,7 +8121,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 12 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport13 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 13 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8129,7 +8129,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 13 of the MMAC Plus chassis.
- 
+
  ctMMACPlusBPport14 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 14 }
  -- OBJECT-IDENTITY
  --  Status
@@ -8137,7 +8137,7 @@ ctMMACPlusBPport1 OBJECT IDENTIFIER ::= { ctMMACPlusBPport 1 }
  --  Descr
  --    The resource type for the backplane port connection
  --    to slot 14 of the MMAC Plus chassis.
- 
+
 
 ctWorkGroupBPport1 OBJECT IDENTIFIER ::= { ctWorkGroupBPport 1 }
 -- OBJECT-IDENTITY

@@ -198,7 +198,7 @@ etsysAAAPolicyMIBCompliance MODULE-COMPLIANCE
           "The compliance statement for Managed entities
            implementing the Enterasys AAA Policy MIB."
     MODULE  -- this module
-    MANDATORY-GROUPS { etsysAAAPolicyMgmtGroup } 
+    MANDATORY-GROUPS { etsysAAAPolicyMgmtGroup }
 
     ::= { etsysAAAPolicyMIBCompliances 1 }
 

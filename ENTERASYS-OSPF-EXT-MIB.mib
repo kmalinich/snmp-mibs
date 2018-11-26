@@ -6,7 +6,7 @@ ENTERASYS-OSPF-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' OSPF protocol.  This module extends the OSPF-MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-OSPF-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2009 Enterasys Networks, Inc.
@@ -61,11 +61,11 @@ etsysOspfExtMIB MODULE-IDENTITY
          WWW:     http://www.enterasys.com"
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          the OSPF configuration.
 
          This MIB was designed to be used in conjunction with
-         the OSPF-MIB (RFC 4750) for configuring the OSPF 
+         the OSPF-MIB (RFC 4750) for configuring the OSPF
          protocol parameters."
 
     REVISION     "200902271934Z"  -- Fri Feb 27 19:34 UTC 2009
@@ -126,7 +126,7 @@ etsysOspfExtOperStatus OBJECT-TYPE
         finished the activation process, the state of this object changes
         to 'operStatusUp'.
 
-        If there are problems activating the OSPF protocol, the status 
+        If there are problems activating the OSPF protocol, the status
         becomes 'operStatusActFailed'."
     ::= { etsysOspfExtGlobals 1 }
 
@@ -152,7 +152,7 @@ etsysOspfExtCalcThrshUpdStart OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "This parameter can be used to override the 
+        "This parameter can be used to override the
         etsysOspfExtCalcMaxDelay when the number of updates to the
         Link State Database reaches a threshold value.
 
@@ -860,8 +860,8 @@ etsysOspfExtVirtIfAdminStatus OBJECT-TYPE
         virtual link is torn down and no routing information is
         exchanged with its peer.
 
-        When the status of this object is set to 'enabled', the 
-        virtual link is established (if possible) and routing 
+        When the status of this object is set to 'enabled', the
+        virtual link is established (if possible) and routing
         information is shared with its peer.  The
         etsysOspfExtVirtIfOperStatus object provides the status of
         this connection."

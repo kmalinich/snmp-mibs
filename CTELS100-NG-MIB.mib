@@ -37,8 +37,8 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
     --  Copyright (c)1999 Cabletron Systems
     --
     --  This mib is part of the assigned enterprise MIB tree for Cabletron Systems.
-    --  This mib provides management information for the next generation of the 
-    --  ELS100 product line (specifically: ELS100-24TX, ELS100-24TXM, and 
+    --  This mib provides management information for the next generation of the
+    --  ELS100 product line (specifically: ELS100-24TX, ELS100-24TXM, and
     --  ELS100-24TXG), part of the SmartSTACK product line.
 
           IMPORTS
@@ -85,7 +85,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               DESCRIPTION
                      "The IP address of the TFTP server from which a software
                  download is to be initiated. This variable must be set
-                 before a TFTP download can be started with the 
+                 before a TFTP download can be started with the
                  els100SysTftpStartDownload variable."
               ::= { els100SystemConfig 2 }
 
@@ -94,9 +94,9 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                      "The name of the software upgrade file residing on the 
+                      "The name of the software upgrade file residing on the
                   TFTP server. Path information must be included in the file
-                  name. This variable must be set before a TFTP download can 
+                  name. This variable must be set before a TFTP download can
                   be started with the els100SysTftpStartDownload variable."
               ::= { els100SystemConfig 3 }
 
@@ -127,9 +127,9 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The IP address of the next hop router (gateway) to which 
-                 frames destined for an IP subnet different than what the 
-                 system resides are sent."      
+                     "The IP address of the next hop router (gateway) to which
+                 frames destined for an IP subnet different than what the
+                 system resides are sent."
               ::= { els100SystemConfig 6 }
 
           els100SysTftpStartDownload OBJECT-TYPE
@@ -142,9 +142,9 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               DESCRIPTION
                       "Start a TFTP download. A SET of this variable with the
                   value download (1) initiates a TFTP download to upgrade the
-                  system software. The variables els100SysTftpIPAddress and 
+                  system software. The variables els100SysTftpIPAddress and
                   els100SysTftpFilename must be configured before a download
-                  can begin. A GET of this variable will always return the 
+                  can begin. A GET of this variable will always return the
                   value noDownload (2)."
               ::= { els100SystemConfig 7 }
 
@@ -157,8 +157,8 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               STATUS  mandatory
               DESCRIPTION
                       "Enable or disable the operation of the BootP and DHCP
-                  protocols on the system. These protocols are used for 
-                  automatically configuring the system's IP address 
+                  protocols on the system. These protocols are used for
+                  automatically configuring the system's IP address
                   information if a properly configured BootP and/or DHCP
                   server exists on the network."
               ::= { els100SystemConfig 8 }
@@ -171,7 +171,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
 --            ACCESS  read-write
 --            STATUS  mandatory
 --            DESCRIPTION
---                    "Globally enable/disable the operation of the RMON 
+--                    "Globally enable/disable the operation of the RMON
 --                     Statistics and History Groups on all ports simultaneously."
 --            ::= { els100SystemConfig 9 }
 
@@ -275,7 +275,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
                   els100PortFlowControlEnable
                       INTEGER,
                   els100PortType
-                      INTEGER             
+                      INTEGER
                   }
 
           els100Port OBJECT-TYPE
@@ -295,7 +295,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
-                      "The connection (link) status of the port, either up 
+                      "The connection (link) status of the port, either up
                   (linked) or down (not linked)."
               ::= { els100PortEntry 2 }
 
@@ -307,7 +307,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                      "The duplex status of the port, either half duplex or 
+                      "The duplex status of the port, either half duplex or
                   full duplex."
               ::= { els100PortEntry 3 }
 
@@ -316,7 +316,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
-                      "The number of frames received on the port and forwarded 
+                      "The number of frames received on the port and forwarded
                   to another port on the system module for processing."
               ::= { els100PortEntry 4 }
 
@@ -325,7 +325,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
-                      "The number of frames received where the destination is 
+                      "The number of frames received where the destination is
                   on the port."
               ::= { els100PortEntry 5 }
 
@@ -340,8 +340,8 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
 
           els100PortEnable OBJECT-TYPE
               SYNTAX  INTEGER {
-                    disable (1), 
-                    enable (2) 
+                    disable (1),
+                    enable (2)
                     }
               ACCESS  read-write
               STATUS  mandatory
@@ -353,7 +353,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               SYNTAX  INTEGER {
                     tenMbps (1),
                     oneHundredMbps(2),
-                    oneThousandMbps(3) 
+                    oneThousandMbps(3)
                     }
               ACCESS  read-write
               STATUS  mandatory
@@ -364,8 +364,8 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
 
           els100PortAutonegEnable OBJECT-TYPE
               SYNTAX  INTEGER {
-                    disable (1), 
-                    enable (2) 
+                    disable (1),
+                    enable (2)
                     }
               ACCESS  read-write
               STATUS  mandatory
@@ -377,13 +377,13 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
 
           els100PortFlowControlEnable OBJECT-TYPE
               SYNTAX  INTEGER {
-                    disable (1), 
-                    enable (2) 
+                    disable (1),
+                    enable (2)
                     }
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                    "The state of flow control operation of the port, either 
+                    "The state of flow control operation of the port, either
                     enable or disable."
               ::= { els100PortEntry 10 }
 
@@ -439,7 +439,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
 --            ACCESS  read-write
 --            STATUS  mandatory
 --            DESCRIPTION
---                     "The purge aging time of entries in the MAC address forwarding 
+--                     "The purge aging time of entries in the MAC address forwarding
 --                  table of the system."
 --            ::= { els100Switch 4 }
 
@@ -453,7 +453,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               DESCRIPTION
                       "The Spanning Tree status of the system, enter on or off."
               ::= { els100Switch 5 }
-            
+
           els100SwitchManager OBJECT IDENTIFIER ::= { els100Switch 6 }
 
           els100SwitchTrapRcvr1 OBJECT-TYPE
@@ -461,7 +461,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The IP address of the first SNMP manager to which traps 
+                     "The IP address of the first SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 1 }
 
@@ -470,7 +470,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The community name of the first SNMP manager to which traps 
+                     "The community name of the first SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 2 }
 
@@ -479,7 +479,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The IP address of the second SNMP manager to which traps 
+                     "The IP address of the second SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 3 }
 
@@ -488,7 +488,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The community name of the second SNMP manager to which traps 
+                     "The community name of the second SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 4 }
 
@@ -497,7 +497,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The IP address of the third SNMP manager to which traps 
+                     "The IP address of the third SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 5 }
 
@@ -506,7 +506,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The community name of the third SNMP manager to which traps 
+                     "The community name of the third SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 6 }
 
@@ -515,7 +515,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The IP address of the fourth SNMP manager to which traps 
+                     "The IP address of the fourth SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 7 }
 
@@ -524,7 +524,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS read-write
               STATUS mandatory
               DESCRIPTION
-                     "The community name of the fourth SNMP manager to which traps 
+                     "The community name of the fourth SNMP manager to which traps
                  from the system are directed."
               ::= { els100SwitchManager 8 }
 
@@ -536,7 +536,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                      "The Port Mirroring status of the system, either disable 
+                      "The Port Mirroring status of the system, either disable
                   or enable."
               ::= { els100Switch 7 }
 
@@ -624,7 +624,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
                   els100SwitchVlanStatus
                       INTEGER
               }
-    
+
           els100SwitchVlanId OBJECT-TYPE
               SYNTAX  INTEGER
               ACCESS  read-write
@@ -648,17 +648,17 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                       "The set of ports in the VLAN. For systems supporting 
-                     tagged VLAN's, these are the ports to which packets 
-                     on the VLAN are sent untagged. Each octet within the 
-                     value of this object specifies a set of eight ports, 
-                     with the first octet specifying ports 1 through 8, the 
-                     second octet specifying ports 9 through 16, etc. Within 
-                     each octet, the most significant bit represents the 
-                     lowest numbered port, and the least significant bit 
-                     represents the highest numbered port. Thus each port 
-                     of the system is represented by a single bit within the 
-                     value of this object. If that bit has a value of '1' 
+                       "The set of ports in the VLAN. For systems supporting
+                     tagged VLAN's, these are the ports to which packets
+                     on the VLAN are sent untagged. Each octet within the
+                     value of this object specifies a set of eight ports,
+                     with the first octet specifying ports 1 through 8, the
+                     second octet specifying ports 9 through 16, etc. Within
+                     each octet, the most significant bit represents the
+                     lowest numbered port, and the least significant bit
+                     represents the highest numbered port. Thus each port
+                     of the system is represented by a single bit within the
+                     value of this object. If that bit has a value of '1'
                      then that port is included in the VLAN; the port is not
                      included if its bit has a value of '0'."
               ::= { els100SwitchVlanEntry 3 }
@@ -668,19 +668,19 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                      "The set of ports defined to be on other VLAN's to which 
-                     tagged packets destined for this specific VLAN should 
+                      "The set of ports defined to be on other VLAN's to which
+                     tagged packets destined for this specific VLAN should
                      also be sent. Thus, this variable defines ports on the
-                     system that reach stations downstream which are on this 
-                     VLAN and to which traffic may be forwarded. Each octet 
-                     within the value of this object specifies a set of eight 
-                     ports, with the first octet specifying ports 1 through 8, 
-                     the second octet specifying ports 9 through 16, etc. 
-                     Within each octet, the most significant bit represents the 
-                     lowest numbered port, and the least significant bit 
-                     represents the highest numbered port. Thus each port 
-                     of the system is represented by a single bit within the 
-                     value of this object. If that bit has a value of '1' 
+                     system that reach stations downstream which are on this
+                     VLAN and to which traffic may be forwarded. Each octet
+                     within the value of this object specifies a set of eight
+                     ports, with the first octet specifying ports 1 through 8,
+                     the second octet specifying ports 9 through 16, etc.
+                     Within each octet, the most significant bit represents the
+                     lowest numbered port, and the least significant bit
+                     represents the highest numbered port. Thus each port
+                     of the system is represented by a single bit within the
+                     value of this object. If that bit has a value of '1'
                      then that port is included in the VLAN; the port is not
                      included if its bit has a value of '0'."
               ::= { els100SwitchVlanEntry 4 }
@@ -729,7 +729,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
-                      "The number of the port, from 1 to number of ports 
+                      "The number of the port, from 1 to number of ports
                    in the system."
               ::= { els100SwitchVlanPortEntry 1 }
 
@@ -739,7 +739,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               STATUS  mandatory
               DESCRIPTION
                       "The port's VLAN ID. For tagged VLAN's, this variable
-                   defines a 12 bit port VLAN ID (PVID) used as the 
+                   defines a 12 bit port VLAN ID (PVID) used as the
                    identifier of the VLAN in the packet tag."
               ::= { els100SwitchVlanPortEntry 2 }
 
@@ -751,7 +751,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-write
               STATUS  mandatory
               DESCRIPTION
-                      "For tagged VLAN's, the VLAN port type, either hybrid or 
+                      "For tagged VLAN's, the VLAN port type, either hybrid or
                    access. Hybrid ports allow both tagged and untagged
                    packets to enter the switch. Access ports only accept
                    untagged packets."
@@ -812,7 +812,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
-                      "The port number, from 1 to number of ports in the 
+                      "The port number, from 1 to number of ports in the
                    system."
               ::= { els100SwitchPriorityPortEntry 1 }
 
@@ -824,7 +824,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
                       "The port priority level assigned to untagged
                    traffic entering the associated port. This variable
                    can have a value in the range (0...7). This value is
-                   compared to the value of the els100SwitchPriorityThreshold 
+                   compared to the value of the els100SwitchPriorityThreshold
                    variable to determine if the traffic on the port is
                    high or normal."
               ::= { els100SwitchPriorityPortEntry 2 }
@@ -839,7 +839,7 @@ CTELS100-NG-MIB DEFINITIONS ::= BEGIN
               STATUS  mandatory
               DESCRIPTION
                       "Globally enable or disable Spanning Tree Standby.
-                       If set to disable, every port will instanly enter 
+                       If set to disable, every port will instanly enter
                        forwarding mode after link up"
               ::= { els100Switch 18 }
 

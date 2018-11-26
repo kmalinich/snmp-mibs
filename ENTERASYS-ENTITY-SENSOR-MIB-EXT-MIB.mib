@@ -6,7 +6,7 @@ ENTERASYS-ENTITY-SENSOR-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Entity Sensor MIB Extensions functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-ENTITY-SENSOR-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright October 2011 Enterasys Networks, Inc.
@@ -39,7 +39,7 @@ IMPORTS
         FROM SNMPv2-CONF
     entPhysicalIndex
         FROM ENTITY-MIB
-    entPhySensorScale, entPhySensorPrecision, entPhySensorValue, 
+    entPhySensorScale, entPhySensorPrecision, entPhySensorValue,
     EntitySensorValue, entPhySensorOperStatus, entPhySensorUnitsDisplay
         FROM ENTITY-SENSOR-MIB
     EnabledStatus
@@ -58,29 +58,29 @@ etsysEntitySensorExtMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID that provide 
+         the Enterasys Networks enterprise OID that provide
          extensions to the industry proposed standard ENTITY-SENSOR-MIB."
 
     REVISION    "201110141449Z"  -- Fri Oct 14 14:49 UTC 2011
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 85 } 
+    ::= { etsysModules 85 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysEntitySensorExtObjects   
+etsysEntitySensorExtObjects
          OBJECT IDENTIFIER ::= { etsysEntitySensorExtMIB 1 }
 
 etsysEntitySensorExtNotifications
          OBJECT IDENTIFIER ::= { etsysEntitySensorExtObjects 0 }
 
-etsysEntityTempSensorExt     
+etsysEntityTempSensorExt
          OBJECT IDENTIFIER ::= { etsysEntitySensorExtObjects 1 }
 
 -- -------------------------------------------------------------
@@ -95,7 +95,7 @@ etsysEntityTempSensorExtTable OBJECT-TYPE
         "A table of per temperature sensor information that extends the
          general information provided in entPhySensorTable as defined in
          RFC3433.  This table should contain an entry for every object
-         contained in entPhySensorTable that has an entPhySensorType 
+         contained in entPhySensorTable that has an entPhySensorType
          of type celsius(8)."
     ::= {  etsysEntityTempSensorExt 1 }
 
@@ -109,7 +109,7 @@ etsysEntityTempSensorExtEntry OBJECT-TYPE
     ::= { etsysEntityTempSensorExtTable 1 }
 
 EtsysEntityTempSensorExtEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysEntityTempSensorState
             INTEGER,
         etsysEntityTempSensorHotTemp
@@ -194,12 +194,12 @@ etsysEntityTempSensorColdTemp OBJECT-TYPE
     ::= { etsysEntityTempSensorExtEntry 5 }
 
 etsysEntityTempSensorTrapEnable OBJECT-TYPE
-    SYNTAX       EnabledStatus 
+    SYNTAX       EnabledStatus
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
         "This object indicates whether the etsysEntityTempSensorStateChng
-         notification will be sent when the sensor state changes as 
+         notification will be sent when the sensor state changes as
          defined by etsysEntityTempSensorState."
     DEFVAL      { enabled }
     ::= { etsysEntityTempSensorExtEntry 6 }
@@ -210,15 +210,15 @@ etsysEntityTempSensorTrapEnable OBJECT-TYPE
 
 etsysEntityTempSensorStateChng NOTIFICATION-TYPE
     OBJECTS { etsysEntityTempSensorState, entPhySensorOperStatus,
-              entPhySensorScale, entPhySensorPrecision, 
+              entPhySensorScale, entPhySensorPrecision,
               entPhySensorValue, entPhySensorUnitsDisplay }
     STATUS        current
     DESCRIPTION
-        "An etsysEntityTempSensorStateChng trap signifies that the 
-         SNMP entity, acting in an agent role, has detected the 
-         transition of etsysEntityTempSensorState from one 
-         enumerated state to another.  It is RECOMMENDED that devices 
-         implementing this trap optionally varbind the entPhysicalName 
+        "An etsysEntityTempSensorStateChng trap signifies that the
+         SNMP entity, acting in an agent role, has detected the
+         transition of etsysEntityTempSensorState from one
+         enumerated state to another.  It is RECOMMENDED that devices
+         implementing this trap optionally varbind the entPhysicalName
          and entPhysicalDescr objects for this sensor."
     ::= { etsysEntitySensorExtNotifications 1 }
 
@@ -242,11 +242,11 @@ etsysEntitySensorExtCompliances OBJECT IDENTIFIER
 
 etsysEntityTempSensorGroup OBJECT-GROUP
     OBJECTS {
-        etsysEntityTempSensorState, 
-        etsysEntityTempSensorHotTemp, 
-        etsysEntityTempSensorWarmTemp, 
-        etsysEntityTempSensorCoolTemp, 
-        etsysEntityTempSensorColdTemp, 
+        etsysEntityTempSensorState,
+        etsysEntityTempSensorHotTemp,
+        etsysEntityTempSensorWarmTemp,
+        etsysEntityTempSensorCoolTemp,
+        etsysEntityTempSensorColdTemp,
         etsysEntityTempSensorTrapEnable
     }
     STATUS        current
@@ -277,12 +277,12 @@ etsysEntitySensorExtCompliance MODULE-COMPLIANCE
 
     MODULE
         MANDATORY-GROUPS { etsysEntityTempSensorGroup }
-        
+
         GROUP       etsysEntityTempSensorNotificationGroup
         DESCRIPTION
             "This group is mandatory for all devices that support per
              temperature sensor state change notifications."
-        
+
         OBJECT      etsysEntityTempSensorTrapEnable
         MIN-ACCESS  read-only
         DESCRIPTION

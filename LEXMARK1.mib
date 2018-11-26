@@ -8,13 +8,13 @@
 -- $Date: 2002/05/10 15:26:24 $
 --
 --
--- 
+--
 -- Version 3.1.6
 
 LEXMARK-PVT-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
-    enterprises, Gauge, IpAddress 
+    enterprises, Gauge, IpAddress
         FROM RFC1155-SMI
     DisplayString, PhysAddress
         FROM RFC1213-MIB
@@ -122,7 +122,7 @@ opsysProtocols OBJECT-TYPE
          2    4      AppleTalk
          3    8      TCP/IP
          4    16     reserved
-         5    32     reserved 
+         5    32     reserved
          6    64     NDS"
     ::= { opsys 8 }
 
@@ -912,11 +912,11 @@ lexhttpNumLinks OBJECT-TYPE
     SYNTAX  INTEGER (0..65535)
     ACCESS  read-only
     STATUS  mandatory
-    DESCRIPTION 
+    DESCRIPTION
         "The number of configurable HTTP links for the adapter."
     ::= { lexhttp 2 }
 
-lexhttpBytesRemaining OBJECT-TYPE 
+lexhttpBytesRemaining OBJECT-TYPE
     SYNTAX  INTEGER (0..65535)
     ACCESS  read-only
     STATUS  mandatory
@@ -952,7 +952,7 @@ lexhttpLinkTableEntry OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
         "An entry containing HTTP link settings."
-    INDEX  { lexhttpLinkTableIndex } 
+    INDEX  { lexhttpLinkTableIndex }
    ::= { lexhttpLinkTable 1 }
 
 LexhttpLinkTableEntry ::= SEQUENCE {
@@ -966,7 +966,7 @@ lexhttpLinkTableIndex OBJECT-TYPE
     SYNTAX INTEGER(0..65535)
     ACCESS read-only
     STATUS mandatory
-    DESCRIPTION 
+    DESCRIPTION
         "A unique value used by the adapter to identify HTTP link settings."
     ::= { lexhttpLinkTableEntry 1 }
 
@@ -981,7 +981,7 @@ lexhttpLinkTableStatus OBJECT-TYPE
         }
     ACCESS  read-write
     STATUS  mandatory
-    DESCRIPTION 
+    DESCRIPTION
         "The status of the HTTP link.
 
          Get operation:
@@ -1007,7 +1007,7 @@ lexhttpLinkTableLabel OBJECT-TYPE
     SYNTAX  DisplayString (SIZE (0..255))
     ACCESS  read-write
     STATUS  mandatory
-    DESCRIPTION 
+    DESCRIPTION
         "The text to be displayed as the label of this HTTP link.  It may be set
          to define a custom link.  Note that when read, this always reflects what
          the server would display.  As such, if the status of this link is
@@ -1021,7 +1021,7 @@ lexhttpLinkTableURL OBJECT-TYPE
     SYNTAX  DisplayString (SIZE (0..255))
     ACCESS  read-write
     STATUS  mandatory
-    DESCRIPTION 
+    DESCRIPTION
         "The URL to be hyperlinked to by the HTTP link.  It may be set to
          define a custom link.  Note that when read, this always reflects what
          the server would use.  As such, if the status of this link is
@@ -1110,7 +1110,7 @@ lexdhcpHostname OBJECT-TYPE
     ::= { lexdhcp 6 }
 
 lexdhcpLeaseLength OBJECT-TYPE
-    SYNTAX  INTEGER 
+    SYNTAX  INTEGER
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -1118,7 +1118,7 @@ lexdhcpLeaseLength OBJECT-TYPE
     ::= { lexdhcp 7 }
 
 lexdhcpTimetoExpire OBJECT-TYPE
-    SYNTAX  INTEGER 
+    SYNTAX  INTEGER
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -1354,7 +1354,7 @@ lexmacUAA OBJECT-TYPE
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
-        "The network adapter's universally administered network address. The UAA 
+        "The network adapter's universally administered network address. The UAA
 	 will be displayed in MSB format."
     ::= { lexmac 4 }
 
@@ -1549,7 +1549,7 @@ timeDSTStartDate OBJECT-TYPE
          4-5  A 2-digit field indicating the hour
          6-7  A 2-digit field indicating the minute
          8-9  A 2-digit field indicating the second
-  
+
          The default setting is F004020000 which corresponds to the first Sunday
          of April at 2:00:00 am."
     ::={ time 5 }
@@ -1562,7 +1562,7 @@ timeDSTEndDate OBJECT-TYPE
         "A textual representation of the day and time the Daylight Savings Time
          adjust should end if enabled (see timeDSTEnable).  The format of string
          is as defined for timeDSTStartDate
-  
+
          The default setting is L010020000 which corresponds to the last Sunday
          of October at 2:00:00 am."
     ::={ time 6 }
@@ -1687,7 +1687,7 @@ prtgenSerialNo OBJECT-TYPE
         "A textual representation of the serial number of the attached
          printer, if known."
     ::= { prtgenInfoEntry 6 }
- 
+
 prtgenStatusTable OBJECT-TYPE
     SYNTAX  SEQUENCE OF PrtgenStatusEntry
     ACCESS  not-accessible
@@ -1768,7 +1768,7 @@ prtgenStatusPaperJam OBJECT-TYPE
     SYNTAX  INTEGER {
         notJammed(1),
         jamed(2),
-        unknown(3) 
+        unknown(3)
         }
     ACCESS  read-only
     STATUS  mandatory
@@ -2007,7 +2007,7 @@ prtgenAlertEntry OBJECT-TYPE
 
 PrtgenAlertEntry ::= SEQUENCE {
     prtgenAlertIndex          INTEGER,
-    prtgenAlertDescription    DisplayString, 
+    prtgenAlertDescription    DisplayString,
     prtgenAlertGroup	      INTEGER
     }
 
@@ -2051,9 +2051,9 @@ prtgenAlertGroup OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
 	"The type of sub-unit within the printer model that this alert is related."
-    ::= { prtgenAlertEntry 3} 
+    ::= { prtgenAlertEntry 3}
 
--- prtDotmatrixTable and dmMacroTable are for DotMatrix printers only! 
+-- prtDotmatrixTable and dmMacroTable are for DotMatrix printers only!
 prtDotmatrixTable OBJECT-TYPE
     SYNTAX  SEQUENCE OF PrtDotmatrixEntry
     ACCESS  not-accessible
@@ -2243,7 +2243,7 @@ dmCharacterSet OBJECT-TYPE
    SYNTAX INTEGER {
 	CharacterSet1(0),
 	CharacterSet2(1)
-	} 
+	}
    ACCESS read-write
    STATUS mandatory
    DESCRIPTION
@@ -2295,7 +2295,7 @@ dmFontLock OBJECT-TYPE
    ::= { dmMacroEntry 5 }	
 
 dmPitch OBJECT-TYPE
-   SYNTAX INTEGER(0..6) 
+   SYNTAX INTEGER(0..6)
    ACCESS read-write
    STATUS mandatory
    DESCRIPTION
@@ -2324,7 +2324,7 @@ dmPitchLock OBJECT-TYPE
         "The status of whether Pitch is locked. "
    DEFVAL {0}
    ::= { dmMacroEntry 7 }	
- 
+
 dmCodePage OBJECT-TYPE
    SYNTAX INTEGER{
 		CodePage437(0),
@@ -2358,7 +2358,7 @@ dmTOFPushTractor OBJECT-TYPE
    DESCRIPTION
         "Top-of-Form Push Tractor mode. "
    ::= { dmMacroEntry 9 }
- 
+
 dmTOFPushTractor2 OBJECT-TYPE
    SYNTAX INTEGER
    ACCESS read-write
@@ -2609,7 +2609,7 @@ faxScaling OBJECT-TYPE
     SYNTAX  INTEGER {
        scaleToFit(1),
        cropToFit(2)
-       }    
+       }
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
@@ -2621,7 +2621,7 @@ faxBinaryEncoding OBJECT-TYPE
     SYNTAX  INTEGER {
        taggedBinary(1),
        ascii85(2)
-       }    
+       }
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
@@ -2633,7 +2633,7 @@ faxPrinterPort OBJECT-TYPE
        parallel1(129),
        parallel2(130),
        firstAvail(255)
-       }    
+       }
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION

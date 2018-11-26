@@ -1,22 +1,22 @@
 CT-PRIORITY-CLASSIFY-MIB DEFINITIONS ::= BEGIN
- 
+
 --  ct-priority-classify-mib.txt
 --  Revision: 01.00.00
 --  Part Number:
 --  Date: September 9, 1998
- 
+
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
 --  (603) 332-9400
 --  support@ctron.com
- 
+
 --  This module provides authoritative definitions for Cabletron's
 --  enterprise-specific priority classification MIB.
 --
 --  This module will be extended, as required.
 --
- 
+
 --  Cabletron Systems reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
@@ -32,14 +32,14 @@ CT-PRIORITY-CLASSIFY-MIB DEFINITIONS ::= BEGIN
 --  Cabletron grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Cabletron products.
- 
+
 --  Copyright September 1998 Cabletron Systems
 
 
 -- ============================================================================
--- 
+--
 -- Priority Classification Group
--- 
+--
 --
 -- Priority Classification Group
 --
@@ -56,7 +56,7 @@ CT-PRIORITY-CLASSIFY-MIB DEFINITIONS ::= BEGIN
 --
 -- ============================================================================
 IMPORTS
- 
+
       OBJECT-TYPE
             FROM RFC-1212
       ctPriorityExt
@@ -73,29 +73,29 @@ pClassifyRTPLowDelayQueuePreference  OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "This value represents one of eight preference levels, 
-                        0 through 7, with 0 being the worst and 7 the best. 
-                        The value will be translated by the device into a three 
-                        bit binary number. This value shall be used to put 
+                        "This value represents one of eight preference levels,
+                        0 through 7, with 0 being the worst and 7 the best.
+                        The value will be translated by the device into a three
+                        bit binary number. This value shall be used to put
                         incoming RTP packets on an internal queue."
         DEFVAL { 7 }
         ::= { pClassifyRTP 1}
-                                                        
+
 
 pClassifyRTCPParsing    OBJECT-TYPE
         SYNTAX          INTEGER{
-                        disabled(1),            
+                        disabled(1),
                         enabled(2)
                         }
         ACCESS          read-write
         STATUS  mandatory
         DESCRIPTION
-                        "This object will enable or disable parsing of all 
-                        forwarded packets looking for RTCP packets. 
-                        Enabled(2) means that all fowarded packets will be 
-                        parsed for RTCP.  When an RTCP packet is found, the 
-                        identification of the associated RTP 'connection' 
-                        (next lower port number) is added to the list of low 
+                        "This object will enable or disable parsing of all
+                        forwarded packets looking for RTCP packets.
+                        Enabled(2) means that all fowarded packets will be
+                        parsed for RTCP.  When an RTCP packet is found, the
+                        identification of the associated RTP 'connection'
+                        (next lower port number) is added to the list of low
                         delay ports. Disabled(1) means that no packets will be
                         parsed. "
         DEFVAL          { disabled }
@@ -108,9 +108,9 @@ pClassifyRTPTable       OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                         "A list describing which MIB-II interfaces
-                        will allow 802.1 P/Q tagging or modification of the 
-                        precedence field in the TOS portion of an IP packet or 
-                        both.  It also specifies the tagging value and the TOS 
+                        will allow 802.1 P/Q tagging or modification of the
+                        precedence field in the TOS portion of an IP packet or
+                        both.  It also specifies the tagging value and the TOS
                         precedence where applicable. "
         ::= { pClassifyRTP 3 }
 
@@ -140,7 +140,7 @@ pClassifyRTPInterfaceNumber     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                        "The index of the MIB-II interface that the 
+                        "The index of the MIB-II interface that the
                         packet is destined for."
         ::= { pClassifyRTPEntry 1 }
 
@@ -155,13 +155,13 @@ pClassifyRTPState       OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "This object will enable  or disable                                                                    modification of the TOS precedence field and the 802.1 
-                        P/Q tagging. A value of NoModification(1) implies that 
+                        "This object will enable  or disable                                                                    modification of the TOS precedence field and the 802.1
+                        P/Q tagging. A value of NoModification(1) implies that
                         modification is not allowed. OnlyQTag(2) means that only
-                        802.1 P/Q tagging is allowed. When this object has a 
-                        value OnlyQTOS(3), modification of only the TOS 
-                        precedence field is permitted.  QTagAndQTOS means that 
-                        both TOS precedence modification and P/Q tagging is 
+                        802.1 P/Q tagging is allowed. When this object has a
+                        value OnlyQTOS(3), modification of only the TOS
+                        precedence field is permitted.  QTagAndQTOS means that
+                        both TOS precedence modification and P/Q tagging is
                         allowed."
         DEFVAL          { noModification }
         ::= { pClassifyRTPEntry 2 }
@@ -172,11 +172,11 @@ pClassifyRTPTOSPrecedence       OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "This value represents one of eight precedence levels, 
+                        "This value represents one of eight precedence levels,
                         0 through 7, with 0 being the lowest and 7 the highest.
-                        The value will be translated by the device into a three 
+                        The value will be translated by the device into a three
                         bit binary number for use as the precedence field in the
-                        TOS portion of the IP Datagram.  This object is valid 
+                        TOS portion of the IP Datagram.  This object is valid
                         only if pClassifyRTPState is OnlyQTOS or QTagAndQTOS."
         DEFVAL { 7 }
         ::= { pClassifyRTPEntry 3 }
@@ -187,16 +187,16 @@ pClassifyRTPTagPriority         OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "This value represents one of eight priority levels, 
-                        0 through 7, with 0 being the lowest and 7 the highest. 
-                        The value will be translated by the device into a three 
-                        bit binary number for use as the user_priority field of 
-                        the TCI (Tag Control Information) format.  This object 
-                        is only valid if pClassifyRTPState is OnlyQTag or 
+                        "This value represents one of eight priority levels,
+                        0 through 7, with 0 being the lowest and 7 the highest.
+                        The value will be translated by the device into a three
+                        bit binary number for use as the user_priority field of
+                        the TCI (Tag Control Information) format.  This object
+                        is only valid if pClassifyRTPState is OnlyQTag or
                         QTagAndQTOS."
         DEFVAL { 7 }
         ::= { pClassifyRTPEntry 4 }
-                                                        
+
 
 
 pClassifyRTPTagVID      OBJECT-TYPE
@@ -204,16 +204,16 @@ pClassifyRTPTagVID      OBJECT-TYPE
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "This value represents a twelve bit VLAN identifier 
-                        (VID) as specified in the IEEE 802.1Q standard. This 
-                        object will provide a twelve bit VID in the TCI (Tag 
-                        Control Information) portion of a tagged frame as 
-                        specified in the IEEE 802.1Q. This value will be used 
-                        to classify qualified packets in accordance with the 
+                        "This value represents a twelve bit VLAN identifier
+                        (VID) as specified in the IEEE 802.1Q standard. This
+                        object will provide a twelve bit VID in the TCI (Tag
+                        Control Information) portion of a tagged frame as
+                        specified in the IEEE 802.1Q. This value will be used
+                        to classify qualified packets in accordance with the
                         IEEE 802.1Q standard.  This object will also be used to
                         reclassify certain packets exiting the port specified
-                        in pClassifyRTPInterfaceNumber whose TCI field contains 
-                        a VID equal to the NULL VLAN ID.  This object is valid 
+                        in pClassifyRTPInterfaceNumber whose TCI field contains
+                        a VID equal to the NULL VLAN ID.  This object is valid
                         only if pClassifyRTPState is OnlyQTag or QTagAndQTOS."                                                  DEFVAL {1}
         ::= { pClassifyRTPEntry 5 }
 
@@ -225,7 +225,7 @@ pClassifyUDPTable       OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                         " A list of UDP destination port numbers, UDP packets
-                        whose port numbers appear in this table will be put on 
+                        whose port numbers appear in this table will be put on
                         a low delay queue, and the preference specified."
         ::= { pClassifyUDP 1 }
 
@@ -235,7 +235,7 @@ pClassifyUDPEntry       OBJECT-TYPE
         ACCESS          not-accessible
         STATUS          mandatory
         DESCRIPTION
-                        "A list of objects that describe the UDP port numbers                                           that qualify as candidates for low delay queue 
+                        "A list of objects that describe the UDP port numbers                                           that qualify as candidates for low delay queue
                         preference classification."
         INDEX    { pClassifyUDPPortNumber }
         ::= { pClassifyUDPTable 1 }
@@ -247,14 +247,14 @@ PClassifyUDPEntry ::=
         pClassifyUDPState                       INTEGER,
         pClassifyUDPLowDelayQueuePreference     INTEGER
                 }
- 
+
 
 pClassifyUDPPortNumber OBJECT-TYPE
         SYNTAX          INTEGER
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
-                        "The UDP destination port number tha qualifies as a 
+                        "The UDP destination port number tha qualifies as a
                         candidate for low delay classification."
         ::= { pClassifyUDPEntry 1 }
 
@@ -267,7 +267,7 @@ pClassifyUDPState OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                        "A packet with UDP port number equal to 
+                        "A packet with UDP port number equal to
                         pClassifyUDPPortNumber will be put on a low_delay queue
                          if state is Enabled(2)."
         DEFVAL { disabled }
@@ -280,8 +280,8 @@ pClassifyUDPLowDelayQueuePreference OBJECT-TYPE
         STATUS          mandatory
         DESCRIPTION
                         "Preference with which packet with UDP destination port
-                        number equal to pClassifyUDPPortNumberis put on the 
-                        queue.  "                                                               
+                        number equal to pClassifyUDPPortNumberis put on the
+                        queue.  "
         DEFVAL { 7 }
         ::= { pClassifyUDPEntry 3 }
 

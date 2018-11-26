@@ -41,7 +41,7 @@ IMPORTS
 --  tcl    enterprises
         Counter, TimeTicks, Gauge
                 FROM RFC1155-SMI
- 
+
 
 --  These Objects are defined in the file sfps-inc.mib.txt.0.0.1
         sfpsPortConfig, sfpsPortStats, sfpsPortAttributeTable,
@@ -52,24 +52,24 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 --SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 HexInteger ::= INTEGER
 --  display this integer in hex format
 
 
-  
+
 
 --  SFPS Switching Port Group
 --  This group contains the managed objects used to setup and
 --  configure the SFPS ports for packet switching and statisics
 --  monitoring.  This group contains two sub-groups:  configuration
---  and statistics. 
+--  and statistics.
 
 
 --  SFPS Port Configuration Tables
@@ -222,7 +222,7 @@ sfpsInPortConfigReservedBW      OBJECT-TYPE
 
 --  ? should this be in Mbits/sec or as a percentage of total b/w.
 --  Currently defined as percentage of total b/w in switch.
-                 
+
         ::= { sfpsInPortConfigEntry 6 }
 
 sfpsInPortConfigAllocBW      OBJECT-TYPE
@@ -233,11 +233,11 @@ sfpsInPortConfigAllocBW      OBJECT-TYPE
                 "Sets the amount of Bandwidth that is allocated for
                  the inbound SFPS port for which this entry exists.
                  This bandwidth may be less than the reserved
-                 bandwidth." 
+                 bandwidth."
 
 --  ? should this be in Mbits/sec or as a percentage of total b/w.
 --  Currently defined as percentage of total b/w in switch.
-                 
+
         ::= { sfpsInPortConfigEntry 7 }
 
 sfpsInPortConfigQoS     OBJECT-TYPE
@@ -277,7 +277,7 @@ sfpsInPortConfigSwitchId  OBJECT-TYPE
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
-                "This entry is the id of the port." 
+                "This entry is the id of the port."
         ::= { sfpsInPortConfigEntry 11 }
 
 sfpsInPortConfigMediaType      OBJECT-TYPE
@@ -529,7 +529,7 @@ sfpsOutPortConfigReservedBW      OBJECT-TYPE
 
 --  ? should this be in Mbits/sec or as a percentage of total b/w.
 --  Currently defined as percentage of total b/w in switch.
-                 
+
         ::= { sfpsOutPortConfigEntry 6 }
 
 sfpsOutPortConfigAllocBW      OBJECT-TYPE
@@ -540,11 +540,11 @@ sfpsOutPortConfigAllocBW      OBJECT-TYPE
                 "Sets the amount of Bandwidth that is allocated for
                  the outbound  SFPS port for which this entry exists.
                  This bandwidth may be less than the reserved
-                 bandwidth." 
+                 bandwidth."
 
 --  ? should this be in Mbits/sec or as a percentage of total b/w.
 --  Currently defined as percentage of total b/w in switch.
-                 
+
         ::= { sfpsOutPortConfigEntry 7 }
 
 sfpsOutPortConfigQoS     OBJECT-TYPE
@@ -980,7 +980,7 @@ sfpsOutPortStatsLinkDowns OBJECT-TYPE
 -- Port Attributes
 
 sfpsPortAttributePort     OBJECT-TYPE
-    SYNTAX      INTEGER 
+    SYNTAX      INTEGER
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
@@ -988,7 +988,7 @@ sfpsPortAttributePort     OBJECT-TYPE
         ::= { sfpsPortAttributeTable 1 }
 
 sfpsPortAttributeAttributes     OBJECT-TYPE
-    SYNTAX      HexInteger      
+    SYNTAX      HexInteger
         ACCESS          read-only
         STATUS          mandatory
         DESCRIPTION
@@ -1024,7 +1024,7 @@ sfpsPortAttributeAPIVerb     OBJECT-TYPE
         ::= { sfpsPortAttributeAPI 1 }
 
 sfpsPortAttributeAPIPort     OBJECT-TYPE
-    SYNTAX      INTEGER 
+    SYNTAX      INTEGER
         ACCESS          read-write
         STATUS          mandatory
         DESCRIPTION
@@ -1042,4 +1042,4 @@ sfpsPortAttributeAPIAttribute     OBJECT-TYPE
                 ""
         ::= { sfpsPortAttributeAPI 3 }
 
-END 
+END

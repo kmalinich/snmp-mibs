@@ -2,7 +2,7 @@ CTRON-FDDI-STAT-MIB DEFINITIONS ::= BEGIN
 
         --  ctron-fddi-stat-mib.txt.
         --  Revision: 1.00.00
-        --  Date: February 5, 1996 
+        --  Date: February 5, 1996
 
         --  Cabletron Systems, Inc.
         --  35 Industrial Way, P.O. Box 5005
@@ -16,16 +16,16 @@ CTRON-FDDI-STAT-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -84,7 +84,7 @@ CTRON-FDDI-STAT-MIB DEFINITIONS ::= BEGIN
             STATUS      mandatory
             DESCRIPTION
                 "A specific slot for which this connection entry is
-                defined.  If the entry corresponds to a slotless chassis 
+                defined.  If the entry corresponds to a slotless chassis
                 system, then this entry will have the value of 0."
             ::= { ctFDDIStatsCtlEntry 1 }
 
@@ -132,7 +132,7 @@ CTRON-FDDI-STAT-MIB DEFINITIONS ::= BEGIN
                 "This object provides the ability to reset the peak
                 bytes and peak time stamp object.  This is accomplished
                 by setting this object with a value of reset(2).  Setting
-                a value of normal(1) will have no affect.  
+                a value of normal(1) will have no affect.
 
                 When read this object will always return normal(1)."
             ::= { ctFDDIStatsCtlEntry 5 }

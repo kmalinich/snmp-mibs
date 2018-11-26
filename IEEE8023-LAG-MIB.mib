@@ -31,7 +31,7 @@ lagMIBObjects OBJECT IDENTIFIER ::= { lagMIB 1 }
 -- -------------------------------------------------------------
 -- Textual Conventions
 -- -------------------------------------------------------------
-    
+
 LacpKey ::= TEXTUAL-CONVENTION
     STATUS      current
     DESCRIPTION
@@ -438,7 +438,7 @@ dot3adAggPortActorSystemPriority OBJECT-TYPE
         "IEEE 802.3 Subclause 30.7.2.1.2"
     ::= { dot3adAggPortEntry 2 }
 
-    
+
 dot3adAggPortActorSystemID OBJECT-TYPE
     SYNTAX      MacAddress
     MAX-ACCESS  read-only
@@ -490,7 +490,7 @@ dot3adAggPortPartnerAdminSystemPriority OBJECT-TYPE
         "IEEE 802.3 Subclause 30.7.2.1.7"
     ::= { dot3adAggPortEntry 6 }
 
-    
+
 dot3adAggPortPartnerOperSystemPriority OBJECT-TYPE
     SYNTAX      INTEGER (0..65535)
     MAX-ACCESS  read-only
@@ -591,7 +591,7 @@ dot3adAggPortAttachedAggID OBJECT-TYPE
         "IEEE 802.3 Subclause 30.7.2.1.13"
     ::= { dot3adAggPortEntry 13 }
 
-    
+
 dot3adAggPortActorPort OBJECT-TYPE
     SYNTAX      INTEGER (0..65535)
     MAX-ACCESS  read-only
@@ -694,7 +694,7 @@ dot3adAggPortActorAdminState OBJECT-TYPE
         "IEEE 802.3 Subclause 30.7.2.1.20"
     ::= { dot3adAggPortEntry 20 }
 
-    
+
 dot3adAggPortActorOperState OBJECT-TYPE
     SYNTAX      LacpState
     MAX-ACCESS  read-only
@@ -795,7 +795,7 @@ Dot3adAggPortStatsEntry ::=
             Counter32
     }
 
-    
+
 dot3adAggPortStatsLACPDUsRx OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
@@ -847,7 +847,7 @@ dot3adAggPortStatsUnknownRx OBJECT-TYPE
         "IEEE 802.3 Subclause 30.7.3.1.5"
     ::= { dot3adAggPortStatsEntry 4 }
 
-    
+
 dot3adAggPortStatsIllegalRx OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
@@ -897,7 +897,7 @@ dot3adAggPortStatsMarkerResponsePDUsTx OBJECT-TYPE
 -- -------------------------------------------------------------
 -- LACP Debug Table
 -- -------------------------------------------------------------
-    
+
 dot3adAggPortDebugTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF Dot3adAggPortDebugEntry
     MAX-ACCESS  not-accessible
@@ -947,7 +947,7 @@ Dot3adAggPortDebugEntry ::=
         dot3adAggPortDebugPartnerChangeCount
             Counter32
     }
-    
+
 dot3adAggPortDebugRxState OBJECT-TYPE
     SYNTAX      INTEGER {
                     currenT(1),

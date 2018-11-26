@@ -6,7 +6,7 @@ ENTERASYS-CN-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Congestion Notification (CN) extension MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-CN-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright July, 2012 Enterasys Networks, Inc.
@@ -57,31 +57,31 @@ etsysCnMibExtMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          proprietary extensions to the IEEE8021-CN-MIB.
 
          This MIB was designed to be used for configuration of
          CN queue profiles.  The standard
-         IEEE8021-CN-MIB provides a congestion point object to 
+         IEEE8021-CN-MIB provides a congestion point object to
          manage parameters that are specific to a congestion
-         notification queue, however many platforms do not 
+         notification queue, however many platforms do not
          support direct configuration of queues in the hardware.
-         Some hardware support for CN provides the ability to 
-         configure a set of profiles which are then mapped to 
-         hardware queues.  The number of profiles supported is 
-         hardware specific.  A queue profile provides the same set 
-         of parameters that are provided in a congestion point 
-         managed object.  Each congestion point is then provided 
-         a queue profile index which maps the congestion point 
+         Some hardware support for CN provides the ability to
+         configure a set of profiles which are then mapped to
+         hardware queues.  The number of profiles supported is
+         hardware specific.  A queue profile provides the same set
+         of parameters that are provided in a congestion point
+         managed object.  Each congestion point is then provided
+         a queue profile index which maps the congestion point
          object to a profile."
 
     REVISION     "201207201221Z"  -- Fri Jul 20 12:21 UTC 2012
     DESCRIPTION  "The initial version of this MIB module."
 
-    ::= { etsysModules 95 } 
+    ::= { etsysModules 95 }
 
 -- -------------------------------------------------------------
 -- Textual Conventions
@@ -93,10 +93,10 @@ etsysCnMibExtMIB MODULE-IDENTITY
 
 etsysCnMibExtObjects    OBJECT IDENTIFIER ::= { etsysCnMibExtMIB 1 }
 
-etsysCnMibExtSysBranch  OBJECT IDENTIFIER 
+etsysCnMibExtSysBranch  OBJECT IDENTIFIER
                         ::= { etsysCnMibExtObjects 1 }
 
-etsysCnMibExtCompBranch OBJECT IDENTIFIER 
+etsysCnMibExtCompBranch OBJECT IDENTIFIER
                         ::= { etsysCnMibExtObjects 2 }
 
 -- -------------------------------------------------------------
@@ -126,13 +126,13 @@ etsysCnMibExtQpTypeEntry OBJECT-TYPE
 
 EtsysCnMibExtQpTypeEntry ::=
     SEQUENCE {
-        etsysCnMibExtQptIdentifier      
+        etsysCnMibExtQptIdentifier
             Unsigned32,
-        etsysCnMibExtQptDesc            
+        etsysCnMibExtQptDesc
             SnmpAdminString,
-        etsysCnMibExtQptMaxQpEntries    
+        etsysCnMibExtQptMaxQpEntries
             Unsigned32,
-        etsysCnMibExtQptSupport         
+        etsysCnMibExtQptSupport
             BITS
     }
 
@@ -141,7 +141,7 @@ etsysCnMibExtQptIdentifier OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The CN queue profile type within the system to which the 
+        "The CN queue profile type within the system to which the
          information in this entry applies."
     ::= { etsysCnMibExtQpTypeEntry 1 }
 
@@ -150,7 +150,7 @@ etsysCnMibExtQptDesc OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "A textual description of the CN queue profile type for this 
+        "A textual description of the CN queue profile type for this
          entry."
     ::= { etsysCnMibExtQpTypeEntry 2 }
 
@@ -184,7 +184,7 @@ etsysCnMibExtMaxCompActivePriVals OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The maximum number of active ieee8021CnCompntPriTable
-         entries allowed per component in the system.  An entry 
+         entries allowed per component in the system.  An entry
          is active if the ieee8021CnComPriRowStatus is active."
     ::= { etsysCnMibExtSysBranch 2 }
 
@@ -221,27 +221,27 @@ etsysCnMibExtQpEntry OBJECT-TYPE
 
 EtsysCnMibExtQpEntry ::=
     SEQUENCE {
-        etsysCnMibExtQpComponentId      
+        etsysCnMibExtQpComponentId
             IEEE8021PbbComponentIdentifier,
-        etsysCnMibExtQpTypeId           
+        etsysCnMibExtQpTypeId
             Unsigned32,
-        etsysCnMibExtQpIndex            
+        etsysCnMibExtQpIndex
             Unsigned32,
-        etsysCnMibExtQpSizeSetPoint     
+        etsysCnMibExtQpSizeSetPoint
             Unsigned32,
-        etsysCnMibExtQpFeedbackWeight   
+        etsysCnMibExtQpFeedbackWeight
             Integer32,
-        etsysCnMibExtQpMinSampleBase    
+        etsysCnMibExtQpMinSampleBase
             Unsigned32,
-        etsysCnMibExtQpMinHeaderOctets  
+        etsysCnMibExtQpMinHeaderOctets
             Unsigned32,
-        etsysCnMibExtQpRowStatus        
+        etsysCnMibExtQpRowStatus
             RowStatus
     }
 
 etsysCnMibExtQpComponentId OBJECT-TYPE
     SYNTAX      IEEE8021PbbComponentIdentifier
-    MAX-ACCESS  not-accessible   
+    MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
         "The bridge component within the system to which the information
@@ -266,7 +266,7 @@ etsysCnMibExtQpIndex OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This object represents the CN queue profile to which this 
+        "This object represents the CN queue profile to which this
          entry applies."
     ::= { etsysCnMibExtQpEntry 3 }
 
@@ -337,7 +337,7 @@ etsysCnMibExtQpRowStatus OBJECT-TYPE
     ::= { etsysCnMibExtQpEntry 8 }
 
 -- -------------------------------------------------------------
--- Congestion point extension table.  One per component, per 
+-- Congestion point extension table.  One per component, per
 -- interface, per congestion point index.
 -- -------------------------------------------------------------
 
@@ -360,9 +360,9 @@ etsysCnMibExtCpEntry OBJECT-TYPE
 
 EtsysCnMibExtCpEntry ::=
     SEQUENCE {
-        etsysCnMibExtCpQpTypeId    
+        etsysCnMibExtCpQpTypeId
             Unsigned32,
-        etsysCnMibExtCpQpIndex     
+        etsysCnMibExtCpQpIndex
             Unsigned32
     }
 
@@ -371,7 +371,7 @@ etsysCnMibExtCpQpTypeId OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This object represents the CN queue profile type to which this 
+        "This object represents the CN queue profile type to which this
          entry applies."
     ::= { etsysCnMibExtCpEntry 1 }
 
@@ -380,10 +380,10 @@ etsysCnMibExtCpQpIndex OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "This object represents the CN queue profile to which this 
-         entry applies." 
+        "This object represents the CN queue profile to which this
+         entry applies."
     ::= { etsysCnMibExtCpEntry 2 }
- 
+
 -- -------------------------------------------------------------
 -- Global extension table. One per component.
 -- -------------------------------------------------------------
@@ -405,9 +405,9 @@ etsysCnMibExtGlobalEntry OBJECT-TYPE
     AUGMENTS { ieee8021CnGlobalEntry }
     ::= { etsysCnMibExtGlobalTable 1 }
 
-EtsysCnMibExtGlobalEntry ::= 
+EtsysCnMibExtGlobalEntry ::=
     SEQUENCE {
-        etsysCnMibExtGlobalActivePriVals  
+        etsysCnMibExtGlobalActivePriVals
             Unsigned32
     }
 
@@ -417,7 +417,7 @@ etsysCnMibExtGlobalActivePriVals OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The number of active ieee8021CnCompntPriTable entries for this
-         component in the system.  An entry is active if the 
+         component in the system.  An entry is active if the
          ieee8021CnComPriRowStatus is active."
     ::= { etsysCnMibExtGlobalEntry 1 }
 
@@ -427,10 +427,10 @@ etsysCnMibExtGlobalActivePriVals OBJECT-TYPE
 
 etsysCnMibExtConformance OBJECT IDENTIFIER ::= { etsysCnMibExtMIB 2 }
 
-etsysCnMibExtGroups      OBJECT IDENTIFIER 
+etsysCnMibExtGroups      OBJECT IDENTIFIER
                          ::= { etsysCnMibExtConformance 1 }
 
-etsysCnMibExtCompliances OBJECT IDENTIFIER 
+etsysCnMibExtCompliances OBJECT IDENTIFIER
                          ::= { etsysCnMibExtConformance 2 }
 
 -- -------------------------------------------------------------
@@ -446,7 +446,7 @@ etsysCnMibExtQpTypeGroup OBJECT-GROUP
     STATUS      current
     DESCRIPTION
         "The collection of objects to provide information about
-         congestion notification queue profile types that are  
+         congestion notification queue profile types that are
          supported in a system."
     ::= { etsysCnMibExtGroups 1 }
 
@@ -457,7 +457,7 @@ etsysCnMibExtSysGroup OBJECT-GROUP
     STATUS      current
     DESCRIPTION
         "A collection of objects to provide information about
-         extended capabilities of a system which supports congestion 
+         extended capabilities of a system which supports congestion
          notification."
     ::= { etsysCnMibExtGroups 2 }
 
@@ -468,7 +468,7 @@ etsysCnMibExtGlobalGroup OBJECT-GROUP
     STATUS      current
     DESCRIPTION
         "A collection of objects to provide information about
-         extended capabilities of a component in a system which 
+         extended capabilities of a component in a system which
          supports congestion notification."
     ::= { etsysCnMibExtGroups 3 }
 

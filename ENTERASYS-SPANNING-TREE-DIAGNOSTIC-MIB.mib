@@ -6,7 +6,7 @@ ENTERASYS-SPANNING-TREE-DIAGNOSTIC-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IEEE Spanning Tree Diagnostic MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-SPANNING-TREE-DIAGNOSTIC-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright 2002-2006 Enterasys Networks, Inc.
@@ -58,7 +58,7 @@ etsysSpanningTreeDiagnosticMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          the Spanning Tree Protocols IEEE 802.1D, 802.1w, and 802.1s."
 
     REVISION "200610041949Z"  -- Wed Oct  4 19:49 GMT 2006
@@ -74,7 +74,7 @@ etsysSpanningTreeDiagnosticMIB MODULE-IDENTITY
     REVISION "200406071920Z"  -- Mon Jun  7 19:20 GMT 2004
     DESCRIPTION
          "Added the etsysStpDiagCistBridgePortTable and
-          etsysStpDiagMstiBridgePortTable which are the 
+          etsysStpDiagMstiBridgePortTable which are the
           same as the etsysStpDiagCistPortTable and the
           etsysStpDiagMstiPortTable but are index by
           bridge port."
@@ -100,7 +100,7 @@ etsysSpanningTreeDiagnosticMIB MODULE-IDENTITY
     REVISION "200210102101Z"  -- Thu Oct 10 21:01 GMT 2002
     DESCRIPTION
         "The initial version of this MIB module"
-    ::= { etsysModules 29 } 
+    ::= { etsysModules 29 }
 
 
 -- -------------------------------------------------------------
@@ -214,7 +214,7 @@ etsysStpDiagCommonInvalidBpdu        OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of invalid BPDUs received." 
+        "The total number of invalid BPDUs received."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.4"
     ::= { etsysStpDiagCommon 2 }
@@ -224,7 +224,7 @@ etsysStpDiagCommonStpCfgBpduRx   OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1D Configuration BPDUs received." 
+        "The total number of 802.1D Configuration BPDUs received."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCommon 3 }
@@ -234,7 +234,7 @@ etsysStpDiagCommonStpCfgBpduTx   OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1D Configuration BPDUs transmitted." 
+        "The total number of 802.1D Configuration BPDUs transmitted."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCommon 4 }
@@ -245,7 +245,7 @@ etsysStpDiagCommonStpTcnBpduRx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs received." 
+         BPDUs received."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCommon 5 }
@@ -256,7 +256,7 @@ etsysStpDiagCommonStpTcnBpduTx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs transmitted." 
+         BPDUs transmitted."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCommon 6 }
@@ -266,7 +266,7 @@ etsysStpDiagCommonRstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs received." 
+        "The total number of 802.1w BPDUs received."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCommon 7 }
@@ -276,7 +276,7 @@ etsysStpDiagCommonRstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs transmitted." 
+        "The total number of 802.1w BPDUs transmitted."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCommon 8 }
@@ -312,7 +312,7 @@ etsysStpDiagCommonMstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs received." 
+        "The total number of 802.1s BPDUs received."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCommon 11 }
@@ -322,7 +322,7 @@ etsysStpDiagCommonMstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs transmitted." 
+        "The total number of 802.1s BPDUs transmitted."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCommon 12 }
@@ -333,7 +333,7 @@ etsysStpDiagCommonMstCistTcRx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs received with the
-         Topology Change flag set in the CIST Flags field. 
+         Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs received in the etsysStpDiagCommonMstBpduRx object."
     REFERENCE
@@ -346,7 +346,7 @@ etsysStpDiagCommonMstCistTcTx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs transmitted with the
-         Topology Change flag set in the CIST Flags field. 
+         Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs transmitted in the etsysStpDiagCommonMstBpduRx
          object."
@@ -372,7 +372,7 @@ etsysStpDiagCommonStpCfgBpduTxTcFlagSet   OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1D Configuration BPDUs transmitted 
+        "The total number of 802.1D Configuration BPDUs transmitted
          with the Topology Change flag set. These BPDUs are included
          in the overall count of 802.1D Configuration BPDUs transmitted
          in the etsysStpDiagCommonStpCfgBpduTx object."
@@ -433,7 +433,7 @@ etsysStpDiagCistPortEntry OBJECT-TYPE
     ::= { etsysStpDiagCistPortTable 1 }
 
 EtsysStpDiagCistPortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysStpDiagCistPortNumber                      InterfaceIndex,
         etsysStpDiagCistPortRole                        EtsysStpPortRole,
         etsysStpDiagCistPortInvalidBpdu                 Counter32,
@@ -481,7 +481,7 @@ etsysStpDiagCistPortInvalidBpdu        OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of invalid BPDUs received on this port." 
+        "The total number of invalid BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.4"
     ::= { etsysStpDiagCistPortEntry 3 }
@@ -492,7 +492,7 @@ etsysStpDiagCistPortStpCfgBpduRx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Configuration BPDUs received
-         on this port." 
+         on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistPortEntry 4 }
@@ -503,7 +503,7 @@ etsysStpDiagCistPortStpCfgBpduTx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Configuration BPDUs transmitted
-         on this port." 
+         on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistPortEntry 5 }
@@ -514,7 +514,7 @@ etsysStpDiagCistPortStpTcnBpduRx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs received on this port." 
+         BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistPortEntry 6 }
@@ -525,7 +525,7 @@ etsysStpDiagCistPortStpTcnBpduTx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs transmitted on this port." 
+         BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistPortEntry 7 }
@@ -535,7 +535,7 @@ etsysStpDiagCistPortRstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs received on this port." 
+        "The total number of 802.1w BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCistPortEntry 8 }
@@ -545,7 +545,7 @@ etsysStpDiagCistPortRstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs transmitted on this port." 
+        "The total number of 802.1w BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCistPortEntry 9 }
@@ -581,7 +581,7 @@ etsysStpDiagCistPortMstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs received on this port." 
+        "The total number of 802.1s BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCistPortEntry 12 }
@@ -591,7 +591,7 @@ etsysStpDiagCistPortMstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs transmitted on this port." 
+        "The total number of 802.1s BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCistPortEntry 13 }
@@ -602,7 +602,7 @@ etsysStpDiagCistPortMstCistTcRx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs received on this port
-         with the Topology Change flag set in the CIST Flags field. 
+         with the Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs received in the etsysStpDiagCistPortMstBpduRx object."
     REFERENCE
@@ -615,7 +615,7 @@ etsysStpDiagCistPortMstCistTcTx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs transmitted on this port
-         with the Topology Change flag set in the CIST Flags field. 
+         with the Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs transmitted in the etsysStpDiagCistPortMstBpduRx object."
     REFERENCE
@@ -703,7 +703,7 @@ etsysStpDiagCistBridgePortEntry OBJECT-TYPE
     ::= { etsysStpDiagCistBridgePortTable 1 }
 
 EtsysStpDiagCistBridgePortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysStpDiagCistBridgePortRole                   EtsysStpPortRole,
         etsysStpDiagCistBridgePortInvalidBpdu            Counter32,
         etsysStpDiagCistBridgePortStpCfgBpduRx           Counter32,
@@ -739,7 +739,7 @@ etsysStpDiagCistBridgePortInvalidBpdu        OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of invalid BPDUs received on this port." 
+        "The total number of invalid BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.4"
     ::= { etsysStpDiagCistBridgePortEntry 3 }
@@ -750,7 +750,7 @@ etsysStpDiagCistBridgePortStpCfgBpduRx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Configuration BPDUs received
-         on this port." 
+         on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistBridgePortEntry 4 }
@@ -761,7 +761,7 @@ etsysStpDiagCistBridgePortStpCfgBpduTx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Configuration BPDUs transmitted
-         on this port." 
+         on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistBridgePortEntry 5 }
@@ -772,7 +772,7 @@ etsysStpDiagCistBridgePortStpTcnBpduRx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs received on this port." 
+         BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistBridgePortEntry 6 }
@@ -783,7 +783,7 @@ etsysStpDiagCistBridgePortStpTcnBpduTx   OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1D Topology Change Notification
-         BPDUs transmitted on this port." 
+         BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.1"
     ::= { etsysStpDiagCistBridgePortEntry 7 }
@@ -793,7 +793,7 @@ etsysStpDiagCistBridgePortRstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs received on this port." 
+        "The total number of 802.1w BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCistBridgePortEntry 8 }
@@ -803,7 +803,7 @@ etsysStpDiagCistBridgePortRstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1w BPDUs transmitted on this port." 
+        "The total number of 802.1w BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.2"
     ::= { etsysStpDiagCistBridgePortEntry 9 }
@@ -839,7 +839,7 @@ etsysStpDiagCistBridgePortMstBpduRx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs received on this port." 
+        "The total number of 802.1s BPDUs received on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCistBridgePortEntry 12 }
@@ -849,7 +849,7 @@ etsysStpDiagCistBridgePortMstBpduTx      OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The total number of 802.1s BPDUs transmitted on this port." 
+        "The total number of 802.1s BPDUs transmitted on this port."
     REFERENCE
         "IEEE P802.1s/D15 clause 14.3.3"
     ::= { etsysStpDiagCistBridgePortEntry 13 }
@@ -860,7 +860,7 @@ etsysStpDiagCistBridgePortMstCistTcRx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs received on this port
-         with the Topology Change flag set in the CIST Flags field. 
+         with the Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs received in the etsysStpDiagCistBridgePortMstBpduRx object."
     REFERENCE
@@ -873,7 +873,7 @@ etsysStpDiagCistBridgePortMstCistTcTx    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of 802.1s BPDUs transmitted on this port
-         with the Topology Change flag set in the CIST Flags field. 
+         with the Topology Change flag set in the CIST Flags field.
          These BPDUs are included in the overall count of 802.1s
          BPDUs transmitted in the etsysStpDiagCistBridgePortMstBpduRx object."
     REFERENCE
@@ -957,7 +957,7 @@ etsysStpDiagMstiEntry OBJECT-TYPE
     ::= { etsysStpDiagMstiTable 1 }
 
 EtsysStpDiagMstiEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysStpDiagMstiId                          Unsigned32,
         etsysStpDiagMstiTopChanges                  Counter32,
         etsysStpDiagMstiConfigMsgRx                 Counter32,
@@ -1082,7 +1082,7 @@ etsysStpDiagMstiPortEntry OBJECT-TYPE
     ::= { etsysStpDiagMstiPortTable 1 }
 
 EtsysStpDiagMstiPortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysStpDiagMstiPortMstiId                      Unsigned32,
         etsysStpDiagMstiPortNumber                      InterfaceIndex,
         etsysStpDiagMstiPortTopChanges                  Counter32,
@@ -1219,7 +1219,7 @@ etsysStpDiagMstiBridgePortEntry OBJECT-TYPE
     ::= { etsysStpDiagMstiBridgePortTable 1 }
 
 EtsysStpDiagMstiBridgePortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysStpDiagMstiBridgePortMstiId            Unsigned32,
         etsysStpDiagMstiBridgePortRole              EtsysStpPortRole,
         etsysStpDiagMstiBridgePortConfigMsgRx       Counter32,
@@ -1338,7 +1338,7 @@ etsysStpDiagRootHistoryEntry OBJECT-TYPE
     ::= { etsysStpDiagRootHistoryTable 1 }
 
 EtsysStpDiagRootHistoryEntry ::=
-     SEQUENCE { 
+     SEQUENCE {
          etsysStpDiagRootHistoryStpID                Unsigned32,
          etsysStpDiagRootHistoryIndex                Unsigned32,
          etsysStpDiagRootHistoryBridgeID             BridgeId,
@@ -1410,7 +1410,7 @@ etsysStpDiagDisputedBpduTrapThreshold OBJECT-TYPE
 
 
 -- ---------------------------------------------------------- --
--- Notifications 
+-- Notifications
 -- ---------------------------------------------------------- --
 
 etsysStpDiagCistDisputedBpduThresholdExceeded NOTIFICATION-TYPE

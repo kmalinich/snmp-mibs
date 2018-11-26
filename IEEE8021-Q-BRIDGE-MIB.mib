@@ -58,9 +58,9 @@ ieee8021QBridgeMib MODULE-IDENTITY
         see the draft itself for full legal notices."
     REVISION     "201008260000Z" -- August 26, 2010
     DESCRIPTION
-         "Minor edits to contact information etc. as part of 
+         "Minor edits to contact information etc. as part of
           2010 revision of Std 802.1Q."
-          
+
     REVISION     "200810150000Z" -- October 15, 2008
     DESCRIPTION
          "Initial version, derived from RFC 4363."
@@ -772,17 +772,17 @@ ieee8021QBridgeStaticUnicastTable OBJECT-TYPE
         into the device by (local or network) management
         specifying the set of ports to which frames received
         from specific ports and containing specific unicast
-        destination addresses are allowed to be forwarded.  
+        destination addresses are allowed to be forwarded.
         Entries are valid for unicast addresses only.
 
         Two modes of operation are supported by this table. When
         the receive port index is non-zero, this table is
         supporting an 802.1D filtering database as specified in
         14.7.6.1.  If the receive port is zero, the
-        table is operating as specified in 802.1Q 
-        8.8.1 and 12.7.7.  An agent must at least 
+        table is operating as specified in 802.1Q
+        8.8.1 and 12.7.7.  An agent must at least
         support the 802.1Q mode of operation."
-    REFERENCE   "802.1D 7.9.1, 14.7.6.1; 
+    REFERENCE   "802.1D 7.9.1, 14.7.6.1;
                  802.1Q 12.7.7, 8.8.1"
     ::= { ieee8021QBridgeStatic 1 }
 
@@ -1103,7 +1103,7 @@ ieee8021QBridgeVlanCurrentEntry OBJECT-TYPE
 Ieee8021QBridgeVlanCurrentEntry ::=
     SEQUENCE {
         ieee8021QBridgeVlanTimeMark
-            TimeFilter,       
+            TimeFilter,
         ieee8021QBridgeVlanCurrentComponentId
             IEEE8021PbbComponentIdentifier,
         ieee8021QBridgeVlanIndex
@@ -1511,7 +1511,7 @@ ieee8021QBridgePortIngressFiltering OBJECT-TYPE
     REFERENCE   "12.10.1.4"
     DEFVAL      { false }
     ::= { ieee8021QBridgePortVlanEntry 3 }
-      
+
 ieee8021QBridgePortMvrpEnabledStatus OBJECT-TYPE
     SYNTAX      TruthValue
     MAX-ACCESS  read-write
@@ -1638,7 +1638,7 @@ ieee8021QBridgeTpVlanPortInFrames OBJECT-TYPE
 ieee8021QBridgeTpVlanPortOutFrames OBJECT-TYPE
     SYNTAX      Counter64
     UNITS      "frames"
-    MAX-ACCESS  read-only     
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "The number of valid frames transmitted by this port to
@@ -1873,7 +1873,7 @@ ieee8021QBridgeProtocolGroupEntry OBJECT-TYPE
     INDEX       { ieee8021QBridgeProtocolGroupComponentId,
                   ieee8021QBridgeProtocolTemplateFrameType,
                   ieee8021QBridgeProtocolTemplateProtocolValue }
-    ::= { ieee8021QBridgeProtocolGroupTable 1 }     
+    ::= { ieee8021QBridgeProtocolGroupTable 1 }
 
 Ieee8021QBridgeProtocolGroupEntry ::=
     SEQUENCE {

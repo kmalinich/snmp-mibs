@@ -2,7 +2,7 @@ CTRON-ROUTERS-INTERNAL-MIB DEFINITIONS ::= BEGIN
 
 --  ctron-routers-internal-mib.txt
 --  Revision: 1.00.00
---  Part Number:  
+--  Part Number:
 --  Date: Feb 8, 1994
 
 --  Cabletron Systems, Inc.
@@ -42,7 +42,7 @@ CTRON-ROUTERS-INTERNAL-MIB DEFINITIONS ::= BEGIN
 
 
 IMPORTS
-        OBJECT-TYPE     
+        OBJECT-TYPE
                 FROM RFC-1212
         DisplayString
                 FROM RFC1213-MIB
@@ -53,7 +53,7 @@ IMPORTS
 cabletron                       OBJECT IDENTIFIER ::= { enterprises 52 }
 
 mibs                            OBJECT IDENTIFIER ::= { cabletron 4 }
-                
+
 ctron                           OBJECT IDENTIFIER ::= { mibs 1 }
 
 ctronExp                        OBJECT IDENTIFIER ::= { mibs 2 }
@@ -83,8 +83,8 @@ nwRtrSoftReset  OBJECT-TYPE
                 STATUS  mandatory
                 DESCRIPTION
                         "Executes a software reset of the device when reset(0)
-                        is written to this object. This reset does not reload 
-                        software from Flash EPROM." 
+                        is written to this object. This reset does not reload
+                        software from Flash EPROM."
                 ::= { nwRtrTemp2 1 }
 
 END

@@ -2,7 +2,7 @@ CTRON-SFPS-CONN-MIB DEFINITIONS ::= BEGIN
 
 --  sfps-conn-mib.txt
 --  Revision: 0.0.02
--- 
+--
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
@@ -33,21 +33,21 @@ CTRON-SFPS-CONN-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
       TimeTicks
                 FROM RFC1155-SMI
 
 --  These Objects are defined in the file sfps-inc.mib.txt
         sfpsServiceCenter
-        
+
                 FROM CTRON-SFPS-INCLUDE-MIB;
 
 --  Textual Conventions
@@ -72,24 +72,24 @@ sfpsServiceCenterConnectEntry    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Each entry contains the configuration of the Connect Entry."
-        INDEX   { sfpsServiceCenterConnectAddress } 
+        INDEX   { sfpsServiceCenterConnectAddress }
         ::= { sfpsServiceCenterConnectTable 1 }
 
 SfpsServiceCenterConnectEntry ::=
         SEQUENCE {
-                sfpsServiceCenterConnectAddress         HexInteger,  
-                sfpsServiceCenterConnectMetric          INTEGER,  
-                sfpsServiceCenterConnectName            DisplayString,  
-                sfpsServiceCenterConnectOperStatus      INTEGER,  
+                sfpsServiceCenterConnectAddress         HexInteger,
+                sfpsServiceCenterConnectMetric          INTEGER,
+                sfpsServiceCenterConnectName            DisplayString,
+                sfpsServiceCenterConnectOperStatus      INTEGER,
                 sfpsServiceCenterConnectAdminStatus     INTEGER,
                 sfpsServiceCenterConnectStatusTime      TimeTicks,
                 sfpsServiceCenterConnectRequests        INTEGER,
                 sfpsServiceCenterConnectResponses       INTEGER
-                  
-         }  
+
+         }
 
 sfpsServiceCenterConnectAddress   OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -163,5 +163,5 @@ sfpsServiceCenterConnectResponses   OBJECT-TYPE
         DESCRIPTION
                 "GOOD replies by server."
         ::= { sfpsServiceCenterConnectEntry 8 }
- 
+
 END

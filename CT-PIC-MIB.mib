@@ -19,16 +19,16 @@ CT-PIC-MIB DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -75,7 +75,7 @@ CT-PIC-MIB DEFINITIONS ::= BEGIN
 --
 --    REVISION    "000316184621Z"
 --    DESCRIPTION "Added enumerations newbridge(5) and enTeraSys(6) to the
---                 ctPicOEMVendorId leaf.  Added a commented out MODULE-IDENTITY 
+--                 ctPicOEMVendorId leaf.  Added a commented out MODULE-IDENTITY
 --                 block to allow for better tracking of revisions."
 --         ::= { ctSystem 9 }
 
@@ -288,7 +288,7 @@ ctPicMfgSN      OBJECT-TYPE
                         4 bytes - Serial number
                         2 bytes - Manufacture location
                         3 bytes - Board level revision
-                If any field of this object is non-existent, it will be 
+                If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { ctPicEntry 8 }
 
@@ -334,11 +334,11 @@ ctPicMfgMfgLocation  OBJECT-TYPE
                 "The two character code that defines the location
                 this module was manufactured at. This object contains the same
                 information as presented in ctPicMfgSN object however
-                in a more human readable format.  If non-existent, this object 
+                in a more human readable format.  If non-existent, this object
                 will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 12 }
 
-ctPicMfgDateCode OBJECT-TYPE 
+ctPicMfgDateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
         STATUS  mandatory
@@ -346,7 +346,7 @@ ctPicMfgDateCode OBJECT-TYPE
                 "The 3 byte date code field when this module was last
                 reworked.  This is in year/week format. This object
                 contains the same information as presented in ctPicMfgSN
-                object however in a more human readable format.  If 
+                object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 13 }
 
@@ -387,7 +387,7 @@ ctPicTLSN       OBJECT-TYPE
                         4 bytes - Serial number
                         2 bytes - Manufacture location
                         3 bytes - Top level revision
-                If any field of this object is non-existent, it will be 
+                If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { ctPicEntry 16 }
 
@@ -433,11 +433,11 @@ ctPicTLMfgLocation  OBJECT-TYPE
                 "The two character code that defines the location
                 this module was manufactured at. This object contains the same
                 information as presented in ctPicTLSN object however
-                in a more human readable format.  If non-existent, this object 
+                in a more human readable format.  If non-existent, this object
                 will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 20 }
 
-ctPicTLDateCode OBJECT-TYPE 
+ctPicTLDateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(3))
         ACCESS  read-only
         STATUS  mandatory
@@ -445,7 +445,7 @@ ctPicTLDateCode OBJECT-TYPE
                 "The 3 byte date code field when this module was last
                 reworked.  This is in year/week format. This object
                 contains the same information as presented in ctPicTLSN
-                object however in a more human readable format.  If 
+                object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 21 }
 
@@ -507,8 +507,8 @@ ctPicModuleTypeString   OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Describes the module associated with this PIC in a 
-                human readable format.  If non-existent, this object 
+                "Describes the module associated with this PIC in a
+                human readable format.  If non-existent, this object
                 will be set to blanks (ascii 32)."
         ::= { ctPicEntry 27 }
 
@@ -517,8 +517,8 @@ ctPicDCDCconverterType  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Describes the voltage of the installed DCDC Converter 
-                input and output lines.  
+                "Describes the voltage of the installed DCDC Converter
+                input and output lines.
                 If the Module does not contain a DCDC Converter
                 this object will be set to blanks (ascii 32)."
         ::= { ctPicEntry 28 }
@@ -528,7 +528,7 @@ ctPicDCDCconvInputPower OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Describes the maximum allowed input power 
+                "Describes the maximum allowed input power
                 for the DCDC input line.
                 If the Module does not contain a DCDC Converter
                 this object will be set to blanks (ascii 32)."
@@ -539,7 +539,7 @@ ctPicSMB1promVersion    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Describes the current version of the SMB1 prom. 
+                "Describes the current version of the SMB1 prom.
                 If the Module does not contain an SMB1 prom
                 this object will be set to blanks (ascii 32)."
         ::= { ctPicEntry 30 }
@@ -595,11 +595,11 @@ ctPicMfg97SN    OBJECT-TYPE
                         4 bytes - Serial number
                         2 bytes - Manufacture location
                         2 bytes - Board level revision
-                If any field of this object is non-existent, it will be 
+                If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { ctPicEntry 34 }
 
-ctPicMfg97DateCode OBJECT-TYPE 
+ctPicMfg97DateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(4))
         ACCESS  read-only
         STATUS  mandatory
@@ -607,7 +607,7 @@ ctPicMfg97DateCode OBJECT-TYPE
                 "The 4 byte date code field when this module was last
                 reworked.  This is in year/week format. This object
                 contains the same information as presented in ctPicMfg97SN
-                object however in a more human readable format.  If 
+                object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 35 }
 
@@ -635,11 +635,11 @@ ctPicTL97SN     OBJECT-TYPE
                         4 bytes - Serial number
                         2 bytes - Manufacture location
                         2 bytes - Top level revision
-                If any field of this object is non-existent, it will be 
+                If any field of this object is non-existent, it will be
                 set to all blanks(ascii 32)."
         ::= { ctPicEntry 37 }
 
-ctPicTL97DateCode OBJECT-TYPE 
+ctPicTL97DateCode OBJECT-TYPE
         SYNTAX  DisplayString (SIZE(4))
         ACCESS  read-only
         STATUS  mandatory
@@ -647,7 +647,7 @@ ctPicTL97DateCode OBJECT-TYPE
                 "The 4 byte date code field when this module was last
                 reworked.  This is in year/week format. This object
                 contains the same information as presented in ctPicTL97SN
-                object however in a more human readable format.  If 
+                object however in a more human readable format.  If
                 non-existent, this object will be set to all blanks(ascii 32)."
         ::= { ctPicEntry 38 }
 
@@ -832,7 +832,7 @@ ctPicControlTable       OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A table allowing management control of PIC 
+                "A table allowing management control of PIC
                  functionality. "
         ::= { pic 8 }
 
@@ -849,7 +849,7 @@ CtPicControlEntry               ::= SEQUENCE {
         ctPicRefresh
                 INTEGER
         }
- 
+
 ctPicRefresh   OBJECT-TYPE
         SYNTAX  INTEGER   {
                           reFresh(1)
@@ -859,8 +859,8 @@ ctPicRefresh   OBJECT-TYPE
         DESCRIPTION
                 "Setting this value causes the PIC Driver to clear
                  cached memory and to reread the PIC chip.  This
-                 functionality removes the need for manufacturing 
-                 to power cycle a board to ensure proper PIC 
+                 functionality removes the need for manufacturing
+                 to power cycle a board to ensure proper PIC
                  programming.  Reading this object always returns
                  a zero (0)."
         ::= { ctPicControlEntry 1 }

@@ -4,9 +4,9 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 ------------------------------------------------------------------------------
 --
 --  File         : tmsCommon.mib
---  Description  : Sample TMS Common Enterprise MIB - Hardward Independent 
---  Version      : 0.14   
---  Date         : November 2, 2000     
+--  Description  : Sample TMS Common Enterprise MIB - Hardward Independent
+--  Version      : 0.14
+--  Date         : November 2, 2000
 --
 --  Copyright (c) 1999-2000 Wind River Systems, Inc.  All Rights Reserved.
 --
@@ -19,12 +19,12 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 --
 --  Reproduction of this document is authorized on condition that this
 --  copyright notice is included.  This sample TMS Common Enterprise MIB
---  embodies proprietary intellectual property of Wind River Systems (WRS). 
+--  embodies proprietary intellectual property of Wind River Systems (WRS).
 --  WRS retains all title and ownership in the specification, including any
 --  revisions.
 --
 --  It is the intent of WRS to encourage the widespread use of this
---  specification in connection with the management of TMS-based products.  
+--  specification in connection with the management of TMS-based products.
 --  WRS grants vendors, end-users, and other interested parties a
 --  non-exclusive license to use this specification in connection with the
 --  management of TMS products.
@@ -57,19 +57,19 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 
     IMPORTS
         MODULE-IDENTITY, OBJECT-TYPE,
-        Integer32, IpAddress, 
+        Integer32, IpAddress,
         NOTIFICATION-TYPE                       FROM SNMPv2-SMI
-        
+
         DisplayString, MacAddress,
         RowStatus, TruthValue                   FROM SNMPv2-TC
-        
+
         MODULE-COMPLIANCE, OBJECT-GROUP         FROM SNMPv2-CONF
-        
+
         tmsGeneric                              FROM WRS-MASTER-MIB
-        
+
         SnmpAdminString                         FROM SNMP-FRAMEWORK-MIB
-        
-        PortList, dot1qStaticMulticastEntry     FROM Q-BRIDGE-MIB;       
+
+        PortList, dot1qStaticMulticastEntry     FROM Q-BRIDGE-MIB;
 
     tmsCommonMib MODULE-IDENTITY
         LAST-UPDATED    "200011020000Z"  -- November 2, 2000
@@ -115,9 +115,9 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 
 ------------------------------------------------------------------------------
 --
---  tmsCommonVer - Version Group                    
+--  tmsCommonVer - Version Group
 --
---  This group enables the retrieval of version information for 
+--  This group enables the retrieval of version information for
 --  various components in the system.
 --
 --  Some version numbers have the concept of "Major.Minor" designators.
@@ -134,7 +134,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "Get this MIB Major version number.  This number should 
+            "Get this MIB Major version number.  This number should
              match the Major version given in the documentation header
              at the beginning text of this MIB.  Note that the '.c' file
              corresponding to this MIB has to be manually edited to
@@ -147,7 +147,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "Get this MIB Minor version number.  This number should 
+            "Get this MIB Minor version number.  This number should
              match the Minor version given in the documentation header
              at the beginning text of this MIB. Note that the '.c' file
              corresponding to this MIB has to be manually edited to
@@ -178,7 +178,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "Get the Application Software Major version number.  
+            "Get the Application Software Major version number.
              This number references the core TMS modules as a whole."
         ::= { tmsCommonVer 5 }
 
@@ -187,16 +187,16 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "Get the Application Software Minor version number.  
+            "Get the Application Software Minor version number.
              This number references the core TMS modules as a whole."
         ::= { tmsCommonVer 6 }
 
 
 ------------------------------------------------------------------------------
 --
---  tmsCommonIP - IP Connectivity Information         
+--  tmsCommonIP - IP Connectivity Information
 --
---  This group is meant to be a collection of controls and data 
+--  This group is meant to be a collection of controls and data
 --  that configure the device for IP connectivity.
 --
 ------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         STATUS current
         DESCRIPTION
             "DURABLE: { '00000000'H }
-             The IP Address for sw0 (swEND 0); only applies after reset - 
+             The IP Address for sw0 (swEND 0); only applies after reset -
              see 'tmsCommonMiscReset'."
         ::= { tmsCommonIP 2 }
 
@@ -237,7 +237,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         STATUS current
         DESCRIPTION
             "DURABLE: { 'ffffff00'H }
-             The IP NetMask for sw0 (swEND 0); only applies after reset - 
+             The IP NetMask for sw0 (swEND 0); only applies after reset -
              see 'tmsCommonMiscReset'."
         ::= { tmsCommonIP 4 }
 
@@ -253,7 +253,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
             "This object is used to synchronize the modification of the IP
             parameters used by the protocol stack based on the tmsCommonIP
-            MIB objects.  This allows the user to change tmsCommonIPMACAddr, 
+            MIB objects.  This allows the user to change tmsCommonIPMACAddr,
             tmsCommonIPIpAddress, tmsCommonIPGateAddress, and
             tmsCommonIPNetMask, and then apply the changes to the unit
             using apply(4).  If tmsCommonIPStatus returns notModified(1),
@@ -270,7 +270,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 
 ------------------------------------------------------------------------------
 --
---  tmsCommonLoad - Load TFTP Group                    
+--  tmsCommonLoad - Load TFTP Group
 --
 --  This group is a collection of objects used to configure the TFTP file
 --  download and upload facilities.  This group may be used to upload and
@@ -286,7 +286,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
             "DURABLE:
              The IP Address for the TFTP server used for downloading
-             and/or uploading files." 
+             and/or uploading files."
         ::= { tmsCommonLoad 1 }
 
     tmsCommonLoadTftpFileName OBJECT-TYPE
@@ -308,8 +308,8 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         STATUS current
         DESCRIPTION
             "DURABLE: { application }
-             The type of file to download or upload upon an 
-             'tmsCommonLoadExecute'.  WARNING: The boot should only be 
+             The type of file to download or upload upon an
+             'tmsCommonLoadExecute'.  WARNING: The boot should only be
              downloaded when absolutely required (e.g., if power is
              removed during the boot Flash write operation, the agent
              cannot be recovered)."
@@ -328,9 +328,9 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
              object starts the load procedure.  Note that the Application
              and Boot images can only be downloaded.  The NVM Configuration
              file can be uploaded and downloaded.  A GET of this object
-             will return the status of the executed operation. 
+             will return the status of the executed operation.
              Use 'tmsCommonLoadExecuteStatus' to determine the status of
-             the executed load." 
+             the executed load."
         ::= { tmsCommonLoad 4 }
 
     tmsCommonLoadExecuteStatus OBJECT-TYPE
@@ -342,7 +342,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
                errorFilename(5),    -- download has bad image path/filename
                errorFault(6)        -- download has fault condition on device
         }
-        MAX-ACCESS read-only 
+        MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
             "Provides status on the execute file load progress."
@@ -351,11 +351,11 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 
 ------------------------------------------------------------------------------
 --
---  tmsCommonMisc - Miscellaneous Information         
+--  tmsCommonMisc - Miscellaneous Information
 --
---  This group is meant to be a collection of controls and data 
---  that do not require a group of their own, or fall into the 
---  category of "miscellaneous".  The user may easily add simple 
+--  This group is meant to be a collection of controls and data
+--  that do not require a group of their own, or fall into the
+--  category of "miscellaneous".  The user may easily add simple
 --  objects in this group without destroying the integrity or definition
 --  of the group.
 --
@@ -380,11 +380,11 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
              which time 'noop(1)' is returned.  Consequently, a get
              operation always returns 'noop(1)' or 'saveInProgress(3)'
              depending on the current state.
-             
+
              The agent returns 'badValue' for SNMPv1 or 'inconsistentValue'
              for SNMPv2c/v3 for a set to 'Save(2)' while the current get
              state is 'saveInProgress(3)'.
-             
+
              Attempts to set this object to 'saveInProgress(3)' returns
              'badValue' for SNMPv1 or 'wrongValue' for SNMPv2c/v3."
         ::= { tmsCommonMisc 1 }
@@ -452,8 +452,8 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
                baud9600(2),
                baud19200(3),
                baud38400(4)
-        } 
-        MAX-ACCESS read-write 
+        }
+        MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "DURABLE: { baud38400 }
@@ -479,7 +479,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
             "DURABLE: { 'WindRiver TMS Agent' }
              The product name associated with this agent.  This name is
-             displayed on the console screens and Web pages." 
+             displayed on the console screens and Web pages."
         ::= { tmsCommonMisc 8 }
 
     tmsCommonMiscReset OBJECT-TYPE
@@ -491,7 +491,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "Physically performs a hardware reset of the unit. 
+            "Physically performs a hardware reset of the unit.
              Use with care.  A 'reset(2)' resets the unit, a
              'resetToDefaults(3)' resets the NVM configuration
              to factory defaults and then resets the unit, and 'noop(1)'
@@ -516,14 +516,14 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
              Subsystem.  Note that the specific SNMP Message Processing Model
              (SNMP v1, v2c or v3) is specified using 'snmpTargetParamsMPModel'
              in the 'snmpTargetParamsTable' in RFC2573 (Target MIB).
-             
+
              To distinguish the linkdown(3) and linkup(4) test traps from the
              actual link down and up traps, both trap types use '0' for the
              ifIndex value.
-             
-             Note that tmsTestTrap(6) generates a 'tmsCommonSnmpV2TestTrap'. 
-             
-             A GET always returns the 'noop(1)' value."  
+
+             Note that tmsTestTrap(6) generates a 'tmsCommonSnmpV2TestTrap'.
+
+             A GET always returns the 'noop(1)' value."
         ::= { tmsCommonMisc 10 }
 
 ------------------------------------------------------------------------------
@@ -538,7 +538,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 --  map the 'community string' to a 'view'.  This is implemented using the
 --  'tmsCommonCommunityToViewTable'.  This table allows up to 8 unique
 --  community strings to be mapped to the same or different views as defined
---  in the SNMP-VIEW-BASED-ACM-MIB.  Each community can have read-only or 
+--  in the SNMP-VIEW-BASED-ACM-MIB.  Each community can have read-only or
 --  read-write access permission.
 --
 --  For test and development purposes, the factory default setting includes
@@ -547,7 +547,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
 --      tmsCommonComm2ViewViewName   = "internet"       ==>1.3.6.1
 --      tmsCommonComm2ViewPermission = "readWrite(2)"
 --
---  These default settings, in conjunction with a corresponding factory 
+--  These default settings, in conjunction with a corresponding factory
 --  default entry in the RFC2575 'vacmViewTreeFamilyTable', allow full GET
 --  and SET access for the entire 'internet' MIB subtree.  Although useful
 --  for test and development, this is not a desirable default for a
@@ -611,12 +611,12 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
              'vacmViewTreeFamilyTable' (see RFC2575).  If a match is
              found and the varbind(s) specify valid object type and instance,
              the 'tmsCommonComm2ViewPermission' privilege is permitted.
-             
+
              Note that a null string is not a valid view name value.
              Also note that the value of this object does not have to match
              an existing entry in the 'vacmViewTreeFamilyTable' (if no match,
              no access is allowed).
-             
+
              Note that the factory default value for this object is 'internet',
              which allows access to the subtree under '1.3.6.1'."
         ::= { tmsCommonCommunityToViewEntry 3 }
@@ -648,7 +648,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
              all parameters are valid for a conceptual row, this object is
              'notReady(3)'.  All parameters must be valid before this object
              can be set to 'active(1)'.
-             
+
              Any object in a conceptual row can be modified independent of the
              value of this object (e.g., can be changed while 'active(1)')."
         ::= { tmsCommonCommunityToViewEntry 5 }
@@ -670,7 +670,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
             "DURABLE: { false )
              Setting this object to true(1) enables IGMP Snooping.  Setting
              it to false(2) disables IGMP Snooping.
-             
+
              Note that IGMP Snooping can function with or without GVRP and
              GMRP enabled."
         ::= { tmsCommonIgmpSnoop 1 }
@@ -730,7 +730,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
             "This read-only object displays the set of ports enabled to
              forward specific Multicast Group traffic as determined by the
              IGMP Snooping task.
-            
+
              It should be noted that the IGMP Snooping task generates a pseudo-
              static (i.e., not saved in NVM) port list similar to the RFC2674
              Q-MIB 'dot1qStaticMulticastStaticEgressPorts' object. Consequently,
@@ -753,13 +753,13 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
             tmsCommonVerBootSWMajor,
             tmsCommonVerBootSWMinor,
             tmsCommonVerAppSWMajor,
-            tmsCommonVerAppSWMinor            
+            tmsCommonVerAppSWMinor
         }
         STATUS  current
         DESCRIPTION
            "This group retrieves system component versions."
         ::= { tmsCommonGroups 1 }
-    
+
     tmsCommonIPGroup    OBJECT-GROUP
         OBJECTS {
             tmsCommonIPMACAddr,
@@ -772,7 +772,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
            "This group configures and retrieves IP related objects."
         ::= { tmsCommonGroups 2 }
-    
+
     tmsCommonLoadGroup  OBJECT-GROUP
         OBJECTS {
             tmsCommonLoadTftpAddress,
@@ -842,7 +842,7 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         MANDATORY-GROUPS {
             tmsCommonVerGroup,
             tmsCommonIPGroup,
-            tmsCommonLoadGroup,     
+            tmsCommonLoadGroup,
             tmsCommonMiscGroup,
             tmsCommonCommToViewGroup,
             tmsCommonIgmpSnoopGroup
@@ -865,13 +865,13 @@ TMS-COMMON-MIB DEFINITIONS ::= BEGIN
         STATUS  current
         DESCRIPTION
              "This trap is used for the sample SNMP enterprise trap in the
-              'tmsCommonMiscTrapTest' object.  Note that it includes the 
+              'tmsCommonMiscTrapTest' object.  Note that it includes the
               'tmsCommonMiscProductName' object as a varbind."
         ::= { tmsCommonNotify 1 }
 
 
 --
--- END of TMS-COMMON-MIB                
+-- END of TMS-COMMON-MIB
 --
 
 END

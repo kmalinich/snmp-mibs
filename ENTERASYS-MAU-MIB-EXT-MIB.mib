@@ -6,7 +6,7 @@ ENTERASYS-MAU-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' MAU MIB Extensions functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-MAU-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright (2005-2011) Enterasys Networks, Inc.
@@ -61,7 +61,7 @@ etsysMauMibExtMIB MODULE-IDENTITY
     DESCRIPTION
         "Updated the DESCRIPTION clause of etsysIfMauExtMDIXStatus
          to reflect the actual implementations."
-    
+
     REVISION "200605091130Z"  -- Tue May  9 11:30 GMT 2006
     DESCRIPTION
         "Deprecated etsysIfMauExtMasterSlaveTable,
@@ -70,23 +70,23 @@ etsysMauMibExtMIB MODULE-IDENTITY
 
     REVISION "200602161918Z"  -- Thu Feb 16 19:18 GMT 2006
     DESCRIPTION
-        "Added etsysIfMauExtMasterSlaveTable to allow the manual 
+        "Added etsysIfMauExtMasterSlaveTable to allow the manual
          configuration of the master/slave of the MAU."
 
     REVISION "200502071505Z"  -- Mon Feb  7 15:05 GMT 2005
     DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 59 } 
+    ::= { etsysModules 59 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysMauMibExtObjects           OBJECT IDENTIFIER 
+etsysMauMibExtObjects           OBJECT IDENTIFIER
                                    ::= { etsysMauMibExtMIB 1 }
 
-etsysMauMibExtBasic             OBJECT IDENTIFIER 
+etsysMauMibExtBasic             OBJECT IDENTIFIER
                                    ::= { etsysMauMibExtObjects 1 }
 
 
@@ -120,14 +120,14 @@ etsysIfMauExtMDIXEntry OBJECT-TYPE
     ::= { etsysIfMauExtMDIXTable 1 }
 
 EtsysIfMauExtMDIXEntry ::=
-    SEQUENCE { 
-        etsysIfMauExtMDIXStatus        
+    SEQUENCE {
+        etsysIfMauExtMDIXStatus
             INTEGER
     }
 
 etsysIfMauExtMDIXStatus OBJECT-TYPE
-    SYNTAX       INTEGER { 
-                   auto     (1), 
+    SYNTAX       INTEGER {
+                   auto     (1),
                    mdix     (2),
                    mdi      (3)
                  }

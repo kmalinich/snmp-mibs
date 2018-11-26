@@ -53,9 +53,9 @@ ctronExp                    OBJECT IDENTIFIER ::= { mibs 2 }
 ctVLANMib                   OBJECT IDENTIFIER ::= { ctronExp 12 }
 ctVLANMgr                   OBJECT IDENTIFIER ::= { ctVLANMib 1 }
 ctPriority                  OBJECT IDENTIFIER ::= { ctVLANMgr 4 }
-ctBasePriority           OBJECT IDENTIFIER ::= { ctPriority 2 } 
+ctBasePriority           OBJECT IDENTIFIER ::= { ctPriority 2 }
 ctUserDefPriority        OBJECT IDENTIFIER ::= { ctBasePriority 1 }
-ctRegenPriority          OBJECT IDENTIFIER ::= { ctBasePriority 2 } 
+ctRegenPriority          OBJECT IDENTIFIER ::= { ctBasePriority 2 }
 ctTrafPriority           OBJECT IDENTIFIER ::= { ctBasePriority 3 }
 
 --
@@ -64,7 +64,7 @@ ctTrafPriority           OBJECT IDENTIFIER ::= { ctBasePriority 3 }
 -- packet.
 
 ctUserDefTable OBJECT-TYPE
-        SYNTAX  SEQUENCE OF CtUserDefEntry 
+        SYNTAX  SEQUENCE OF CtUserDefEntry
         ACCESS  not-accessible
         STATUS  obsolete
         DESCRIPTION
@@ -72,7 +72,7 @@ ctUserDefTable OBJECT-TYPE
         ::= { ctUserDefPriority 1 }
 
 ctUserDefEntry  OBJECT-TYPE
-        SYNTAX  CtUserDefEntry  
+        SYNTAX  CtUserDefEntry
         ACCESS  not-accessible
         STATUS  obsolete
         DESCRIPTION
@@ -90,8 +90,8 @@ CtUserDefEntry ::=
 
 ctUserDefPriorityIndex     OBJECT-TYPE
         SYNTAX          INTEGER
-        ACCESS        read-only 
-        STATUS        obsolete  
+        ACCESS        read-only
+        STATUS        obsolete
       DESCRIPTION
         "Description of a specific instance for the default user
          priority table. The object identifier contains the port number."
@@ -129,7 +129,7 @@ ctRegenerationTable OBJECT-TYPE
 
 
 ctRegenerationEntry OBJECT-TYPE
-    SYNTAX        CtRegenerationEntry   
+    SYNTAX        CtRegenerationEntry
     ACCESS              not-accessible
     STATUS              obsolete
     DESCRIPTION
@@ -137,15 +137,15 @@ ctRegenerationEntry OBJECT-TYPE
     INDEX   { ctRegenerationIndex, ctRegenerationId }
     ::= { ctRegenerationTable 1 }
 
-CtRegenerationEntry ::= 
+CtRegenerationEntry ::=
         SEQUENCE {
                    ctRegenerationIndex          INTEGER,
-                   ctRegenerationId             INTEGER,                
-                   ctRegenerationValue          INTEGER         
+                   ctRegenerationId             INTEGER,
+                   ctRegenerationValue          INTEGER
                  }
 
 ctRegenerationIndex     OBJECT-TYPE
-        SYNTAX          INTEGER 
+        SYNTAX          INTEGER
         ACCESS          read-only
         STATUS          obsolete
         DESCRIPTION
@@ -154,12 +154,12 @@ ctRegenerationIndex     OBJECT-TYPE
     ::= { ctRegenerationEntry 1 }
 
 ctRegenerationId                OBJECT-TYPE
-        SYNTAX          INTEGER 
+        SYNTAX          INTEGER
         ACCESS          read-only
         STATUS          obsolete
         DESCRIPTION
         "Description of a specific instance of the CtRegeneration
-         table.  The object identifier contains the priority that 
+         table.  The object identifier contains the priority that
          is referenced."
     ::= { ctRegenerationEntry 2 }
 
@@ -178,7 +178,7 @@ ctRegenerationValue OBJECT-TYPE
 -- priority with the appropriate transmit queue
 
 ctTrafClassTable        OBJECT-TYPE
-    SYNTAX              SEQUENCE OF CtTrafClassEntry 
+    SYNTAX              SEQUENCE OF CtTrafClassEntry
     ACCESS              not-accessible
     STATUS              obsolete
     DESCRIPTION
@@ -186,7 +186,7 @@ ctTrafClassTable        OBJECT-TYPE
     ::= {  ctTrafPriority 1 }
 
 ctTrafClassEntry                OBJECT-TYPE
-    SYNTAX              CtTrafClassEntry 
+    SYNTAX              CtTrafClassEntry
     ACCESS              not-accessible
     STATUS              obsolete
     DESCRIPTION
@@ -202,7 +202,7 @@ CtTrafClassEntry ::=
 
                 }
 ctTrafClassIndex                OBJECT-TYPE
-        SYNTAX          INTEGER 
+        SYNTAX          INTEGER
         ACCESS          read-only
         STATUS          obsolete
         DESCRIPTION
@@ -211,7 +211,7 @@ ctTrafClassIndex                OBJECT-TYPE
         ::= { ctTrafClassEntry 1 }
 
 ctTrafClassId         OBJECT-TYPE
-        SYNTAX          INTEGER 
+        SYNTAX          INTEGER
         ACCESS          read-only
         STATUS          obsolete
         DESCRIPTION
@@ -221,11 +221,11 @@ ctTrafClassId         OBJECT-TYPE
         ::= { ctTrafClassEntry 2 }
 
 ctTrafClassValue                OBJECT-TYPE
-    SYNTAX              INTEGER 
+    SYNTAX              INTEGER
     ACCESS              read-write
     STATUS              obsolete
     DESCRIPTION
-        "The queue number of Traffic Classes in the range of 0 to the number  
+        "The queue number of Traffic Classes in the range of 0 to the number
          of Traffic Classes supported on this product."
     ::= { ctTrafClassEntry 3 }
 

@@ -7,7 +7,7 @@ IRM-OIDS DEFINITIONS ::= BEGIN
 
 commsDevice     OBJECT IDENTIFIER ::= { cabletron 1 }
 layerMgmt       OBJECT IDENTIFIER ::= { cabletron 2 }
-common          OBJECT IDENTIFIER ::= { commsDevice 1 } 
+common          OBJECT IDENTIFIER ::= { commsDevice 1 }
 repeater        OBJECT IDENTIFIER ::= { commsDevice 2 }
 bridge          OBJECT IDENTIFIER ::= { commsDevice 3 }
 router          OBJECT IDENTIFIER ::= { commsDevice 4 }

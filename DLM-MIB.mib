@@ -20,16 +20,16 @@ DLM-MIB DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -45,7 +45,7 @@ IMPORTS
         OBJECT-TYPE
                         FROM RFC-1212;
 
--- Formal definitions for Distributed LAN Monitor 
+-- Formal definitions for Distributed LAN Monitor
 
 
 snmpPollTable   OBJECT-TYPE
@@ -54,13 +54,13 @@ snmpPollTable   OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "A list of SNMP poll entries which trigger automatic polling
-                of SNMP requests to other SNMP agents.  This table is indexed 
+                of SNMP requests to other SNMP agents.  This table is indexed
                 by the destination IP address of the host/device to be polled
-                and the IP address of the requesting host.  This indexing pair 
-                allows multiple requestors to define a poll request to the same 
+                and the IP address of the requesting host.  This indexing pair
+                allows multiple requestors to define a poll request to the same
                 destination, yet maintain separate poll entries.
 
-                The OIDs to be polled in this request are defined in the 
+                The OIDs to be polled in this request are defined in the
                 snmpOIDTable which is indexed also by the destination/owner
                 IP address pair.  If no OIDs are defined for a poll entry, then
                 the the poll will default to polling for sysUpTimei with no
@@ -68,7 +68,7 @@ snmpPollTable   OBJECT-TYPE
                 funtion for the destination SNMP agent."
         ::= { ctronDLM 1 }
 
- 
+
 snmpPollEntry OBJECT-TYPE
         SYNTAX  SnmpPollEntry
         ACCESS  not-accessible
@@ -79,7 +79,7 @@ snmpPollEntry OBJECT-TYPE
         INDEX   { snmpPollDestination, snmpPollOwner }
         ::= { snmpPollTable 1 }
 
-SnmpPollEntry ::= 
+SnmpPollEntry ::=
         SEQUENCE {
                 snmpPollDestination     IpAddress,
                 snmpPollOwner           IpAddress,
@@ -122,10 +122,10 @@ snmpPollCommunity      OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The value of the community string to be used in the SNMP 
+                "The value of the community string to be used in the SNMP
                 REQUEST PDU when actively polling.  Note that this community
                 name string should be defined for the Cabletron hub device
-                as well as in the destination host/device; otherwise polls 
+                as well as in the destination host/device; otherwise polls
                 can fail due to authenication failures."
         DEFVAL  { "public" }
         ::= { snmpPollEntry 3 }
@@ -136,11 +136,11 @@ snmpPollInterval OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The value of the interval (in seconds) on which to poll the 
-                destination address with the OIDs defined in the OID table 
-                assigned to this poll entry.  This interval defines how often 
+                "The value of the interval (in seconds) on which to poll the
+                destination address with the OIDs defined in the OID table
+                assigned to this poll entry.  This interval defines how often
                 an SNMP GET REQUEST PDU will be originated from this host
-                device to the polled address." 
+                device to the polled address."
         DEFVAL  { 60 }
         ::= { snmpPollEntry 4 }
 
@@ -150,7 +150,7 @@ snmpPollRetry OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The value of the number of times to retry a failed poll request
-                prior to considering it a failure."  
+                prior to considering it a failure."
         DEFVAL  { 3 }
         ::= { snmpPollEntry 5 }
 
@@ -158,14 +158,14 @@ snmpPollRetry OBJECT-TYPE
 snmpPollAction OBJECT-TYPE
         SYNTAX  INTEGER {
                         no-action(1),
-                        send-trap(2)    
+                        send-trap(2)
                 }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The indication of the action to take when a poll request is 
+                "The indication of the action to take when a poll request is
                 considered to have failed.  A value of 'no-action' will allow
-                the poll to reset and retry without sending any alarms.  A value 
+                the poll to reset and retry without sending any alarms.  A value
                 of 'send-trap' will cause a SNMP TRAP PDU to be generated and
                 sent to the specified trap address for this entry."
         DEFVAL  { send-trap }
@@ -177,7 +177,7 @@ snmpPollTrapAddress     OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The IP address to which to send the SNMP TRAP if the poll is
-                considered a failure and the action is defined as send-trap. 
+                considered a failure and the action is defined as send-trap.
                 The default trap address is the owner address for this entry."
 --        DEFVAL  { snmpPollOwner }
         ::= { snmpPollEntry 7 }
@@ -192,9 +192,9 @@ snmpPollType OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The administrative control of this poll request entry.  This 
-                leaf is used to trigure an active request (begin polling), 
-                suspend polling (stop polling but leave this poll entry intact)  
+                "The administrative control of this poll request entry.  This
+                leaf is used to trigure an active request (begin polling),
+                suspend polling (stop polling but leave this poll entry intact)
                 on an active request, or to delete an entry (stop polling and
                 remove entry)."
         DEFVAL  { activate }
@@ -231,8 +231,8 @@ snmpPollLastContact     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the value of the sysUpTime when the last poll 
-                response was received from the polled host/device for which 
+                "Indicates the value of the sysUpTime when the last poll
+                response was received from the polled host/device for which
                 this poll entry exists."
         ::= { snmpPollEntry 11 }
 
@@ -242,7 +242,7 @@ snmpPollLastAlarm     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the value of the sysUpTime when the last alarm 
+                "Indicates the value of the sysUpTime when the last alarm
                 was generated for this poll request entry."
         ::= { snmpPollEntry 12 }
 
@@ -251,7 +251,7 @@ snmpPollAlarmWait     OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the number of seconds to wait prior to sending 
+                "Indicates the number of seconds to wait prior to sending
                 another alarm.  This is to ensure that alarms do not flood
                 out upon device contact lost."
         DEFVAL  { 60 }
@@ -262,7 +262,7 @@ snmpPollTrapCommunity   OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The value of the community string to be used in the SNMP 
+                "The value of the community string to be used in the SNMP
                 TRAP PDU when a trap is generated."
         DEFVAL  { "public" }
         ::= { snmpPollEntry 14 }
@@ -284,7 +284,7 @@ snmpPollProtocol        OBJECT-TYPE
         ::= { snmpPollEntry 15 }
 
 
---  The OID request table used in the SNMP polling for threshold/value 
+--  The OID request table used in the SNMP polling for threshold/value
 --  comparisons.
 
 snmpOIDTable    OBJECT-TYPE
@@ -292,7 +292,7 @@ snmpOIDTable    OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "A list of objects used to define the OBJECT IDENTIFIERS and  
+                "A list of objects used to define the OBJECT IDENTIFIERS and
                 their attributes (type and threashold values) to be used in
                 a particular snmp poll request SNMP GET REQUEST PDU.  These
                 OIDs will make up the VarBindList in the PDU.  Only OID types
@@ -301,8 +301,8 @@ snmpOIDTable    OBJECT-TYPE
                 a threshold value.
 
                 This table is addresses by the same keys as the snmpPollTable
-                (destination IP address and owner Ip address) in addition to 
-                a unique OID sequence number which is maintained for each 
+                (destination IP address and owner Ip address) in addition to
+                a unique OID sequence number which is maintained for each
                 OID entry."
         ::= { ctronDLM 2 }
 
@@ -311,7 +311,7 @@ snmpOIDEntry    OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "An SNMP poll OBJECT IDENTIFIER entry containing objects for a 
+                "An SNMP poll OBJECT IDENTIFIER entry containing objects for a
                 particular OID to be polled."
         INDEX   { snmpOIDDestination, snmpOIDOwner, snmpOIDSequence }
         ::= { snmpOIDTable 1 }
@@ -350,9 +350,9 @@ snmpOIDOwner    OBJECT-TYPE
                 "The IP address of the client which created this OID
                 request entry."
         ::= { snmpOIDEntry 2 }
- 
+
 snmpOIDSequence OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -388,11 +388,11 @@ snmpOIDComparator OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Indicates the type of comparison to be performed on the value 
+                "Indicates the type of comparison to be performed on the value
                 portion of the OID being polled.  This comparator will be used
-                to compare the OID value with the threshold value defined in 
-                this entry.  A value of 'dont-compare' causes no comparison to 
-                be performed.  Comparison failures will trigger an alarm 
+                to compare the OID value with the threshold value defined in
+                this entry.  A value of 'dont-compare' causes no comparison to
+                be performed.  Comparison failures will trigger an alarm
                 condition."
         DEFVAL { dont-compare }
         ::= { snmpOIDEntry 5 }
@@ -410,7 +410,7 @@ snmpOIDEnumType OBJECT-TYPE
         DESCRIPTION
                 "Indicates the type of value to expect from the OID being polled
                 such that the correct interpretation of the threshold value can
-                be used to do the comparison." 
+                be used to do the comparison."
         DEFVAL { ticks }
         ::= { snmpOIDEntry 6 }
 
@@ -420,7 +420,7 @@ snmpOIDThresholdInteger OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The threshold value to be used when polling an integer-valued 
+                "The threshold value to be used when polling an integer-valued
                 Object Identifier."
         DEFVAL  { 0 }
         ::= { snmpOIDEntry 7 }
@@ -431,7 +431,7 @@ snmpOIDThresholdCounter OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The threshold value to be used when polling a Counter-type  
+                "The threshold value to be used when polling a Counter-type
                 Object Identifier."
         ::= { snmpOIDEntry 8 }
 
@@ -450,7 +450,7 @@ snmpOIDThresholdTicks OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The threshold value to be used when polling a TimeTicks-type 
+                "The threshold value to be used when polling a TimeTicks-type
                 Object Identifier."
         DEFVAL  { 0 }
         ::= { snmpOIDEntry 10 }
@@ -466,9 +466,9 @@ snmpOIDType     OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The administrative control of this Object Identifier entry. 
-                This leaf is used to control adding, using, and deleting OIDs 
-                from the OID poll list."  
+                "The administrative control of this Object Identifier entry.
+                This leaf is used to control adding, using, and deleting OIDs
+                from the OID poll list."
         DEFVAL  { activate }
         ::= { snmpOIDEntry 11 }
 
@@ -494,4 +494,4 @@ snmpOIDLastValue OBJECT-TYPE
                  values."
         ::= { snmpOIDEntry 13 }
 
-END     
+END

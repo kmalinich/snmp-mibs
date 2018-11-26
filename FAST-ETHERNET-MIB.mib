@@ -2,7 +2,7 @@ FAST-ETHERNET-MIB DEFINITIONS ::= BEGIN
 
         --  fast-ethernet-mib The cabletron fast ethernet MIB
         --  Revision:   01.02.01
-        --  Date: November 19, 1996 
+        --  Date: November 19, 1996
 
         --  Cabletron Systems, Inc.
         --  35 Industrial Way, P.O. Box 5005
@@ -16,16 +16,16 @@ FAST-ETHERNET-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -101,23 +101,23 @@ DESCRIPTION
 ::= { ctFastEthernetCtlEntry 3 }
 
 
- 
+
 ctFastEthernetLocalTechnologyAbility OBJECT-TYPE
 SYNTAX  INTEGER  (1..1023)
 ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
         "This indicates the technology ability of the local hardware.
-        The value of this object is the logical OR of all supported 
+        The value of this object is the logical OR of all supported
         technologies.  Where each technology is given the values below:
 
           other(1)                      Undefined, or ability not known
           Auto-Negotiation(2)           Auto-Negotiation
           10BASE-T(8)                   10BASE-T
           10BASE-TFD(16)                Full duplex 10BASE-T
-          100BASE-TX(32)                100BASE-TX  
+          100BASE-TX(32)                100BASE-TX
           100BASE-TXFD(64)              Full Duplex 100BASE-TX
-          100BASE-T4(128)               100BASE-T4 
+          100BASE-T4(128)               100BASE-T4
           100BASE-FX(256)               100BASE-FX
           100BASE-FXFD(512)             Full Duplex 100Base-FX
 
@@ -133,7 +133,7 @@ STATUS  mandatory
 DESCRIPTION
         "Indicates the current operational mode of this port.
         The value of this object is the logical OR of current opertational
-        mode and how we arrived at that mode, whether it be by 
+        mode and how we arrived at that mode, whether it be by
         Auto-Negotiation(2), Manual-Config(4) or default.
         Where each mode is given the values below:
 
@@ -142,27 +142,27 @@ DESCRIPTION
           Manual-Config(4)              Manually Configured
           10BASE-T(8)                   10BASE-T
           10BASE-TFD(16)                Full duplex 10BASE-T
-          100BASE-TX(32)                100BASE-TX  
+          100BASE-TX(32)                100BASE-TX
           100BASE-TXFD(64)              Full Duplex 100BASE-TX
           100BASE-T4(128)               100BASE-T4
           100Base-FX(256)               100Base-FX
           100Base-FXFD(512)             Full Duplex 100Base-FX
 
-        For example, a port operating at 100Base-TX(32) achieved through 
+        For example, a port operating at 100Base-TX(32) achieved through
         Auto-Negotiation(2) would have a value of 34(32 + 2).
-        If the port was manually configured(4) for 100Base-TX(32) this object 
+        If the port was manually configured(4) for 100Base-TX(32) this object
         would have a value of 36(32 + 4).
 
         Values written to this object are limited to values read from
         ctFastEthernetLocalTechnologyAbility, with the addition of
-        Manual-Config(4) but excluding other(1).  Therefore if 
-        ctFastEthernetLocalTechnologyAbility has a value of 98 writing a 
-        value of 256 would result in an error.  That is to say 100Base-FX 
+        Manual-Config(4) but excluding other(1).  Therefore if
+        ctFastEthernetLocalTechnologyAbility has a value of 98 writing a
+        value of 256 would result in an error.  That is to say 100Base-FX
         is not supported on this port.
 
         A set to a value of Auto-Negotiation(2) will result in
         auto-negotiation being enabled and will cause link re-negotiation.
-        Note: this re-negotiation will in every case cause temporary link loss 
+        Note: this re-negotiation will in every case cause temporary link loss
         during the link re-negotiation. Any other set with Auto-Negotiation(2)
         included will result in an error since you can not force an operational
         mode and auto-negotiation at the same time.
@@ -188,7 +188,7 @@ ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
         "Indicates the advertised ability of the local hardware, but only
-        becomes active on ports that have auto-negotiation enabled.  
+        becomes active on ports that have auto-negotiation enabled.
 
         For example a port which will advertise 100Base-TX(32) and
         100Base-TXFD(64) ablilities would have a value of 96(32 + 64). A port
@@ -205,12 +205,12 @@ DESCRIPTION
         does not support ctFastEthernetAdvertisedTechnologyAbility.
 
         A successful set operation will result in immediate link re-negotiation
-        if ctFastEthernetCurrentOperationalMode has a value that includes 
-        Auto-Negotiation(2)(meaning Auto-negotiation is enabled). 
+        if ctFastEthernetCurrentOperationalMode has a value that includes
+        Auto-Negotiation(2)(meaning Auto-negotiation is enabled).
 
-        Note: this re-negotiation will in every case cause temporary link loss 
-        during the link re-negotiation.  If set to a value that is incompatible 
-        with ctFastEthernetReceivedTechnologyAbility, link negotiation will not 
+        Note: this re-negotiation will in every case cause temporary link loss
+        during the link re-negotiation.  If set to a value that is incompatible
+        with ctFastEthernetReceivedTechnologyAbility, link negotiation will not
         be successful and will cause permanent link loss."
 ::= { ctFastEthernetCtlEntry 6 }
 
@@ -220,7 +220,7 @@ ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
         "Indicates the advertised ability of the remote hardware, or link
-        partner.  The value of this object is the logical OR of all supported 
+        partner.  The value of this object is the logical OR of all supported
         technologies.  Where each technology is given the values below:
 
           other(1)                      Undefined
@@ -240,7 +240,7 @@ DESCRIPTION
         A read should always include Auto-Negotiation(2), unless the link
         partner does not support auto-negotiation, at which time the value
         will be Not-Detected(4) or auto-negotiation is disabled(or not
-        supported) for this port at which time the value will be other(1)." 
+        supported) for this port at which time the value will be other(1)."
 ::= { ctFastEthernetCtlEntry 7 }
 
 
@@ -251,7 +251,7 @@ ctFastEthernetCtlTableNumEntries OBJECT-TYPE
     DESCRIPTION
         "The number of entries in the ctFastEthernetCtl Table."
     ::= { ctFastEthernetCtl 2 }
- 
+
 
 -- The ctMMACFENBCfg group is an optional group, this group configures
 -- ports in regards to the MMAC Fast Ethernet Network Bus.
@@ -273,12 +273,12 @@ SYNTAX  CtMMACFENBCfgEntry
 ACCESS  not-accessible
 STATUS  mandatory
 DESCRIPTION
-        "defines a particular entry containing port configuration 
-        information." 
+        "defines a particular entry containing port configuration
+        information."
 INDEX { ctMMACFENBCfgInterface, ctMMACFENBCfgPortGroup,
          ctMMACFENBCfgPort }
 ::= { ctMMACFENBCfgTable 1 }
- 
+
 CtMMACFENBCfgEntry ::= SEQUENCE {
         ctMMACFENBCfgInterface                      INTEGER,
         ctMMACFENBCfgPortGroup                      INTEGER,
@@ -286,7 +286,7 @@ CtMMACFENBCfgEntry ::= SEQUENCE {
         ctMMACFENBOperCapabilities                  INTEGER,
         ctMMACFENBAdminCapabilities                 INTEGER
         }
- 
+
 
 ctMMACFENBCfgInterface      OBJECT-TYPE
 SYNTAX  INTEGER
@@ -295,7 +295,7 @@ STATUS  mandatory
 DESCRIPTION
         "The interface for which this MMAC FENB information pertains."
 ::= { ctMMACFENBCfgEntry 1 }
- 
+
 ctMMACFENBCfgPortGroup      OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-only
@@ -303,7 +303,7 @@ STATUS  mandatory
 DESCRIPTION
         "The port group for which this MMAC FENB information pertains."
 ::= { ctMMACFENBCfgEntry 2 }
- 
+
 ctMMACFENBCfgPort   OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-only
@@ -311,15 +311,15 @@ STATUS  mandatory
 DESCRIPTION
         "The physical port for which this MMAC FENB information pertains."
 ::= { ctMMACFENBCfgEntry 3 }
- 
- 
+
+
 ctMMACFENBOperCapabilities OBJECT-TYPE
 SYNTAX  INTEGER  (1..63)
 ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
         "This value indicates the current capabilities of this port.
- 
+
                 (1)  Other
                 (2)  MMAC A Channel
                 (4)  MMAC FENB 1 (FENB= Fast Ethernet Network Bus)
@@ -330,15 +330,15 @@ DESCRIPTION
         The value of this object is the logical OR of all supported
         capabilities."
 ::= { ctMMACFENBCfgEntry 4 }
- 
+
 ctMMACFENBAdminCapabilities OBJECT-TYPE
 SYNTAX  INTEGER (1..63)
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "This value indicates the desired operational capabilities of 
-        this port. 
- 
+        "This value indicates the desired operational capabilities of
+        this port.
+
                 (1)  Other
                 (2)  MMAC A Channel
                 (4)  MMAC FENB 1 (FENB= Fast Ethernet Network Bus)

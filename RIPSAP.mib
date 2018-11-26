@@ -1,13 +1,13 @@
 RIPSAP DEFINITIONS ::= BEGIN
 
 -- This MIB defines the management information for the RIP and SAP
--- protocols running in an IPX enviroment.  It provides information in 
+-- protocols running in an IPX enviroment.  It provides information in
 -- addition to that contained in the IPX MIB itself.  All tables in this
 -- MIB are linked to an instance of IPX via the system instance
 -- identifier as defined in the IPX MIB.
 
 
-IMPORTS 
+IMPORTS
    enterprises, Counter
             FROM RFC1155-SMI
    OBJECT-TYPE
@@ -63,7 +63,7 @@ RIPSysEntry ::= SEQUENCE {
                         ripSysIncorrectPackets
                            Counter
                        }
-                           
+
 ripSysInstance OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-write
@@ -123,7 +123,7 @@ SAPSysEntry ::= SEQUENCE {
                         sapSysIncorrectPackets
                            Counter
                        }
-                           
+
 sapSysInstance OBJECT-TYPE
    SYNTAX      INTEGER
    ACCESS      read-write

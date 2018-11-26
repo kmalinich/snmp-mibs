@@ -6,7 +6,7 @@ ENTERASYS-8021X-EXTENSIONS-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IEEE 802.1X extensions MIB.
 
 --
@@ -25,12 +25,12 @@ ENTERASYS-8021X-EXTENSIONS-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2002 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Counter32, Counter64, Unsigned32,
     TimeTicks
         FROM SNMPv2-SMI
@@ -38,9 +38,9 @@ IMPORTS
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
         FROM SNMPv2-CONF
-    InterfaceIndex      
+    InterfaceIndex
         FROM IF-MIB
-    SnmpAdminString 
+    SnmpAdminString
         FROM SNMP-FRAMEWORK-MIB
     PaeControlledDirections, PaeControlledPortStatus,
     PaeControlledPortControl
@@ -59,16 +59,16 @@ etsys8021xExtensionsMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-  
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          IEEE 802.1X authentication.
 
          This MIB is designed to supplement and be used in connection
-         with the standard IEEE 802.1X-2001 MIB.  It provides a 
+         with the standard IEEE 802.1X-2001 MIB.  It provides a
          convenient way to retrieve authentication status for station-
-         based access control. (Here, a MAC address is a much more 
+         based access control. (Here, a MAC address is a much more
          natural table index than a port or interface number.)"
 
     REVISION "200311211623Z"  -- Fri Nov 21 16:23 GMT 2003
@@ -150,7 +150,7 @@ etsysDot1xAuthStationEntry OBJECT-TYPE
     ::= { etsysDot1xAuthStationTable 1 }
 
 EtsysDot1xAuthStationEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
      etsysDot1xAuthStationAddress             MacAddress,
      etsysDot1xAuthStationPaePort             InterfaceIndex,
      etsysDot1xAuthStationPaeState            INTEGER,
@@ -193,7 +193,7 @@ etsysDot1xAuthStationPaeState OBJECT-TYPE
     STATUS        current
     DESCRIPTION
             "The current value of the Authenticator PAE state machine."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, Authenticator PAE 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, Authenticator PAE
                 state"
     ::= { etsysDot1xAuthStationEntry 3 }
 
@@ -212,7 +212,7 @@ etsysDot1xAuthStationBackendAuthState OBJECT-TYPE
     DESCRIPTION
             "The current state of the Backend Authentication state
              machine."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, Backend Authentication 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, Backend Authentication
                 state"
     ::= { etsysDot1xAuthStationEntry 4 }
 
@@ -263,7 +263,7 @@ etsysDot1xAuthConfigEntry OBJECT-TYPE
     ::= { etsysDot1xAuthConfigTable 1 }
 
 EtsysDot1xAuthConfigEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
      etsysDot1xAuthInitialize                 TruthValue,
      etsysDot1xAuthReauthenticate             TruthValue,
      etsysDot1xAuthAdminControlledDirections  PaeControlledDirections,
@@ -333,7 +333,7 @@ etsysDot1xAuthAuthControlledPortStatus OBJECT-TYPE
     DESCRIPTION
                "The current value of the controlled Port
                 status parameter for the virtual port."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1,
                 AuthControlledPortStatus"
     ::= { etsysDot1xAuthConfigEntry 5 }
 
@@ -344,7 +344,7 @@ etsysDot1xAuthAuthControlledPortControl OBJECT-TYPE
     DESCRIPTION
                "The current value of the controlled Port
                 control parameter for the virtual port."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1, 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.1,
                 AuthControlledPortControl"
     ::= { etsysDot1xAuthConfigEntry 6 }
 
@@ -433,7 +433,7 @@ etsysDot1xAuthKeyTxEnabled OBJECT-TYPE
                 "The value of the keyTransmissionEnabled constant
                  currently in use by the Authenticator PAE state
                  machine."
-    REFERENCE   "IEEE 802.1X-2001 Section 9.4.1, 
+    REFERENCE   "IEEE 802.1X-2001 Section 9.4.1,
                  keyTransmissionEnabled"
     ::= { etsysDot1xAuthConfigEntry 14 }
 
@@ -447,9 +447,9 @@ etsysDot1xAuthStatsTable OBJECT-TYPE
     STATUS current
     DESCRIPTION
                 "A table that contains the statistics objects for the
-                 Authenticator PAE associated with each 
+                 Authenticator PAE associated with each
                  supplicant/station."
-    REFERENCE   "IEEE 802.1X-2001 Section 9.4.2 Authenticator 
+    REFERENCE   "IEEE 802.1X-2001 Section 9.4.2 Authenticator
              Statistics"
     ::= { etsysDot1xAuthStationBranch 3 }
 
@@ -494,7 +494,7 @@ etsysDot1xAuthEapolFramesTx OBJECT-TYPE
     DESCRIPTION
                 "The number of EAPOL frames of any type
                  that have been transmitted by this Authenticator."
-    REFERENCE   "IEEE 802.1X-2001 Section 9.4.2, EAPOL frames 
+    REFERENCE   "IEEE 802.1X-2001 Section 9.4.2, EAPOL frames
                  transmitted"
     ::= { etsysDot1xAuthStatsEntry 2 }
 
@@ -505,7 +505,7 @@ etsysDot1xAuthEapolStartFramesRx OBJECT-TYPE
     DESCRIPTION
                 "The number of EAPOL Start frames that have
                  been received by this Authenticator."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.2, EAPOL Start frames 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.2, EAPOL Start frames
                 received"
     ::= { etsysDot1xAuthStatsEntry 3 }
 
@@ -516,7 +516,7 @@ etsysDot1xAuthEapolLogoffFramesRx OBJECT-TYPE
     DESCRIPTION
                "The number of EAPOL Logoff frames that have
                 been received by this Authenticator."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.2, EAPOL Logoff frames 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.2, EAPOL Logoff frames
                 received"
     ::= { etsysDot1xAuthStatsEntry 4 }
 
@@ -623,7 +623,7 @@ etsysDot1xAuthDiagTable OBJECT-TYPE
                 Authenticator PAE associated with each Port.
                 An entry appears in this table for each port that may
                 authenticate access to itself."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.3 Authenticator  
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.3 Authenticator
                 Diagnostics"
     ::= { etsysDot1xAuthStationBranch 4 }
 
@@ -632,13 +632,13 @@ etsysDot1xAuthDiagEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-                 "The diagnostics information for an Authenticator 
+                 "The diagnostics information for an Authenticator
                   PAE."
     INDEX { etsysDot1xAuthStationAddress }
     ::= { etsysDot1xAuthDiagTable 1 }
 
 EtsysDot1xAuthDiagEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysDot1xAuthEntersConnecting                     Counter32,
         etsysDot1xAuthEapLogoffsWhileConnecting            Counter32,
         etsysDot1xAuthEntersAuthenticating                 Counter32,
@@ -786,7 +786,7 @@ etsysDot1xAuthAuthEapStartsWhileAuthenticated OBJECT-TYPE
     DESCRIPTION
                "Counts the number of times that the state machine
                 transitions from AUTHENTICATED to CONNECTING, as a
-                result of an EAPOL-Start message being received from 
+                result of an EAPOL-Start message being received from
                 the Supplicant."
     REFERENCE "IEEE 802.1X-2001 Sections 9.4.2, 8.5.4.2.11"
     ::= { etsysDot1xAuthDiagEntry 11 }
@@ -897,8 +897,8 @@ etsysDot1xAuthSessionStatsTable OBJECT-TYPE
     STATUS current
     DESCRIPTION
                 "A table that contains the session statistics objects
-                 for the Authenticator PAE associated with each 
-                 supplicant. An entry appears in this table for each 
+                 for the Authenticator PAE associated with each
+                 supplicant. An entry appears in this table for each
                  supplicant."
     REFERENCE  "IEEE 802.1X-2001 Section 9.4.4"
     ::= { etsysDot1xAuthStationBranch 5 }
@@ -963,7 +963,7 @@ etsysDot1xAuthSessionFramesTx OBJECT-TYPE
     DESCRIPTION
                "The number of user data frames transmitted
                 to the supplicant PAE during the session."
-    REFERENCE  "IEEE 802.1X-2001 Section 9.4.4, Session Frames 
+    REFERENCE  "IEEE 802.1X-2001 Section 9.4.4, Session Frames
                 Transmitted"
     ::= { etsysDot1xAuthSessionStatsEntry 4 }
 
@@ -1012,13 +1012,13 @@ etsysDot1xAuthSessionTerminateCause OBJECT-TYPE
     STATUS current
     DESCRIPTION
                 "The reason for the session termination."
-    REFERENCE   "IEEE 802.1X-2001 Section 9.4.4, Session Terminate 
+    REFERENCE   "IEEE 802.1X-2001 Section 9.4.4, Session Terminate
                  Cause"
     ::= { etsysDot1xAuthSessionStatsEntry 8 }
 
 
 -- ---------------------------------------------------------- --
--- Authenticator Statistics Table Supported Objects 
+-- Authenticator Statistics Table Supported Objects
 -- ---------------------------------------------------------- --
 
 etsysDot1xAuthStatsSupported OBJECT-TYPE
@@ -1044,7 +1044,7 @@ etsysDot1xAuthStatsSupported OBJECT-TYPE
 
 
 -- ---------------------------------------------------------- --
--- Authenticator Diagnostic Table Supported Objects 
+-- Authenticator Diagnostic Table Supported Objects
 -- ---------------------------------------------------------- --
 
 etsysDot1xAuthDiagSupported OBJECT-TYPE
@@ -1117,7 +1117,7 @@ etsysDot1xMaximumStationsStatsGathered OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The maximum number of stations that this device can 
+        "The maximum number of stations that this device can
          gather statistics, diagnostics, and session statistics for."
     ::= { etsysDot1xAuthStationBranch 10 }
 
@@ -1142,22 +1142,22 @@ etsysDot1xAuthStationWatchTable OBJECT-TYPE
         "A table containing the MAC addresses of stations
          that statistics, diagnostics, and session statistics will
          be kept for. This table's existence is due to the
-         realization that devices may not have the resources to 
-         keep all of this data for all the authenticated stations; 
+         realization that devices may not have the resources to
+         keep all of this data for all the authenticated stations;
          however, there is a need when debugging a network for these
          statistics. This compromise solution allows the network
          administrator to pick which stations to collect data
          for. If the maximum number of stations this device can
          collect data for is equal to the maximum number of stations
-         the device can authenticate than this table has no effect or 
+         the device can authenticate than this table has no effect or
          meaning. If the maximum number of stations this device can
          collect data for is 0 then this table has no effect or meaning.
-         
+
          Please note: even though a station may be placed into the
          watch table, the statistics and diagnostic information that is
-         acquired is ultimately determined by the device's capability to 
-         acquire that data. The statistics, diagnostics, and session 
-         statistics tables all have a read only object that allow the 
+         acquired is ultimately determined by the device's capability to
+         acquire that data. The statistics, diagnostics, and session
+         statistics tables all have a read only object that allow the
          network administrator to determine what information the device
          can acquire."
 
@@ -1168,7 +1168,7 @@ etsysDot1xAuthStationWatchEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "Each row contains the MAC address of a station that 
+        "Each row contains the MAC address of a station that
          statistics, diagnostics, and session statistics will be kept
          for."
     INDEX { etsysDot1xAuthInfoStationAddress }
@@ -1191,7 +1191,7 @@ etsysDot1xAuthInfoStationAddress OBJECT-TYPE
         "The MAC address of a station that statistics, diagnostics, and
          session statistics will be kept for."
     ::= { etsysDot1xAuthStationWatchEntry 1 }
-    
+
 etsysDot1xAuthInfoStationRowStatus OBJECT-TYPE
     SYNTAX      RowStatus
     MAX-ACCESS  read-create
@@ -1254,7 +1254,7 @@ etsysDot1xAuthStationGroup OBJECT-GROUP
     STATUS current
     DESCRIPTION
             "A collection of objects providing basic status information
-             about Authenticator PAEs running on ports that use 
+             about Authenticator PAEs running on ports that use
              station-based access control."
     ::= { etsysDot1xGroups 1 }
 
@@ -1345,7 +1345,7 @@ etsysDot1xAuthSessionStatsGroup OBJECT-GROUP
         }
     STATUS current
     DESCRIPTION
-            "A collection of objects providing statistics about the 
+            "A collection of objects providing statistics about the
              current or last sessions for Authenticator PAEs running
              on ports that use station-based access control."
     ::= { etsysDot1xGroups 5 }
@@ -1361,12 +1361,12 @@ etsysDot1xAuthSessionControlGroup OBJECT-GROUP
         }
     STATUS current
     DESCRIPTION
-            "A collection of objects providing statistics about the 
+            "A collection of objects providing statistics about the
              current or last sessions for Authenticator PAEs running
              on ports that use station-based access control."
     ::= { etsysDot1xGroups 6 }
 
-     
+
 
 -- ---------------------------------------------------------- --
 -- Compliance statements

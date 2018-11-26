@@ -37,7 +37,7 @@ CT-FASTPATH-DHCPSNOOPING-MIB DEFINITIONS ::= BEGIN
 --  Copyright July 2008 Enterasys Networks, Inc.
 
 IMPORTS
-    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE, 
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,
     IpAddress, Integer32, Unsigned32, TimeTicks, Counter32
                      FROM SNMPv2-SMI
     VlanIndex
@@ -46,8 +46,8 @@ IMPORTS
                      FROM IF-MIB
     TEXTUAL-CONVENTION, RowStatus, RowPointer, MacAddress,
     StorageType, TruthValue, DisplayString, PhysAddress
-                     FROM SNMPv2-TC                   
-    ctDhcpSnoopingExpMib               
+                     FROM SNMPv2-TC
+    ctDhcpSnoopingExpMib
                      FROM CTRON-MIB-NAMES;
 
 ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
@@ -81,10 +81,10 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
             "This object indicates whether DHCP Snooping
              is enabled globally.
 
-             If this object is set to 'true',admin mode 
+             If this object is set to 'true',admin mode
              is enabled globally.
 
-             If this object is set to 'false',admin mode 
+             If this object is set to 'false',admin mode
              is disabled globally."
         DEFVAL      { false }
         ::= { ctAgentDhcpSnoopingConfigGroup 1 }
@@ -175,7 +175,7 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
         MAX-ACCESS   not-accessible
         STATUS       current
         DESCRIPTION
-            "A row instance contains the configuration for 
+            "A row instance contains the configuration for
              DHCP snooping at each physical interface capable of this feature."
              INDEX { ifIndex }
         ::= { ctAgentDhcpSnoopingIfConfigTable 1 }
@@ -194,7 +194,7 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
         DESCRIPTION
              "This object indicates whether the interface is trusted for
               DHCP snooping purpose."
-        
+
         DEFVAL      { false }
         ::= { ctAgentDhcpSnoopingIfConfigEntry 1 }
 
@@ -205,7 +205,7 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
         DESCRIPTION
              "This object indicates whether the Logging needs on DHCP snooping validations
               or not"
-        
+
         DEFVAL      { false }
         ::= { ctAgentDhcpSnoopingIfConfigEntry 2 }
 
@@ -235,7 +235,7 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
 
 
 --************ The DHCP snooping Statistics Table ********
- 
+
      ctAgentDhcpSnoopingStatsReset OBJECT-TYPE
          SYNTAX  INTEGER {
              none(0),
@@ -257,7 +257,7 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
           DESCRIPTION
               "A table provides the mechanism for statics of DHCP snooping."
           ::= { ctAgentDhcpSnoopingConfigGroup 7 }
- 
+
       ctAgentDhcpSnoopingStatsEntry OBJECT-TYPE
           SYNTAX       CtAgentDhcpSnoopingStatsEntry
           MAX-ACCESS   not-accessible
@@ -266,14 +266,14 @@ ctFastPathDHCPSnoopingMIB MODULE-IDENTITY
               "A row instance contains the DHCP snooping statistics per VLAN."
           INDEX { ifIndex }
           ::= { ctAgentDhcpSnoopingStatsTable 1 }
- 
+
       CtAgentDhcpSnoopingStatsEntry ::= SEQUENCE {
 
          ctAgentDhcpSnoopingMacVerifyFailures        Counter32,
          ctAgentDhcpSnoopingInvalidClientMessages    Counter32,
          ctAgentDhcpSnoopingInvalidServerMessages    Counter32
        }
- 
+
        ctAgentDhcpSnoopingMacVerifyFailures OBJECT-TYPE
        SYNTAX      Counter32
        MAX-ACCESS  read-only

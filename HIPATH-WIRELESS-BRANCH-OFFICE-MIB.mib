@@ -1,5 +1,5 @@
 	HIPATH-WIRELESS-BRANCH-OFFICE-MIB DEFINITIONS ::= BEGIN
- 
+
 		IMPORTS
 			apIndex			
 				FROM HIPATH-WIRELESS-HWC-MIB			
@@ -16,11 +16,11 @@
 --  July 29, 2005 at 14:43 GMT
 -- July 29, 2005 at 14:43 GMT
 		-- 1.3.6.1.4.1.4329.15.5.4
-		hiPathWirelessBranchOfficeMIB MODULE-IDENTITY 
+		hiPathWirelessBranchOfficeMIB MODULE-IDENTITY
 			LAST-UPDATED "200507291443Z"		-- July 29, 2005 at 14:43 GMT
-			ORGANIZATION 
+			ORGANIZATION
 				"Chantry Networks Inc."
-			CONTACT-INFO 
+			CONTACT-INFO
 				"Behrouz Sultan
 				Chantry Networks, Inc.
 				
@@ -30,10 +30,10 @@
 				Email: behrouz.sultan@siemens.com
 				Phone 1-905-363-6400
 				Fax   1-905-567-0099"
-			DESCRIPTION 
+			DESCRIPTION
 				"Branch office configuration MIB for the high path wireless LAN access controller."
 			REVISION "200507291443Z"		-- July 29, 2005 at 14:43 GMT
-			DESCRIPTION 
+			DESCRIPTION
 				"Initial version."
 			::= { hiPathWirelessModules 4 }
 
@@ -74,7 +74,7 @@
 
 		
 		BranchOfficeEntry ::=
-			SEQUENCE { 
+			SEQUENCE {
 				boConnectMode
 					INTEGER,
 				boIpAllocation
@@ -179,7 +179,7 @@
 
 		
 		BranchOfficeHWCEntry ::=
-			SEQUENCE { 
+			SEQUENCE {
 				boHWCConnectOrder
 					Integer32,
 				boHWCIpAddress
@@ -226,7 +226,7 @@
 		hiPathWirelessBranchOfficeGroup OBJECT-GROUP
 			OBJECTS { boHWCRowStatus, boHWCIpAddress, boHWCConnectOrder }
 			STATUS current
-			DESCRIPTION 
+			DESCRIPTION
 				"Conformance group definitions for the branch office MIB."
 			::= { hiPathWirelessBranchOfficeConformance 1 }
 
@@ -235,7 +235,7 @@
 		-- 1.3.6.1.4.1.4329.15.3.22.2.2
 		hiPathWirelessBOConformance MODULE-COMPLIANCE
 			STATUS current
-			DESCRIPTION 
+			DESCRIPTION
 				"Compliance group definitions for the branch office MIB."
 			MODULE -- this module
 				MANDATORY-GROUPS { hiPathWirelessBranchOfficeGroup }
@@ -244,10 +244,10 @@
 		
 		-- 1.3.6.1.4.1.4329.15.3.22.2.3
 		hiPathWirelessBOObsoleteGroup OBJECT-GROUP
-			OBJECTS { boConnectMode, boIpAllocation, boStaticIpAddress, boStaticNetmask, boStaticGateway, 
+			OBJECTS { boConnectMode, boIpAllocation, boStaticIpAddress, boStaticNetmask, boStaticGateway,
 				boRebootOnPollFailure }
 			STATUS obsolete
-			DESCRIPTION 
+			DESCRIPTION
 				"Description."
 			::= { hiPathWirelessBranchOfficeConformance 3 }
 

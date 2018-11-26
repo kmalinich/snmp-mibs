@@ -2,7 +2,7 @@ CTRON-SFPS-TAP-MIB DEFINITIONS ::= BEGIN
 
 --  sfps-tap-mib.txt
 --  Revision: 0.0.04
---              
+--
 --  Cabletron Systems, Inc.
 --  35 Industrial Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
@@ -33,15 +33,15 @@ CTRON-SFPS-TAP-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
 --      TimeTicks
 --                FROM RFC1155-SMI
 
@@ -169,7 +169,7 @@ sfpsTapHeaderDASA       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "DA/SA header value"
         ::= { sfpsTapEntry 1 }
 
@@ -177,7 +177,7 @@ sfpsTapRQPort   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Inport of tap request"
         ::= { sfpsTapEntry 2 }
 
@@ -185,7 +185,7 @@ sfpsTapRSPPort  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Inport of tap response"
         ::= { sfpsTapEntry 3 }
 
@@ -193,7 +193,7 @@ sfpsTapRetries  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Number of tap retries"
         ::= { sfpsTapEntry 4 }
 
@@ -211,7 +211,7 @@ sfpsTapSwitchState      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Tap state of switch"
         ::= { sfpsTapEntry 5 }
 
@@ -225,7 +225,7 @@ sfpsTapSwitchType       OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Type of tap switch"
         ::= { sfpsTapEntry 6 }
 
@@ -250,7 +250,7 @@ sfpsTapSwitchStatus     OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Contains information helpful for untapping"
         ::= { sfpsTapEntry 7 }
 
@@ -263,7 +263,7 @@ sfpsTapDirection        OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Uni or Bi Directional tap"
         ::= { sfpsTapEntry 8 }
 
@@ -271,7 +271,7 @@ sfpsTapDirectRouteMAC   OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "MAC of switch for direct Nbr connection"
         ::= { sfpsTapEntry 9 }
 
@@ -297,7 +297,7 @@ sfpsTapResponseStatus   OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Status to reutrn for multi-tap"
         ::= { sfpsTapEntry 10 }
 
@@ -305,7 +305,7 @@ sfpsTapProbeSwitchMac   OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Probe Switch mac address"
         ::= { sfpsTapEntry 11 }
 
@@ -313,18 +313,18 @@ sfpsTapProbePort        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Probe Switch port"
         ::= { sfpsTapEntry 12 }
 
 
--- 
+--
 
 sfpsTapStatsTapReqCnt   OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count for all tap requests"
         ::= { sfpsTapStats 1 }
 
@@ -332,7 +332,7 @@ sfpsTapStatsTapRespCnt  OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count for all tap responses"
         ::= { sfpsTapStats 2 }
 
@@ -340,7 +340,7 @@ sfpsTapStatsUntapReqCnt OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count of all untap requests"
         ::= { sfpsTapStats 3 }
 
@@ -348,7 +348,7 @@ sfpsTapStatsUntapRespCnt        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count of all untap responses"
         ::= { sfpsTapStats 4 }
 
@@ -356,7 +356,7 @@ sfpsTapStatsErrorCnt    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count of all tap errors"
         ::= { sfpsTapStats 5 }
 
@@ -364,7 +364,7 @@ sfpsTapStatsStaleEntCnt OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Count of all stale tap entries"
         ::= { sfpsTapStats 6 }
 

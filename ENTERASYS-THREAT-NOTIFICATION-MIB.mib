@@ -192,10 +192,10 @@ etsysThreatNotificationConsolidatedData  OBJECT-TYPE
                   be encoded in the following format:
                       object1='data' object2='data' object3='data' ...
                   Here is an example:
-                      etsysThreatNotificationSenderID='dragon' 
-                      etsysThreatNotificationSenderName='dragon' 
+                      etsysThreatNotificationSenderID='dragon'
+                      etsysThreatNotificationSenderName='dragon'
                       etsysThreatNotificationThreatCategory='ATTACKS'
-                      etsysThreatNotificationThreatName='HOST:APACHE:ETC-PASSWD' 
+                      etsysThreatNotificationThreatName='HOST:APACHE:ETC-PASSWD'
                       etsysThreatNotificationInitiatorAddress='1.1.1.1'
                       etsysThreatNotificationTargetAddress='2.2.2.2'
                   "
@@ -269,7 +269,7 @@ etsysThreatNotificationLastUpdated  OBJECT-TYPE
 -- -------------------------------------------------------------
 
 etsysThreatNotificationInformationMessage1 NOTIFICATION-TYPE
-    OBJECTS { 
+    OBJECTS {
               etsysThreatNotificationSenderID,
               etsysThreatNotificationSenderName,
               etsysThreatNotificationThreatCategory,
@@ -290,7 +290,7 @@ etsysThreatNotificationInformationMessage1 NOTIFICATION-TYPE
     ::= { etsysThreatNotificationNotificationBranch 1 }
 
 etsysThreatNotificationInformationMessage2 NOTIFICATION-TYPE
-    OBJECTS { 
+    OBJECTS {
               etsysThreatNotificationSenderID,
               etsysThreatNotificationSenderName,
               etsysThreatNotificationThreatCategory,
@@ -326,7 +326,7 @@ etsysThreatNotificationInformationMessage3 NOTIFICATION-TYPE
     ::= { etsysThreatNotificationNotificationBranch 3 }
 
 etsysThreatNotificationInformationMessage4 NOTIFICATION-TYPE
-    OBJECTS { 
+    OBJECTS {
               etsysThreatNotificationSenderID,
               etsysThreatNotificationSenderName,
               etsysThreatNotificationThreatCategory,
@@ -352,7 +352,7 @@ etsysThreatNotificationInformationMessage4 NOTIFICATION-TYPE
     ::= { etsysThreatNotificationNotificationBranch 4 }
 
 etsysThreatUndoNotificationMessage NOTIFICATION-TYPE
-    OBJECTS { 
+    OBJECTS {
               etsysThreatNotificationIncidentID,
               etsysThreatNotificationDeviceAddressType,
               etsysThreatNotificationDeviceAddress,
@@ -370,7 +370,7 @@ etsysThreatUndoNotificationMessage NOTIFICATION-TYPE
     ::= { etsysThreatNotificationNotificationBranch 5 }
 
 etsysThreatResponseNotificationMessage NOTIFICATION-TYPE
-    OBJECTS { 
+    OBJECTS {
               etsysThreatNotificationIncidentID,
               etsysThreatNotificationStatus,
               etsysThreatNotificationDateTime,
@@ -584,57 +584,57 @@ etsysThreatNotificationCompliance MODULE-COMPLIANCE
     MODULE
         GROUP       etsysThreatNotificationMessage1SystemGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage1."
 
         GROUP       etsysThreatNotificationMessage2SystemGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage2."
 
         GROUP       etsysThreatNotificationMessage3SystemGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage3."
 
         GROUP       etsysThreatNotificationMessage4SystemGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage4."
 
         GROUP       etsysThreatNotificationMessage1Group
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage1."
 
         GROUP       etsysThreatNotificationMessage2Group
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage2."
 
         GROUP       etsysThreatNotificationMessage3Group
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage3."
 
         GROUP       etsysThreatNotificationMessage4Group
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatNotificationMessage4."
 
         GROUP       etsysThreatUndoNotificationMessageSystemGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatUndoNotificationMessage."
 
         GROUP       etsysThreatUndoNotificationMessageGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatUndoNotificationMessage."
 
         GROUP       etsysThreatResponseNotificationMessageGroup
         DESCRIPTION
-            "This group is OPTIONAL for devices supporting 
+            "This group is OPTIONAL for devices supporting
              etsysThreatResponseNotificationMessage."
 
     ::= { etsysThreatNotificationCompliances 1 }

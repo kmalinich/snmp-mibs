@@ -651,7 +651,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
     esysStatus     OBJECT IDENTIFIER ::= { esystem 2 }
     esysCounters   OBJECT IDENTIFIER ::= { esystem 3 }
     esysConcConfig OBJECT IDENTIFIER ::= { esystem 4 }
-    
+
 
     -- esysChar  - the system Characteristics group
     -- this group consists of information about the device's hardware
@@ -665,7 +665,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                "The version number of the software stored in ROM."
         ::= { esysChar 1 }
-    
+
     esysInitSwitch OBJECT-TYPE
         SYNTAX  INTEGER {
                            other(1),
@@ -703,7 +703,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                address for this device."
         ::= { esysChar 4 }
 
-    
+
     esysTrapAddressTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EsysTrapEntry
         ACCESS  not-accessible
@@ -712,7 +712,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "A table of IP Addresses to which this device will send
                traps."
         ::= { esysChar 5 }
-    
+
     esysTrapEntry OBJECT-TYPE
         SYNTAX  EsysTrapEntry
         ACCESS  not-accessible
@@ -722,13 +722,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                will be sent by this device."
         INDEX   { esysTrapAddress }
         ::= { esysTrapAddressTable 1 }
-    
+
     EsysTrapEntry ::=
         SEQUENCE {
             esysTrapAddress
                 IpAddress
                  }
-               
+
     esysTrapAddress OBJECT-TYPE
         SYNTAX  IpAddress
         ACCESS  read-write
@@ -750,7 +750,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                device to accept a down-line loaded firmware upgrade.
                If false, the device will not accept upgrades."
         ::= { esysChar 6 }
-    
+
     esysLastLoadHost OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-only
@@ -760,7 +760,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                responded to the device's request for a downline load
                of software."
         ::= { esysChar 7 }
-    
+
 
     -- esysStatus  - the system Status group
     -- this group consists of operational status of the device.
@@ -1079,7 +1079,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "This hardware switch, when true, allows write
                access to the device.  This object has meaning only
                when the corresponding functionality is present."
-        ::= { eifEntry 6 }                                                                    
+        ::= { eifEntry 6 }
 
     --
     -- ebridge   - groups in the extended bridge module
@@ -1133,7 +1133,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The maximum number of address entries that the bridge
                can store in its volatile memory."
         ::= { ebrChar 3 }
-    
+
     ebrMaxNVForwardingDBEntries OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1227,7 +1227,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                by the bridge when a large IP frame is received on a datalink
                that supports a higer frame size than the other datalink."
         ::= { ebrChar 12 }
-    
+
     ebrRemoveMgmtAddress OBJECT-TYPE
         SYNTAX  INTEGER {
                            other(1),
@@ -1257,7 +1257,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
     -- ebrStat  - the Bridge Status group
     -- this group consists of operational status of the bridge.
-    
+
     ebrCurrForwardingDBEntries OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1348,7 +1348,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
     -- ebrCoun  - the Bridge Counters group
     -- this group consists of counters that measure operational
     -- events and errors.
-    
+
     ebrDeviceFramesLost OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1551,7 +1551,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrIfBadHelloLimitExceeded
                 Counter
              }
-        
+
     ebrIfIndex OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -1561,7 +1561,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                the same as the ifIndex, defined in MIB-II, for this
                interface."
         ::= { ebrIfEntry 1 }
-    
+
     ebrIfLinkBrokenReason OBJECT-TYPE
         SYNTAX  INTEGER {
                            noFault(1),
@@ -1577,7 +1577,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                a problem with the transmission medium to which the
                line is attached."
         ::= { ebrIfEntry 2 }
-    
+
     ebrIfPortRestarts OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1585,7 +1585,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                "The number of times the bridge restarted the line."
         ::= { ebrIfEntry 3 }
-    
+
     ebrIfUnknownDAReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1594,7 +1594,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames received on this line for which the
                bridge had no address entry in its forwarding database."
         ::= { ebrIfEntry 4 }
-    
+
     ebrIfFramesAddrFiltered OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1603,7 +1603,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames filtered by the bridge on this
                port because of address entries in the forwarding database."
         ::= { ebrIfEntry 5 }
-    
+
     ebrIfMultiFramesFiltered OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1613,7 +1613,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                that were received on the line on the line and filtered
                by the bridge."
         ::= { ebrIfEntry 6 }
-    
+
     ebrIfFramesProtocolFiltered OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1623,7 +1623,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                bridge discarded because of entries set by management
                in the protocol database."
         ::= { ebrIfEntry 7 }
-    
+
     ebrIfDeviceFramesSent OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1632,7 +1632,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames originating from the bridge itself
                that were transmitted on this line."
         ::= { ebrIfEntry 8 }
-    
+
     ebrIfDeviceFramesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1641,7 +1641,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames addressed to the bridge itself
                that were received on this line."
         ::= { ebrIfEntry 9 }
-    
+
     ebrIfDeviceBytesSent OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1650,7 +1650,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of bytes in the frames originating from the
                bridge that were transmitted on this line."
         ::= { ebrIfEntry 10 }
-    
+
     ebrIfDeviceBytesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1659,7 +1659,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of bytes in the frames addressed to the bridge
                itself that were received on this line."
         ::= { ebrIfEntry 11 }
-    
+
     ebrIfDeviceFramesLost OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1669,7 +1669,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                to the bridge itself discarded by the bridge because it
                did not have internal buffers to store them."
         ::= { ebrIfEntry 12 }
-    
+
     ebrIfMultiBytesSent OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1678,7 +1678,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of bytes in Multicast Frames sent, as reported
                in ifOutNUcastPkts, defined in MIB-II."
         ::= { ebrIfEntry 13 }
-    
+
     ebrIfMultiBytesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1687,7 +1687,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of bytes in Multicast Frames received, as
                reported in ifInNUcastPkts, defined in MIB-II."
         ::= { ebrIfEntry 14 }
-    
+
     ebrIfMultiDeviceFramesSent OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1696,7 +1696,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames with multicast destination addresses
                transmitted by the bridge itself on the line."
         ::= { ebrIfEntry 15 }
-    
+
     ebrIfMultiDeviceFramesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1705,7 +1705,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of frames with multicast destination addresses
                received by the bridge itslef on the line."
         ::= { ebrIfEntry 16 }
-    
+
     ebrIfMultiDeviceBytesSent OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1713,7 +1713,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                "The number of bytes in ebrIfMultiDeviceFramesSent."
         ::= { ebrIfEntry 17 }
-    
+
     ebrIfMultiDeviceBytesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1721,7 +1721,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                "The number of bytes in ebrIfMultiDeviceFramesReceived."
         ::= { ebrIfEntry 18 }
-    
+
     ebrIfBadBytesReceived OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1730,7 +1730,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of bytes in frames received that had a bad
                frame check sequence."
         ::= { ebrIfEntry 19 }
-    
+
     ebrIfBadHelloLimitExceeded OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1739,8 +1739,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of times that the Bad Hellos on the line
                exceeded the Bad Hello limit."
         ::= { ebrIfEntry 20 }
-    
-    
+
+
     -- ebrIfEtherTable - the extended bridge Ethernet port table
     -- this optional group consists of Ethernet port objects for the bridge
 
@@ -1774,11 +1774,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 Counter,
             ebrIfEthFramingError
                 Counter,
-            ebrIfEthLengthError 
+            ebrIfEthLengthError
                 Counter,
             ebrIfEthTransmitMultipleCollisions
                 Counter,
-            ebrIfEthCarrierLoss 
+            ebrIfEthCarrierLoss
                 Counter,
             ebrIfEthCollisionLimitExceeded
                 Counter
@@ -1793,7 +1793,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                the same as the ifIndex, defined in MIB-II, for this
                interface."
         ::= { ebrIfEtherEntry 1 }
-    
+
     ebrIfEthPhysicalMediumType OBJECT-TYPE
         SYNTAX  INTEGER {
                            stdAUIInterface(1),
@@ -1812,7 +1812,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The type of physical medium to which this line is
                attached."
         ::= { ebrIfEtherEntry 2 }
-    
+
     ebrIfEthCollisionPresenceTestSwitch OBJECT-TYPE
         SYNTAX  INTEGER {
                            true(1),
@@ -1826,7 +1826,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                commonly known as heartbeat.  It must be enabled if
                the line's transceiver has CPT."
         ::= { ebrIfEtherEntry 3 }
-    
+
     ebrIfEthCollisionTestFailed OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1838,7 +1838,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                if ebrIfEthCollisionPresenceTestSwitch is set to true
                for this line."
         ::= { ebrIfEtherEntry 4 }
-    
+
     ebrIfEthFramingError OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1848,7 +1848,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                contained both a noninteger multiple of 8 bits and
                a CRC error."
         ::= { ebrIfEtherEntry 5 }
-    
+
     ebrIfEthLengthError OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1858,7 +1858,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                Length field inconsistent with the actual number of
                data bytes in the packet."
         ::= { ebrIfEtherEntry 6 }
-    
+
     ebrIfEthTransmitMultipleCollisions OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1869,7 +1869,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                because of collisions during transmission due to
                congestion on the physical medium."
         ::= { ebrIfEtherEntry 7 }
-    
+
     ebrIfEthCarrierLoss OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1879,7 +1879,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                the carrier signal while transmitting a frame on the
                line."
         ::= { ebrIfEtherEntry 8 }
-    
+
     ebrIfEthCollisionLimitExceeded OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1889,7 +1889,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                a frame on this line after 16 attempts, the collision
                limit."
         ::= { ebrIfEtherEntry 9 }
-    
+
     -- ebrIfFddiTable - the extended bridge FDDI port table
     -- this group consists of FDDI port objects for the bridge
 
@@ -1936,7 +1936,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                the same as the ifIndex, defined in MIB-II, for this
                interface."
         ::= { ebrIfFddiEntry 1 }
-    
+
     ebrIfFddiUnprocessedErrorPackets OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1946,7 +1946,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                on thisline but the bridge did not have time to
                decipher it."
         ::= { ebrIfFddiEntry 2 }
-    
+
     ebrIfFddiIpDatagramsFragmented OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1957,7 +1957,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                legal size packets on the smaller datalink after
                translation."
         ::= { ebrIfFddiEntry 3 }
-    
+
     ebrIfFddiIpDontFragment OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1967,7 +1967,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                fragmented because the DONT-FRAGMENT bit was set in
                the IP header."
         ::= { ebrIfFddiEntry 4 }
-    
+
     ebrIfFddiIpIllegalHeaderLength OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -1977,7 +1977,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                instead of being fragmented because the IP header was
                of illegal length."
         ::= { ebrIfFddiEntry 5 }
-    
+
     ebrIfFddiIpIllegalSize OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -2035,7 +2035,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                the same as the ifIndex, defined in MIB-II, for this
                interface."
         ::= { ebrIfSpanEntry 1 }
-    
+
     ebrIfSpDesigRootAge OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -2044,7 +2044,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The age, in hundreths of seconds, of the last Hello
                message received from the designated bridge on the line."
         ::= { ebrIfSpanEntry 2 }
-    
+
     ebrIfSpForwardDelayTimer OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
@@ -2055,7 +2055,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                learning), and enter the Forwarding State.  If not in
                preforwarding, this value will be reported as 0."
         ::= { ebrIfSpanEntry 3 }
-    
+
     ebrIfSpBadHelloCount OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
@@ -2064,7 +2064,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "The number of Hello intervals during which at least one
                Bad Hello was received."
         ::= { ebrIfSpanEntry 4 }
-    
+
     ebrIfSpPossibleLoopFlag OBJECT-TYPE
         SYNTAX  INTEGER {
                            true(1),
@@ -2076,7 +2076,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                "A flag that indicates whether the bridge detected a loop
                condition on this line."
         ::= { ebrIfSpanEntry 5 }
-    
+
     ebrIfSpTopologyChangeAckFlag OBJECT-TYPE
         SYNTAX  INTEGER {
                            true(1),
@@ -2102,7 +2102,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  address filtering information about unicast and
                  multicast addresses for 2-port bridges."
         ::= { ebrTwoPortStatic 1 }
- 
+
     ebrTwoPortStaticEntry OBJECT-TYPE
         SYNTAX  EbrTwoPortStaticEntry
         ACCESS  not-accessible
@@ -2113,7 +2113,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 filtering information."
         INDEX   { ebrTwoPortAddress }
         ::= { ebrTwoPortStaticTable 1 }
- 
+
     EbrTwoPortStaticEntry ::=
         SEQUENCE {
             ebrTwoPortAddress
@@ -2123,7 +2123,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrTwoPortStatus
                 INTEGER
         }
- 
+
     ebrTwoPortAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -2132,7 +2132,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The destination/source MAC Address in a frame to
                 which this entry's filtering information applies."
         ::= { ebrTwoPortStaticEntry 1 }
- 
+
     ebrTwoPortPortNum OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2142,7 +2142,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 locked-down, if the status is lockDown.  Otherwise,
                 this field has a value of 0."
         ::= { ebrTwoPortStaticEntry 2 }
- 
+
     ebrTwoPortStatus OBJECT-TYPE
         SYNTAX  INTEGER {
                     lockDown(1),
@@ -2157,7 +2157,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The status of this entry.  The meanings of the
                 values are:
- 
+
                   lockDown(1) : This address is 'locked-down' to the
                       port specified by the ebrTwoPortPortNum field.
                       This address will be allowed to source frames
@@ -2186,9 +2186,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { ebrTwoPortStaticEntry 3 }
 
 
- 
+
     --  Static Database for multi-port bridges
- 
+
     ebrMultiPortStaticTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EbrMultiPortStaticEntry
         ACCESS  not-accessible
@@ -2198,7 +2198,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  address filtering information about unicast and
                  multicast addresses for multi-port bridges."
         ::= { ebrMultiPortStatic 1 }
- 
+
     ebrMultiPortStaticEntry OBJECT-TYPE
         SYNTAX  EbrMultiPortStaticEntry
         ACCESS  not-accessible
@@ -2209,7 +2209,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 filtering information."
         INDEX   { ebrMultiPortAddress, ebrMultiPortReceivePort }
         ::= { ebrMultiPortStaticTable 1 }
- 
+
     EbrMultiPortStaticEntry ::=
         SEQUENCE {
             ebrMultiPortAddress
@@ -2223,7 +2223,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrMultiPortStatus
                 INTEGER
         }
- 
+
     ebrMultiPortAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -2232,7 +2232,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The destination/source MAC Address in a frame to
                  which this entry's filtering information applies."
         ::= { ebrMultiPortStaticEntry 1 }
- 
+
     ebrMultiPortReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2243,7 +2243,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 of zero indicates that this entry applies on all ports of
                 the bridge."
         ::= { ebrMultiPortStaticEntry 2 }
- 
+
     ebrMultiPortAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-write
@@ -2263,7 +2263,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 is included in the set of ports; the port is not
                 included if its bit has a value of '0'."
         ::= { ebrMultiPortStaticEntry 3 }
- 
+
     ebrMultiPortPortNum OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2273,7 +2273,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 locked-down, if the status is lockDown.  Otherwise,
                 this field has a value of zero."
         ::= { ebrMultiPortStaticEntry 4 }
- 
+
     ebrMultiPortStatus OBJECT-TYPE
         SYNTAX  INTEGER {
                     portMask(1),
@@ -2289,7 +2289,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "The status of this entry.  The meanings of the
                 values are:
- 
+
                   portMask(1) : The static filtering for this address
                       is specified by the MultiPortAllowedToGoTo field.
 
@@ -2298,7 +2298,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                       by the ebrMultiPortPortNum field.  This address will
                       be allowed to source frames only from the specified
                       port, and frames destined to this address will be
-                      sent out only on the specified port.  
+                      sent out only on the specified port.
 
                   maskAndLock(3) : The static filtering for this
                       address is specified by both the
@@ -2323,7 +2323,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
 
     --  Protocol Database for two-port bridges
- 
+
     ebrTwoProtoEnetFilterOther OBJECT-TYPE
         SYNTAX  INTEGER {
                            forward(1),
@@ -2332,7 +2332,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-               "Action taken by the bridge on Ethernet protocol types 
+               "Action taken by the bridge on Ethernet protocol types
                other than those specified in the ebrTwoEnetProtoTable. "
         ::= { ebrTwoProtoFilt 1 }
 
@@ -2344,7 +2344,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-               "Action taken by the bridge on 802.2 DSAPs other than 
+               "Action taken by the bridge on 802.2 DSAPs other than
                those specified in the ebrTwoSapProtoTable. "
         ::= { ebrTwoProtoFilt 2 }
 
@@ -2356,10 +2356,10 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-               "Action taken by the bridge on the 5-byte SNAP PIDs other 
+               "Action taken by the bridge on the 5-byte SNAP PIDs other
                than those specified in the ebrTwoSnapProtoTable. "
         ::= { ebrTwoProtoFilt 3 }
-  
+
     ebrTwoEnetProtoTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EbrTwoEnetProtoEntry
         ACCESS  not-accessible
@@ -2368,7 +2368,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 Ethernet protocol types for 2-port bridges."
         ::= { ebrTwoProtoFilt 4 }
- 
+
     ebrTwoEnetProtoEntry OBJECT-TYPE
         SYNTAX  EbrTwoEnetProtoEntry
         ACCESS  not-accessible
@@ -2394,7 +2394,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The protocol type in a frame to which this entry's
                 filtering information applies."
         ::= { ebrTwoEnetProtoEntry 1 }
- 
+
     ebrTwoEnetProtoStatus OBJECT-TYPE
         SYNTAX  INTEGER {
                            forward(1),
@@ -2423,7 +2423,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                       rate limiting.  For more detail, please
                       see the ebrRateLimiting group."
         ::= { ebrTwoEnetProtoEntry 2 }
- 
+
     ebrTwoSapProtoTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EbrTwoSapProtoEntry
         ACCESS  not-accessible
@@ -2432,7 +2432,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 802.2 SAPs in the DSAP field for 2-port bridges."
         ::= { ebrTwoProtoFilt 5 }
- 
+
     ebrTwoSapProtoEntry OBJECT-TYPE
         SYNTAX  EbrTwoSapProtoEntry
         ACCESS  not-accessible
@@ -2469,7 +2469,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The 802.2 DSAP in a frame to which this entry's
                 filtering information applies."
         ::= { ebrTwoSapProtoEntry 2 }
- 
+
     ebrTwoSapStatus OBJECT-TYPE
         SYNTAX  INTEGER {
                            forward(1),
@@ -2498,7 +2498,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                       rate limiting.  For more detail, please
                       see the ebrRateLimiting group."
         ::= { ebrTwoSapProtoEntry 3 }
- 
+
     ebrTwoSnapProtoTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EbrTwoSnapProtoEntry
         ACCESS  not-accessible
@@ -2507,7 +2507,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 5-byte SNAP PIDs for 2-port bridges."
         ::= { ebrTwoProtoFilt 6 }
- 
+
     ebrTwoSnapProtoEntry OBJECT-TYPE
         SYNTAX  EbrTwoSnapProtoEntry
         ACCESS  not-accessible
@@ -2544,7 +2544,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The SNAP PID in an 802 frame to which this entry's
                 filtering information applies."
         ::= { ebrTwoSnapProtoEntry 2 }
- 
+
     ebrTwoSnapStatus OBJECT-TYPE
         SYNTAX  INTEGER {
                            forward(1),
@@ -2572,11 +2572,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                       rate limiting.  For more detail, please
                       see the ebrRateLimiting group."
         ::= { ebrTwoSnapProtoEntry 3 }
- 
+
 
 
     --  Protocol Database for multi-port bridges
- 
+
     ebrMultiEnetProtoTable OBJECT-TYPE
         SYNTAX  SEQUENCE OF EbrMultiEnetProtoEntry
         ACCESS  not-accessible
@@ -2585,7 +2585,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 Ethernet protocol types for multi-port bridges."
         ::= { ebrMultiProtoFilt 1 }
- 
+
     ebrMultiEnetProtoEntry OBJECT-TYPE
         SYNTAX  EbrMultiEnetProtoEntry
         ACCESS  not-accessible
@@ -2616,7 +2616,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The protocol type in a frame to which this entry's
                 filtering information applies."
         ::= { ebrMultiEnetProtoEntry 1 }
- 
+
     ebrMultiEnetReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2627,7 +2627,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 of zero indicates that this entry applies on all ports of
                 the bridge."
         ::= { ebrMultiEnetProtoEntry 2 }
- 
+
     ebrMultiEnetAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-write
@@ -2689,7 +2689,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 802.2 SAPs in the DSAP field for multi-port bridges."
         ::= { ebrMultiProtoFilt 2 }
- 
+
     ebrMultiSapProtoEntry OBJECT-TYPE
         SYNTAX  EbrMultiSapProtoEntry
         ACCESS  not-accessible
@@ -2720,7 +2720,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The 802.2 DSAP in a frame to which this entry's
                 filtering information applies."
         ::= { ebrMultiSapProtoEntry 1 }
- 
+
     ebrMultiSapReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2731,7 +2731,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 of zero indicates that this entry applies on all ports of
                 the bridge."
         ::= { ebrMultiSapProtoEntry 2 }
- 
+
     ebrMultiSapAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-write
@@ -2793,7 +2793,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 5-byte SNAP PIDs for multi-port bridges."
         ::= { ebrMultiProtoFilt 3 }
- 
+
     ebrMultiSnapProtoEntry OBJECT-TYPE
         SYNTAX  EbrMultiSnapProtoEntry
         ACCESS  not-accessible
@@ -2824,7 +2824,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The SNAP PID in an 802 frame to which this entry's
                 filtering information applies."
         ::= { ebrMultiSnapProtoEntry 1 }
- 
+
     ebrMultiSnapReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -2835,7 +2835,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 of zero indicates that this entry applies on all ports of
                 the bridge."
         ::= { ebrMultiSnapProtoEntry 2 }
- 
+
     ebrMultiSnapAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING
         ACCESS  read-write
@@ -2970,7 +2970,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-               "Action taken by the bridge on 802.2 DSAPs other 
+               "Action taken by the bridge on 802.2 DSAPs other
                than those specified in the ebrMultiSapProtoTable."
         ::= { ebrMultiSwEntry 4 }
 
@@ -2982,7 +2982,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-               "Action taken by the bridge on the 5-byte SNAP PIDs other 
+               "Action taken by the bridge on the 5-byte SNAP PIDs other
                than those specified in the ebrMultiSnapProtoTable."
         ::= { ebrMultiSwEntry 5 }
 
@@ -3159,7 +3159,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
     --
     -- eauth   - groups in the SNMP Authentication module
     --
-    
+
     eauth1            OBJECT IDENTIFIER ::= { eauth 1 }
 
 
@@ -3578,7 +3578,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 source address, protocol, and default filtering specifications
                 are combined to determine whether the packet is forwarded.
 
-                If the ebrNportMatrixFppnValue is changed, all filters using 
+                If the ebrNportMatrixFppnValue is changed, all filters using
                 it are immediately updated.
 
                 Managers may not specify both ebrNportMatrixValue and
@@ -3618,9 +3618,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 likes, as long as it is a unique ebrNportSapName.
 
                 The combination of ebrNportSapNameSap and ebrNportSapMatrixName
-                is unique within this table.  Insertions of new names for 
+                is unique within this table.  Insertions of new names for
                 pre-existing combinations will be denied.
-                
+
                 ebrNportSapName is present and is the index to give a mnemonic
                 handle on the combination of SAP and matrix for purposes of
                 discussion and of access through the network management station
@@ -3683,7 +3683,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 Setting this object will cause a side effect on the
                 ebrNportSapFilterCharacteristicsTable entry for this SAP.  It
                 is here to group information for window-based forms.  Setting
-                this object will also cause a side effect on other entries in 
+                this object will also cause a side effect on other entries in
                 this table with the same SAP value.
                 "
         ::= { ebrNportSapNameEntry 4 }
@@ -3811,7 +3811,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 entries in this table with the same protocol value.
                 "
         ::= { ebrNportSnapNameEntry 4 }
-        
+
     ebrNportSnapNameStatus OBJECT-TYPE
         SYNTAX  INTEGER {
 
@@ -3929,11 +3929,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 Setting this object will side effect the
                 ebrNportStaticDAFilterCharacteristicsTable entry for this
                 address.  It is here to group information for window-based
-                forms.  Setting this object will also cause a side effect 
+                forms.  Setting this object will also cause a side effect
                 on other entries in this table with the same address.
                 "
         ::= { ebrNportDANameEntry 4 }
-        
+
     ebrNportDANameStatus OBJECT-TYPE
         SYNTAX  INTEGER {
 
@@ -3948,7 +3948,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "
 
-                other(1) - This entry is currently in use, but the 
+                other(1) - This entry is currently in use, but the
                         conditions under which it will remain so are different
                         from each of the following values.  Like other uses
                         of 'other' in MIBs, this value may not be assigned to
@@ -4106,7 +4106,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 Setting this object will side effect the
                 ebrNportStaticSAFilterCharacteristicsTable entry for this
                 address.  It is here to group information for window-based
-                forms.  Setting this object will also cause a side effect 
+                forms.  Setting this object will also cause a side effect
                 on other entries in this table with the same address.
                 "
         ::= { ebrNportSANameEntry 4 }
@@ -4125,7 +4125,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "
 
-                other(1) - This entry is currently in use, but the 
+                other(1) - This entry is currently in use, but the
                         conditions under which it will remain so are different
                         from each of the following values.  Like other uses
                         of 'other' in MIBs, this value may not be assigned to
@@ -4314,8 +4314,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 front of the card.
 
                 To avoid the syntactic ambiguity, the slot number must take
-                two characters.  For example, front panel port number 3.1 
-                must be typed by 03.1.   0.0 is treated as in other tables, 
+                two characters.  For example, front panel port number 3.1
+                must be typed by 03.1.   0.0 is treated as in other tables,
                 and is short-hand for all rows not previously mentioned."
         ::= { ebrNportMatrixFppnRowEntry 2 }
 
@@ -4390,7 +4390,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 source address, protocol, and default filtering specifications
                 are combined to determine whether the packet is forwarded.
                 Unspecified rows are set to one's, which means that the
-                corresponding input ports can communicate with every 
+                corresponding input ports can communicate with every
                 output port.
                 "
         ::= { filterByReferencedExpression 6 }
@@ -4431,7 +4431,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 source address, protocol, and default filtering specifications
                 are combined to determine whether the packet is forwarded.
                 Unspecified rows are set to one's, which means that the
-                corresponding input ports can communicate with every 
+                corresponding input ports can communicate with every
                 output port.
                 "
         ::= { filterByReferencedExpression 9 }
@@ -4445,8 +4445,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 matrix is set to the matrix if and only if the matrix
                 exists.
 
-                Unspecified rows in the matrix are set to one's, which means 
-                that the corresponding input ports can communicate with every 
+                Unspecified rows in the matrix are set to one's, which means
+                that the corresponding input ports can communicate with every
                 output port.
                 "
         ::= { filterByReferencedExpression 12 }
@@ -4461,7 +4461,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { filterByReferencedExpression 13 }
 
     ebrNportDefaultMatrixRowEntry OBJECT-TYPE
-        SYNTAX  EbrNportDefaultMatrixRowEntry 
+        SYNTAX  EbrNportDefaultMatrixRowEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION "
@@ -4489,7 +4489,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The set of ports to which frames received from a specific 
+                "The set of ports to which frames received from a specific
                 port are allowed to be forwarded by default.
 
                 Each octet of this object specifies a set of eight ports,
@@ -4538,8 +4538,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 with destination and source addresses that have been specified
                 via management.
 
-                A comma-separated list of front panel ports, with hyphens used 
-                to abbreviate ranges, is supported.  
+                A comma-separated list of front panel ports, with hyphens used
+                to abbreviate ranges, is supported.
 
                 Front panel port numbers are of the form (slot.connector),
                 where slot is the slot number the module is plugged into,
@@ -4556,7 +4556,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A flood matrix is expressed using a shorthand that says
                 what input ports can be flooded to what output ports.
                 Unspecified rows are set to one's, which means that the
-                corresponding input ports can be flooded to every 
+                corresponding input ports can be flooded to every
                 output port.
                 "
         ::= { filterByReferencedExpression 14 }
@@ -4570,7 +4570,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 what input front panel ports can be flooded to what output
                 front panel ports.
                 Unspecified rows are set to one's, which means that the
-                corresponding input ports can be flooded to every 
+                corresponding input ports can be flooded to every
                 output port.
                 "
         ::= { filterByReferencedExpression 15 }
@@ -4583,8 +4583,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "When a matrix name is written to this object, the flood
                 matrix is set to the matrix if and only if the matrix
                 exists.
-                Unspecified rows in the matrix are set to one's, which means 
-                that the corresponding input ports can be flooded to every 
+                Unspecified rows in the matrix are set to one's, which means
+                that the corresponding input ports can be flooded to every
                 output port.
                 "
         ::= { filterByReferencedExpression 16 }
@@ -4599,7 +4599,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { filterByReferencedExpression 17 }
 
     ebrNportFloodMatrixRowEntry OBJECT-TYPE
-        SYNTAX  EbrNportFloodMatrixRowEntry 
+        SYNTAX  EbrNportFloodMatrixRowEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION "
@@ -4627,7 +4627,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The set of ports to which frames received from a specific 
+                "The set of ports to which frames received from a specific
                 port are allowed to be flooded by default.
                 "
         ::= { ebrNportFloodMatrixRowEntry 2 }
@@ -4640,7 +4640,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
     filterByBitmapValue OBJECT IDENTIFIER ::= { gigaBridge 2 }
 
     --  Static Database for N port bridges
- 
+
     -- See ebrNportStaticDAFilterCharacteristicsTable for how to delete
     -- (c.f., overwrite portions of) filter matrices.
 
@@ -4654,7 +4654,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 for N-port bridges.  In RFC 1286 lingo, static objects are
                 those objects which have been specified by network management."
         ::= { filterByBitmapValue 5 }
- 
+
     ebrNportStaticDAEntry OBJECT-TYPE
         SYNTAX  EbrNportStaticDAEntry
         ACCESS  not-accessible
@@ -4665,7 +4665,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 information."
         INDEX   { ebrNportDAAddress, ebrNportDAReceivePort }
         ::= { ebrNportStaticDATable 1 }
- 
+
     EbrNportStaticDAEntry ::=
         SEQUENCE {
             ebrNportDAAddress
@@ -4675,7 +4675,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportDAAllowedToGoTo
                 OCTET STRING
         }
- 
+
     ebrNportDAAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -4684,7 +4684,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The destination MAC Address in a frame to
                  which this entry's filtering information applies."
         ::= { ebrNportStaticDAEntry 1 }
- 
+
      ebrNportDAReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -4696,7 +4696,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 A value of zero indicates that this entry applies on all ports
                 of the bridge for which there is no other applicable entry."
         ::= { ebrNportStaticDAEntry 2 }
- 
+
 
      ebrNportDAAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (8))
@@ -4756,7 +4756,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  within N-port bridges. Static objects are those objects which
                  have been specified by network management."
         ::= { filterByBitmapValue 6 }
- 
+
     ebrNportStaticDAFilterCharacteristicsEntry OBJECT-TYPE
         SYNTAX  EbrNportStaticDAFilterCharacteristicsEntry
         ACCESS  not-accessible
@@ -4766,7 +4766,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  filter's usage within N-port bridges."
         INDEX   { ebrNportDestinationAddress }
         ::= { ebrNportStaticDAFilterCharacteristicsTable 1 }
- 
+
     EbrNportStaticDAFilterCharacteristicsEntry ::=
         SEQUENCE {
             ebrNportDestinationAddress
@@ -4776,7 +4776,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportDAStatus
                 INTEGER
         }
- 
+
     ebrNportDestinationAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -4786,7 +4786,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  information applies.  The value of this object is the same
                  as ebrNportDAAddress."
         ::= { ebrNportStaticDAFilterCharacteristicsEntry 1 }
- 
+
 
     -- Implementations may require a filter matrix to already exist, or to be
     -- simultaneously specified, when writing Disp/Status values.
@@ -4803,7 +4803,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object specifies how to interpret the ebrNportPortNum and
                  ebrNportDAAllowedToGoTo objects.
- 
+
 
                   filter(1) : The filtering for this address is specified by
                         the filter matrix.
@@ -4840,7 +4840,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "
 
-                other(1) - This entry is currently in use, but the 
+                other(1) - This entry is currently in use, but the
                         conditions under which it will remain so are different
                         from each of the following values.  Like other uses
                         of 'other' in MIBs, this value may not be assigned to
@@ -4895,7 +4895,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains resource information about unicast and
                  multicast destination addresses for N-port bridges."
         ::= { serviceClassAssignments 3 }
- 
+
     ebrNportDASvcEntry OBJECT-TYPE
         SYNTAX  EbrNportDASvcEntry
         ACCESS  not-accessible
@@ -4905,7 +4905,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 for N-port bridges."
         INDEX   { ebrNportSvcAddress }
         ::= { ebrNportDASvcTable 1 }
- 
+
     EbrNportDASvcEntry ::=
         SEQUENCE {
             ebrNportSvcAddress
@@ -4915,7 +4915,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportSvcStatus
                 INTEGER
         }
- 
+
     ebrNportSvcAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -4984,7 +4984,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  port on which unicast or multicast addresses reside
                  on N-port bridges."
         ::= { gigaBridge 3 }
- 
+
     ebrNportPortNumEntry OBJECT-TYPE
         SYNTAX  EbrNportPortNumEntry
         ACCESS  not-accessible
@@ -4993,7 +4993,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "Information about a specific MAC address."
         INDEX   { ebrNportPortNumAddress }
         ::= { ebrNportPortNumTable 1 }
- 
+
     EbrNportPortNumEntry ::=
         SEQUENCE {
             ebrNportPortNumAddress
@@ -5005,7 +5005,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportFppnPortNum
                 DisplayString
         }
- 
+
     ebrNportPortNumAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -5061,12 +5061,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The Front Panel Port Number to which this address will be
                 translated (to which frames destined for the address
                 will be forwarded).  There are some filtering nuances
-                for addresses with specified front panel port numbers 
-                which are determined by the source address and destination 
+                for addresses with specified front panel port numbers
+                which are determined by the source address and destination
                 address filter disposition characteristics.
 
                 Managers may not specify both ebrNportPortNum and
-                ebrNportFppnPortNum at the same time to set an entry 
+                ebrNportFppnPortNum at the same time to set an entry
                 in this table."
 
         ::= { ebrNportPortNumEntry 4 }
@@ -5083,7 +5083,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  N-port bridges. Static objects are those objects which
                  have been specified by network management."
         ::= { filterByBitmapValue 7 }
- 
+
     ebrNportStaticSAEntry OBJECT-TYPE
         SYNTAX  EbrNportStaticSAEntry
         ACCESS  not-accessible
@@ -5094,7 +5094,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  information."
         INDEX   { ebrNportSAAddress, ebrNportSAReceivePort }
         ::= { ebrNportStaticSATable 1 }
- 
+
     EbrNportStaticSAEntry ::=
         SEQUENCE {
             ebrNportSAAddress
@@ -5104,7 +5104,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportSAAllowedToGoTo
                 OCTET STRING
         }
- 
+
     ebrNportSAAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -5126,7 +5126,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 ports of the bridge for which there is no other applicable
                 entry."
         ::= { ebrNportStaticSAEntry 2 }
- 
+
 
    ebrNportSAAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (8))
@@ -5157,7 +5157,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         alwaysForward                   0
                 "
         ::= { ebrNportStaticSAEntry 3 }
- 
+
 
     -- The filtering information is modelled, and implemented, using filter
     -- matrices.  The use (disposition) and permanence (status) of the filtering
@@ -5185,7 +5185,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  address filters (for unicast and multicast addresses) are
                  used within N-port bridges."
         ::= { filterByBitmapValue 8 }
- 
+
     ebrNportStaticSAFilterCharacteristicsEntry OBJECT-TYPE
         SYNTAX  EbrNportStaticSAFilterCharacteristicsEntry
         ACCESS  not-accessible
@@ -5194,7 +5194,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "Static source address filter usage for N-port bridges."
         INDEX   { ebrNportSourceAddress }
         ::= { ebrNportStaticSAFilterCharacteristicsTable 1 }
- 
+
     EbrNportStaticSAFilterCharacteristicsEntry ::=
         SEQUENCE {
             ebrNportSourceAddress
@@ -5204,7 +5204,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportSAStatus
                 INTEGER
         }
- 
+
     ebrNportSourceAddress OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (6))
         ACCESS  read-write
@@ -5234,7 +5234,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object specifies how to interpret the ebrNportPortNum and
                  and the ebrNportSAAllowedToGoTo objects.
- 
+
 
                   portMask(1) : The static filtering for this address
                       is specified by the filter matrix.
@@ -5286,7 +5286,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "
 
-                other(1) - This entry is currently in use, but the 
+                other(1) - This entry is currently in use, but the
                         conditions under which it will remain so are different
                         from each of the following values.  Like other uses
                         of 'other' in MIBs, this value may not be assigned to
@@ -5330,7 +5330,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
 
     --  Protocol Database for N-port bridges
- 
+
     -- See ebrNportSapFilterCharacteristicsTable for how to delete (c.f.,
     -- overwrite portions of) filter matrices.
 
@@ -5342,7 +5342,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains filtering information about
                 802.2 SAPs in the DSAP field for N-port bridges."
         ::= { filterByBitmapValue 1 }
- 
+
     ebrNportSapProtoEntry OBJECT-TYPE
         SYNTAX  EbrNportSapProtoEntry
         ACCESS  not-accessible
@@ -5370,7 +5370,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The 802.2 DSAP in a frame to which this entry's
                 filtering information applies."
         ::= { ebrNportSapProtoEntry 1 }
- 
+
     ebrNportSapReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -5383,7 +5383,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 the bridge for which there is no other applicable entry."
 
         ::= { ebrNportSapProtoEntry 2 }
- 
+
 
     ebrNportSapAllowedToGoTo OBJECT-TYPE
         SYNTAX  OCTET STRING (SIZE (8))
@@ -5432,7 +5432,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains resource information (e.g., queuing)
                 about 802.2 SAPs in the DSAP field for N-port bridges."
         ::= { serviceClassAssignments 1 }
- 
+
     ebrNportSapSvcEntry OBJECT-TYPE
         SYNTAX  EbrNportSapSvcEntry
         ACCESS  not-accessible
@@ -5450,7 +5450,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             ebrNportSapSvc
                 INTEGER,
             ebrNportSapSvcStatus
-                INTEGER, 
+                INTEGER,
             ebrNportSapSinglePath
                 DisplayString
 
@@ -5560,7 +5560,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains information about how 802.2 DSAP
                 filters are used within N-port bridges."
         ::= { filterByBitmapValue 2 }
- 
+
     ebrNportSapFilterCharacteristicsEntry OBJECT-TYPE
         SYNTAX  EbrNportSapFilterCharacteristicsEntry
         ACCESS  not-accessible
@@ -5688,7 +5688,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "The SNAP Protocol ID (PID) in an 802 frame to which this
                 entry's filtering information applies."
         ::= { ebrNportSnapProtoEntry 1 }
- 
+
     ebrNportSnapReceivePort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
@@ -5749,7 +5749,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains resource information (e.g., queuing)
                 about 5-byte SNAP Protocol IDs (PIDs) for N-port bridges."
         ::= { serviceClassAssignments 2 }
- 
+
     ebrNportSnapSvcEntry OBJECT-TYPE
         SYNTAX  EbrNportSnapSvcEntry
         ACCESS  not-accessible
@@ -5828,20 +5828,20 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                  "
-                 The ebrNportSnapSinglePath object is used to set the 
-                 single path ports for a ebrNportSnapSvcSnapValue. 
+                 The ebrNportSnapSinglePath object is used to set the
+                 single path ports for a ebrNportSnapSvcSnapValue.
                  The default is to not use the default (single path)
                  service class.
 
                  ebrNportSnapSinglePath is expressed using a shorthand
                  that specifies which physical ports are to be set to the
-                 default (single path) service class. An example of a specification 
+                 default (single path) service class. An example of a specification
                  would be :
                                 (1,6-9,21)
 
                  where commas separate physical ports and hyphens are short-hand
                  for specifying a range of numbers. This example would assign
-                 physical ports 1,6,7,8,9, and 21 to use the default (single path) 
+                 physical ports 1,6,7,8,9, and 21 to use the default (single path)
                  service class, for the given ebrNportSnapSvcSnapValue.
 
                  Physical port numbers are specified in decimal.
@@ -5877,7 +5877,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "A table that contains information about how SNAP Protocol ID
                 (PID) filters are used within N-port bridges."
         ::= { filterByBitmapValue 4 }
- 
+
     ebrNportSnapFilterCharacteristicsEntry OBJECT-TYPE
         SYNTAX  EbrNportSnapFilterCharacteristicsEntry
         ACCESS  not-accessible
@@ -5920,7 +5920,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "This object specifies how to interpret the
                 ebrNportSnapAllowedToGoTo values for the specified SNAP PID.
- 
+
 
                   filter(1) : The filtering for this Protocol ID
                       is specified by the filter matrix.
@@ -6219,7 +6219,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 Cut-through is normally enabled."
         ::= { cutThroughFppnEntry 3 }
 
--- the gigaBox group 
+-- the gigaBox group
 
 -- subgroups under the gigaBox group
 
@@ -6250,9 +6250,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
-                        "The number of unused bytes of management 
-                         memory available on the clock card. The 
-                         management memory is used for storing 
+                        "The number of unused bytes of management
+                         memory available on the clock card. The
+                         management memory is used for storing
                          management parameters."
         ::= { clockCard 1 }
 
@@ -6274,7 +6274,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         completed.
 
                         Setting this variable to rewrite(2) will cause the SCP
-                        to attempt to rewrite the management Memory on the 
+                        to attempt to rewrite the management Memory on the
                         clock-card.  Attempts to set this variable to all other
                         values result in an error.
 
@@ -6312,7 +6312,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 ACCESS  not-accessible
                 STATUS  mandatory
                 DESCRIPTION
-                        "A record of management memory." 
+                        "A record of management memory."
                 INDEX   { mgmtMemoryIndex }
         ::= { mgmtMemoryTable 1 }
 
@@ -6329,12 +6329,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "Index of 80 byte binary records"
         ::= { mgmtMemoryEntry 1 }
 
-        mgmtMemoryData OBJECT-TYPE 
-                SYNTAX  OCTET STRING (SIZE(1..80)) 
-                ACCESS  read-write 
-                STATUS  mandatory 
-                DESCRIPTION 
-                        " 
+        mgmtMemoryData OBJECT-TYPE
+                SYNTAX  OCTET STRING (SIZE(1..80))
+                ACCESS  read-write
+                STATUS  mandatory
+                DESCRIPTION
+                        "
                         SNMP object mgmtMemoryData allows the user to read
                         management memory and, with certain restrictions,
                         to write it as well.  In particular, this object
@@ -6481,9 +6481,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "The value of this variable determines how
                         the SCP responds to a condition of too high
                         or too low cabinet temperature, or both both
-                        fans inoperative. If the value is heedWarning(1) 
-                        the system will be shut down when the temperature 
-                        goes outside the designed limits or both fans are 
+                        fans inoperative. If the value is heedWarning(1)
+                        the system will be shut down when the temperature
+                        goes outside the designed limits or both fans are
                         inoperative. If the value is ignoreWarning(2),
                         the system will continue to operate when either
                         of these conditions occur.
@@ -6491,13 +6491,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
                         Setting this variable to ignoreWarning(2) allows
                         the manager to cause a system that is too hot or
-                        too cold to continue to run. This variable will 
+                        too cold to continue to run. This variable will
                         also allow both fans to be inoperative and still
-                        allow the system to continue to run. Managers 
-                        should note that doing so may be detrimental to 
-                        the equipment. 
+                        allow the system to continue to run. Managers
+                        should note that doing so may be detrimental to
+                        the equipment.
 
-                        This object has a default value of heedWarning(1)." 
+                        This object has a default value of heedWarning(1)."
         ::= { psc 8 }
 
 
@@ -6542,7 +6542,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { powerSupply 2 }
 
         rightPowerOutputPower OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
@@ -6588,7 +6588,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { powerSupply 5 }
 
         leftPowerOutputPower OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION
@@ -6611,7 +6611,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "Identifies the slot the Switch Control
-                         Processor (SCP) occupies. A value of 0 will 
+                         Processor (SCP) occupies. A value of 0 will
                          be returned if an SCP has not been chosen."
         ::= { slot 2 }
 
@@ -6640,7 +6640,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 slotCardStatus          INTEGER,
                 slotCardType            INTEGER,
                 slotCardHwRev           DisplayString,
-                slotCardFwRev           DisplayString 
+                slotCardFwRev           DisplayString
         }
 
         slotIndex OBJECT-TYPE
@@ -6666,7 +6666,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "The status of the card. If the value is
-                        read as notPresent(1), then the entire entry 
+                        read as notPresent(1), then the entire entry
                         should be considered invalid.
 
                         Writing a value of powerDown(2) will cause
@@ -6690,7 +6690,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 SYNTAX  INTEGER {
                            other(1), -- none of the following
                            fgl2(2),
-                           cbs36(3), 
+                           cbs36(3),
                            switchEngine(4),
                            clockCard(5),
                            agl-2(6),
@@ -6779,8 +6779,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         " The speed of the fans.
                           Set this variable to maximum(1) for maximum
-                          cooling where noise does not matter. 
-                          Set this variable to normal(2) to cause 
+                          cooling where noise does not matter.
+                          Set this variable to normal(2) to cause
                           fan speeds to be under temperature control."
         ::= { fan 1 }
 
@@ -6891,7 +6891,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         ::= { battery 4 }
 
 -- The fppn subgroup
-        
+
         -- Make the table read-write if ever introduce card types with more
         -- datalinks than switch ports, to allow new cards to be added while
         -- preserving utility of management memory contents.
@@ -6961,7 +6961,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
 
 -- The lineCard subgroup
-        
+
 
         mPortTable OBJECT-TYPE
                 SYNTAX  SEQUENCE OF MPortEntry
@@ -7057,7 +7057,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "The number of LEDs on this module."
             ::= { ledTableEntry 2 }
-                    
+
         ledSlotTable OBJECT-TYPE
             SYNTAX  SEQUENCE OF LedEntry
             ACCESS  not-accessible
@@ -7065,7 +7065,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "A list of LED entries, one for each module LED."
             ::= { led 2 }
-            
+
 
         ledEntry OBJECT-TYPE
             SYNTAX  LedEntry
@@ -7098,7 +7098,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "The led index within the slot given by slotIndex."
             ::= { ledEntry 2 }
-                    
+
         ledDescr OBJECT-TYPE
             SYNTAX  DisplayString (SIZE(0..80))
             ACCESS  read-only
@@ -7106,12 +7106,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "A textual description of the information which the LED is
                  meant to convey.  i.e.:
-                    
+
                    +5 Volt Power, DC Okay
                    ATM port activity.
                    Diagnostic status."
             ::= { ledEntry 3 }
-                    
+
         ledProgram OBJECT-TYPE
             SYNTAX  OCTET STRING (SIZE(0..48))
             ACCESS  read-only
@@ -7124,13 +7124,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  indicates the color of the LED, and the value of the
                  second octet of the pair indicates the duration in which
                  that color will be present.
-        
+
                  +----------+----------+  --/ /--  +----------+----------+
                  |   Color  | Duration |           |   Color  | Duration |
                  +----------+----------+  --/ /--  +----------+----------+
-                    
+
                  The 'color' octet may have one of the following values:
-        
+
                     0 - off
                     1 - other
                     2 - red
@@ -7141,39 +7141,39 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                     7 - yellow-blinking
                     8 - blue-blinking
                     9 - green-blinking
-                    
+
                  The value 'off' indicates that the LED is off.
-                    
+
                  The value 'other' indicates a color not covered by any
                  others in the list.
-        
+
                  The value of the second octet in each pair indicates the
                  duration in which that color will be present.  A value
                  of zero indicates that the LED is off.  A value of 0xff
                  indicates that the LED is always on.  Values in between
                  0 and 0xff indicate the duration in 10 ms ticks.
-        
+
                  A zero length string may be returned if the LED is 'not
                  present'.  This indicates that the LED is currently not
                  visible.
-                    
+
                  Activity LEDs are a special case.  Activity LEDs are
                  defined as LEDs which blink whenever data is received on
                  the line.  They are typically on solid under heavy
                  activity.  Since these LEDs can change rapidly, the
                  following rules apply:
-                    
+
                    o  The initial state of activity LEDs is off.
                    o  If the line shows activity any time in a 10 second
                       period, then the LED is shown as on.
                    o  If the line shown inactivity any time in a 10 second
                       period, then the LED is shown as off.
-        
+
                 See the 'pcomLedProgram' object in the DECHUB900-COMMON MIB
                 for examples."
-        
+
             ::= { ledEntry 4 }
-            
+
 
 -- the gigaBridge group
 
@@ -7240,7 +7240,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION 
+                DESCRIPTION
                         "The quota qualifier describes an incoming or outgoing
                         port.  It is a linear index to the port starting from
                         1.  If n is the quota qualifier for the first port of
@@ -7256,7 +7256,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION 
+                DESCRIPTION
                         "The quota class describes the type of packet.
                         Four packet types are classified as follows:
                         1 - Unknown Destination Packets,
@@ -7284,7 +7284,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION 
+                DESCRIPTION
                         "This object is the count of flooded packets.
                         It does not include filtered packets or packets
                         discarded due to buffer limitations. Each packet is
@@ -7441,7 +7441,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION "This object is the IP address of the host
-                        storing the file containing the software image. 
+                        storing the file containing the software image.
 
                         The object may not be set until the last requested
                         transfer succeeds or fails. So, before setting
@@ -7458,7 +7458,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         storing the file containing the software image.
 
                         The object may not be set until the last requested
-                        transfer succeeds or fails. So, before setting this 
+                        transfer succeeds or fails. So, before setting this
                         object, the user should verify that transferStatus
                         does not have the value 'requested' or 'inProgress'.
 
@@ -7478,12 +7478,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         the software image.
 
                         The object may not be set until the last requested
-                        transfer succeeds or fails. Before setting this 
+                        transfer succeeds or fails. Before setting this
                         object, the user should verify that transferStatus
                         does not have the value 'requested' or 'inProgress'.
 
                         Further, this object may not be set until the last
-                        requested copy succeeds or fails. Before setting 
+                        requested copy succeeds or fails. Before setting
                         this object, the user should verify that copyStatus
                         does not have the value 'requested' or 'inProgress'."
         ::= { doTransfer 3 }
@@ -7508,12 +7508,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         If transferFileName is non-empty, and
                         mopDestination is non-zero, setting this
                         object to doMOP(2) will cause a MOP
-                        'load' to be attempted. 
+                        'load' to be attempted.
 
                         If transferFileName is non-empty, and
                         tftpDestination is non-zero, setting this
                         object to doTFTP(3) will cause a TFTP
-                        'Get' to be attempted. 
+                        'Get' to be attempted.
 
                         This object may not be set until the last
                         requested transfer succeeds or fails, and the
@@ -7607,7 +7607,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         copyType has a value other than
                         'none', and transferStatus has the value
                         'success', a software upgrade of the card is
-                        attempted. 
+                        attempted.
 
                         The handler double-checks that the slot requires
                         software of the expected type, and provides
@@ -7684,7 +7684,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "The time, in seconds, between ARP requests that
-                        are used to verify or to discover an IP to LAN address 
+                        are used to verify or to discover an IP to LAN address
                         translation."
         ::= { arpTimingMechanism 2 }
 
@@ -7742,7 +7742,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         arpBroadcastReceived    Counter,
                         arpRepliesTransmitted   Counter,
                         arpFramesFlooded        Counter,
-                        arpFramesDiscarded      Counter 
+                        arpFramesDiscarded      Counter
                 }
 
         arpStatisticalIfIndex   OBJECT-TYPE
@@ -7764,7 +7764,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         Unicast ARP requests received on this port.
                         "
         ::= { arpStatisticalEntry 2 }
-                
+
         arpBroadcastReceived OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
@@ -7773,7 +7773,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         Broadcast ARP requests received on this port.
                         "
         ::= { arpStatisticalEntry 3 }
-                
+
         arpRepliesTransmitted OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
@@ -7782,7 +7782,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         ARP replies transmitted on this port.
                         "
         ::= { arpStatisticalEntry 4 }
-                
+
         arpFramesFlooded OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
@@ -7792,7 +7792,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         flooding while acting as an ARP agent.
                         "
         ::= { arpStatisticalEntry 5 }
-                
+
         arpFramesDiscarded OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
@@ -7828,7 +7828,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 SYNTAX  SEQUENCE OF GigaStpPortEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION 
+                DESCRIPTION
                         " A list of  gigaStp entries "
         ::= { gigaStp 1 }
 
@@ -7868,8 +7868,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                    "When true, this interface will be enabled to operate
                     as part of the spanning tree. When trueNoDelay, this
-                    interface will be enabled to operate as part of the 
-                    spanning tree but will have a pre-forwarding delay 
+                    interface will be enabled to operate as part of the
+                    spanning tree but will have a pre-forwarding delay
                     of zero."
             ::= { gigaStpPortEntry 2 }
 
@@ -7906,15 +7906,15 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                    It should be set to no if the total number of learned addresses
                    is not greater than the number supported by the linecards and if
                    it is desired to avoid flooding of packets to already-learned
-                   addresses. 
-                   " 
+                   addresses.
+                   "
             ::= { gigaStp 2 }
 
 
         translationTableParams  OBJECT IDENTIFIER ::= { gigaBridge 9 }
 
         ttSize OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
                 DESCRIPTION "
@@ -7925,7 +7925,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
 
         xacInDiscardCounters    OBJECT IDENTIFIER ::= { gigaBridge 10 }
-        
+
         xacInDiscardUnknownDAUCast   OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
@@ -7992,14 +7992,14 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                    suffixes available for the Gigaswitch/Fddi, LDx and LBDx.
                    LDx references learning domains, LD1-LD8. LBDx references
                    logical bridge domains, LBD1- LBD8. Both uppercase and
-                   lowercase are valid. The default communityStringDelimiter 
+                   lowercase are valid. The default communityStringDelimiter
                    is the ':'.
 
                         ex.     public:LD3,  use learning domain 4 if required
                                 public:LBD4, use logical bridge domain 4 if
                                              required
                                 public,      use default if required.
-                   
+
                    The set of Valid communityStringDelimiter is the set of all
                    printable characters minus all the alphas and all the
                    digits.
@@ -8010,7 +8010,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                    in that LBD is used. In both cases if there are no members
                    in the LD/LBD then the default is used. The default LD is
                    LD1 and the default LBD is LBD1.
-                   "                   
+                   "
 
             ::= { communityString 1 }
 
@@ -8018,14 +8018,14 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
     ipSwitching                 OBJECT IDENTIFIER ::= { gigaIP 5 }
 
-    ipSwitchEnable OBJECT-TYPE 
+    ipSwitchEnable OBJECT-TYPE
         SYNTAX  INTEGER {
                             true(1),
                             false(2)
                         }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 If true then switched IP filtering is enabled. If
                 false switched IP filtering is disabled.
@@ -8036,11 +8036,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  SEQUENCE OF IpSwitchPortsEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 This table allows the user to assign an address
-                range to logical bridge ports so that all traffic 
-                destined to addresses within that range will go out 
+                range to logical bridge ports so that all traffic
+                destined to addresses within that range will go out
                 those ports.
                 "
         ::= { ipSwitching 2 }
@@ -8049,9 +8049,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  IpSwitchPortsEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
-                An entry that stores information about a switched 
+                An entry that stores information about a switched
                 IP filtering range.
                 "
         INDEX { ipRangeStartAddr , ipRangeEndAddr }
@@ -8070,12 +8070,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 An index for the ipSwitchPortsTable. This is the
                 start address of the range of addresses for which
                 the  the ipStaticPorts and ipDynamicPorts are
-                valid. 
+                valid.
                 "
         ::= { ipSwitchPortsEntry 1 }
 
@@ -8083,11 +8083,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 An index for the ipSwitchPortsTable. This is the
-                end address of the range of addresses for which the 
-                the ipStaticPorts and ipDynamicPorts are valid. 
+                end address of the range of addresses for which the
+                the ipStaticPorts and ipDynamicPorts are valid.
                 "
         ::= { ipSwitchPortsEntry 2 }
 
@@ -8095,18 +8095,18 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 The IP address associated with the range, ipRangeStartAddr
                 and ipRangeEndAddr.
                 "
         ::= { ipSwitchPortsEntry 3 }
 
-    ipStaticPorts OBJECT-TYPE 
+    ipStaticPorts OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 ipStaticPorts is the set of logical ports that
                 packets will exit the Gigaswitch when the
@@ -8117,26 +8117,26 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 that specifies which logical ports are assigned
                 to the address range.
 
-                An example of a specification would be 
+                An example of a specification would be
                 (1,6-9,21),
-                where commas separate logical ports and hyphens are 
-                short-hand for specifying a range of numbers. This 
-                example would assign logical ports 1,6,7,8,9, and 21 
+                where commas separate logical ports and hyphens are
+                short-hand for specifying a range of numbers. This
+                example would assign logical ports 1,6,7,8,9, and 21
                 to the specified address/mask.
 
                 Logical port numbers are specified in decimal.
 
-                The ipStaticPorts will read back in a form 
+                The ipStaticPorts will read back in a form
                 equivalent to the form written. It may not read
                 back exactly as written.
                 "
         ::= { ipSwitchPortsEntry 4 }
 
-    ipDynamicPorts OBJECT-TYPE 
+    ipDynamicPorts OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 ipDynamicPorts is the set of logical ports, learned
                 dynamically, that packets will exit the Gigaswitch
@@ -8145,25 +8145,25 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "
         ::= { ipSwitchPortsEntry 5 }
 
-    ipPrimaryPorts OBJECT-TYPE 
+    ipPrimaryPorts OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 ipPrimaryPorts is the set of all logical ports,
                 set by management, that packets will exit the
-                Gigaswitch regardless of the range to which they 
+                Gigaswitch regardless of the range to which they
                 are addressed to.
 
-                The ipPrimaryPorts is expressed using a shorthand that 
+                The ipPrimaryPorts is expressed using a shorthand that
                 specifies the logical ports.
 
                 An example of a specification would be
                 (1,6-9,21)
-                where commas separate logical ports and hyphens are 
-                short-hand for specifying a range of numbers. This 
-                example would assign logical ports 1,6,7,8,9, and 21 
+                where commas separate logical ports and hyphens are
+                short-hand for specifying a range of numbers. This
+                example would assign logical ports 1,6,7,8,9, and 21
                 to the specified address/mask.
 
                 Logical port numbers are specified in decimal.
@@ -8174,15 +8174,15 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "
         ::= { ipSwitching 3 }
 
-    ipDynamicPrimaryPorts OBJECT-TYPE 
+    ipDynamicPrimaryPorts OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                 "
                 ipPrimaryPorts is the set of all logical ports,
                 learned dynamically, that packets will exit the
-                Gigaswitch regardless of the range to which they 
+                Gigaswitch regardless of the range to which they
                 are addressed to.
                 "
         ::= { ipSwitching 4 }
@@ -8206,10 +8206,10 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 --      SYNTAX  SEQUENCE OF IpSwitchAddrQueryEntry
 --      ACCESS  not-accessible
 --      STATUS  mandatory
---      DESCRIPTION 
+--      DESCRIPTION
 --               "
 --               This table allows the user to determine the port(s) that
---               a packet destined to an IP address will exit the 
+--               a packet destined to an IP address will exit the
 --               Gigaswitch through.
 --               "
 --      ::= { ipSwitching 3 }
@@ -8218,9 +8218,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 --      SYNTAX  IpSwitchAddrQueryEntry
 --      ACCESS  not-accessible
 --      STATUS  mandatory
---      DESCRIPTION 
+--      DESCRIPTION
 --               "
---               An entry that stores information about a switched 
+--               An entry that stores information about a switched
 --               IP filetring range.
 --               "
 --      INDEX { ipSwitchAddrQueryAddr }
@@ -8236,19 +8236,19 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 --      SYNTAX  IpAddress
 --      ACCESS  read-only
 --      STATUS  mandatory
---      DESCRIPTION 
+--      DESCRIPTION
 --               "
---               An index for ipSwitchAddrQueryTable. This is the 
+--               An index for ipSwitchAddrQueryTable. This is the
 --               IP address that the user would like to determine
 --               the output ports for.
 --               "
 --      ::= { ipSwitchAddrQueryEntry 1 }
 --
---    ipSwitchAddrQueryPorts OBJECT-TYPE 
+--    ipSwitchAddrQueryPorts OBJECT-TYPE
 --      SYNTAX  DisplayString
 --      ACCESS  read-only
 --      STATUS  mandatory
---      DESCRIPTION 
+--      DESCRIPTION
 --               "
 --               The set of ports that a packet destined to an address,
 --               given by ipSwitchAddrQueryAddr, will exit the Gigaswitch.
@@ -8274,7 +8274,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
 
         --
-        -- This MIB defines the AGL specific objects required 
+        -- This MIB defines the AGL specific objects required
         -- for module operation within the Gigaswitch
         --
 
@@ -8301,8 +8301,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS          mandatory
                 DESCRIPTION
                         "
-                        This table contains the AGL specific interface 
-                        configuration parameters, one entry per ATM 
+                        This table contains the AGL specific interface
+                        configuration parameters, one entry per ATM
                         interface port.
                         "
                 ::= { aglConfig 1 }
@@ -8326,7 +8326,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 aglInterfaceTrafficRateGranularity      INTEGER
                 }
 
-                
+
         aglInterfaceIndex       OBJECT-TYPE
                 SYNTAX          INTEGER
                 ACCESS          read-only
@@ -8334,7 +8334,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         The value of this object identifies the AGL port
-                        interface for which this entry contains management 
+                        interface for which this entry contains management
                         information.
                         "
                 ::= { aglInterfaceConfEntry 1 }
@@ -8350,7 +8350,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS          mandatory
                 DESCRIPTION
                         "
-                        Indicates the type of physical interface used on the 
+                        Indicates the type of physical interface used on the
                         ATM port. Two physical layer types are supported:
                                         1. STS3c/STM1
                                         2. DS3/E3
@@ -8367,10 +8367,10 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         Indicates the granularity in cell/s for assigning
-                        peak, average and minimum guaranteed rates for 
+                        peak, average and minimum guaranteed rates for
                         traffic shaped circuits on the AGL port. This value
                         also represents the minimum rate in cells/s that can
-                        be assigned to a circuit. The rates subscribed to in 
+                        be assigned to a circuit. The rates subscribed to in
                         the aglVCConnectionTable will be set to a multiple
                         of this rate.
                         "
@@ -8390,7 +8390,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS          mandatory
                 DESCRIPTION
                         "
-                        This table contains the AGL specific interface 
+                        This table contains the AGL specific interface
                         configuration parameters for the SONET/SDH physical
                         layer.
                         "
@@ -8422,9 +8422,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS          mandatory
                 DESCRIPTION
                         "
-                        The value of this object identifies the AGL 
+                        The value of this object identifies the AGL
                         port interface for which this entry contains
-                        management information and is the same as 
+                        management information and is the same as
                         aglInterfaceIndex.
                         "
                  ::= { aglInterfaceSonetEntry 1 }
@@ -8439,7 +8439,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         Specifies whether the PHY operates in SONET STS-3c
-                        or SDH STM-1 mode. The following code points are 
+                        or SDH STM-1 mode. The following code points are
                         used:
                                 1       SONET STS-3c
                                 2       SDH STM-1
@@ -8457,11 +8457,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "
                         Specifies whether the PHY operates in loop-timing
                         or local-timing mode. In loop-timing, the recovered
-                        clock from the receive signal is used directly to 
-                        time transmit data. Hence, the PHY is synchronized 
-                        to the far-end transmitter. In local timing, transmit 
-                        data is timed from a local oscillator of frequency 
-                        155.52 MHz (20ppm). The following code points are 
+                        clock from the receive signal is used directly to
+                        time transmit data. Hence, the PHY is synchronized
+                        to the far-end transmitter. In local timing, transmit
+                        data is timed from a local oscillator of frequency
+                        155.52 MHz (20ppm). The following code points are
                         used:
                                 1       loop-timing
                                 2       local-timing
@@ -8558,8 +8558,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         -- Implementation of this group is mandatory
         --
         -- The AglVCConnectionTable allows a network manager to setup
-        -- single-port bidirectional circuits or dual-port bidirectional 
-        -- circuits. A single-port circuit terminates at that port, 
+        -- single-port bidirectional circuits or dual-port bidirectional
+        -- circuits. A single-port circuit terminates at that port,
         -- whereas a dual-port circuit establishes a connection through
         -- the GIGAswitch between the two ports (A and B). If a single-port
         -- connection is to be established, the user simply enters zero
@@ -8576,7 +8576,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         --                       |              |<-------- Rx
         --                       |              |
         --                        --------------
-        --                              
+        --
 
         aglVCConnectionTable    OBJECT-TYPE
                 SYNTAX  SEQUENCE OF AglVCConnectionTableEntry
@@ -8584,13 +8584,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        This table contains AGL ATM VCC configuration 
+                        This table contains AGL ATM VCC configuration
                         and performance parameters and state variables.
-                        Each entry represents a bidirectional traffic 
+                        Each entry represents a bidirectional traffic
                         flow.
                         "
                 ::= { aglAtm 1 }
-        
+
         aglVCConnectionTableEntry    OBJECT-TYPE
                 SYNTAX  AglVCConnectionTableEntry
                 ACCESS  not-accessible
@@ -8601,7 +8601,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "
                 INDEX { aglVCConnectionPortA, aglVCConnectionPortAVpi,
                         aglVCConnectionPortAVci, aglVCConnectionPortB,
-                        aglVCConnectionPortBVpi, aglVCConnectionPortBVci} 
+                        aglVCConnectionPortBVpi, aglVCConnectionPortBVci}
 
                 ::= { aglVCConnectionTable 1}
 
@@ -8641,11 +8641,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The VPI value at port A for the bidirectional 
-                        circuit. The maximum VPI value cannot exceed 
-                        the number supported by the atmInterfaceMaxVpiBits 
-                        at AGL ATM port A. This value is used for both 
-                        transmit and receive VPIs 
+                        The VPI value at port A for the bidirectional
+                        circuit. The maximum VPI value cannot exceed
+                        the number supported by the atmInterfaceMaxVpiBits
+                        at AGL ATM port A. This value is used for both
+                        transmit and receive VPIs
                         "
                  ::= { aglVCConnectionTableEntry 2 }
 
@@ -8656,12 +8656,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         The VCI value at the port A for the
-                        bidirectional circuit. The VCI values from 0 
+                        bidirectional circuit. The VCI values from 0
                         to 31 are reserved.  The maximum VCI value
-                        cannot exceed the number supported by the 
-                        atmInterfaceMaxVciBits specified for the AGL 
-                        ATM port A. This value is used for both 
-                        transmit and receive VCIs 
+                        cannot exceed the number supported by the
+                        atmInterfaceMaxVciBits specified for the AGL
+                        ATM port A. This value is used for both
+                        transmit and receive VCIs
                         "
                  ::= {  aglVCConnectionTableEntry 3 }
 
@@ -8674,8 +8674,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "
                         The value of this object identifies the AGL
                         ATM port B of the VCC segment for ATM-to-ATM
-                        circuit types. For FDDI-bridged circuit types 
-                        this value should be zero. 
+                        circuit types. For FDDI-bridged circuit types
+                        this value should be zero.
                         "
                  ::= { aglVCConnectionTableEntry 4 }
 
@@ -8685,12 +8685,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The VPI value at port B for the bidirectional 
-                        ATM-to-ATM circuit.  The maximum VPI value 
-                        cannot exceed the number supported by the 
+                        The VPI value at port B for the bidirectional
+                        ATM-to-ATM circuit.  The maximum VPI value
+                        cannot exceed the number supported by the
                         atmInterfaceMaxVpiBits at AGL ATM port B.
-                        This value is used for both transmit and receive 
-                        VPIs. For other circuit types this value should be 
+                        This value is used for both transmit and receive
+                        VPIs. For other circuit types this value should be
                         zero.
                         "
                  ::= { aglVCConnectionTableEntry 5 }
@@ -8702,12 +8702,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         The VCI value at the port B for the
-                        bidirectional ATM-to-ATM circuit. The VCI values 
+                        bidirectional ATM-to-ATM circuit. The VCI values
                         from 0 to 31 are reserved.  The maximum VCI value
-                        cannot exceed the number supported by the 
-                        atmInterfaceMaxVciBits specified for the AGL 
-                        ATM port B. This value is used for both transmit 
-                        and receive VCIs. For other circuit types this value 
+                        cannot exceed the number supported by the
+                        atmInterfaceMaxVciBits specified for the AGL
+                        ATM port B. This value is used for both transmit
+                        and receive VCIs. For other circuit types this value
                         should be zero.
                         "
                  ::= {  aglVCConnectionTableEntry 6 }
@@ -8721,9 +8721,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The status column used for creating, 
-                        and deleting bidirectional circuit 
-                        entries in the agl virtual channel 
+                        The status column used for creating,
+                        and deleting bidirectional circuit
+                        entries in the agl virtual channel
                         connection table.
                         "
                  ::= { aglVCConnectionTableEntry 7 }
@@ -8744,14 +8744,14 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                                 2. ATM-to-ATM
                         An FDDI-bridged circuit carries all bridged FDDI
                         traffic on AGL ATM port A. No information is required
-                        to be entered for Port B. Only one bridged FDDI 
-                        circuit per AGL ATM port is supported. The packet 
-                        format on this circuit is VC based multiplexed 
+                        to be entered for Port B. Only one bridged FDDI
+                        circuit per AGL ATM port is supported. The packet
+                        format on this circuit is VC based multiplexed
                         bridged FDDI as per RFC 1483.
-                        
+
                         An ATM-to-ATM circuit carries arbitrary packet types
                         between circuits specified on Port A and Port B of
-                        the GIGAswitch. Multiple ATM-to-ATM circuits are 
+                        the GIGAswitch. Multiple ATM-to-ATM circuits are
                         supported per AGL ATM port.
                         "
                  ::= { aglVCConnectionTableEntry 8 }
@@ -8759,23 +8759,23 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         aglVCConnectionAALType  OBJECT-TYPE
                 SYNTAX   INTEGER  {
                                     aal34(1),
-                                    aal5(2) 
+                                    aal5(2)
                                   }
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The value of this object identifies the AAL type 
+                        The value of this object identifies the AAL type
                         that should be used on a particular circuit.
                         "
                  ::= { aglVCConnectionTableEntry 9 }
 
 
         aglVCConnectionOperStatus       OBJECT-TYPE
-                SYNTAX   INTEGER  { 
+                SYNTAX   INTEGER  {
                                     up(1),
                                     down(2),
-                                    unknown(3) 
+                                    unknown(3)
                                   }
                 ACCESS  read-only
                 STATUS  mandatory
@@ -8790,9 +8790,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 ::= { aglVCConnectionTableEntry 10 }
 
         aglVCConnectionAdminStatus    OBJECT-TYPE
-                SYNTAX   INTEGER  { 
+                SYNTAX   INTEGER  {
                                     enable(1),
-                                    disable(2) 
+                                    disable(2)
                                   }
                 ACCESS  read-write
                 STATUS  mandatory
@@ -8814,7 +8814,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         "
                         The value of this object specifies the peak rate in
                         cells/s that should be used on a particular circuit.
-                        The peak rate will be set to a multiple of the 
+                        The peak rate will be set to a multiple of the
                         aglInterfaceTrafficRateGranularity close to the
                         user specified input.
                         "
@@ -8826,13 +8826,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The value of this object specifies the average 
-                        (sustained) rate in cells/s that should be used 
-                        on a particular circuit.  The average rate must be 
-                        less than or equal to the peak rate and it will be 
+                        The value of this object specifies the average
+                        (sustained) rate in cells/s that should be used
+                        on a particular circuit.  The average rate must be
+                        less than or equal to the peak rate and it will be
                         set to a multiple of the aglInterfaceTrafficRate-
                         Granularity close to the user specified input.
-                        " 
+                        "
                 ::= { aglVCConnectionTableEntry 13}
 
         aglVCConnectionTrafficShaperMinGuaranteedRate   OBJECT-TYPE
@@ -8841,15 +8841,15 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The value of this object specifies the minimum 
-                        guaranteed rate in cells/s that should be used 
-                        on a particular circuit.  For VBR traffic AGL 
-                        allows the possibility of overbooking link bandwidth 
-                        (up to 1200%) to achive statistical multiplexing. 
-                        This parameter specifies the minimum peak bandwidth 
-                        that you want to guarantee to the circuit. The 
-                        minimum guaranteed rate must be less than or equal 
-                        to the peak rate and it will be set to a multiple 
+                        The value of this object specifies the minimum
+                        guaranteed rate in cells/s that should be used
+                        on a particular circuit.  For VBR traffic AGL
+                        allows the possibility of overbooking link bandwidth
+                        (up to 1200%) to achive statistical multiplexing.
+                        This parameter specifies the minimum peak bandwidth
+                        that you want to guarantee to the circuit. The
+                        minimum guaranteed rate must be less than or equal
+                        to the peak rate and it will be set to a multiple
                         of the aglInterfaceTrafficRateGranularity close
                         to the user specified input.
                         "
@@ -8861,9 +8861,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 STATUS  mandatory
                 DESCRIPTION
                         "
-                        The value of this object specifies the priority which 
-                        should be given to this circuit in assigning 
-                        opportunistic bandwidth that arises from AGL's 
+                        The value of this object specifies the priority which
+                        should be given to this circuit in assigning
+                        opportunistic bandwidth that arises from AGL's
                         bandwidth overbooking policy.
                         "
                 ::= { aglVCConnectionTableEntry 15}
@@ -8940,8 +8940,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 DESCRIPTION
                         "
                         This object indicates the desired status
-                        of the OAM module in the default circuit.  
-                        In the enabled state, normal OAM cells 
+                        of the OAM module in the default circuit.
+                        In the enabled state, normal OAM cells
                         are exchanged between the peers.
                         "
                 ::= { aglInterfaceATMTableEntry 3 }
@@ -9928,7 +9928,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "The port group port number.  It is unique within this table
-                and must be between 37 and 64.  Without 
+                and must be between 37 and 64.  Without
                 management settings, the port group has no members in it.
                 "
         ::= { portGroupMembershipEntry 1 }
@@ -9943,7 +9943,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 membership.  Managers specify a new port group membership
                 using portGroupMembershipWorkBuf.  The new membership
                 becomes effective and remains unchanged after a system crash
-                when portGroupAction is set to doUpdate and the updating 
+                when portGroupAction is set to doUpdate and the updating
                 process succeeds.
                 "
         ::= { portGroupMembershipEntry 2 }
@@ -9955,12 +9955,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "
-                Managers can update a new port group membership as many 
-                times as they want using this object.  Setting this object 
+                Managers can update a new port group membership as many
+                times as they want using this object.  Setting this object
                 to a new value does not change the current membership and
                 the value will be resetted after a system crash.  The new
-                value is copied to portGroupMembership when portGroupAction 
-                is set to doUpdate and the updating process successfully 
+                value is copied to portGroupMembership when portGroupAction
+                is set to doUpdate and the updating process successfully
                 changes the port member.
 
                 A port group is expressed using a shorthand that says what
@@ -9973,23 +9973,23 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         ()
 
                 A list of bridge ports between 1 and 36 are used
-                to represent the members of the port group.  A bridge port 
-                becoming a member of a port group ceases to operate as a 
-                normal bridge port, therefore filters on the port have no 
-                effect.  If a port group is specified as an empty set, the 
-                members in the group will operate as normal bridge ports and 
+                to represent the members of the port group.  A bridge port
+                becoming a member of a port group ceases to operate as a
+                normal bridge port, therefore filters on the port have no
+                effect.  If a port group is specified as an empty set, the
+                members in the group will operate as normal bridge ports and
                 take their original brige port numbers.  Their original filters
                 will also become effective.
 
-                Commas separate items in a list of bridge ports.  Hyphens are 
-                short-hand for specifying a range of numbers.  Bridge port 
+                Commas separate items in a list of bridge ports.  Hyphens are
+                short-hand for specifying a range of numbers.  Bridge port
                 numbers are specified in decimal.
 
                 A port group will read back in a form equivalent to the form
                 written.  It may not read back exactly as written.
 
                 If the manager specifies a member that is overlapped with a
-                member of a preexisting port group in the same object, 
+                member of a preexisting port group in the same object,
                 setting portGroupAction to doUpdate will fail.
                 "
         ::= { portGroupMembershipEntry 3 }
@@ -10005,7 +10005,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "
                 This object displays the current state of the port group
                 port type.  Managers specify a new port group port type
-                using portGroupPortTypeWorkBuf.  The new port type becomes 
+                using portGroupPortTypeWorkBuf.  The new port type becomes
                 effective and remains unchanged after a system crash
                 when portGroupAction is set to doUpdate and the updating
                 process succeeds.
@@ -10030,16 +10030,16 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 changes the port type.
 
                 Two port group types are supported: 1) the hunt group and
-                2) the reliability group.  
+                2) the reliability group.
 
-                All members in the hunt group port work like a single bridge 
-                port as far as the bridge functions are concerned and yet 
-                provides higher bandwidth due to multiple parallel FDDI links.  
+                All members in the hunt group port work like a single bridge
+                port as far as the bridge functions are concerned and yet
+                provides higher bandwidth due to multiple parallel FDDI links.
 
-                A state of a port in a reliability group is either 
+                A state of a port in a reliability group is either
                 operational or backup.  Only a single port in the group
                 may be operational, while the other ports in the group
-                are backup.  When the operational port fails, one backup 
+                are backup.  When the operational port fails, one backup
                 mode port will be selected, and quickly become operational.
                 "
         ::= { portGroupMembershipEntry 5 }
@@ -10061,15 +10061,15 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 uninitializedPort(1) state indicates one of the followings:
                 1) the port group has no member in it,
                 2) no port in the port group is powered on,
-                3) no port in the port group has successfully 
+                3) no port in the port group has successfully
                    completed startup diagnostics.
 
                 State preBridging(2) means that some ports in the port group
                 have been initialized with the bridge functions, but no port
-                is not yet functioning as part of a bridge port.  This is 
-                always the case if the datalink is not up.  A hunt group 
+                is not yet functioning as part of a bridge port.  This is
+                always the case if the datalink is not up.  A hunt group
                 member remains in this state if the remote end of the link
-                is not properly configured as part of the hunt group.  An 
+                is not properly configured as part of the hunt group.  An
                 inactive member of a reliability group is also in this state
                 if it is up and initialized.
 
@@ -10115,7 +10115,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "The port group port number.  It is unique within this table
-                and must be between 99.37 and 99.64.  Without management 
+                and must be between 99.37 and 99.64.  Without management
                 settings, the port group has no members in it.
                 "
         ::= { portGroupFppnMembershipEntry 1 }
@@ -10130,7 +10130,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 membership.  Managers specify a new port group membership
                 using portGroupFppnMembershipWorkBuf.  The new membership
                 becomes effective and remains unchanged after a system crash
-                when portGroupAction is set to doUpdate and the updating 
+                when portGroupAction is set to doUpdate and the updating
                 process succeeds.
                 "
         ::= { portGroupFppnMembershipEntry 2 }
@@ -10142,12 +10142,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "
-                Managers can update a new port group membership as many 
-                times as they want using this object.  Setting this object 
+                Managers can update a new port group membership as many
+                times as they want using this object.  Setting this object
                 to a new value does not change the current membership and
                 the value will be resetted after a system crash.  The new
                 value is copied to portGroupFppnMembership when portGroupAction
-                is set to doUpdate and the updating process successfully 
+                is set to doUpdate and the updating process successfully
                 changes the port member.
 
                 A port group is expressed using a shorthand that says what
@@ -10159,16 +10159,16 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                         (4.1,11.1-13.2,14.2)
                         ()
 
-                A list of FPPN ports between 1.1 and 14.2 are used to 
+                A list of FPPN ports between 1.1 and 14.2 are used to
                 represent the members of the port group.  A port becoming
-                a member of a port group ceases to operate as a normal 
+                a member of a port group ceases to operate as a normal
                 bridge port, therefore filters on the port have no effect.
-                If a port group is specified as an empty set, the members in 
-                the group will operate as normal bridge ports and take their 
-                original FPPN port numbers.  Their original filters will 
+                If a port group is specified as an empty set, the members in
+                the group will operate as normal bridge ports and take their
+                original FPPN port numbers.  Their original filters will
                 also become effective.
 
-                Commas separate items in a list of FPPN ports.  Hyphens are 
+                Commas separate items in a list of FPPN ports.  Hyphens are
                 short-hand for specifying a range of numbers.  FPPN port
                 numbers are of the form (slot.port) where slot is the slot
                 number and port is the port number in the slot.
@@ -10193,7 +10193,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 "
                 This object displays the current state of the port group
                 port type.  Managers specify a new port group port type
-                using portGroupPortTypeWorkBuf.  The new port type becomes 
+                using portGroupPortTypeWorkBuf.  The new port type becomes
                 effective and remains unchanged after a system crash
                 when portGroupAction is set to doUpdate and the updating
                 process succeeds.
@@ -10218,16 +10218,16 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 changes the port type.
 
                 Two port group types are supported: 1) the hunt group and
-                2) the reliability group.  
+                2) the reliability group.
 
-                All members in the hunt group port work like a single bridge 
-                port as far as the bridge functions are concerned and yet 
-                provides higher bandwidth due to multiple parallel FDDI links.  
+                All members in the hunt group port work like a single bridge
+                port as far as the bridge functions are concerned and yet
+                provides higher bandwidth due to multiple parallel FDDI links.
 
-                A state of a port in a reliability group is either 
+                A state of a port in a reliability group is either
                 operational or backup.  Only a single port in the group
                 may be operational, while the other ports in the group
-                are backup.  When the operational port fails, one backup 
+                are backup.  When the operational port fails, one backup
                 mode port will be selected, and quickly become operational.
                 "
         ::= { portGroupFppnMembershipEntry 5 }
@@ -10350,11 +10350,11 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                 initialized.  It is a temporary state.
 
                 State preBridging(3) means that the port has been initialized
-                with the bridge functions, but is not functioning as part of a 
+                with the bridge functions, but is not functioning as part of a
                 bridge port.  This is always the case if the datalink is not
                 up.  A hunt group member remains in this state if the remote
                 end of the link is not properly configured as part of the hunt
-                group.  An inactive member of a reliability group is also in 
+                group.  An inactive member of a reliability group is also in
                 this state if it is up and initialized.
 
                 State bridging(4) means that the port is functioning as
@@ -10371,7 +10371,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  SEQUENCE OF LearningDomainMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  This table allows learning domains to be created, modified,
                  and deleted. There can be from 1 to 8 learning domains.
@@ -10380,17 +10380,17 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  ports) which share a learning database.  Every  bridge port
                  is a member of precisely one learning domain.  A MAC address
                  that is seen on one port of the learning domain will  be
-                 taught to the other ports in the learning domain, but not to 
+                 taught to the other ports in the learning domain, but not to
                  ports in other learning domains, unless a target learning
-                 domain has been set up. 
+                 domain has been set up.
 
                  Among other things, this allows for the possbility that a
                  single MAC address  may be learned on several different
                  ports - as long as they are in separate  learning domains.
 
-                 There are a maximum of 8 learning domains, including the 
-                 default learning domain. The default learning domain is the 
-                 set of all bridge ports that do not belong to a management 
+                 There are a maximum of 8 learning domains, including the
+                 default learning domain. The default learning domain is the
+                 set of all bridge ports that do not belong to a management
                  defined learning domain.
                  "
 
@@ -10400,7 +10400,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  LearningDomainMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  A group of objects, indexed by learningDomainNumber,
                  that specify learning domain attributes.
@@ -10419,7 +10419,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  The index for a learning domain is an integer with
                  range, 1-8, where 1 is the default learning domain.
@@ -10427,13 +10427,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
         ::= { learningDomainMembershipEntry 1 }
 
-    learningDomainMembership OBJECT-TYPE 
-        SYNTAX  DisplayString 
-        ACCESS  read-only 
-        STATUS  mandatory 
-        DESCRIPTION 
-                 "                
-                 This object displays the current state of the learning 
+    learningDomainMembership OBJECT-TYPE
+        SYNTAX  DisplayString
+        ACCESS  read-only
+        STATUS  mandatory
+        DESCRIPTION
+                 "
+                 This object displays the current state of the learning
                  domain membership.  Managers specify a new learning domain
                  membership using learningDomainMembershipWorkBuf.  The new
                  membership becomes effective and remains unchanged, across
@@ -10443,12 +10443,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
         ::= { learningDomainMembershipEntry 2 }
 
-    learningDomainMembershipWorkBuf OBJECT-TYPE  
-        SYNTAX  DisplayString 
-        ACCESS  read-write  
-        STATUS  mandatory 
-        DESCRIPTION  
-                 " 
+    learningDomainMembershipWorkBuf OBJECT-TYPE
+        SYNTAX  DisplayString
+        ACCESS  read-write
+        STATUS  mandatory
+        DESCRIPTION
+                 "
                  The learningDomainMembershipWorkBuf object is used to
                  create,modify, and delete learning domains.
 
@@ -10456,8 +10456,8 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  times as they want using this object.  Setting this object
                  to a new value does not change the current membership nor
                  the values stored in non-volatile memory until the object
-                 portGroupAction is written with doUpdate. At that time the 
-                 new values will be written to learningDomainMembership and 
+                 portGroupAction is written with doUpdate. At that time the
+                 new values will be written to learningDomainMembership and
                  non-volatile memory and the learning domain changes will
                  take effect.
 
@@ -10502,7 +10502,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                  "
-                 Each logical bridge domain (LBD) has a learning quota. This table 
+                 Each logical bridge domain (LBD) has a learning quota. This table
                  allows the setting of theses quotas.
                  "
         ::= { gigaSets 11 }
@@ -10536,12 +10536,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  "
         ::= { learningQuotaEntry 1 }
 
-    learningQuota   OBJECT-TYPE 
-        SYNTAX  INTEGER 
-        ACCESS  read-write 
-        STATUS  mandatory 
-        DESCRIPTION 
-                 " 
+    learningQuota   OBJECT-TYPE
+        SYNTAX  INTEGER
+        ACCESS  read-write
+        STATUS  mandatory
+        DESCRIPTION
+                 "
                  Each learning domain has a learning quota.  The ports in the
                  domain are guaranteed the ability to use approximately this
                  number of address entries in the Translation Table, so that
@@ -10556,7 +10556,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  Translation Table entries available to accommodate new
                  learned addresses.  Further, these addresses will not be
                  deleted to make room for others unless the domain's quota is
-                 reached or is close to being reached.  
+                 reached or is close to being reached.
 
                  If the SCP Translation Table is not full, the quotas are
                  allowed to be exceeded. Under such circumstances, the count
@@ -10599,7 +10599,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  SEQUENCE OF PortTargetDomainListMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  This table allows port target domains lists to be
                  created, modified, and deleted.
@@ -10621,9 +10621,9 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  PortTargetDomainListMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
-                 A group of objects, indexed by portTargetDomainListIndex, 
+                 A group of objects, indexed by portTargetDomainListIndex,
                  that specify port target domain attributes.
                  "
         INDEX { portTargetDomainListIndex }
@@ -10641,18 +10641,18 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  A bridge port number from 1 - 64 .
                  "
 
         ::= { portTargetDomainListMembershipEntry 1 }
 
-    portTargetDomainListMembership OBJECT-TYPE 
-        SYNTAX  DisplayString 
+    portTargetDomainListMembership OBJECT-TYPE
+        SYNTAX  DisplayString
         ACCESS  read-only
-        STATUS  mandatory 
-        DESCRIPTION 
+        STATUS  mandatory
+        DESCRIPTION
                  "
                  The portTargetDomainListMembership specifies a set of
                  mgmt specified learning domains.
@@ -10667,17 +10667,17 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  "
         ::= { portTargetDomainListMembershipEntry 2 }
 
-    portTargetDomainListMembershipWorkBuf OBJECT-TYPE 
+    portTargetDomainListMembershipWorkBuf OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
-        STATUS  mandatory 
-        DESCRIPTION 
+        STATUS  mandatory
+        DESCRIPTION
                  "
                  The portTargetDomainListMembership object is used to
                  create, modify, and delete port target domain lists.
 
                  Managers can update a port target domain membership
-                 list as many times as they want using this object. 
+                 list as many times as they want using this object.
                  Setting this object to a new value does not change the
                  current membership nor the values stored in mgmt memory
                  until the object portGroupAction is written with
@@ -10687,7 +10687,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
 
                  The portTargetDomainListMembership specifies the target
                  domains that a learning domain belongs to. This set of
-                 learning domains is called the port target domain list. 
+                 learning domains is called the port target domain list.
 
                  The portTargetDomainListMembership is expressed using a
                  shorthand that specifies which learning domains belong
@@ -10717,7 +10717,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "
-                The table for storing the logical bridge domain 
+                The table for storing the logical bridge domain
                 membership.
                 "
         ::= { gigaSets 6 }
@@ -10758,7 +10758,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         STATUS  mandatory
         DESCRIPTION
                 "
-                This object displays the learning domain numbers which are 
+                This object displays the learning domain numbers which are
                 members of the indexed logical bridge domain in the current
                 box configuration.
                 "
@@ -10771,13 +10771,13 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         DESCRIPTION
                 "
                 Managers can specify logical bridge domains as many times as
-                needed without effecting the current box configuration using 
-                this object.  Setting this object to a new value is stored 
-                in a local buffer and the changes are not recorded in the 
+                needed without effecting the current box configuration using
+                this object.  Setting this object to a new value is stored
+                in a local buffer and the changes are not recorded in the
                 nonvolatile memory.
-                
-                The new value is copied into lBDomainMembership and 
-                becomes effective when portGroupAction is set to doUpdate 
+
+                The new value is copied into lBDomainMembership and
+                becomes effective when portGroupAction is set to doUpdate
                 and the updating process successfully upgrades the logical
                 bridge domains.
 
@@ -10868,12 +10868,12 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  SEQUENCE OF TrafficGroupMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  This table allows the user to add and delete physical ports
                  to traffic groups. There can be from 1 to 16 traffic groups.
 
-                 A traffic group is a collection of physical ports that is 
+                 A traffic group is a collection of physical ports that is
                  used to allow single path traffic coming in on  physical
                  ports to be transmitted out a single management assigned
                  member port of a hunt group. This is used to restrict single
@@ -10891,7 +10891,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  TrafficGroupMembershipEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  An entry that stores information about a traffic group.
                  "
@@ -10908,21 +10908,21 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
-                 The index for the  traffic group membership is a traffic 
+                 The index for the  traffic group membership is a traffic
                  group number. Traffic group numbers are in the range 1-16.
                  Traffic group 1 is the default traffic group.
                  "
         ::= { trafficGroupMembershipEntry 1 }
 
-    trafficGroupMembership OBJECT-TYPE 
+    trafficGroupMembership OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
-                 The trafficGroupMembership object allows the user to add 
+                 The trafficGroupMembership object allows the user to add
                  and delete physical ports from traffic groups.
 
                  Because a physical port can only belong to one traffic
@@ -10938,7 +10938,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  can not be modified directly. It changes when new
                  traffic groups are added or removed from other traffic
                  groups. The default traffic group is traffic group 1.
-                      
+
                  The trafficGroupMembership is expressed using a shorthand
                  that specifies which physical ports belong in the traffic
                  group. An example of a specification would be :
@@ -10961,7 +10961,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  SEQUENCE OF TrafficGroupAttributeEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  This table allows traffic group attributes to be set.
                  "
@@ -10972,7 +10972,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  TrafficGroupAttributeEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  An entry that stores traffic group attributes.
                  "
@@ -10991,38 +10991,38 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION 
+        DESCRIPTION
                  "
                  One of two indexes into the trafficGroupAttributeTable.
-                 It is within the range 1-16. 
+                 It is within the range 1-16.
                  "
         ::= { trafficGroupAttributeEntry 1 }
 
-    trafficGroupHgNumber  OBJECT-TYPE 
-        SYNTAX  INTEGER 
-        ACCESS  read-only 
-        STATUS  mandatory 
-        DESCRIPTION  
+    trafficGroupHgNumber  OBJECT-TYPE
+        SYNTAX  INTEGER
+        ACCESS  read-only
+        STATUS  mandatory
+        DESCRIPTION
                  "
-                 Second of two indexes into the trafficGroupAttributeTable. 
-                 This is the hunt group that all ports in the traffic group 
+                 Second of two indexes into the trafficGroupAttributeTable.
+                 This is the hunt group that all ports in the traffic group
                  are assigned to and is in the range 37-64.
-                 " 
+                 "
         ::= { trafficGroupAttributeEntry 2 }
 
-    trafficGroupHgMember OBJECT-TYPE 
+    trafficGroupHgMember OBJECT-TYPE
         SYNTAX  INTEGER
-        ACCESS  read-write 
-        STATUS  mandatory 
-        DESCRIPTION 
-                 "                
+        ACCESS  read-write
+        STATUS  mandatory
+        DESCRIPTION
+                 "
                  The trafficGroupHgMember is a number in the range 1-16
                  that maps to a member of the hunt group specified by
-                 trafficGroupHgNumber. trafficGroupHgMember 1 maps to the 
+                 trafficGroupHgNumber. trafficGroupHgMember 1 maps to the
                  lowest numbered member of the hunt group,
                  trafficGroupHgMember 2 maps to the second lowest
                  numbered member of the hunt group, etc. If the
-                 trafficGroupHgMember is greater then the number of 
+                 trafficGroupHgMember is greater then the number of
                  members in the hunt group, then it wraps.
                  For example :
                         Given that traffic groups 1,2,3,4,5 all have physical
@@ -11043,26 +11043,26 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  "
         ::= { trafficGroupAttributeEntry 3 }
 
-    trafficGroupCategory OBJECT-TYPE 
+    trafficGroupCategory OBJECT-TYPE
         SYNTAX  INTEGER {
                     fixed (1),
                     reconfig (2)
                 }
-        ACCESS  read-write 
-        STATUS  mandatory 
-        DESCRIPTION 
-                 "                
+        ACCESS  read-write
+        STATUS  mandatory
+        DESCRIPTION
+                 "
                  The trafficGroupCatagory is defined as follows :
- 
+
                  fixed
                  -----
                  fixed means that traffic is to stay on the same port until
                  the port fails. For this value, the member number is
                  ignored completely. The first physical port that comes up
-                 in the hunt group will be assigned the traffic. If the port 
-                 fails the lowest numbered remaining member of the hunt group 
+                 in the hunt group will be assigned the traffic. If the port
+                 fails the lowest numbered remaining member of the hunt group
                  will be assigned the traffic. If the traffic category is fixed,
-                 sequential delivery of packets is almost guaranteed. 
+                 sequential delivery of packets is almost guaranteed.
 
                  reconfig
                  --------
@@ -11070,7 +11070,7 @@ DEC-ELAN-MIB DEFINITIONS ::= BEGIN
                  hunt group member to another whenever any port joins or
                  leaves the hunt group.  If possible, the traffic group must
                  use the hunt group member whose trafficGroupHgMember is
-                 configured. If the traffic category is reconfig, sequential 
+                 configured. If the traffic category is reconfig, sequential
                  delivery of packets is guaranteed, except when members enter
                  or leave the hunt group.
                  "

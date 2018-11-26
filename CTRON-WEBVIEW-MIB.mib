@@ -2,7 +2,7 @@ CTRON-WEBVIEW-MIB DEFINITIONS ::= BEGIN
 --
 --   ctron-webview-mib.txt
 --    Revision: 1.00.00
---    Part Number: 
+--    Part Number:
 --    Date: February 8, 1999
 --
 --  Cabletron Systems, Inc.
@@ -29,11 +29,11 @@ CTRON-WEBVIEW-MIB DEFINITIONS ::= BEGIN
 --  Copyright February 99 Cabletron Systems
 --
 
-IMPORTS 
+IMPORTS
         OBJECT-TYPE                  FROM RFC-1212
         DisplayString                FROM RFC1213-MIB
         ctApplication                FROM CTRON-MIB-NAMES ;
-                        
+
 ctWebView                       OBJECT IDENTIFIER ::= { ctApplication 4 }
 ctEwvConfiguration              OBJECT IDENTIFIER ::= { ctWebView 1 }
 ctEwvStatus                     OBJECT IDENTIFIER ::= { ctWebView 2 }
@@ -116,4 +116,4 @@ ctEwvAuthNonceValidCount   OBJECT-TYPE
                  reused before recalculating a new nonce value"
         ::= { ctEwvSystemParameters 2 }
 
-END                                                       
+END

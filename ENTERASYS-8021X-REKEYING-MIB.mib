@@ -6,7 +6,7 @@ ENTERASYS-8021X-REKEYING-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IEEE 802.1x rapid rekeying MIB.
 
 --
@@ -25,12 +25,12 @@ ENTERASYS-8021X-REKEYING-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2002 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Unsigned32
         FROM SNMPv2-SMI
     TruthValue
@@ -56,7 +56,7 @@ etsys8021xRekeyingMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          IEEE 802.1x authentication.
 
          This MIB is designed to supplement and be used in connection
@@ -117,7 +117,7 @@ etsysDot1xRekeyConfigEntry OBJECT-TYPE
     ::= { etsysDot1xRekeyConfigTable 1 }
 
 EtsysDot1xRekeyConfigEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
                etsysDot1xRekeyEnabled           TruthValue,
                etsysDot1xRekeyPeriod            Unsigned32,
                etsysDot1xRekeyLength            INTEGER,
@@ -227,7 +227,7 @@ etsysDot1xRekeyPairwise OBJECT-TYPE
 etsysDot1xRekeyingConformance
     OBJECT IDENTIFIER ::= { etsys8021xRekeyingMIB 2 }
 
-etsysDot1xRekeyingGroups      
+etsysDot1xRekeyingGroups
     OBJECT IDENTIFIER ::= { etsysDot1xRekeyingConformance 1 }
 
 etsysDot1xRekeyingCompliances

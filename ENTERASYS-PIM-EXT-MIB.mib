@@ -6,7 +6,7 @@ ENTERASYS-PIM-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' PIM protocol.  This module extends the PIM-MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-PIM-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, 2009 Enterasys Networks, Inc.
@@ -619,13 +619,13 @@ etsysPimExtIfStatsNumRecvUnknownNbr OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The number of PIM Join/Prune, Assert and multicast Bootstrap 
+        "The number of PIM Join/Prune, Assert and multicast Bootstrap
         Router messages that have been received on this interface from
         a neighbor in which we had not previously received a valid PIM
         Hello message (and for which etsysPimExtIfP2PNoHellos was
         'false').
 
-        Bootstrap Router messages which are sent to a unicast address 
+        Bootstrap Router messages which are sent to a unicast address
         are not included in this count."
     ::= { etsysPimExtIfStatsEntry 6 }
 
@@ -738,7 +738,7 @@ etsysPimExtNbrMgrNumSentRegister OBJECT-TYPE
         "The number of PIM Register messages that have been sent
 
         Note:  This only includes PIM Register messages forwarded to
-               other members of Anycast-RP sets, and Null-Register 
+               other members of Anycast-RP sets, and Null-Register
                messages.  It does not include Register-encapsulated data
                packets sent from the downstream router to the RP."
     ::= { etsysPimExtNbrMgrEntry 5 }
@@ -1075,7 +1075,7 @@ etsysPimExtTibMgrKeepalivePeriod OBJECT-TYPE
         This object corresponds to the 'Keepalive_Period' defined in
         PIM-SM [RFC 4601].
 
-        Note:  Configuring different values for this object for 
+        Note:  Configuring different values for this object for
                different routers in the PIM domain may lead to
                incorrect protocol operation."
     DEFVAL { 210 }

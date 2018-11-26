@@ -26,7 +26,7 @@ ibDhcpModule MODULE-IDENTITY
 
     REVISION  "200501100000Z"  --  Jan 10, 2005
     DESCRIPTION   "Added copyright"
-                                                                                                
+
     REVISION  "200405210000Z"  --  May 21, 2004
     DESCRIPTION   "Creation of the MIB file"
 
@@ -45,7 +45,7 @@ ibDHCPSubnetEntry OBJECT-TYPE
    SYNTAX        IbDHCPSubnetEntry
    MAX-ACCESS    not-accessible
    STATUS        current
-   DESCRIPTION   "A conceptual row of the ibDHCPSubnetEntry containing 
+   DESCRIPTION   "A conceptual row of the ibDHCPSubnetEntry containing
                   info about a particular network using DHCP."
    INDEX         {ibDHCPSubnetNetworkAddress }
    ::= { ibDHCPSubnetTable 1 }
@@ -61,7 +61,7 @@ ibDHCPSubnetNetworkAddress OBJECT-TYPE
    SYNTAX        IbIpAddr
    MAX-ACCESS    read-only
    STATUS        current
-   DESCRIPTION   "DHCP Subnet in IpAddress format. A subnetwork may have many 
+   DESCRIPTION   "DHCP Subnet in IpAddress format. A subnetwork may have many
                   ranges for lease."
    ::= { ibDHCPSubnetEntry 1 }
 
@@ -69,14 +69,14 @@ ibDHCPSubnetNetworkMask OBJECT-TYPE
    SYNTAX        IbIpAddr
    MAX-ACCESS    read-only
    STATUS        current
-   DESCRIPTION   "DHCP Subnet mask in IpAddress format." 
+   DESCRIPTION   "DHCP Subnet mask in IpAddress format."
    ::= { ibDHCPSubnetEntry 2 }
 
 ibDHCPSubnetPercentUsed OBJECT-TYPE
    SYNTAX        INTEGER
    MAX-ACCESS    read-only
    STATUS        current
-   DESCRIPTION   "Percentage of dynamic DHCP address for subnet leased out at this 
+   DESCRIPTION   "Percentage of dynamic DHCP address for subnet leased out at this
                   time. Fixed addresses are always counted as leased for this
                   calcuation if the fixed addresses are within ranges of leases."
    ::= { ibDHCPSubnetEntry 3 }

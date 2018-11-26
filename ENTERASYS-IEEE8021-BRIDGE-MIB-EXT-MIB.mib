@@ -1,6 +1,6 @@
 ENTERASYS-IEEE8021-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 
---  enterasys-ieee8021-bridge-mib-ext-mib.txt 
+--  enterasys-ieee8021-bridge-mib-ext-mib.txt
 --
 --  Part Number:
 --
@@ -80,7 +80,7 @@ etsysIeee8021BridgeBase
      OBJECT IDENTIFIER ::= { etsysIeee8021BridgeMibExtObjects 1 }
 
 -- -------------------------------------------------------------
--- Extensions to the ieee8021BridgeBase Object 
+-- Extensions to the ieee8021BridgeBase Object
 -- -------------------------------------------------------------
 
 etsysIeee8021BridgeBaseMode OBJECT-TYPE
@@ -111,9 +111,9 @@ etsysIeee8021BridgeBasePortTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This table contains generic information about every 
+        "This table contains generic information about every
          bridge port that is associated with this bridge. It
-         extends the information provided by the 
+         extends the information provided by the
          ieee8021BridgeBasePortTable."
     ::= { etsysIeee8021BridgeBase 2 }
 
@@ -128,7 +128,7 @@ etsysIeee8021BridgeBasePortEntry OBJECT-TYPE
     ::= { etsysIeee8021BridgeBasePortTable 1 }
 
 EtsysIeee8021BridgeBasePortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsys8021BridgePortComponentId
              IEEE8021PbbComponentIdentifier
     }
@@ -149,7 +149,7 @@ etsysIeee8021BridgeMibExtMrpBranch
     OBJECT IDENTIFIER ::= { etsysIeee8021BridgeMibExtObjects 2 }
 
 -- -------------------------------------------------------------
--- Extension MIB MRP Branch 
+-- Extension MIB MRP Branch
 -- -------------------------------------------------------------
 
 etsysIeee8021BridgeMibExtMrpTable OBJECT-TYPE
@@ -226,7 +226,7 @@ etsysIeee8021BridgeMibExtMrpGroup OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "A collection of objects providing port level control 
+        "A collection of objects providing port level control
          and status information for MRP operation"
     ::= { etsysIeee8021BridgeMibExtGroups 3 }
 
@@ -246,9 +246,9 @@ etsysIeee8021BridgeMibExtCompliance MODULE-COMPLIANCE
             "This group is REQUIRED for devices supporting
              IEEE8021-BRIDGE-MIB."
 
-        GROUP       etsysIeee8021BridgeMibExtBasePortGroup 
+        GROUP       etsysIeee8021BridgeMibExtBasePortGroup
         DESCRIPTION
-            "This group is REQUIRED for devices supporting 
+            "This group is REQUIRED for devices supporting
              IEEE8021-BRIDGE-MIB."
 
     ::= { etsysIeee8021BridgeMibExtCompliances 1 }
@@ -262,7 +262,7 @@ etsysIeee8021BridgeMibExtMrpCompliance MODULE-COMPLIANCE
     MODULE
         GROUP       etsysIeee8021BridgeMibExtMrpGroup
         DESCRIPTION
-            "This group is REQUIRED for devices supporting 
+            "This group is REQUIRED for devices supporting
              IEEE8021-BRIDGE-MIB."
 
     ::= { etsysIeee8021BridgeMibExtCompliances 2 }

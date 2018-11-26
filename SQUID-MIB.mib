@@ -31,7 +31,7 @@ squid MODULE-IDENTITY
     DESCRIPTION
 		"Corrected MIB strictness requirements. Mapped
 		valid port ranges"
-    
+
     REVISION      "200712140000Z"
     DESCRIPTION
 		"Added support for IPv6 Technology."
@@ -733,7 +733,7 @@ squid MODULE-IDENTITY
 	::= { cachePeerTable 3 }
 
 	CachePeerTableEntry ::= SEQUENCE {
-	  cachePeerIndex	CachePeerTableIndex, 
+	  cachePeerIndex	CachePeerTableIndex,
 	  cachePeerName		DisplayString,
 	  cachePeerAddressType  InetAddressType,
 	  cachePeerAddress      InetAddress,
@@ -754,7 +754,7 @@ squid MODULE-IDENTITY
              DISPLAY-HINT "d"
              STATUS       current
              DESCRIPTION
-				"A integer value from 1 to 65535 to indicate 
+				"A integer value from 1 to 65535 to indicate
 				the appropriate port number for the connection."
 			SYNTAX       Integer32 (1..65535)
 	

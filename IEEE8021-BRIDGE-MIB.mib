@@ -53,7 +53,7 @@ ieee8021BridgeMib MODULE-IDENTITY
         see the draft itself for full legal notices."
     REVISION     "201008260000Z" -- August 26, 2010
     DESCRIPTION
-         "Minor edits to contact information etc. as part of 
+         "Minor edits to contact information etc. as part of
           2010 revision of Std 802.1Q."
 
     REVISION     "200810150000Z" -- October 15, 2008
@@ -590,7 +590,7 @@ ieee8021BridgeBasePortAdminPointToPoint OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-         "For a port running spanning tree, this object represents the 
+         "For a port running spanning tree, this object represents the
          administrative point-to-point status of the LAN segment
          attached to this port, using the enumeration values of
          6.4.3.  A value of forceTrue(1) indicates
@@ -620,7 +620,7 @@ ieee8021BridgeBasePortAdminPointToPoint OBJECT-TYPE
          6.10.1 (and described in 26.4.1).  Whenever the parameter
          is set to ForceFalse(2) or auto(3), the value for the
          Default Backbone Destination parameter is set to the
-         Backbone Service Instance Group Address for the VIP-ISID. 
+         Backbone Service Instance Group Address for the VIP-ISID.
 
          The value of this object MUST be retained across
          reinitializations of the management system."
@@ -877,7 +877,7 @@ ieee8021BridgePortPriorityCodePointSelection OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         " This object identifies the rows in the PCP encoding and
-          decoding tables that are used to remark frames on this 
+          decoding tables that are used to remark frames on this
           port if this remarking is enabled."
     REFERENCE   "12.6.2.6, 12.6.2.7"
     ::= { ieee8021BridgePortPriorityEntry 3 }
@@ -887,7 +887,7 @@ ieee8021BridgePortUseDEI OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If the Use_DEI is set to true(1) for the Port then the 
+        "If the Use_DEI is set to true(1) for the Port then the
         drop_eligible parameter is encoded in the DEI of transmitted
         frames, and the drop_eligible parameter shall be true(1) for a
         received frame if the DEI is set in the VLAN tag or the Priority

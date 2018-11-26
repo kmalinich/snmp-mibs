@@ -6,7 +6,7 @@ ENTERASYS-DNS-RESOLVER-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' DNS resolver functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-DNS-RESOLVER-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright August 2008 Enterasys Networks, Inc.
@@ -40,7 +40,7 @@ IMPORTS
     InetAddressType, InetAddress, InetPortNumber
         FROM INET-ADDRESS-MIB
     etsysModules
-        FROM ENTERASYS-MIB-NAMES;    
+        FROM ENTERASYS-MIB-NAMES;
 
 etsysDnsResolverMIB MODULE-IDENTITY
     LAST-UPDATED "200808111548Z"  -- Mon Aug 11 15:48 UTC 2008
@@ -53,32 +53,32 @@ etsysDnsResolverMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
-         configuration of the DNS resolution mechanisms 
+         the Enterasys Networks enterprise OID pertaining to
+         configuration of the DNS resolution mechanisms
          on a device."
 
     REVISION    "200808111548Z"  -- Mon Aug 11 15:48 UTC 2008
-    DESCRIPTION 
-        "Added a range of 1..100 seconds for 
+    DESCRIPTION
+        "Added a range of 1..100 seconds for
          etsysDnsResolverQueryTimeout."
 
     REVISION    "200806182056Z"  -- Wed Jun 18 20:56 UTC 2008
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 63 } 
+    ::= { etsysModules 63 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysDnsResolverObjects    OBJECT IDENTIFIER 
+etsysDnsResolverObjects    OBJECT IDENTIFIER
                            ::= { etsysDnsResolverMIB 1 }
 
-etsysDnsResolverSystem     OBJECT IDENTIFIER 
+etsysDnsResolverSystem     OBJECT IDENTIFIER
                            ::= { etsysDnsResolverObjects 1 }
 
 
@@ -87,10 +87,10 @@ etsysDnsResolverSystem     OBJECT IDENTIFIER
 -- -------------------------------------------------------------
 
 etsysDnsResolverServiceType OBJECT-TYPE
-    SYNTAX      INTEGER { 
+    SYNTAX      INTEGER {
                   recursiveOnly(1),
                   iterativeOnly(2),
-                  recursiveAndIterative(3) 
+                  recursiveAndIterative(3)
                 }
     MAX-ACCESS  read-only
     STATUS      current
@@ -106,7 +106,7 @@ etsysDnsResolverServiceType OBJECT-TYPE
          resolver which performs a mix of recursive and iterative
          queries."
     REFERENCE
-        "RFC 1123, 'Requirements for Internet Hosts -- Application 
+        "RFC 1123, 'Requirements for Internet Hosts -- Application
          and Support', Section 6.1.3.1"
     ::= { etsysDnsResolverSystem 1 }
 
@@ -162,7 +162,7 @@ etsysDnsResolverTertiaryServerAddrType OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The type of data returned by 
+        "The type of data returned by
          etsysDnsResolverTertiaryServerAddr."
     DEFVAL      { unknown }
     ::= { etsysDnsResolverSystem 7 }
@@ -181,7 +181,7 @@ etsysDnsResolverQuaternaryServerAddrType OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The type of data returned by 
+        "The type of data returned by
          etsysDnsResolverQuaternaryServerAddr."
     DEFVAL      { unknown }
     ::= { etsysDnsResolverSystem 9 }
@@ -200,7 +200,7 @@ etsysDnsResolverIpv4DnsZone OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The DNS zone to use for address to name lookups of IPv4 
+        "The DNS zone to use for address to name lookups of IPv4
          addresses."
     DEFVAL      { "in-addr.arpa" }
     ::= { etsysDnsResolverSystem 11 }
@@ -210,11 +210,11 @@ etsysDnsResolverIpv6DnsZone OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The DNS zone to use for address to name lookups of IPv6 
+        "The DNS zone to use for address to name lookups of IPv6
          addresses."
     DEFVAL      { "ip6.arpa" }
     ::= { etsysDnsResolverSystem 12 }
- 
+
 etsysDnsResolverServerPortNumber  OBJECT-TYPE
     SYNTAX      InetPortNumber
     MAX-ACCESS  read-write
@@ -243,7 +243,7 @@ etsysDnsResolverQueryRetries OBJECT-TYPE
         "The number of times to retry a lookup request to a DNS server
          that has not successfully responded.  This retry count is
          per name server, so each configured name server will make
-         etsysDnsResolverQueryRetries attempts before giving up and 
+         etsysDnsResolverQueryRetries attempts before giving up and
          moving to the next configured server."
     DEFVAL      { 2 }
     ::= { etsysDnsResolverSystem 15 }
@@ -264,13 +264,13 @@ etsysDnsResolverEnableStatus OBJECT-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysDnsResolverConformance OBJECT IDENTIFIER 
+etsysDnsResolverConformance OBJECT IDENTIFIER
                             ::= { etsysDnsResolverMIB 2 }
 
-etsysDnsResolverGroups      OBJECT IDENTIFIER 
+etsysDnsResolverGroups      OBJECT IDENTIFIER
                             ::= { etsysDnsResolverConformance 1 }
 
-etsysDnsResolverCompliances OBJECT IDENTIFIER 
+etsysDnsResolverCompliances OBJECT IDENTIFIER
                             ::= { etsysDnsResolverConformance 2 }
 
 
@@ -293,7 +293,7 @@ etsysDnsResolverPrimaryGroup OBJECT-GROUP
     }
     STATUS     current
     DESCRIPTION
-        "The group for all devices supporting DNS resolution." 
+        "The group for all devices supporting DNS resolution."
     ::= { etsysDnsResolverGroups 1 }
 
 etsysDnsResolverSecondaryGroup OBJECT-GROUP
@@ -303,7 +303,7 @@ etsysDnsResolverSecondaryGroup OBJECT-GROUP
     }
     STATUS     current
     DESCRIPTION
-        "The group for all devices that support two or more servers 
+        "The group for all devices that support two or more servers
          for DNS resolution."
     ::= { etsysDnsResolverGroups 2 }
 
@@ -325,7 +325,7 @@ etsysDnsResolverQuaternaryGroup OBJECT-GROUP
     }
     STATUS     current
     DESCRIPTION
-        "The group for all devices that support four servers for DNS 
+        "The group for all devices that support four servers for DNS
          resolution."
     ::= { etsysDnsResolverGroups 4 }
 
@@ -336,7 +336,7 @@ etsysDnsResolverQuaternaryGroup OBJECT-GROUP
 etsysDnsResolverCompliance MODULE-COMPLIANCE
     STATUS     current
     DESCRIPTION
-        "The compliance statement for devices that support DNS 
+        "The compliance statement for devices that support DNS
          resolution."
 
     MODULE
@@ -346,17 +346,17 @@ etsysDnsResolverCompliance MODULE-COMPLIANCE
 
         GROUP       etsysDnsResolverSecondaryGroup
         DESCRIPTION
-            "This group is mandatory for all devices that support 
+            "This group is mandatory for all devices that support
              two or more servers for DNS resolution."
 
         GROUP       etsysDnsResolverTertiaryGroup
         DESCRIPTION
-            "This group is mandatory for all devices that support 
+            "This group is mandatory for all devices that support
              three or more servers for DNS resolution."
 
         GROUP       etsysDnsResolverQuaternaryGroup
         DESCRIPTION
-            "This group is mandatory for all devices that support 
+            "This group is mandatory for all devices that support
              four servers for DNS resolution."
 
         OBJECT      etsysDnsResolverDomainName
@@ -365,41 +365,41 @@ etsysDnsResolverCompliance MODULE-COMPLIANCE
             "Write access is not required."
 
         OBJECT      etsysDnsResolverPrimaryServerAddrType
-        SYNTAX      InetAddressType { 
-                        ipv4(1), 
-                        ipv6(2), 
-                        ipv4z(3), 
-                        ipv6z(4) 
+        SYNTAX      InetAddressType {
+                        ipv4(1),
+                        ipv6(2),
+                        ipv4z(3),
+                        ipv6z(4)
                     }
         DESCRIPTION
             "Only IPv4 and IPv6 addresses are allowed."
 
         OBJECT      etsysDnsResolverSecondaryServerAddrType
-        SYNTAX      InetAddressType { 
-                        ipv4(1), 
-                        ipv6(2), 
-                        ipv4z(3), 
-                        ipv6z(4) 
+        SYNTAX      InetAddressType {
+                        ipv4(1),
+                        ipv6(2),
+                        ipv4z(3),
+                        ipv6z(4)
                     }
         DESCRIPTION
             "Only IPv4 and IPv6 addresses are allowed."
 
         OBJECT      etsysDnsResolverTertiaryServerAddrType
-        SYNTAX      InetAddressType { 
-                        ipv4(1), 
-                        ipv6(2), 
-                        ipv4z(3), 
-                        ipv6z(4) 
+        SYNTAX      InetAddressType {
+                        ipv4(1),
+                        ipv6(2),
+                        ipv4z(3),
+                        ipv6z(4)
                     }
         DESCRIPTION
             "Only IPv4 and IPv6 addresses are allowed."
 
         OBJECT      etsysDnsResolverTertiaryServerAddrType
-        SYNTAX      InetAddressType { 
-                        ipv4(1), 
-                        ipv6(2), 
-                        ipv4z(3), 
-                        ipv6z(4) 
+        SYNTAX      InetAddressType {
+                        ipv4(1),
+                        ipv6(2),
+                        ipv4z(3),
+                        ipv6z(4)
                     }
         DESCRIPTION
             "Only IPv4 and IPv6 addresses are allowed."
@@ -423,12 +423,12 @@ etsysDnsResolverCompliance MODULE-COMPLIANCE
         MIN-ACCESS  read-only
         DESCRIPTION
             "Write access is not required."
-    
+
         OBJECT      etsysDnsResolverQueryRetries
         MIN-ACCESS  read-only
         DESCRIPTION
             "Write access is not required."
 
-    ::= { etsysDnsResolverCompliances 1 }     
+    ::= { etsysDnsResolverCompliances 1 }
 
 END

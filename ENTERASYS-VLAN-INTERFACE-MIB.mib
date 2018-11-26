@@ -29,8 +29,8 @@ etsysVlanInterfaceMIB  MODULE-IDENTITY
      WWW:    http://www.enterasys.com"
 
     DESCRIPTION
-        "This MIB module defines a portion of the SNMP enterprise 
-         MIBs under the Enterasys enterprise OID pertaining to the 
+        "This MIB module defines a portion of the SNMP enterprise
+         MIBs under the Enterasys enterprise OID pertaining to the
          creation of MIB-II interfaces and their mapping to VLANs
          for Enterasys products."
 
@@ -46,7 +46,7 @@ etsysVlanInterfaceMIB  MODULE-IDENTITY
          in the notInService state.
 
          Modified the DESCRIPTION clause of etsysVlanInterfaceRowStatus
-         to be less ambiguous." 
+         to be less ambiguous."
 
     REVISION "200205071755Z"  -- Tue May  7 17:55 GMT 2002
     DESCRIPTION
@@ -56,7 +56,7 @@ etsysVlanInterfaceMIB  MODULE-IDENTITY
 
 
 -- -------------------------------------------------------------
--- MIB groupings 
+-- MIB groupings
 -- -------------------------------------------------------------
 
 etsysVlanInterface
@@ -66,7 +66,7 @@ etsysVlanInterfaceVlanLookup
     OBJECT IDENTIFIER ::= { etsysVlanInterfaceMIB 2 }
 
 -- -------------------------------------------------------------
--- etsysVlanInterface group           
+-- etsysVlanInterface group
 -- -------------------------------------------------------------
 
 etsysVlanInterfaceMaximumEntries OBJECT-TYPE
@@ -133,7 +133,7 @@ etsysVlanInterfaceIfIndex OBJECT-TYPE
          The value of the ifIndex is determined by the agent on the
          managed entity.
 
-         This object will return 0 (zero) when the conceptual row is 
+         This object will return 0 (zero) when the conceptual row is
          in the notInService(2) state."
     ::= { etsysVlanInterfaceEntry 2 }
 
@@ -163,18 +163,18 @@ etsysVlanInterfaceRowStatus OBJECT-TYPE
                          a MIB-II interface to be created by
                          the managed entity and mapped to the
                          specified VLAN.  The etsysVlanInterfaceIfIndex
-                         object will return the ifIndex of the newly 
-                         created MIB-II interface.  The ifEntry 
-                         associated with this entry will only be 
-                         allowed to have an ifAdminStatus and 
+                         object will return the ifIndex of the newly
+                         created MIB-II interface.  The ifEntry
+                         associated with this entry will only be
+                         allowed to have an ifAdminStatus and
                          ifOperStatus of up(1) and will be read-only.
 
          notInService  - Indicates that this entry exists in the
-                         agent but is unavailable for use. 
+                         agent but is unavailable for use.
                          The etsysVlanInterfaceIfIndex object will return
                          a value of 0 for entries in this state.
-                         State transitions from the active(1) state 
-                         will cause the MIB-II interface mapped to 
+                         State transitions from the active(1) state
+                         will cause the MIB-II interface mapped to
                          this VLAN to be deleted.
 
          notReady      - Should not be possible.
@@ -193,7 +193,7 @@ etsysVlanInterfaceRowStatus OBJECT-TYPE
     ::= { etsysVlanInterfaceEntry 4 }
 
 -- -------------------------------------------------------------
--- etsysVlanInterfaceVlanLookup group           
+-- etsysVlanInterfaceVlanLookup group
 -- -------------------------------------------------------------
 
 etsysVlanInterfaceVlanLookupTable OBJECT-TYPE
@@ -244,7 +244,7 @@ etsysVlanInterfaceCompliances
 -- -------------------------------------------------------------
 -- units of conformance
 -- -------------------------------------------------------------
- 
+
 etsysVlanInterfaceGroup OBJECT-GROUP
     OBJECTS {
                 etsysVlanInterfaceMaximumEntries,
@@ -263,7 +263,7 @@ etsysVlanInterfaceGroup OBJECT-GROUP
 -- -------------------------------------------------------------
 -- compliance statements
 -- -------------------------------------------------------------
-    
+
 etsysVlanInterfaceCompliance MODULE-COMPLIANCE
     STATUS  current
     DESCRIPTION

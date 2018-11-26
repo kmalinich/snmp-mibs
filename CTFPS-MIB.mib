@@ -1,4 +1,4 @@
-CTFPS-MIB DEFINITIONS ::= BEGIN 
+CTFPS-MIB DEFINITIONS ::= BEGIN
 
         --  ctfps-mib.txt
         --  Revision:   01.00.00
@@ -31,14 +31,14 @@ CTFPS-MIB DEFINITIONS ::= BEGIN
         --  with the management of Cabletron products.
 
         --  Copyright August 96 Cabletron Systems
- 
-IMPORTS 
-        Gauge, Counter, TimeTicks    FROM RFC1155-SMI 
+
+IMPORTS
+        Gauge, Counter, TimeTicks    FROM RFC1155-SMI
         OBJECT-TYPE                  FROM RFC-1212
         ctFPS                        FROM CTRON-MIB-NAMES ;
 
 
--- The system group 
+-- The system group
 --
 
    fpsSystem             OBJECT IDENTIFIER ::= { ctFPS 1 }
@@ -64,7 +64,7 @@ IMPORTS
        ::= { fpsSystem 2 }
 
    fpsMaxPktRam OBJECT-TYPE
-       SYNTAX  INTEGER 
+       SYNTAX  INTEGER
        ACCESS  read-only
        STATUS  mandatory
        DESCRIPTION
@@ -88,7 +88,7 @@ IMPORTS
        ::= { fpsSystem 5 }
 
    fpsInPkts OBJECT-TYPE
-       SYNTAX  Counter 
+       SYNTAX  Counter
        ACCESS  read-only
        STATUS  mandatory
        DESCRIPTION
@@ -105,7 +105,7 @@ IMPORTS
        ::= { fpsSystem 7 }
 
    fpsInOctets OBJECT-TYPE
-       SYNTAX  Counter 
+       SYNTAX  Counter
        ACCESS  read-only
        STATUS  mandatory
        DESCRIPTION
@@ -154,27 +154,27 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
 -- (port to cluster is many to one relationship)
 --
 
-   fpsPortTable OBJECT-TYPE 
+   fpsPortTable OBJECT-TYPE
        SYNTAX  SEQUENCE OF FpsPortEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
           "A list of status and configuration information on active
            FPS ports in the system"
-       ::= { fpsPort 3 } 
+       ::= { fpsPort 3 }
 
-   fpsPortEntry OBJECT-TYPE 
+   fpsPortEntry OBJECT-TYPE
        SYNTAX  FpsPortEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
-           "A collection of fps port status and configurations." 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
+           "A collection of fps port status and configurations."
        INDEX { fpsPortNum }
-       ::= { fpsPortTable 1 } 
+       ::= { fpsPortTable 1 }
 
 
-   FpsPortEntry ::= 
-       SEQUENCE { 
+   FpsPortEntry ::=
+       SEQUENCE {
            fpsPortNum
                INTEGER,
            fpsPortIfNum
@@ -235,7 +235,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
            with the FPS port.  This interface number is the same as
            the MIBII interface number, ifIndex, defined in RFC1213."
        ::= { fpsPortEntry 2 }
- 
+
    fpsPortType OBJECT-TYPE
        SYNTAX  INTEGER {
            ether(1),
@@ -271,7 +271,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
            represents the hardware limit for the queue and can be no
            greater than fpsPortMaxQueDepth for this FPS port."
        ::= { fpsPortEntry 5 }
- 
+
    fpsPortMaxQueDepth OBJECT-TYPE
        SYNTAX  INTEGER
        ACCESS  read-only
@@ -290,7 +290,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
            (fpsPortTotalAvailQueDepth - the number of queue entries on the
            queue at any one time)."
        ::= { fpsPortEntry 7 }
- 
+
    fpsPortBandwidthRequested  OBJECT-TYPE
        SYNTAX  INTEGER
        ACCESS  read-only
@@ -363,7 +363,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
        DESCRIPTION
            "Current state of this port's bit in the Unkown Mask
            (LUFW). If enabled the FPS will forward packets that
-           are unknown to this port."  
+           are unknown to this port."
        ::= { fpsPortEntry 13 }
 
    fpsPortBroadcastStatus  OBJECT-TYPE
@@ -377,7 +377,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
        DESCRIPTION
            "Current state of this port's bit in the Broadcast
            Mask (LUFW).  If enabled the FPS will forward broadcast
-           packets to this port."  
+           packets to this port."
        ::= { fpsPortEntry 14 }
 
    fpsPortViolationStatus  OBJECT-TYPE
@@ -406,7 +406,7 @@ fpsPort               OBJECT IDENTIFIER ::= { ctFPS 2 }
        DESCRIPTION
            "Current state of this port's bit in the Copy
            Mask (LUFW).  If enabled the FPS will copy packets
-           to this port whose BAF entry has the 'copyl' bit set."  
+           to this port whose BAF entry has the 'copyl' bit set."
        ::= { fpsPortEntry 16 }
 
    fpsPortStatsStatus  OBJECT-TYPE
@@ -480,24 +480,24 @@ fpsCluster            OBJECT IDENTIFIER ::= { ctFPS 3 }
 
    fpsClusterTable OBJECT-TYPE
        SYNTAX  SEQUENCE OF FpsClusterEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
            "A list of fps cluster entries"
-       ::= { fpsCluster 2 } 
+       ::= { fpsCluster 2 }
 
-   fpsClusterEntry OBJECT-TYPE 
+   fpsClusterEntry OBJECT-TYPE
        SYNTAX  FpsClusterEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
            "A collection of fps cluster entries."
        INDEX { fpsClusterNumber }
-       ::= { fpsClusterTable 1 } 
+       ::= { fpsClusterTable 1 }
 
 
-   FpsClusterEntry ::= 
-       SEQUENCE { 
+   FpsClusterEntry ::=
+       SEQUENCE {
            fpsClusterNumber
                INTEGER,
            fpsClusterType
@@ -506,7 +506,7 @@ fpsCluster            OBJECT IDENTIFIER ::= { ctFPS 3 }
                INTEGER,
            fpsPortsPerCluster
                INTEGER
-       } 
+       }
 
    fpsClusterNumber OBJECT-TYPE
        SYNTAX  INTEGER
@@ -567,7 +567,7 @@ fpsDMAF               OBJECT IDENTIFIER ::= { ctFPS 4 }
 -- DMAF utilization objects
 --
 --
- 
+
    dmafBandWidth3SecUtil  OBJECT-TYPE
        SYNTAX  Gauge
        ACCESS  read-only
@@ -579,16 +579,16 @@ fpsDMAF               OBJECT IDENTIFIER ::= { ctFPS 4 }
            For example a count of 25 would represent .25 percent
            utilization."
        ::= { fpsDMAF 1 }
- 
- 
- 
+
+
+
 -- BAF
 --
 -- BAF objects
 --
 --
 fpsBAF                OBJECT IDENTIFIER ::= { ctFPS 5 }
- 
+
    bafEntryCount OBJECT-TYPE
        SYNTAX  INTEGER
        ACCESS  read-only

@@ -6,7 +6,7 @@ ENTERASYS-IETF-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' IETF BRIDGE-MIB extension MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-IETF-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright 2002-2012 Enterasys Networks, Inc.
@@ -62,7 +62,7 @@ etsysIetfBridgeMibExtMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          proprietary extensions to the IETF BRIDGE-MIB as specified
          in RFC1493."
 
@@ -76,8 +76,8 @@ etsysIetfBridgeMibExtMIB MODULE-IDENTITY
 
     REVISION    "200703212102Z"  -- Wed Mar 21 21:02 GMT 2007
     DESCRIPTION
-        "Added an additional scalar: 
-         etsysIetfBridgeDot1qStaticUcastAsMcast, which is intended to 
+        "Added an additional scalar:
+         etsysIetfBridgeDot1qStaticUcastAsMcast, which is intended to
          modify the behavior of the filter-database lookup, specifically
          how static multicast entries in the database may be matched."
 
@@ -98,7 +98,7 @@ etsysIetfBridgeMibExtMIB MODULE-IDENTITY
     REVISION "200411041447Z"  -- Thu Nov  4 14:47 GMT 2004
     DESCRIPTION
         "Addition of a moved address notification, an object
-         to globally enable/disable this notification, and a 
+         to globally enable/disable this notification, and a
          port level control for this notification."
 
     REVISION "200405281508Z"  -- Fri May 28 15:08 GMT 2004
@@ -109,7 +109,7 @@ etsysIetfBridgeMibExtMIB MODULE-IDENTITY
 
     REVISION "200404082004Z"  -- Thu Apr  8 20:04 GMT 2004
     DESCRIPTION
-        "Changed the description clause for the 
+        "Changed the description clause for the
          etsysIetfBridgeDot1dStpBackupRootEnable object to limit its
          effect to the Common and Internal Spanning Tree."
 
@@ -131,14 +131,14 @@ etsysIetfBridgeMibExtMIB MODULE-IDENTITY
 
     REVISION "200306191936Z"  -- Thu Jun 19 19:36 GMT 2003
     DESCRIPTION
-        "Addition of a new address notification and an object to 
+        "Addition of a new address notification and an object to
          enable/disable this notification."
 
     REVISION "200212132120Z"  -- Fri Dec 13 21:20 GMT 2002
     DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 31 } 
+    ::= { etsysModules 31 }
 
 etsysIetfBridgeMibExt
     OBJECT IDENTIFIER ::= { etsysIetfBridgeMibExtMIB 1 }
@@ -195,7 +195,7 @@ etsysIetfBridgeDot1dStpPortEntry OBJECT-TYPE
     ::= { etsysIetfBridgeDot1dStpPortTable 1 }
 
 EtsysIetfBridgeDot1dStpPortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysIetfBridgeDot1dStpPortStpEnable                EnabledStatus,
         etsysIetfBridgeDot1dStpPortSpanGuardBlocking        TruthValue,
         etsysIetfBridgeDot1dStpPortCistRoleValue            INTEGER,
@@ -238,7 +238,7 @@ etsysIetfBridgeDot1dStpPortSpanGuardBlocking   OBJECT-TYPE
 
 etsysIetfBridgeDot1dStpPortCistRoleValue OBJECT-TYPE
     SYNTAX      INTEGER {
-                         disabled(1), 
+                         disabled(1),
                          root(2),
                          designated(3),
                          alternate(4),
@@ -249,11 +249,11 @@ etsysIetfBridgeDot1dStpPortCistRoleValue OBJECT-TYPE
     DESCRIPTION
       "Indicates this port's role on the CIST.
 
-       disabled   -- this port has no role on the CIST. 
+       disabled   -- this port has no role on the CIST.
 
-       root       -- this port has the role of root port on the CIST. 
+       root       -- this port has the role of root port on the CIST.
 
-       designated -- this port has the role of designated 
+       designated -- this port has the role of designated
                      port on the CIST.
 
        alternate  -- this port has the role of alternate port
@@ -282,7 +282,7 @@ etsysIetfBridgeDot1dStpPortCistNonForwardingReason OBJECT-TYPE
                    state due to any exceptional condition.
 
          disputed(2) - the port has been placed in listening state
-                       because it has a designated role and an 
+                       because it has a designated role and an
                        inferior designated BPDU has been received.
 
          spanGuardLocked(3) - the port has been placed in blocking
@@ -466,7 +466,7 @@ etsysIetfBridgeDot1dStpLoopProtectPortEntry OBJECT-TYPE
     ::= { etsysIetfBridgeDot1dStpLoopProtectPortTable 1 }
 
 EtsysIetfBridgeDot1dStpLoopProtectPortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysIetfBridgeDot1dStpLoopProtectPortCistEnable     EnabledStatus,
         etsysIetfBridgeDot1dStpLoopProtectPortCistBlocking   TruthValue,
         etsysIetfBridgeDot1dStpLoopProtectPortPartnerCapable TruthValue
@@ -494,7 +494,7 @@ etsysIetfBridgeDot1dStpLoopProtectPortCistBlocking OBJECT-TYPE
          true(1)   - this port is being held in the blocking state
                      by the Loop Protect feature.
 
-         false(2)  - this port is not being held in the blocking 
+         false(2)  - this port is not being held in the blocking
                      state by the Loop Protect feature.
 
          When this object has a value of true(1) setting its value
@@ -564,7 +564,7 @@ etsysIetfBridgeDot1dStpLoopProtectEventTrapEnable OBJECT-TYPE
 
 
 -- ---------------------------------------------------------- --
--- Extensions to the dot1dBasePortTable 
+-- Extensions to the dot1dBasePortTable
 -- ---------------------------------------------------------- --
 
 etsysIetfBridgeDot1dBasePortTable OBJECT-TYPE
@@ -586,7 +586,7 @@ etsysIetfBridgeDot1dBasePortEntry OBJECT-TYPE
     ::= { etsysIetfBridgeDot1dBasePortTable 1 }
 
 EtsysIetfBridgeDot1dBasePortEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysIetfBridgeDot1dBasePortNewLearnedAddrTrap    EnabledStatus,
         etsysIetfBridgeDot1dBasePortMovedAddrTrap         EnabledStatus
     }
@@ -613,8 +613,8 @@ etsysIetfBridgeDot1dBasePortNewLearnedAddrTrap   OBJECT-TYPE
          If etsysIetfBridgeDot1qNewLearnedAddrTrapEnable is set to
          disabled, setting this object to enabled will have no effect.
 
-         Notification generation is not required to match new address 
-         rate of learning. A best effort delivery queue is acceptable." 
+         Notification generation is not required to match new address
+         rate of learning. A best effort delivery queue is acceptable."
     REFERENCE
         "IEEE 802.1Q/D11 Section 12.7."
     DEFVAL { disabled }
@@ -630,12 +630,12 @@ etsysIetfBridgeDot1dBasePortMovedAddrTrap   OBJECT-TYPE
 
          When etsysIetfBridgeDot1qMovedAddrTrapEnable and this
          object are both set to enabled the agent will generate
-         an etsysIetfBridgeDot1qFdbMovedAddr notification for 
-         each entry in the dot1qTpFdbTable that has a dot1qTpFdbStatus 
-         value equal to learned(3) and a dot1qTpFdbPort value equal to 
-         this row's dot1dBasePort value when it is detected that the 
-         corresponding dot1qTpFdbAddress has moved to this row's 
-         dot1dBasePort from another port. 
+         an etsysIetfBridgeDot1qFdbMovedAddr notification for
+         each entry in the dot1qTpFdbTable that has a dot1qTpFdbStatus
+         value equal to learned(3) and a dot1qTpFdbPort value equal to
+         this row's dot1dBasePort value when it is detected that the
+         corresponding dot1qTpFdbAddress has moved to this row's
+         dot1dBasePort from another port.
 
          Setting this object to disabled will prevent the agent from
          generating etsysIetfBridgeDot1qFdbMovedAddr notifications
@@ -644,9 +644,9 @@ etsysIetfBridgeDot1dBasePortMovedAddrTrap   OBJECT-TYPE
          If etsysIetfBridgeDot1qMovedAddrTrapEnable is set to
          disabled, setting this object to enabled will have no effect.
 
-         Notification generation is not required to match the 
-         dot1qTpFdbTable entry modification rate. A best effort 
-         delivery queue is acceptable." 
+         Notification generation is not required to match the
+         dot1qTpFdbTable entry modification rate. A best effort
+         delivery queue is acceptable."
     REFERENCE
         "IEEE 802.1Q/D11 Section 12.7."
     DEFVAL { disabled }
@@ -691,8 +691,8 @@ etsysIetfBridgeDot1qMovedAddrTrapEnable   OBJECT-TYPE
         "The global status of the moved address notification
          feature.
 
-         When this object is set to enabled(1), the agent will 
-         generate etsysIetfBridgeDot1qFdbMovedAddr notifications 
+         When this object is set to enabled(1), the agent will
+         generate etsysIetfBridgeDot1qFdbMovedAddr notifications
          for each moved address on ports that have their corresponding
          etsysIetfBridgeDot1dBasePortMovedAddrTrap object set to
          enabled(1).
@@ -714,9 +714,9 @@ etsysIetfBridgeDot1qStaticUcastAsMcast    OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "When this object is set to enabled(1), the agent will 
+        "When this object is set to enabled(1), the agent will
          allow unicast traffic which matches all 48 bits of a static
-         and the source VLAN of a multicast entry in the filter-database, 
+         and the source VLAN of a multicast entry in the filter-database,
          except for the multicast-bit (bit 8). This augments the behavior
          defined in the IEEE 802.1Q specification.
 
@@ -734,29 +734,29 @@ etsysIetfBridgeDot1qGvrpOperStatus    OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The global operational status of the GVRP application.  The 
-         value of this object supersedes the dot1qGvrpStatus.  The 
-         dot1qGvrpStatus indicates the global administrative status for 
+        "The global operational status of the GVRP application.  The
+         value of this object supersedes the dot1qGvrpStatus.  The
+         dot1qGvrpStatus indicates the global administrative status for
          GVRP.  Internally, the application may be operationally disabled
-         as a result of a system configuration in which GVRP is not 
+         as a result of a system configuration in which GVRP is not
          supported.
-        
+
          enabled(1)  - GVRP is operationally enabled on this device.
 
          disabled(2) - GVRP is operationally disabled on this device.
-        
-         For example, when configured in Provider bridge mode GVRP MUST
-         be operationally disabled and in Customer bridge mode GVRP may 
-         MAY operationally enabled.  
 
-         If the dot1qGvrpStatus is disabled(2), this leaf will always 
+         For example, when configured in Provider bridge mode GVRP MUST
+         be operationally disabled and in Customer bridge mode GVRP may
+         MAY operationally enabled.
+
+         If the dot1qGvrpStatus is disabled(2), this leaf will always
          return disabled(2)."
     REFERENCE
         "IEEE 802.1Q/D11 Section 11.2.1"
     ::= { etsysIetfBridgeDot1qBase 4 }
 
 -- ---------------------------------------------------------- --
--- Notifications 
+-- Notifications
 -- ---------------------------------------------------------- --
 
 etsysIetfBridgeDot1qFdbNewLearnedAddr NOTIFICATION-TYPE
@@ -767,7 +767,7 @@ etsysIetfBridgeDot1qFdbNewLearnedAddr NOTIFICATION-TYPE
          in the dot1qTpFdbTable with a dot1qTpFdbStatus value equal to
          learned(3)."
     ::= { etsysIetfBridgeDot1Notifications 1 }
- 
+
 etsysIetfBridgeDot1dSpanGuardPortBlocked NOTIFICATION-TYPE
     OBJECTS     { dot1dBasePort, dot1dBasePortIfIndex }
     STATUS      current
@@ -775,7 +775,7 @@ etsysIetfBridgeDot1dSpanGuardPortBlocked NOTIFICATION-TYPE
         "This notification indicates that a bridge port has been
          placed in the blocking state by the SpanGuard feature."
     ::= { etsysIetfBridgeDot1Notifications 2 }
- 
+
 etsysIetfBridgeDot1dBackupRootActivation NOTIFICATION-TYPE
     OBJECTS     { dot1dBaseBridgeAddress, dot1dStpDesignatedRoot }
     STATUS      current
@@ -787,14 +787,14 @@ etsysIetfBridgeDot1dBackupRootActivation NOTIFICATION-TYPE
          for the applicable spanning tree SHOULD be encoded as
          well."
     ::= { etsysIetfBridgeDot1Notifications 3 }
- 
+
 etsysIetfBridgeDot1qFdbMovedAddr NOTIFICATION-TYPE
     OBJECTS     { dot1qTpFdbPort }
     STATUS      current
     DESCRIPTION
-        "This notification indicates that a new entry in the 
-         dot1qTpFdbTable with a dot1qTpFdbStatus value equal to 
-         learned(3) has replaced an entry which had the same 
+        "This notification indicates that a new entry in the
+         dot1qTpFdbTable with a dot1qTpFdbStatus value equal to
+         learned(3) has replaced an entry which had the same
          dot1qTpFdbAddress but different dot1qTpFdbPort, to
          indicate a dot1qTpFdbAddress has moved from one port
          to another."
@@ -834,7 +834,7 @@ etsysIetfBridgeStpPort OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "A collection of objects relating to per Port Spanning 
+        "A collection of objects relating to per Port Spanning
          Tree information."
     ::= { etsysIetfBridgeGroups 1 }
 
@@ -856,7 +856,7 @@ etsysIetfBridgeBase OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "A collection of objects relating to bridge 
+        "A collection of objects relating to bridge
          configuration information."
     ::= { etsysIetfBridgeGroups 3 }
 
@@ -999,7 +999,7 @@ etsysIetfBridgeGvrpOperStatus OBJECT-GROUP
     }
     STATUS      current
     DESCRIPTION
-        "An object that indicates the operational status of the 
+        "An object that indicates the operational status of the
         GVRP application."
     ::= { etsysIetfBridgeGroups 17 }
 

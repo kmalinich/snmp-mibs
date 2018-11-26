@@ -20,16 +20,16 @@ REPEATER-MIB-2 DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -37,7 +37,7 @@ REPEATER-MIB-2 DEFINITIONS ::= BEGIN
         --  with the management of Cabletron products.
 
         --  Copyright August 97 Cabletron Systems
-        
+
 
         --              NOTE:
         --              -----
@@ -45,10 +45,10 @@ REPEATER-MIB-2 DEFINITIONS ::= BEGIN
         -- Because rrev2-mib.txt, currently contains both "optional" and
         -- "mandatory" objects, intermixed within groups, and several
         -- Cabletron products utilizing this MIB have supported different
-        -- subsets of these "optional" objects, this MIB cannot be 'fixed' 
+        -- subsets of these "optional" objects, this MIB cannot be 'fixed'
         -- without 'breaking' one or more product implementation.
 
-        -- To get this MIB to compile with SMIC, you must use the /5 
+        -- To get this MIB to compile with SMIC, you must use the /5
         -- command line option.  This tells the compiler to allow the
         -- value of "optional" for STATUS.  MOSY doesn't complain.
 
@@ -65,14 +65,14 @@ IMPORTS
 
 -- Common MIB Structure
 -- ---------------------
--- 
+--
 --      The Common MIB is a group of objects that are common to
 -- all communications devices. This section will describe these
 -- objects.
--- 
+--
 -- Instance Identifiers for Common objects
 -- ----------------------------------------
--- 
+--
 --      There is  only one  instance of an Common object in any
 -- device. Thus the Instance Identifier is 0.
 deviceType     OBJECT-TYPE
@@ -122,7 +122,7 @@ currentDate        OBJECT-TYPE
 
 SYNTAX  OCTET STRING (SIZE(8))
 ACCESS  read-write
-STATUS  optional 
+STATUS  optional
 DESCRIPTION
      "The current date as measured by the device in MMDDYYYY format."
 ::= { commonRev1 5 }
@@ -131,21 +131,21 @@ DESCRIPTION
 mACAddress   OBJECT-TYPE
 
 SYNTAX  OCTET STRING
-ACCESS  read-only 
+ACCESS  read-only
 STATUS  mandatory
-DESCRIPTION 
+DESCRIPTION
   "The  MAC (Ethernet)  address of the MMAC. This
    can also be obtained from address translation MIB."
 ::= { commonRev1 6 }
 
 
 -- SysOIDs definitions
--- 
+--
 -- This section defines the values returned by the System OID
 -- in the Internet MIB. These are NOT objects in the MIB but
 -- come from the OID tree assigned to Cabletron.
--- 
--- 
+--
+--
 -- Formal Definitions
 
 
@@ -159,7 +159,7 @@ soidMINIMMAC  OBJECT IDENTIFIER ::= { sysRepeaters 1 }
 
 soidMRXI  OBJECT IDENTIFIER ::= { sysRepeaters 2 }
 
--- Formal definitions for RepeaterRev1   
+-- Formal definitions for RepeaterRev1
 
 device    OBJECT IDENTIFIER   ::= { repeaterRev1 1 }
 
@@ -175,14 +175,14 @@ alarm    OBJECT IDENTIFIER   ::= { repeaterRev1 9 }
 
 
 -- device Object Definitions
--- 
+--
 --      This section defines the objects under the Device node.
--- 
+--
 -- Instance Identifiers for device objects
--- 
+--
 --      Again there is only one instance of an device object in
 -- any device. Thus the Instance Identifier is 0.
--- 
+--
 -- device Objects
 
 
@@ -361,7 +361,7 @@ DESCRIPTION
 
 deviceRestart    OBJECT-TYPE
 SYNTAX  INTEGER
-ACCESS  read-write 
+ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
     "A read will return 0.  A set of 0 will restart the device."
@@ -412,7 +412,7 @@ SYNTAX  INTEGER
 ACCESS  read-write
 STATUS  optional
 DESCRIPTION
-  "The number of minutes that a source address is not detected before 
+  "The number of minutes that a source address is not detected before
    it is removed from the source address table. The minimum is 1 minute
    and the maximum is 1440 minutes (max minutes in a day)."
 DEFVAL  { 60 }
@@ -458,7 +458,7 @@ DESCRIPTION
     "The slots that contain Ethernet MIM boards.
      This field is bit encoded (e.g. If a bit is set then that board
      is present and is an Ethernet MIM.)  For example, a value of 3 indicates
-     that there are boards in the IRM slot and the first MIM slot and that 
+     that there are boards in the IRM slot and the first MIM slot and that
      these boards are Ethernet MIMs."
 ::= { device 29 }
 
@@ -496,7 +496,7 @@ STATUS  optional
 DESCRIPTION
     "A get will return 0.
    A set of 0 will restore all of battery backed RAM to factory defaults, with
-   the execption of the IP address, the community table and the modem 
+   the execption of the IP address, the community table and the modem
    baud rate."
 ::= { device 32 }
 
@@ -512,7 +512,7 @@ DESCRIPTION
 
 deviceBroadPkts OBJECT-TYPE
 
-SYNTAX Counter 
+SYNTAX Counter
 ACCESS  read-only
 STATUS  optional
 DESCRIPTION
@@ -522,7 +522,7 @@ DESCRIPTION
 
 deviceMultPkts OBJECT-TYPE
 
-SYNTAX Counter 
+SYNTAX Counter
 ACCESS  read-only
 STATUS  optional
 DESCRIPTION
@@ -537,7 +537,7 @@ deviceThdPartyOccupiedSlots     OBJECT-TYPE
     DESCRIPTION
         "The slots that contain Third Party  MIM boards.  This field
          is bit encoded (eg. if a bit is set then that board is present
-         and is a Third Party MIM.)  For example, a value of 4 indicates 
+         and is a Third Party MIM.)  For example, a value of 4 indicates
          that there is a board in the third MIM slot (slot 4) and that
          this board is a Third Party MIM."
     ::= { device 51 }
@@ -548,8 +548,8 @@ deviceImimOccupiedSlots OBJECT-TYPE
     STATUS      optional
     DESCRIPTION
         "The slots that contain IMIM boards.  This field
-         is bit encoded (eg. if a bit is set then that board is present and 
-         is an IMIM).  For example, a value of 4 indicates that there is a 
+         is bit encoded (eg. if a bit is set then that board is present and
+         is an IMIM).  For example, a value of 4 indicates that there is a
          board in the third MIM slot (slot 4) and that this board is an IMIM."
     ::= { device 52 }
 
@@ -596,7 +596,7 @@ ctIPDefaultFrameType  OBJECT-TYPE
                 Setting a value of 8022snap(2) will result in framing
                 802.3 - 802.2 - IP packets being generated by default.
 
-                Setting a value of ethernet(1) will result in framing 
+                Setting a value of ethernet(1) will result in framing
                 ethernet IP packets by default."
         DEFVAL { ethernet }
         ::= { device 56 }
@@ -604,17 +604,17 @@ ctIPDefaultFrameType  OBJECT-TYPE
 
 -- sourceAddr object definitions implementation of this group is
 -- optional
--- 
+--
 --      The sourceAddr object section contains objects that can
 -- be accessed by source address.
--- 
+--
 --  Instance Identifier for sourceAddr objects
--- 
+--
 --      The instance  identifier for  these  variables  is  the
 -- source address  the user is interested in. Each octet of the
 -- source address  forms a term in the instance identifier (see
 -- below)
-     
+
 
 sourceAddrBoard  OBJECT-TYPE
 
@@ -640,7 +640,7 @@ DESCRIPTION
 
 -- redundancy Object Definitions implementation of this group is
 -- optional
--- 
+--
 --      This section  defines the  objects that  are associated
 -- with cable  level redundancy.  The  concepts  for  this  are
 -- described in  other documentation.  It should  be noted here
@@ -648,9 +648,9 @@ DESCRIPTION
 -- in the PORT section of the MIB.
 -- The maximum number of redundant circuits can be found in the
 -- DEVICE section of the MIB.
--- 
+--
 -- Instance Identifiers for redundancy Objects
--- 
+--
 --      There  are   two  types  of  instance  identifiers  for
 -- redundancy objects. First, are the global objects that apply
 -- to all redundant circuits. These have an instance identifier
@@ -739,9 +739,9 @@ ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
      "The boards associated with the indicated circuit, accessed by index.
-    Note:  The instance identifier for this object is the circuit 
-      number followed by an index.  The index has no other meaning 
-      than to be used as an index for the purposes of the GET NEXT 
+    Note:  The instance identifier for this object is the circuit
+      number followed by an index.  The index has no other meaning
+      than to be used as an index for the purposes of the GET NEXT
     operation."
 ::= { redundancy 7 }
 
@@ -753,9 +753,9 @@ ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
      "The ports associated with the indicated circuit, accessed by index.
-    Note:  The instance identifier for this object is the circuit 
-      number followed by an index.  The index has no other meaning 
-      than to be used as an index for the purposes of the GET NEXT 
+    Note:  The instance identifier for this object is the circuit
+      number followed by an index.  The index has no other meaning
+      than to be used as an index for the purposes of the GET NEXT
     operation."
 ::= { redundancy 8 }
 
@@ -766,11 +766,11 @@ SYNTAX  INTEGER
 ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
-     "The type of each port associated with the indicated circuit, 
+     "The type of each port associated with the indicated circuit,
       accessed by index.
-    Note:  The instance identifier for this object is the circuit 
-      number followed by an index.  The index has no other meaning 
-      than to be used as an index for the purposes of the GET NEXT 
+    Note:  The instance identifier for this object is the circuit
+      number followed by an index.  The index has no other meaning
+      than to be used as an index for the purposes of the GET NEXT
     operation."
 ::= { redundancy 9 }
 
@@ -815,11 +815,11 @@ SYNTAX  OCTET STRING
 ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
-     "The ethernet addresses associated with the indicated circuit, 
+     "The ethernet addresses associated with the indicated circuit,
       accessed by index.
-    Note:  The instance identifier for this object is the circuit 
-      number followed by an index.  The index has no other meaning 
-      than to be used as an index for the purposes of the GET NEXT 
+    Note:  The instance identifier for this object is the circuit
+      number followed by an index.  The index has no other meaning
+      than to be used as an index for the purposes of the GET NEXT
     operation."
 ::= { redundancy 13 }
 
@@ -847,26 +847,26 @@ ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
      "A get will return 0.
-    A set of 1 will reset the indicated circuit, return all of the associated 
+    A set of 1 will reset the indicated circuit, return all of the associated
       board and ports to NOT-USED, remove associated addresses from the polling
-      list, reset the circuit name and retry count to default values." 
+      list, reset the circuit name and retry count to default values."
 ::= { redundancy 15 }
 
 
 -- alarm Object definitions
--- 
+--
 --      This section  defines the objects that can cause alarms
 -- to be  generated. All  of the  alarm objects  presented  are
 -- objects that derive there values from other parts of the MIB
 -- and hence  the structure  of this section of the MIB mirrors
 -- the sections that generate the raw data.
--- 
+--
 --      For each section there are 3 sources of alarms:Traffic
 -- levels, collsion  rates (as  they relate  to  traffic),  and
 -- error rates  (also  related  to  traffic).  All  alarms  are
 -- qualified by  the Devicetimebase (ie. the rates are measured
 -- for a particular length of time).
--- 
+--
 --  Formal defintions for the structure below alarm
 
      devAlrm        OBJECT IDENTIFIER   ::= { alarm 1 }
@@ -877,14 +877,14 @@ DESCRIPTION
 
 
 -- devAlrm object defintions
--- 
+--
 --      This section  defines the  objects  that  will  control
 -- alarms associated with the device.
--- 
+--
 -- devAlrm Instance Identifiers
 --      There is  only one  set of device level alarms per MMAC
 -- thus the instance identifiers for DevAlrm objects is 0.
--- 
+--
 -- Formal defintions below devAlrm
 
      devTraffic     OBJECT IDENTIFIER   ::= { devAlrm 1 }
@@ -899,7 +899,7 @@ DESCRIPTION
 
 -- devTraffic Object Definitions implementation of this group is
 -- optional
--- 
+--
 --      This  section  define  the  devTraffic  objects.  These
 -- objects control the device level traffic alarm generation.
 
@@ -926,7 +926,7 @@ devTrafficThreshold  OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-write
 STATUS  mandatory
-DESCRIPTION 
+DESCRIPTION
     "The number of packets detected by the device within the device
      timebase that will cause a device traffic alarm trap to be sent.
        The minimum is 0. There isn't a maximum."
@@ -935,7 +935,7 @@ DEFVAL  { 1000 }
 
 
 -- devColls Object Defintions implementation of this group is optional
--- 
+--
 --      This section  defines  the  objects  that  control  the
 -- device level collision alarm.
 
@@ -950,7 +950,7 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-     "Enable or disable the checking for device level collision thresholds 
+     "Enable or disable the checking for device level collision thresholds
     getting exceeded."
 DEFVAL  { disable }
 ::= { devColls  1 }
@@ -958,7 +958,7 @@ DEFVAL  { disable }
 
 devCollsThreshold  OBJECT-TYPE
 
-SYNTAX  INTEGER 
+SYNTAX  INTEGER
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
@@ -966,11 +966,11 @@ DESCRIPTION
     within the device timebase that will cause a device collision alarm
     trap to be sent.  The minimum is 1, the maximum is 15."
 ::= { devColls 2  }
-                                        
+
 
 --  devErrorS Object Defintions implementation of this group is
 -- optional
--- 
+--
 --      This section  defines  the  objects  that  control  the
 -- device level error alarm.
 
@@ -1024,7 +1024,7 @@ DEFVAL  { 63 }
 
 
 --  devBroad Object Defintions implementation of this group is optional
--- 
+--
 --      This section  defines  the  objects  that  control  the
 -- device level boradcast alarm.
 
@@ -1050,16 +1050,16 @@ DESCRIPTION
 ::= { devBroad 2 }
 
 -- bdAlrm object defintions implementation of this group is optional
--- 
+--
 --      This section  defines the  objects  that  will  control
 -- alarms associated with the board.
--- 
+--
 -- bdAlrm Instance Identifiers
--- 
--- 
+--
+--
 --      There is  set of  board level alarms per board thus the
 -- instance identifiers for bdAlrm objects is teh board number.
--- 
+--
 --  Formal defintions below bdAlrm
 
      bdTraffic      OBJECT IDENTIFIER   ::= { bdAlrm 1 }
@@ -1072,8 +1072,8 @@ DESCRIPTION
 
 
 -- bdTraffic Object Definitions
--- 
--- 
+--
+--
 --      This  section   define  the  bdTraffic  objects.  These
 -- objects control the board level traffic alarm generation.
 
@@ -1086,7 +1086,7 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-     "Enable or disable the checking for board level traffic thresholds 
+     "Enable or disable the checking for board level traffic thresholds
     getting exceeded."
 DEFVAL  { disable }
 ::= { bdTraffic 1 }
@@ -1097,7 +1097,7 @@ bdTrafficThreshold  OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-write
 STATUS  mandatory
-DESCRIPTION 
+DESCRIPTION
     "The number of packets detected by the specified board within the device
      timebase that will cause a board traffic alarm trap to be sent.
        The minimum is 0. There isn't a maximum."
@@ -1120,7 +1120,7 @@ DEFVAL  { disable }
 
 
 -- bdColls Object Defintions
--- 
+--
 --      This section defines the objects that control the board
 -- level collision alarm.
 
@@ -1147,7 +1147,7 @@ ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
      "The number of collisions per good packet detected by the specified
-    board within the device timebase that will cause a board collision 
+    board within the device timebase that will cause a board collision
     alarm trap to be sent.  The minimum is 1, the maximum is 15."
 DEFVAL  { 1 }
 ::= { bdColls 2  }
@@ -1169,7 +1169,7 @@ DEFVAL  { disable }
 
 
 -- bdErrorS Object Defintions
--- 
+--
 --      This section defines the objects that control the board
 -- level error alarm.
 
@@ -1236,7 +1236,7 @@ DEFVAL  { disable }
 ::= { bdError 4  }
 
 -- bdBroad Object Defintions
--- 
+--
 --      This section defines the objects that control the board
 -- level broadcast alarm.
 
@@ -1251,7 +1251,7 @@ STATUS  mandatory
 DESCRIPTION
   "Enable the sending of board level broadcast traps for this board."
 ::= { bdBroad 1 }
-                                                                                                                 
+
 bdBroadThreshold OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-write
@@ -1271,22 +1271,22 @@ STATUS  mandatory
 DESCRIPTION
   "Permit a board to be disabled on a broadcast threshold alarm."
 ::= { bdBroad 3 }
-                                                                   
+
 
 -- portAlrm object defintions
--- 
+--
 --      This section  defines the  objects  that  will  control
 -- alarms associated with the port.
--- 
+--
 -- portAlrm Instance Identifiers implementation of this group is
 -- optional
--- 
+--
 --      There is  set of  port level  alarms per board thus the
 -- instance identifiers  for  portAlrm  objects  is  the  board
 -- number.
--- 
+--
 --  Formal defintions below portAlrm
--- 
+--
      portTraffic    OBJECT IDENTIFIER   ::= { portAlrm 1 }
 
      portColls      OBJECT IDENTIFIER   ::= { portAlrm 2 }
@@ -1297,10 +1297,10 @@ DESCRIPTION
 
 
 -- portTraffic Object Definitions
--- 
+--
 --      This section  define  the  portTraffic  objects.  These
 -- objects control the port level traffic alarm generation.
--- 
+--
 
 portTrafficEnable OBJECT-TYPE
 
@@ -1311,7 +1311,7 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-     "Enable or disable the checking for port level traffic thresholds 
+     "Enable or disable the checking for port level traffic thresholds
     getting exceeded."
 DEFVAL  { disable }
 ::= { portTraffic 1 }
@@ -1322,7 +1322,7 @@ portTrafficThreshold  OBJECT-TYPE
 SYNTAX  INTEGER
 ACCESS  read-write
 STATUS  mandatory
-DESCRIPTION 
+DESCRIPTION
     "The number of packets detected by the specified port within the device
      timebase that will cause a port traffic alarm trap to be sent.
        The minimum is 0. There isn't a maximum."
@@ -1345,10 +1345,10 @@ DEFVAL  { disable }
 
 
 -- portColls Object Defintions
--- 
+--
 --      This section  defines the objects that control the port
 -- level collision alarm.
--- 
+--
 
 portCollsEnable  OBJECT-TYPE
 
@@ -1372,7 +1372,7 @@ ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
      "The number of collisions per good packet detected by the specified
-    port within the device timebase that will cause a port collision 
+    port within the device timebase that will cause a port collision
     alarm trap to be sent.  The minimum is 1, the maximum is 15."
 DEFVAL  { 1 }
 ::= { portColls 2  }
@@ -1395,7 +1395,7 @@ DEFVAL  { disable }
 
 
 -- portErrorS Object Defintions
--- 
+--
 --      This section  defines the objects that control the port
 -- level error alarm.
 
@@ -1463,7 +1463,7 @@ DEFVAL  { disable }
 ::= { portError 4  }
 
 -- portBroad Object Defintions
--- 
+--
 --      This section  defines the objects that control the port
 -- level broadcast alarm.
 
@@ -1478,7 +1478,7 @@ STATUS  mandatory
 DESCRIPTION
   "Enable the sending of port level broadcast alarms."
 ::= { portBroad 1 }
-                         
+
 portBroadThreshold OBJECT-TYPE
 SYNTAX  Counter
 ACCESS  read-write
@@ -1527,7 +1527,7 @@ SYNTAX  INTEGER
 ACCESS  read-only
 STATUS  deprecated
 DESCRIPTION
-      "The number of Token Ring Ports (i.e. station, Ring In and 
+      "The number of Token Ring Ports (i.e. station, Ring In and
        Ring Out ports) administratively ON for this device."
 ::= { tokenRingD 1 }
 
@@ -1600,9 +1600,9 @@ DESCRIPTION
 -- board Object Definitions
 --
 --      This  section  will  describe  the  management  objects
--- associated with a board. The board variables have been broken down into 
+-- associated with a board. The board variables have been broken down into
 -- Network type independent and Network Type Dependent variables.
--- 
+--
 -- Formal Definitions within board
 
 commonB    OBJECT IDENTIFIER ::= { rr2board 1 }
@@ -1613,14 +1613,14 @@ tokenRingB OBJECT IDENTIFIER ::= { rr2board 3 }
 
 fddiB      OBJECT IDENTIFIER ::= { rr2board 4 }
 
--- 
+--
 -- Instance Identifiers for board s
--- 
+--
 --      The Instance  Identifiers  for  board  objects  is  the
 -- number of the slot in the MMAC cage. The current valid range
 -- is from  1-8. The  IRM being  in slot  1.  B  indicates  the
 -- instance of a board number.
--- 
+--
 -- common board Objects
 
 
@@ -1827,7 +1827,7 @@ SYNTAX   INTEGER
 ACCESS   read-only
 STATUS   deprecated
 DESCRIPTION
-      "The total number of ring ports on this board. Currently, 
+      "The total number of ring ports on this board. Currently,
      zero or two."
 ::= { tokenRingB 1 }
 
@@ -1883,7 +1883,7 @@ SYNTAX  INTEGER {
     }
 ACCESS  read-write
 STATUS  deprecated
-DESCRIPTION                                                            
+DESCRIPTION
      "The board speed."
 ::= { tokenRingB 6 }
 
@@ -1912,11 +1912,11 @@ DESCRIPTION
 ::= { tokenRingB 9 }
 
 -- Port Object Definitions
--- 
+--
 --      This section  will define  the objects  associated with
 -- ports. Here again the objects are deperateed into common objects and
 -- network type specific objects.
--- 
+--
 -- Formal Definitions within Port
 
 commonP    OBJECT IDENTIFIER ::= { rr2port 1 }
@@ -1927,10 +1927,10 @@ tokenRingP OBJECT IDENTIFIER ::= { rr2port 3 }
 
 fddiP      OBJECT IDENTIFIER ::= { rr2port 4 }
 
--- 
--- 
+--
+--
 --  Instance Identifiers for port s
--- 
+--
 --      The instance  identifiers for  port objects  are board#
 -- and port#.  The format of the port identifier is thus:Board_num.Port_num or B.P
 
@@ -2212,8 +2212,8 @@ DESCRIPTION
 
 
 -- Token Ring Port Objects
--- 
--- Token Ring Port Objects are further broken down into station objects 
+--
+-- Token Ring Port Objects are further broken down into station objects
 -- and Ring-In/Ring-Out objects. The formal defintions is:
 
 stationP            OBJECT IDENTIFIER ::= { tokenRingP 1 }
@@ -2249,11 +2249,11 @@ DESCRIPTION
 
 
 -- Product specific Objects implementation of this group is optional
--- 
+--
 --      For each  of the individual repeaters/bridges there are
 -- several objects  that particular to that product. below is a
--- description of these objects. 
--- 
+-- description of these objects.
+--
 -- Formal description of Product specfics
 
      productRev1    OBJECT IDENTIFIER  ::= { product 1 }
@@ -2311,7 +2311,7 @@ DESCRIPTION
       "The Connected Left board (board n + 1) has the following states:
        Detached == 1 (Management (only management) detached, read/write).
        Attached == 2 (Management/AutoMode attached, read/write).
-       Faulted  == 3 (Management/AutoMode tried to attach but failed 
+       Faulted  == 3 (Management/AutoMode tried to attach but failed
        read ONLY)."
 ::= { fnb 1 }
 
@@ -2325,7 +2325,7 @@ DESCRIPTION
       "The Connected Right board (board n - 1) has the following states:
        Detached == 1 (Management (only management) detached, read/write).
        Attached == 2 (Management/AutoMode attached, read/write).
-       Faulted  == 3 (Management/AutoMode tried to attach but failed 
+       Faulted  == 3 (Management/AutoMode tried to attach but failed
        read ONLY)."
 ::= { fnb 2 }
 
@@ -2374,7 +2374,7 @@ DESCRIPTION
      A write will stop a sounding alarm."
 ::= { audibleAlarm 2 }
 
--- TrapTypes 
+-- TrapTypes
 
 --      This section  will describe  the trap  types  that  the
 -- repeater section  of the  IRBM/IRM2 can  generate. These  are not
@@ -2402,7 +2402,7 @@ DESCRIPTION
 
 
 -- Trap Description
---  PortSegmenting 
+--  PortSegmenting
 
 -- Specfic Trap Type Code - 0x101
 
@@ -2416,7 +2416,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  PortUnsegementing 
+--  PortUnsegementing
 
 -- Specfic Trap Type Code - 0x102
 
@@ -2430,7 +2430,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  PortLinkUp 
+--  PortLinkUp
 
 -- Specfic Trap Type Code - 0x103
 
@@ -2443,7 +2443,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  PortLinkDown 
+--  PortLinkDown
 
 -- Specfic Trap Type Code - 0x104
 
@@ -2456,7 +2456,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  NewSourceAddress 
+--  NewSourceAddress
 
 -- Specfic Trap Type Code - 0x105
 
@@ -2469,7 +2469,7 @@ DESCRIPTION
 --        PortSourceAddr {CommonP 4}
 
 -- Trap Description
---  SourceAddressTimeout 
+--  SourceAddressTimeout
 
 -- Specfic Trap Type Code - 0x106
 
@@ -2483,7 +2483,7 @@ DESCRIPTION
 --        PortSourceAddr {CommonP 4}
 
 -- Trap Description
---  BoardRemoval 
+--  BoardRemoval
 
 -- Specfic Trap Type Code - 0x107
 
@@ -2494,7 +2494,7 @@ DESCRIPTION
 --        BoardIndex {CommonB 1}
 
 -- Trap Description
---  BoardInsertion 
+--  BoardInsertion
 
 -- Specfic Trap Type Code - 0x108
 
@@ -2506,7 +2506,7 @@ DESCRIPTION
 --        BoardType {CommonB 3}
 
 -- Trap Description
---  ActivePortInRedundantCircuitFailed 
+--  ActivePortInRedundantCircuitFailed
 
 -- Specfic Trap Type Code - 0x109
 
@@ -2520,7 +2520,7 @@ DESCRIPTION
 --        PortRedundCrt {EthernetP 15}
 
 -- Trap Description
---  RedundantPortActivated 
+--  RedundantPortActivated
 
 -- Specfic Trap Type Code - 0x10a
 
@@ -2535,7 +2535,7 @@ DESCRIPTION
 --        PortRedundCrt {EthernetP 15}
 
 -- Trap Description
---  RedundantPortTestFailed 
+--  RedundantPortTestFailed
 
 -- Specfic Trap Type Code - 0x10b
 
@@ -2551,7 +2551,7 @@ DESCRIPTION
 --        PortRedundCrt {EthernetP 15}
 
 -- Trap Description
---  deviceTrafficThresholdExceeded 
+--  deviceTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x10c
 
@@ -2564,7 +2564,7 @@ DESCRIPTION
 --        DeviceTimebase {Device 24}
 
 -- Trap Description
---  deviceErrorThresholdExceeded 
+--  deviceErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x10d
 
@@ -2578,7 +2578,7 @@ DESCRIPTION
 --        DeviceTimebase {Device 24}
 
 -- Trap Description
---  deviceCollsionThresholdExceeded 
+--  deviceCollsionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x10e
 
@@ -2591,7 +2591,7 @@ DESCRIPTION
 --        DeviceTimebase {Device 24}
 --
 -- Trap Description
---  BoardTrafficThresholdExceeded 
+--  BoardTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x10f
 
@@ -2605,7 +2605,7 @@ DESCRIPTION
 --        BoardIndex {CommonB 1}
 
 -- Trap Description
---  BoardErrorThresholdExceeded 
+--  BoardErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x110
 
@@ -2621,7 +2621,7 @@ DESCRIPTION
 --        BoardIndex {CommonB 1}
 
 -- Trap Description
---  BoardCollisionThresholdExceeded 
+--  BoardCollisionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x111
 
@@ -2635,7 +2635,7 @@ DESCRIPTION
 --        BoardIndex {CommonB 1}
 
 -- Trap Description
---  PortTrafficThresholdExceeded 
+--  PortTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x112
 
@@ -2650,7 +2650,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  PortErrorThresholdExceeded 
+--  PortErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x113
 
@@ -2667,7 +2667,7 @@ DESCRIPTION
 --        PortIndex {CommonP 1}
 
 -- Trap Description
---  PortCollisionThresholdExceeded 
+--  PortCollisionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x114
 
@@ -2686,7 +2686,7 @@ DESCRIPTION
 
 -- Specfic Trap Type Code - 0x115
 
---   This trap indicates that a port has changed from a 
+--   This trap indicates that a port has changed from a
 -- station port to a link port or vice versa.
 -- The interesting information is:
 
@@ -2699,7 +2699,7 @@ DESCRIPTION
 
 -- Specfic Trap Type Code - 0x116
 
---   This trap is generated when the status of the address lock 
+--   This trap is generated when the status of the address lock
 -- changes.
 -- The interesting information is:
 
@@ -2716,14 +2716,14 @@ DESCRIPTION
 
 --        BoardIndex {CommonB 1}
 --        PortIndex {CommonP 1}
---        PortSourceAddr {CommonP 4} 
+--        PortSourceAddr {CommonP 4}
 
 -- Trap Description
 --  PortViolationReset
 
--- Specfic Trap Type Code - 0x118 
+-- Specfic Trap Type Code - 0x118
 
---   This trap is generated when management intervention has 
+--   This trap is generated when management intervention has
 -- reset a port after a violation has occured.
 -- The interesting information is:
 
@@ -2838,9 +2838,9 @@ DESCRIPTION
 
 
 --             Appendix A - Media type values
--- 
+--
 -- Board Type          Value
--- 
+--
 -- Management Modules
 --  IRM-2        0xB0
 --  IRBM         0xB1
@@ -2858,7 +2858,7 @@ DESCRIPTION
 --  MRXI      0x30043           -board 1 type
 --  MRXI-2    0x30042           -board 1 type
 --  MRXI-28   0x300A0
--- 
+--
 --
 -- Mim Types
 --
@@ -2959,7 +2959,7 @@ DESCRIPTION
 
 
 -- Single-Port Interface Modules
--- 
+--
 --  SPIM-A        0x20001
 --  SPIM-C        0x20002
 --  SPIM-T        0x20003
@@ -2970,7 +2970,7 @@ DESCRIPTION
 
 
 -- Ethernet-Port Interface Modules
--- 
+--
 --  EPIM-B        0x30000 - BLANK
 --  EPIM-A        0x30001
 --  EPIM-C        0x30002

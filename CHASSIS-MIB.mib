@@ -17,16 +17,16 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -161,7 +161,7 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
             INDEX   { chCompID }
             ::= { chCompTable 1 }
 
-        ChCompEntry  ::= 
+        ChCompEntry  ::=
             SEQUENCE {
                 chCompID
                     INTEGER,
@@ -672,7 +672,7 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "This is defined as the base read only community string to
-                 access MIBs on this module. A write to this object will 
+                 access MIBs on this module. A write to this object will
                  change all instances of chCompBasicCommStr."
             ::= { chassis 9 }
 
@@ -682,7 +682,7 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "This is defined as the expanded read only community string to
-                 access MIBs on this module. A write to this object will 
+                 access MIBs on this module. A write to this object will
                  change all instances of chCompROCommStr."
             ::= { chassis 10 }
 
@@ -692,7 +692,7 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "This is defined as the read write community string to
-                 access MIBs on this module.  A write to this object will 
+                 access MIBs on this module.  A write to this object will
                  change all instances of chCompRWCommStr."
             ::= { chassis 11 }
 
@@ -702,7 +702,7 @@ CHASSIS-MIB DEFINITIONS ::= BEGIN
             STATUS  mandatory
             DESCRIPTION
                 "This is defined as the super user community string to
-                 access MIBs on this module.  A write to this object will 
+                 access MIBs on this module.  A write to this object will
                  change all instances of chCompSUCommStr."
             ::= { chassis 12 }
 

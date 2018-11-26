@@ -6,7 +6,7 @@ ENTERASYS-HIGH-AVAILABILITY-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' high-availability upgrade functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-HIGH-AVAILABILITY-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright December 2011 Enterasys Networks, Inc.
@@ -47,7 +47,7 @@ IMPORTS
     EnabledStatus
         FROM P-BRIDGE-MIB
     etsysModules
-        FROM ENTERASYS-MIB-NAMES;    
+        FROM ENTERASYS-MIB-NAMES;
 
 
 etsysHighAvailabilityUpgradeMIB MODULE-IDENTITY
@@ -61,16 +61,16 @@ etsysHighAvailabilityUpgradeMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          configuration and monitoring of high-availability
          upgrades."
 
     REVISION    "201112121514Z"  -- Mon Dec 12 15:14 UTC 2011
     DESCRIPTION "The initial version of this MIB module."
-    ::= { etsysModules 84 } 
+    ::= { etsysModules 84 }
 
 
 -- Textual Conventions
@@ -79,11 +79,11 @@ EtsysHauSystemStatus ::= TEXTUAL-CONVENTION
     STATUS       current
     DESCRIPTION
         "The status of high-availability upgrade for this entity.
-        
+
            hauDisabled(1)       HA Upgrade is not enabled.
            hauPending(2)        HA Upgrade is enabled and will be initiated
                                 by the next system reset.
-           hauRunning(3)        HA Upgrade is in progress. 
+           hauRunning(3)        HA Upgrade is in progress.
            hauHalted(4)         HA Upgrade was halted.
            hauSuccess(5)        HA Upgrade completed successfully and entity
                                 is running the target version of firmware.
@@ -107,7 +107,7 @@ EtsysHauMode ::= TEXTUAL-CONVENTION
     STATUS       current
     DESCRIPTION
         "The default mode of high-availability upgrade for this entity.
-        
+
            hauNever(1)       Never perform a HA Upgrade.
            hauIfPossible(2)  Perform an HA Upgrade whenever possible.
            hauAlways(3)      Always attempt to perform a HA Upgrade."
@@ -121,17 +121,17 @@ EtsysHauMode ::= TEXTUAL-CONVENTION
 HauSlotList ::= TEXTUAL-CONVENTION
    STATUS current
    DESCRIPTION
-       "Each octet within this value specifies a set of eight 
+       "Each octet within this value specifies a set of eight
         slots, with the first octet specifying slots 1 through 8,
         the second octet specifying slots 9 through 16, etc.
-        Within each octet, the most significant bit represents 
+        Within each octet, the most significant bit represents
         the lowest numbered slot, and the least significant bit
         represents the highest numbered slot. Thus, each slot
-        of the virtual switch is represented by a single bit 
+        of the virtual switch is represented by a single bit
         within the value of this object. If that bit has a value
-        of '1' then that slot is included in the set of slots; 
-        the slot is not included if its bit has a value of '0'." 
-   SYNTAX OCTET STRING 
+        of '1' then that slot is included in the set of slots;
+        the slot is not included if its bit has a value of '0'."
+   SYNTAX OCTET STRING
 
 HauSlot ::= TEXTUAL-CONVENTION
    STATUS current
@@ -186,7 +186,7 @@ etsysHauStatsTargetImage OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The release and version of firmware the managed entity is
-         upgrading to (i.e, firmware that will be running after 
+         upgrading to (i.e, firmware that will be running after
          successful completion of high-availability upgrade)."
     ::= { etsysHauStats 3 }
 
@@ -245,7 +245,7 @@ etsysHauStatsDuration OBJECT-TYPE
 -- The High-Availability Upgrade System Group
 -- -------------------------------------------------------------
 etsysHauSystemInterGroupDelay OBJECT-TYPE
-    SYNTAX       Unsigned32 
+    SYNTAX       Unsigned32
     UNITS        "seconds"
     MAX-ACCESS   read-write
     STATUS       current
@@ -254,7 +254,7 @@ etsysHauSystemInterGroupDelay OBJECT-TYPE
          process will delay between the successful upgrade of one
          upgrade group and the start of the next upgrade group's
          upgrade.
-         
+
          When an upgrade group is upgraded, all modules which
          are a member of the group are reset.  If these resets
          cause instability in higher-layer networking protocols,
@@ -271,7 +271,7 @@ etsysHauSystemHauMode OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "The desired mode of operation to attempt to use when 
+        "The desired mode of operation to attempt to use when
          performing a reset.
 
          When set to hauNever(1) a high-availability upgrade
@@ -279,11 +279,11 @@ etsysHauSystemHauMode OBJECT-TYPE
          will be performed.
 
          When set to hauIfPossible(2) a high-availability upgrade
-         will be performed if the current and target images are 
+         will be performed if the current and target images are
          compatible, otherwise a standard upgrade will be performed.
-         
+
          When set to hauAlways(3) a high-availability upgrade
-         will always be performed. If the current and target 
+         will always be performed. If the current and target
          images are incompatible then no upgrade will occur."
     ::= { etsysHauSystem 2 }
 
@@ -298,9 +298,9 @@ etsysHauModuleTable OBJECT-TYPE
     DESCRIPTION
         "A table of high-availability properties per module."
     ::= {  etsysHauModule 1 }
-    
+
 etsysHauModuleEntry OBJECT-TYPE
-    SYNTAX       EtsysHauModuleEntry 
+    SYNTAX       EtsysHauModuleEntry
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -314,12 +314,12 @@ EtsysHauModuleEntry ::=
             HauSlot,
       etsysHauModuleEntRef
             PhysicalIndex,
-      etsysHauModuleGroupId 
+      etsysHauModuleGroupId
             Unsigned32
     }
 
 etsysHauModuleSlot OBJECT-TYPE
-    SYNTAX       HauSlot 
+    SYNTAX       HauSlot
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
@@ -346,19 +346,19 @@ etsysHauModuleGroupId OBJECT-TYPE
          The purpose of assigning multiple slots to the same upgrade
          group is to reduce the overall time it takes to perform an
          HA upgrade.
-         
+
          By default, each module is assigned to its own upgrade
          group, with GroupId equal to the module's HAU Slot.  Although
          this default configuration is completely valid, it may not
          be optimal for situations where a timely HA upgrade is
          desirable.
-         
+
          The network architecture, specifically LAGs, must be taken
          into consideration when assigning slots to an upgrade group.
          LAGs which span multiple modules should not have all of their
          modules placed into the same upgrade group, as this would
          defeat the LAG's inherent redundancy.
-         
+
          IMPORTANT:
          If a LAG is to remain available during a High-Availability
          Upgrade, then it must comprised of multiple single-port links

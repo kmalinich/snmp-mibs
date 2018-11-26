@@ -188,7 +188,7 @@ rabtEncryptionEnable OBJECT-TYPE
 
                  If the Access Point is in the 'non-trusted' security mode,
                  this parameter cannot be set via SNMP, only through the
-                 console port." 
+                 console port."
 
         ::= { roamabout 13 }
 
@@ -227,7 +227,7 @@ rabtPTPRemoteSignalLevel OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The last remote signal level value obtained from the 
+                "The last remote signal level value obtained from the
                  Point-to-Point diagnostic test.
 
                  A value of 0 is returned if the last sample was not valid."
@@ -274,7 +274,7 @@ rabtPTPLocalSignalLevel OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The last LOCAL Signal Level value obtained from the 
+                "The last LOCAL Signal Level value obtained from the
                  Point-to-Point diagnostic test.
 
                  A value of 0 is returned if the last sample was not valid."
@@ -298,7 +298,7 @@ rabtPTPLocalSignalQuality OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The last LOCAL signal quality value obtained from the 
+                "The last LOCAL signal quality value obtained from the
                  Point-to-Point diagnostic test.
 
                  A value of 0 is returned if the last sample was not valid."
@@ -414,11 +414,11 @@ rabtDot11CurrentFragmentationThreshold OBJECT-TYPE
          octets, of the MPDU that may be delivered to the PHY. An MSDU
          shall be broken into fragments if its size exceeds the value
          of this attribute after adding MAC headers and trailers. An MSDU
-         or MMPDU shall be fragmented when the resulting frame has an 
-         individual address in the Address1 field, and the length of the 
+         or MMPDU shall be fragmented when the resulting frame has an
+         individual address in the Address1 field, and the length of the
          frame is larger than this threshold. The default value for this
-         attribute shall be the lesser of 2346 or the aMPDUMaxLength of 
-         the attached PHY and shall never exceed the lesser of 2346 or 
+         attribute shall be the lesser of 2346 or the aMPDUMaxLength of
+         the attached PHY and shall never exceed the lesser of 2346 or
          the aMPDUMaxLength of the attached PHY. The value of this
          attribute shall never be less than 256. "
 
@@ -548,7 +548,7 @@ rabtDot11CurrentMulticastRate OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "This value specifies the Multicast data transmission 
+                "This value specifies the Multicast data transmission
                  rate of the AP. It is implemented when cards that operate
                  faster than the 2Mbit 802.11 standard are inserted."
 
@@ -562,8 +562,8 @@ rabtDot11CurrentIntraBSSRelay OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "When this mode is set to disabled, the AP entity within the PC Card 
-                 will not relay frames from wireless client(s) to station(s) associated with it, instead 
+                "When this mode is set to disabled, the AP entity within the PC Card
+                 will not relay frames from wireless client(s) to station(s) associated with it, instead
                  forwards frames to the bridging entity within the AP.
                  When this mode is enabled the AP entity within the PC Card will
                  relay frames to destined for stations associated with it and will NOT
@@ -577,8 +577,8 @@ rabtDot11FutureChannel OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Defines the FUTURE channel (communication frequency) to be
-                 used for creating a BSS.  
-                                 
+                 used for creating a BSS.
+
                  Note that different subsets of channels are valid for
                  different registration domains.  The current domain can be
                  found at dot11CurrentRegDomain.  The valid channels per
@@ -599,7 +599,7 @@ rabtDot11FutureNetworkName OBJECT-TYPE
         DESCRIPTION
                 "Defines the FUTURE Service Set IDentifier to be used for the
                  BSS.
-                                                        
+
                  The term future means that a change takes effect after the
                  next reset of the Access Point.  The current BSSID can be
                  obtained from dot11DesiredSSID."
@@ -652,7 +652,7 @@ rabtDot11FutureSystemScale OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "Specifies the FUTURE Access Point density in the ESS.  
+                "Specifies the FUTURE Access Point density in the ESS.
 
                  The term future means that the change takes effect after the
                  next reset of the Access Point.  The current system scale is
@@ -667,8 +667,8 @@ rabtDot11FutureDTIMPeriod OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Defines the FUTURE number of beacon intervals between
-                 successive DTIMs. 
-                                
+                 successive DTIMs.
+
                  The term future means that a change takes effect after the
                  next reset of the Access Point.   The current DTIM period
                  is at dot11DTIMPeriod."
@@ -685,11 +685,11 @@ rabtDot11FutureFragmentationThreshold OBJECT-TYPE
          octets, of the MPDU that may be delivered to the PHY. An MSDU
          shall be broken into fragments if its size exceeds the value
          of this attribute after adding MAC headers and trailers. An MSDU
-         or MMPDU shall be fragmented when the resulting frame has an 
-         individual address in the Address1 field, and the length of the 
+         or MMPDU shall be fragmented when the resulting frame has an
+         individual address in the Address1 field, and the length of the
          frame is larger than this threshold. The default value for this
-         attribute shall be the lesser of 2346 or the aMPDUMaxLength of 
-         the attached PHY and shall never exceed the lesser of 2346 or 
+         attribute shall be the lesser of 2346 or the aMPDUMaxLength of
+         the attached PHY and shall never exceed the lesser of 2346 or
          the aMPDUMaxLength of the attached PHY. The value of this
          attribute shall never be less than 256. "
 
@@ -842,7 +842,7 @@ rabtDot11FutureIntraBSSRelay OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "When this mode is set to disabled, the AP entity within 
+                "When this mode is set to disabled, the AP entity within
                  the PC Card will not relay frames from wireless client(s)
                  to station(s) associated with it, instead forwards frames
                  to the bridging entity within the AP. When this mode is
@@ -1434,10 +1434,10 @@ rabtUseConsolePassword OBJECT-TYPE
 -- *    obtain an IP Address from a BOOTP or DHCP server, either at
 -- *    bootp-up time, or during run-time.  BOOTP is the default.
 -- *
--- *    Note that IF you configure the AccessPoint's IP address 
+-- *    Note that IF you configure the AccessPoint's IP address
 -- *    manually, this address overrides the use of protocols.
 -- *    Note also that the use of BOOTP requires configuration of a
--- *    BOOTP Server with the applicable IP Address and Subnet and 
+-- *    BOOTP Server with the applicable IP Address and Subnet and
 -- *    optional Gateway for the AP.
 -- *
 -- ***********************************************************************
@@ -1450,7 +1450,7 @@ rabtDhcpOrBootp OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Setting this value will cause the AP to immediately
-                 attempt to obtain a new IP Address using the specified 
+                 attempt to obtain a new IP Address using the specified
                  protocol if no manual address has been configured.  If
                  an IP Address has been manually configured, that IP
                  Address will be used as the AP's IP Address.  The
@@ -1492,7 +1492,7 @@ rabtVlanModeFuture OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "Setting this value to enabled will put the AP in
-                 VLAN Compatibility Mode after reset.  Setting it 
+                 VLAN Compatibility Mode after reset.  Setting it
                  to disabled will turn off VLAN Compatibility Mode
                  after reset."
 
@@ -1513,7 +1513,7 @@ rabtManagementVlanIdFuture OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "The Management VLAN ID after reset.  The default is
-                 4095 which means that the Management VLAN ID 
+                 4095 which means that the Management VLAN ID
                  has not been configured and will not be used.
                  In this case all management packets must be
                  untagged to be received, and will be sent

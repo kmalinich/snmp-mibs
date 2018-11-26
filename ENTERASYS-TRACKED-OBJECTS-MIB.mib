@@ -6,7 +6,7 @@ ENTERASYS-TRACKED-OBJECTS-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Tracked Objects functionality.
 
 --
@@ -25,13 +25,13 @@ ENTERASYS-TRACKED-OBJECTS-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February, (2011-2013) Enterasys Networks, Inc.
 
 IMPORTS
-    MODULE-IDENTITY, OBJECT-TYPE, Counter32, Unsigned32, Gauge32, 
+    MODULE-IDENTITY, OBJECT-TYPE, Counter32, Unsigned32, Gauge32,
     TimeTicks
         FROM SNMPv2-SMI
     RowStatus, TruthValue
@@ -73,7 +73,7 @@ etsysTrackedObjectsMIB MODULE-IDENTITY
     DESCRIPTION "Added the etsysTrackedObjectsProbeTsTable.  This table
                  supports the ICMP timestamp probes.  These probes
                  collect timestamp data for the client applications.
-                 Additional changes include a new type 'icmpTs' for 
+                 Additional changes include a new type 'icmpTs' for
                  etsysTrackedObjectsProbeType, and a new state 'collect'
                  for etsysTrackedObjectsSessionState.
 
@@ -1160,7 +1160,7 @@ etsysTrackedObjectsPortGroupDownThresh OBJECT-TYPE
          object's etsysTrackedObjectsCommonState to 'down'.
 
          If the value of etsysTrackedObjectsPortGroupUpCount is
-         less than or equal to this value, the 
+         less than or equal to this value, the
          etsysTrackedObjectsCommonState for this tracked object is set
          to 'down'.
 
@@ -1283,7 +1283,7 @@ etsysTrackedObjectsProbeTsEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "An entry (conceptual row) in the 
+        "An entry (conceptual row) in the
          etsysTrackedObjectsProbeTsEntry."
     INDEX { IMPLIED etsysTrackedObjectsProbeName }
     ::= { etsysTrackedObjectsProbeTsTable 1 }

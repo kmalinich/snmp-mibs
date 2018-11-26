@@ -6,13 +6,13 @@ IEEE8021-CFM-V2-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
     MODULE-IDENTITY,
-    OBJECT-TYPE, 
+    OBJECT-TYPE,
     Unsigned32               FROM SNMPv2-SMI    -- [RFC2578]
     RowStatus,
     TruthValue, MacAddress
                              FROM SNMPv2-TC     -- [RFC2579]
     MODULE-COMPLIANCE,
-    OBJECT-GROUP 
+    OBJECT-GROUP
                              FROM SNMPv2-CONF   -- [RFC2580]
     InterfaceIndex
                              FROM IF-MIB        -- [RFC2863]
@@ -36,7 +36,7 @@ IMPORTS
     dot1agCfmStack,
     dot1agCfmDefaultMd,
     dot1agCfmVlan,
-    dot1agCfmConfigErrorList, 
+    dot1agCfmConfigErrorList,
     dot1agCfmMa,
 -- cfm row items
     dot1agCfmMepLbrBadMsdu,
@@ -63,7 +63,7 @@ ieee8021CfmV2Mib   MODULE-IDENTITY
     ORGANIZATION "IEEE 802.1 Working Group"
     CONTACT-INFO
        "WG-URL:   http://grouper.ieee.org/groups/802/1/index.html
-        WG-EMail: stds-802-1@ieee.org 
+        WG-EMail: stds-802-1@ieee.org
 
         Contact:  David Elie-Dit-Cosaque
            Postal: C/O IEEE 802.1 Working Group
@@ -95,7 +95,7 @@ ieee8021CfmV2Mib   MODULE-IDENTITY
                    USA
            E-mail: STDS-802-1-L@LISTSERV.IEEE.ORG
        "
-   DESCRIPTION 
+   DESCRIPTION
       "Connectivity Fault Management V2 module.
 
        Unless otherwise indicated, the references in this MIB
@@ -107,17 +107,17 @@ ieee8021CfmV2Mib   MODULE-IDENTITY
 
     REVISION     "201102270000Z" -- February 27, 20110
     DESCRIPTION
-         "Minor edits to contact information etc. as part of 
+         "Minor edits to contact information etc. as part of
           2011 revision of IEEE Std 802.1Q."
-          
+
    REVISION       "200811180000Z" -- November 18,2008
    DESCRIPTION
       "Added a new compliance clause for utilization by systems
        that support CFM and PBB-TE."
 
    REVISION       "200810150000Z" -- October 15, 2008
-   DESCRIPTION 
-      "The IEEE8021-CFM-V2-MIB Module contains objects that 
+   DESCRIPTION
+      "The IEEE8021-CFM-V2-MIB Module contains objects that
        replace those deprecated in the IEEE8021-CFM-MIB module.
 
        This version is included in IEEE 802.1ap"
@@ -126,9 +126,9 @@ ieee8021CfmV2Mib   MODULE-IDENTITY
 
 
 -- ******************************************************************
--- Note: Re-indexed 802.1ag tables 
+-- Note: Re-indexed 802.1ag tables
 -- ******************************************************************
--- This section contains new tables replacing deprecated tables in 
+-- This section contains new tables replacing deprecated tables in
 -- this version of the MIB
 
 -- ******************************************************************
@@ -342,14 +342,14 @@ ieee8021CfmVlanComponentId OBJECT-TYPE
     ::= { ieee8021CfmVlanEntry 1 }
 
 ieee8021CfmVlanSelector OBJECT-TYPE
-    SYNTAX      IEEE8021ServiceSelectorValue 
+    SYNTAX      IEEE8021ServiceSelectorValue
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
        "This is a service ID belonging to a service that is associated
-        with more than one Service Selector identifiers, and this is not the Primary 
+        with more than one Service Selector identifiers, and this is not the Primary
         Service ID of the service. The type of this Service Selector is the same
-        as the primary Service Selector's type defined by ieee8021CfmMaCompPrimarySelectorType 
+        as the primary Service Selector's type defined by ieee8021CfmMaCompPrimarySelectorType
         in the ieee8021CfmMaCompTable.
        "
     ::= { ieee8021CfmVlanEntry 3 }
@@ -362,7 +362,7 @@ ieee8021CfmVlanPrimarySelector OBJECT-TYPE
        "This is the Primary Service selector for a Service that is associated
         with more than one Service Selector identifiers. This value MUST not
         equal the value of ieee8021CfmVlanSelector. The type of this Service Selector is the same
-        as the primary Service Selector's type defined by ieee8021CfmMaCompPrimarySelectorType 
+        as the primary Service Selector's type defined by ieee8021CfmMaCompPrimarySelectorType
         in the ieee8021CfmMaCompTable.
        "
     ::= { ieee8021CfmVlanEntry 5 }
@@ -458,7 +458,7 @@ ieee8021CfmDefaultMdPrimarySelectorType OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-       "Type of the Primary Service Selector identifier indicated by 
+       "Type of the Primary Service Selector identifier indicated by
         ieee8021CfmDefaultMdPrimarySelector. See textual
         convention IEEE8021ServiceSelectorType for details.
        "
@@ -469,7 +469,7 @@ ieee8021CfmDefaultMdPrimarySelector OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-       "Primary Service Selector identifier of a Service Instance with 
+       "Primary Service Selector identifier of a Service Instance with
         no MA configured. See IEEE8021ServiceSelectorValue for details.
        "
     ::= { ieee8021CfmDefaultMdEntry 3 }
@@ -584,7 +584,7 @@ ieee8021CfmConfigErrorListSelectorType OBJECT-TYPE
     STATUS      current
     DESCRIPTION
        "Type of the Service Selector identifier indicated by
-        ieee8021CfmConfigErrorListSelector. See textual 
+        ieee8021CfmConfigErrorListSelector. See textual
         convention IEEE8021ServiceSelectorType for details.
        "
     REFERENCE
@@ -712,12 +712,12 @@ ieee8021CfmMaCompPrimarySelectorType OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-       "Type of the Service Selector identifiers indicated by 
-        ieee8021CfmMaCompPrimarySelectorOrNone. If the service instance is defined by more 
-        than one Service Selector, this parameter also indicates the type of the 
-        ieee8021CfmVlanPrimarySelector and ieee8021CfmVlanSelector in the ieee8021CfmVlanTable. 
+       "Type of the Service Selector identifiers indicated by
+        ieee8021CfmMaCompPrimarySelectorOrNone. If the service instance is defined by more
+        than one Service Selector, this parameter also indicates the type of the
+        ieee8021CfmVlanPrimarySelector and ieee8021CfmVlanSelector in the ieee8021CfmVlanTable.
         In Services instances made of multiple Service Selector identifiers, ensures that the
-        type of the Service selector identifiers is the same. See textual convention 
+        type of the Service selector identifiers is the same. See textual convention
         Dot1agCfmServiceSelectorType for details.
        "
     REFERENCE

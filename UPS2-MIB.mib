@@ -2,7 +2,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         --  ctron-ups2-mib.txt  The UPS Revision 2 MIB
         --  Revision: 1.01.00
-        --  Part Number:  
+        --  Part Number:
         --  Date: September 12, 1995
 
         --  Cabletron Systems, Inc.
@@ -17,16 +17,16 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -191,7 +191,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  UPS Battery Group
         --  Implementation of this group is mandatory if one or more UPSs
         --  are to be monitored
-        --  This group covers information on the Batteries within each UPS 
+        --  This group covers information on the Batteries within each UPS
 
 
         upsBatteryTable  OBJECT-TYPE
@@ -214,9 +214,9 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsBatteryEntry  ::=
             SEQUENCE {
-                upsBatteryCapacity 
+                upsBatteryCapacity
                     INTEGER,
-                upsBatteryVoltage 
+                upsBatteryVoltage
                     INTEGER,
                 upsBatteryTest
                     INTEGER,
@@ -228,7 +228,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                     INTEGER,
                 upsTransferCause
                     INTEGER,
-                upsBatteryTestTime 
+                upsBatteryTestTime
                     INTEGER,
                 upsLowBatteryWarning
                     INTEGER
@@ -291,7 +291,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "This object may be written to initiate or terminate the test
                  used to calibrate the returned run time value.  This test
-                 will only run if battery capacity is 100%.  Results of this 
+                 will only run if battery capacity is 100%.  Results of this
                  test can be retrieved by upsEstimatedRunTimeRemaining.  Valid
                  values for writing are 1 (initiate test) and 2 (terminate test).
                  In addition, this object may be read to determine whether
@@ -300,7 +300,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ::= { upsBatteryEntry 5 }
 
         upsEstimatedRunTimeRemaining  OBJECT-TYPE
-            SYNTAX  INTEGER 
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -322,7 +322,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The reason for the most recent transfer to on-battery 
+                "The reason for the most recent transfer to on-battery
                  operation."
             ::= { upsBatteryEntry 7 }
 
@@ -364,7 +364,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  UPS Input Group
         --  Implementation of this group is mandatory if one or more UPSs
         --  are to be monitored
-        --  This group covers information on the AC Inputs to each UPS 
+        --  This group covers information on the AC Inputs to each UPS
 
         upsInputTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF UpsInputEntry
@@ -386,17 +386,17 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsInputEntry  ::=
             SEQUENCE {
-                upsInputUtilityVoltage  
+                upsInputUtilityVoltage
                     INTEGER,
-                upsInputVoltage  
+                upsInputVoltage
                     INTEGER,
-                upsInputFailureSensitivity  
+                upsInputFailureSensitivity
                     INTEGER,
-                upsInputMaxVoltage  
+                upsInputMaxVoltage
                     INTEGER,
-                upsInputMinVoltage  
+                upsInputMinVoltage
                     INTEGER,
-                upsInputFrequency 
+                upsInputFrequency
                     INTEGER
             }
 
@@ -445,8 +445,8 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The UPS's maximum input voltage recorded since this object 
-                 was last read.  The value of this object is the actual 
+                "The UPS's maximum input voltage recorded since this object
+                 was last read.  The value of this object is the actual
                  voltage * 10 (that is, to determine the actual voltage,
                  divide the value of this object by 10)."
             ::= { upsInputEntry 4 }
@@ -456,8 +456,8 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The UPS's minimum input voltage recorded since this object 
-                 was last read.  The value of this object is the actual 
+                "The UPS's minimum input voltage recorded since this object
+                 was last read.  The value of this object is the actual
                  voltage * 10 (that is, to determine the actual voltage,
                  divide the value of this object by 10)."
             ::= { upsInputEntry 5 }
@@ -479,7 +479,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  UPS Output Group
         --  Implementation of this group is mandatory if one or more UPSs
         --  are to be monitored
-        --  This group covers information on the AC Outputs from each UPS 
+        --  This group covers information on the AC Outputs from each UPS
 
         upsOutputTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF UpsOutputEntry
@@ -503,9 +503,9 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             SEQUENCE {
                 upsOutputVoltage
                     INTEGER,
-                upsOutputUtilityVoltage 
+                upsOutputUtilityVoltage
                     INTEGER,
-                upsOutputPower  
+                upsOutputPower
                     INTEGER
             }
 
@@ -542,8 +542,8 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The UPS's output load represented as a percentage of full 
-                 rated load in Watts.  The value of this object is the actual 
+                "The UPS's output load represented as a percentage of full
+                 rated load in Watts.  The value of this object is the actual
                  percentage * 10 (that is, to determine the actual percentage,
                  divide the value of this object by 10)."
             ::= { upsOutputEntry 3 }
@@ -554,7 +554,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  UPS Status Group
         --  Implementation of this group is mandatory if one or more UPSs
         --  are to be monitored
-        --  This group covers information on the Status of each UPS 
+        --  This group covers information on the Status of each UPS
 
         upsStatusTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF UpsStatusEntry
@@ -576,16 +576,16 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsStatusEntry  ::=
             SEQUENCE {
-                upsStatusOperational 
+                upsStatusOperational
                     INTEGER,
                 upsStatusFault
                     INTEGER,
-                upsStatusTemp 
+                upsStatusTemp
                     INTEGER
             }
 
         upsStatusOperational   OBJECT-TYPE
-            SYNTAX  INTEGER         
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
@@ -646,7 +646,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  UPS Config Group
         --  Implementation of this group is mandatory if one or more UPSs
         --  are to be monitored
-        --  This group covers information on the Configuration of each UPS 
+        --  This group covers information on the Configuration of each UPS
 
         upsConfigTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF UpsConfigEntry
@@ -668,9 +668,9 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsConfigEntry  ::=
             SEQUENCE {
-                upsConfigAlarm  
+                upsConfigAlarm
                     INTEGER,
-                upsConfigRestoreDefaults  
+                upsConfigRestoreDefaults
                     INTEGER
             }
 
@@ -715,7 +715,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
         --  are to be monitored AND an External Measurement Unit is attached
         --  to at least one UPS
         --  This group covers information on the External Measurement Unit of
-        --  each UPS 
+        --  each UPS
 
         upsExtMeasTable  OBJECT-TYPE
             SYNTAX  SEQUENCE OF UpsExtMeasEntry
@@ -738,37 +738,37 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsExtMeasEntry  ::=
             SEQUENCE {
-                upsExtMeasFwVersion     
+                upsExtMeasFwVersion
                     DisplayString,
-                upsExtMeasTemp  
+                upsExtMeasTemp
                     INTEGER,
-                upsExtMeasHumidity  
+                upsExtMeasHumidity
                     INTEGER,
                 upsExtMeasAlarmStatus
                     INTEGER,
-                upsExtMeasMaxTemp  
+                upsExtMeasMaxTemp
                     INTEGER,
-                upsExtMeasMinTemp  
+                upsExtMeasMinTemp
                     INTEGER,
-                upsExtMeasMaxHumidity  
+                upsExtMeasMaxHumidity
                     INTEGER,
-                upsExtMeasMinHumidity  
+                upsExtMeasMinHumidity
                     INTEGER,
                 upsExtMeasContact1AlarmControl
                     INTEGER,
-                upsExtMeasContact2AlarmControl 
+                upsExtMeasContact2AlarmControl
                     INTEGER,
-                upsExtMeasContact3AlarmControl  
+                upsExtMeasContact3AlarmControl
                     INTEGER,
-                upsExtMeasContact4AlarmControl  
+                upsExtMeasContact4AlarmControl
                     INTEGER,
-                upsExtMeasMaxTempAlarmControl 
+                upsExtMeasMaxTempAlarmControl
                     INTEGER,
                 upsExtMeasMinTempAlarmControl
                     INTEGER,
                 upsExtMeasMaxHumidityAlarmControl
                     INTEGER,
-                upsExtMeasMinHumidityAlarmControl  
+                upsExtMeasMinHumidityAlarmControl
                     INTEGER
             }
 
@@ -892,7 +892,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  sent when contact input channel #1 has changed to abnormal
                  state."
             ::= { upsExtMeasEntry 9 }
-        
+
         upsExtMeasContact2AlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -906,7 +906,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  sent when contact input channel #2 has changed to abnormal
                  state."
             ::= { upsExtMeasEntry 10 }
-        
+
         upsExtMeasContact3AlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -920,7 +920,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  sent when contact input channel #3 has changed to abnormal
                  state."
             ::= { upsExtMeasEntry 11 }
-        
+
         upsExtMeasContact4AlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -948,7 +948,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  sent when the ambient temperature rises above the upper
                  temperature limit."
             ::= { upsExtMeasEntry 13 }
-                
+
         upsExtMeasMinTempAlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -962,7 +962,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  sent when the ambient temperature falls below the lower
                  temperature limit."
             ::= { upsExtMeasEntry 14 }
-                
+
         upsExtMeasMaxHumidityAlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -976,7 +976,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  when the ambient relative humidity rises above the upper
                  humidity limit."
             ::= { upsExtMeasEntry 15 }
-        
+
         upsExtMeasMinHumidityAlarmControl  OBJECT-TYPE
             SYNTAX  INTEGER {
                         enable(1),
@@ -990,7 +990,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
                  when the ambient relative humidity falls below the lower
                  humidity limit."
             ::= { upsExtMeasEntry 16 }
-        
+
 
 
         --===============    upsAddlFuncs group          ====================
@@ -1023,23 +1023,23 @@ UPS2-MIB DEFINITIONS ::= BEGIN
 
         UpsAddlFuncsEntry  ::=
             SEQUENCE {
-                upsAddlFuncsNumBatteryPacks 
+                upsAddlFuncsNumBatteryPacks
                     INTEGER,
-                upsAddlFuncsNumBadBatteryPacks  
+                upsAddlFuncsNumBadBatteryPacks
                     INTEGER,
-                upsAddlFuncsOutputCurrent 
+                upsAddlFuncsOutputCurrent
                     INTEGER,
-                upsAddlFuncsOutputApparentPower  
+                upsAddlFuncsOutputApparentPower
                     INTEGER,
                 upsAddlFuncsStatusOperational
                     INTEGER,
                 upsAddlFuncsStatusFault
                     INTEGER,
-                upsAddlFuncsConfigPassword 
+                upsAddlFuncsConfigPassword
                     OCTET STRING,
                 upsAddlFuncsConfigDisable
                     INTEGER,
-                upsAddlFuncsConfigBypass 
+                upsAddlFuncsConfigBypass
                     INTEGER
             }
 
@@ -1056,7 +1056,7 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The number of bad (faulty) battery pack units connected 
+                "The number of bad (faulty) battery pack units connected
                  to the UPS."
             ::= { upsAddlFuncsEntry 2 }
 
@@ -1076,14 +1076,14 @@ UPS2-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "The UPS's output load represented as a percentage of full rated 
-                 load in Volt-Amps.  The value of this object is the actual 
+                "The UPS's output load represented as a percentage of full rated
+                 load in Volt-Amps.  The value of this object is the actual
                  percentage * 10 (that is, to determine the actual percentage,
                  divide the value of this object by 10)."
             ::= { upsAddlFuncsEntry 4 }
 
         upsAddlFuncsStatusOperational  OBJECT-TYPE
-            SYNTAX  INTEGER         
+            SYNTAX  INTEGER
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION

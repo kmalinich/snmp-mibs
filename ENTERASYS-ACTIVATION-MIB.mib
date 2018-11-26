@@ -6,7 +6,7 @@ ENTERASYS-ACTIVATION-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Product Activation MIB.
 
 --
@@ -25,19 +25,19 @@ ENTERASYS-ACTIVATION-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright March, 2002 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Integer32
         FROM SNMPv2-SMI
     TEXTUAL-CONVENTION, RowStatus
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
         FROM SNMPv2-CONF
-    SnmpAdminString 
+    SnmpAdminString
         FROM SNMP-FRAMEWORK-MIB
     etsysModules
         FROM ENTERASYS-MIB-NAMES;
@@ -57,7 +57,7 @@ etsysActivationMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          configuration of product activation keys."
 
     REVISION    "200204181454Z"  -- Thu Apr 18 14:54 GMT 2002
@@ -164,7 +164,7 @@ etsysActivationKeyEntry OBJECT-TYPE
     ::= { etsysActivationKeyTable 1 }
 
 EtsysActivationKeyEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
     etsysActivationKeyRow                     Integer32,
     etsysActivationLicenseString              SnmpAdminString,
     etsysActivationKeyValue                   SnmpAdminString,
@@ -329,7 +329,7 @@ etsysActivationKeyFeatureEntry OBJECT-TYPE
     ::= { etsysActivationKeyFeatureTable 1 }
 
 EtsysActivationKeyFeatureEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
     etsysActivationKeyFeature                 EnterasysFeature,
     etsysActivationKeyRestrictions            SnmpAdminString
     }

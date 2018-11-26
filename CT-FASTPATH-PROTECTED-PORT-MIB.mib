@@ -61,7 +61,7 @@ ctFastPathProtectedPortMIB MODULE-IDENTITY
 
     REVISION    "200603061501Z"  -- Mon Mar  6 15:01 UTC 2006
     DESCRIPTION "The initial version of this MIB module."
-    
+
 ::= { ctFastPathProtectedPortMib 1 }
 
 --**************************************************************************************

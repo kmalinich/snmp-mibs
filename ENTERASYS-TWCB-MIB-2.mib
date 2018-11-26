@@ -62,7 +62,7 @@ ORGANIZATION "Enterasys Networks, Inc"
 
     REVISION    "201008171215Z"  -- August 17, 2010, 12:15PM GMT
     DESCRIPTION "Initial version"
-    
+
     ::= { etsysModules 76 }
 
 -- -------------------------------------------------------------
@@ -83,7 +83,7 @@ etsysTwcbStatsCachesUsed OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the number of TWCB Cache servers 
+        "This object contains the number of TWCB Cache servers
          currently configured."
     ::= { etsysTwcbGlobalStats 1 }
 
@@ -92,7 +92,7 @@ etsysTwcbStatsWcServerfarmsUsed OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the number of TWCB Server farms 
+        "This object contains the number of TWCB Server farms
          currently configured."
     ::= { etsysTwcbGlobalStats 2 }
 
@@ -101,7 +101,7 @@ etsysTwcbStatsWebcacheUsed OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the number of TWCB Webcache servers 
+        "This object contains the number of TWCB Webcache servers
          currently configured."
     ::= { etsysTwcbGlobalStats 3 }
 
@@ -110,7 +110,7 @@ etsysTwcbStatsBindingsCurrent OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the current number of active TWCB 
+        "This object contains the current number of active TWCB
          bindings."
     ::= { etsysTwcbGlobalStats 4 }
 
@@ -166,7 +166,7 @@ etsysTwcbStatsBindingsPerSecond OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the average number of TWCB bindings 
+        "This object contains the average number of TWCB bindings
          created per second. Normalized for 5 seconds."
     ::= { etsysTwcbGlobalStats 10 }
 
@@ -184,7 +184,7 @@ etsysTwcbStatsWebcacheHigh OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the highest number of active Webcache 
+        "This object contains the highest number of active Webcache
          server entries at one time."
     ::= { etsysTwcbGlobalStats 12 }
 
@@ -202,7 +202,7 @@ etsysTwcbStatsWcServerfarmHigh OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the highest number of active Server farm 
+        "This object contains the highest number of active Server farm
          entries at one time."
     ::= { etsysTwcbGlobalStats 14 }
 
@@ -254,7 +254,7 @@ etsysTwcbStatsClear OBJECT-TYPE
          This object will always return a value of false(2)."
     DEFVAL       { false }
     ::= { etsysTwcbGlobalStats 17 }
-    
+
  etsysTwcbStatsClearDateAndTime OBJECT-TYPE
     SYNTAX       DateAndTime
     MAX-ACCESS   read-only
@@ -262,10 +262,10 @@ etsysTwcbStatsClear OBJECT-TYPE
     DESCRIPTION
         "The date / time the TWCB statistics was cleared."
     ::= { etsysTwcbGlobalStats 18 }
-    
+
 etsysTwcbStatsMinTimeoutValue OBJECT-TYPE
     SYNTAX       Unsigned32
-    UNITS        "seconds" 
+    UNITS        "seconds"
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -274,7 +274,7 @@ etsysTwcbStatsMinTimeoutValue OBJECT-TYPE
 
 etsysTwcbStatsMaxTimeoutValue OBJECT-TYPE
     SYNTAX       Unsigned32
-    UNITS        "seconds" 
+    UNITS        "seconds"
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -290,7 +290,7 @@ etsysTwcbWcServerfarmTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table containing objects defining the configuration 
+        "A table containing objects defining the configuration
          parameters, operational state and runtime statistics of
          TWCB Server farms."
     ::={ etsysTwcbTables  1 }
@@ -300,11 +300,11 @@ etsysTwcbWcServerfarmEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "An entry in the etsysTwcbWcServerfarmTable containing the 
+        "An entry in the etsysTwcbWcServerfarmTable containing the
          operational characteristics of a TWCB Server farm. A TWCB
-         Server farm contains a grouping of Cache servers 
+         Server farm contains a grouping of Cache servers
          (etsysTwcbCacheEntry) that HTTP requests will be redirected
-         to via the associated TWCB Webcache 
+         to via the associated TWCB Webcache
          (etsysTwcbWebcacheServerEntry)."
     INDEX    { etsysTwcbWcServerfarmInetVersion,
                etsysTwcbWcServerfarmName }
@@ -369,7 +369,7 @@ etsysTwcbWcServerfarmPredictor OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "This object contains the Predictor value. The predictor value
-         defines the method of selecting the appropriate TWCB Cache 
+         defines the method of selecting the appropriate TWCB Cache
          server when a new TWCB binding request is generated.
          - `destIpHash', indicates the predictor type is
            destIpHash.
@@ -406,9 +406,9 @@ etsysTwcbWcServerfarmOperStatus OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "This object contains the Operational state of the TWCB Server
-         farm. The state of the TWCB Server farm will be deemed 'up' 
-         when the row is 'active', the 
-         etsysTwcbWcServerfarmAdminStatus is 'enabled' and at least 
+         farm. The state of the TWCB Server farm will be deemed 'up'
+         when the row is 'active', the
+         etsysTwcbWcServerfarmAdminStatus is 'enabled' and at least
          one etsysTwcbCacheEntry has been associated with this entry
          and it's etsysTwcbCacheOperStatus is 'up'.
          - `up', indicates the TWCB Server farm is operationally ready.
@@ -448,7 +448,7 @@ etsysTwcbWcServerfarmLastStateChangeDateAndTime OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The date / time the of last TWCB Webcache Server farm state 
+        "The date / time the of last TWCB Webcache Server farm state
          change."
     ::= { etsysTwcbWcServerfarmEntry 9 }
 
@@ -527,15 +527,15 @@ etsysTwcbWcServerfarmRowStatus OBJECT-TYPE
            TWCB Webcache Server Farm Table
             (etsysTwcbWebcacheServerfarmEntry)."
     ::= { etsysTwcbWcServerfarmEntry 14 }
-    
+
 etsysTwcbWcServerfarmId OBJECT-TYPE
     SYNTAX       Unsigned32
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
          "This value is a unique TWCB Server farm identifier
-          assigned by TWCB during creation.  This identifier is used 
-          when creating an entry in the 
+          assigned by TWCB during creation.  This identifier is used
+          when creating an entry in the
           etsysTwcbWebcacheServerfarmTable."
     ::= { etsysTwcbWcServerfarmEntry 15 }
 
@@ -548,10 +548,10 @@ etsysTwcbWcSfarmRoundRobinTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "A table of entries defining ranges of destination IP 
+         "A table of entries defining ranges of destination IP
           address, associated with TWCB Server farms.  These objects
           are used when configuring the Round Robin predictor assigned
-          to the TWCB Server farm identified by 
+          to the TWCB Server farm identified by
           etsysTwcbWcServerfarmName."
     ::={ etsysTwcbTables  2 }
 
@@ -561,12 +561,12 @@ etsysTwcbWcSfarmRoundRobinEntry OBJECT-TYPE
     STATUS       current
     DESCRIPTION
          "The TWCB Server Farm Round Robin Table of entries defining a
-          range of destination IP addresses for this TWCB Server Farm 
+          range of destination IP addresses for this TWCB Server Farm
           Round Robin Table entry. When an HTTP request is received
           for an address contained within this range, Caches servers
-          will be selected using a round robin algorithm. When this 
+          will be selected using a round robin algorithm. When this
           entry is created the leaf etsysTwcbWcServerfarmPredictor of
-          the associated Server farm, identified by 
+          the associated Server farm, identified by
           etsysTwcbWcServerfarmName, will be set to 'roundrobin'."
 
     INDEX    { etsysTwcbWcSfarmRoundRobinAddressType,
@@ -587,17 +587,17 @@ EtsysTwcbWcSfarmRoundRobinEntry ::=
         RowStatus
     }
 
-etsysTwcbWcSfarmRoundRobinAddressType OBJECT-TYPE 
+etsysTwcbWcSfarmRoundRobinAddressType OBJECT-TYPE
     SYNTAX       InetAddressType
     MAX-ACCESS   not-accessible
     STATUS       current
-    DESCRIPTION 
+    DESCRIPTION
         "The value of this property affects the size and format of
-        etsysTwcbWcSfarmRoundRobinStartIp and 
-        etsysTwcbWcSfarmRoundRobinEndIp. This value must be 
+        etsysTwcbWcSfarmRoundRobinStartIp and
+        etsysTwcbWcSfarmRoundRobinEndIp. This value must be
         consistent with the etsysTwcbWcServerfarmInetVersion defined by
         etsysLsnatWcServerfarmName."
-    ::= { etsysTwcbWcSfarmRoundRobinEntry 1 } 
+    ::= { etsysTwcbWcSfarmRoundRobinEntry 1 }
 
 etsysTwcbWcSfarmRoundRobinStartIp OBJECT-TYPE
     SYNTAX       InetAddress
@@ -637,16 +637,16 @@ etsysTwcbWcSfarmRoundRobinRowStatus OBJECT-TYPE
          - This is the preferred mechanism for creating conceptual rows
            in this table.  A valid etsysTwcbWcServerfarmName must be
            present, Also errors resulting from:
-          - Invalid etsysTwcbWcSfarmRoundRobinStartIp and 
+          - Invalid etsysTwcbWcSfarmRoundRobinStartIp and
              etsysTwcbWcSfarmRoundRobinEndIp combinations.
-          - etsysTwcbWcSfarmRoundRobinAddressType inconsistencies with 
-             the etsysTwcbWcServerfarmInetVersion associated with the 
-             etsysTwcbWcServerfarmName. 
-           There are no other writable leaves so a successful 
-           createAndGo will always transition a new entry to the 
+          - etsysTwcbWcSfarmRoundRobinAddressType inconsistencies with
+             the etsysTwcbWcServerfarmInetVersion associated with the
+             etsysTwcbWcServerfarmName.
+           There are no other writable leaves so a successful
+           createAndGo will always transition a new entry to the
            active(1) state. Creating this object will also result in
            the etsysTwcbWcServerfarmPredictor entry of the associated
-           Server farm identified by etsysTwcbWcServerfarmName to be 
+           Server farm identified by etsysTwcbWcServerfarmName to be
            set to roundrobin(2).
          destroy(6)
          - This will remove the etsysTwcbWcSfarmRoundRobinEntry from the
@@ -654,7 +654,7 @@ etsysTwcbWcSfarmRoundRobinRowStatus OBJECT-TYPE
            TWCB operations.
            Destroying this object will also result in the
            etsysTwcbWcServerfarmPredictor entry of the associated
-           Server farm identified by etsysTwcbWcServerfarmName to be 
+           Server farm identified by etsysTwcbWcServerfarmName to be
            set to destIpHash(1)."
     ::= { etsysTwcbWcSfarmRoundRobinEntry 4 }
 
@@ -677,8 +677,8 @@ etsysTwcbCacheServerEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "An entry in the etsysTwcbCacheServerTable containing the 
-          operational characteristics of a Cache server and it's 
+         "An entry in the etsysTwcbCacheServerTable containing the
+          operational characteristics of a Cache server and it's
           association with a TWCB Server farm. A TWCB Cache server
           is a local server on which web objects are cached. The
           TWCB Cache servers should have a web based proxy cache
@@ -745,10 +745,10 @@ etsysTwcbCacheServerWeight OBJECT-TYPE
     STATUS       current
     DESCRIPTION
          "A weight assigned to this TWCB Cache server to be used in
-          selecting this TWCB Cache server over other created TWCB 
-          Cache servers, within the same TWCB Server farm, for TWCB 
-          redirects.  This value is only significant when the 
-          etsysTwcbWcServerfarmPredictor for the associated TWCB 
+          selecting this TWCB Cache server over other created TWCB
+          Cache servers, within the same TWCB Server farm, for TWCB
+          redirects.  This value is only significant when the
+          etsysTwcbWcServerfarmPredictor for the associated TWCB
           Server farm is set to roundrobin(2)."
     DEFVAL { 1 }
     ::= { etsysTwcbCacheServerEntry 3 }
@@ -758,7 +758,7 @@ etsysTwcbCacheServerMaxConns OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-         "The maximum number of TWCB connections allowed for this TWCB 
+         "The maximum number of TWCB connections allowed for this TWCB
           Cache server at any one time. While the current number of
           connections (etsysTwcbCacheConns) equals this value this TWCB
           Cache server will no longer be considered for TWCB redirects.
@@ -774,11 +774,11 @@ etsysTwcbCacheServerFailDetectType OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "This object contains the fail detect type assigned to this 
+        "This object contains the fail detect type assigned to this
         Cache server.
         - `none', indicates there is no fail detection used to verify
           the operational state of the Cache Server.
-        - `probe', indicates that probes are used to verify the 
+        - `probe', indicates that probes are used to verify the
           operational state or the Cache server."
     DEFVAL { probe }
     ::= { etsysTwcbCacheServerEntry 5 }
@@ -789,7 +789,7 @@ etsysTwcbCacheServerFailDetectProbeOne OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The name of probe one assigned to the Cache Server. Probes are
-        used to verify the operational state of the Cache Server. A 
+        used to verify the operational state of the Cache Server. A
         null string indicates that probe one is not assigned."
     DEFVAL { "" }
     ::= { etsysTwcbCacheServerEntry 6 }
@@ -799,8 +799,8 @@ etsysTwcbCacheServerFailDetectProbeTwo OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "The name of probe two assigned to the Cache Server. Probes are 
-        used to verify the operational state of the Cache Server. A 
+        "The name of probe two assigned to the Cache Server. Probes are
+        used to verify the operational state of the Cache Server. A
         null string indicates that probe two is not assigned."
     DEFVAL { "" }
     ::= { etsysTwcbCacheServerEntry 7 }
@@ -810,12 +810,12 @@ etsysTwcbCacheServerFailDetectAppPort OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "The service port used when an application TCP probe session is 
-        configured in etsysTwcbCacheServerFailDetectProbeOne or 
+        "The service port used when an application TCP probe session is
+        configured in etsysTwcbCacheServerFailDetectProbeOne or
         etsysTwcbCacheServerFailDetectProbeTwo for this Cache server."
     DEFVAL { 80 }
     ::= { etsysTwcbCacheServerEntry 8 }
-    
+
 etsysTwcbCacheServerAdminStatus OBJECT-TYPE
     SYNTAX       INTEGER {
                    disabled(1),
@@ -824,11 +824,11 @@ etsysTwcbCacheServerAdminStatus OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "This object contains the Administrative state of the TWCB 
+        "This object contains the Administrative state of the TWCB
          Cache server.
-         - `disabled', indicates the TWCB Cache server is 
+         - `disabled', indicates the TWCB Cache server is
            administratively disabled.
-         - `enabled', indicates the TWCB Cache server is 
+         - `enabled', indicates the TWCB Cache server is
            administratively enabled."
     DEFVAL { disabled }
     ::= { etsysTwcbCacheServerEntry 9 }
@@ -845,7 +845,7 @@ etsysTwcbCacheServerOperStatus OBJECT-TYPE
          server. The state of the TWCB Cache server will be deemed 'up'
          when the row is 'active', the etsysTwcbCacheAdminStatus is
          'enabled' and the TWCB Cache server is accessible.
-         - `up', indicates the TWCB Cache server is operationally 
+         - `up', indicates the TWCB Cache server is operationally
            ready.
          - `down', indicates the TWCB Cache server is operationally
            unavailable."
@@ -874,7 +874,7 @@ etsysTwcbCacheServerStateChanges OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-         "The total number of state changes (see 
+         "The total number of state changes (see
           etsysTwcbCacheOperStatus)for this TWCB Cache server."
     ::= { etsysTwcbCacheServerEntry 13 }
 
@@ -907,16 +907,16 @@ etsysTwcbCacheServerRowStatus OBJECT-TYPE
          - This is the preferred mechanism for creating conceptual rows
            in this table.  A valid etsysTwcbWcServerfarmName must be
            present. Also errors resulting from an invalid
-           etsysTwcbCacheServerIp when creating the TWCB entry will 
-           result in the row not being created.  All writable leaves 
-           have default values so a valid createAndGo will always 
+           etsysTwcbCacheServerIp when creating the TWCB entry will
+           result in the row not being created.  All writable leaves
+           have default values so a valid createAndGo will always
            transition a new entry to the active(1) state.
          destroy(6)
          - This will remove the etsysTwcbCacheServerEntry from the
            etsysTwcbCacheServerTable and make it unavailable for TWCB
            operations."
     ::= { etsysTwcbCacheServerEntry 15 }
-    
+
 -- -------------------------------------------------------------
 -- TWCB Webcache Server Table
 -- -------------------------------------------------------------
@@ -926,7 +926,7 @@ etsysTwcbWebcacheServerTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table containing objects defining the configuration 
+        "A table containing objects defining the configuration
          parameters, operational states and runtime statistics of
          TWCB Webcache servers."
     ::={ etsysTwcbTables  4 }
@@ -936,11 +936,11 @@ etsysTwcbWebcacheServerEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "An entry in the etsysTwcbWebcacheServerTable containing the 
+         "An entry in the etsysTwcbWebcacheServerTable containing the
           operational characteristics of a TWCB Webcache server. A
-          TWCB Webcache server defines the operation of redirected 
+          TWCB Webcache server defines the operation of redirected
           HTTP requests to defined TWCB Cache servers."
-    INDEX    { etsysTwcbWebcacheServerInetVersion, 
+    INDEX    { etsysTwcbWebcacheServerInetVersion,
                etsysTwcbWebcacheServerName }
     ::= { etsysTwcbWebcacheServerTable 1 }
 
@@ -1025,7 +1025,7 @@ etsysTwcbWebcacheServerAdminStatus OBJECT-TYPE
     MAX-ACCESS   read-create
     STATUS       current
     DESCRIPTION
-        "This object contains the administrative state of the TWCB 
+        "This object contains the administrative state of the TWCB
          Webcache server.
          - `disabled', indicates the TWCB Webcache server is
            administratively disabled.
@@ -1042,13 +1042,13 @@ etsysTwcbWebcacheServerOperStatus OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "This object contains the Operational state of the TWCB 
+        "This object contains the Operational state of the TWCB
          Webcache server. The state of the TWCB Webcache server will be
-         deemed 'up' when the row is 'active', the 
+         deemed 'up' when the row is 'active', the
          etsysTwcbWebcacheServerAdminStatus is 'enabled' and at least
-         one etsysTwcbWcServerfarmEntry has been associated with this 
+         one etsysTwcbWcServerfarmEntry has been associated with this
          entry and the etsysTwcbWcServerfarmOperStatus is 'up'.
-         - `up', indicates the TWCB Webcache server is operationally 
+         - `up', indicates the TWCB Webcache server is operationally
            ready.
          - `down', indicates the TWCB Webcache server is operationally
            unavailable."
@@ -1087,7 +1087,7 @@ etsysTwcbWebcacheServerLastStateChangeDateAndTime OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The date / time of the last TWCB Webcache Server state 
+        "The date / time of the last TWCB Webcache Server state
          change."
     ::= { etsysTwcbWebcacheServerEntry 10 }
 
@@ -1105,28 +1105,28 @@ etsysTwcbWebcacheServerHostDenyCount OBJECT-TYPE
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The number of Host deny configurations assigned to the 
+        "The number of Host deny configurations assigned to the
          webcahce server.  See etsysWebcacheServerDenyPermitTable"
     ::= { etsysTwcbWebcacheServerEntry 12 }
-    
+
 etsysTwcbWebcacheServerBypassListCount OBJECT-TYPE
     SYNTAX       Counter32
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The number of Bypass list configurations assigned to the 
+        "The number of Bypass list configurations assigned to the
          webcahce server. See etsysWebcacheServerBypassListTable"
     ::= { etsysTwcbWebcacheServerEntry 13 }
-    
+
 etsysTwcbWebcacheServerServerfarmCount OBJECT-TYPE
     SYNTAX       Counter32
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
-        "The number of server farms configured to the webcahce server. 
+        "The number of server farms configured to the webcahce server.
          See etsysWebcacheServerServerfarmTable"
     ::= { etsysTwcbWebcacheServerEntry 14 }
-    
+
 etsysTwcbWebcacheServerRowStatus OBJECT-TYPE
     SYNTAX       RowStatus
     MAX-ACCESS   read-create
@@ -1148,14 +1148,14 @@ etsysTwcbWebcacheServerRowStatus OBJECT-TYPE
          - This is the preferred mechanism for creating conceptual rows
            in this table.  A valid createAndGo requires a unique
            etsysTwcbWebcacheServerName, errors resulting from existing
-           etsysTwcbWebcacheServerNames will result in the row not 
-           being created. All writable leaves have default values so a 
+           etsysTwcbWebcacheServerNames will result in the row not
+           being created. All writable leaves have default values so a
            valid createAndGo will always transition a new entry to the
            active(1) state.
          destroy(6)
          - This will remove the etsysTwcbWebcacheServerEntry from the
-           etsysTwcbWebcacheServerTable and make it unavailable for 
-           TWCB operations.  This will result in all associated TWCB 
+           etsysTwcbWebcacheServerTable and make it unavailable for
+           TWCB operations.  This will result in all associated TWCB
            entries (defined below) to also be deleted.
            TWCB Webcache Server Host Permit Table entries
             (etsysTwcbWebcacheServerHostPermitTable),
@@ -1166,7 +1166,7 @@ etsysTwcbWebcacheServerRowStatus OBJECT-TYPE
            TWCB Webcache Server farm Table
             (etsysTwcbWebcacheServerfarmEntry)."
     ::= { etsysTwcbWebcacheServerEntry 15 }
-    
+
 -- -------------------------------------------------------------
 -- TWCB Webcache Server Host Permit Redirect Table
 -- -------------------------------------------------------------
@@ -1176,9 +1176,9 @@ etsysTwcbWebcacheServerHostPermitTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "The TWCB Webcache Host Permit Table of entries defining ranges 
-         of source IP address, associated with TWCB Webcache Host 
-         Permit configurations.  These objects are used when 
+        "The TWCB Webcache Host Permit Table of entries defining ranges
+         of source IP address, associated with TWCB Webcache Host
+         Permit configurations.  These objects are used when
          configuring the Host Permit ranges assigned to the Webcache
          server identified by etsysTwcbWebcacheServerName."
     ::={ etsysTwcbTables  5 }
@@ -1188,15 +1188,15 @@ etsysTwcbWebcacheServerHostPermitEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "An entry in the etsysTwcbWebcacheServerHostPermitTable defining a 
-          range of source IP addresses for this TWCB Webcache server 
+         "An entry in the etsysTwcbWebcacheServerHostPermitTable defining a
+          range of source IP addresses for this TWCB Webcache server
           Host Permit Table entry. The Host Permit Table entry defines
-          a range of source IP addresses for which HTTP requests will 
-          be allowed to be redirected by TWCB. If no Webcache Host 
-          Permit entry or Webcache Host Deny entry exists than all 
+          a range of source IP addresses for which HTTP requests will
+          be allowed to be redirected by TWCB. If no Webcache Host
+          Permit entry or Webcache Host Deny entry exists than all
           source IP addresses will be allowed. Once one Webcache Host
-          Permit entry has been created than all IP address falling 
-          outside the defined range of IP addresses for all Webcache 
+          Permit entry has been created than all IP address falling
+          outside the defined range of IP addresses for all Webcache
           Host Permit entries will be denied."
     INDEX    { etsysTwcbWebcacheServerHostPermitAddressType,
                etsysTwcbWebcacheServerName,
@@ -1224,7 +1224,7 @@ etsysTwcbWebcacheServerHostPermitAddressType OBJECT-TYPE
         "The Internet Protocol version.  The value of this property
          affects the size and format of the
          etsysTwcbWebcacheServerHostPermitStartIp and
-         etsysTwcbWebcacheServerHostPermitEndIp objects both objects 
+         etsysTwcbWebcacheServerHostPermitEndIp objects both objects
          must be of the same INET Address Type."
 
     ::= { etsysTwcbWebcacheServerHostPermitEntry 1 }
@@ -1265,16 +1265,16 @@ etsysTwcbWebcacheServerHostPermitRowStatus OBJECT-TYPE
            operations.
          createAndGo(4)
          - This is the preferred mechanism for creating conceptual rows
-           in this table.  A valid etsysTwcbWebcacheServerName must be 
+           in this table.  A valid etsysTwcbWebcacheServerName must be
            present. Also errors resulting from invalid
            etsysTwcbWebcacheServerHostPermitStartIp and
-           etsysTwcbWebcacheServerHostPermitEndIp when creating the 
-           TWCB entry will result in the row not being created. There 
-           are no other writable leaves so a successful createAndGo 
+           etsysTwcbWebcacheServerHostPermitEndIp when creating the
+           TWCB entry will result in the row not being created. There
+           are no other writable leaves so a successful createAndGo
            will always transition a new entry to the active(1) state.
          destroy(6)
-         - This will remove the etsysTwcbWebcacheServerHostPermitEntry 
-           from the etsysTwcbWebcacheServerHostPermitTable and make it 
+         - This will remove the etsysTwcbWebcacheServerHostPermitEntry
+           from the etsysTwcbWebcacheServerHostPermitTable and make it
            unavailable for TWCB operations."
     ::= { etsysTwcbWebcacheServerHostPermitEntry 4 }
 
@@ -1288,9 +1288,9 @@ etsysTwcbWebcacheServerHostDenyTable OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "The Webcache Server Host Deny Table of entries defining ranges
-         of source IP address, associated with TWCB Webcache Server 
-         Host Deny configurations.  These objects are used when 
-         configuring the Host Deny ranges assigned to the Webcache 
+         of source IP address, associated with TWCB Webcache Server
+         Host Deny configurations.  These objects are used when
+         configuring the Host Deny ranges assigned to the Webcache
          server identified by etsysTwcbWebcacheServerName."
     ::={ etsysTwcbTables  6 }
 
@@ -1300,16 +1300,16 @@ etsysTwcbWebcacheServerHostDenyEntry OBJECT-TYPE
     STATUS       current
     DESCRIPTION
          "An entry in the etsysTwcbWebcacheServerHostDenyTable defining
-          a range of source IP addresses for this TWCB Webcache server 
-          Host Deny Table entry. The TWCB Webcache server Host Deny 
-          Table entry defines a range of source IP addresses for which 
-          HTTP requests will not be allowed to be redirected by TWCB. 
+          a range of source IP addresses for this TWCB Webcache server
+          Host Deny Table entry. The TWCB Webcache server Host Deny
+          Table entry defines a range of source IP addresses for which
+          HTTP requests will not be allowed to be redirected by TWCB.
           If no TWCB Webcache Server Host Permit entry or TWCB Webcache
-          Server Host Deny entry exists  than all source IP addresses 
+          Server Host Deny entry exists  than all source IP addresses
           will be allowed. A TWCB Webcache Server Host Deny entry takes
-          presidency over any created TWCB Host Permit entries.  If an 
+          presidency over any created TWCB Host Permit entries.  If an
           address falls within a defined TWCB Webcache Server Host Deny
-          range of addresses than that address will be denied 
+          range of addresses than that address will be denied
           regardless if it also falls within a TWCB Webcache Server
           Host Permit entry."
     INDEX    { etsysTwcbWebcacheServerHostDenyAddressType,
@@ -1378,15 +1378,15 @@ etsysTwcbWebcacheServerHostDenyRowStatus OBJECT-TYPE
            TWCB operations.
          createAndGo(4)
          - This is the preferred mechanism for creating conceptual rows
-           in this table.  A valid etsysTwcbWebcacheServerName must be 
+           in this table.  A valid etsysTwcbWebcacheServerName must be
            present. Also errors resulting from invalid
            etsysTwcbWebcacheServerHostDenyStartIp and
-           etsysTwcbWebcacheServerHostDenyEndIp when creating the TWCB 
+           etsysTwcbWebcacheServerHostDenyEndIp when creating the TWCB
            entry will result in the row not being created. There are no
-           other writable leaves so a successful createAndGo will 
+           other writable leaves so a successful createAndGo will
            always transition a new entry to the active(1) state.
          destroy(6)
-         - This will remove the etsysTwcbWebcacheServerHostDenyEntry 
+         - This will remove the etsysTwcbWebcacheServerHostDenyEntry
            from the etsysTwcbWebcacheServerHostDenyTable and make it
            unavailable for TWCB operations."
     ::= { etsysTwcbWebcacheServerHostDenyEntry 4 }
@@ -1401,8 +1401,8 @@ etsysTwcbWebcacheServerBypassTable OBJECT-TYPE
     STATUS       current
     DESCRIPTION
         "A table of entries defining ranges of destination IP address
-         associated with TWCB Webcache Server Bypass List 
-         configurations. These objects are used when configuring the 
+         associated with TWCB Webcache Server Bypass List
+         configurations. These objects are used when configuring the
          Bypass List ranges assigned to the Webcache server identified
          by  etsysTwcbWebcacheServerName."
     ::={ etsysTwcbTables  7 }
@@ -1412,9 +1412,9 @@ etsysTwcbWebcacheServerBypassEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "An entry in the etsysTwcbWebcacheServerBypassTable defining 
-          a range of destination IP addresses for this TWCB Webcache 
-          server Bypass List Table entry. The TWCB Bypass List Table 
+         "An entry in the etsysTwcbWebcacheServerBypassTable defining
+          a range of destination IP addresses for this TWCB Webcache
+          server Bypass List Table entry. The TWCB Bypass List Table
           entry defines a range of destination IP addresses for which
           HTTP requests will not be redirected by TWCB."
 
@@ -1484,12 +1484,12 @@ etsysTwcbWebcacheServerBypassRowStatus OBJECT-TYPE
            operations.
          createAndGo(4)
          - This is the preferred mechanism for creating conceptual rows
-           in this table.  A valid etsysTwcbWebcacheServerName must be 
+           in this table.  A valid etsysTwcbWebcacheServerName must be
            present. Also errors resulting from invalid
            etsysTwcbWebcacheServerBypassStartIp and
-           etsysTwcbWebcacheServerBypassEndIp when creating the TWCB 
+           etsysTwcbWebcacheServerBypassEndIp when creating the TWCB
            entry will result in the row not being created. There are no
-           other writable leaves so a successful createAndGo will 
+           other writable leaves so a successful createAndGo will
            always transition a new entry to the active(1) state.
          destroy(6)
          - This will remove the etsysTwcbWebcacheServerBypassEntry from
@@ -1506,10 +1506,10 @@ etsysTwcbWebcacheServerfarmTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table of entries mapping Server Farm Table entries 
-         (etsysTwcbWcServerfarmName) to TWCB Webcache 
-         Server Table entries (etsysTwcbWebcacheServerName). This 
-         objects is used to map TWCB Server farms to the Webcache 
+        "A table of entries mapping Server Farm Table entries
+         (etsysTwcbWcServerfarmName) to TWCB Webcache
+         Server Table entries (etsysTwcbWebcacheServerName). This
+         objects is used to map TWCB Server farms to the Webcache
          servers  identified by etsysTwcbWebcacheServerName."
     ::={ etsysTwcbTables  8 }
 
@@ -1518,13 +1518,13 @@ etsysTwcbWebcacheServerfarmEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "An entry in the etsysTwcbWebcacheServerfarmTable defining 
-          the association of TWCB Server farms to TWCB Webcache 
-          servers. The Webcache Server Farm Table binds a Webcache 
-          server entry (etsysTwcbWebcacheServerName) to a TWCB Server Farm 
+         "An entry in the etsysTwcbWebcacheServerfarmTable defining
+          the association of TWCB Server farms to TWCB Webcache
+          servers. The Webcache Server Farm Table binds a Webcache
+          server entry (etsysTwcbWebcacheServerName) to a TWCB Server Farm
           entry (etsysTwcbWcServerfarmId)."
-    INDEX    { etsysTwcbWebcacheServerInetVersion, 
-    		   etsysTwcbWebcacheServerName, 
+    INDEX    { etsysTwcbWebcacheServerInetVersion,
+    		   etsysTwcbWebcacheServerName,
     		   etsysTwcbWcServerfarmId }
     ::= { etsysTwcbWebcacheServerfarmTable 1 }
 
@@ -1553,7 +1553,7 @@ etsysTwcbWebcacheServerfarmRowStatus OBJECT-TYPE
          createAndGo(4)
          - This is the preferred mechanism for creating conceptual rows
            in this table.  A valid etsysTwcbWebcacheServerName and
-           etsysTwcbWcServerfarmId must be present. There are no 
+           etsysTwcbWcServerfarmId must be present. There are no
            other writable leaves so a successful createAndGo will always
            transition a new entry to the active(1) state.
          destroy(6)
@@ -1579,7 +1579,7 @@ etsysTwcbBindingEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-         "A table defining an active TWCB binding.  The 
+         "A table defining an active TWCB binding.  The
           etsysTwcbBindingEntry defines the runtime characteristics
           of a TWCB binding."
     INDEX    { etsysTwcbBindingId }
@@ -1644,14 +1644,14 @@ etsysTwcbBindingState OBJECT-TYPE
         - `syncing', indicates this binding is syncing.
         - `established', indicates this binding is established."
     ::= { etsysTwcbBindingEntry 2 }
-    
+
 etsysTwcbBindingAddressType OBJECT-TYPE
     SYNTAX       InetAddressType
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
         "The value of this property affects the size and format of
-         the etsysTwcbBindingSrcIp, etsysTwcbBindingDstIp and 
+         the etsysTwcbBindingSrcIp, etsysTwcbBindingDstIp and
          etsysTwcbBindingCacheIp."
     ::= { etsysTwcbBindingEntry 3 }
 
@@ -1775,7 +1775,7 @@ etsysTwcbBindingClear OBJECT-TYPE
          This object will always return a value of false(2)."
     DEFVAL { false }
     ::= { etsysTwcbBindingEntry 16 }
-    
+
 -- ------------------------------------
 -- Conformance information
 -- ------------------------------------
@@ -1867,7 +1867,7 @@ etsysTwcbMIBCacheServerTableGroup  OBJECT-GROUP
         }
     STATUS       current
     DESCRIPTION
-        "The TWCB Cache server group for TWCB Cache server 
+        "The TWCB Cache server group for TWCB Cache server
         configuration and state operations."
     ::= { etsysTwcbMIBGroups 4 }
 

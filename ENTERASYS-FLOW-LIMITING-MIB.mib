@@ -71,7 +71,7 @@ etsysFlowLimitingMIB MODULE-IDENTITY
 
     REVISION "201206081326Z"  -- Fri Jun  8 13:26 UTC 2012
     DESCRIPTION
-        "Added the etsysFlowLimitingUserBranch and new NOTIFICATIONS 
+        "Added the etsysFlowLimitingUserBranch and new NOTIFICATIONS
          to accommodate per user Flow Limiting."
 
     REVISION "200407261916Z"  -- Mon Jul 26 19:16 GMT 2004
@@ -104,11 +104,11 @@ FlowLmtIntfClass ::= TEXTUAL-CONVENTION
     DESCRIPTION
         "The classes of interfaces, or ports, available under the
          Flow Limiting feature.
-         
+
          userPort
              A port with a single user (workstation, PC, etc.)
              attached to it.
- 
+
          serverPort
              A port with a server attached to it.  This class may
              encompass a wide range of server types from a small
@@ -117,7 +117,7 @@ FlowLmtIntfClass ::= TEXTUAL-CONVENTION
              configure an interface with a small print server as
              a userPort since their flow setup needs may be
              similar to that of a user port.
- 
+
          aggregatedUserPort
              A port likely to have multiple end stations attached
              either through a wireless access point or an
@@ -125,15 +125,15 @@ FlowLmtIntfClass ::= TEXTUAL-CONVENTION
              this class may also be used instead of interSwitchLink
              when switches are interconnected using a lower
              speed link.
- 
+
          interSwitchLink
              A port that is used as a high-speed interconnect
              between two intelligent switches or routers.
- 
+
          Unspecified
              A port in which nothing can be assumed about its
              intended use.
-         
+
          These classes are only guides.  The classes can be configured
          with any limits, and any interface can associated with any
          class."
@@ -179,9 +179,9 @@ FlowLmtIntfAction ::= TEXTUAL-CONVENTION
                etsysFlowLimitingIntfStatus is set to operational, the
                Flow Limiting feature is disabled, or the entity is
                reset.
-             - When applied to a user, as specified in 
+             - When applied to a user, as specified in
                etsysFlowLimitingUserTable, the individual user is
-               disabled, while the interface that user is bound to 
+               disabled, while the interface that user is bound to
                remains operational.
 
          The 'generateNotification(0)' will always be performed if
@@ -381,7 +381,7 @@ etsysFlowLimitingSystemClearStats            OBJECT-TYPE
     ::= { etsysFlowLimitingSystemBranch 5 }
 
 etsysFlowLimitingSystemMaxSupportedFlowCount OBJECT-TYPE
-    SYNTAX        Unsigned32 
+    SYNTAX        Unsigned32
     UNITS         "flows"
     MAX-ACCESS    read-only
     STATUS        current
@@ -461,7 +461,7 @@ etsysFlowLimitingClassFlowCountActionLimit1 OBJECT-TYPE
          of zero indicates that this limit is disabled.  While this
          limit is disabled the associated action MUST NOT be taken."
     ::= { etsysFlowLimitingClassEntry 2 }
- 
+
 etsysFlowLimitingClassFlowCountActionTaken1 OBJECT-TYPE
     SYNTAX        FlowLmtIntfAction
     MAX-ACCESS    read-write
@@ -471,7 +471,7 @@ etsysFlowLimitingClassFlowCountActionTaken1 OBJECT-TYPE
          the number of active flows on that interface reach the
          value of etsysFlowLimitingClassFlowCountActionLimit1."
     ::= { etsysFlowLimitingClassEntry 3 }
- 
+
 etsysFlowLimitingClassFlowCountActionLimit2 OBJECT-TYPE
     SYNTAX        Unsigned32 (0 | 1..4294967295)
     UNITS         "flows"
@@ -485,7 +485,7 @@ etsysFlowLimitingClassFlowCountActionLimit2 OBJECT-TYPE
          of zero indicates that this limit is disabled.  While this
          limit is disabled the associated action MUST NOT be taken."
     ::= { etsysFlowLimitingClassEntry 4 }
- 
+
 etsysFlowLimitingClassFlowCountActionTaken2 OBJECT-TYPE
     SYNTAX        FlowLmtIntfAction
     MAX-ACCESS    read-write
@@ -495,7 +495,7 @@ etsysFlowLimitingClassFlowCountActionTaken2 OBJECT-TYPE
          the number of active flows on that interface reach the
          value of etsysFlowLimitingClassFlowCountActionLimit2."
     ::= { etsysFlowLimitingClassEntry 5 }
- 
+
 etsysFlowLimitingClassSetupRateNotifyLimit  OBJECT-TYPE
     SYNTAX        Unsigned32 (0 | 1..4294967295)
     UNITS         "flows/second"
@@ -533,7 +533,7 @@ etsysFlowLimitingClassSetupRateActionTaken  OBJECT-TYPE
          the flow setup rate on that interface reaches the value of
          the etsysFlowLimitingClassSetupRateActionLimit object."
     ::= { etsysFlowLimitingClassEntry 8 }
- 
+
 
 -- -------------------------------------------------------------
 -- Flow Limiting Interface Table
@@ -674,7 +674,7 @@ etsysFlowLimitingIntfStatus              OBJECT-TYPE
          in excess of the of the flow limits specified.
 
          A read of creatingDiscardFlows(4) indicates that this
-         interface indicates that any flows in excess of the specified 
+         interface indicates that any flows in excess of the specified
          limits for this interface will be created as discard flows.
 
          Setting this object to operational(1) when it is disabled(2)
@@ -808,12 +808,12 @@ etsysFlowLimitingIntfFlowProcessingLayer OBJECT-TYPE
     STATUS        current
     DESCRIPTION
         "The highest OSI layer at which flows are processed.  This is
-         used to give an indication of how much detail is contained in 
+         used to give an indication of how much detail is contained in
          the flows created on the interface.  An interface reporting
          that flows being processed at L4 will create flows that
          have information from L2, L3, and L4.  In general, interfaces
          reporting processing at L4 would be expected to have a higher
-         number of flows than interfaces reporting processing at L2 
+         number of flows than interfaces reporting processing at L2
          assuming all else equal."
     ::= { etsysFlowLimitingInterfaceEntry 14 }
 
@@ -834,8 +834,8 @@ etsysFlowLimitingUserEntry OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "An entry containing Flow Limiting  information on a per user, 
-         per port basis.  Only interfaces that are able to authenticate 
+        "An entry containing Flow Limiting  information on a per user,
+         per port basis.  Only interfaces that are able to authenticate
          users are represented in this table."
     INDEX  { ifIndex,
              etsysMultiAuthStationAddrType,
@@ -885,12 +885,12 @@ etsysFlowLimitingUserStatus OBJECT-TYPE
          feature has taken action to operationally disable
          this user as a result of exceeding the flow limits configured.
 
-         A value of droppingExcessFlows(3) indicates that no new flows 
-         for this user will be created in excess of the of the flow limits 
+         A value of droppingExcessFlows(3) indicates that no new flows
+         for this user will be created in excess of the of the flow limits
          specified.
 
-         A read of creatingDiscardFlows(4) indicates that any flows in 
-         excess of the specified limits for this user will be created as 
+         A read of creatingDiscardFlows(4) indicates that any flows in
+         excess of the specified limits for this user will be created as
          discard flows."
     ::= { etsysFlowLimitingUserEntry 2 }
 
@@ -924,8 +924,8 @@ etsysFlowLimitingUserFlowCountMax OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-        "The greatest number of of simultaneous flows that have been 
-         active on this interface since the user authenticated.  This 
+        "The greatest number of of simultaneous flows that have been
+         active on this interface since the user authenticated.  This
          information is always available and current."
     ::= { etsysFlowLimitingUserEntry 5 }
 
@@ -934,7 +934,7 @@ etsysFlowLimitingUserFlowCountMaxTime OBJECT-TYPE
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION
-        "The TimeTicks since the etsysFlowLimitingUserFlowCountMax was 
+        "The TimeTicks since the etsysFlowLimitingUserFlowCountMax was
          recorded.  This information is always available and current."
     ::= { etsysFlowLimitingUserEntry 6 }
 

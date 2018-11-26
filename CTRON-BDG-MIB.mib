@@ -17,16 +17,16 @@ CTRON-BDG-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as required.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -85,8 +85,8 @@ specFilters OBJECT IDENTIFIER ::= { specialDB 2 }
 -- Device Objects
 
 
-bdgdeviceDisableBdg OBJECT-TYPE 
-SYNTAX INTEGER 
+bdgdeviceDisableBdg OBJECT-TYPE
+SYNTAX INTEGER
      {
           disableBridge (0),
           enableBridge  (1)
@@ -99,7 +99,7 @@ DESCRIPTION
 
 
 bdgdeviceRestoreSettings OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 restoreSettings (0)
         }
@@ -189,7 +189,7 @@ DESCRIPTION
 
 
 bdgdeviceRestartBdg OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 restartBridge (0)
         }
@@ -256,7 +256,7 @@ DESCRIPTION
 
 
 bdgdeviceTypeFiltering OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 ieee8021 (0),
                 specialDB (1),
@@ -271,7 +271,7 @@ DESCRIPTION
 
 
 bdgdeviceSTAProtocol OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 ieee8021 (0),
                 dec   (1),
@@ -376,7 +376,7 @@ DESCRIPTION
 
 
 bdgdeviceTopChg OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
 {
         noTopologyChangeInProgress (0),
         topologyChangeInProgress   (1)
@@ -452,7 +452,7 @@ DESCRIPTION
 
 
 bdgdeviceResetCounts OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 resetCounts (0)
         }
@@ -711,7 +711,7 @@ DESCRIPTION
 ::= { bdgPort 22 }
 
 bdgPortTopChgAck OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 noTopologyChangeIsOccurring (0),
                 topologyChangeIsOccurring   (1)
@@ -830,7 +830,7 @@ DESCRIPTION
 ::= { acqStats 6 }
 
 acqEraseDatabase OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 eraseAcquiredDatabase (0)
         }
@@ -856,7 +856,7 @@ DESCRIPTION
 
 
 acqCreate00 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createAcquiredEntryFilterPort1FilterPort2  (0)
         }
@@ -869,7 +869,7 @@ DESCRIPTION
 ::= { acqOptions 1 }
 
 acqCreate20 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createAcquiredEntryForwardPort1FilterPort2  (0)
         }
@@ -882,7 +882,7 @@ DESCRIPTION
 ::= { acqOptions 2 }
 
 acqCreate01 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createAcquiredEntryFilterPort1ForwardPort2  (0)
         }
@@ -895,7 +895,7 @@ DESCRIPTION
 ::= { acqOptions 3 }
 
 acqCreate21 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createAcquiredEntryForwardPort1ForwardPort2 (0)
         }
@@ -909,7 +909,7 @@ DESCRIPTION
 ::= { acqOptions 4 }
 
 acqDelete OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 deleteAcquiredEntry (0)
         }
@@ -928,7 +928,7 @@ DESCRIPTION
 ::= { acqOptions 6 }
 
 acqDispOutp1 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (2)
@@ -940,7 +940,7 @@ DESCRIPTION
 ::= { acqOptions 7 }
 
 acqDispOutp2 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (1)
@@ -991,7 +991,7 @@ DESCRIPTION
 ::= { permStats 2 }
 
 permEraseDatabase OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 erasePermanentDatabase (0)
         }
@@ -1015,7 +1015,7 @@ DESCRIPTION
 --  Permanent Database Option Objects
 
 permCreate00 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createPermanentEntryFilterPort1FilterPort2 (0)
         }
@@ -1028,7 +1028,7 @@ DESCRIPTION
 ::= { permOptions 1 }
 
 permCreate20 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createPermanentEntryForwardPort1FilterPort2 (0)
         }
@@ -1041,7 +1041,7 @@ DESCRIPTION
 ::= { permOptions 2 }
 
 permCreate01 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 createPermanentEntryFilterPort1ForwardPort2 (0)
         }
@@ -1067,7 +1067,7 @@ DESCRIPTION
 ::= { permOptions 4 }
 
 permDelete OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 deletePermanentEntry (0)
         }
@@ -1086,7 +1086,7 @@ DESCRIPTION
 ::= { permOptions 6 }
 
 permDispOutp1 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (2)
@@ -1098,7 +1098,7 @@ DESCRIPTION
 ::= { permOptions 7 }
 
 permDispOutp2 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (1)
@@ -1168,7 +1168,7 @@ DESCRIPTION
 -- Special Database Filter Objects
 
 specEnable OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 disableFilter (0),
                 enableFilter  (1)
@@ -1180,7 +1180,7 @@ DESCRIPTION
 ::= { specFilters 1 }
 
 specPort1 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (2)
@@ -1192,7 +1192,7 @@ DESCRIPTION
 ::= { specFilters 2 }
 
 specPort2 OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 filter (0),
                 relay  (1)
@@ -1240,7 +1240,7 @@ DESCRIPTION
 ::= { specFilters 7 }
 
 specDeleteFilter OBJECT-TYPE
-SYNTAX INTEGER 
+SYNTAX INTEGER
         {
                 deleteFilter (0)
         }
@@ -1257,8 +1257,8 @@ DESCRIPTION
 -- are not objects, but Object Identifiers used to indicate the specific trap.
 -- They are taken from the object space and are thus documented here.
 --
--- The SNMP trap messages are composed of two user definable areas: 
---     a) the specific trap type and 
+-- The SNMP trap messages are composed of two user definable areas:
+--     a) the specific trap type and
 --     b) the VarBindings (e.g. the interesting information)
 --
 -- The specific trap type is an integer that is used to determine the
@@ -1285,23 +1285,23 @@ DESCRIPTION
 --      When the acquired portion of the bridge's filtering database is full, a
 --   trap is generated. The interesting information included with this trap
 --   is the number of entries in the acquired database.
-          
+
 -- Formal definition of the Layer Management MIB. (e.g. PC cards )
 
      lmcommon         OBJECT IDENTIFIER ::= { layerMgmt 1 }
-          
-     mAC            OBJECT IDENTIFIER ::= { layerMgmt 2 }          
+
+     mAC            OBJECT IDENTIFIER ::= { layerMgmt 2 }
 
      ieee8023      OBJECT IDENTIFIER ::= {  mAC 1 }
-          
+
      pcIF           OBJECT IDENTIFIER ::= { ieee8023 1 }
 
      pcIfRev        OBJECT IDENTIFIER ::= { pcIF 1 }
 
-          
-                        
-pcDeviceName OBJECT-TYPE   
-          
+
+
+pcDeviceName OBJECT-TYPE
+
 SYNTAX OCTET STRING
 ACCESS read-only
 STATUS mandatory
@@ -1418,7 +1418,7 @@ DESCRIPTION
 
 
 ::= { pcIfRev 11 }
- 
+
 pcMACAddr   OBJECT-TYPE
 
 SYNTAX OCTET STRING

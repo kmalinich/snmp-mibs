@@ -18,16 +18,16 @@ CTRON-DOWNLOAD-MIB DEFINITIONS ::= BEGIN
   --  This module will be extended, as required.
   --
 
-  --  Cabletron Systems reserves the right to make changes in 
-  --  specification and other information contained in this document 
+  --  Cabletron Systems reserves the right to make changes in
+  --  specification and other information contained in this document
   --  without prior notice.  The reader should consult Cabletron Systems
   --  to determine whether any such changes have been made.
   --
-  --  In no event shall Cabletron Systems be liable for any incidental, 
-  --  indirect, special, or consequential damages whatsoever (including 
+  --  In no event shall Cabletron Systems be liable for any incidental,
+  --  indirect, special, or consequential damages whatsoever (including
   --  but not limited to lost profits) arising out of or related to this
   --  document or the information contained in it, even if Cabletron
-  --  Systems has been advised of, known, or should have known, the 
+  --  Systems has been advised of, known, or should have known, the
   --  possibility of such damages.
   --
   --  Cabletron grants vendors, end-users, and other interested parties
@@ -337,12 +337,12 @@ CTRON-DOWNLOAD-MIB DEFINITIONS ::= BEGIN
     STATUS  obsolete
     DESCRIPTION
       "Status of the boot partition or partitions. A value of
-      good(1) indicates that all boot partitions contain a 
+      good(1) indicates that all boot partitions contain a
       valid checksum. A value of bad(2) indicates that one or
       more boot partitions contain an invalid checksum and the
       the image was not able to fix the invalid boot partition.
-      A value of inProgress(3) indicates that the image is 
-      attempting to fix an invalid boot partition and this 
+      A value of inProgress(3) indicates that the image is
+      attempting to fix an invalid boot partition and this
       status will change to either good(1) or bad(2)."
     ::= { ctDL 23 }
 

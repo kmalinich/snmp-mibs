@@ -4,7 +4,7 @@ CTRON-SSR-CAPACITY-MIB DEFINITIONS ::= BEGIN
 --  enterprise-specific Smart Switch Router specific mib branches.
 --
 --  This module will be extended, as required.
- 
+
 --  Enterasys Networks reserves the right to make changes in
 --  specification and other information contained in this document
 --  without prior notice.  The reader should consult Enterasys Networks
@@ -20,9 +20,9 @@ CTRON-SSR-CAPACITY-MIB DEFINITIONS ::= BEGIN
 --  Enterasys grants vendors, end-users, and other interested parties
 --  a non-exclusive license to use this Specification in connection
 --  with the management of Enterasys products.
- 
+
 --  Copyright June 1998-2000 Enterasys Networks
- 
+
 
 IMPORTS
    MODULE-IDENTITY, OBJECT-TYPE, Counter32
@@ -45,21 +45,21 @@ capacityMIB MODULE-IDENTITY
      (603) 332-9400
      support@enterasys.com
      http://www.enterasys.com"
- 
+
    DESCRIPTION
-     "This module defines a schema to access RS system resource 
+     "This module defines a schema to access RS system resource
       capacity statistics."
     REVISION     "200007150000Z"
     DESCRIPTION
         "Update contact information, Change object name chassis
          to chassisCap due to collsion with chassis in ctron-mib-names.txt.
          SSR enterprise mibs apply to the Riverstone RS product line and
-         Enterasys SSR." 
+         Enterasys SSR."
 
     REVISION     "9811050000Z"
     DESCRIPTION
          "Revision 1.0 Initial MIB revision."
-      ::= { ssrMibs 270 }   
+      ::= { ssrMibs 270 }
 
 -- Describes the types of memory devices supported in the SSR
    SSRMemoryType ::= TEXTUAL-CONVENTION
@@ -70,7 +70,7 @@ capacityMIB MODULE-IDENTITY
        SYNTAX   INTEGER {
                 cpu(1),           -- Main CPU Memory
                 intFlash(2),    -- Internal Flash
-                pcmcia(3),      -- PCMCIA 
+                pcmcia(3),      -- PCMCIA
                          rmon(4),                 -- RMON
                 l2Hardware(5),  -- L2 Hardware Entries
                 l3Hardware(6)   -- L3 Hardware Entries
@@ -80,7 +80,7 @@ capacityMIB MODULE-IDENTITY
    SSRCapabilityType ::= TEXTUAL-CONVENTION
        STATUS       current
        DESCRIPTION
-        "A unique value, greater than zero, for the different 
+        "A unique value, greater than zero, for the different
          capabilities of the SSR chassis."
        SYNTAX   INTEGER {
                 noSupport(1),          -- feature not supported
@@ -88,7 +88,7 @@ capacityMIB MODULE-IDENTITY
                 enabled(3),            -- feature available and enabled
                 disabled(4)            -- feature available and disabled
                 }
-                
+
 -- Describes the different SSR firmware task states
    SSRStatusType ::= TEXTUAL-CONVENTION
        STATUS       current
@@ -111,7 +111,7 @@ capacityMIB MODULE-IDENTITY
                 terminated(12)     -- task terminated
                 }
 
--- Capacity metrics are broken down by these functional areas 
+-- Capacity metrics are broken down by these functional areas
    chassisCap OBJECT IDENTIFIER ::= { capacityMIB 1 }
    cpu       OBJECT IDENTIFIER ::= { capacityMIB 2 }
    tasks     OBJECT IDENTIFIER ::= { capacityMIB 3 }
@@ -133,7 +133,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The number of slots used in the chassis.  This number 
+               "The number of slots used in the chassis.  This number
                 includes the slot used for the CPU module, if any."
        ::= { chassisCap 2 }
 
@@ -166,7 +166,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The chassis Power Supply redundancy capability of the SSR.  
+               "The chassis Power Supply redundancy capability of the SSR.
                 This will be one of the following values:
                   noSupport(1)   -- feature not supported
                   available(2)   -- feature not in use
@@ -180,7 +180,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The chassis Switching Fabric redundancy capability of the SSR. 
+               "The chassis Switching Fabric redundancy capability of the SSR.
                 This will be one of the following values:
                   noSupport(1)   -- feature not supported
                   available(2)   -- feature not in use
@@ -196,10 +196,10 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  not-accessible
        STATUS      current
        DESCRIPTION
-        "Summary of CPU statistics.  It is assumed that there is only 
+        "Summary of CPU statistics.  It is assumed that there is only
          one CPU per line card."
        ::= { cpu 1 }
- 
+
    capCPUEntry OBJECT-TYPE
        SYNTAX      CapCPUEntry
        MAX-ACCESS  not-accessible
@@ -208,7 +208,7 @@ capacityMIB MODULE-IDENTITY
         "An entry containing CPU statistics information."
        INDEX   { capCPUModuleIndex }
        ::= { capCPUTable 1 }
- 
+
    CapCPUEntry ::=
        SEQUENCE {
            capCPUModuleIndex           INTEGER,
@@ -222,7 +222,7 @@ capacityMIB MODULE-IDENTITY
            capCPUMinThreshold          INTEGER,
            capCPUMaxThreshold          INTEGER
        }
- 
+
 
    capCPUModuleIndex OBJECT-TYPE
        SYNTAX      INTEGER (0..4294967295)
@@ -249,7 +249,7 @@ capacityMIB MODULE-IDENTITY
        STATUS      current
        DESCRIPTION
                "The total number of new layer 3 flows the CPU has processed and
-                programmed into the Layer 3 hardware flow tables. 
+                programmed into the Layer 3 hardware flow tables.
 
                 Layer 3 flows are packets for IP or IPX protocols that will
                 be routed from one subnet to another. Bridged flows or IP and
@@ -263,13 +263,13 @@ capacityMIB MODULE-IDENTITY
        STATUS      current
        DESCRIPTION
                "The total number of Layer 3flows that have been
-                removed from the layer 3 hardware flow tables across 
+                removed from the layer 3 hardware flow tables across
                 all modules by the Layer 3 aging task. This number may
                 increase quickly if routing protocols are not stable. Removal
                 or insertion of routes into the forwarding table will cause
-                premature aging of flows. Flows are normally aged/removed 
+                premature aging of flows. Flows are normally aged/removed
                 from the hardware when there are no more packets being sent
-                for a defined time period.  
+                for a defined time period.
                 This counter is cumulative from the time the system started."
        ::= { capCPUEntry 4 }
 
@@ -278,8 +278,8 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The number of L2 flows or addresses learned. 
-                The intended result here is to see how many stations 
+               "The number of L2 flows or addresses learned.
+                The intended result here is to see how many stations
                 attempt to establish switched communication through the SSR."
        ::= { capCPUEntry 5 }
 
@@ -308,7 +308,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The total number of packets transmitted by the NIA chip. 
+               "The total number of packets transmitted by the NIA chip.
                 This is useful in seeing how much the CPU is communicating
                 directory with management stations and other routers."
        ::= { capCPUEntry 8 }
@@ -351,7 +351,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  not-accessible
        STATUS      current
        DESCRIPTION
-        "A summary of the tasks running on a CPU enabled module in 
+        "A summary of the tasks running on a CPU enabled module in
          the chassis."
        ::= { tasks 1 }
 
@@ -365,7 +365,7 @@ capacityMIB MODULE-IDENTITY
          status."
        INDEX   { capTaskModuleIndex, capTaskIndex }
        ::= { capTaskTable 1 }
- 
+
    CapTaskEntry ::=
        SEQUENCE {
            capTaskModuleIndex   INTEGER,
@@ -400,8 +400,8 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The encrypted name assigned to this task.  This is unique 
-                for each different type of task, but there may be multiple 
+               "The encrypted name assigned to this task.  This is unique
+                for each different type of task, but there may be multiple
                 instances of the same task running in the system."
        ::= { capTaskEntry 3 }
 
@@ -410,7 +410,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The number of times this task has been scheduled to run.  
+               "The number of times this task has been scheduled to run.
                 This is a cumulative count from the time the SSR was started."
        ::= { capTaskEntry 4 }
 
@@ -427,12 +427,12 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-               "The size of the memory consumed by this task.  This can be 
-                used to monitor any excess memory use by a particular task 
+               "The size of the memory consumed by this task.  This can be
+                used to monitor any excess memory use by a particular task
                 and is expressed in bytes."
        ::= { capTaskEntry 6 }
 
--- memory group : capacity stats for Memory pools 
+-- memory group : capacity stats for Memory pools
 
    capMemoryTable OBJECT-TYPE
        SYNTAX      SEQUENCE OF CapMemoryEntry
@@ -441,7 +441,7 @@ capacityMIB MODULE-IDENTITY
        DESCRIPTION
         "A summary of the non-volatile storage devices in the SSR."
        ::= { memory 1 }
- 
+
    capMemoryEntry OBJECT-TYPE
        SYNTAX      CapMemoryEntry
        MAX-ACCESS  not-accessible
@@ -478,7 +478,7 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  not-accessible
        STATUS      current
        DESCRIPTION
-               "An index or enumeration for the entries of a particular 
+               "An index or enumeration for the entries of a particular
                 memory type.  This index corresponds to:
                    -- Interface index for L2Hardware Type
                    -- Module index for L3Hardware Type
@@ -500,7 +500,7 @@ capacityMIB MODULE-IDENTITY
        DESCRIPTION
         "Memory device total memory capacity expressed in blocks."
        ::= { capMemoryEntry 4 }
- 
+
    capMemoryFree OBJECT-TYPE
        SYNTAX      INTEGER (1..4294967295)
        MAX-ACCESS  read-only
@@ -510,7 +510,7 @@ capacityMIB MODULE-IDENTITY
          unused memory between used memory blocks and is calculated by
          subtracting the memory used from the size of the memory device."
        ::= { capMemoryEntry 5 }
- 
+
    capMemoryUsed OBJECT-TYPE
        SYNTAX      INTEGER (1..4294967295)
        MAX-ACCESS  read-only
@@ -525,8 +525,8 @@ capacityMIB MODULE-IDENTITY
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
-        "Size of the memory blocks on the memory device.  This is the 
-         minimum block size of memory returned when memory is requested 
+        "Size of the memory blocks on the memory device.  This is the
+         minimum block size of memory returned when memory is requested
          and is expressed in bytes."
        ::= { capMemoryEntry 7 }
 
@@ -548,13 +548,13 @@ capacityMIB MODULE-IDENTITY
         "Indicates if the memory type is removable."
        ::= { capMemoryEntry 9 }
 
- 
+
 -- ### Compliance ###
 
 capConformance OBJECT IDENTIFIER ::= { capacityMIB 6 }
 capCompliances OBJECT IDENTIFIER ::= { capConformance 1 }
 capGroups OBJECT IDENTIFIER ::= { capConformance 2 }
- 
+
 capComplianceV10 MODULE-COMPLIANCE
     STATUS deprecated
     DESCRIPTION
@@ -572,7 +572,7 @@ capComplianceV20 MODULE-COMPLIANCE
     ::= { capConfGroupV20 1 }
 
 
-capConfGroupV10  OBJECT-GROUP 
+capConfGroupV10  OBJECT-GROUP
    OBJECTS {
     capChassisSlotCount,
     capChassisSlotsUsed,
@@ -602,9 +602,9 @@ capConfGroupV10  OBJECT-GROUP
   STATUS deprecated
   DESCRIPTION
   "A set of managed objects that make up version 1.0 of the SSR capacity mib."
-   ::= { capGroups 1 } 
- 
-capConfGroupV20  OBJECT-GROUP 
+   ::= { capGroups 1 }
+
+capConfGroupV20  OBJECT-GROUP
    OBJECTS {
     capChassisSlotCount,
     capChassisSlotsUsed,
@@ -636,6 +636,6 @@ capConfGroupV20  OBJECT-GROUP
   STATUS current
   DESCRIPTION
   "A set of managed objects that make up version 2.0 of the SSR capacity mib."
-   ::= { capGroups 2 } 
+   ::= { capGroups 2 }
 
 END

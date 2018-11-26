@@ -20,62 +20,62 @@ mibs OBJECT IDENTIFIER ::= { cabletron 4 }
 --  Description
 --    ctron-mib-names.txt
 --    Revision:
---    Part Number: 
+--    Part Number:
 --    Date:  July 23, 2008
---    
+--
 --    REVISION     "200807231507Z"  - Wed Jul 23 15:07 UTC 2008
 --    DESCRIPTION  "Added the following OIDs:
---                  ctArpAclExpMib, ctDhcpSnoopingExpMib, 
+--                  ctArpAclExpMib, ctDhcpSnoopingExpMib,
 --                  ctDynamicArpInspectionExpMib."
---   
+--
 --    REVISION     "200603061501Z"  - Mon Mar  6 15:01 UTC 2006
 --    DESCRIPTION  "Added the ctFastPathProtectedPortMib OID."
---   
+--
 --    REVISION     "200601161932Z"  - Mon Jan 16 19:32 UTC 2006
 --    DESCRIPTION  "Added the ctDhcpServerExpMib OID."
 --
 --    REVISION     "200503251526Z"  - Fri Mar 25 15:26 GMT 2005
 --    DESCRIPTION  "Added the ctEntityStateTC and ctEntityStateMib OIDs."
---   
+--
 --    REVISION     "200503051336Z"  - Sat Mar  5 13:36 GMT 2005
 --    DESCRIPTION  "Added the ctronTrapeze OID."
---    
+--
 --    REVISION     "200410281452Z"  - Thu Oct 28 14:52 GMT 2004
 --    DESCRIPTION  "Added the ctronWslMIB OID."
---    
+--
 --    REVISION     "200403251446Z"  - Thu Mar 25 14:46 GMT 2004
 --    DESCRIPTION  "Added the ctronAP3000 OID."
---    
+--
 --    REVISION     "200312122049Z"  - Fri Dec 12 20:49 GMT 2003
 --    DESCRIPTION  "Added the ctronV2H and v2h124-24MIB OIDs."
---    
+--
 --    This module provides authoritative definitions for part
 --    of the naming tree below:
---    
+--
 --    cabletron { enterprises 52 }
---    
+--
 --    This module will be extended, as additional sub-sections
 --    of this naming tree are defined.
---    
---    Enterasys Networks reserves the right to make changes in 
---    specification and other information contained in this document 
+--
+--    Enterasys Networks reserves the right to make changes in
+--    specification and other information contained in this document
 --    without prior notice.  The reader should consult Enterasys Networks
 --    to determine whether any such changes have been made.
---    
---    In no event shall Enterasys Networks be liable for any incidental, 
---    indirect, special, or consequential damages whatsoever (including 
+--
+--    In no event shall Enterasys Networks be liable for any incidental,
+--    indirect, special, or consequential damages whatsoever (including
 --    but not limited to lost profits) arising out of or related to this
 --    document or the information contained in it, even if Enterasys
---    Networks has been advised of, known, or should have known, the 
+--    Networks has been advised of, known, or should have known, the
 --    possibility of such damages.
---     
+--
 --    Enterasys grants vendors, end-users, and other interested parties
 --    a non-exclusive license to use this Specification in connection
 --    with the management of Enterasys or Cabletron products.
---    
+--
 --    Copyright February 1999 Cabletron Systems
 --    Copyright March (2000-2006) Enterasys Networks
---    
+--
 --    The assigned enterprise MIB tree for Cabletron System
 
 ctron OBJECT IDENTIFIER ::= { mibs 1 }
@@ -178,7 +178,7 @@ ctIFRemap2 OBJECT IDENTIFIER ::= { ctPhysical 14 }
 --    mandatory
 --  Descr
 --    MIB Allows mapping of an interface onto other interfaces.
---    This MIB will replace the inital ctIFRemap in future 
+--    This MIB will replace the inital ctIFRemap in future
 --    releases.
 
 ctOrpHSIM OBJECT IDENTIFIER ::= { ctPhysical 15 }
@@ -186,7 +186,7 @@ ctOrpHSIM OBJECT IDENTIFIER ::= { ctPhysical 15 }
 --  Status
 --    mandatory
 --  Descr
---     MIB used by the host platform to perform management of Orp type 
+--     MIB used by the host platform to perform management of Orp type
 --     HSIMs.
 
 ctPortMap  OBJECT IDENTIFIER ::= { ctPhysical 16 }
@@ -194,8 +194,8 @@ ctPortMap  OBJECT IDENTIFIER ::= { ctPhysical 16 }
 --  Status
 --    mandatory
 --  Descr
---     This mib provides information about a  repeated ports  
---     operational mode and capability. 
+--     This mib provides information about a  repeated ports
+--     operational mode and capability.
 
 ctHSIMPhysMib  OBJECT IDENTIFIER ::= { ctPhysical 17 }
 -- OBJECT-IDENTITY
@@ -254,7 +254,7 @@ ctEthernetCtlParameters OBJECT IDENTIFIER ::= { ctEthernet 2 }
 --   Cabletron interfaces that comply to IEEE Draft
 --   P802.3z/D4.1, IEEE Std 802.3x-1997 and IEEE Std
 --   802.3y-1997.  This MIB supercedes the ctFastEthernet MIB.
- 
+
 ctFDDI OBJECT IDENTIFIER ::= { ctDataLink 5 }
 -- OBJECT-IDENTITY
 --  Status
@@ -358,7 +358,7 @@ ctFPS OBJECT IDENTIFIER ::= { ctSwitch 2 }
 --  Status
 --    mandatory
 --  Descr
---    The FPS configuration information and statistics MIB 
+--    The FPS configuration information and statistics MIB
 
 ctINB OBJECT IDENTIFIER ::= { ctDataLink 12 }
 -- OBJECT-IDENTITY
@@ -372,7 +372,7 @@ ctINBinfo OBJECT IDENTIFIER ::= { ctINB 1 }
 --  Status
 --    mandatory
 --  Descr
---    The INB configuration information and statistics MIB 
+--    The INB configuration information and statistics MIB
 
 ctINBinfo2 OBJECT IDENTIFIER ::= { ctINB 2 }
 -- OBJECT-IDENTITY
@@ -402,7 +402,7 @@ ctFPSServices OBJECT IDENTIFIER ::= { ctDataLink 15 }
 --    mandatory
 --  Descr
 --    FPS Services mib
- 
+
 ctVlanExt OBJECT IDENTIFIER ::= { ctDataLink 16 }
 -- OBJECT-IDENTITY
 --  Status
@@ -430,7 +430,7 @@ ctVoiceOverIP OBJECT IDENTIFIER ::= { ctVVD 1 }
 --    mandatory
 --  Descr
 --    Voice over IP mibs
-  
+
 ctCDP OBJECT IDENTIFIER ::= { ctDataLink 19 }
 --OBJECT-IDENTITY
 --  Status
@@ -465,7 +465,7 @@ ctTranslation OBJECT IDENTIFIER ::= { ctNetwork 4 }
 --  Status
 --    mandatory
 --  Descr
---    A MIB to provide control over IP fragmentation 
+--    A MIB to provide control over IP fragmentation
 --    between the various media types.
 
 ctIGMPBranch OBJECT IDENTIFIER ::= { ctNetwork 5 }
@@ -721,10 +721,10 @@ ctNetSim OBJECT IDENTIFIER ::= { ctronExp 17 }
 --  Status
 --    deprecated
 --  Descr
---    FPS Services mib 
+--    FPS Services mib
 --
 --    This MIB has been accepted and is now off the ctDataLink 15.
- 
+
 --ctPriorityExt OBJECT IDENTIFIER ::= { ctronExp 19 }
 -- OBJECT-IDENTITY
 --  Status
@@ -805,7 +805,7 @@ ctFWDebug  OBJECT IDENTIFIER ::= { ctronExp 29 }
 --    optional
 --  Descr
 --    This mib is for specific firmware debug
---    it will be filled in as needed. 
+--    it will be filled in as needed.
 
 ctEntityStateTC  OBJECT IDENTIFIER ::= { ctronExp 30 }
 -- OBJECT-IDENTITY
@@ -854,7 +854,7 @@ ctDynamicArpInspectionExpMib  OBJECT IDENTIFIER ::= { ctronExp 36 }
 --  Status
 --    optional
 --  Descr
---    This is an OID registration for a third party dynamic ARP 
+--    This is an OID registration for a third party dynamic ARP
 --    inspection MIB.
 
 ctronExtn OBJECT IDENTIFIER ::= { mibs 3 }

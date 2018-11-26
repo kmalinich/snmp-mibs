@@ -31,13 +31,13 @@ ibPlatformModule MODULE-IDENTITY
 
     REVISION  "201205240000Z"  --  May 24, 2012
     DESCRIPTION   "Rename Node1, Node2 to Node, PassiveNode"
-    
+
     REVISION  "201204130000Z"  --  April 13, 2012
     DESCRIPTION   "Added DNS Cache Acceleration info"
-    
+
     REVISION  "201112020000Z"  --  December 02, 2011
     DESCRIPTION   "Add support for 8 fans and 8 raid disks"
-    
+
     REVISION  "201112010000Z"  --  December 01, 2011
     DESCRIPTION   "Added second power-supply service"
 

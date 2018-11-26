@@ -1,4 +1,4 @@
-CTINB2-MIB DEFINITIONS ::= BEGIN 
+CTINB2-MIB DEFINITIONS ::= BEGIN
 
         --  ctinb2-mib.txt
         --  Revision:   00.00.02
@@ -32,13 +32,13 @@ CTINB2-MIB DEFINITIONS ::= BEGIN
         --  with the management of Cabletron products.
 
         --  Copyright September 98 Cabletron Systems
- 
-IMPORTS 
+
+IMPORTS
         OBJECT-TYPE                  FROM RFC-1212
         ctINBinfo2                   FROM CTRON-MIB-NAMES ;
 
 --
--- The Utilization group 
+-- The Utilization group
 --
 
    ctInbUtil             OBJECT IDENTIFIER ::= { ctINBinfo2 1 }
@@ -54,27 +54,27 @@ IMPORTS
        ::= { ctInbUtil 1 }
 
 
-   ctInbUtilTable OBJECT-TYPE 
+   ctInbUtilTable OBJECT-TYPE
        SYNTAX  SEQUENCE OF CtInbUtilEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
           "A list of byte counts and absolute utilization percentages reflecting
            data transferred via the INB during the last sampling interval."
-       ::= { ctInbUtil 2 } 
+       ::= { ctInbUtil 2 }
 
-   ctInbUtilEntry OBJECT-TYPE 
+   ctInbUtilEntry OBJECT-TYPE
        SYNTAX  CtInbUtilEntry
-       ACCESS  not-accessible 
-       STATUS  mandatory 
-       DESCRIPTION 
+       ACCESS  not-accessible
+       STATUS  mandatory
+       DESCRIPTION
            "Byte counts and utilization percentages reflecting data transferred
             from a source module to a destination module via the INB."
        INDEX { ctInbUtilSrcSlot, ctInbUtilDestSlot }
-       ::= { ctInbUtilTable 1 } 
+       ::= { ctInbUtilTable 1 }
 
-   CtInbUtilEntry ::= 
-       SEQUENCE { 
+   CtInbUtilEntry ::=
+       SEQUENCE {
            ctInbUtilSrcSlot
                INTEGER,
            ctInbUtilDestSlot

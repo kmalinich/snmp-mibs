@@ -5,7 +5,7 @@ IMPORTS
         FROM SNMPv2-SMI
     RowStatus, MacAddress, TruthValue, TEXTUAL-CONVENTION
         FROM SNMPv2-TC
-    ieee802dot1mibs, IEEE8021PbbIngressEgress, 
+    ieee802dot1mibs, IEEE8021PbbIngressEgress,
     IEEE8021BridgePortNumber
         FROM IEEE8021-TC-MIB
     VlanId, VlanIdOrNone, VlanIdOrAny
@@ -106,7 +106,7 @@ IEEE8021SpbmSPsourceId ::= TEXTUAL-CONVENTION
     DISPLAY-HINT "1x:"
     STATUS current
     DESCRIPTION
-         "It is the high order 3 bytes for Group Address DA from this 
+         "It is the high order 3 bytes for Group Address DA from this
          bridge.
          Note that only the 20 bits not including the top 4 bits are
          the SPSourceID."
@@ -150,9 +150,9 @@ IEEE8021SpbServiceIdentifierOrAny ::= TEXTUAL-CONVENTION
     DISPLAY-HINT "d"
     STATUS current
     DESCRIPTION
-        "The service instance identifier is used at the Customer Backbone 
+        "The service instance identifier is used at the Customer Backbone
          port in SPBM to distinguish a service instance.
-         The special value of 0xFFFFFF is used for wildcard. 
+         The special value of 0xFFFFFF is used for wildcard.
          This range also includes the default I-SID. "
     REFERENCE "3.23, 3.24"
     SYNTAX Unsigned32 (255..16777215)
@@ -164,13 +164,13 @@ IEEE8021SpbServiceIdentifierOrAny ::= TEXTUAL-CONVENTION
 -- ===================================================================
 -- ieee8021SpbObjects:
 -- ===================================================================
-ieee8021SpbObjects OBJECT IDENTIFIER 
+ieee8021SpbObjects OBJECT IDENTIFIER
     ::= { ieee8021SpbMib 1 }
 
 -- ===================================================================
 -- ieee8021SpbSys:
 -- ===================================================================
-ieee8021SpbSys OBJECT IDENTIFIER 
+ieee8021SpbSys OBJECT IDENTIFIER
     ::= { ieee8021SpbObjects 1 }
 
 ieee8021SpbSysAreaAddress OBJECT-TYPE
@@ -181,7 +181,7 @@ ieee8021SpbSysAreaAddress OBJECT-TYPE
         "The three byte IS-IS Area Address to join. Normally
          SPB will use area 00:00:00 however if SPB is being
          used in conjunction with IPV4/V6 it may operate
-         using the IS-IS area address already in use.                       
+         using the IS-IS area address already in use.
          This object is persistent."
     REFERENCE "12.25.1.3.2, 12.25.1.3.3"
     ::= { ieee8021SpbSys 1 }
@@ -193,7 +193,7 @@ ieee8021SpbSysId OBJECT-TYPE
     DESCRIPTION
         "SYS ID used for all SPB instances on this bridge.
          A six byte network wide unique identifier. This is
-         defaulted to the Bridge Address initially but may 
+         defaulted to the Bridge Address initially but may
          be overridden.
          This object is persistent."
     REFERENCE "12.25.1.3.3, 3.21"
@@ -208,11 +208,11 @@ ieee8021SpbSysControlAddr OBJECT-TYPE
          use a number of different addresses for SPB Hello and
          LSP exchange. Section 27.2, 8.13.1.5 and Table 8-13 covers
          the different choices. The choices are as follows:
-         01:80:C2:00:00:14 = All Level 1 Intermediate Systems 
+         01:80:C2:00:00:14 = All Level 1 Intermediate Systems
          01:80:C2:00:00:15 = All Level 2 Intermediate Systems
          09:00:2B:00:00:05 = All Intermediate Systems.
-         01:80:C2:00:00:2E = All Provider Bridge Intermediate Systems.  
-         01:80:C2:00:00:2F = All Customer Bridge Intermediate Systems.  
+         01:80:C2:00:00:2E = All Provider Bridge Intermediate Systems.
+         01:80:C2:00:00:2F = All Customer Bridge Intermediate Systems.
          This object is persistent."
     REFERENCE "12.25.1.1.2, 8.13.5.1"
     ::= { ieee8021SpbSys 3 }
@@ -222,7 +222,7 @@ ieee8021SpbSysName OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "Name to be used to refer to this SPB bridge. This is advertised 
+        "Name to be used to refer to this SPB bridge. This is advertised
          in IS-IS and used for management."
     REFERENCE "12.25.1.3.3"
     ::= { ieee8021SpbSys 4 }
@@ -235,7 +235,7 @@ ieee8021SpbSysBridgePriority OBJECT-TYPE
         "This is a 16 bit quantity which ranks this SPB Bridge
          relative to others when breaking ties. This priority
          is the high 16 bits of the Bridge Identifier. Its impact
-         depends on the tie breaking algorithm. Recommend 
+         depends on the tie breaking algorithm. Recommend
          values 0..15 be assigned to core switches to ensure
          diversity of the ECT Algorithms."
     REFERENCE "12.25.1.3.3, 13.26.3"
@@ -247,7 +247,7 @@ ieee8021SpbmSysSPSourceId OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The Shortest Path Source Identifier.
-         It is the high order 3 bytes for Group Address DA from this 
+         It is the high order 3 bytes for Group Address DA from this
          bridge.
          Note that only the 20 bits not including the top 4 bits are
          the SPSourceID.
@@ -288,12 +288,12 @@ ieee8021SpbSysDigestConvention OBJECT-TYPE
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
-        "The Agreement Digest convention setting 
-         off(=1)/loopFreeBoth(=2)/loopFreeMcastOnly(=3) 
+        "The Agreement Digest convention setting
+         off(=1)/loopFreeBoth(=2)/loopFreeMcastOnly(=3)
          off => disable agreement digest checking in hellos
-         loopFreeBoth => block unsafe group and individual 
+         loopFreeBoth => block unsafe group and individual
          traffic when digests disagree.
-         loopFreeMcastOnly =>block unsafe group traffic when digests 
+         loopFreeMcastOnly =>block unsafe group traffic when digests
          disagree.
          This object is persistent."
     REFERENCE "12.25.1.3.3, 28.4.3"
@@ -317,15 +317,15 @@ ieee8021SpbMtidStaticTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table configures a MTID to a topology index. A 
-         topology index uniquely identifies a specific ISIS 
-         topology enabling multiple instances or multiple 
+        "This table configures a MTID to a topology index. A
+         topology index uniquely identifies a specific ISIS
+         topology enabling multiple instances or multiple
          MTIDs within an instance. "
     REFERENCE "12.25.2"
-    INDEX { 
+    INDEX {
             ieee8021SpbMtidStaticEntryMtid,
             ieee8021SpbTopIx
-          } 
+          }
     ::= { ieee8021SpbMtidStaticTable 1 }
 
 Ieee8021SpbMtidStaticTableEntry ::=
@@ -392,7 +392,7 @@ ieee8021SpbTopIxDynamicTable OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table is for SPB dynamic information. The dynamic 
+        "This table is for SPB dynamic information. The dynamic
          information that is sent in this bridges Hellos."
     REFERENCE "12.25.3"
     ::= { ieee8021SpbObjects 3 }
@@ -402,12 +402,12 @@ ieee8021SpbTopIxDynamicTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table displays the digest information computed for this bridge. 
+        "This table displays the digest information computed for this bridge.
          A bridge configures this information in MTID 0 only.  "
     REFERENCE "12.25.3"
-    INDEX { 
+    INDEX {
             ieee8021SpbTopIxDynamicEntryTopIx
-          } 
+          }
     ::= { ieee8021SpbTopIxDynamicTable 1 }
 
 Ieee8021SpbTopIxDynamicTableEntry ::=
@@ -444,7 +444,7 @@ ieee8021SpbTopIxDynamicEntryMCID OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The MST Identifier MCID. The MCID is a digest of the 
+        "The MST Identifier MCID. The MCID is a digest of the
          VID to MSTID configuration table which determines the Base VIDs
          enabled for SPBV and SPBM."
     REFERENCE "12.25.3.1.3, 13.8"
@@ -480,10 +480,10 @@ ieee8021SpbEctStaticTableEntry OBJECT-TYPE
         "The Equal Cost Tree static configuration Table defines the
          ECT-ALGORITHM for the Base VID and if SPBV is used for the SPVID.  "
     REFERENCE "12.25.4"
-    INDEX { 
+    INDEX {
             ieee8021SpbEctStaticEntryTopIx,
             ieee8021SpbEctStaticEntryBaseVid
-          } 
+          }
     ::= { ieee8021SpbEctStaticTable 1 }
 
 Ieee8021SpbEctStaticTableEntry ::=
@@ -500,9 +500,9 @@ ieee8021SpbEctStaticEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.4.2.2, 12.25.4.2.3, 28.12"
     ::= { ieee8021SpbEctStaticTableEntry 1 }
@@ -524,10 +524,10 @@ ieee8021SpbEctStaticEntryEctAlgorithm OBJECT-TYPE
     MAX-ACCESS read-create
     STATUS current
     DESCRIPTION
-        "This identifies the tie-breaking algorithms used in 
-         Shortest Path Tree computation.  Values range from 
+        "This identifies the tie-breaking algorithms used in
+         Shortest Path Tree computation.  Values range from
          00-80-c2-01 to 00-80-c2-16 for 802.1 for each
-         the 16 ECT behaviors. The default is 00-80-c2-01 
+         the 16 ECT behaviors. The default is 00-80-c2-01
          the LowPATHID.
          This object is persistent."
     REFERENCE "12.25.4.1, 12.25.4.2.3, 3.6"
@@ -553,7 +553,7 @@ ieee8021SpbEctStaticEntryRowStatus OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The object indicates the status of an entry, and is used
-         to create/delete entries. 
+         to create/delete entries.
          This object is persistent."
     REFERENCE "12.25.4.2.3"
     ::= { ieee8021SpbEctStaticTableEntry 5 }
@@ -575,13 +575,13 @@ ieee8021SpbEctDynamicTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table can be used to check that neighbor bridges are 
+        "This table can be used to check that neighbor bridges are
          using the same ECT Algorithm. "
     REFERENCE "12.25.5"
-    INDEX { 
+    INDEX {
             ieee8021SpbEctDynamicEntryTopIx,
             ieee8021SpbEctDynamicEntryBaseVid
-          } 
+          }
     ::= { ieee8021SpbEctDynamicTable 1 }
 
 Ieee8021SpbEctDynamicTableEntry ::=
@@ -599,9 +599,9 @@ ieee8021SpbEctDynamicEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.5.1.2, 12.25.5.1.3, 28.12"
     ::= { ieee8021SpbEctDynamicTableEntry 1 }
@@ -611,7 +611,7 @@ ieee8021SpbEctDynamicEntryBaseVid OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The Base VID being queried. Base VID 
+        "The Base VID being queried. Base VID
          define the mode in the VID to MSTID table. "
     REFERENCE "12.25.5.1.2, 12.25.5.1.3, 3.3"
     ::= { ieee8021SpbEctDynamicTableEntry 2 }
@@ -621,7 +621,7 @@ ieee8021SpbEctDynamicEntryMode OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The Operating mode of this Base VID. 
+        "The Operating mode of this Base VID.
          SPBM (=2), SPBV (=3), or disabled or none (1)."
     REFERENCE "12.25.5.1.3, 28.12.4"
     ::= { ieee8021SpbEctDynamicTableEntry 3 }
@@ -631,8 +631,8 @@ ieee8021SpbEctDynamicEntryLocalUse OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "This value indicates the ECT is in use locally 
-         (True/False) for this Base Vid. ECTs may be defined before 
+        "This value indicates the ECT is in use locally
+         (True/False) for this Base Vid. ECTs may be defined before
          services are assigned. "
     REFERENCE "12.25.5.1.3, 28.12.4"
     ::= { ieee8021SpbEctDynamicTableEntry 4 }
@@ -642,8 +642,8 @@ ieee8021SpbEctDynamicEntryRemoteUse OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "This value indicates the remote ECT is in use  
-         (True/False) for this Base Vid. ECTs may be defined before 
+        "This value indicates the remote ECT is in use
+         (True/False) for this Base Vid. ECTs may be defined before
          services are assigned."
     REFERENCE "12.25.5.1.3, 28.12.4"
     ::= { ieee8021SpbEctDynamicTableEntry 5 }
@@ -678,13 +678,13 @@ ieee8021SpbAdjStaticTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table can be used to display the interfaces and metrics 
+        "This table can be used to display the interfaces and metrics
          of a neighbor bridge. "
     REFERENCE "12.25.6"
-    INDEX { 
+    INDEX {
             ieee8021SpbAdjStaticEntryTopIx,
             ieee8021SpbAdjStaticEntryIfIndex
-          } 
+          }
     ::= { ieee8021SpbAdjStaticTable 1 }
 
 Ieee8021SpbAdjStaticTableEntry ::=
@@ -701,9 +701,9 @@ ieee8021SpbAdjStaticEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.6.1.2, 12.25.6.1.3, 28.12"
     ::= { ieee8021SpbAdjStaticTableEntry 1 }
@@ -713,8 +713,8 @@ ieee8021SpbAdjStaticEntryIfIndex OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The System interface/index which defines this 
-         adjacency. A value of 0 is a wildcard for any 
+        "The System interface/index which defines this
+         adjacency. A value of 0 is a wildcard for any
          interface on which SPB Operation is supported."
     REFERENCE "12.25.6.1.2, 12.25.6.1.3"
     ::= { ieee8021SpbAdjStaticTableEntry 2 }
@@ -724,7 +724,7 @@ ieee8021SpbAdjStaticEntryMetric OBJECT-TYPE
     MAX-ACCESS read-create
     STATUS current
     DESCRIPTION
-        "The ieee8021Spb metric (incremental cost) to this peer. 
+        "The ieee8021Spb metric (incremental cost) to this peer.
          The contribution of this link to total path cost.
          Recommended values are inversely proportional to link speed.
          Range is (1..16777215) where 16777215 (0xFFFFFF) is
@@ -751,7 +751,7 @@ ieee8021SpbAdjStaticEntryRowStatus OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The object indicates the status of an entry, and is used
-         to create/delete entries. 
+         to create/delete entries.
          This object is persistent."
     REFERENCE "12.25.6.1.3"
     ::= { ieee8021SpbAdjStaticTableEntry 5 }
@@ -776,11 +776,11 @@ ieee8021SpbAdjDynamicTableEntry OBJECT-TYPE
         "This table is used to determine operational values of digests
          and interfaces of neighbor bridges."
     REFERENCE "12.25.7"
-    INDEX { 
+    INDEX {
             ieee8021SpbAdjDynamicEntryTopIx,
             ieee8021SpbAdjDynamicEntryIfIndex,
             ieee8021SpbAdjDynamicEntryPeerSysId
-          } 
+          }
     ::= { ieee8021SpbAdjDynamicTable 1 }
 
 Ieee8021SpbAdjDynamicTableEntry ::=
@@ -806,9 +806,9 @@ ieee8021SpbAdjDynamicEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.7.1.2, 12.25.7.1.3, 28.12"
     ::= { ieee8021SpbAdjDynamicTableEntry 1 }
@@ -829,7 +829,7 @@ ieee8021SpbAdjDynamicEntryPeerSysId OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The SPB System Identifier of this peer. This is used to 
+        "The SPB System Identifier of this peer. This is used to
          identify a neighbor uniquely."
     REFERENCE "12.25.7.1.3, 3.21"
     ::= { ieee8021SpbAdjDynamicTableEntry 3 }
@@ -871,7 +871,7 @@ ieee8021SpbAdjDynamicEntryPeerAgreeDigest OBJECT-TYPE
     DESCRIPTION
         "The peer topology agreement digest value
          (all of the elements defined in clause 28.4).
-         If it does not match this bridge's digest it indicates loss of 
+         If it does not match this bridge's digest it indicates loss of
          synchronization."
     REFERENCE "12.25.7.1.3, 28.4"
     ::= { ieee8021SpbAdjDynamicTableEntry 7 }
@@ -881,7 +881,7 @@ ieee8021SpbAdjDynamicEntryPeerMCID OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The peer MST Identifier MCID. The MCID is a digest of the 
+        "The peer MST Identifier MCID. The MCID is a digest of the
          VID to MSTID configuration table which determines the Base VIDs
          enabled for SPBV and SPBM."
     REFERENCE "12.25.7.1.3, 13.8"
@@ -892,7 +892,7 @@ ieee8021SpbAdjDynamicEntryPeerAuxMCID OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The  peer auxiliary  MST Identifier. This MCID is 
+        "The  peer auxiliary  MST Identifier. This MCID is
          used for migration."
     REFERENCE "12.25.7.1.3, 27.4.1, 28.12.2"
     ::= { ieee8021SpbAdjDynamicTableEntry 9 }
@@ -920,7 +920,7 @@ ieee8021SpbAdjDynamicEntryPortIdentifier OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The value for this bridge which has been selected by 
+        "The value for this bridge which has been selected by
          IS-IS to form this adjacency if there is more than 1 candidate link."
     REFERENCE "12.25.7.1.3, 28.11"
     ::= { ieee8021SpbAdjDynamicTableEntry 12 }
@@ -930,7 +930,7 @@ ieee8021SpbAdjDynamicEntryPeerPortIdentifier OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The value for peer port Identifier selected by IS-IS 
+        "The value for peer port Identifier selected by IS-IS
          to form this adjacency if there is more than 1 candidate link."
     REFERENCE "12.25.7.1.3, 28.11"
     ::= { ieee8021SpbAdjDynamicTableEntry 13 }
@@ -962,13 +962,13 @@ ieee8021SpbTopNodeTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table is used to display system level information about 
+        "This table is used to display system level information about
          bridges in the network.   "
     REFERENCE "12.25.8"
-    INDEX { 
+    INDEX {
             ieee8021SpbTopNodeEntryTopIx,
             ieee8021SpbTopNodeEntrySysId
-          } 
+          }
     ::= { ieee8021SpbTopNodeTable 1 }
 
 Ieee8021SpbTopNodeTableEntry ::=
@@ -985,9 +985,9 @@ ieee8021SpbTopNodeEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.8.1.2, 12.25.8.1.3, 28.12"
     ::= { ieee8021SpbTopNodeTableEntry 1 }
@@ -997,7 +997,7 @@ ieee8021SpbTopNodeEntrySysId OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The IS-IS System ID of a bridge in the SPB 
+        "The IS-IS System ID of a bridge in the SPB
          LSP database and hence the network.
          A value of 0 is a wildcard for all System identifiers."
     REFERENCE "12.25.8.1.2, 12.25.8.1.3, 3.21"
@@ -1008,11 +1008,11 @@ ieee8021SpbTopNodeEntryBridgePriority OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The Bridge Priority of the bridge in the LSP database.  
+        "The Bridge Priority of the bridge in the LSP database.
          This is a 16 bit quantity which ranks this SPB Bridge
          relative to others when breaking ties. This priority
          is the high 16 bits of the Bridge Identifier. Its impact
-         depends on the tie breaking algorithm. Recommend 
+         depends on the tie breaking algorithm. Recommend
          values 0..15 be assigned to core switches to ensure
          diversity of the ECT Algorithms."
     REFERENCE "12.25.8.1.3, 13.26.3"
@@ -1025,7 +1025,7 @@ ieee8021SpbmTopNodeEntrySPsourceID OBJECT-TYPE
     DESCRIPTION
         "The Shortest Path Source Identifier.
          It is the high order 3 bytes for Group Address DA from this
-         bridge. Note that only the 20 bits not including the 
+         bridge. Note that only the 20 bits not including the
          top 4 bits are the SPSourceID."
     REFERENCE "12.25.8.1.3, 3.17"
     ::= { ieee8021SpbTopNodeTableEntry 4 }
@@ -1036,7 +1036,7 @@ ieee8021SpbTopNodeEntrySysName OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The System Name. A Human readable name of this bridge
-         This is used to aid in management and is used in 
+         This is used to aid in management and is used in
          place of the System identifier in many commands and displays."
     REFERENCE "12.25.8.1.3"
     ::= { ieee8021SpbTopNodeTableEntry 5 }
@@ -1060,11 +1060,11 @@ ieee8021SpbTopEctTableEntry OBJECT-TYPE
     DESCRIPTION
         "This table lists bridges and the ECT Algorithms configured and in use. "
     REFERENCE "12.25.9"
-    INDEX { 
+    INDEX {
             ieee8021SpbTopEctEntryTopIx,
             ieee8021SpbTopEctEntrySysId,
             ieee8021SpbTopEctEntryBaseVid
-          } 
+          }
     ::= { ieee8021SpbTopEctTable 1 }
 
 Ieee8021SpbTopEctTableEntry ::=
@@ -1084,9 +1084,9 @@ ieee8021SpbTopEctEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.9.1.2, 12.25.9.1.3"
     ::= { ieee8021SpbTopEctTableEntry 1 }
@@ -1120,12 +1120,12 @@ ieee8021SpbTopEctEntryEctAlgorithm OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "The ECT-ALGORITHM in use. 
-         A 32 bit number. The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ECT-ALGORITHM in use.
+         A 32 bit number. The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances.; the upper 24 bits are an OUI
-         and the lower 8 bits are an index. This creates a 
+         and the lower 8 bits are an index. This creates a
          world-wide unique identity for the computation that
          will be using the VID thus ensuring consistency."
     REFERENCE "12.25.9.1.3, 3.6"
@@ -1158,7 +1158,7 @@ ieee8021SpbvTopEctEntrySpvid OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SPVID in V mode
-         The VID this bridge will use to originate traffic 
+         The VID this bridge will use to originate traffic
          using this ECT-ALGORITHM when running in SPBV mode."
     REFERENCE "12.25.9.1.3, 3.14"
     ::= { ieee8021SpbTopEctTableEntry 7 }
@@ -1168,8 +1168,8 @@ ieee8021SpbTopEctEntryLocalUse OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "Is this ECT-ALGORITHM in use locally by advertising 
-         bridge :- TRUE or FALSE. This is used to help with 
+        "Is this ECT-ALGORITHM in use locally by advertising
+         bridge :- TRUE or FALSE. This is used to help with
          disruption-free migration between ECT-ALGORITHMs.
          Changes are only allowed if this flag is FALSE."
     REFERENCE "12.25.9.1.3, 28.12.5(1"
@@ -1196,11 +1196,11 @@ ieee8021SpbTopEdgeTableEntry OBJECT-TYPE
     DESCRIPTION
         "The table lists information about bridge edges (links)."
     REFERENCE "12.25.10"
-    INDEX { 
+    INDEX {
             ieee8021SpbTopEdgeEntryTopIx,
             ieee8021SpbTopEdgeEntrySysIdNear,
             ieee8021SpbTopEdgeEntrySysIdFar
-          } 
+          }
     ::= { ieee8021SpbTopEdgeTable 1 }
 
 Ieee8021SpbTopEdgeTableEntry ::=
@@ -1217,9 +1217,9 @@ ieee8021SpbTopEdgeEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.10.1.2, 12.25.10.1.3, 28.12"
     ::= { ieee8021SpbTopEdgeTableEntry 1 }
@@ -1229,7 +1229,7 @@ ieee8021SpbTopEdgeEntrySysIdNear OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The System ID of near bridge (the bridge 
+        "The System ID of near bridge (the bridge
          reporting the adjacency).
          A value of 0 is a wildcard for all System identifiers."
     REFERENCE "12.25.10.1.2, 12.25.10.1.3, 3.21"
@@ -1240,7 +1240,7 @@ ieee8021SpbTopEdgeEntrySysIdFar OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The System ID of far bridge (the neighbor 
+        "The System ID of far bridge (the neighbor
          of the bridge reporting).
          A value of 0 is a wildcard for all System identifiers."
     REFERENCE "12.25.10.1.2, 12.25.10.1.3, 3.21"
@@ -1253,7 +1253,7 @@ ieee8021SpbTopEdgeEntryMetricNear2Far OBJECT-TYPE
     DESCRIPTION
         "The metric used on this edge advertised by near end
          This is the raw value. If it is less than the
-         MetricFar2Near (below), the MetricFar2Near is 
+         MetricFar2Near (below), the MetricFar2Near is
          used as the SPF metric in both directions."
     REFERENCE "12.25.10.1.3, 28.12.7"
     ::= { ieee8021SpbTopEdgeTableEntry 4 }
@@ -1265,7 +1265,7 @@ ieee8021SpbTopEdgeEntryMetricFar2Near OBJECT-TYPE
     DESCRIPTION
         "The metric used on this edge advertised by far end
          This is the raw value. If it is less than the
-         MetricNear2Far (above), the MetricNear2Far is 
+         MetricNear2Far (above), the MetricNear2Far is
          used as the SPF metric in both directions."
     REFERENCE "12.25.10.1.3, 28.12.7"
     ::= { ieee8021SpbTopEdgeTableEntry 5 }
@@ -1288,17 +1288,17 @@ ieee8021SpbmTopSrvTableEntry OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "This table displays information about PBB services received
-         in the LSP data base. The Service Identifier is associated with 
-         the MAC address and Base VID of the bridge that originates or 
+         in the LSP data base. The Service Identifier is associated with
+         the MAC address and Base VID of the bridge that originates or
          terminates the service. "
     REFERENCE "12.25.11"
-    INDEX { 
+    INDEX {
             ieee8021SpbmTopSrvEntryTopIx,
             ieee8021SpbmTopSrvEntrySysId,
             ieee8021SpbmTopSrvEntryIsid,
             ieee8021SpbmTopSrvEntryBaseVid,
             ieee8021SpbmTopSrvEntryMac
-          } 
+          }
     ::= { ieee8021SpbmTopSrvTable 1 }
 
 Ieee8021SpbmTopSrvTableEntry ::=
@@ -1317,9 +1317,9 @@ ieee8021SpbmTopSrvEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "Entry of one The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "Entry of one The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.11.1.2, 12.25.11.1.3, 28.12"
     ::= { ieee8021SpbmTopSrvTableEntry 1 }
@@ -1362,7 +1362,7 @@ ieee8021SpbmTopSrvEntryMac OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The MAC address associated with a service.
-         An additional nodal MAC address by which an I-SID 
+         An additional nodal MAC address by which an I-SID
          can be reached may be advertised, in which case
          traffic to this MAC follows a forwarding path identical
          to that taken to reach the corresponding SYSID (nodal) MAC.
@@ -1400,15 +1400,15 @@ ieee8021SpbvTopSrvTableEntry OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "This table displays information about SPBV group address. 
-         The group address is a associated with MAC address and Base 
+        "This table displays information about SPBV group address.
+         The group address is a associated with MAC address and Base
          VID of the bridge that originates or terminates the service."
     REFERENCE "12.25.12"
-    INDEX { 
+    INDEX {
             ieee8021SpbvTopSrvEntryTopIx,
             ieee8021SpbvTopSrvEntrySysId,
             ieee8021SpbvTopSrvEntryMMac
-          } 
+          }
     ::= { ieee8021SpbvTopSrvTable 1 }
 
 Ieee8021SpbvTopSrvTableEntry ::=
@@ -1425,9 +1425,9 @@ ieee8021SpbvTopSrvEntryTopIx OBJECT-TYPE
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
-        "The ISIS Topology Index identifier to which this 
-         instance belongs. Each Topology Index defines logical topology 
-         and is used to enable multiple SPB instances within several 
+        "The ISIS Topology Index identifier to which this
+         instance belongs. Each Topology Index defines logical topology
+         and is used to enable multiple SPB instances within several
          ISIS instances."
     REFERENCE "12.25.12.1.2, 12.25.12.1.3, 28.12"
     ::= { ieee8021SpbvTopSrvTableEntry 1 }
@@ -1468,7 +1468,7 @@ ieee8021SpbvTopSrvEntryMMacFlags OBJECT-TYPE
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
-        "A pair of {ingress, egress} flags for this 
+        "A pair of {ingress, egress} flags for this
          Group Address, defining transmit/receive or both. This enables
          filtering of Group addresses to interwork with MMRP."
     REFERENCE "12.25.12.1.3, 28.12.9"
@@ -1795,7 +1795,7 @@ ieee8021SpbComplianceSPBM MODULE-COMPLIANCE
             ieee8021SpbTopNodeTableGroupSPBM ,
             ieee8021SpbTopEctTableGroupSPBM ,
             ieee8021SpbTopEdgeTableGroupSPBM ,
-            ieee8021SpbmTopSrvTableGroupSPBM 
+            ieee8021SpbmTopSrvTableGroupSPBM
         }
     ::= { ieee8021SpbCompliances 1 }
 
@@ -1819,7 +1819,7 @@ ieee8021SpbComplianceSPBV MODULE-COMPLIANCE
             ieee8021SpbTopNodeTableGroupSPBV ,
             ieee8021SpbTopEctTableGroupSPBV ,
             ieee8021SpbTopEdgeTableGroupSPBV ,
-            ieee8021SpbvTopSrvTableGroupSPBV 
+            ieee8021SpbvTopSrvTableGroupSPBV
         }
     ::= { ieee8021SpbCompliances 2 }
 

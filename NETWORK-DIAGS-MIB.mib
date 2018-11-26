@@ -20,16 +20,16 @@ NETWORK-DIAGS DEFINITIONS ::= BEGIN
         --  of this naming tree are defined.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -67,22 +67,22 @@ nwIpPingTable   OBJECT-TYPE
         DESCRIPTION
                 "This table allows outbound ping requests to be generated from
                 the Cabletron device to a specified destination IP address.
-                It is indexed by destination address and source address to 
+                It is indexed by destination address and source address to
                 allow multiple ping requests by different owner IP addresses."
         ::= { nwIpPing 1 }
 
- 
+
 nwIpPingEntry   OBJECT-TYPE
         SYNTAX  NwIpPingEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "An IP Ping Table entry containing objects for a particular 
-                ping request." 
+                "An IP Ping Table entry containing objects for a particular
+                ping request."
         INDEX   { nwIpPingDestination, nwIpPingOwner }
         ::= { nwIpPingTable 1 }
 
-NwIpPingEntry ::= 
+NwIpPingEntry ::=
         SEQUENCE {
                 nwIpPingDestination     IpAddress,
                 nwIpPingOwner           IpAddress,
@@ -119,7 +119,7 @@ nwIpPingType    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The administrative control of this ping request entry.  This 
+                "The administrative control of this ping request entry.  This
                 leaf is used to create a ping request entry."
         DEFVAL  { other }
         ::= { nwIpPingEntry 3 }
@@ -172,7 +172,7 @@ nwIpPingStatus  OBJECT-TYPE
                 the device is responding."
         ::= { nwIpPingEntry 5 }
 
-        
+
 
 nwIpTraceRouteTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF NwIpTraceRouteEntry
@@ -181,22 +181,22 @@ nwIpTraceRouteTable     OBJECT-TYPE
         DESCRIPTION
                 "This table allows outbound traceroute requests to be generated
                 from the Cabletron device to a specified destination IP address.
-                It is indexed by destination address and source address to 
+                It is indexed by destination address and source address to
                 allow multiple requests by different owner IP addresses."
         ::= { nwIpTraceRoute 1 }
 
- 
+
 nwIpTraceRouteEntry     OBJECT-TYPE
         SYNTAX  NwIpTraceRouteEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "An IP TraceRoute Table entry containing objects for a 
-                particular traceroute request." 
+                "An IP TraceRoute Table entry containing objects for a
+                particular traceroute request."
         INDEX   { nwIpTraceRouteDestination, nwIpTraceRouteOwner }
         ::= { nwIpTraceRouteTable 1 }
 
-NwIpTraceRouteEntry ::= 
+NwIpTraceRouteEntry ::=
         SEQUENCE {
                 nwIpTraceRouteDestination       IpAddress,
                 nwIpTraceRouteOwner             IpAddress,
@@ -232,7 +232,7 @@ nwIpTraceRouteType    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "The administrative control of this trace request entry.  This 
+                "The administrative control of this trace request entry.  This
                 leaf is used to create a traceroute request entry."
         DEFVAL  { other }
         ::= { nwIpTraceRouteEntry 3 }
@@ -299,7 +299,7 @@ nwIpTraceRouteNextHops  OBJECT-TYPE
 
 
 
-        
+
 
 nwIpTraceRouteHopTable  OBJECT-TYPE
         SYNTAX  SEQUENCE OF NwIpTraceRouteHopEntry
@@ -310,18 +310,18 @@ nwIpTraceRouteHopTable  OBJECT-TYPE
                 traversed for a particular TraceRoute request."
         ::= { nwIpTraceRoute 2 }
 
- 
+
 nwIpTraceRouteHopEntry  OBJECT-TYPE
         SYNTAX  NwIpTraceRouteHopEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "An IP NextHop Table entry containing objects for a 
-                particular traceroute request." 
+                "An IP NextHop Table entry containing objects for a
+                particular traceroute request."
         INDEX   { nwIpTraceRouteHopDestination, nwIpTraceRouteHopOwner, nwIpTraceRouteHopNumber }
         ::= { nwIpTraceRouteHopTable 1 }
 
-NwIpTraceRouteHopEntry ::= 
+NwIpTraceRouteHopEntry ::=
         SEQUENCE {
                 nwIpTraceRouteHopDestination    IpAddress,
                 nwIpTraceRouteHopOwner          IpAddress,
@@ -357,7 +357,7 @@ nwIpTraceRouteHopNumber         OBJECT-TYPE
                 hops away this router/gateway is."
         ::= { nwIpTraceRouteHopEntry 3 }
 
-        
+
 nwIpTraceRouteHopIp     OBJECT-TYPE
         SYNTAX  IpAddress
         ACCESS  read-only

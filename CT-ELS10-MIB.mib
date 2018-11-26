@@ -69,8 +69,8 @@ IMPORTS
          els10-27trunk                  OBJECT IDENTIFIER ::= { els10-27 13 }
          els10-27workgroup              OBJECT IDENTIFIER ::= { els10-27 14 }
          els10-27trapMgt                OBJECT IDENTIFIER ::= { els10-27 15 }
-         els10-27pingMgt                OBJECT IDENTIFIER ::= { els10-27 16 } 
-         els10-27traceMgt               OBJECT IDENTIFIER ::= { els10-27 17 } 
+         els10-27pingMgt                OBJECT IDENTIFIER ::= { els10-27 16 }
+         els10-27traceMgt               OBJECT IDENTIFIER ::= { els10-27 17 }
          els10-27volmirrorgroup         OBJECT IDENTIFIER ::= { els10-27 19 }
          els10-27VlanBridgeConfig       OBJECT IDENTIFIER ::= { els10-27 20 }
          els10-27volipmgroup            OBJECT IDENTIFIER ::= { els10-27 21 }
@@ -81,31 +81,31 @@ IMPORTS
 
    -- SMC MIB
    -- System group
-                
+
         sysID OBJECT-TYPE
                 SYNTAX  INTEGER {
                  els10-27-bridge(7)
                 }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { sys 1 }
 
         sysReset        OBJECT-TYPE
                 SYNTAX  TimeTicks
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { sys 2 }
 
         sysTrapPort OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { sys 6 }
 
 
@@ -116,40 +116,40 @@ IMPORTS
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hw 1 }
 
         els10-27hwManufData     OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hw 2 }
 
         els10-27hwPortCount     OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hw 3 }
 
         els10-27hwPortTable     OBJECT-TYPE
                 SYNTAX  SEQUENCE OF LxhwPortEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hw 4 }
 
         els10-27hwPortEntry     OBJECT-TYPE
                 SYNTAX  LxhwPortEntry
                 ACCESS          not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 INDEX     { els10-27hwPortIndex }
                 ::= { els10-27hwPortTable 1 }
 
@@ -170,8 +170,8 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hwPortEntry 1 }
 
         els10-27hwPortType      OBJECT-TYPE
@@ -182,8 +182,8 @@ IMPORTS
                         }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hwPortEntry 2 }
 
         els10-27hwPortSubType   OBJECT-TYPE
@@ -195,24 +195,24 @@ IMPORTS
                         }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hwPortEntry 3 }
 
         els10-27hwPortDiagPassed        OBJECT-TYPE
                 SYNTAX  INTEGER { diag-passed(1), diag-failed(2) }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hwPortEntry 4 }
 
         els10-27hwAddr  OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27hwPortEntry 5 }
 
 
@@ -229,9 +229,9 @@ IMPORTS
          ACCESS  read-only
          STATUS  mandatory
          DESCRIPTION
-           "This is a 32-byte array which contains the part number, 
-            serial number, and hardware revision level of the Up-Link 
-            I/O module. This array is valid only when the els10-27hwUplink 
+           "This is a 32-byte array which contains the part number,
+            serial number, and hardware revision level of the Up-Link
+            I/O module. This array is valid only when the els10-27hwUplink
             is true. If els10-27hwUplink is false, it returns an error"
          ::= { els10-27hw 6 }
 
@@ -242,24 +242,24 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27sw 1 }
 
         els10-27swFilesetTable  OBJECT-TYPE
                 SYNTAX  SEQUENCE OF LxswFilesetEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27sw 2 }
 
         els10-27swFilesetEntry  OBJECT-TYPE
                 SYNTAX  LxswFilesetEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 INDEX { els10-27swIndex }
                 ::= { els10-27swFilesetTable 1 }
 
@@ -289,56 +289,56 @@ IMPORTS
                 }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 1 }
 
         els10-27swDesc  OBJECT-TYPE
                 SYNTAX  DisplayString
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 2 }
 
         els10-27swCount OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 3 }
 
         els10-27swType          OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 4 }
 
         els10-27swSizes OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 5 }
 
         els10-27swStarts        OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 6 }
 
         els10-27swBases OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 7 }
 
         els10-27swFlashBank     OBJECT-TYPE
@@ -348,8 +348,8 @@ IMPORTS
                 }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27swFilesetEntry 8 }
 
 
@@ -360,7 +360,7 @@ IMPORTS
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
+                DESCRIPTION
                 "Information about last reset:
                    First byte, cause of reset, values:
                      00: power failure
@@ -378,112 +378,112 @@ IMPORTS
                 SYNTAX   OCTET STRING
                 ACCESS   read-write
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
            ::= { els10-27admin 2 }
 
   els10-27adminGetPass  OBJECT-TYPE
           SYNTAX   OCTET STRING
           ACCESS   read-write
           STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
           ::= { els10-27admin 3 }
-                                                                
+
         els10-27adminNMSIPAddr OBJECT-TYPE
                 SYNTAX  IpAddress
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 4 }
-                                                                        
+
         els10-27adminStorageFailure OBJECT-TYPE
                 SYNTAX  INTEGER { true(1), false(2) }
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 7 }
 
   els10-27adminAuthenticationFailure OBJECT-TYPE
            SYNTAX   IpAddress
            ACCESS   read-only
            STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
            ::= { els10-27admin 8 }
 
         els10-27adminNAMReceiveCongests  OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 10 }
-                                                                        
+
         els10-27adminArpEntries  OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 11 }
-                                                                        
+
         els10-27adminArpStatics OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 12 }
-                                                                        
+
         els10-27adminArpOverflows   OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 13 }
 
         els10-27adminIpEntries   OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 14 }
-                                                                        
+
         els10-27adminIpStatics   OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 15 }
-                                                                        
+
         els10-27adminStaticPreference  OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 16 }
 
         els10-27adminRipPreference  OBJECT-TYPE
                 SYNTAX   INTEGER
                 ACCESS   read-write
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 17 }
 
         els10-27adminRipRouteDiscards  OBJECT-TYPE
                 SYNTAX   Counter
                 ACCESS   read-only
                 STATUS   mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 18 }
 
         els10-27adminRebootConfig   OBJECT-TYPE
@@ -494,16 +494,16 @@ IMPORTS
                                         }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 19 }
 
         els10-27adminDisableButton      OBJECT-TYPE
                 SYNTAX  INTEGER  { true(1), false(2) }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 21 }
 
         els10-27adminButtonSelection    OBJECT-TYPE
@@ -519,8 +519,8 @@ IMPORTS
                                         }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 22 }
 
         els10-27adminLEDProgramOption   OBJECT-TYPE
@@ -529,8 +529,8 @@ IMPORTS
                                         }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27admin 23 }
 
         -- Software Distribution Group
@@ -616,56 +616,56 @@ IMPORTS
                 SYNTAX   Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 1 }
 
         els10-27addrDynamics    OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 2 }
 
         els10-27addrDynamicMax  OBJECT-TYPE
                 SYNTAX  Gauge
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 3 }
 
         els10-27addrDynamicOverflows    OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 4 }
 
         els10-27addrFlags       OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 5 }
 
         els10-27addrMAC OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 6 }
 
         els10-27addrPort        OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 7 }
 
 
@@ -679,24 +679,24 @@ IMPORTS
                 }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 8 }
 
         els10-27addrIndex       OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 9 }
 
         els10-27addrNext        OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 10 }
 
 
@@ -704,16 +704,16 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 19 }
 
         els10-27addrBlock       OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27addr 20 }
 
 
@@ -724,16 +724,16 @@ IMPORTS
                 SYNTAX  SEQUENCE OF LxifEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27if 1  }
 
         els10-27ifEntry OBJECT-TYPE
                 SYNTAX  LxifEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         INDEX { els10-27ifIndex }
                 ::= { els10-27ifTable 1 }
 
@@ -778,136 +778,136 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 1 }
 
 ---     els10-27ifRxCnt OBJECT-TYPE
 ---             SYNTAX  INTEGER
 ---             ACCESS  read-only
 ---             STATUS  mandatory
----             DESCRIPTION  
----             " " 
+---             DESCRIPTION
+---             " "
 ---             ::= { els10-27ifEntry 2 }
 
 ---     els10-27ifTxCnt OBJECT-TYPE
 ---             SYNTAX  INTEGER
 ---             ACCESS  read-only
 ---             STATUS  mandatory
----             DESCRIPTION  
----             " " 
+---             DESCRIPTION
+---             " "
 ---             ::= { els10-27ifEntry 3 }
 
         els10-27ifThreshold     OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 4 }
 
         els10-27ifThresholdTime OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 5 }
 
         els10-27ifRxQueueThresh OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 6 }
 
         els10-27ifRxQueueThreshTime     OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 7 }
 
         els10-27ifTxStormCnt    OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 8 }
 
         els10-27ifTxStormTime   OBJECT-TYPE
                 SYNTAX  TimeTicks
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 9 }
 
         els10-27ifFunction      OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 16 }
 
         els10-27ifRxHwFCSs      OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 18 }
 
         els10-27ifRxQueues      OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 19 }
 
         els10-27ifStatisticsTime        OBJECT-TYPE
                 SYNTAX  TimeTicks
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 27 }
 
         els10-27ifForwardedChars        OBJECT-TYPE
         SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 28 }
 
         els10-27ifDescr OBJECT-TYPE
                 SYNTAX  DisplayString
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27ifEntry 29 }
 
         els10-27ifGoodRxFrames  OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         ::= { els10-27ifEntry 30 }
 
         els10-27ifGoodTxFrames  OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         ::= { els10-27ifEntry 31 }
 
         --  Dot3 Group
@@ -916,16 +916,16 @@ IMPORTS
                 SYNTAX  SEQUENCE OF Lxdot3Entry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3 1 }
 
         els10-27dot3Entry       OBJECT-TYPE
                 SYNTAX  Lxdot3Entry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         INDEX { els10-27dot3Index }
                 ::= { els10-27dot3Table 1 }
 
@@ -959,88 +959,88 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 1 }
 
         els10-27dot3TPLinkOK    OBJECT-TYPE
                 SYNTAX  INTEGER { true(1), false(2) }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 2 }
 
         els10-27dot3LedOn       OBJECT-TYPE
                 SYNTAX  INTEGER { led-on(1), led-off(2) }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 3 }
 
         els10-27dot3RxCollisions        OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 4 }
 
         els10-27dot3RxRunts     OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 5 }
 
         els10-27dot3RxLateColls OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 6 }
 
         els10-27dot3TxJabbers   OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 7 }
 
         els10-27dot3TxBabbles   OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 8 }
 
         els10-27dot3TxCollisions        OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 9 }
 
         els10-27dot3SpeedSelection      OBJECT-TYPE
                 SYNTAX  INTEGER { speed-10mbit(1), speed-100mbit(2), speed-auto(3) }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 13 }
 
         els10-27dot3DuplexSelection     OBJECT-TYPE
                 SYNTAX  INTEGER { duplex-auto(1), duplex-half(2), duplex-full(3) }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27dot3Entry 14 }
 
         -- UART Interface Group
@@ -1049,16 +1049,16 @@ IMPORTS
                 SYNTAX  SEQUENCE OF LxuartEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27uart 1 }
 
         els10-27uartEntry       OBJECT-TYPE
                 SYNTAX  LxuartEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         INDEX { els10-27uartIndex }
                 ::= { els10-27uartTable 1 }
 
@@ -1077,8 +1077,8 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27uartEntry 1 }
 
         els10-27uartBaud        OBJECT-TYPE
@@ -1090,24 +1090,24 @@ IMPORTS
                 }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27uartEntry 2 }
 
         els10-27uartAlignmentErrors     OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27uartEntry 3 }
 
         els10-27uartOverrunErrors       OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27uartEntry 4 }
 
         -- Debug Command Group
@@ -1116,32 +1116,32 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debug 1 }
 
         els10-27debugString     OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debug 2 }
 
         els10-27debugTable      OBJECT-TYPE
                 SYNTAX  SEQUENCE OF LxdebugEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debug 3 }
 
         els10-27debugEntry      OBJECT-TYPE
                 SYNTAX  LxdebugEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         INDEX { els10-27debugIndex }
                 ::= { els10-27debugTable 1 }
 
@@ -1164,8 +1164,8 @@ IMPORTS
                                 }
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debugEntry 1 }
 
         els10-27debugOperation  OBJECT-TYPE
@@ -1175,32 +1175,32 @@ IMPORTS
                 }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debugEntry 2 }
 
         els10-27debugBase       OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debugEntry 3 }
 
         els10-27debugLength     OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debugEntry 4 }
 
         els10-27debugData       OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27debugEntry 5 }
 
         -- Loopback Command Group
@@ -1209,16 +1209,16 @@ IMPORTS
                 SYNTAX  SEQUENCE OF LxlpbkEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbk 1 }
 
         els10-27lpbkEntry       OBJECT-TYPE
                 SYNTAX  LxlpbkEntry
                 ACCESS  not-accessible
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
         INDEX { els10-27lpbkIndex }
                 ::= { els10-27lpbkTable 1 }
 
@@ -1257,8 +1257,8 @@ IMPORTS
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 1 }
 
         els10-27lpbkOperation   OBJECT-TYPE
@@ -1269,104 +1269,104 @@ IMPORTS
                 }
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 2 }
 
         els10-27lpbkDestAddr    OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 3 }
 
         els10-27lpbkPktNum      OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 4 }
 
         els10-27lpbkInterval    OBJECT-TYPE
                 SYNTAX  TimeTicks
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 5 }
 
         els10-27lpbkPktLength   OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 6 }
 
         els10-27lpbkIncrements  OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 7 }
 
         els10-27lpbkGoods       OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 8 }
 
         els10-27lpbkErrorNoReceives     OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 9 }
 
         els10-27lpbkErrorBadReceives    OBJECT-TYPE
                 SYNTAX  Counter
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 10 }
 
         els10-27lpbkErrorSize   OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 11 }
 
         els10-27lpbkErrorSent   OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 12 }
 
         els10-27lpbkErrorReceived       OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 13 }
 
         els10-27lpbkErrorOffset OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
                 STATUS  mandatory
-                DESCRIPTION  
-                " " 
+                DESCRIPTION
+                " "
                 ::= { els10-27lpbkEntry 14 }
 
 
@@ -1394,7 +1394,7 @@ els10-27protoEntry OBJECT-TYPE
      ::= { els10-27protoTable 1 }
 
 LxprotoEntry ::=
-     SEQUENCE { 
+     SEQUENCE {
                         els10-27protoIfIndex
                                  INTEGER,
           els10-27protoBridge
@@ -1405,7 +1405,7 @@ LxprotoEntry ::=
              INTEGER,
           els10-27protoTrunking
              INTEGER,
-          els10-27sprotoTransmitPacing 
+          els10-27sprotoTransmitPacing
              INTEGER
      }
 
@@ -1657,7 +1657,7 @@ els10-27WorkGroupEntry OBJECT-TYPE
     INDEX   { els10-27WorkGroupNumber }
     ::= { els10-27WorkGroupTable 1 }
 
-    LxWorkGroupEntry ::= 
+    LxWorkGroupEntry ::=
         SEQUENCE {
             els10-27WorkGroupNumber
                 INTEGER,
@@ -1684,7 +1684,7 @@ els10-27WorkGroupName   OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
         "A 1-16 character work group name."
-    ::= { els10-27WorkGroupEntry 2 }    
+    ::= { els10-27WorkGroupEntry 2 }
 
 els10-27WorkGroupPorts OBJECT-TYPE
     SYNTAX  OCTET STRING
@@ -1693,7 +1693,7 @@ els10-27WorkGroupPorts OBJECT-TYPE
     DESCRIPTION
         "A list of all ports within the group.  The first
          octet specified ports 1-8, the second 9-16, etc."
-    ::= { els10-27WorkGroupEntry 3 }    
+    ::= { els10-27WorkGroupEntry 3 }
 
 els10-27WorkGroupType OBJECT-TYPE
     SYNTAX  INTEGER { all(3), -- all broadcast packets
@@ -1703,7 +1703,7 @@ els10-27WorkGroupType OBJECT-TYPE
     DESCRIPTION
         "The type of work group:
          all - no additional information needs to be supplied."
-    ::= { els10-27WorkGroupEntry 4 }    
+    ::= { els10-27WorkGroupEntry 4 }
 
         --  Trap Group
 
@@ -1714,18 +1714,18 @@ els10-27trapControlTable OBJECT-TYPE
     DESCRIPTION
         "This table contains information about the severity of each trap
          and whether the trap is currently enabled."
-    ::= { els10-27trapMgt 1 }         
+    ::= { els10-27trapMgt 1 }
 
 els10-27trapControlEntry OBJECT-TYPE
     SYNTAX  LxtrapControlEntry
     ACCESS  not-accessible
     STATUS  mandatory
-    DESCRIPTION  
-           " " 
+    DESCRIPTION
+           " "
     INDEX   { els10-27trapIndex }
     ::= { els10-27trapControlTable 1 }
 
-    LxtrapControlEntry ::= 
+    LxtrapControlEntry ::=
         SEQUENCE {
             els10-27trapIndex
                 INTEGER,
@@ -1746,7 +1746,7 @@ els10-27trapIndex OBJECT-TYPE
     ::= { els10-27trapControlEntry 1 }
 
 els10-27trapEnabled OBJECT-TYPE
-    SYNTAX  INTEGER { true(1), false(2) }        
+    SYNTAX  INTEGER { true(1), false(2) }
     ACCESS  read-write
     STATUS  mandatory
     DESCRIPTION
@@ -1787,12 +1787,12 @@ els10-27trapSeverityControlEntry OBJECT-TYPE
     SYNTAX  LxtrapSeverityControlEntry
     ACCESS  not-accessible
     STATUS  mandatory
-    DESCRIPTION  
-            " " 
+    DESCRIPTION
+            " "
     INDEX   { els10-27trapSeverity }
     ::= { els10-27trapSeverityControlTable 1 }
 
-    LxtrapSeverityControlEntry ::= 
+    LxtrapSeverityControlEntry ::=
         SEQUENCE {
             els10-27trapSeverityControlSeverity
                 INTEGER,
@@ -1872,12 +1872,12 @@ els10-27trapEntry OBJECT-TYPE
     SYNTAX  LxtrapEntry
     ACCESS  not-accessible
     STATUS  mandatory
-    DESCRIPTION  
-            " " 
+    DESCRIPTION
+            " "
     INDEX   { els10-27trapEntryIndex }
     ::= { els10-27trapTable 1 }
 
-    LxtrapEntry ::= 
+    LxtrapEntry ::=
         SEQUENCE {
             els10-27trapEntryIndex
                 INTEGER,
@@ -2126,7 +2126,7 @@ els10-27trapEntrySeverity OBJECT-TYPE
 
 
 
-        --  Traceroute Management 
+        --  Traceroute Management
 
 
         els10-27traceDataTimeout OBJECT-TYPE
@@ -2303,7 +2303,7 @@ els10-27trapEntrySeverity OBJECT-TYPE
 -- Enterprise Specific Objects for Port Mirroring
 
         els10-27volmirrorMode OBJECT-TYPE
-        SYNTAX INTEGER { off(0), 
+        SYNTAX INTEGER { off(0),
                      on(1) }
         ACCESS read-write
         STATUS mandatory
@@ -2312,20 +2312,20 @@ els10-27trapEntrySeverity OBJECT-TYPE
         ::= { els10-27volmirrorgroup 1 }
 
         els10-27volmirrorPort OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION
-                " The number of the port whose data will be mirrored to a      
+                " The number of the port whose data will be mirrored to a
           special monitor or analyzer port."
         ::= { els10-27volmirrorgroup 2 }
 
         els10-27volmonitorPort OBJECT-TYPE
-        SYNTAX INTEGER 
+        SYNTAX INTEGER
         ACCESS read-write
         STATUS mandatory
         DESCRIPTION
-                " Identifies the monitor or analyzer port to receive 
+                " Identifies the monitor or analyzer port to receive
           frames from the special mirror port."
         ::= { els10-27volmirrorgroup 3 }
 
@@ -2352,7 +2352,7 @@ els10-27trapEntrySeverity OBJECT-TYPE
                 els10-27volmirrorIndex
                         INTEGER,
                 els10-27volmirrorMac1
-                        OCTET STRING 
+                        OCTET STRING
           --      els10-27volmirrorMac2
           --              OCTET STRING,
           --      els10-27volmirrorMac3
@@ -2360,7 +2360,7 @@ els10-27trapEntrySeverity OBJECT-TYPE
           --      els10-27volmirrorMac4
           --              OCTET STRING
                 }
-        
+
         els10-27volmirrorIndex   OBJECT-TYPE
                 SYNTAX  INTEGER
                 ACCESS  read-only
@@ -2368,7 +2368,7 @@ els10-27trapEntrySeverity OBJECT-TYPE
                 DESCRIPTION
                 " Entry Index"
                 ::= {els10-27volmirrorMacEntry 1}
-        
+
         els10-27volmirrorMac1  OBJECT-TYPE
                 SYNTAX  OCTET STRING
                 ACCESS  read-write
@@ -2415,7 +2415,7 @@ els10-27VlanVersionNumber OBJECT-TYPE
     ::= { els10-27VlanBridgeConfig 1 }
 
 els10-27VlanOperatingMode OBJECT-TYPE
-    SYNTAX INTEGER { ieee8021d(1), ieee8021Q(2) }  
+    SYNTAX INTEGER { ieee8021d(1), ieee8021Q(2) }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2429,7 +2429,7 @@ els10-27VlanResetDefaults OBJECT-TYPE
     SYNTAX INTEGER {
       operating(1),
       reset(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2438,29 +2438,29 @@ els10-27VlanResetDefaults OBJECT-TYPE
                         initialized.  While initializing a read will return a value of reset (2).  While
                         operational a read will return a value of operating (2)."
     ::= { els10-27VlanBridgeConfig 3 }
- 
+
 els10-27VlanGVRPEnable OBJECT-TYPE
     SYNTAX INTEGER
      {
       enabled(1),
       disabled(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
- 
+
       "If the switch is operating in 802.1Q mode, this selects whether GVRP protocol
                 messages should be processed and VLANs configured accordingly for each
                 port on the switch. Each octet within the value of this object specifies a set of eight
                 ports, with the first octet specifying ports 1 through 8, the next octet specifying ports
-                9 through 16, etc.  Within each octet, the least significant bit represents the 
-                lowest numbered port, and the most significant bit represents the highest numbered port.  
+                9 through 16, etc.  Within each octet, the least significant bit represents the
+                lowest numbered port, and the most significant bit represents the highest numbered port.
                 Thus, each port of the VLAN bridge is represented by single bit
                 within the value of this object.  If that bit has a value of '1' then that port is
                 included in the set of ports; the port is not included if its bit has a value of '0'"
     DEFVAL { disabled }
     ::= { els10-27VlanBridgeConfig 4 }
- 
+
 els10-27VlanAccessList OBJECT-TYPE
     SYNTAX  INTEGER
     ACCESS  read-write
@@ -2476,16 +2476,16 @@ els10-27VlanAccessList OBJECT-TYPE
                 bit has a value of '1' then that port is included in the set of ports; the port is not
                 included if its bit has a value of '0'"
     ::= { els10-27VlanBridgeConfig 5 }
- 
+
 
 els10-27VlanConfigVlan OBJECT IDENTIFIER ::= { els10-27VlanBridgeConfig 6 }
- 
+
 -- The els10-27VlanConfigVlan  manages the configuration of a specific
 -- VLAN within a bridge.
 -- Each VLAN will have an entry in  the  els10-27VlanConfigTable
 --
 -- The implementation of this group is MANDATORY.
- 
+
 els10-27VlanNumActiveEntries OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-only
@@ -2494,7 +2494,7 @@ els10-27VlanNumActiveEntries OBJECT-TYPE
       "The number of active VLAN entries for the device.  This includes both static and
                         dynamic VLANs."
     ::= { els10-27VlanConfigVlan 1 }
- 
+
 els10-27VlanNumConfiguredEntries OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-only
@@ -2502,7 +2502,7 @@ els10-27VlanNumConfiguredEntries OBJECT-TYPE
     DESCRIPTION
       "The number of configured VLAN entries for the device."
     ::= { els10-27VlanConfigVlan 2 }
- 
+
 
 els10-27VlanMaxNumEntries OBJECT-TYPE
     SYNTAX INTEGER
@@ -2511,7 +2511,7 @@ els10-27VlanMaxNumEntries OBJECT-TYPE
     DESCRIPTION
       "The maximum number of VLAN entries for the device."
     ::= { els10-27VlanConfigVlan 3 }
- 
+
 els10-27VlanConfigTable     OBJECT-TYPE
     SYNTAX SEQUENCE OF Els10-27VlanConfigEntry
     ACCESS not-accessible
@@ -2549,7 +2549,7 @@ Els10-27VlanConfigEntry ::= SEQUENCE {
             INTEGER,
       els10-27VlanConfigEstablish
             INTEGER
-      }  
+      }
 
 els10-27VlanConfigIndex OBJECT-TYPE
     SYNTAX INTEGER
@@ -2558,7 +2558,7 @@ els10-27VlanConfigIndex OBJECT-TYPE
     DESCRIPTION
       "The interface being configured."
     ::= { els10-27VlanConfigEntry 1 }
- 
+
 els10-27VlanConfigVID OBJECT-TYPE
     SYNTAX INTEGER (1..4094)
     ACCESS read-write
@@ -2566,7 +2566,7 @@ els10-27VlanConfigVID OBJECT-TYPE
     DESCRIPTION
       "The 12 bit VLAN Identifier associated with the configured VLAN."
     ::= { els10-27VlanConfigEntry 2 }
- 
+
 els10-27VlanConfigPorts OBJECT-TYPE
     SYNTAX  INTEGER
     ACCESS  read-write
@@ -2592,7 +2592,7 @@ els10-27VlanConfigIP OBJECT-TYPE
       "The IP address to be used to access the unit on this Vlan.  This must be a
          valid host address."
     ::= { els10-27VlanConfigEntry 4 }
- 
+
 els10-27VlanConfigIPMask OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-write
@@ -2600,7 +2600,7 @@ els10-27VlanConfigIPMask OBJECT-TYPE
     DESCRIPTION
       "The IP subnet mask to be used with this Ip address."
     ::= { els10-27VlanConfigEntry 5 }
- 
+
 els10-27VlanConfigName OBJECT-TYPE
     SYNTAX DisplayString (SIZE (1..32))
     ACCESS read-write
@@ -2616,7 +2616,7 @@ els10-27VlanConfigStatus OBJECT-TYPE
     SYNTAX INTEGER {
       enable(1),
       disable(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2628,12 +2628,12 @@ els10-27VlanConfigStatus OBJECT-TYPE
     DEFVAL { disable }
     ::= { els10-27VlanConfigEntry 7 }
 
- 
+
 els10-27VlanConfigEstablish OBJECT-TYPE
     SYNTAX INTEGER {
       create(1),
       delete(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2654,7 +2654,7 @@ els10-27VlanConfigEgressTable     OBJECT-TYPE
                  NOT configured as an 'Access' port, then packets containing this VLAN ID will have the tag
                  stripped on egress.  This will set the PVID for each port contained within the list."
     ::= { els10-27VlanConfigVlan 5 }
- 
+
 
 els10-27VlanConfigEgressEntry    OBJECT-TYPE
     SYNTAX Els10-27VlanConfigEgressEntry
@@ -2664,7 +2664,7 @@ els10-27VlanConfigEgressEntry    OBJECT-TYPE
       "Allows for configuration of specific VLAN entries."
     INDEX { els10-27VlanEgressVID }
     ::= { els10-27VlanConfigEgressTable 1 }
- 
+
 Els10-27VlanConfigEgressEntry ::= SEQUENCE {
       els10-27VlanEgressIndex
                 INTEGER,
@@ -2674,7 +2674,7 @@ Els10-27VlanConfigEgressEntry ::= SEQUENCE {
             INTEGER,
      els10-27VlanEgressStatus
             INTEGER
-      }   
+      }
 els10-27VlanEgressIndex OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-write
@@ -2683,7 +2683,7 @@ els10-27VlanEgressIndex OBJECT-TYPE
       "The index into the Vlan table.  A port must be a member of this Vlan prior
        to assigning this Id as the default. "
     ::= { els10-27VlanConfigEgressEntry 1 }
- 
+
 
 els10-27VlanEgressVID OBJECT-TYPE
     SYNTAX INTEGER (1..4094)
@@ -2713,13 +2713,13 @@ els10-27VlanEgressList OBJECT-TYPE
        that port is included in the set of ports; the port is
        not included if its bit has a value of '0'."
     ::= { els10-27VlanConfigEgressEntry 3 }
- 
+
 
 els10-27VlanEgressStatus OBJECT-TYPE
     SYNTAX INTEGER {
       enable(1),
       disable(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2730,7 +2730,7 @@ els10-27VlanEgressStatus OBJECT-TYPE
       setting els10-27VlanEgressEstablish will fail with a NO-INSTANCE error."
     DEFVAL { disable }
     ::= { els10-27VlanConfigEgressEntry 4 }
- 
+
 
 els10-27VlanFilterGVRPTable     OBJECT-TYPE
     SYNTAX SEQUENCE OF Els10-27VlanFilterGVRPEntry
@@ -2749,7 +2749,7 @@ els10-27VlanFilterGVRPEntry    OBJECT-TYPE
       "Allows for configuration of specific entries."
     INDEX { els10-27VlanFilterGVRPVID }
     ::= { els10-27VlanFilterGVRPTable 1 }
- 
+
 Els10-27VlanFilterGVRPEntry ::= SEQUENCE {
                 els10-27VlanFilterGVRPIndex
                 INTEGER,
@@ -2762,7 +2762,7 @@ Els10-27VlanFilterGVRPEntry ::= SEQUENCE {
         els10-27VlanFilterGVRPEstablishVID
          INTEGER
                 }
- 
+
 els10-27VlanFilterGVRPIndex OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-write
@@ -2771,7 +2771,7 @@ els10-27VlanFilterGVRPIndex OBJECT-TYPE
       "The index into the Vlan Filter table.  A maximum of 32
         Vlan ID can be restricted from being learnt via GVRP. "
     ::= { els10-27VlanFilterGVRPEntry 1 }
- 
+
 els10-27VlanFilterGVRPVID OBJECT-TYPE
     SYNTAX INTEGER (1..4094)
     ACCESS read-write
@@ -2779,7 +2779,7 @@ els10-27VlanFilterGVRPVID OBJECT-TYPE
     DESCRIPTION
       "The 12 bit VLAN Identifier associated with the configured VLAN."
     ::= { els10-27VlanFilterGVRPEntry 2 }
- 
+
 els10-27VlanFilterGVRPList OBJECT-TYPE
     SYNTAX  INTEGER
     ACCESS  read-write
@@ -2800,13 +2800,13 @@ els10-27VlanFilterGVRPList OBJECT-TYPE
        that port is included in the set of ports; the port is
        not included if its bit has a value of '0'."
     ::= { els10-27VlanFilterGVRPEntry 3 }
- 
+
 
 els10-27VlanFilterGVRPStatus OBJECT-TYPE
     SYNTAX INTEGER {
       enable(1),
       disable(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2817,13 +2817,13 @@ els10-27VlanFilterGVRPStatus OBJECT-TYPE
       setting els10-27VlanConfigEstablish will fail with a NO-INSTANCE error."
     DEFVAL { disable }
     ::= { els10-27VlanFilterGVRPEntry 4 }
- 
+
 
 els10-27VlanFilterGVRPEstablishVID OBJECT-TYPE
     SYNTAX INTEGER {
       create(1),
       delete(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2833,7 +2833,7 @@ els10-27VlanFilterGVRPEstablishVID OBJECT-TYPE
        A set of delete(2) causes the specified entry to be removed from the table.
        A read of this object will always return create(1)."
     ::= { els10-27VlanFilterGVRPEntry 5 }
- 
+
 
 els10-27VlanStaticTable     OBJECT-TYPE
     SYNTAX SEQUENCE OF Els10-27VlanStaticEntry
@@ -2844,7 +2844,7 @@ els10-27VlanStaticTable     OBJECT-TYPE
                  port to which traffic destined for this address pair should be forwarded.  These entries
                  will not be aged out of the forwarding data base."
     ::= {  els10-27VlanConfigVlan 7 }
- 
+
 
 els10-27VlanStaticEntry    OBJECT-TYPE
     SYNTAX Els10-27VlanStaticEntry
@@ -2854,7 +2854,7 @@ els10-27VlanStaticEntry    OBJECT-TYPE
       "Allows for specifying specific entries."
     INDEX { els10-27VlanStaticVID }
     ::= { els10-27VlanStaticTable 1 }
- 
+
 Els10-27VlanStaticEntry ::= SEQUENCE {
       els10-27VlanStaticVID
             INTEGER,
@@ -2864,7 +2864,7 @@ Els10-27VlanStaticEntry ::= SEQUENCE {
             INTEGER,
      els10-27VlanStaticEstablish
             INTEGER
-      }  
+      }
 
 els10-27VlanStaticVID OBJECT-TYPE
     SYNTAX INTEGER (1..4094)
@@ -2873,7 +2873,7 @@ els10-27VlanStaticVID OBJECT-TYPE
     DESCRIPTION
       "The 12 bit VLAN Identifier associated with the configured VLAN."
     ::= { els10-27VlanStaticEntry 1 }
- 
+
 els10-27VlanStaticMAC OBJECT-TYPE
     SYNTAX  PhysAddress
     ACCESS  read-write
@@ -2881,7 +2881,7 @@ els10-27VlanStaticMAC OBJECT-TYPE
     DESCRIPTION
       "The media dependent physical address."
     ::= { els10-27VlanStaticEntry 2 }
- 
+
 els10-27VlanStaticPort OBJECT-TYPE
     SYNTAX INTEGER (1.. 27)
     ACCESS read-write
@@ -2889,22 +2889,22 @@ els10-27VlanStaticPort OBJECT-TYPE
     DESCRIPTION
       "An integer designating the port number to associate this address to."
     ::= { els10-27VlanStaticEntry 3 }
- 
+
 
 els10-27VlanStaticEstablish OBJECT-TYPE
     SYNTAX INTEGER {
       create(1),
       delete(2)
-      }  
+      }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
    "A set of the value create(1), causes an entry to be created  as specified by the instancing
-    information of els10-27VlanSaticVID, els10-27VlanStaticMAC, and els10-27VlanStaticPorts. A set of 
+    information of els10-27VlanSaticVID, els10-27VlanStaticMAC, and els10-27VlanStaticPorts. A set of
          delete(2) causes the specified entry to be removed from thetable.
     A read of this object will always return create(1)."
     ::= { els10-27VlanStaticEntry 4 }
- 
+
 -- the IP Multicast group
 
         els10-27IPMulticastStatus       OBJECT-TYPE
@@ -2913,15 +2913,15 @@ els10-27VlanStaticEstablish OBJECT-TYPE
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
-                " Parameter to enable or disable IP multicast filtering 
+                " Parameter to enable or disable IP multicast filtering
       on the device. When enabled, the device will examine IP
-      Multicast data packets and dynamically set up filter 
+      Multicast data packets and dynamically set up filter
       ports to prevent flooding.
       The default is disabled."
                 ::= {els10-27volipmgroup 1}
 
         els10-27ipmInterfaceRtr         OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
@@ -2933,7 +2933,7 @@ els10-27VlanStaticEstablish OBJECT-TYPE
 
 
 -- the IGMP group
-        els10-27igmpStatus      OBJECT-TYPE 
+        els10-27igmpStatus      OBJECT-TYPE
                 SYNTAX  INTEGER {enabled (0),
                      disabled (1) }
                 ACCESS  read-write
@@ -2953,13 +2953,13 @@ els10-27VlanStaticEstablish OBJECT-TYPE
                 DESCRIPTION
     "Parameter to enable or disable the device to act as a
      Querier. If enabled, the device will send out a Query
-     as a Proxy to solicit reports. The device will not 
+     as a Proxy to solicit reports. The device will not
      become an IGMP router.
      The default is disabled."
                 ::= {els10-27voligmpgroup 2}
 
         els10-27igmpQueryCount  OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
@@ -2969,7 +2969,7 @@ els10-27VlanStaticEstablish OBJECT-TYPE
                 ::= {els10-27voligmpgroup 3}
 
         els10-27igmpPortDelay   OBJECT-TYPE
-                SYNTAX  INTEGER 
+                SYNTAX  INTEGER
                 ACCESS  read-write
                 STATUS  mandatory
                 DESCRIPTION
@@ -3033,8 +3033,8 @@ els10-27VlanStaticEstablish OBJECT-TYPE
         "The minimum amount of time remaining before this
         entry will be aged out."
                 ::={els10-27igmpCacheEntry 3}
-  
- 
+
+
 --  The els10-27FlowControl MIB is used to manage Volcano devices.
 --  This managed object will allow for control and statistics
 --  on half duplex flow control (back pressure) ports and IEEE 802.3x full
@@ -3050,7 +3050,7 @@ els10-27FlowControlBackPressure OBJECT-TYPE
         On (1),
         Off (2)"
     ::= { els10-27FlowControlCtl 1 }
- 
+
 els10-27FlowControlThresholdValue OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-write
@@ -3062,7 +3062,7 @@ els10-27FlowControlThresholdValue OBJECT-TYPE
          will cease when the free buffer count meets or exceeds
          this percent."
     ::= { els10-27FlowControlCtl 2 }
- 
+
 els10-27FlowControlPauseInteval OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-write
@@ -3072,7 +3072,7 @@ els10-27FlowControlPauseInteval OBJECT-TYPE
         to '5.12 microseconds'.   A value of 10 will equal '51.2
         microseconds'."
     ::= { els10-27FlowControlCtl 3 }
- 
+
 els10-27FlowControlTable OBJECT-TYPE
     SYNTAX SEQUENCE OF Els10-27FlowControlEntry
     ACCESS not-accessible
@@ -3080,7 +3080,7 @@ els10-27FlowControlTable OBJECT-TYPE
     DESCRIPTION
       "Provides a list of control objects over flow control parameters."
     ::= { els10-27FlowControlCtl 4 }
- 
+
 els10-27FlowControlEntry OBJECT-TYPE
      SYNTAX Els10-27FlowControlEntry
      ACCESS not-accessible
@@ -3090,7 +3090,7 @@ els10-27FlowControlEntry OBJECT-TYPE
         definition and control over flow control ports."
      INDEX { els10-27FlowControlInterface}
      ::= { els10-27FlowControlTable 1 }
- 
+
 Els10-27FlowControlEntry ::= SEQUENCE {
       els10-27FlowControlInterface
              INTEGER,
@@ -3120,7 +3120,7 @@ els10-27FlowControlEnable OBJECT-TYPE
         On (1),
         Off (2)"
     ::= { els10-27FlowControlEntry 2 }
- 
+
 els10-27FlowControlRxPauseFrames   OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-only
@@ -3128,7 +3128,7 @@ els10-27FlowControlRxPauseFrames   OBJECT-TYPE
     DESCRIPTION
       "The number of pause frames received on this interface."
     ::= { els10-27FlowControlEntry 3 }
- 
+
 els10-27FlowControlTxPauseFrames OBJECT-TYPE
     SYNTAX INTEGER
     ACCESS read-only
@@ -3145,22 +3145,22 @@ els10-27WriteStatusTrap TRAP-TYPE
     VARIABLES   {
         els10-27trapSeverity,
         els10-27swdisWriteStatus,
-        els10-27swdisDesc       
+        els10-27swdisDesc
     }
     DESCRIPTION
-        "Sent when a bank of Flash EPROM has been erased.  If 
-         els10-27swdisWriteStatus indicates success, then the unit is ready 
-         to be downloaded with the new software."  
+        "Sent when a bank of Flash EPROM has been erased.  If
+         els10-27swdisWriteStatus indicates success, then the unit is ready
+         to be downloaded with the new software."
     ::= 2
 
-els10-27PortFunctionsTrap TRAP-TYPE 
+els10-27PortFunctionsTrap TRAP-TYPE
     ENTERPRISE  sigma
     VARIABLES   {
         els10-27trapSeverity,
         els10-27ifFunction
     }
     DESCRIPTION
-        "Sent whenever the current functional state (active 
+        "Sent whenever the current functional state (active
          protocols) of the port has changed."
     ::= 3
 
@@ -3168,21 +3168,21 @@ els10-27RxQueuesTrap TRAP-TYPE
     ENTERPRISE  sigma
     VARIABLES   {
         els10-27trapSeverity,
-        els10-27ifRxQueues      
+        els10-27ifRxQueues
     }
     DESCRIPTION
-        "Sent whenever the number of times that the port's receiver 
-         has stopped receiving packets due to buffer space shortages 
-         has exceeded the port's limit." 
+        "Sent whenever the number of times that the port's receiver
+         has stopped receiving packets due to buffer space shortages
+         has exceeded the port's limit."
     ::= 4
 
 els10-27RxStormFlagTrap TRAP-TYPE
     ENTERPRISE  sigma
     VARIABLES   {
-        els10-27trapSeverity 
+        els10-27trapSeverity
     }
     DESCRIPTION
-        "Sent whenever broadcast/multicast storm protection has been invoked 
+        "Sent whenever broadcast/multicast storm protection has been invoked
          for the port."
     ::= 5
 
@@ -3193,7 +3193,7 @@ els10-27TxCongestsTrap TRAP-TYPE
         els10-27adminNAMReceiveCongests
     }
     DESCRIPTION
-        "Sent whenever packets destined for the unit itself were 
+        "Sent whenever packets destined for the unit itself were
          discarded due to lack of buffer space."
     ::= 6
 
@@ -3205,22 +3205,22 @@ els10-27DebugStringIdTrap TRAP-TYPE
         els10-27debugString
     }
     DESCRIPTION
-        "Sent whenever the unit has a debug text string to be 
-         displayed. The text strings are sent in a stream-like 
-         fashion."  
+        "Sent whenever the unit has a debug text string to be
+         displayed. The text strings are sent in a stream-like
+         fashion."
     ::= 8
 
 els10-27LpbkOperationTrap TRAP-TYPE
     ENTERPRISE  sigma
     VARIABLES   {
         els10-27trapSeverity,
-        els10-27lpbkOperation,  
-        els10-27lpbkErrorNoReceives,    
-        els10-27lpbkErrorBadReceives    
+        els10-27lpbkOperation,
+        els10-27lpbkErrorNoReceives,
+        els10-27lpbkErrorBadReceives
     }
     DESCRIPTION
-        "Send whenever the unit has finished a loop back test, or 
-         a loop back error has been detected."  
+        "Send whenever the unit has finished a loop back test, or
+         a loop back error has been detected."
     ::= 9
 
 els10-27TrunkStateTrap TRAP-TYPE
@@ -3230,7 +3230,7 @@ els10-27TrunkStateTrap TRAP-TYPE
         els10-27trunkState
     }
     DESCRIPTION
-        "A trunking state change transition has occurred. The possible 
+        "A trunking state change transition has occurred. The possible
          transitions are:
             CLOSED-ONEWAY
             ONEWAY-PERTURBED
@@ -3248,7 +3248,7 @@ els10-27TrunkBridgeAddrTrap TRAP-TYPE
         els10-27trunkRemoteBridgeAddr
     }
     DESCRIPTION
-        "The associated trunking MAC address of the bridge ID of the remote 
+        "The associated trunking MAC address of the bridge ID of the remote
          bridge has changed."
     ::= 11
 
@@ -3294,12 +3294,12 @@ els10-27TrunkLinkCountTrap TRAP-TYPE
 
 els10-27DiagUnitBootedTrap TRAP-TYPE
     ENTERPRISE  sigma
-    VARIABLES   { 
+    VARIABLES   {
         els10-27trapSeverity,
         els10-27adminFatalErr
     }
     DESCRIPTION
-        "The unit has booted. els10-27adminFatalErr contains information about 
+        "The unit has booted. els10-27adminFatalErr contains information about
          why the unit rebooted."
     ::= 16
 
@@ -3310,7 +3310,7 @@ els10-27StorageFailureTrap TRAP-TYPE
     }
     DESCRIPTION
         "Sent if the unit's Configuration EEPROM has failed. The unit
-         will not be able to reboot, and must be returned to the 
+         will not be able to reboot, and must be returned to the
          factory."
 ::= 17
 
@@ -3321,7 +3321,7 @@ els10-27PortCongestedTrap TRAP-TYPE
         ifOutDiscards
     }
     DESCRIPTION
-        "Sent whenever outbound congestion control has been invoked 
+        "Sent whenever outbound congestion control has been invoked
          for the port."
     ::= 18
 
@@ -3351,8 +3351,8 @@ els10-27IfErrorsTrap TRAP-TYPE
         ifOutErrors
     }
     DESCRIPTION
-        "Sent whenever the number of hardware errors in received and 
-         transmitted packets has exceeded the port's limit." 
+        "Sent whenever the number of hardware errors in received and
+         transmitted packets has exceeded the port's limit."
     ::= 21
 
 els10-27StRootIDTrap TRAP-TYPE
@@ -3360,7 +3360,7 @@ els10-27StRootIDTrap TRAP-TYPE
     VARIABLES {
         els10-27trapSeverity,
         dot1dStpDesignatedRoot
-    } 
+    }
     DESCRIPTION
         "The spanning tree root bridge ID for the unit has changed."
     ::= 22
@@ -3380,7 +3380,7 @@ els10-27StRootPortTrap TRAP-TYPE
     VARIABLES {
         els10-27trapSeverity,
         dot1dStpRootPort
-    } 
+    }
     DESCRIPTION
         "The unit's spanning tree root port has changed."
     ::= 24
@@ -3432,7 +3432,7 @@ els10-27StPortDesigBridgeTrap TRAP-TYPE
         els10-27trapSeverity,
         dot1dStpPortDesignatedBridge
     }
-    DESCRIPTION 
+    DESCRIPTION
         "The bridge ID of the spanning tree designated bridge of the LAN/WAN
          to which the port is attached has changed."
     ::= 29
@@ -3444,7 +3444,7 @@ els10-27StPortDesigCostTrap TRAP-TYPE
         dot1dStpPortDesignatedCost
     }
     DESCRIPTION
-        "The cost to the spanning tree root bridge from the designated port of 
+        "The cost to the spanning tree root bridge from the designated port of
          the LAN/WAN to which the port is attached has changed."
     ::= 30
 
@@ -3471,14 +3471,14 @@ els10-27StPortStateTrap TRAP-TYPE
 
 els10-27hwDiagTrap TRAP-TYPE
     ENTERPRISE  sigma
-    VARIABLES   {       
+    VARIABLES   {
         els10-27trapSeverity,
-        els10-27hwDiagCode      
+        els10-27hwDiagCode
     }
     DESCRIPTION
         "Sent whenever the unit's diagnostics have indicated an error."
     ::= 100
- 
+
 els10-27InvalidConfigurationFileTrap TRAP-TYPE
     ENTERPRISE sigma
     VARIABLES {
@@ -3486,10 +3486,10 @@ els10-27InvalidConfigurationFileTrap TRAP-TYPE
    dot1dStpPortDesignatedPort
     }
     DESCRIPTION
-   "Diagnostics has detected corrupted configuration data. 
+   "Diagnostics has detected corrupted configuration data.
          Default parameter values have been restored."
     ::= 34
- 
+
 els10-27StInvalidFlashCodeImageTrap TRAP-TYPE
     ENTERPRISE sigma
     VARIABLES {
@@ -3497,7 +3497,7 @@ els10-27StInvalidFlashCodeImageTrap TRAP-TYPE
    dot1dStpPortState
     }
     DESCRIPTION
-   "An invalid code image was detected in flash memory. 
+   "An invalid code image was detected in flash memory.
          An attempt will be made to obtain a valid image."
     ::= 35
 

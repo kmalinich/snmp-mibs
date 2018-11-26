@@ -2,7 +2,7 @@ CTRON-SFPS-ESYS-MIB DEFINITIONS ::= BEGIN
 
 --  sfps-esys.mib.txt
 --  Revision: 0.0.17
---              
+--
 --  Cabletron Systems, Inc.
 --  35 Industria Way, P.O. Box 5005
 --  Rochester, NH 03867-0505
@@ -33,14 +33,14 @@ CTRON-SFPS-ESYS-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
---      enterprises, 
-        IpAddress, 
+--      enterprises,
+        IpAddress,
         Counter, TimeTicks
 --        Gauge
                 FROM RFC1155-SMI
@@ -53,7 +53,7 @@ IMPORTS
 
 
                 FROM CTRON-SFPS-INCLUDE-MIB;
- 
+
 --  Textual Conventions
 
 HexInteger ::= INTEGER
@@ -72,7 +72,7 @@ SfpsAddress ::= OCTET STRING (SIZE (6))
 
 --  SFPS Switch Engine System Group
 --  This group contains the objects that pertain to SFPS switching
---  engines at a SFPS switch module single-instance level.  This group 
+--  engines at a SFPS switch module single-instance level.  This group
 --  contains two sub-groups:  configuration and statistics.
 
 sfpsSysConfigTable     OBJECT-TYPE
@@ -84,7 +84,7 @@ sfpsSysConfigTable     OBJECT-TYPE
                  information of each SFPS instance.  Essentially, a
                  separate SFPS instance exists for each switch module.
                  If SFPS is not configured on a module, than an entry
-                 will not exist." 
+                 will not exist."
         ::= { sfpsSystemConfig 1 }
 
 sfpsSysConfigEntry    OBJECT-TYPE
@@ -125,7 +125,7 @@ sfpsSysConfigSwitchInstance     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Switch Identifier to designate the instance of this entry."
          ::= { sfpsSysConfigEntry 1 }
 
@@ -138,7 +138,7 @@ sfpsSysConfigAdminStatus        OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The administrative status of the switch."
          ::= { sfpsSysConfigEntry 2 }
 
@@ -150,7 +150,7 @@ sfpsSysConfigAdminReset OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Setting reset will cause a soft reset of the switch."
          ::= { sfpsSysConfigEntry 3 }
 
@@ -166,7 +166,7 @@ sfpsSysConfigOperStatus OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the operational status of the switch."
          ::= { sfpsSysConfigEntry 4 }
 
@@ -174,7 +174,7 @@ sfpsSysConfigOperTime   OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the operation uptime of the switch."
          ::= { sfpsSysConfigEntry 5 }
 
@@ -182,7 +182,7 @@ sfpsSysConfigLastChange OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the number of time ticks since the last operational
                 status change."
          ::= { sfpsSysConfigEntry 6 }
@@ -191,7 +191,7 @@ sfpsSysConfigVersion    OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the version of this image."
          ::= { sfpsSysConfigEntry 7 }
 
@@ -199,7 +199,7 @@ sfpsSysConfigMIBRev     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the MIB version of the Engine component."
          ::= { sfpsSysConfigEntry 8 }
 
@@ -207,7 +207,7 @@ sfpsSysConfigHostMgmtPort       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the Host Management port."
          ::= { sfpsSysConfigEntry 9 }
 
@@ -215,7 +215,7 @@ sfpsSysConfigHostCtrlPort       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the logical port number for the Host Control Port.
                 The Host Control Port is the port that unknown packets are
                 sent to for call processing."
@@ -225,7 +225,7 @@ sfpsSysConfigHostDataPort       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 11 }
 
@@ -233,7 +233,7 @@ sfpsSysConfigHostCtrlThrottleCount      OBJECT-TYPE
                 SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 12 }
 
@@ -241,7 +241,7 @@ sfpsSysConfigHostDataThrottleCount      OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 13 }
 
@@ -249,7 +249,7 @@ sfpsSysConfigTrunkSwitch        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 14 }
 
@@ -263,7 +263,7 @@ sfpsSysConfigSwitchMode OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the mode that the switch is running."
          ::= { sfpsSysConfigEntry 20 }
 
@@ -271,7 +271,7 @@ sfpsSysConfigSwitchMAC  OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Displays the Switch's Base MAC address."
          ::= { sfpsSysConfigEntry 21 }
 
@@ -283,7 +283,7 @@ sfpsSysConfigMgmtAccessType     OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Determines whether the port can be used for management only
                 or to be also used as an Access port."
          ::= { sfpsSysConfigEntry 22 }
@@ -292,7 +292,7 @@ sfpsSysConfigChassisMAC OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 23 }
 
@@ -300,7 +300,7 @@ sfpsSysConfigChassisIP  OBJECT-TYPE
         SYNTAX  IpAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
          ::= { sfpsSysConfigEntry 24 }
 
@@ -320,7 +320,7 @@ sfpsSysStatsTable     OBJECT-TYPE
                  each SFPS switch instance.  Essentially, a separate
                  SFPS instance exists for each switch module.  If SFPS
                  is not configured on a module, than an entry will not
-                 exist." 
+                 exist."
         ::= { sfpsSystemStats 1 }
 
 sfpsSysStatsEntry    OBJECT-TYPE
@@ -358,7 +358,7 @@ sfpsSysStatsSwitchInstance    OBJECT-TYPE
         DESCRIPTION
                 "The primary index to the SFPS switch table.  This
                  identifies the SFPS switch for which the entry
-                 exists." 
+                 exists."
         ::= { sfpsSysStatsEntry 1 }
 
 sfpsSysStatsAdminStatus  OBJECT-TYPE
@@ -375,7 +375,7 @@ sfpsSysStatsAdminStatus  OBJECT-TYPE
                  these counters to become active for this SFPS switch
                  instance.  Writing a value of disabled(2) causes
                  these counters to become inactive for this SFPS
-                 switch instance." 
+                 switch instance."
         ::= { sfpsSysStatsEntry 2 }
 
 sfpsSysStatsReset        OBJECT-TYPE
@@ -389,7 +389,7 @@ sfpsSysStatsReset        OBJECT-TYPE
                 "Resets the SFPS switch counters for this SFPS switch
                  instance. Writing a value of reset(2) resets the SFPS
                  switch counters to 0 and causes sfpsSysStatsOperTime
-                 to also be reset to 0." 
+                 to also be reset to 0."
         ::= { sfpsSysStatsEntry 3 }
 
 sfpsSysStatsOperTime       OBJECT-TYPE
@@ -419,7 +419,7 @@ sfpsSysStatsOutPkts      OBJECT-TYPE
         DESCRIPTION
                 "Indicates the total number of SFPS packets that have
                  been switched, on this SFPS switch instance, during
-                 the time of sfpsSysStatsOperTime." 
+                 the time of sfpsSysStatsOperTime."
         ::= { sfpsSysStatsEntry 6 }
 
 sfpsSysStatsDiscardPkts  OBJECT-TYPE
@@ -490,7 +490,7 @@ sfpsVccPortTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMElan 6 }
 
 sfpsVccPortEntry    OBJECT-TYPE
@@ -518,7 +518,7 @@ sfpsVccPortLogPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 1 }
 
 sfpsVccPortPhyPort    OBJECT-TYPE
@@ -526,7 +526,7 @@ sfpsVccPortPhyPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 2 }
 
 sfpsVccPortVpi    OBJECT-TYPE
@@ -534,7 +534,7 @@ sfpsVccPortVpi    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 3 }
 
 sfpsVccPortVci    OBJECT-TYPE
@@ -542,7 +542,7 @@ sfpsVccPortVci    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 4 }
 
 sfpsVccPortPortType    OBJECT-TYPE
@@ -555,7 +555,7 @@ sfpsVccPortPortType    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 5 }
 
 sfpsVccPortLogPortType    OBJECT-TYPE
@@ -568,7 +568,7 @@ sfpsVccPortLogPortType    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 6 }
 
 sfpsVccPortPhyLinkState    OBJECT-TYPE
@@ -580,7 +580,7 @@ sfpsVccPortPhyLinkState    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsVccPortEntry 7 }
 
 
@@ -591,7 +591,7 @@ sfpsATMResolveSystemLearnTableSize    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 1 }
 
 --  ATM Resolve Counters
@@ -604,7 +604,7 @@ sfpsATMResolveCountersVerb    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 1 }
 
 sfpsATMResolveCountersUptime    OBJECT-TYPE
@@ -612,7 +612,7 @@ sfpsATMResolveCountersUptime    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 2 }
 
 sfpsATMResolveCountersQueryMACReq    OBJECT-TYPE
@@ -620,7 +620,7 @@ sfpsATMResolveCountersQueryMACReq    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 3 }
 
 sfpsATMResolveCountersQueryMACFail    OBJECT-TYPE
@@ -628,7 +628,7 @@ sfpsATMResolveCountersQueryMACFail    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 4 }
 
 sfpsATMResolveCountersQueryMACGood    OBJECT-TYPE
@@ -636,7 +636,7 @@ sfpsATMResolveCountersQueryMACGood    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 5 }
 
 sfpsATMResolveCountersQueryMACDaSaChecks    OBJECT-TYPE
@@ -644,7 +644,7 @@ sfpsATMResolveCountersQueryMACDaSaChecks    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 6 }
 
 sfpsATMResolveCountersQueryMACDaSaHits    OBJECT-TYPE
@@ -652,7 +652,7 @@ sfpsATMResolveCountersQueryMACDaSaHits    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 7 }
 
 sfpsATMResolveCountersQueryMACDaSaMissess    OBJECT-TYPE
@@ -660,7 +660,7 @@ sfpsATMResolveCountersQueryMACDaSaMissess    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 8 }
 
 sfpsATMResolveCountersQueryMACVdirChecks    OBJECT-TYPE
@@ -668,7 +668,7 @@ sfpsATMResolveCountersQueryMACVdirChecks    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 9 }
 
 sfpsATMResolveCountersQueryMACVdirHits    OBJECT-TYPE
@@ -676,7 +676,7 @@ sfpsATMResolveCountersQueryMACVdirHits    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 10 }
 
 sfpsATMResolveCountersQueryMACVdirMisses    OBJECT-TYPE
@@ -684,7 +684,7 @@ sfpsATMResolveCountersQueryMACVdirMisses    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 11 }
 
 sfpsATMResolveCountersQueryMACErrors    OBJECT-TYPE
@@ -692,7 +692,7 @@ sfpsATMResolveCountersQueryMACErrors    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 12 }
 
 sfpsATMResolveCountersQueryMACLecPortSuppress    OBJECT-TYPE
@@ -700,7 +700,7 @@ sfpsATMResolveCountersQueryMACLecPortSuppress    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 13 }
 
 sfpsATMResolveCountersQueryMACStandbyDrops    OBJECT-TYPE
@@ -708,7 +708,7 @@ sfpsATMResolveCountersQueryMACStandbyDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 14 }
 
 sfpsATMResolveCountersQueryDaSaRequests    OBJECT-TYPE
@@ -716,7 +716,7 @@ sfpsATMResolveCountersQueryDaSaRequests    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 15 }
 
 sfpsATMResolveCountersQueryDaSaHits    OBJECT-TYPE
@@ -724,7 +724,7 @@ sfpsATMResolveCountersQueryDaSaHits    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 16 }
 
 sfpsATMResolveCountersQueryDaSaMisses    OBJECT-TYPE
@@ -732,7 +732,7 @@ sfpsATMResolveCountersQueryDaSaMisses    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 17 }
 
 sfpsATMResolveCountersQueryDaSaErrors    OBJECT-TYPE
@@ -740,7 +740,7 @@ sfpsATMResolveCountersQueryDaSaErrors    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolverCounters 18 }
 
 
@@ -751,7 +751,7 @@ sfpsATMResolveDiagAPIVerb    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 3 }
 
 sfpsATMResolveDiagAPIInDA    OBJECT-TYPE
@@ -759,7 +759,7 @@ sfpsATMResolveDiagAPIInDA    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 8 }
 
 sfpsATMResolveDiagAPIInSA    OBJECT-TYPE
@@ -767,7 +767,7 @@ sfpsATMResolveDiagAPIInSA    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 9 }
 
 sfpsATMResolveDiagAPIInSrcLecPort    OBJECT-TYPE
@@ -775,7 +775,7 @@ sfpsATMResolveDiagAPIInSrcLecPort    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 10 }
 
 sfpsATMResolveDiagAPIOutStatus    OBJECT-TYPE
@@ -783,7 +783,7 @@ sfpsATMResolveDiagAPIOutStatus    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 11 }
 
 sfpsATMResolveDiagAPIOutPort    OBJECT-TYPE
@@ -791,7 +791,7 @@ sfpsATMResolveDiagAPIOutPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMResolver 12 }
 
 -- Pool Table
@@ -801,7 +801,7 @@ sfpsPoolTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsSystemPool 1 }
 
 sfpsPoolTableEntry    OBJECT-TYPE
@@ -832,7 +832,7 @@ sfpsPoolTableIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 1 }
 
 sfpsPoolTableName    OBJECT-TYPE
@@ -840,7 +840,7 @@ sfpsPoolTableName    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 2 }
 
 sfpsPoolTableRAM    OBJECT-TYPE
@@ -848,7 +848,7 @@ sfpsPoolTableRAM    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 3 }
 
 sfpsPoolTableBlockSize    OBJECT-TYPE
@@ -856,7 +856,7 @@ sfpsPoolTableBlockSize    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 4 }
 
 sfpsPoolTableBlockCount    OBJECT-TYPE
@@ -864,7 +864,7 @@ sfpsPoolTableBlockCount    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 5 }
 
 sfpsPoolTableBlockMax    OBJECT-TYPE
@@ -872,7 +872,7 @@ sfpsPoolTableBlockMax    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 6 }
 
 sfpsPoolTableObjSize    OBJECT-TYPE
@@ -880,7 +880,7 @@ sfpsPoolTableObjSize    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 7 }
 
 sfpsPoolTableObjInUse    OBJECT-TYPE
@@ -888,7 +888,7 @@ sfpsPoolTableObjInUse    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 8 }
 
 sfpsPoolTableObjMax    OBJECT-TYPE
@@ -896,7 +896,7 @@ sfpsPoolTableObjMax    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 9 }
 
 sfpsPoolTableObjInBlock    OBJECT-TYPE
@@ -904,7 +904,7 @@ sfpsPoolTableObjInBlock    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsPoolTableEntry 10 }
 
 -- AnibIfo Stats
@@ -914,7 +914,7 @@ sfpsAnibIfoStatsTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMAnibIfoStats 1 }
 
 sfpsAnibIfoStatsTableEntry    OBJECT-TYPE
@@ -950,7 +950,7 @@ sfpsAnibIfoStatsPhysIntf    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 1 }
 
 sfpsAnibIfoStatsCtrlMessages    OBJECT-TYPE
@@ -958,7 +958,7 @@ sfpsAnibIfoStatsCtrlMessages    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 2 }
 
 sfpsAnibIfoStatsIlmiMessages  OBJECT-TYPE
@@ -966,7 +966,7 @@ sfpsAnibIfoStatsIlmiMessages  OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 3 }
 
 sfpsAnibIfoStatsUniMessages    OBJECT-TYPE
@@ -974,7 +974,7 @@ sfpsAnibIfoStatsUniMessages    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 4 }
 
 sfpsAnibIfoStatsLaneMessages    OBJECT-TYPE
@@ -982,7 +982,7 @@ sfpsAnibIfoStatsLaneMessages    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 5 }
 
 sfpsAnibIfoStatsPCSPoolSize    OBJECT-TYPE
@@ -990,7 +990,7 @@ sfpsAnibIfoStatsPCSPoolSize    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 6 }
 
 sfpsAnibIfoStatsPCSPoolDrops    OBJECT-TYPE
@@ -998,7 +998,7 @@ sfpsAnibIfoStatsPCSPoolDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 7 }
 
 sfpsAnibIfoStatsPoolIlmiDrops    OBJECT-TYPE
@@ -1006,7 +1006,7 @@ sfpsAnibIfoStatsPoolIlmiDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 8 }
 
 sfpsAnibIfoStatsPoolUniDrops    OBJECT-TYPE
@@ -1014,7 +1014,7 @@ sfpsAnibIfoStatsPoolUniDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 9 }
 
 sfpsAnibIfoStatsPoolLaneDrops    OBJECT-TYPE
@@ -1022,7 +1022,7 @@ sfpsAnibIfoStatsPoolLaneDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 19 }
 
 sfpsAnibIfoStatsPCSAvail    OBJECT-TYPE
@@ -1030,7 +1030,7 @@ sfpsAnibIfoStatsPCSAvail    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 11 }
 
 sfpsAnibIfoStatsPCSInUse    OBJECT-TYPE
@@ -1038,7 +1038,7 @@ sfpsAnibIfoStatsPCSInUse    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 12 }
 
 sfpsAnibIfoStatsStandbyLeArpsDrops    OBJECT-TYPE
@@ -1046,7 +1046,7 @@ sfpsAnibIfoStatsStandbyLeArpsDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 13 }
 
 sfpsAnibIfoStatsStandbyUnknownsDrops    OBJECT-TYPE
@@ -1054,7 +1054,7 @@ sfpsAnibIfoStatsStandbyUnknownsDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 14 }
 
 sfpsAnibIfoStatsStandbyANIBUnknownsDrops    OBJECT-TYPE
@@ -1062,7 +1062,7 @@ sfpsAnibIfoStatsStandbyANIBUnknownsDrops    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsAnibIfoStatsTableEntry 15 }
 
 
@@ -1074,7 +1074,7 @@ sfpsMemHeapStatsHeapInit     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 1 }
 
 sfpsMemHeapStatsHeapMax     OBJECT-TYPE
@@ -1082,7 +1082,7 @@ sfpsMemHeapStatsHeapMax     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 2 }
 
 sfpsMemHeapStatsHeapEnd     OBJECT-TYPE
@@ -1090,7 +1090,7 @@ sfpsMemHeapStatsHeapEnd     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 3 }
 
 sfpsMemHeapStatsHeapSize     OBJECT-TYPE
@@ -1098,7 +1098,7 @@ sfpsMemHeapStatsHeapSize     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 4 }
 
 sfpsMemHeapStatsFragCount     OBJECT-TYPE
@@ -1106,7 +1106,7 @@ sfpsMemHeapStatsFragCount     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 5 }
 
 sfpsMemHeapStatsFragLargest     OBJECT-TYPE
@@ -1114,7 +1114,7 @@ sfpsMemHeapStatsFragLargest     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 6 }
 
 sfpsMemHeapStatsFragBytes     OBJECT-TYPE
@@ -1122,7 +1122,7 @@ sfpsMemHeapStatsFragBytes     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 7 }
 
 sfpsMemHeapStatsHeapUsed     OBJECT-TYPE
@@ -1130,7 +1130,7 @@ sfpsMemHeapStatsHeapUsed     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 8 }
 
 sfpsMemHeapStatsHeapAvail     OBJECT-TYPE
@@ -1138,7 +1138,7 @@ sfpsMemHeapStatsHeapAvail     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 9 }
 
 sfpsMemHeapStatsHeapUseMax     OBJECT-TYPE
@@ -1146,7 +1146,7 @@ sfpsMemHeapStatsHeapUseMax     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 10 }
 
 sfpsMemHeapStatsHeapUsePercent     OBJECT-TYPE
@@ -1154,7 +1154,7 @@ sfpsMemHeapStatsHeapUsePercent     OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsMemHeapStats 11 }
 
 --
@@ -1164,7 +1164,7 @@ sfpsATMPortsTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPorts 1 }
 
 sfpsATMPortsTableEntry    OBJECT-TYPE
@@ -1191,7 +1191,7 @@ sfpsATMPortsPhysIntf    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 1 }
 
 sfpsATMPortsTotalLECPorts    OBJECT-TYPE
@@ -1199,7 +1199,7 @@ sfpsATMPortsTotalLECPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 2 }
 
 sfpsATMPortsTotalPVCPorts    OBJECT-TYPE
@@ -1207,7 +1207,7 @@ sfpsATMPortsTotalPVCPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 3 }
 
 sfpsATMPortsTotalSVCPorts    OBJECT-TYPE
@@ -1215,7 +1215,7 @@ sfpsATMPortsTotalSVCPorts    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 4 }
 
 sfpsATMPortsBaseIntfNum    OBJECT-TYPE
@@ -1223,7 +1223,7 @@ sfpsATMPortsBaseIntfNum    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 5 }
 
 sfpsATMPortsInUse    OBJECT-TYPE
@@ -1231,7 +1231,7 @@ sfpsATMPortsInUse    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsTableEntry 6 }
 
 --
@@ -1247,7 +1247,7 @@ sfpsATMPortsMgrVerb    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 1 }
 
 sfpsATMPortsMgrPhysIntf    OBJECT-TYPE
@@ -1255,7 +1255,7 @@ sfpsATMPortsMgrPhysIntf    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 2 }
 
 sfpsATMPortsMgrTotalLECPorts    OBJECT-TYPE
@@ -1263,7 +1263,7 @@ sfpsATMPortsMgrTotalLECPorts    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 3 }
 
 sfpsATMPortsMgrTotalPVCPorts    OBJECT-TYPE
@@ -1271,7 +1271,7 @@ sfpsATMPortsMgrTotalPVCPorts    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 4 }
 
 sfpsATMPortsMgrTotalSVCPorts    OBJECT-TYPE
@@ -1279,7 +1279,7 @@ sfpsATMPortsMgrTotalSVCPorts    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 5 }
 
 sfpsATMPortsMgrVerbStatus    OBJECT-TYPE
@@ -1292,7 +1292,7 @@ sfpsATMPortsMgrVerbStatus    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMPortsMgr 6 }
 
 --
@@ -1302,7 +1302,7 @@ sfpsATMLecPortTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMElan 7 }
 
 sfpsATMLecPortTableEntry    OBJECT-TYPE
@@ -1328,7 +1328,7 @@ sfpsATMLecPortLogPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMLecPortTableEntry 1 }
 
 sfpsATMLecPortPhyPort    OBJECT-TYPE
@@ -1336,7 +1336,7 @@ sfpsATMLecPortPhyPort    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMLecPortTableEntry 2 }
 
 sfpsATMLecPortElanName    OBJECT-TYPE
@@ -1344,7 +1344,7 @@ sfpsATMLecPortElanName    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMLecPortTableEntry 3 }
 
 sfpsATMLecPortPhyLinkState    OBJECT-TYPE
@@ -1352,7 +1352,7 @@ sfpsATMLecPortPhyLinkState    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMLecPortTableEntry 4 }
 
 sfpsATMLecPortLECType    OBJECT-TYPE
@@ -1360,7 +1360,7 @@ sfpsATMLecPortLECType    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMLecPortTableEntry 5 }
 
 --
@@ -1370,7 +1370,7 @@ sfpsATMSvcHistoryEventTable     OBJECT-TYPE
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
-                "" 
+                ""
         ::= { sfpsATMSvcHistoryEvent 1 }
 
 sfpsATMSvcHistoryEventTableEntry    OBJECT-TYPE
@@ -1388,7 +1388,7 @@ SfpsATMSvcHistoryEventTableEntry ::=
                 sfpsATMSvcHistoryEventATMAddr           OCTET STRING,
                 sfpsATMSvcHistoryEventPortNumber        INTEGER,
                 sfpsATMSvcHistoryEventEvent             INTEGER,
-                sfpsATMSvcHistoryEventEventChange       INTEGER,        
+                sfpsATMSvcHistoryEventEventChange       INTEGER,
                 sfpsATMSvcHistoryEventVccHand           INTEGER,
                 sfpsATMSvcHistoryEventVpi               INTEGER,
                 sfpsATMSvcHistoryEventVci               INTEGER,
@@ -1400,7 +1400,7 @@ sfpsATMSvcHistoryEventIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "incrementing value based on number of events" 
+                "incrementing value based on number of events"
         ::= { sfpsATMSvcHistoryEventTableEntry 1 }
 
 sfpsATMSvcHistoryEventATMAddr    OBJECT-TYPE
@@ -1409,7 +1409,7 @@ sfpsATMSvcHistoryEventATMAddr    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "the atm address for the port manager port based on the lec
-                 client mib." 
+                 client mib."
         ::= { sfpsATMSvcHistoryEventTableEntry 2 }
 
 
@@ -1418,7 +1418,7 @@ sfpsATMSvcHistoryEventPortNumber    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "port manager port" 
+                "port manager port"
         ::= { sfpsATMSvcHistoryEventTableEntry 3 }
 
 
@@ -1431,7 +1431,7 @@ sfpsATMSvcHistoryEventEvent    OBJECT-TYPE
                 openAck(5),
                 open(6),
                 closeResponse(7),
-                closeAck(8), 
+                closeAck(8),
                 close(9),
                 clean(10),
                 cleanCloseResp(11),
@@ -1440,7 +1440,7 @@ sfpsATMSvcHistoryEventEvent    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "state change logged to the Event Log" 
+                "state change logged to the Event Log"
         ::= { sfpsATMSvcHistoryEventTableEntry 4 }
 
 
@@ -1452,7 +1452,7 @@ sfpsATMSvcHistoryEventEventChange    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "reason for the Event" 
+                "reason for the Event"
         ::= { sfpsATMSvcHistoryEventTableEntry 5 }
 
 
@@ -1461,7 +1461,7 @@ sfpsATMSvcHistoryEventVccHand    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "value associated with a connection on Port Number" 
+                "value associated with a connection on Port Number"
         ::= { sfpsATMSvcHistoryEventTableEntry 6 }
 
 
@@ -1470,7 +1470,7 @@ sfpsATMSvcHistoryEventVpi    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "vpi associated with connection on Port Number" 
+                "vpi associated with connection on Port Number"
         ::= { sfpsATMSvcHistoryEventTableEntry 7 }
 
 
@@ -1479,7 +1479,7 @@ sfpsATMSvcHistoryEventVci    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "vci associated with connection on Port Number" 
+                "vci associated with connection on Port Number"
         ::= { sfpsATMSvcHistoryEventTableEntry 8 }
 
 
@@ -1488,7 +1488,7 @@ sfpsATMSvcHistoryEventTime    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "system time when Event occurs" 
+                "system time when Event occurs"
         ::= { sfpsATMSvcHistoryEventTableEntry 9 }
 
 
@@ -1510,7 +1510,7 @@ sfpsATMSvcHistoryMgrVerb    OBJECT-TYPE
                  added to the SvcHistoryEvent table enable logging in the
                  SvcHistoryEvent table so that when the max number of entries
                  is reached the table is full and doesn't wrap around and
-                 continue adding entries" 
+                 continue adding entries"
         ::= { sfpsATMSvcHistoryMgr 1 }
 
 
@@ -1519,7 +1519,7 @@ sfpsATMSvcHistoryMgrSvcHistoryWraps    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "displays if the table is going to wrap" 
+                "displays if the table is going to wrap"
         ::= { sfpsATMSvcHistoryMgr 2 }
 
 sfpsATMSvcHistoryMgrLogState    OBJECT-TYPE
@@ -1532,7 +1532,7 @@ sfpsATMSvcHistoryMgrLogState    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "displays whether the table is enabled to log new entries
-                  or not and if it is enabled whether the table will wrap" 
+                  or not and if it is enabled whether the table will wrap"
         ::= { sfpsATMSvcHistoryMgr 3 }
 
 sfpsATMSvcHistoryMgrEntriesCount    OBJECT-TYPE
@@ -1541,7 +1541,7 @@ sfpsATMSvcHistoryMgrEntriesCount    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
                 "displays the number of current entries from the beginnning
-                 of the table (not from before it wrapped)" 
+                 of the table (not from before it wrapped)"
         ::= { sfpsATMSvcHistoryMgr 4 }
 
 END

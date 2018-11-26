@@ -5,7 +5,7 @@ IMPORTS
         FROM SNMPv2-SMI;
 
 -- The top node
-snmpResearch             OBJECT IDENTIFIER ::= { enterprises 99 } 
+snmpResearch             OBJECT IDENTIFIER ::= { enterprises 99 }
 
 --
 -- snmpResearch.1:  SNMP Research Products
@@ -31,7 +31,7 @@ snmpResearchLb100Proxy   OBJECT IDENTIFIER ::= { snmpResearchProxyAgent 1 }
 -- EMANATE Master Agent
 snmpResearchEMANATEMasterAgent OBJECT IDENTIFIER ::= { snmpResearchAgent 3 }
 
--- EMANATE Master Agents on Various OSs 
+-- EMANATE Master Agents on Various OSs
 solarisEMANATEMasterAgent      OBJECT IDENTIFIER ::= { snmpResearchEMANATEMasterAgent 1 }
 solarisTCPEMANATEMasterAgent   OBJECT IDENTIFIER ::= { snmpResearchEMANATEMasterAgent 2 }
 solarisx86TCPEMANATEMasterAgent OBJECT IDENTIFIER ::= { snmpResearchEMANATEMasterAgent 3 }
@@ -218,7 +218,7 @@ tgtAddressMaskMIB OBJECT IDENTIFIER ::= { snmpResearchMIBs 36 }
 -- not be used!
 -- trap           OBJECT IDENTIFIER ::= { snmpResearchMIBs 37 }
 
-siServiceMIB           OBJECT IDENTIFIER ::= { snmpResearchMIBs 38 } 
+siServiceMIB           OBJECT IDENTIFIER ::= { snmpResearchMIBs 38 }
 siFsMonitor            OBJECT IDENTIFIER ::= { snmpResearchMIBs 39 }
 siLog                  OBJECT IDENTIFIER ::= { snmpResearchMIBs 40 }
 
@@ -268,7 +268,7 @@ httpTCPIPDomain        OBJECT IDENTIFIER ::= { srExperimentalDomains 1 }
 --
 -- This branch contains OID assignments for the SecureIntelligence project
 --
-secureIntelligence       OBJECT IDENTIFIER ::= { snmpResearch 16 } 
+secureIntelligence       OBJECT IDENTIFIER ::= { snmpResearch 16 }
 
 enterpol                 OBJECT IDENTIFIER ::= { secureIntelligence 1 }
 enterpolEvents           OBJECT IDENTIFIER ::= { enterpol 1 }

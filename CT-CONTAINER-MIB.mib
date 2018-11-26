@@ -2,7 +2,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
 
         --  ct-container-mib.txt
         --  Revision: 1.02.01
-        --  Part Number:  
+        --  Part Number:
         --  Date:  March 26, 1998
 
         --  Cabletron Systems, Inc.
@@ -17,16 +17,16 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
         --  This module will be extended, as needed.
         --
 
-        --  Cabletron Systems reserves the right to make changes in 
-        --  specification and other information contained in this document 
+        --  Cabletron Systems reserves the right to make changes in
+        --  specification and other information contained in this document
         --  without prior notice.  The reader should consult Cabletron Systems
         --  to determine whether any such changes have been made.
         --
-        --  In no event shall Cabletron Systems be liable for any incidental, 
-        --  indirect, special, or consequential damages whatsoever (including 
+        --  In no event shall Cabletron Systems be liable for any incidental,
+        --  indirect, special, or consequential damages whatsoever (including
         --  but not limited to lost profits) arising out of or related to this
         --  document or the information contained in it, even if Cabletron
-        --  Systems has been advised of, known, or should have known, the 
+        --  Systems has been advised of, known, or should have known, the
         --  possibility of such damages.
         --
         --  Cabletron grants vendors, end-users, and other interested parties
@@ -132,7 +132,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
-                "Identifies the type of device or container that 
+                "Identifies the type of device or container that
                  this device or containeris installed or contained.
                  A vendor's authoritative identification of this
                  container or device.  By convention, this value is
@@ -200,7 +200,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             INDEX   { contLogicalEntryID }
             ::= { contLogicalEntryTable 1 }
 
-        ContLogicalEntry  ::= 
+        ContLogicalEntry  ::=
             SEQUENCE {
                 contLogicalEntryID              INTEGER,
                 contLogicalEntryType            OBJECT IDENTIFIER,
@@ -241,7 +241,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
 
         contLogicalEntryName  OBJECT-TYPE
             SYNTAX  DisplayString (SIZE (0..32))
-            ACCESS  read-only 
+            ACCESS  read-only
             STATUS  mandatory
             DESCRIPTION
                 "A textual description of the component."
@@ -381,7 +381,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "The class (or type) of slot.  For example, in a chassis
                 slots that only allow for power supply modules fall into
-                a class that is different from slots that allow only 
+                a class that is different from slots that allow only
                 interface cards."
             ::= { contPhysicalEntry 3 }
 
@@ -426,15 +426,15 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
 
         --  Pysical to Logical Map Table and definitions
         --  This table specifies the logical entries that reside
-    --  in a physical entry.                                                          
+    --  in a physical entry.
 
         contLogicalToPhysicalMapTable OBJECT-TYPE
             SYNTAX  SEQUENCE OF ContLogicalToPhysicalMapEntry
             ACCESS  not-accessible
             STATUS  mandatory
             DESCRIPTION
-                "A list of components that reside in a container slot.  More 
-                 than one component may reside in a container slot." 
+                "A list of components that reside in a container slot.  More
+                 than one component may reside in a container slot."
             ::= { contPhysical 2 }
 
         contLogicalToPhysicalMapEntry  OBJECT-TYPE
@@ -460,7 +460,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "The slot number of a container slot.  An unique
                  value, in the range between 0 and and the value of
-                 containerNumSlots.  This object is similiar to 
+                 containerNumSlots.  This object is similiar to
                  contPhysicalEntryID."
             ::= { contLogicalToPhysicalMapEntry 1 }
 
@@ -567,7 +567,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             DESCRIPTION
                 "This is defined as the super user community string to
                  access MIBs in this container or on this module.A write to
-                 this object will change all instances of 
+                 this object will change all instances of
                  contLogicalEntrySUCommStr."
             ::= { contCommStr 3 }
 
@@ -580,7 +580,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             ACCESS  not-accessible
             STATUS  mandatory
             DESCRIPTION
-                "A list of Global network addresses with which this device 
+                "A list of Global network addresses with which this device
          can be managed."
             ::= { contAddress 1 }
 
@@ -594,7 +594,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
             INDEX   { contNetAddressIndex }
             ::= { contNetAddressTable 1 }
 
-        ContNetAddressEntry  ::= 
+        ContNetAddressEntry  ::=
             SEQUENCE {
                 contNetAddressIndex
                         INTEGER,
@@ -627,7 +627,7 @@ CT-CONTAINER-MIB DEFINITIONS ::= BEGIN
         ACCESS   read-write
         STATUS   mandatory
             DESCRIPTION
-                "Indicates the network address of the device for a 
+                "Indicates the network address of the device for a
                  particular network."
             ::= { contNetAddressEntry 3 }
 

@@ -6,7 +6,7 @@ ENTERASYS-LICENSE-KEY-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' License Key MIB.
 
 --
@@ -25,19 +25,19 @@ ENTERASYS-LICENSE-KEY-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright August, 2009 Enterasys Networks, Inc.
 
-IMPORTS  
+IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, Unsigned32
         FROM SNMPv2-SMI
     DateAndTime, TEXTUAL-CONVENTION
         FROM SNMPv2-TC
     MODULE-COMPLIANCE, OBJECT-GROUP
         FROM SNMPv2-CONF
-    SnmpAdminString 
+    SnmpAdminString
         FROM SNMP-FRAMEWORK-MIB
     entPhysicalIndex
         FROM ENTITY-MIB
@@ -64,16 +64,16 @@ etsysLicenseKeyMIB MODULE-IDENTITY
     REVISION    "200909021859Z"  -- Wed Sep  2 18:59 UTC 2009
     DESCRIPTION "Increased the size of the etsysLicenseKeyPhysicalString
                  object."
-    
+
     REVISION    "200411031952Z"  -- Wed Nov  3 19:52 GMT 2004
     DESCRIPTION "Added the etsysLicenseKeyPhysicalTable to represent
-                 licensable features that are bound to specific 
+                 licensable features that are bound to specific
                  physical subsystems.  Obsoleted the etsysLicenseKeyTable
-                 since it can be represented in the 
+                 since it can be represented in the
                  etsysLicenseKeyPhysicalTable."
 
     REVISION    "200408301452Z"  -- Mon Aug 30 14:52 GMT 2004
-    DESCRIPTION "Added a new enumeration to the etsysLicenseKeyStatus 
+    DESCRIPTION "Added a new enumeration to the etsysLicenseKeyStatus
                  object to indicate licenses that are valid but
                  the system has not yet activated."
 
@@ -87,7 +87,7 @@ etsysLicenseKeyMIB MODULE-IDENTITY
 LicenseKeyStatus  ::=  TEXTUAL-CONVENTION
     STATUS  current
     DESCRIPTION
-        "This textual convention enumerates the possible status 
+        "This textual convention enumerates the possible status
          values for a given license key."
     SYNTAX  INTEGER {
                       other(1),
@@ -133,7 +133,7 @@ etsysLicenseKeyEntry OBJECT-TYPE
     ::= { etsysLicenseKeyTable 1 }
 
 EtsysLicenseKeyEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysLicenseKeyIndex                  Unsigned32,
         etsysLicenseKeyIdentifier             OBJECT IDENTIFIER,
         etsysLicenseKeyDescription            SnmpAdminString,
@@ -150,7 +150,7 @@ etsysLicenseKeyIndex OBJECT-TYPE
     STATUS        obsolete
     DESCRIPTION
         "An arbitrary index that uniquely identifies each entry in
-         this table.  This value is only unique within a given managed 
+         this table.  This value is only unique within a given managed
          device."
     ::= { etsysLicenseKeyEntry 1 }
 
@@ -240,7 +240,7 @@ etsysLicenseKeyPhysicalEntry OBJECT-TYPE
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION
-        "An entry containing per physical component information for a 
+        "An entry containing per physical component information for a
          particular license key.  Only physical indexes that have
          unique licensable features are represented in this table.
          Such physical entities may include, but are not limited to,
@@ -249,7 +249,7 @@ etsysLicenseKeyPhysicalEntry OBJECT-TYPE
     ::= { etsysLicenseKeyPhysicalTable 1 }
 
 EtsysLicenseKeyPhysicalEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysLicenseKeyPhysicalIndex                  Unsigned32,
         etsysLicenseKeyPhysicalIdentifier             OBJECT IDENTIFIER,
         etsysLicenseKeyPhysicalDescription            SnmpAdminString,
@@ -266,7 +266,7 @@ etsysLicenseKeyPhysicalIndex OBJECT-TYPE
     STATUS        current
     DESCRIPTION
         "An arbitrary index that uniquely identifies each entry in
-         this table.  This value is only unique within a given managed 
+         this table.  This value is only unique within a given managed
          device."
     ::= { etsysLicenseKeyPhysicalEntry 1 }
 

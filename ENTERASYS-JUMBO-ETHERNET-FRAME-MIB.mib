@@ -6,7 +6,7 @@ ENTERASYS-JUMBO-ETHERNET-FRAME-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Jumbo Ethernet Frame MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-JUMBO-ETHERNET-FRAME-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright December, (2002-2003) Enterasys Networks, Inc.
@@ -55,7 +55,7 @@ etsysJumboEthernetFrameMIB MODULE-IDENTITY
          WWW:     http://www.enterasys.com"
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          jumbo Ethernet frames."
 
     REVISION "200301242126Z"  -- Fri Jan 24 21:26 GMT 2003
@@ -67,7 +67,7 @@ etsysJumboEthernetFrameMIB MODULE-IDENTITY
     DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 34 } 
+    ::= { etsysModules 34 }
 
 etsysJumboEthernetFrame
     OBJECT IDENTIFIER ::= { etsysJumboEthernetFrameMIB 1 }
@@ -106,7 +106,7 @@ etsysJumboEnetFrameEntry OBJECT-TYPE
     ::= { etsysJumboEnetFrameTable 1 }
 
 EtsysJumboEnetFrameEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysJumboEnetFrameEnable        EnabledStatus,
         etsysJumboEnetFrameMtu           Integer32,
         etsysJumboEnetFrameAdminStatus   EnabledStatus,

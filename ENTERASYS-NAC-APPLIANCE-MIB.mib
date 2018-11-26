@@ -5,7 +5,7 @@ ENTERASYS-NAC-APPLIANCE-MIB DEFINITIONS ::= BEGIN
 --  Part Number:
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' NAC Appliance Status MIB.
 
 --
@@ -24,14 +24,14 @@ ENTERASYS-NAC-APPLIANCE-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright March, 2010 Enterasys Networks, Inc
 
 
 IMPORTS
-    OBJECT-TYPE, Counter64, MODULE-IDENTITY                       
+    OBJECT-TYPE, Counter64, MODULE-IDENTITY
         FROM SNMPv2-SMI
     MODULE-COMPLIANCE, OBJECT-GROUP
         FROM SNMPv2-CONF
@@ -50,10 +50,10 @@ etsysNacApplianceMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP enterprise
-         MIBs under Enterasys Networks' enterprise OID pertaining to 
+         MIBs under Enterasys Networks' enterprise OID pertaining to
          NAC Appliance Status."
 
     REVISION    "201003091303Z"  -- Tue Mar  9 13:03 UTC 2010
@@ -65,7 +65,7 @@ etsysNacApplianceMIB MODULE-IDENTITY
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysNacApplianceObjects   OBJECT IDENTIFIER 
+etsysNacApplianceObjects   OBJECT IDENTIFIER
                            ::= { etsysNacApplianceMIB 1 }
 
 
@@ -83,7 +83,7 @@ etsysNacApplAuthenticationSuccesses OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of successful authentication requests made 
+        "Represents the number of successful authentication requests made
          since the NAC was started."
     ::= { etsysNacApplianceObjects 2 }
 
@@ -92,7 +92,7 @@ etsysNacApplAuthenticationFailures OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of failed authentication requests made 
+        "Represents the number of failed authentication requests made
          since the NAC was started."
     ::= { etsysNacApplianceObjects 3 }
 
@@ -101,70 +101,70 @@ etsysNacApplRadiusChallenges OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of Radius challenges made since the NAC 
+        "Represents the number of Radius challenges made since the NAC
          was started."
     ::= { etsysNacApplianceObjects 4 }
-    
+
 etsysNacApplAuthenticationInvalidRequests OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of invalid authentication requests made 
+        "Represents the number of invalid authentication requests made
          since the NAC was started."
     ::= { etsysNacApplianceObjects 5 }
-    
+
 etsysNacApplAuthenticationDuplicateRequests OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of duplicate authentication requests made 
+        "Represents the number of duplicate authentication requests made
          since the NAC was started."
     ::= { etsysNacApplianceObjects 6 }
-    
+
 etsysNacApplAuthenticationMalformedRequests OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of malformed authentication requests made 
+        "Represents the number of malformed authentication requests made
          since the NAC was started."
     ::= { etsysNacApplianceObjects 7 }
-    
+
 etsysNacApplAuthenticationBadRequests OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of bad authentication requests made since 
+        "Represents the number of bad authentication requests made since
          the NAC was started."
     ::= { etsysNacApplianceObjects 8 }
-    
+
 etsysNacApplAuthenticationDroppedPackets OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of dropped authentication packets since 
+        "Represents the number of dropped authentication packets since
          the NAC was started."
     ::= { etsysNacApplianceObjects 9 }
-    
+
 etsysNacApplAuthenticationUnknownTypes OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of unknown authentication types since 
+        "Represents the number of unknown authentication types since
          the NAC was started."
     ::= { etsysNacApplianceObjects 10 }
-    
+
 etsysNacApplAssessmentRequests OBJECT-TYPE
     SYNTAX      Counter64
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of assessment requests made since the 
+        "Represents the number of assessment requests made since the
          NAC was started."
     ::= { etsysNacApplianceObjects 11 }
 
@@ -173,7 +173,7 @@ etsysNacApplCaptivePortalRequests OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-    "Represents the number of captive portal requests made since the NAC 
+    "Represents the number of captive portal requests made since the NAC
          was started."
     ::= { etsysNacApplianceObjects 12 }
 
@@ -182,7 +182,7 @@ etsysNacApplContactLostSwitches OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of configured switches with which the NAC 
+        "Represents the number of configured switches with which the NAC
          has lost SNMP contact."
     ::= { etsysNacApplianceObjects 13 }
 
@@ -191,7 +191,7 @@ etsysNacApplIPResolutionFailures OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-    "Represents the number of failed IP Resolution attempts made since 
+    "Represents the number of failed IP Resolution attempts made since
          the NAC was started."
     ::= { etsysNacApplianceObjects 14 }
 
@@ -200,7 +200,7 @@ etsysNacApplIPResolutionTimeouts OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of IP Resolution attempts that timed out 
+        "Represents the number of IP Resolution attempts that timed out
          since the NAC was started."
     ::= { etsysNacApplianceObjects 15 }
 
@@ -209,7 +209,7 @@ etsysNacApplConnectedAgents OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Represents the number of End-System Assessment Agents currently 
+        "Represents the number of End-System Assessment Agents currently
          connected to the NAC."
     ::= { etsysNacApplianceObjects 16 }
 
@@ -217,11 +217,11 @@ etsysNacApplConnectedAgents OBJECT-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysNacApplianceMIBConformance OBJECT IDENTIFIER 
+etsysNacApplianceMIBConformance OBJECT IDENTIFIER
                                 ::= { etsysNacApplianceMIB 2 }
-etsysNacApplianceMIBGroups      OBJECT IDENTIFIER 
+etsysNacApplianceMIBGroups      OBJECT IDENTIFIER
                                 ::= { etsysNacApplianceMIBConformance 1 }
-etsysNacApplianceMIBCompliances OBJECT IDENTIFIER 
+etsysNacApplianceMIBCompliances OBJECT IDENTIFIER
                                 ::= { etsysNacApplianceMIBConformance 2 }
 
 -- -------------------------------------------------------------
@@ -229,7 +229,7 @@ etsysNacApplianceMIBCompliances OBJECT IDENTIFIER
 -- -------------------------------------------------------------
 
 etsysNacApplianceMIBGroup OBJECT-GROUP
-    OBJECTS { 
+    OBJECTS {
         etsysNacApplAuthenticationRequests,
         etsysNacApplAuthenticationSuccesses,
         etsysNacApplAuthenticationFailures,
@@ -247,7 +247,7 @@ etsysNacApplianceMIBGroup OBJECT-GROUP
         etsysNacApplIPResolutionTimeouts,
         etsysNacApplConnectedAgents
     }
-    STATUS current 
+    STATUS current
     DESCRIPTION
         "The basic collection of objects providing status
          information about the NAC Appliance."
@@ -260,7 +260,7 @@ etsysNacApplianceMIBGroup OBJECT-GROUP
 etsysNacApplianceMIBCompliance MODULE-COMPLIANCE
     STATUS  current
     DESCRIPTION
-        "The compliance statement for clients implementing the NAC 
+        "The compliance statement for clients implementing the NAC
          Appliance Status MIB."
     MODULE  -- this module
         MANDATORY-GROUPS { etsysNacApplianceMIBGroup }

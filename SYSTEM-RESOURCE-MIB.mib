@@ -2,7 +2,7 @@ SYSTEM-RESOURCE-MIB DEFINITIONS ::= BEGIN
 
 --  system-resource-mib.txt
 --  Revision: 1.01.00
---  Part Number: 
+--  Part Number:
 --  Date: March 9, 1998
 
 
@@ -243,13 +243,13 @@ SYSTEM-RESOURCE-MIB DEFINITIONS ::= BEGIN
 
 --      sysResourceSwitch group
 
---      This group is only implemented on those devices where 
+--      This group is only implemented on those devices where
 --      control over frame transfer to the CPU is allowed.
 --      Also present in this group is CPU Switch load objects.
 
 sysResManagementCpuResource     OBJECT-TYPE
     SYNTAX      INTEGER {
-        none(1),         
+        none(1),
         limited(2),
         full(3)
     }
@@ -273,8 +273,8 @@ switchLoad      OBJECT-TYPE
     ACCESS      read-only
     STATUS      mandatory
     DESCRIPTION
-        "The returned value represents the current switch load 
-        based upon a percentage of maximum switching capacity 
+        "The returned value represents the current switch load
+        based upon a percentage of maximum switching capacity
         where maximum switching capacity is 100%."
     ::= { sysResourceSwitch 2 }
 
@@ -283,7 +283,7 @@ peakSwitchload  OBJECT-TYPE
     ACCESS      read-only
     STATUS      mandatory
     DESCRIPTION
-        "The peak load which has occured on this switch. The value 
+        "The peak load which has occured on this switch. The value
         returned represents The peak percentage of switch load based
         upon a percentage of maximum switch load which is 100%."
     ::= { sysResourceSwitch 3 }

@@ -83,7 +83,7 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         how data is interpreted during classification.  These
         rules are spelled out in the comments preceding each type.
 
-        Unless otherwise specified providing a value for DataMask is 
+        Unless otherwise specified providing a value for DataMask is
         optional and the description for DataMask is as follows:
 
         DataMask is the same logical size the as the associated DataVal.
@@ -112,38 +112,38 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               framed packets
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..65535) further limitations
-        --               may exist on an implementation by  
+        --               may exist on an implementation by
         --               implementation basis (DSAP must equal
-        --               SSAP for example)                    
-        --     DataMask: (optional) INTEGER holding the one byte 
+        --               SSAP for example)
+        --     DataMask: (optional) INTEGER holding the one byte
         --               control field in it's most significant
-        --               byte and an EtherType value in it's next 
-        --               two significant bytes.  The least  
-        --               significant byte holds a value indicating  
-        --               the number of relevant bits in the 
+        --               byte and an EtherType value in it's next
+        --               two significant bytes.  The least
+        --               significant byte holds a value indicating
+        --               the number of relevant bits in the
         --               DataVal and remaining DataMask (from
         --               left to right) beginning at the two
-        --               least significant bytes in the DataVal.   
-        --               A value of zero indicates all bits are 
-        --               relevant (to maintain backwards 
+        --               least significant bytes in the DataVal.
+        --               A value of zero indicates all bits are
+        --               relevant (to maintain backwards
         --               compatibility).
         -- -----------------------------------------------------
         llcDsapSsap(2),
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  The Type of Service field present in IP
-        --               packets (3 bits of precedence, plus     
+        --               packets (3 bits of precedence, plus
         --               bits for delay, throughput, and reli-
-        --               ability)                              
+        --               ability)
         -- LIMITATIONS:
-        --     DataVal:  INTEGER(0..255)        
+        --     DataVal:  INTEGER(0..255)
         --     DataMask: As described in the DESCRIPTION clause.
         -- -----------------------------------------------------
         ipTypeOfService(3),
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  The IP Protocol field (ref. RFC 1700)
-        --               examples include (TCP,UDP,ICMP,etc)                                             
+        --               examples include (TCP,UDP,ICMP,etc)
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..255)
         --     DataMask: As described in the DESCRIPTION clause.
@@ -151,9 +151,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         ipProtocolType(4),
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  Transmission control used by IPX 
+        -- DESCRIPTION:  Transmission control used by IPX
         --               routers, set to zero before network
-        --               transmission.                       
+        --               transmission.
         -- LIMITATIONS:
         --     DataVal:  INTEGER(0..255)
         --     DataMask: As described in the DESCRIPTION clause.
@@ -162,10 +162,10 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  IPX packet type, administered by Novell
-        --               0 ...... Hello or SAP                      
+        --               0 ...... Hello or SAP
         --               1 ...... RIP
-        --               2 ...... Echo Packet                      
-        --               3 ...... Error Packet                      
+        --               2 ...... Echo Packet
+        --               3 ...... Error Packet
         --               4 ...... Netware 386 or SAP
         --               5 ...... Sequenced Packet Protocol
         --               17 ..... Netware 286
@@ -187,9 +187,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  Each octet of an IP address uses one
         --               octet of this Unsigned32 value starting
@@ -205,7 +205,7 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         ipAddressBilateral(9),   -- Both Source and Dest IP.
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  The network number assigned to this 
+        -- DESCRIPTION:  The network number assigned to this
         --               IPX network (zero is the local network)
         --
         -- LIMITATIONS:  While the distinction of Source/
@@ -214,9 +214,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  INTEGER
         --     DataMask: As described in the DESCRIPTION clause.
@@ -237,9 +237,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  INTEGER(0..65535)
         --     DataMask: As described in the DESCRIPTION clause.
@@ -260,9 +260,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  INTEGER(0..65535)
         --     DataMask: As described in the DESCRIPTION clause.
@@ -283,9 +283,9 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  INTEGER(0..65535)
         --     DataMask: As described in the DESCRIPTION clause.
@@ -305,38 +305,38 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         --               from this group may exist for a given
         --               IP address if bilateral rules are supported,
         --               additional entries fail.
-        --               However, if the bilateral type is not supported 
-        --               a Source and a Destination rule with the 
-        --               same IP address can exist. 
+        --               However, if the bilateral type is not supported
+        --               a Source and a Destination rule with the
+        --               same IP address can exist.
         --
         --     DataVal:  INTEGER holding the first 4 bytes of
         --               the 6 byte MAC address.
-        --    DataMask:  INTEGER holding the last 2 bytes of 
+        --    DataMask:  INTEGER holding the last 2 bytes of
         --               the 6 byte MAC address in the 2 most
         --               significant bytes of the INTEGER.
-        --               The two least significant bytes will 
-        --               hold a value from 0 to 48 indicating 
+        --               The two least significant bytes will
+        --               hold a value from 0 to 48 indicating
         --               the number of relevant bits in the MAC
         --               Address (from left to right).  A value
         --               of zero indicates all bits are relevant
         --               (to maintain backwards compatibility).
         --     Example:  MAC address is 00-12-34-56-78-9A,
         --               DataVal is  00123456
-        --               DataMask is 789A0000 
+        --               DataMask is 789A0000
         -- -----------------------------------------------------
         macAddressSource(22),
         macAddressDestination(23),
         macAddressBilateral(24),
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  Describes IP Fragments.  IP frames 
+        -- DESCRIPTION:  Describes IP Fragments.  IP frames
         --               which exceed the MTU of the media on
-        --               which they travel may be fragmented 
+        --               which they travel may be fragmented
         --               into smaller packets.  These packets
-        --               no longer contain the UDP/TCP port   
-        --               numbers, although they do still      
-        --               contain the IP addresses from the    
-        --               original frame.                      
+        --               no longer contain the UDP/TCP port
+        --               numbers, although they do still
+        --               contain the IP addresses from the
+        --               original frame.
         --
         -- LIMITATIONS:
         --      DataVal: Val not used (0)
@@ -390,13 +390,13 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  Describes the ICMP Type and ICMP Code
-        --               values found in an ICMP/IP header.  
+        --               values found in an ICMP/IP header.
         --               These DataVal must be formatted such
         --               that the desired Type is represented
-        --               in the second most least significant 
+        --               in the second most least significant
         --               byte while the desired Code is repre-
         --               sented in the least significant byte.
-        --               Support for DataMask is primarily 
+        --               Support for DataMask is primarily
         --               intended to allow the Type to be speci-
         --               fied and the Code be wild-carded.
         --
@@ -408,7 +408,7 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
 
         -- -----------------------------------------------------
         -- DESCRIPTION:  Describes the VLAN_ID field found in a
-        --               frame with an 802.1D TCI present.   
+        --               frame with an 802.1D TCI present.
         --               Such a frame has an EtherII type field
         --               of 0x8100.
         --
@@ -419,10 +419,10 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
         vlanId(33),
 
         -- -----------------------------------------------------
-        -- DESCRIPTION:  Describes the entire TCI field found 
-        --               in an 802.1D tagged frame. Such a frame   
-        --               an EtherII type field of 0x8100. 
-        --               Support for DataMask is primarily 
+        -- DESCRIPTION:  Describes the entire TCI field found
+        --               in an 802.1D tagged frame. Such a frame
+        --               an EtherII type field of 0x8100.
+        --               Support for DataMask is primarily
         --               intended to allow for specification of
         --               the 802.1D priority bits located in the
         --               three most significant bits of the TCI.
@@ -435,13 +435,13 @@ CtVlanClassifyType ::= TEXTUAL-CONVENTION
     }
 
 -- -------------------------------------------------------------
--- The VlanIndex TEXTUAL-CONVENTION although similar to the 
+-- The VlanIndex TEXTUAL-CONVENTION although similar to the
 -- Q-BRIDGE-MIB as defined in draft-ietf-bridge-bridgemib-05.txt
--- has been extended to cover Vids 0 and 4095 which are used 
+-- has been extended to cover Vids 0 and 4095 which are used
 -- for the following purposes:
---      0      Indicates that the forwarding action 
---             is to drop any packets matching the rule. 
---                        
+--      0      Indicates that the forwarding action
+--             is to drop any packets matching the rule.
+--
 --      4095   Indicates that the forwarding action
 --             is to forward any packets matching the rule
 --             without specifying a VLAN in the rule.
@@ -457,9 +457,9 @@ VlanIndex ::= TEXTUAL-CONVENTION
         global scope within a given bridged domain (see VlanId
         textual convention).  If the value is greater than 4095
         then it represents a VLAN with scope local to the
-        particular agent. If the value is 0 it indicates that the 
+        particular agent. If the value is 0 it indicates that the
         packets will be dropped.  If the value is 4095, it indicates
-        that the packets will be forwarded, but no VLAN is 
+        that the packets will be forwarded, but no VLAN is
         specified here."
     SYNTAX      Unsigned32
 
@@ -586,7 +586,7 @@ ctVlanClassifyDataVal OBJECT-TYPE
     DESCRIPTION
         "The data value associated with ctVlanClassifyDataMeaning.
         The explicit range of this value is any unsigned 32-bit
-        integer(0..4294967295).  This range may vary, however, 
+        integer(0..4294967295).  This range may vary, however,
         depending upon the value of ctVlanClassifyDataMeaning.
         Illegal values should not be allowed."
     ::= { ctVlanClassifyEntry 3 }
@@ -665,7 +665,7 @@ ctVlanClassifyRowStatus OBJECT-TYPE
             may be retrieved to obtain a plain English explanation
             of why this row cannot be activated.  createAndWait is
             the preferred method for this reason.
-        
+
         Both methods described above leave ctVlanClassifyIngressList
         in it's default state, requiring an additional set operation
         in order to modify it.  An even more optimal twist on the

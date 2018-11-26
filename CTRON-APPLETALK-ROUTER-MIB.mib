@@ -2,7 +2,7 @@ CTRON-AppleTalk-ROUTER-MIB DEFINITIONS ::= BEGIN
 
 --  ctron-appletalk-router-mib.txt
 --  Revision: 1.01.00
---  Part Number: 
+--  Part Number:
 --  Date: August 11, 1995
 
 
@@ -36,7 +36,7 @@ CTRON-AppleTalk-ROUTER-MIB DEFINITIONS ::= BEGIN
 --  Copyright August 95 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
         FROM RFC-1212
@@ -239,9 +239,9 @@ nwAtSysAdminReset      OBJECT-TYPE
         graceful shutdown on any active router ports and without
         affecting any other routing services."
     ::= { nwAtSysAdministration 3 }
-                
+
 nwAtSysOperationalTime  OBJECT-TYPE
-    SYNTAX  TimeTicks 
+    SYNTAX  TimeTicks
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -250,7 +250,7 @@ nwAtSysOperationalTime  OBJECT-TYPE
     ::= { nwAtSysAdministration 4 }
 
 nwAtSysVersion  OBJECT-TYPE
-    SYNTAX  DisplayString 
+    SYNTAX  DisplayString
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
@@ -280,8 +280,8 @@ nwAtFwdCtrAdminSTATUS  OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Sets the administrative state of the aggregate
-        (system-wide) AppleTalk packet and byte counters. 
-        Enabled (3) causes these counters to become active. 
+        (system-wide) AppleTalk packet and byte counters.
+        Enabled (3) causes these counters to become active.
         Disabled (2) causes these counters to become inactive."
     ::= { nwAtFwdCounters 1 }
 
@@ -448,7 +448,7 @@ nwAtFwdCtrHostInPkts   OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of AppleTalk packets that
-        have been successfully delivered to the local host, 
+        have been successfully delivered to the local host,
         during nwAtFwdCtrOperationalTime."
     ::= { nwAtFwdCounters 17 }
 
@@ -534,7 +534,7 @@ NwAtFwdIfEntry ::=
         SEQUENCE {
                 nwAtFwdIfIndex                INTEGER,
                 nwAtFwdIfAdminSTATUS          INTEGER,
-                nwAtFwdIfOperSTATUS              INTEGER,    
+                nwAtFwdIfOperSTATUS              INTEGER,
                 nwAtFwdIfOperationalTime      TimeTicks,
                 nwAtFwdIfControl              INTEGER,
                 nwAtFwdIfMtu                  INTEGER,
@@ -588,7 +588,7 @@ nwAtFwdIfOperSTATUS     OBJECT-TYPE
         Routing Services on the AppleTalk router port for which
         the entry exists. The value of nwAtFwdIfOperStatus
         indicates any problem with the configuration of AppleTalk
-        Routing Services on the router port. A value of 6 
+        Routing Services on the router port. A value of 6
         indicates that regardless of the state of
         nwAtFwdIfAdminStatus AppleTalk Routing Services is not
         operating because of an invalid port-level configuration."
@@ -615,7 +615,7 @@ nwAtFwdIfControl  OBJECT-TYPE
         "This object does not apply to this protocol. It is a
         common object, inherited from the MIB framework used to
         provide a common management interface to all the Cabletron
-        Routing Services protocol-specific MIBs. Setting this 
+        Routing Services protocol-specific MIBs. Setting this
         object has no effect."
     ::= { nwAtFwdIfEntry 5 }
 
@@ -640,7 +640,7 @@ nwAtFwdIfForwarding       OBJECT-TYPE
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
-        "Controls forwarding of AppleTalk packets on the 
+        "Controls forwarding of AppleTalk packets on the
         AppleTalk router port for which the entry exists.
         Enabled (3) causes AppleTalk packets to be forwarded.
         Disabled (2) prevents AppleTalk packets from being
@@ -669,7 +669,7 @@ nwAtFwdIfFrameType        OBJECT-TYPE
     ::= { nwAtFwdIfEntry 8 }
 
 nwAtFwdIfAclIdentifier    OBJECT-TYPE
-    SYNTAX         INTEGER    
+    SYNTAX         INTEGER
     ACCESS        read-write
     STATUS        mandatory
     DESCRIPTION
@@ -693,7 +693,7 @@ nwAtFwdIfAclSTATUS        OBJECT-TYPE
         which the entry exists. Enabled (3) applies the access
         control list indicated by the value of
         nwAtFwdIfAclIdentifier to all AppleTalk traffic being
-        routed on the port. Disabled (2) prevents the access 
+        routed on the port. Disabled (2) prevents the access
         control list from being applied."
     ::= { nwAtFwdIfEntry 10 }
 
@@ -712,7 +712,7 @@ nwAtFwdIfCacheControl     OBJECT-TYPE
         validation, filtering, and forwarding are stored in the
         cache. This cache is checked first before doing a full
         route table lockup, which speeds up the switching process.
-        Enabled (3) turns on AppleTalk Address caching. 
+        Enabled (3) turns on AppleTalk Address caching.
         Disabled (2) turns it off."
     ::= { nwAtFwdIfEntry 11 }
 
@@ -735,7 +735,7 @@ nwAtFwdIfCacheHits        OBJECT-TYPE
         address required to validate, filter, or forward an
         AppleTalk packet on the router port."
     ::= { nwAtFwdIfEntry 13 }
-       
+
 nwAtFwdIfCacheMisses      OBJECT-TYPE
     SYNTAX          Counter
     ACCESS          read-only
@@ -803,7 +803,7 @@ nwAtportIndex OBJECT-TYPE
     DESCRIPTION
         "Indicates a unique value for each router port. The value
         of nwAtportIndex is an integer between 1 and the total
-        number of ports configured for AppleTalk Routing 
+        number of ports configured for AppleTalk Routing
         Services."
     ::= { nwAtportEntry 1 }
 
@@ -886,7 +886,7 @@ nwAtportNetStart OBJECT-TYPE
         "The first AppleTalk network address in the network range
         configured for the port. If the port is not a native
         AppleTalk port, this object will have the value of two
-        octets of zero. Set this value to the first network 
+        octets of zero. Set this value to the first network
         address in the network range configured for the port."
     ::= { nwAtportEntry 4 }
 
@@ -912,7 +912,7 @@ nwAtportNetAddress OBJECT-TYPE
         "The AppleTalk node number configured for the port. This
         value may be used as a hint for an initial node number
         used during node-finding. If the port is not a native
-        AppleTalk port, this object shall have the value of 
+        AppleTalk port, this object shall have the value of
         three octets of zero."
     ::= { nwAtportEntry 6 }
 
@@ -931,7 +931,7 @@ nwAtportSTATUS OBJECT-TYPE
     DESCRIPTION
         "Indicates the current state of the router port's
         AppleTalk configuration. If either nwAtportNetConfig or
-        nwApportZoneConfig are set to (5), conflictAverseSeed, 
+        nwApportZoneConfig are set to (5), conflictAverseSeed,
         and either the configured network number range or zone
         name seeded by the port conflict with the settings of a
         neighbor router, nwApPortStatus will have a value of (6),
@@ -940,29 +940,29 @@ nwAtportSTATUS OBJECT-TYPE
 
 nwAtportNetConfig OBJECT-TYPE
     SYNTAX INTEGER {
-                conflictOrientedSeed(1), 
-                garnered(2),    
-                guessed(3),     
-                unconfigured(4), 
-                conflictAverseSeed(5),  
-                 softSeed(6)  
+                conflictOrientedSeed(1),
+                garnered(2),
+                guessed(3),
+                unconfigured(4),
+                conflictAverseSeed(5),
+                 softSeed(6)
               }
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
         "Specifies the network configuration type of the port.
-        If the port is not a native AppleTalk port, this object 
+        If the port is not a native AppleTalk port, this object
         will have an unconfigured (4) value."
     ::= { nwAtportEntry 8 }
 
 nwAtportZoneConfig OBJECT-TYPE
     SYNTAX INTEGER {
-        conflictOrientedSeed(1),  
-                garnered(2),   
-                guessed(3),     
-                unconfigured(4), 
-                conflictAverseSeed(5),  
-                softSeed(6) 
+        conflictOrientedSeed(1),
+                garnered(2),
+                guessed(3),
+                unconfigured(4),
+                conflictAverseSeed(5),
+                softSeed(6)
               }
 
     ACCESS read-write
@@ -976,7 +976,7 @@ nwAtportZoneDefault OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-        "Specifies the name of the default zone for the port. If 
+        "Specifies the name of the default zone for the port. If
         the port only has one zone, that zone is represented
         here. If the port is not a native AppleTalk port, this
         object will contain an octet string of zero length."
@@ -997,16 +997,16 @@ nwAtportNetFrom OBJECT-TYPE
     STATUS mandatory
     DESCRIPTION
         "When nwAtportNetConfig is set to garnered (2), this
-        variable contains the DDP address of the entity from 
+        variable contains the DDP address of the entity from
         which the AppleTalk network number was garnered. When
         nwAtportNetConfig is set to conflictOrientedSeed (1),
         conflictAverseSeed (5), or softSeed (6), this variable
         contains the DDP address of an entity which supplied or
-        confirmed the AppleTalk network number. If 
-        nwAtportNetConfig is set to guessed (3) or 
+        confirmed the AppleTalk network number. If
+        nwAtportNetConfig is set to guessed (3) or
         unconfigured (4), or if the AppleTalk Routing
-        Services-enabled device has not received any network 
-        number confirmation, this object will be set to three 
+        Services-enabled device has not received any network
+        number confirmation, this object will be set to three
         octets of zero."
     ::= { nwAtportEntry 12 }
 
@@ -1070,7 +1070,7 @@ nwAtportCurrentZone OBJECT-TYPE
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
-        "Specifies the current zone name for the port. In 
+        "Specifies the current zone name for the port. In
         general, this is the zone name in which services on the
         port will be registered. If the port is not a native
         AppleTalk port, this object will contain an octet string
@@ -1195,7 +1195,7 @@ nwAtFwdIfCtrInPkts        OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the total number of AppleTalk packets that
-        have been received, during nwAtFwdIfCtrOperationaltime, 
+        have been received, during nwAtFwdIfCtrOperationaltime,
         on the router port for which the entry exists."
     ::= { nwAtFwdIfCtrEntry 5 }
 
@@ -1204,7 +1204,7 @@ nwAtFwdIfCtrOutPkts       OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the total number of AppleTalk packets that 
+        "Indicates the total number of AppleTalk packets that
         have been transmitted, during nwAtFwdIfCtrOperationaltime,
         on the router port for which the entry exists."
     ::= { nwAtFwdIfCtrEntry 6 }
@@ -1235,7 +1235,7 @@ nwAtFwdIfCtrDiscardPkts  OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the total number of AppleTalk packets that 
+        "Indicates the total number of AppleTalk packets that
         have been discarded (dropped), during
         nwAtFwdIfCtrOperationalTime, on the router port for which
         the entry exists."
@@ -1269,7 +1269,7 @@ nwAtFwdIfCtrHdrErrPkts        OBJECT-TYPE
     ACCESS  read-only
     STATUS  mandatory
     DESCRIPTION
-        "Indicates the total number of AppleTalk packets that 
+        "Indicates the total number of AppleTalk packets that
         have been discarded, because of an invalid AppleTalk
         header, during nwAtFwdIfCtrOperationalTime, on the router
         port for which the entry exists."
@@ -1357,7 +1357,7 @@ nwAtFwdIfCtrHostDiscardPkts      OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the total number of AppleTalk packets that 
+        "Indicates the total number of AppleTalk packets that
         have been discarded by the local host due to a lack of
         host resources during nwAtFwdIfCtrOperationalTime, that
         were received on the router port for which the entry
@@ -1420,7 +1420,7 @@ nwAtProtoAdminSTATUS     OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION
         "Sets the administrative state of the AppleTalk
-        distance-vector based routing protocol system-wide. 
+        distance-vector based routing protocol system-wide.
         Enabled (3) causes the routing protocol to become active
         on all router ports configured and enabled for AppleTalk
         Routing Services. Disabled (2) causes the routing protocol
@@ -1442,7 +1442,7 @@ nwAtProtoOperSTATUS     OBJECT-TYPE
         AppleTalk Routing Services distance-vector-based routing
         protocol, system-wide. The value of nwAtProtoOperStatus
         indicates any problem with the routing protocol
-        configuration. A value of 6 indicates that regardless of 
+        configuration. A value of 6 indicates that regardless of
         the value of nwAtProtoAdminStatus, the routing protocol
         is not operating because of an invalid configuration."
     ::= { nwAtProtoConfig 2 }
@@ -1483,9 +1483,9 @@ nwAtProtoStackSize OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-        "Specifies the stack size of the AppleTalk routing 
+        "Specifies the stack size of the AppleTalk routing
         protocol thread. In order for a change of this value to
-        take effect, the protocol (nwAtProtoAdminReset), 
+        take effect, the protocol (nwAtProtoAdminReset),
         AppleTalk Routing Services (nwAtProtoAdminReset), or the
         device running Routing Services must be reset."
     ::= { nwAtProtoConfig 6 }
@@ -1564,7 +1564,7 @@ nwAtProtoCtrReset     OBJECT-TYPE
     DESCRIPTION
         "Resets the aggregate (system-wide) AppleTalk
         distance-vector based routing protocol packet and byte
-        counters. Reset (2) resets the AppleTalk aggregate 
+        counters. Reset (2) resets the AppleTalk aggregate
         counters to 0. nwAtProtoCtrOperationalTime is also reset
         to 0."
     ::= { nwAtProtoCounters 2 }
@@ -1646,7 +1646,7 @@ nwAtProtoCtrFilteredBytes        OBJECT-TYPE
     DESCRIPTION
         "Indicates the total number of bytes in the AppleTalk
         routing protocol packets that have been administratively
-        filtered, system-wide, during 
+        filtered, system-wide, during
         nwAtProtoCtrOperationalTime."
     ::= { nwAtProtoCounters 10 }
 
@@ -1747,7 +1747,7 @@ nwAtProtoIfOperSTATUS     OBJECT-TYPE
         "Indicates the current operating condition of the
         AppleTalk routing protocol on the router port for which
         the entry exists. The value of nwAtProtoIfOperStatus
-        indicates any problem with your AppleTalk routing 
+        indicates any problem with your AppleTalk routing
         protocol configuration on the router port. A value of 6
         indicates that regardless of the value of
         nwAtProtoIfAdminStatus, the routing protocol is not
@@ -1769,7 +1769,7 @@ nwAtProtoIfVersion       OBJECT-TYPE
     ACCESS          read-write
     STATUS          mandatory
     DESCRIPTION
-        "Indicates the revision level of AppleTalk routing 
+        "Indicates the revision level of AppleTalk routing
         protocol firmware on the router port for which the entry
         exists, in textual format."
     ::= { nwAtProtoIfEntry 5 }
@@ -1790,10 +1790,10 @@ nwAtProtoIfFloodDelay    OBJECT-TYPE
     ACCESS          read-write
     STATUS          mandatory
     DESCRIPTION
-        "This object does not apply to this protocol. It is a 
+        "This object does not apply to this protocol. It is a
         common object, inherited from the MIB framework used to
-        provide a common management interface to all the 
-        Cabletron Routing Services protocol specific MIBs. 
+        provide a common management interface to all the
+        Cabletron Routing Services protocol specific MIBs.
         Setting this object has no effect"
     ::= { nwAtProtoIfEntry 7 }
 
@@ -1823,10 +1823,10 @@ nwAtProtoIfHelloTimer    OBJECT-TYPE
     ACCESS          read-write
     STATUS          mandatory
     DESCRIPTION
-        "This object does not apply to this protocol. It is a 
+        "This object does not apply to this protocol. It is a
         common object, inherited from the MIB framework used to
-        provide a common management interface to all the 
-        Cabletron Routing Services protocol specific MIBs. 
+        provide a common management interface to all the
+        Cabletron Routing Services protocol specific MIBs.
         Setting this object has no effect."
     ::= { nwAtProtoIfEntry 10 }
 
@@ -1839,7 +1839,7 @@ nwAtProtoIfSplitHorizon  OBJECT-TYPE
     ACCESS          read-write
     STATUS          mandatory
     DESCRIPTION
-        "Sets the operating condition of Split Horizon on the 
+        "Sets the operating condition of Split Horizon on the
         router port for which the entry exists. When Split Horizon
         is enabled, the AppleTalk routing protocol keeps track of
         which router port route information is received on, and
@@ -1861,7 +1861,7 @@ nwAtProtoIfPoisonReverse OBJECT-TYPE
         router port for which the entry exists. When Poison
         Reverse is enabled, the AppleTalk routing protocol
         advertises any downed routes as unreachable during the
-        period of time that it must wait before removing the 
+        period of time that it must wait before removing the
         route from the route table."
     DEFVAL { disabled }
     ::= { nwAtProtoIfEntry 12 }
@@ -1876,10 +1876,10 @@ nwAtProtoIfSnooping      OBJECT-TYPE
     STATUS          mandatory
     DESCRIPTION
         "Controls the operation of AppleTalk routing protocol
-        Snooping on the router port. When AppleTalk routing 
-        protocol Snooping is enabled, the routing protocol 
+        Snooping on the router port. When AppleTalk routing
+        protocol Snooping is enabled, the routing protocol
         operates in passive mode, so that it receives route
-        information, builds and maintains a route table, but 
+        information, builds and maintains a route table, but
         does not advertise or send updates on the router port for
         which the entry exists."
     DEFVAL { disabled }
@@ -1894,7 +1894,7 @@ nwAtProtoIfType             OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-         "Indicates whether the directly connected network 
+         "Indicates whether the directly connected network
         segment does or does not support broadcast media access.
         If broadcast media access is supported, AppleTalk routing
         protocol advertisements are sent out one broadcast packet
@@ -1918,7 +1918,7 @@ nwAtProtoIfAclIdentifier OBJECT-TYPE
     ACCESS          read-write
     STATUS          mandatory
     DESCRIPTION
-        "Specifies the Access Control List ID of the access 
+        "Specifies the Access Control List ID of the access
         control list in effect for AppleTalk routing protocol
         packets on the router port for which the entry exists. A
         value of 0 indicates that there is no access control list
@@ -1939,7 +1939,7 @@ nwAtProtoIfAclSTATUS     OBJECT-TYPE
         identified by nwAtProtoIfAclIdentifier. Enabled (3)
         causes the access control list to be applied to all
         AppleTalk routing protocol packet traffic on the router
-        port for which the entry exists. Disabled (2) prevents 
+        port for which the entry exists. Disabled (2) prevents
         the access control list from being applied."
         ::= { nwAtProtoIfEntry 17 }
 
@@ -2019,7 +2019,7 @@ nwAtProtoIfCtrReset      OBJECT-TYPE
         DESCRIPTION
                 "Resets the AppleTalk packet and byte counters on the router
         port for which the entry exists. reset (2) resets the
-        interface-specific counters to 0. 
+        interface-specific counters to 0.
         nwAtProtoIfCtrOperationalTime is also reset to 0."
         ::= { nwAtProtoIfCtrEntry 3 }
 
@@ -2111,7 +2111,7 @@ nwAtFibTable           OBJECT-TYPE
     ACCESS        not-accessible
     STATUS        mandatory
     DESCRIPTION
-        "This table contains an entry for each route being used 
+        "This table contains an entry for each route being used
         to forward AppleTalk data packets."
     ::= { nwAtFib 1 }
 
@@ -2120,7 +2120,7 @@ nwAtFibEntry           OBJECT-TYPE
     ACCESS        not-accessible
     STATUS        mandatory
     DESCRIPTION
-        "Each entry in the table describes an AppleTalk route 
+        "Each entry in the table describes an AppleTalk route
         to a particular destination."
     INDEX   { nwAtFibStartNet }
     ::= { nwAtFibTable 1 }
@@ -2156,7 +2156,7 @@ nwAtFibNextHop           OBJECT-TYPE
     ACCESS          read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the full AppleTalk network address of the 
+        "Indicates the full AppleTalk network address of the
         next hop router for the route. An address of all zeros
         indicates a directly connected net."
     ::= { nwAtFibEntry 3 }
@@ -2231,7 +2231,7 @@ nwAtHostCtlTable       OBJECT-TYPE
     ACCESS        not-accessible
     STATUS        mandatory
     DESCRIPTION
-        "This table contains the control information for 
+        "This table contains the control information for
         maintaining an AARP cache on each router port. Note that
         the cache entries are maintained by theAppleTalk Address
         Resolution Protocol Table of the AppleTalk MIB."
@@ -2271,7 +2271,7 @@ nwAtHostCtlIfIndex       OBJECT-TYPE
     ACCESS        read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the value of MIB2 ifindex, which identifies 
+        "Indicates the value of MIB2 ifindex, which identifies
         the router port for which the entry exists."
     ::= { nwAtHostCtlEntry 1 }
 
@@ -2339,7 +2339,7 @@ nwAtHostCtlSnooping    OBJECT-TYPE
         "Controls AARP Snooping on the router port for which the
         entry exists. Given the AARP protocol is enabled,
         setting nwAtHostCtlIfSnooping to enabled (3) turns on AARP Snooping.
-        When AARP Snooping is enabled the source AppleTalk and physical 
+        When AARP Snooping is enabled the source AppleTalk and physical
         addresses of all AARP packets received on the router port are added to
         the AARP Table."
     ::= { nwAtHostCtlEntry 6 }
@@ -2353,13 +2353,13 @@ nwAtHostCtlProxy       OBJECT-TYPE
     ACCESS          read-write
     STATUS        mandatory
     DESCRIPTION
-        "This object does not apply to this protocol. It is a 
+        "This object does not apply to this protocol. It is a
         common object, inherited from the MIB framework used to
         provide a common management interface to all the Cabletron
         Routing Services protocol-specific MIBs. Setting this
         object has no effect."
     ::= { nwAtHostCtlEntry 7 }
-       
+
 nwAtHostCtlCacheMax    OBJECT-TYPE
     SYNTAX          INTEGER
     ACCESS          read-write
@@ -2367,11 +2367,11 @@ nwAtHostCtlCacheMax    OBJECT-TYPE
     DESCRIPTION
         "Indicates the maximum number of entry slots the AARP
         cache can consist of. nwAtHostCtlCacheMax cannot be set
-        to less than 16. Setting this value does not allocate 
+        to less than 16. Setting this value does not allocate
         any memory for the cache."
     ::= { nwAtHostCtlEntry 8 }
 
-       
+
 nwAtHostCtlCacheSize   OBJECT-TYPE
     SYNTAX          INTEGER
     ACCESS          read-write
@@ -2379,7 +2379,7 @@ nwAtHostCtlCacheSize   OBJECT-TYPE
     DESCRIPTION
         "Indicates the current number of entry slots in the AARP
         cache on the router port for which the entry exists. The
-        cache automatically resizes to accommodate all entries 
+        cache automatically resizes to accommodate all entries
         up to the maximum number of entries set by
         nwAtHostCtlCacheMax."
     ::= { nwAtHostCtlEntry 9 }
@@ -2400,14 +2400,14 @@ nwAtHostCtlNumDynamics OBJECT-TYPE
     ACCESS          read-only
     STATUS        mandatory
     DESCRIPTION
-        "Indicates the number of dynamic entries in the AARP 
+        "Indicates the number of dynamic entries in the AARP
         cache on the router port for which the entry exists.
         Dynamic entries area added and aged out by the AARP
         protocol."
     ::= { nwAtHostCtlEntry 11 }
-       
+
 nwAtHostCtlCacheHits   OBJECT-TYPE
-    SYNTAX          Counter 
+    SYNTAX          Counter
     ACCESS          read-only
     STATUS        mandatory
     DESCRIPTION
@@ -2416,7 +2416,7 @@ nwAtHostCtlCacheHits   OBJECT-TYPE
         required to forward an AppleTalk packet on the router
         port for which the entry exists."
     ::= { nwAtHostCtlEntry 12 }
-       
+
 nwAtHostCtlCacheMisses OBJECT-TYPE
     SYNTAX          Counter
     ACCESS          read-only
@@ -2454,8 +2454,8 @@ nwAtAclTable           OBJECT-TYPE
         for theAppleTalk protocol. This table contains entries,
         each of which allows packet forwarding between
         source/destination pairs to be permitted or denied. The
-        particular list is identified by the access control 
-        list ID. Each list may contain multiple entries ordered 
+        particular list is identified by the access control
+        list ID. Each list may contain multiple entries ordered
         by sequence number. When a particular access control list
         is searched, it is searched in sequence number order and
         the first match found ends the search. If no match is
@@ -2531,7 +2531,7 @@ nwAtAclMatches         OBJECT-TYPE
     STATUS        mandatory
     DESCRIPTION
         "Indicates the number of matches on this entry that
-        have resulted in the access restriction permit/deny 
+        have resulted in the access restriction permit/deny
         being applied as part of the forwarding process."
     ::= { nwAtAclEntry 4 }
 
@@ -2566,7 +2566,7 @@ nwAtEventAdminSTATUS    OBJECT-TYPE
     STATUS          mandatory
     DESCRIPTION
         "Sets the administrative state of AppleTalk event
-        logging. Enabled (3) causes the event log to become 
+        logging. Enabled (3) causes the event log to become
         active. Disabled (2) causes the event log to become
         inactive."
     ::= { nwAtEventLogConfig 1 }
@@ -2618,7 +2618,7 @@ nwAtEventFilterEntry            OBJECT-TYPE
     DESCRIPTION
         "Each entry describes an event filter which defines a
         particular type of event to be logged to the event log.
-        The value of nwIpEventProtocol indicates the value used 
+        The value of nwIpEventProtocol indicates the value used
         in either the nwRtgProtocolTable or the nwComponentTable
         Cabletron Routing Services MIB, which indentifies the
         protocol to which the entry exists."
@@ -2641,7 +2641,7 @@ nwAtEventFltrProtocol   OBJECT-TYPE
     STATUS          mandatory
     DESCRIPTION
         "Indicates the value of the Cabletron Routing Services
-        MIB nwRtgProtocolInstance or nwComponentRtgInstance, 
+        MIB nwRtgProtocolInstance or nwComponentRtgInstance,
         which identifies the protocol involved in the event for
         which the event filter exists."
     ::= { nwAtEventFilterEntry 1 }
@@ -2681,10 +2681,10 @@ nwAtEventFltrType        OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-        "This 6 bit mask specifies the types of events to be 
-        logged. By default all 6 bits are set to 1, indicating 
+        "This 6 bit mask specifies the types of events to be
+        logged. By default all 6 bits are set to 1, indicating
         that all types of events are to be logged. Setting any bit
-        to 0 removes an event type from this field and prevents 
+        to 0 removes an event type from this field and prevents
         that type of event from being logged. Setting any bit to 1
         adds an event type to this field and enables that type of
         event to be logged. "
@@ -2707,7 +2707,7 @@ nwAtEventFltrSeverity   OBJECT-TYPE
         through lowest. `Highest' severity causes all events
         except those of the highest severity to be ignored.
         `Highmed' severity is the default setting which causes
-        only events of the lowest severity to be ignored. 
+        only events of the lowest severity to be ignored.
         `Highlow' severity logs all events, regardless of
         severity."
     ::= { nwAtEventFilterEntry 5 }
@@ -2721,9 +2721,9 @@ nwAtEventFltrAction OBJECT-TYPE
     ACCESS      read-write
     STATUS      mandatory
     DESCRIPTION
-        "Specifies how the events are to be logged. Logging to 
+        "Specifies how the events are to be logged. Logging to
         the `log' stores the events in the event log table
-        (nwIpEventFltrAction). Logging to `trap' sends events 
+        (nwIpEventFltrAction). Logging to `trap' sends events
         out through the trap mechanism."
     ::= { nwAtEventFilterEntry 6 }
 
@@ -2766,7 +2766,7 @@ nwAtEventNumber         OBJECT-TYPE
     STATUS          mandatory
     DESCRIPTION
         "An ordinal value assigned to the event for which the
-        log entry exists. nwAtEvnetNumber is assigned so that 
+        log entry exists. nwAtEvnetNumber is assigned so that
         each event in the event log can be uniquely identified by
         the value of nwAtEventNumber."
     ::= { nwAtEventEntry 1 }
@@ -2823,7 +2823,7 @@ nwAtEventIfNum          OBJECT-TYPE
     ACCESS          read-only
     STATUS          mandatory
     DESCRIPTION
-        "Indicates the router port that was involved in the 
+        "Indicates the router port that was involved in the
         event."
     ::= { nwAtEventEntry 6 }
 
@@ -2883,7 +2883,7 @@ nwAtNetDiagOutboundATEchoType OBJECT-TYPE
     STATUS mandatory
     DESCRIPTION
         "The type of echo diagnostic function to initiate. Upon
-        setting this to send EchoRequest (2), an echo request 
+        setting this to send EchoRequest (2), an echo request
         will be initiated and the value will be set to noAction
         (1)."
     ::= { nwAtNetDiagOutbound 5 }
@@ -3109,7 +3109,7 @@ nwAtNetDiagOutboundZIPGetNetInfoDefaultZone OBJECT-TYPE
     ::= { nwAtNetDiagOutbound 24 }
 
 
---  AppleTalk Experimental Branch  
+--  AppleTalk Experimental Branch
 --  The AppleTalk zone table has been placed under the
 --  experimental branch because it is based on the appletalk
 --  draft mib and shall be deprecated when the draft mib
@@ -3194,10 +3194,10 @@ nwAtportZoneStatus OBJECT-TYPE
 
 --
 
---  IP Hosts-to-Media Table 
+--  IP Hosts-to-Media Table
 --  This table serves to supplement the MIB-2 Net-To-Media Table.  It
 --  supports both non-WAN interfaces and logical WAN interfaces and the
---  circuits under them. In addition to the ifIndex, AtNetworkNumber, and 
+--  circuits under them. In addition to the ifIndex, AtNetworkNumber, and
 --  PhysAddress mapping, each address translation includes the framing
 --  required to converse with the host, the platform's logical port number,
 --  and the circuit identifier associated with the mapping if applicable.
@@ -3230,9 +3230,9 @@ nwAtHostMapEntry     OBJECT-TYPE
                 nwAtHostMapIfIndex      INTEGER,
                 nwAtHostMapAtAddr       AtDdpNodeAddress,
                 nwAtHostMapPhysAddr     PhysAddress,
-                nwAtHostMapType         INTEGER,   
+                nwAtHostMapType         INTEGER,
                 nwAtHostMapCircuitID    INTEGER,
-                nwAtHostMapFraming      INTEGER,   
+                nwAtHostMapFraming      INTEGER,
                 nwAtHostMapPortNumber   INTEGER
                 }
 
@@ -3241,12 +3241,12 @@ nwAtHostMapIfIndex    OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-            "This is the primary (major) index into the HostMap 
+            "This is the primary (major) index into the HostMap
               table. This number corresponds to the index into the
-              MIB-2 Interfaces Group which describes the IP router 
+              MIB-2 Interfaces Group which describes the IP router
               port for which the entry exists."
         ::= { nwAtHostMapEntry 1 }
- 
+
 
 nwAtHostMapAtAddr    OBJECT-TYPE
         SYNTAX  AtDdpNodeAddress
@@ -3254,7 +3254,7 @@ nwAtHostMapAtAddr    OBJECT-TYPE
         STATUS  mandatory
         DESCRIPTION
             "The AtDdpNodeAddress corresponding to the
-             media-dependent 'physical' address and circuit 
+             media-dependent 'physical' address and circuit
              identifier (if applic)."
         ::= { nwAtHostMapEntry 2 }
 
@@ -3275,7 +3275,7 @@ nwAtHostMapType        OBJECT-TYPE
             dynamic(3),
             static(4),
             inactive(5)
-        }    
+        }
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -3300,7 +3300,7 @@ nwAtHostMapCircuitID    OBJECT-TYPE
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
-            "The identifier for the virtual circuit present on the 
+            "The identifier for the virtual circuit present on the
              interface. On an interface configured for Frame Relay,
              this number is the DLCI for the IP Address at the end of
              the circuit. For non-WAN interfaces, the value of this
@@ -3326,7 +3326,7 @@ nwAtHostMapFraming    OBJECT-TYPE
         ::= { nwAtHostMapEntry 6 }
 
 nwAtHostMapPortNumber    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION

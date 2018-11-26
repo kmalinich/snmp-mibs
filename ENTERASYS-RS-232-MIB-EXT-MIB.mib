@@ -6,7 +6,7 @@ ENTERASYS-RS-232-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' RS232 MIB Extensions functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-RS-232-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright June 2011 Enterasys Networks, Inc.
@@ -55,30 +55,30 @@ etsysRs232MibExtMIB MODULE-IDENTITY
          Phone:   +1 978 684 1000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID that provide 
+         the Enterasys Networks enterprise OID that provide
          extensions to the industry standard RS232-MIB."
 
     REVISION    "201106221450Z"  -- Wed Jun 22 14:50 UTC 2011
-    DESCRIPTION 
+    DESCRIPTION
         "Added the etsysRs232CtsLinkExtTable."
-    
+
     REVISION    "201011092007Z"  -- Tue Nov  9 20:07 UTC 2010
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 77 } 
+    ::= { etsysModules 77 }
 
 
 -- -------------------------------------------------------------
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysRs232MibExtObjects   OBJECT IDENTIFIER 
+etsysRs232MibExtObjects   OBJECT IDENTIFIER
                            ::= { etsysRs232MibExtMIB 1 }
 
-etsysRs232MibExtVt100     OBJECT IDENTIFIER 
+etsysRs232MibExtVt100     OBJECT IDENTIFIER
                            ::= { etsysRs232MibExtObjects 1 }
 
 etsysRs232MibExtCtsLink   OBJECT IDENTIFIER
@@ -94,7 +94,7 @@ etsysRs232Vt100ExtTable OBJECT-TYPE
     MAX-ACCESS   not-accessible
     STATUS       current
     DESCRIPTION
-        "A table of per interface information that extends the general 
+        "A table of per interface information that extends the general
          rs232 port table defined in RFC1659."
     ::= {  etsysRs232MibExtVt100 1 }
 
@@ -108,7 +108,7 @@ etsysRs232Vt100ExtEntry OBJECT-TYPE
     ::= { etsysRs232Vt100ExtTable 1 }
 
 EtsysRs232Vt100ExtEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysRs232Vt100DsrEnableState
             EnabledStatus,
         etsysRs232Vt100DsrTimeout
@@ -116,11 +116,11 @@ EtsysRs232Vt100ExtEntry ::=
     }
 
 etsysRs232Vt100DsrEnableState OBJECT-TYPE
-    SYNTAX       EnabledStatus 
+    SYNTAX       EnabledStatus
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "This object indicates the current enabled status for 
+        "This object indicates the current enabled status for
         transmitting a VT100 Device Status Request (DSR) to an
         attached terminal."
     DEFVAL      { disabled }
@@ -199,7 +199,7 @@ etsysRs232MibExtCompliances OBJECT IDENTIFIER
 
 etsysRs232MibExtVt100DsrGroup OBJECT-GROUP
     OBJECTS {
-        etsysRs232Vt100DsrEnableState, 
+        etsysRs232Vt100DsrEnableState,
         etsysRs232Vt100DsrTimeout
     }
     STATUS     current

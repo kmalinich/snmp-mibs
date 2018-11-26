@@ -67,15 +67,15 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
          WWW:     http://www.enterasys.com"
 
     DESCRIPTION
-        "This MIB module defines a portion of the SNMP enterprise 
-         MIBs under the Enterasys enterprise OID pertaining to the 
+        "This MIB module defines a portion of the SNMP enterprise
+         MIBs under the Enterasys enterprise OID pertaining to the
          mapping of per user policy profiles for Enterasys network
          edge devices or access products."
 
     REVISION    "201303051651Z"  -- Tue Mar  5 16:51 UTC 2013
     DESCRIPTION
         "Modified the DESCRIPTION clause of etsysPolicyRuleOperPid
-         and etsysPolicyNonVolatileRuleOperPid so that -1 is returned 
+         and etsysPolicyNonVolatileRuleOperPid so that -1 is returned
          when the etsysPolicyRuleProfileIndex is not zero."
 
     REVISION    "201303041509Z"  -- Mon Mar  4 15:09 UTC 2013
@@ -98,8 +98,8 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
 
     REVISION    "201206131634Z"  -- Wed Jun 17 16:34 UTC 2012
     DESCRIPTION
-        "Add the etsysPolicyRuleQuarantineProfileIndex to allow for 
-         the quarantining of sessions that match a specific rule."  
+        "Add the etsysPolicyRuleQuarantineProfileIndex to allow for
+         the quarantining of sessions that match a specific rule."
 
     REVISION    "201202071701Z"  -- Tue Feb  7 17:01 UTC 2012
     DESCRIPTION
@@ -118,13 +118,13 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
         "Added tri-state textual convention and modified the etsysPolicyRules
          group to use this convention for actions which previously used
          EnabledStatus.
-         
-         Added syslog, trap, and disable-port actions to the 
+
+         Added syslog, trap, and disable-port actions to the
          etsysPolicyProfileTable."
 
     REVISION    "200904011336Z"  -- Wed Apr 01 13:36 UTC 2009
     DESCRIPTION
-        "Modified the capabilities group to support both OverwriteTci 
+        "Modified the capabilities group to support both OverwriteTci
          and Mirroring. A few other small corrections."
 
     REVISION    "200802191429Z"  -- Tue Feb 19 14:29 UTC 2008
@@ -142,7 +142,7 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
          added to configure enabling/disabling the addition of extended
          data to the rule-hit syslog messages.
 
-         Further clarifications are included in DESCRIPTION field of 
+         Further clarifications are included in DESCRIPTION field of
          the etsysPolicyRuleSylogExtendedFormat object."
 
     REVISION "200606152040Z"  -- Thu Jun 15 20:40 UTC 2006
@@ -157,7 +157,7 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
          An additional scalar etsysPolicyRFC3580MapInvalidMapping is
          added to detect EtsysPolicyRFC3580MapEntry discrepancies.
 
- 	 Further clarifications are included in DESCRIPTION fields of 
+ 	 Further clarifications are included in DESCRIPTION fields of
          the etsysPolicyRFC3580Map objects."
 
     REVISION "200503281535Z"  -- Mon Mar 28 15:35 GMT 2005
@@ -184,7 +184,7 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
     DESCRIPTION
         "Updated the range for etsysPolicyProfilePriority
           to (0..4095).
-         Added objects and groups related to mapping RFC3580 
+         Added objects and groups related to mapping RFC3580
           vlan-tunnel-attributes to PolicyProfiles.
          Added the etsysPolicyRuleAutoClearOnProfile,
           etsysPolicyRuleStatsAutoClearInterval, and
@@ -192,11 +192,11 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
          Added etsysPolicyEnabledTable to the capabilities section,
           in addition to reporting capabilities, it allows one
           to disable policy on a given port."
-    
-    REVISION "200405181702Z"  -- Tue May 18 17:02 GMT 2004 
+
+    REVISION "200405181702Z"  -- Tue May 18 17:02 GMT 2004
     DESCRIPTION
         "Added the etsysPolicyRuleStatsAutoClearOnLink leaf."
-    
+
     REVISION "200404022035Z"  -- Fri Apr  2 20:35 GMT 2004
     DESCRIPTION
         "Added the etsysPolicyRuleOperPid leaf to
@@ -210,10 +210,10 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
 
     REVISION "200402032200Z"  -- Tue Feb  3 22:00 GMT 2004
     DESCRIPTION
-        "Replaced StationIdentifierType with StationAddressType 
+        "Replaced StationIdentifierType with StationAddressType
          and StationIdentifier with StationAddress to match new
-         revision of ENTERASYS-UPN-TC-MIB." 
-    
+         revision of ENTERASYS-UPN-TC-MIB."
+
     REVISION "200402031533Z"  -- Tue Feb  3 15:33 GMT 2004
     DESCRIPTION
         "Replaced StationIdentifierTypeTC with StationIdentifierType
@@ -224,17 +224,17 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
     DESCRIPTION
         "Added PolicyClassificationRuleType TEXTUAL-CONVENTION.
          Added the etsysPolicyProfileOverwriteTCI and
-         etsysPolicyProfileRulePrecedence leaves to the 
+         etsysPolicyProfileRulePrecedence leaves to the
          EtsysPolicyProfileEntry.  Added the etsysPolicyRules
          group for accounting of policy usage.  Additionally,
          the range syntax of several objects has been clarified.
-         The etsysPolicyClassificationGroup and the 
-         etsysPortPolicyProfileTable have been deprecated, 
+         The etsysPolicyClassificationGroup and the
+         etsysPortPolicyProfileTable have been deprecated,
          as they have been replaced by the etsysPolicyRulesGroup."
 
     REVISION "200311041716Z"  -- Tue Nov  4 17:16 GMT 2003
     DESCRIPTION
-        "Added etsysPolicyMap object group in support of RFC 3580 and 
+        "Added etsysPolicyMap object group in support of RFC 3580 and
          Enterasys Technical Standard TS-07."
 
     REVISION "200302062259Z"  -- Thu Feb  6 22:59 GMT 2003
@@ -256,7 +256,7 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
     DESCRIPTION
         "This version incorporates enhancements to support Station
          based policy provisioning, as well as other UPN related
-         enhancements." 
+         enhancements."
 
     REVISION "200106112000Z"  --  Mon Jun 11 20:00 GMT 2001
     DESCRIPTION
@@ -270,7 +270,7 @@ etsysPolicyProfileMIB  MODULE-IDENTITY
          Several misspelled words were corrected.
 
          Finally, the INDEX for the etsysPortPolicyProfileSummaryTable
-         was corrected to index the table by policy index as well as 
+         was corrected to index the table by policy index as well as
          the type of port for each entry in the table."
 
     REVISION "200101090000Z"
@@ -287,9 +287,9 @@ PolicyProfileIDTC  ::=  TEXTUAL-CONVENTION
     DISPLAY-HINT "d"
     STATUS  current
     DESCRIPTION
-        "This textual convention maps out to the possible 
-         policyProfileIndex values.  It also allows for a value of 
-         zero.  A value of zero (0) indicates that the given port 
+        "This textual convention maps out to the possible
+         policyProfileIndex values.  It also allows for a value of
+         zero.  A value of zero (0) indicates that the given port
          should not follow any policy profile."
     SYNTAX  Integer32 (0|1..65535)
 
@@ -308,14 +308,14 @@ PolicyRFC3580MapRadiusResponseTC  ::=  TEXTUAL-CONVENTION
     STATUS  current
     DESCRIPTION
         "This textual convention maps out to the possible, pertinent,
-         successful, responses which may be received from the RADIUS 
+         successful, responses which may be received from the RADIUS
          server after a dynamic authentication attempt. PolicyProfile(1)
-         is returned as a proprietary filter-id and has historically 
-         been used to assign a policy profile to the authenticated 
-         entity.  VlanTunnelAttribute(2) is the response defined in 
-         RFC3580 and upon which further controls are applied by the 
-         etsysPolicyRFC3580Map group.  A value of - 
-         vlanTunnelAttributeWithPolicyProfile(3) is an 
+         is returned as a proprietary filter-id and has historically
+         been used to assign a policy profile to the authenticated
+         entity.  VlanTunnelAttribute(2) is the response defined in
+         RFC3580 and upon which further controls are applied by the
+         etsysPolicyRFC3580Map group.  A value of -
+         vlanTunnelAttributeWithPolicyProfile(3) is an
          indication that both attributes are to be used."
     SYNTAX  INTEGER {
                       policyProfile(1),
@@ -341,178 +341,178 @@ VlanList ::= TEXTUAL-CONVENTION
         to accommodate all possible VIDs between (1..4094). The
         default value of this object is a string of all zeros."
     SYNTAX      OCTET STRING (SIZE(512))
-    
+
 PolicyClassificationRuleType  ::=  TEXTUAL-CONVENTION
     STATUS  current
     DESCRIPTION
        "Enumerates the possible types of classification rules which
         may be referenced in the etsysPolicyRuleTable.  Each
-        type has an implied length (in bytes) associated with it. 
+        type has an implied length (in bytes) associated with it.
 
         Octet-strings defined as representing one of these types will
         be represented in Network-Byte-Order (Big Endian) if the native
         representation is other than octets.
 
-        The managed entity MUST support sets in which the specified 
+        The managed entity MUST support sets in which the specified
         rule length is less than that specified by the value the entity
-        reports in etsysPolicyRuleAttributeByteLength, so long as the 
-        associated etsysPolicyRulePrefixBits does not imply the 
+        reports in etsysPolicyRuleAttributeByteLength, so long as the
+        associated etsysPolicyRulePrefixBits does not imply the
         existence of more etsysPolicyRuleData than is present  (i.e. the
         specified length MUST be >= ((etsysPolicyRulePrefixBits+7)/8).)
-        
-        Additionally, the managed entity MUST return a 
+
+        Additionally, the managed entity MUST return a
         PolicyClassificationRuleType which carries the number of octets
-        specified by the associated etsysPolicyRuleAttributeByteLength, 
+        specified by the associated etsysPolicyRuleAttributeByteLength,
         regardless of the number etsysPolicyRulePrefixBits.  This yields
-        a behavior in which, on some devices, a ip4Source rule may be 
+        a behavior in which, on some devices, a ip4Source rule may be
         supported with only 4 bytes of rule data (excluding the TCP/UDP
-        source port information), while other devices may support the 
+        source port information), while other devices may support the
         full syntax using all 6 bytes.
 
 
-        macSource(1)            The source MAC address in an Ethernet 
+        macSource(1)            The source MAC address in an Ethernet
                                 frame. Length is 6 bytes.
 
-        macDestination(2)       The destination MAC address in an 
+        macDestination(2)       The destination MAC address in an
                                 Ethernet frame.  Length is 6 bytes.
-                                
-        ipxSource(3)            The source address in an IPX header. 
+
+        ipxSource(3)            The source address in an IPX header.
                                 Length is 4 bytes (Network prefix).
-                                
-        ipxDestination(4)       The destination address in an IPX 
-                                header.  Length is 4 bytes (Network 
+
+        ipxDestination(4)       The destination address in an IPX
+                                header.  Length is 4 bytes (Network
                                 prefix).
-                                
-        ipxSourcePort(5)        The source IPX port(socket) in an IPX 
+
+        ipxSourcePort(5)        The source IPX port(socket) in an IPX
                                 header. Length is 2 bytes.
-                                
-        ipxDestinationPort(6)   The destination IPX port(socket) in an 
+
+        ipxDestinationPort(6)   The destination IPX port(socket) in an
                                 IPX header. Length is 2 bytes.
-                                
-        ipxCos(7)               The CoS(HopCount) field in an IPX 
+
+        ipxCos(7)               The CoS(HopCount) field in an IPX
                                 header.  Length is 1 byte.
-                                
-        ipxType(8)              The protocol type in an IPX header. 
+
+        ipxType(8)              The protocol type in an IPX header.
                                 Length is 1 byte.
-                                
-        ip6Source(9)            The source address in an IPv6 header, 
-                                postfixed with the source port (for 
+
+        ip6Source(9)            The source address in an IPv6 header,
+                                postfixed with the source port (for
                                 TCP/UDP frames). Length is 18 bytes
                                 for IPv6+TCP/UDP, or 16 bytes for
                                 IPv6.
-                                
-        ip6Destination(10)      The destination address in an IPv6 
-                                header, postfixed with the destination 
+
+        ip6Destination(10)      The destination address in an IPv6
+                                header, postfixed with the destination
                                 port (for TCP/UDP frames). Length is 18
                                 bytes for IPv6+TCP/UDP, or 16 bytes for
                                 IPv6.
 
         ip6FlowLabel(11)        The flow label field (traffic class and
-                                flow identifier) in an IPv6 header. 
+                                flow identifier) in an IPv6 header.
                                 Length is 3 bytes, as only the first
                                 20 bits are valid and mask-able, only
                                 the data in the first 20 bits (the first
                                 five nibbles) is considered.
-                                
-        ip4Source(12)           The source address in an IPv4 header, 
-                                postfixed with the source port (for 
+
+        ip4Source(12)           The source address in an IPv4 header,
+                                postfixed with the source port (for
                                 TCP/UDP frames). Length is 6 bytes
                                 for IPv4+TCP/UDP, or 4 bytes for
                                 IPv4.
-                                
-        ip4Destination(13)      The destination address in an IPv4 
-                                header, postfixed with the destination 
-                                port (for TCP/UDP frames). Length is 6 
+
+        ip4Destination(13)      The destination address in an IPv4
+                                header, postfixed with the destination
+                                port (for TCP/UDP frames). Length is 6
                                 bytes for IPv4+TCP/UDP, or 4 bytes for
                                 IPv4.
-                                
-        ipFragment(14)          Truth value derived from the FLAGS and 
+
+        ipFragment(14)          Truth value derived from the FLAGS and
                                 FRAGMENTATION_OFFSET fields of an IP
-                                header.  If the MORE bit of the flags 
-                                field is set, or the 
-                                FRAGMENTATION_OFFSET is non-zero, the 
+                                header.  If the MORE bit of the flags
+                                field is set, or the
+                                FRAGMENTATION_OFFSET is non-zero, the
                                 frame is fragmented.  Length is 0 bytes
                                 (there is no data, only presence).
-                                
-        udpSourcePort(15)       The source UDP port(socket) in a UDP 
-                                header, optionally postfixed with a 
-                                source IP address. Length is 2 bytes 
-                                for UDP, 6 bytes for UDP+IPv4, or 18 
+
+        udpSourcePort(15)       The source UDP port(socket) in a UDP
+                                header, optionally postfixed with a
+                                source IP address. Length is 2 bytes
+                                for UDP, 6 bytes for UDP+IPv4, or 18
                                 bytes for UDP+IPv6.
-                                
-        udpDestinationPort(16)  The destination UDP port(socket) in a 
-                                UDP header, optionally postfixed with a 
-                                destination IP address. Length is 2 
+
+        udpDestinationPort(16)  The destination UDP port(socket) in a
+                                UDP header, optionally postfixed with a
+                                destination IP address. Length is 2
                                 bytes for UDP, 6 bytes for UDP+IPv4, or
                                 18 bytes for UDP+IPv6.
-                                
-        tcpSourcePort(17)       The source TCP port(socket) in an TCP 
-                                header, optionally postfixed with a 
-                                source IPv4 address. Length is 2 bytes 
-                                for TCP, 6 bytes for TCP+IPv4, or 18 
+
+        tcpSourcePort(17)       The source TCP port(socket) in an TCP
+                                header, optionally postfixed with a
+                                source IPv4 address. Length is 2 bytes
+                                for TCP, 6 bytes for TCP+IPv4, or 18
                                 bytes for TCP+IPv6.
-                                
-        tcpDestinationPort(18)  The destination TCP port(socket) in an 
-                                TCP header, optionally postfixed with a 
-                                destination IPv4 address. Length is 2 
+
+        tcpDestinationPort(18)  The destination TCP port(socket) in an
+                                TCP header, optionally postfixed with a
+                                destination IPv4 address. Length is 2
                                 bytes for TCP, 6 bytes for TCP+IPv4, or
                                 18 bytes for TCP+IPv6.
-                                
-        icmpTypeCode(19)        The Type and Code fields from an ICMP 
-                                frame.  These are encoded in 2 bytes, 
-                                network-byte-order, Type in the first 
-                                (left-most) byte, Code in the second 
+
+        icmpTypeCode(19)        The Type and Code fields from an ICMP
+                                frame.  These are encoded in 2 bytes,
+                                network-byte-order, Type in the first
+                                (left-most) byte, Code in the second
                                 byte.
 
         ipTtl(20)               The TTL(HopCount) field in an IP header.
                                 Length is 1 byte.
 
-        ipTos(21)               The ToS(DSCP) field in an IP header. 
+        ipTos(21)               The ToS(DSCP) field in an IP header.
                                 Length is 1 byte.
-                                
-        ipType(22)              The protocol type in an IP header. 
+
+        ipType(22)              The protocol type in an IP header.
                                 Length is 1 byte.
-                                
-        icmpTypeCodeV6(23)      The Type and Code fields from an ICMP 
-                                frame.  These are encoded in 2 bytes, 
-                                network-byte-order, Type in the first 
-                                (left-most) byte, Code in the second 
+
+        icmpTypeCodeV6(23)      The Type and Code fields from an ICMP
+                                frame.  These are encoded in 2 bytes,
+                                network-byte-order, Type in the first
+                                (left-most) byte, Code in the second
                                 byte. For ICMPv6, which redefines the
                                 types and codes.
-                                
+
         etherType(25)           The type field in an Ethernet II frame.
                                 Length is 2 bytes.
-                                
-        llcDsapSsap(26)         The DSAP/SSAP/CTRL field in an LLC 
-                                encapsulated frame, includes SNAP 
-                                encapsulated frames and the associated 
-                                Ethernet II type field.  Length is 5 
+
+        llcDsapSsap(26)         The DSAP/SSAP/CTRL field in an LLC
+                                encapsulated frame, includes SNAP
+                                encapsulated frames and the associated
+                                Ethernet II type field.  Length is 5
                                 bytes.
 
-        vlanId(27)              The 12 bit Virtual LAN ID field present 
+        vlanId(27)              The 12 bit Virtual LAN ID field present
                                 in an 802.1D Tagged frame.
-                                Length is 2 bytes, the field is 
-                                represented in the FIRST (left-most, 
+                                Length is 2 bytes, the field is
+                                represented in the FIRST (left-most,
                                 big-endian) 12 bits of the 16 bit field.
                                 A vlanId of 1 would be encoded as 00-10,
-                                a vlanId of 4094 would be encoded as 
+                                a vlanId of 4094 would be encoded as
                                 FF-E0, and a vlanId of 100 would be
                                 encoded as 06-40.
 
-        ieee8021dTci(28)        The entire 16 bit TCI field present 
+        ieee8021dTci(28)        The entire 16 bit TCI field present
                                 in an 802.1D Tagged frame (include both
                                 VLAN ID and Priority bits.
                                 Length is 2 bytes.
 
-        application(29)         32 bit enumerated application types.  
-                                Specific applications may have extra data. 
+        application(29)         32 bit enumerated application types.
+                                Specific applications may have extra data.
 
         acl(30)                 A numbered ACL, represented by a 4 byte
                                 integer value.  This is not maskable.
 
         bridgePort(31)          The dot1dBasePort on which the frame was
                                 received.  Length is 2 bytes."
-                                
+
     SYNTAX  INTEGER {
                     macSource(1),
                     macDestination(2),
@@ -552,70 +552,70 @@ PolicyRulesSupported  ::=  TEXTUAL-CONVENTION
        "Enumerates the possible types of classification rules which
         may be supported.
 
-        macSource(1)            The source MAC address in an Ethernet 
+        macSource(1)            The source MAC address in an Ethernet
                                 frame.
-        macDestination(2)       The destination MAC address in an 
+        macDestination(2)       The destination MAC address in an
                                 Ethernet frame.
         ipxSource(3)            The source address in an IPX header.
-        ipxDestination(4)       The destination address in an IPX 
-                                header. 
-        ipxSourcePort(5)        The source IPX port(socket) in an IPX 
+        ipxDestination(4)       The destination address in an IPX
                                 header.
-        ipxDestinationPort(6)   The destination IPX port(socket) in an 
+        ipxSourcePort(5)        The source IPX port(socket) in an IPX
+                                header.
+        ipxDestinationPort(6)   The destination IPX port(socket) in an
                                 IPX header.
-        ipxCos(7)               The CoS(HopCount) field in an IPX 
-                                header. 
+        ipxCos(7)               The CoS(HopCount) field in an IPX
+                                header.
         ipxType(8)              The protocol type in an IPX header.
-        ip6Source(9)            The source address in an IPv6 header, 
-                                postfixed with the source port (for 
+        ip6Source(9)            The source address in an IPv6 header,
+                                postfixed with the source port (for
                                 TCP/UDP frames).
-        ip6Destination(10)      The destination address in an IPv6 
-                                header, postfixed with the destination 
+        ip6Destination(10)      The destination address in an IPv6
+                                header, postfixed with the destination
                                 port (for TCP/UDP frames).
         ip6FlowLabel(11)        The flow label field (traffic class and
                                 flow identifier) in an IPv6 header.
-        ip4Source(12)           The source address in an IPv4 header, 
-                                postfixed with the source port (for 
+        ip4Source(12)           The source address in an IPv4 header,
+                                postfixed with the source port (for
                                 TCP/UDP frames).
-        ip4Destination(13)      The destination address in an IPv4 
-                                header, postfixed with the destination 
+        ip4Destination(13)      The destination address in an IPv4
+                                header, postfixed with the destination
                                 port (for TCP/UDP frames).
-        ipFragment(14)          Truth value derived from the FLAGS and 
+        ipFragment(14)          Truth value derived from the FLAGS and
                                 FRAGMENTATION_OFFSET fields of an IP
-                                header.  If the MORE bit of the flags 
-                                field is set, or the 
-                                FRAGMENTATION_OFFSET is non-zero, the 
+                                header.  If the MORE bit of the flags
+                                field is set, or the
+                                FRAGMENTATION_OFFSET is non-zero, the
                                 frame is fragmented.
-        udpSourcePort(15)       The source UDP port(socket) in a UDP 
+        udpSourcePort(15)       The source UDP port(socket) in a UDP
                                 header.
-        udpDestinationPort(16)  The destination UDP port(socket) in a 
+        udpDestinationPort(16)  The destination UDP port(socket) in a
                                 UDP header.
-        tcpSourcePort(17)       The source TCP port(socket) in an TCP 
+        tcpSourcePort(17)       The source TCP port(socket) in an TCP
                                 header.
-        tcpDestinationPort(18)  The destination TCP port(socket) in an 
+        tcpDestinationPort(18)  The destination TCP port(socket) in an
                                 TCP header.
-        icmpTypeCode(19)        The Type and Code fields from an ICMP 
+        icmpTypeCode(19)        The Type and Code fields from an ICMP
                                 frame.
         ipTtl(20)               The TTL(HopCount) field in an IP header.
         ipTos(21)               The ToS(DSCP) field in an IP header.
         ipType(22)              The protocol type in an IP header.
-        icmpTypeCodeV6(23)      The Type and Code fields from an ICMPv6 
+        icmpTypeCodeV6(23)      The Type and Code fields from an ICMPv6
                                 frame.
         etherType(25)           The type field in an Ethernet II frame.
-        llcDsapSsap(26)         The DSAP/SSAP/CTRL field in an LLC 
-                                encapsulated frame, includes SNAP 
-                                encapsulated frames and the associated 
+        llcDsapSsap(26)         The DSAP/SSAP/CTRL field in an LLC
+                                encapsulated frame, includes SNAP
+                                encapsulated frames and the associated
                                 Ethernet II type field.
-        vlanId(27)              The 12 bit Virtual LAN ID field present 
+        vlanId(27)              The 12 bit Virtual LAN ID field present
                                 in an 802.1D Tagged frame.
-        ieee8021dTci(28)        The entire 16 bit TCI field present 
+        ieee8021dTci(28)        The entire 16 bit TCI field present
                                 in an 802.1D Tagged frame (include both
                                 VLAN ID and Priority bits.
         application(29)         Application based policy.
         acl(30)                 A number ACL list to which the frame is applied.
         bridgePort(31)          The dot1dBasePort on which the frame was
                                 received."
-                                
+
     SYNTAX  BITS {
                     macSource(1),
                     macDestination(2),
@@ -656,7 +656,7 @@ TriStateStatus ::= TEXTUAL-CONVENTION
 
          enabled(1)     indicates the action will occur
          disabled(2)    indicates no action will be asserted
-         prohibited(3)  indicates the action will be prevented from 
+         prohibited(3)  indicates the action will be prevented from
                         occurring
 
          This is useful (over and above the standard EnabledStatus
@@ -668,27 +668,27 @@ TriStateStatus ::= TEXTUAL-CONVENTION
 
 
 -- -------------------------------------------------------------
--- MIB groupings 
+-- MIB groupings
 -- -------------------------------------------------------------
 
 etsysPolicyNotifications    OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 0 }
 
-etsysPolicyProfile          OBJECT IDENTIFIER 
+etsysPolicyProfile          OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 1 }
 
-etsysPolicyClassification   OBJECT IDENTIFIER 
+etsysPolicyClassification   OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 2 }
 
-etsysPortPolicyProfile      OBJECT IDENTIFIER 
+etsysPortPolicyProfile      OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 3 }
-   
+
 etsysPolicyVlanEgress       OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 4 }
 
 etsysStationPolicyProfile   OBJECT IDENTIFIER
-                      ::= { etsysPolicyProfileMIB 5 } 
-                      
+                      ::= { etsysPolicyProfileMIB 5 }
+
 etsysInvalidPolicyPolicy    OBJECT IDENTIFIER
                       ::= { etsysPolicyProfileMIB 6 }
 
@@ -712,7 +712,7 @@ etsysPolicyRFC3580Map       OBJECT IDENTIFIER
 -- Notifications
 -- ---------------------------------------------------------- --
 etsysPolicyRulePortHitNotification   NOTIFICATION-TYPE
-    OBJECTS   { ifName, ifAlias, etsysPolicyRulePortHit, 
+    OBJECTS   { ifName, ifAlias, etsysPolicyRulePortHit,
                 etsysPolicyProfileName }
     STATUS    current
     DESCRIPTION
@@ -722,11 +722,11 @@ etsysPolicyRulePortHitNotification   NOTIFICATION-TYPE
 
 
 -- -------------------------------------------------------------
--- etsysPolicyProfile group       
+-- etsysPolicyProfile group
 -- -------------------------------------------------------------
 
 etsysPolicyProfileMaxEntries OBJECT-TYPE
-    SYNTAX      Integer32 (1..65535) 
+    SYNTAX      Integer32 (1..65535)
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -735,16 +735,16 @@ etsysPolicyProfileMaxEntries OBJECT-TYPE
     ::= { etsysPolicyProfile 1 }
 
 etsysPolicyProfileNumEntries OBJECT-TYPE
-    SYNTAX      Gauge32 
+    SYNTAX      Gauge32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The current number of entries in the 
+        "The current number of entries in the
          etsysPolicyProfileTable."
     ::= { etsysPolicyProfile 2 }
 
 etsysPolicyProfileLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -757,18 +757,18 @@ etsysPolicyProfileTableNextAvailableIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This object indicates the numerically lowest available 
-         index within this entity, which may be used for the value 
-         of etsysPolicyProfileIndex in the creation of a new entry 
+        "This object indicates the numerically lowest available
+         index within this entity, which may be used for the value
+         of etsysPolicyProfileIndex in the creation of a new entry
          in the etsysPolicyProfileTable.
 
          An index is considered available if the index value falls
-         within the range of 1 to 65535 and is not being used to 
+         within the range of 1 to 65535 and is not being used to
          index an existing entry in the etsysPolicyProfileTable
          contained within this entity.
 
-         This value should only be considered a guideline for 
-         management creation of etsysPolicyProfileEntries, there is 
+         This value should only be considered a guideline for
+         management creation of etsysPolicyProfileEntries, there is
          no requirement on management to create entries based upon
          this index value."
     ::= { etsysPolicyProfile 4 }
@@ -788,28 +788,28 @@ etsysPolicyProfileEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "Conceptually defines a particular entry within the 
+        "Conceptually defines a particular entry within the
          etsysPolicyProfileTable. Entries within this table MUST be
-         considered non-volatile and MUST be maintained across 
+         considered non-volatile and MUST be maintained across
          entity resets."
     INDEX  { etsysPolicyProfileIndex }
     ::= { etsysPolicyProfileTable 1 }
 
 EtsysPolicyProfileEntry ::=
     SEQUENCE {
-        etsysPolicyProfileIndex   
+        etsysPolicyProfileIndex
              Integer32,
         etsysPolicyProfileName
              SnmpAdminString,
-        etsysPolicyProfileRowStatus      
+        etsysPolicyProfileRowStatus
              RowStatus,
-        etsysPolicyProfilePortVidStatus 
+        etsysPolicyProfilePortVidStatus
              EnabledStatus,
         etsysPolicyProfilePortVid
              Unsigned32,
         etsysPolicyProfilePriorityStatus
              EnabledStatus,
-        etsysPolicyProfilePriority 
+        etsysPolicyProfilePriority
              Integer32,
         etsysPolicyProfileEgressVlans
              VlanList,
@@ -844,9 +844,9 @@ etsysPolicyProfileIndex OBJECT-TYPE
     DESCRIPTION
         "A unique arbitrary identifier for this Policy.
 
-         Since a policy will be applied to a user regardless of his 
+         Since a policy will be applied to a user regardless of his
          or her location in the network fabric policy names SHOULD
-         be unique within the entire network fabric.  Policy IDs 
+         be unique within the entire network fabric.  Policy IDs
          and policy names MUST be unique within the scope of a single
          managed entity."
     ::= { etsysPolicyProfileEntry 1 }
@@ -856,7 +856,7 @@ etsysPolicyProfileName OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "Administratively assigned textual description of this 
+        "Administratively assigned textual description of this
          Policy.
 
          This object MUST NOT be modifiable while this entry's
@@ -864,7 +864,7 @@ etsysPolicyProfileName OBJECT-TYPE
     ::= { etsysPolicyProfileEntry 2 }
 
 etsysPolicyProfileRowStatus OBJECT-TYPE
-    SYNTAX      RowStatus 
+    SYNTAX      RowStatus
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
@@ -872,21 +872,21 @@ etsysPolicyProfileRowStatus OBJECT-TYPE
          of entries within the etsysPolicyProfileTable as well as
          the activation and deactivation of these entries.
 
-         When this object's value is active(1) the corresponding 
+         When this object's value is active(1) the corresponding
          row's etsysPolicyProfilePortVid, etsysPolicyProfilePriority,
          and all entries within the etsysPolicyClassificationTable
          indexed by this row's etsysPolicyProfileIndex are available
          to be applied to network access ports or stations on the
-         managed entity.  
-         
-         All ports corresponding to rows within the 
+         managed entity.
+
+         All ports corresponding to rows within the
          etsysPortPolicyProfileTable whose etsysPortPolicyProfileOperID
-         is equal to the etsysPolicyProfileIndex, shall have the 
-         corresponding policy applied.  Likewise, all stations 
-         corresponding to rows within the etsysStationPolicyProfileTable  
+         is equal to the etsysPolicyProfileIndex, shall have the
+         corresponding policy applied.  Likewise, all stations
+         corresponding to rows within the etsysStationPolicyProfileTable
          whose etsysStationPolicyProfileOperID is equal to the
          etsysPolicyProfileIndex, shall have the corresponding policy
-         applied.   
+         applied.
 
          The value of etsysPortPolicyProfileOperID for each such row
          in the etsysPortPolicyProfileTable will be equal to the
@@ -895,29 +895,29 @@ etsysPolicyProfileRowStatus OBJECT-TYPE
          to the contrary.
 
          Refer to the specific objects within this MIB as well as
-         well as  RFC2674, the CTRON-PRIORITY-CLASSIFY-MIB, the 
-         CTRON-VLAN-CLASSIFY-MIB, and the CTRON-RATE-POLICING-MIB 
+         well as  RFC2674, the CTRON-PRIORITY-CLASSIFY-MIB, the
+         CTRON-VLAN-CLASSIFY-MIB, and the CTRON-RATE-POLICING-MIB
          for a complete explanation of the application and behavior
          of these objects.
 
          When this object's value is set to notInService(2) this
-         policy will not be applied to any rows within the 
+         policy will not be applied to any rows within the
          etsysPortPolicyProfileTable.
 
-         To allow policy profiles to be applied for security 
+         To allow policy profiles to be applied for security
          implementations, setting this object's value from active(1)
-         to notInService(2) or destroy(6) SHALL fail if one or more 
+         to notInService(2) or destroy(6) SHALL fail if one or more
          instances of etsysPortPolicyProfileOperID or
          etsysStationPolicyProfileOperID currently reference
-         this entry's associated policy due to a set by an underlying 
+         this entry's associated policy due to a set by an underlying
          security protocol such as RADIUS.
 
-         For network functionality and clarity, setting this object 
-         to destroy(6) SHALL fail if one or more instances of 
+         For network functionality and clarity, setting this object
+         to destroy(6) SHALL fail if one or more instances of
          etsysPortPolicyProfileOperID or etsysStationPolicyProfileOperID
          currently references this entry's etsysPolicyProfileIndex.
 
-         Refer to the RowStatus convention for further details on 
+         Refer to the RowStatus convention for further details on
          the behavior of this object."
     REFERENCE
         "RFC2579 (Textual Conventions for SMIv2)"
@@ -928,53 +928,53 @@ etsysPolicyProfilePortVidStatus OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "This object defines whether a PVID override should 
+        "This object defines whether a PVID override should
          be applied to ports which have this profile active.
 
-         enabled(1) means that any port with this policy active 
-         will have this row's etsysPolicyProfilePortVid applied to 
-         untagged frames or priority-tagged frames received on this 
+         enabled(1) means that any port with this policy active
+         will have this row's etsysPolicyProfilePortVid applied to
+         untagged frames or priority-tagged frames received on this
          port.
 
          disabled(2) means that etsysPolicyProfilePortVid will not
-         be applied.  When this object is set to disabled(2) the 
+         be applied.  When this object is set to disabled(2) the
          value of etsysPolicyProfilePortVid has no meaning."
     DEFVAL { disabled }
     ::= { etsysPolicyProfileEntry 4 }
 
 etsysPolicyProfilePortVid OBJECT-TYPE
-    SYNTAX      Unsigned32 (0|1..4094|4095) 
+    SYNTAX      Unsigned32 (0|1..4094|4095)
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "This object defines the PVID of this profile.
 
-         If a port has an active policy and the policy's 
-         etsysPolicyProfilePortVidStatus is set to enabled(1), the 
-         etsysPolicyProfilePortVid will be applied to all untagged 
-         frames arriving on the port that do not match any of the 
-         policy classification rules. 
+         If a port has an active policy and the policy's
+         etsysPolicyProfilePortVidStatus is set to enabled(1), the
+         etsysPolicyProfilePortVid will be applied to all untagged
+         frames arriving on the port that do not match any of the
+         policy classification rules.
 
          Note that the 802.1Q PVID will still exist from a
-         management view but will NEVER be applied to traffic 
-         arriving on a port that has an active policy and enabled 
+         management view but will NEVER be applied to traffic
+         arriving on a port that has an active policy and enabled
          etsysPolicyProfilePortVid defined, since policy is applied
          to traffic arriving on the port prior to the assignment of
          a VLAN using the 802.1Q PVID.
 
-         The behavior of an enabled etsysPolicyProfilePortVid on 
-         any associated port SHALL be identical to the behavior of 
+         The behavior of an enabled etsysPolicyProfilePortVid on
+         any associated port SHALL be identical to the behavior of
          the dot1qPvid upon that port.
-         
+
          Note that two special, otherwise illegal, values of the
          etsysPolicyProfilePortVid are used in defining the default
          forwarding actions, to be used in conjunction with policy
          classification rules, and do not result in packet tagging:
-         
-             0      Indicates that the default forwarding action 
-                    is to drop all packets that do not match an 
+
+             0      Indicates that the default forwarding action
+                    is to drop all packets that do not match an
                     explicit rule.
-                    
+
              4095   Indicates that the default forwarding action
                     is to forward any packets not matching any
                     explicit rules."
@@ -984,19 +984,19 @@ etsysPolicyProfilePortVid OBJECT-TYPE
     ::= { etsysPolicyProfileEntry 5 }
 
 etsysPolicyProfilePriorityStatus OBJECT-TYPE
-    SYNTAX      EnabledStatus 
+    SYNTAX      EnabledStatus
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "This object defines whether a Class of Service
-         should be applied to ports which have this profile 
+         should be applied to ports which have this profile
          active.
 
-         enabled(1) means that any port with this policy active 
-         will have etsysPolicyProfilePriority applied to this port. 
+         enabled(1) means that any port with this policy active
+         will have etsysPolicyProfilePriority applied to this port.
 
-         disabled(2) means that etsysPolicyProfilePriority will 
-         not be applied.  When this object is set to disabled(2) 
+         disabled(2) means that etsysPolicyProfilePriority will
+         not be applied.  When this object is set to disabled(2)
          the value of etsysPolicyProfilePriority has no meaning."
     DEFVAL { disabled }
     ::= { etsysPolicyProfileEntry 6 }
@@ -1009,21 +1009,21 @@ etsysPolicyProfilePriority OBJECT-TYPE
         "This object defines the default ingress Class of Service
          of this profile.
 
-         If a port has an active policy and the policy's 
-         etsysPolicyProfilePriorityStatus is set to enabled(1), the 
-         etsysPolicyProfilePriority  will be applied to all packets 
-         arriving on the port that do not match any of the policy 
-         classification rules. 
+         If a port has an active policy and the policy's
+         etsysPolicyProfilePriorityStatus is set to enabled(1), the
+         etsysPolicyProfilePriority  will be applied to all packets
+         arriving on the port that do not match any of the policy
+         classification rules.
 
-         Note that dot1dPortDefaultUserPriority will still exist 
-         from a management view but will NEVER be applied to traffic 
-         arriving on a port that has an active policy and enabled 
+         Note that dot1dPortDefaultUserPriority will still exist
+         from a management view but will NEVER be applied to traffic
+         arriving on a port that has an active policy and enabled
          etsysPolicyProfilePriority defined, since policy is applied
          to traffic arriving on the port prior to the assignment of
          a priority using dot1dPortDefaultUserPriority.
 
-         The behavior of an enabled etsysPolicyProfilePriority on 
-         any associated port SHALL be identical to the behavior of 
+         The behavior of an enabled etsysPolicyProfilePriority on
+         any associated port SHALL be identical to the behavior of
          the dot1dPortDefaultUserPriority upon that port."
     REFERENCE
         "RFC2674 (P-BRIDGE-MIB) - dot1dPortPriorityTable"
@@ -1040,12 +1040,12 @@ etsysPolicyProfileEgressVlans OBJECT-TYPE
          to a bit in this object affect the per-port per-VLAN
          Registrar control for Registration Fixed for the relevant
          GVRP state machine on each port for which this policy is
-         active.  A VLAN may not be added in this set if it is 
+         active.  A VLAN may not be added in this set if it is
          already a member of the set of VLANs in
-         etsysPolicyProfileForbiddenVlans.  This object is 
+         etsysPolicyProfileForbiddenVlans.  This object is
          superseded on a per-port per-VLAN basis by any 'set' bits
-         in dot1qVlanStaticEgressPorts and 
-         dot1qVlanForbiddenEgressPorts. The default value of this 
+         in dot1qVlanStaticEgressPorts and
+         dot1qVlanForbiddenEgressPorts. The default value of this
          object is a string of zeros."
     ::= { etsysPolicyProfileEntry 8 }
 
@@ -1056,13 +1056,13 @@ etsysPolicyProfileForbiddenVlans OBJECT-TYPE
     DESCRIPTION
         "The set of VLANs which are prohibited by this policy to
          egress on ports for which this policy is active. Changes
-         to this object that cause a port to be included or 
+         to this object that cause a port to be included or
          excluded affect the per-port per-VLAN Registrar control
-         for Registration Forbidden for the relevant GVRP state 
+         for Registration Forbidden for the relevant GVRP state
          machine on each port for which this policy is active. A
-         VLAN may not be added in this set if it is already a 
+         VLAN may not be added in this set if it is already a
          member of the set of VLANs in etsysPolicyProfileEgressVlans.
-         This object is superseded on a per-port per-VLAN basis by 
+         This object is superseded on a per-port per-VLAN basis by
          any 'set' bits in the dot1qVlanStaticEgressPorts and
          dot1qVlanForbiddenEgressPorts.  The default value of this
          object is a string of zeros."
@@ -1074,7 +1074,7 @@ etsysPolicyProfileUntaggedVlans OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The set of VLANs which should transmit egress packets as
-         untagged on ports for which this policy is active. This 
+         untagged on ports for which this policy is active. This
          object is superseded on a per-port per-VLAN basis by any
          'set' bits in dot1qVlanStaticUntaggedPorts."
     ::= { etsysPolicyProfileEntry 10 }
@@ -1085,8 +1085,8 @@ etsysPolicyProfileOverwriteTCI OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "If set, the information contained within the TCI field of
-         inbound, tagged packets will not be used by the device after 
-         the ingress classification stage of packet relay.  The net 
+         inbound, tagged packets will not be used by the device after
+         the ingress classification stage of packet relay.  The net
          effect will be that the TCI information may be used to classify
          the packet, but will be overwritten (and ignored) by subsequent
          stages of packet relay."
@@ -1098,14 +1098,14 @@ etsysPolicyProfileRulePrecedence OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "Each octet will contain a single value representing the rule 
-         type to be matched against, defined by the 
-         PolicyClassificationRuleType textual convention.  When read, 
-         will return the currently operating rule matching precedence, 
-         ordered from first consulted (in the first octet) to last 
-         consulted (in the last octet). A set of a  single octet of 
-         0x00 will result in a reversion to the default precedence 
-         ordering.  A set of any other values will result in the 
+        "Each octet will contain a single value representing the rule
+         type to be matched against, defined by the
+         PolicyClassificationRuleType textual convention.  When read,
+         will return the currently operating rule matching precedence,
+         ordered from first consulted (in the first octet) to last
+         consulted (in the last octet). A set of a  single octet of
+         0x00 will result in a reversion to the default precedence
+         ordering.  A set of any other values will result in the
          specified rule types being matched in the order specified,
          followed by the remaining rules, in default precedence order."
     ::= { etsysPolicyProfileEntry 12 }
@@ -1115,9 +1115,9 @@ etsysPolicyProfileVlanRFC3580Mappings OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The set of VLANs which are currently being mapped onto this 
-         policy profile by the etsysPolicyRFC3580MapTable.  This only 
-         refers to the mapping of vlan-tunnel-attributes returned from 
+        "The set of VLANs which are currently being mapped onto this
+         policy profile by the etsysPolicyRFC3580MapTable.  This only
+         refers to the mapping of vlan-tunnel-attributes returned from
          RADIUS in an RFC3580 context."
     ::= { etsysPolicyProfileEntry 13 }
 
@@ -1129,8 +1129,8 @@ etsysPolicyProfileMirrorIndex OBJECT-TYPE
         "A reference to a packet mirror destination (defined elsewhere).
 
          A value of (-1) indicates no mirror is specified, but a mirror is
-         not explicitly prohibitted.  
-         
+         not explicitly prohibitted.
+
          A value of (0) indicates that mirroring is explicitly prohibitted,
          unless a higher precedence source (a rule) has specified a mirror."
     DEFVAL { -1 }
@@ -1138,7 +1138,7 @@ etsysPolicyProfileMirrorIndex OBJECT-TYPE
 
 etsysPolicyProfileAuditSyslogEnable OBJECT-TYPE
     SYNTAX      EnabledStatus
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "Enables the sending of a syslog message if no rule bound to this
@@ -1148,7 +1148,7 @@ etsysPolicyProfileAuditSyslogEnable OBJECT-TYPE
 
 etsysPolicyProfileAuditTrapEnable OBJECT-TYPE
     SYNTAX      EnabledStatus
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "Enables the sending of a SNMP NOTIFICATION if no rule bound to this
@@ -1161,8 +1161,8 @@ etsysPolicyProfileDisablePort OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "Will set the ifOperStatus of the port, on which the frame 
-         which used this profile was received, to disable, if 
+        "Will set the ifOperStatus of the port, on which the frame
+         which used this profile was received, to disable, if
          if no rule bound to this profile has prohibited it."
     DEFVAL { disabled }
     ::= { etsysPolicyProfileEntry 17 }
@@ -1173,7 +1173,7 @@ etsysPolicyProfileUsageList OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When read, a set bit indicates that this profile was used to
-         send a syslog or trap message for corresponding port.  When set, 
+         send a syslog or trap message for corresponding port.  When set,
          the native PortList will be bit-wise AND'ed with the set PortList,
          allowing the agent to clear the usage indication."
     ::= { etsysPolicyProfileEntry 18 }
@@ -1182,22 +1182,22 @@ etsysPolicyProfileFstIndex OBJECT-TYPE
     SYNTAX      Integer32 (0|1..255)
     MAX-ACCESS  read-create
     STATUS      current
-    DESCRIPTION 
+    DESCRIPTION
         "A reference to a Flow Setup Throttling (FST) class as defined by
          the etsysFlowLimitingClassType object.
 
-         A value of (0) indicates no FST class is specified."  
-    REFERENCE 
+         A value of (0) indicates no FST class is specified."
+    REFERENCE
         "ENTERASYS-FLOW-LIMITING-MIB"
     DEFVAL { 0 }
-    ::= { etsysPolicyProfileEntry 19 } 
+    ::= { etsysPolicyProfileEntry 19 }
 
 -- -------------------------------------------------------------
--- etsysPolicyClassification group        
+-- etsysPolicyClassification group
 -- -------------------------------------------------------------
 
 etsysPolicyClassificationMaxEntries OBJECT-TYPE
-    SYNTAX      Integer32 (1..65535) 
+    SYNTAX      Integer32 (1..65535)
     MAX-ACCESS  read-only
     STATUS      deprecated
     DESCRIPTION
@@ -1210,12 +1210,12 @@ etsysPolicyClassificationNumEntries OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      deprecated
     DESCRIPTION
-        "The current number of entries in the 
+        "The current number of entries in the
           etsysPolicyClassificationTable."
     ::= { etsysPolicyClassification 2 }
 
 etsysPolicyClassificationLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      deprecated
     DESCRIPTION
@@ -1228,21 +1228,21 @@ etsysPolicyClassificationTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      deprecated
     DESCRIPTION
-        "A table containing reference OIDs to entries within the 
+        "A table containing reference OIDs to entries within the
          classification tables.
 
-         These classification tables include but may not be limited 
+         These classification tables include but may not be limited
          to:
 
                   ctPriClassifyTable
-                  ctVlanClassifyTable 
+                  ctVlanClassifyTable
                   ctRatePolicyingConfigTable
 
          This table is used to map a list of classification rules to
          an instance of the etsysPolicyProfileTable."
     REFERENCE
-        "CTRON-PRIORITY-CLASSIFY-MIB, 
-         CTRON-VLAN-CLASSIFY-MIB, 
+        "CTRON-PRIORITY-CLASSIFY-MIB,
+         CTRON-VLAN-CLASSIFY-MIB,
          CTRON-RATE-POLICING-MIB"
     ::= { etsysPolicyClassification 4 }
 
@@ -1255,7 +1255,7 @@ etsysPolicyClassificationEntry OBJECT-TYPE
          etsysPolicyClassificationTable.  Entries within this table
          MUST be considered non-volatile and MUST be maintained
          across entity resets."
-    INDEX    { etsysPolicyProfileIndex, 
+    INDEX    { etsysPolicyProfileIndex,
                etsysPolicyClassificationIndex }
     ::= { etsysPolicyClassificationTable 1 }
 
@@ -1278,7 +1278,7 @@ etsysPolicyClassificationIndex OBJECT-TYPE
     DESCRIPTION
         "Administratively assigned unique value, greater than zero.
 
-         Each etsysPolicyClassificationIndex instance MUST be unique 
+         Each etsysPolicyClassificationIndex instance MUST be unique
          within the scope of its associated etsysPolicyProfileIndex."
     ::= { etsysPolicyClassificationEntry 1 }
 
@@ -1287,11 +1287,11 @@ etsysPolicyClassificationOID OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      deprecated
     DESCRIPTION
-        "This object follows the RowPointer textual convention and 
+        "This object follows the RowPointer textual convention and
          is an OID reference to a classification rule.
 
          This object MUST NOT be modifiable while this entry's
-         etsysPolicyClassificationStatus object has a value of 
+         etsysPolicyClassificationStatus object has a value of
          active(1)."
     ::= { etsysPolicyClassificationEntry 2 }
 
@@ -1302,25 +1302,25 @@ etsysPolicyClassificationRowStatus OBJECT-TYPE
     DESCRIPTION
         "The status of this row.
 
-         When set to active(1) this entry's classification rule, as 
-         referenced by etsysPolicyClassificationOID, becomes one of 
+         When set to active(1) this entry's classification rule, as
+         referenced by etsysPolicyClassificationOID, becomes one of
          its associated policy's set of rules.
 
-         When this entry's associated policy, as defined by 
+         When this entry's associated policy, as defined by
          etsysPolicyProfileIndex, is active and assigned to a port
          through the etsysPortPolicyProfileTable or to a station
-         through the etsysStationPolicyProfileTabbe, this 
+         through the etsysStationPolicyProfileTabbe, this
          classification rule will be applied to the port or station.
-         The exact behavior of this application depends upon the 
+         The exact behavior of this application depends upon the
          classification rule.
 
          When this object is set to notInService(2) or notReady(3)
          this entry is not considered one of its associated policy's
-         set of rules and this classification rule will not be 
+         set of rules and this classification rule will not be
          applied.
 
-         An entry MAY NOT be set to active(1) unless this row's 
-         etsysPolicyClassificationOID is set to a valid 
+         An entry MAY NOT be set to active(1) unless this row's
+         etsysPolicyClassificationOID is set to a valid
          classification rule."
     ::= { etsysPolicyClassificationEntry 3 }
 
@@ -1335,7 +1335,7 @@ etsysPolicyClassificationIngressList OBJECT-TYPE
 
 
 -- -------------------------------------------------------------
--- etsysPortPolicyProfile group 
+-- etsysPortPolicyProfile group
 -- -------------------------------------------------------------
 
 etsysPortPolicyProfileLastChange OBJECT-TYPE
@@ -1354,7 +1354,7 @@ etsysPortPolicyProfileTable OBJECT-TYPE
     STATUS      deprecated
 
     DESCRIPTION
-        "This table allows for a one to one mapping between a 
+        "This table allows for a one to one mapping between a
          dot1dBasePort or an ifIndex and a Policy Profile."
     ::= { etsysPortPolicyProfile 2 }
 
@@ -1364,7 +1364,7 @@ etsysPortPolicyProfileEntry OBJECT-TYPE
     STATUS      deprecated
     DESCRIPTION
         "Describes a particular entry within the
-         etsysPortPolicyProfileTable.  Entries within this 
+         etsysPortPolicyProfileTable.  Entries within this
          table MUST be considered non-volatile and MUST be maintained
          across entity resets."
     INDEX  { etsysPortPolicyProfileIndexType,
@@ -1384,12 +1384,12 @@ EtsysPortPolicyProfileEntry ::=
     }
 
 etsysPortPolicyProfileIndexType OBJECT-TYPE
-    SYNTAX      PortPolicyProfileIndexTypeTC 
+    SYNTAX      PortPolicyProfileIndexTypeTC
     MAX-ACCESS  not-accessible
     STATUS      deprecated
     DESCRIPTION
-        "This object defines the specific type of port this entry 
-         represents." 
+        "This object defines the specific type of port this entry
+         represents."
     ::= { etsysPortPolicyProfileEntry 1 }
 
 etsysPortPolicyProfileIndex OBJECT-TYPE
@@ -1406,17 +1406,17 @@ etsysPortPolicyProfileAdminID OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      deprecated
     DESCRIPTION
-        "This object represents the desired Policy Profile for this 
+        "This object represents the desired Policy Profile for this
          dot1dBasePort or this ifIndex.
 
-         Setting this object to any value besides zero (0) should, 
-         if possible, immediately place this entry's dot1dBasePort 
+         Setting this object to any value besides zero (0) should,
+         if possible, immediately place this entry's dot1dBasePort
          or ifIndex into the given Policy Profile.
 
          This object and etsysPortPolicyProfileOperID may not be the
          same if this object is set to a Policy (i.e. an instance of
          the etsysPolicyProfileTable) which is not in an active state
-         or if the etsysPortPolicyProfileOperID has been set by an 
+         or if the etsysPortPolicyProfileOperID has been set by an
          underlying security protocol such as RADIUS."
     DEFVAL { 0 }
     ::= { etsysPortPolicyProfileEntry 3 }
@@ -1427,13 +1427,13 @@ etsysPortPolicyProfileOperID OBJECT-TYPE
     STATUS      deprecated
     DESCRIPTION
         "This object is the current policy which is being applied to
-         this entry's dot1dBasePort. A value of zero(0) indicates 
-         there is no policy being applied to this dot1dBasePort or 
+         this entry's dot1dBasePort. A value of zero(0) indicates
+         there is no policy being applied to this dot1dBasePort or
          this ifIndex.
 
-         If the value of this object has been set by an underlying 
+         If the value of this object has been set by an underlying
          security protocol such as RADIUS, sets to this entry's
-         etsysPortPolicyProfileAdminID MUST NOT change the value 
+         etsysPortPolicyProfileAdminID MUST NOT change the value
          of this object until such time as the security protocol
          releases this object by setting it to a value of zero (0)."
     ::= { etsysPortPolicyProfileEntry 4 }
@@ -1443,7 +1443,7 @@ etsysPortPolicyProfileSummaryTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This table provides aggregate port information on a per 
+        "This table provides aggregate port information on a per
          policy, per port type basis."
     ::= { etsysPortPolicyProfile 3 }
 
@@ -1452,8 +1452,8 @@ etsysPortPolicyProfileSummaryEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-         "Conceptually defines a particular entry within the 
-          etsysPortPolicyProfileSummaryTable." 
+         "Conceptually defines a particular entry within the
+          etsysPortPolicyProfileSummaryTable."
     INDEX  { etsysPolicyProfileIndex,
              etsysPortPolicyProfileSummaryIndexType }
     ::= { etsysPortPolicyProfileSummaryTable 1 }
@@ -1471,12 +1471,12 @@ EtsysPortPolicyProfileSummaryEntry ::=
     }
 
 etsysPortPolicyProfileSummaryIndexType OBJECT-TYPE
-    SYNTAX      PortPolicyProfileIndexTypeTC 
+    SYNTAX      PortPolicyProfileIndexTypeTC
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This object defines the specific type of port this entry 
-         represents." 
+        "This object defines the specific type of port this entry
+         represents."
     ::= { etsysPortPolicyProfileSummaryEntry 1 }
 
 etsysPortPolicyProfileSummaryAdminID OBJECT-TYPE
@@ -1484,9 +1484,9 @@ etsysPortPolicyProfileSummaryAdminID OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "An aggregate list of all Ports currently supporting 
+        "An aggregate list of all Ports currently supporting
          rules which assign this profileIndex through
-         administrative means.  Rules of this type have a 
+         administrative means.  Rules of this type have a
          valid etsysPolicyRuleResult2 action and a
          profileIndex of 0."
     ::= { etsysPortPolicyProfileSummaryEntry 2 }
@@ -1496,9 +1496,9 @@ etsysPortPolicyProfileSummaryOperID OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "An aggregate list of all Ports currently supporting 
+        "An aggregate list of all Ports currently supporting
          rules which assign this profileIndex through either
-         an administrative or dynamic means.  The profileId 
+         an administrative or dynamic means.  The profileId
          which will be assigned operationally, as frames are
          handled are too be reported here."
     ::= { etsysPortPolicyProfileSummaryEntry 3 }
@@ -1508,19 +1508,19 @@ etsysPortPolicyProfileSummaryDynamicID OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "An aggregate list of all Ports currently supporting 
-         rules which assign this profileIndex through a 
+        "An aggregate list of all Ports currently supporting
+         rules which assign this profileIndex through a
          dynamic means.  For example the profileIndex returned
          via a successful 802.1X supplicant authentication."
     ::= { etsysPortPolicyProfileSummaryEntry 4 }
 
 
 -- -------------------------------------------------------------
--- etsysStationPolicyProfile group 
+-- etsysStationPolicyProfile group
 -- -------------------------------------------------------------
 
 etsysStationPolicyProfileMaxEntries OBJECT-TYPE
-    SYNTAX      Integer32 (1..65535) 
+    SYNTAX      Integer32 (1..65535)
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -1535,7 +1535,7 @@ etsysStationPolicyProfileNumEntries OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The current number of entries in the 
+        "The current number of entries in the
           etsysStationPolicyProfileTable."
     ::= { etsysStationPolicyProfile 2 }
 
@@ -1553,7 +1553,7 @@ etsysStationPolicyProfileTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This table allows for a one to one mapping between a 
+        "This table allows for a one to one mapping between a
          station's identifying address and a Policy Profile."
     ::= { etsysStationPolicyProfile 4 }
 
@@ -1563,8 +1563,8 @@ etsysStationPolicyProfileEntry OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "Describes a particular entry within the
-         etsysStationPolicyProfileTable.  Entries within this 
-         table MUST be considered non-volatile and MUST be 
+         etsysStationPolicyProfileTable.  Entries within this
+         table MUST be considered non-volatile and MUST be
          maintained across entity resets."
     INDEX  { etsysStationPolicyProfileIndex }
     ::= { etsysStationPolicyProfileTable 1 }
@@ -1576,15 +1576,15 @@ EtsysStationPolicyProfileEntry ::=
         etsysStationIdentifierType
              StationAddressType,
         etsysStationIdentifier
-             StationAddress,     
+             StationAddress,
         etsysStationPolicyProfileOperID
-             PolicyProfileIDTC,      
+             PolicyProfileIDTC,
         etsysStationPolicyProfilePortType
              PortPolicyProfileIndexTypeTC,
         etsysStationPolicyProfilePortID
              Integer32
        }
-       
+
 etsysStationPolicyProfileIndex OBJECT-TYPE
     SYNTAX      Integer32 (1..2147483647)
     MAX-ACCESS  not-accessible
@@ -1598,9 +1598,9 @@ etsysStationIdentifierType OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-       "Indicates the type of station identifying address contained 
+       "Indicates the type of station identifying address contained
        in etsysStationIdentifier."
-    ::= { etsysStationPolicyProfileEntry 3 }   
+    ::= { etsysStationPolicyProfileEntry 3 }
 
 etsysStationIdentifier OBJECT-TYPE
     SYNTAX      StationAddress
@@ -1608,37 +1608,37 @@ etsysStationIdentifier OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "A value which represents a unique MAC Address, IP Address,
-        or other identifying address for a station, or other logical 
-        and authenticatable sub-entity within a station, connected 
+        or other identifying address for a station, or other logical
+        and authenticatable sub-entity within a station, connected
         to a port."
     ::= { etsysStationPolicyProfileEntry 4 }
-  
+
 etsysStationPolicyProfileOperID OBJECT-TYPE
     SYNTAX      PolicyProfileIDTC
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "This object is the current policy which is being applied to
-         this entry's MAC Address. A value of zero(0) indicates 
+         this entry's MAC Address. A value of zero(0) indicates
          there is no policy being applied to this MAC Address.
 
          The value of this object reflects either the setting from an
          underlying AAA service such as RADIUS, or the default setting
          based on the etsysPortPolicyProfileAdminID for the port on
          which the station is connected.
-         
+
          This object and the corresponding etsysPortPolicyProfileAdminID
-         will not be the same if this object has been set by an 
+         will not be the same if this object has been set by an
          underlying security protocol such as RADIUS."
     ::= { etsysStationPolicyProfileEntry 5 }
 
 etsysStationPolicyProfilePortType OBJECT-TYPE
-    SYNTAX      PortPolicyProfileIndexTypeTC 
+    SYNTAX      PortPolicyProfileIndexTypeTC
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "A textual convention that defines the specific type of port
-         designator the corresponding entry represents." 
+         designator the corresponding entry represents."
     ::= { etsysStationPolicyProfileEntry 6 }
 
 etsysStationPolicyProfilePortID OBJECT-TYPE
@@ -1652,14 +1652,14 @@ etsysStationPolicyProfilePortID OBJECT-TYPE
          object is for convenience in cross referencing stations to
          ports."
     ::= { etsysStationPolicyProfileEntry 7 }
-    
+
 
 -- ---------------------------------------------------------- --
--- etsysInvalidPolicyPolicy group 
+-- etsysInvalidPolicyPolicy group
 -- ---------------------------------------------------------- --
 
 etsysInvalidPolicyAction OBJECT-TYPE
-    SYNTAX        INTEGER  { 
+    SYNTAX        INTEGER  {
                             applyDefaultPolicy(1),
                             dropPackets(2),
                             forwardPackets(3)
@@ -1670,11 +1670,11 @@ etsysInvalidPolicyAction OBJECT-TYPE
         "Specifies the action that the edge device should take if asked
          to apply an invalid or unknown policy.
 
-             applyDefaultPolicy(1) - Ignore the result and search for 
+             applyDefaultPolicy(1) - Ignore the result and search for
                                      the next policy assignment rule.
              dropPackets(2)        - Block traffic.
-             forwardPackets(3)     - Forward traffic, as if no policy 
-                                     had been assigned (via 802.1D/Q 
+             forwardPackets(3)     - Forward traffic, as if no policy
+                                     had been assigned (via 802.1D/Q
                                      rules).
 
          Although dropPackets(2) is the most secure option, it may
@@ -1693,7 +1693,7 @@ etsysInvalidPolicyCount OBJECT-TYPE
 
 
 -- ---------------------------------------------------------- --
--- etsysDevicePolicyProfile group 
+-- etsysDevicePolicyProfile group
 -- ---------------------------------------------------------- --
 
 etsysDevicePolicyProfileDefault OBJECT-TYPE
@@ -1702,7 +1702,7 @@ etsysDevicePolicyProfileDefault OBJECT-TYPE
      STATUS     current
      DESCRIPTION
          "If this value is non-zero, the value indicates
-          the etsysPolicyProfileEntry (and its associated 
+          the etsysPolicyProfileEntry (and its associated
           etsysPolicyClassificationTable entries) which
           should be used by the device if the device is
           incapable of using the profile (or specific parts
@@ -1714,27 +1714,27 @@ etsysDevicePolicyProfileDefault OBJECT-TYPE
 
 
 -- ---------------------------------------------------------- --
--- etsysPolicyCapability group 
+-- etsysPolicyCapability group
 -- ---------------------------------------------------------- --
 
 etsysPolicyCapabilities OBJECT-TYPE
     SYNTAX      BITS  {
         supportsVLANForwarding(0),
-                       -- VLAN forwarding is supported on all 
-                       -- rule types supported by the device.      
+                       -- VLAN forwarding is supported on all
+                       -- rule types supported by the device.
 
         supportsPriority(1),
-                       -- classification rules are supported for 802.1p 
+                       -- classification rules are supported for 802.1p
                        -- priorities.
         supportsPermit(2),
-                       -- permit capability is supported on all 
+                       -- permit capability is supported on all
                        -- rule types supported by the device
-                       -- without having to specify a VLAN.       
+                       -- without having to specify a VLAN.
 
         supportsDeny(3),
                        -- deny capability is supported on all rule
                        -- types supported by the device without
-                       -- having to specify a VLAN.       
+                       -- having to specify a VLAN.
 
         supportsDeviceLevelPolicy(4),
                        -- a single device level policy is supported
@@ -1751,7 +1751,7 @@ etsysPolicyCapabilities OBJECT-TYPE
                        -- types.
 
         supportsTciOverwrite(6),
-                       -- supports the ability to overwrite the TCI 
+                       -- supports the ability to overwrite the TCI
                        -- information found in inbound, tagged frames.
 
         supportsRulesTable(7),
@@ -1759,7 +1759,7 @@ etsysPolicyCapabilities OBJECT-TYPE
 
         supportsRuleUseAccounting(8),
                        -- supports the ability to track classification
-                       -- rule use (and the etsysPolicyRuleUsageList).  
+                       -- rule use (and the etsysPolicyRuleUsageList).
 
         supportsRuleUseNotification(9),
                        -- supports the ability to send audit information
@@ -1767,7 +1767,7 @@ etsysPolicyCapabilities OBJECT-TYPE
                        -- frame.
 
         supportsCoSTable(10),
-                       -- supports the <MIB_NAME> as an action (in the 
+                       -- supports the <MIB_NAME> as an action (in the
                        -- stead of simple 802.1D Priority.
 
         supportsLongestPrefixRules(11),
@@ -1779,25 +1779,25 @@ etsysPolicyCapabilities OBJECT-TYPE
                        -- on a rule in the etsysPolicyRulesTable.
 
         supportsRuleUseAutoClearOnLink(13),
-                       -- supports the "auto clear on link up" object 
+                       -- supports the "auto clear on link up" object
                        -- related to rule use accounting.
 
         supportsRuleUseAutoClearOnInterval(14),
-                       -- supports the "auto clear interval " objects 
+                       -- supports the "auto clear interval " objects
                        -- related to rule use accounting.
 
         supportsRuleUseAutoClearOnProfile(15),
-                       -- supports the "auto clear profile" objects 
+                       -- supports the "auto clear profile" objects
                        -- related to rule use accounting.
 
         supportsPolicyRFC3580MapTable(16),
-                       -- supports RFC 3580 and policy simultaneously, 
-                       -- and thus supports the etsysPolicyRFC3580Map 
+                       -- supports RFC 3580 and policy simultaneously,
+                       -- and thus supports the etsysPolicyRFC3580Map
                        -- group.
 
         supportsPolicyEnabledTable(17),
                        -- supports the etsysPolicyEnabledTable which
-                       -- reports and controls the state of 
+                       -- reports and controls the state of
                        -- PolicyProfile assignment on the device.
 
         supportsMirror(18),
@@ -1807,8 +1807,8 @@ etsysPolicyCapabilities OBJECT-TYPE
                        -- supports the application of policy on egress.
 
         supportsProfileFst(20),
-                       -- supports per user Flow Setup Thresholding 
-                       -- via etsysPolicyProfileFstIndex               
+                       -- supports per user Flow Setup Thresholding
+                       -- via etsysPolicyProfileFstIndex
 
         supportsQuarantine(21)
                        -- supports quarantine
@@ -1824,12 +1824,12 @@ etsysPolicyCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 1 }
 
 etsysPolicyDynaPIDRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of dynamically assigning a profile to the 
+        the purpose of dynamically assigning a profile to the
         network traffic described by the bit.
         A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
@@ -1837,12 +1837,12 @@ etsysPolicyDynaPIDRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 2 }
 
 etsysPolicyAdminPIDRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of administratively assigning a profile to the 
+        the purpose of administratively assigning a profile to the
         network traffic described by the bit.
         A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
@@ -1850,7 +1850,7 @@ etsysPolicyAdminPIDRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 3 }
 
 etsysPolicyVlanRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
@@ -1863,7 +1863,7 @@ etsysPolicyVlanRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 4 }
 
 etsysPolicyCosRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
@@ -1876,12 +1876,12 @@ etsysPolicyCosRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 5 }
 
 etsysPolicyDropRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of discarding the network traffic described by 
+        the purpose of discarding the network traffic described by
         the bit.
         A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
@@ -1889,12 +1889,12 @@ etsysPolicyDropRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 6 }
 
 etsysPolicyForwardRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of forwarding the network traffic described by 
+        the purpose of forwarding the network traffic described by
         the bit.
         A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
@@ -1902,7 +1902,7 @@ etsysPolicyForwardRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 7 }
 
 etsysPolicySyslogRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
@@ -1915,25 +1915,25 @@ etsysPolicySyslogRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 8 }
 
 etsysPolicyTrapRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of issuing an SNMP notify (trap) messages when the 
-        rule is used to identify the network traffic described by the 
+        the purpose of issuing an SNMP notify (trap) messages when the
+        rule is used to identify the network traffic described by the
         bit.  A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
         0, indicates the described functionality is not supported."
    ::= { etsysPolicyCapability 9 }
 
 etsysPolicyDisablePortRuleCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
        "A list of rule types which are supported by this device for
-        the purpose of disabling the ingress port identified when the 
+        the purpose of disabling the ingress port identified when the
         rule matches the network traffic described by the bit.
         A set bit, with the value 1, indicates support for the
         described functionality.  A clear bit, with the value
@@ -1941,13 +1941,13 @@ etsysPolicyDisablePortRuleCapabilities OBJECT-TYPE
    ::= { etsysPolicyCapability 10 }
 
 etsysPolicySupportedPortList OBJECT-TYPE
-   SYNTAX      PortList 
+   SYNTAX      PortList
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
-       "The list ports which support policy profile assignment (i.e. 
-        the ports which _do_ policy).  This object may be useful to 
-        management entities which desire to scope action to only those 
+       "The list ports which support policy profile assignment (i.e.
+        the ports which _do_ policy).  This object may be useful to
+        management entities which desire to scope action to only those
         ports which support policy.  A port which appears in this list,
         must support, at minimum, the assignment of a policy profile to
         all traffic ingressing the port."
@@ -1958,10 +1958,10 @@ etsysPolicyEnabledTable      OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "This table allows for the configuration of policy profile 
+        "This table allows for the configuration of policy profile
          assignment methods, per port, including the ability to disable
-         policy profile assignment, per port.  In addition, a ports 
-         capabilities, with respect to policy profile assignment are 
+         policy profile assignment, per port.  In addition, a ports
+         capabilities, with respect to policy profile assignment are
          reported."
    ::= { etsysPolicyCapability 12 }
 
@@ -1990,8 +1990,8 @@ etsysPolicyEnabledSupportedRuleTypes OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The list of rule types which the devices supports for the 
-         purpose of assigning policy profiles to network traffic 
+        "The list of rule types which the devices supports for the
+         purpose of assigning policy profiles to network traffic
          ingressing this dot1dBasePort."
     ::= { etsysPolicyEnabledTableEntry 1 }
 
@@ -2001,11 +2001,11 @@ etsysPolicyEnabledEnabledRuleTypes OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The list of rule types from which the device will assign policy
-         profiles to network traffic ingressing this dot1dBasePort.  
+         profiles to network traffic ingressing this dot1dBasePort.
          Rules which have a type not enumerated here must not be used to
-         assign policy profiles, but must still be used to interrogate 
+         assign policy profiles, but must still be used to interrogate
          the rule-set bound to the determined policy profile.
-         A set of all cleared bits will effectively disable policy in 
+         A set of all cleared bits will effectively disable policy in
          the port."
     ::= { etsysPolicyEnabledTableEntry 2 }
 
@@ -2015,7 +2015,7 @@ etsysPolicyEnabledEgressEnabled OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "Controls the enabling and disabling the application of policy
-         as packets egress the switching process on the dot1dBasePort 
+         as packets egress the switching process on the dot1dBasePort
          specified in the indexing."
     DEFVAL { disabled }
     ::= { etsysPolicyEnabledTableEntry 3 }
@@ -2026,7 +2026,7 @@ etsysPolicyRuleAttributeTable    OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "This table details each supported rule type attribute
-         for rule data length in bytes, rule data length in bits, 
+         for rule data length in bytes, rule data length in bits,
          and the maximum number of rules that may use that type."
     ::= { etsysPolicyCapability 13 }
 
@@ -2055,12 +2055,12 @@ etsysPolicyRuleAttributeByteLength OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This rule type's maximum length, in bytes of the 
-         etsysPolicyRuleData.  Devices supporting this object MUST 
-         allow sets for this rule data of any valid length up to and 
-         including the length value represented by this object. 
-         Management entities must also expect to read back the maximum 
-         data length for each type regardless of the length the data 
+        "This rule type's maximum length, in bytes of the
+         etsysPolicyRuleData.  Devices supporting this object MUST
+         allow sets for this rule data of any valid length up to and
+         including the length value represented by this object.
+         Management entities must also expect to read back the maximum
+         data length for each type regardless of the length the data
          was set with."
     ::= { etsysPolicyRuleAttributeTableEntry 1 }
 
@@ -2069,10 +2069,10 @@ etsysPolicyRuleAttributeBitLength OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "This rule type's maximum bit length for traffic data. This 
+        "This rule type's maximum bit length for traffic data. This
          value also represents the maximum mask that may be used for
          rule data. The mask MUST NOT exceed the rule data size. Masks
-         that exceed the data size shall be considered invalid and 
+         that exceed the data size shall be considered invalid and
          result in an SNMP set failure."
     ::= { etsysPolicyRuleAttributeTableEntry 2 }
 
@@ -2086,25 +2086,25 @@ etsysPolicyRuleAttributeMaxCreatable OBJECT-TYPE
     ::= { etsysPolicyRuleAttributeTableEntry 3 }
 
 etsysPolicyRuleTciOverwriteCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
         "A list of rule types which are supported by this device
-        for the purpose of overwriting the TCI in received packets described 
+        for the purpose of overwriting the TCI in received packets described
         by the bit. A set bit, with the value 1, indicates support
         for the described functionality.  A clear bit, with the
         value 0, indicates the described functionality is not
         supported."
    ::= { etsysPolicyCapability 14 }
-   
+
 etsysPolicyRuleMirrorCapabilities OBJECT-TYPE
-   SYNTAX      PolicyRulesSupported 
+   SYNTAX      PolicyRulesSupported
    MAX-ACCESS  read-only
    STATUS      current
    DESCRIPTION
         "A list of rule types which are supported by this device
-        for the purpose of mirroring the network traffic described 
+        for the purpose of mirroring the network traffic described
         by the bit. A set bit, with the value 1, indicates support
         for the described functionality.  A clear bit, with the
         value 0, indicates the described functionality is not
@@ -2119,17 +2119,17 @@ etsysPolicyRuleQuarantineCapabilities OBJECT-TYPE
         "A list of rule types which are supported by this device for
          the purpose of quarantining the user to a specified profile id
          when the rule is used to identify the network traffic described
-         by the bit.  A set bit, with the value of 1, indicates support for the 
-         described functionality.  A clear bit, with the value of 
+         by the bit.  A set bit, with the value of 1, indicates support for the
+         described functionality.  A clear bit, with the value of
          0, indicates the described functionality is not supported."
-    ::= { etsysPolicyCapability 16 }   
+    ::= { etsysPolicyCapability 16 }
 
 -- -------------------------------------------------------------
--- etsysPolicyMap group 
+-- etsysPolicyMap group
 -- -------------------------------------------------------------
 
 etsysPolicyMapMaxEntries OBJECT-TYPE
-    SYNTAX      Integer32 (1..65535) 
+    SYNTAX      Integer32 (1..65535)
     MAX-ACCESS  read-only
     STATUS      obsolete
     DESCRIPTION
@@ -2137,7 +2137,7 @@ etsysPolicyMapMaxEntries OBJECT-TYPE
     ::= { etsysPolicyMap 1 }
 
 etsysPolicyMapNumEntries OBJECT-TYPE
-    SYNTAX      Gauge32 
+    SYNTAX      Gauge32
     MAX-ACCESS  read-only
     STATUS      obsolete
     DESCRIPTION
@@ -2145,7 +2145,7 @@ etsysPolicyMapNumEntries OBJECT-TYPE
     ::= { etsysPolicyMap 2 }
 
 etsysPolicyMapLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      obsolete
     DESCRIPTION
@@ -2153,7 +2153,7 @@ etsysPolicyMapLastChange OBJECT-TYPE
     ::= { etsysPolicyMap 3 }
 
 etsysPolicyMapPvidOverRide OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-write
     STATUS      obsolete
     DESCRIPTION
@@ -2161,7 +2161,7 @@ etsysPolicyMapPvidOverRide OBJECT-TYPE
     ::= { etsysPolicyMap 4 }
 
 etsysPolicyMapUnknownPvidPolicy OBJECT-TYPE
-     SYNTAX      INTEGER { 
+     SYNTAX      INTEGER {
                            denyAccess(1),
                            applyDefaultPolicy(2),
                            applyPvid(3)
@@ -2191,16 +2191,16 @@ etsysPolicyMapEntry OBJECT-TYPE
 
 EtsysPolicyMapEntry ::=
     SEQUENCE {
-        etsysPolicyMapIndex   
+        etsysPolicyMapIndex
              Integer32,
-        etsysPolicyMapRowStatus      
+        etsysPolicyMapRowStatus
              RowStatus,
          etsysPolicyMapStartVid
              Unsigned32,
         etsysPolicyMapEndVid
              Unsigned32,
         etsysPolicyMapPolicyIndex
-             Integer32     
+             Integer32
               }
 
 etsysPolicyMapIndex OBJECT-TYPE
@@ -2212,7 +2212,7 @@ etsysPolicyMapIndex OBJECT-TYPE
     ::= { etsysPolicyMapEntry 1 }
 
 etsysPolicyMapRowStatus OBJECT-TYPE
-    SYNTAX      RowStatus 
+    SYNTAX      RowStatus
     MAX-ACCESS  read-create
     STATUS      obsolete
     DESCRIPTION
@@ -2220,7 +2220,7 @@ etsysPolicyMapRowStatus OBJECT-TYPE
     ::= { etsysPolicyMapEntry 2 }
 
 etsysPolicyMapStartVid OBJECT-TYPE
-    SYNTAX      Unsigned32 (0..65535) 
+    SYNTAX      Unsigned32 (0..65535)
     MAX-ACCESS  read-create
     STATUS      obsolete
     DESCRIPTION
@@ -2228,7 +2228,7 @@ etsysPolicyMapStartVid OBJECT-TYPE
     ::= { etsysPolicyMapEntry 3 }
 
 etsysPolicyMapEndVid OBJECT-TYPE
-    SYNTAX      Unsigned32 (0..65535) 
+    SYNTAX      Unsigned32 (0..65535)
     MAX-ACCESS  read-create
     STATUS      obsolete
     DESCRIPTION
@@ -2245,11 +2245,11 @@ etsysPolicyMapPolicyIndex OBJECT-TYPE
 
 
 -- -------------------------------------------------------------
--- etsysPolicyRules group        
+-- etsysPolicyRules group
 -- -------------------------------------------------------------
 
 etsysPolicyRulesMaxEntries OBJECT-TYPE
-    SYNTAX      Integer32 (1..65535) 
+    SYNTAX      Integer32 (1..65535)
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -2262,12 +2262,12 @@ etsysPolicyRulesNumEntries OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The current number of entries in the 
+        "The current number of entries in the
           etsysPolicyRulesTable."
     ::= { etsysPolicyRules 2 }
 
 etsysPolicyRulesLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -2276,29 +2276,29 @@ etsysPolicyRulesLastChange OBJECT-TYPE
     ::= { etsysPolicyRules 3 }
 
 etsysPolicyRulesAccountingEnable OBJECT-TYPE
-    SYNTAX      EnabledStatus 
+    SYNTAX      EnabledStatus
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Controls the collection of rule usage statistics.  If 
+        "Controls the collection of rule usage statistics.  If
          disabled, no usage statistics are gathered and no auditing
-         messages will be sent.  When enabled, rule will gather 
-         usage statistics, and auditing messages will be sent, if 
+         messages will be sent.  When enabled, rule will gather
+         usage statistics, and auditing messages will be sent, if
          enabled for a given rule."
     DEFVAL { disabled }
     ::= { etsysPolicyRules 4 }
 
 etsysPolicyRulesPortDisabledList OBJECT-TYPE
     SYNTAX      PortList
-    MAX-ACCESS  read-write 
+    MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "A portlist containing bits representing the dot1dBridgePorts 
+        "A portlist containing bits representing the dot1dBridgePorts
          which have been disabled via the mechanism described in the
-         etsysPolicyRuleDisablePort leaf.  A set bit indicates a 
+         etsysPolicyRuleDisablePort leaf.  A set bit indicates a
          disabled port.
 
-         Ports may be enabled by performing a set with the 
+         Ports may be enabled by performing a set with the
          corresponding bit cleared.  Bits which are set will
          be ignored during the set operation."
     ::= { etsysPolicyRules 5 }
@@ -2315,14 +2315,14 @@ etsysPolicyRuleTable OBJECT-TYPE
         "A table containing rules bound to individual policies.  A
          Rule is comprised of three components, a unique description
          of the network traffic, an associated list of actions, and
-         an associated list of accounting and auditing controls and 
+         an associated list of accounting and auditing controls and
          information.
 
          The unique description of the network traffic, defined by a
-         PolicyClassificationRuleType together with a length, 
+         PolicyClassificationRuleType together with a length,
          matching data and a relevant bits field, port type,
          and port number (port number zero is reserved to mean any
-         port), and scoped by a etsysPolicyProfileIndex, is used 
+         port), and scoped by a etsysPolicyProfileIndex, is used
          as the table index."
     ::= { etsysPolicyRules 6 }
 
@@ -2335,7 +2335,7 @@ etsysPolicyRuleEntry OBJECT-TYPE
          etsysPolicyRuleTable.  Entries within this table
          MUST be considered non-volatile and MUST be maintained
          across entity resets."
-    INDEX    { etsysPolicyRuleProfileIndex, 
+    INDEX    { etsysPolicyRuleProfileIndex,
                etsysPolicyRuleType,
                etsysPolicyRuleData,
                etsysPolicyRulePrefixBits,
@@ -2399,11 +2399,11 @@ etsysPolicyRuleProfileIndex OBJECT-TYPE
     ::= { etsysPolicyRuleEntry 1 }
 
 etsysPolicyRuleType OBJECT-TYPE
-    SYNTAX      PolicyClassificationRuleType 
+    SYNTAX      PolicyClassificationRuleType
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The type of network traffic reference by the 
+        "The type of network traffic reference by the
          etsysPolicyRuleData."
     ::= { etsysPolicyRuleEntry 2 }
 
@@ -2412,7 +2412,7 @@ etsysPolicyRuleData OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The data pattern to match against, as defined by the 
+        "The data pattern to match against, as defined by the
          etsysPolicyRuleType, encoded in network-byte order."
     ::= { etsysPolicyRuleEntry 3 }
 
@@ -2421,8 +2421,8 @@ etsysPolicyRulePrefixBits OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The relevant number of bits defined by the 
-         etsysPolicyRuleData, to be used when matching against a 
+        "The relevant number of bits defined by the
+         etsysPolicyRuleData, to be used when matching against a
          frame, relevant bits are specified in longest-prefix-first
          style (left to right).  A value of zero carries the special
          meaning of all bits are relevant."
@@ -2455,21 +2455,21 @@ etsysPolicyRuleRowStatus OBJECT-TYPE
     DESCRIPTION
         "The status of this row.
 
-         When set to active(1) this entry's classification rule, as 
-         referenced by etsysPolicyRulesOID, becomes one of 
+         When set to active(1) this entry's classification rule, as
+         referenced by etsysPolicyRulesOID, becomes one of
          its associated policy's set of rules.
 
-         When this entry's associated policy, as defined by 
+         When this entry's associated policy, as defined by
          etsysPolicyRuleProfileIndex, is active and assigned to a port
          through the etsysPortPolicyProfileTable or to a station
-         through the etsysStationPolicyProfileTabbe, this 
+         through the etsysStationPolicyProfileTabbe, this
          classification rule will be applied to the port or station.
-         The exact behavior of this application depends upon the 
+         The exact behavior of this application depends upon the
          classification rule.
 
          When this object is set to notInService(2) or notReady(3)
          this entry is not considered one of its associated policy's
-         set of rules and this classification rule will not be 
+         set of rules and this classification rule will not be
          applied."
     ::= { etsysPolicyRuleEntry 7 }
 
@@ -2480,7 +2480,7 @@ etsysPolicyRuleStorageType OBJECT-TYPE
     DESCRIPTION
         "The storage type of this row.
 
-         When set to volatile(1) this entry's classification rule, as 
+         When set to volatile(1) this entry's classification rule, as
          referenced by etsysPolicyRulesOID, will be removed (if
          present) from non-volatile storage.  Rows created dynamically
          by the device will typically report this as their default
@@ -2488,11 +2488,11 @@ etsysPolicyRuleStorageType OBJECT-TYPE
 
          When set to nonVolatile(1) this entry's classification rule, as
          referenced by etsysPolicyRulesOID, will be added to non-
-         volatile storage.  This is the default value for rows created 
+         volatile storage.  This is the default value for rows created
          as the result of external management.
 
-         Values of other(0), permanent(4), and readOnly(5) may not be 
-         set, although they may be returned for rows created by the 
+         Values of other(0), permanent(4), and readOnly(5) may not be
+         set, although they may be returned for rows created by the
          device."
     DEFVAL { nonVolatile }
     ::= { etsysPolicyRuleEntry 8 }
@@ -2503,37 +2503,37 @@ etsysPolicyRuleUsageList OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When read, a set bit indicates that this rule was used to
-         classify traffic on the corresponding port.  When set, the 
+         classify traffic on the corresponding port.  When set, the
          native PortList will be bit-wise AND'ed with the set PortList,
          allowing the agent to clear the usage indication."
     ::= { etsysPolicyRuleEntry 9 }
 
 etsysPolicyRuleResult1 OBJECT-TYPE
     SYNTAX      Integer32(-1|0|1..4094|4095)
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "If the etsysPolicyRuleProfileIndex is 0 then this field is
-         read-only and defines the profile ID which will be assigned 
+         read-only and defines the profile ID which will be assigned
          to frames matching this rule.  This is the dynamically assigned
-         value and may differ from the administratively configured 
+         value and may differ from the administratively configured
          value.
 
          If the etsysPolicyRuleProfileIndex is not 0 then this field is
-         read-create and defines the VLAN ID with which to mark a frame 
+         read-create and defines the VLAN ID with which to mark a frame
          matching this PolicyRule.
 
          Note that three special, otherwise illegal, values of the
          etsysPolicyRuleVlan are used in defining the forwarding action.
-         
-             -1     Indicates that no VLAN or forwarding behavior 
+
+             -1     Indicates that no VLAN or forwarding behavior
                     modification is desired. A rule will not be matched
                     against for the purpose of determining a marking
                     VID if this value is set.
-         
-             0      Indicates that the default forwarding action 
+
+             0      Indicates that the default forwarding action
                     is to drop the packets matching this rule.
-                    
+
              4095   Indicates that the default forwarding action
                     is to forward any packets matching this rule."
     DEFVAL { -1 }
@@ -2541,34 +2541,34 @@ etsysPolicyRuleResult1 OBJECT-TYPE
 
 etsysPolicyRuleResult2 OBJECT-TYPE
     SYNTAX      Integer32(-1|0..4095)
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "If the etsysPolicyRuleProfileIndex is 0 then this field is
          read-create and defines the profile ID which the managing
          entity desires assigned to frames matching this rule.  This
-         is the administrative value and may differ from the 
+         is the administrative value and may differ from the
          dynamically assigned active value.
 
          If the etsysPolicyRuleProfileIndex is not 0 then this field is
-         The CoS with which to mark a frame matching this 
+         The CoS with which to mark a frame matching this
          PolicyRule.
 
          Note that one special, otherwise illegal, values of the
-         etsysPolicyRuleCoS are used in defining the forwarding 
+         etsysPolicyRuleCoS are used in defining the forwarding
          action.
-         
-             -1     Indicates that no CoS or forwarding behavior 
-                    modification is desired. A rule will not be 
-                    matched against for the purpose of determining 
+
+             -1     Indicates that no CoS or forwarding behavior
+                    modification is desired. A rule will not be
+                    matched against for the purpose of determining
                     a CoS if this value is set."
-         
+
     DEFVAL { -1 }
     ::= { etsysPolicyRuleEntry 11 }
 
 etsysPolicyRuleAuditSyslogEnable OBJECT-TYPE
     SYNTAX      TriStateStatus
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "Controls the sending of a syslog message when a bit in the
@@ -2578,7 +2578,7 @@ etsysPolicyRuleAuditSyslogEnable OBJECT-TYPE
 
 etsysPolicyRuleAuditTrapEnable OBJECT-TYPE
     SYNTAX      TriStateStatus
-    MAX-ACCESS  read-create 
+    MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
         "Controls the sending of an SNMP NOTIFICATION when a bit in the
@@ -2592,19 +2592,19 @@ etsysPolicyRuleDisablePort OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "Controls the disabling of a port (ifOperStatus of the
-         corresponding ifIndex will be down) when a bit in the 
+         corresponding ifIndex will be down) when a bit in the
          etsysPolicyRuleUsageList transitions from 0 to 1.  When set to
-         enabled, the corresponding ifIndex will be disabled upon the 
+         enabled, the corresponding ifIndex will be disabled upon the
          transition."
     DEFVAL { disabled }
     ::= { etsysPolicyRuleEntry 14 }
 
 etsysPolicyRuleOperPid OBJECT-TYPE
     SYNTAX      Integer32(-1|0..4095)
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is 0 then this field 
+        "If the etsysPolicyRuleProfileIndex is 0 then this field
          contains the currently applied profile ID for frames
          matching this rule.  This may be either the administratively
          applied value or the dynamically applied value.
@@ -2613,7 +2613,7 @@ etsysPolicyRuleOperPid OBJECT-TYPE
          object will return -1.
 
          Note that one special value exists:
-         
+
              -1     Indicates that no profile ID is being applied
                     by this rule."
     DEFVAL { -1 }
@@ -2625,8 +2625,8 @@ etsysPolicyRuleOverwriteTCI OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "If set, the information contained within the TCI field of
-         inbound, tagged packets will not be used by the device after 
-         the ingress classification stage of packet relay.  The net 
+         inbound, tagged packets will not be used by the device after
+         the ingress classification stage of packet relay.  The net
          effect will be that the TCI information may be used to classify
          the packet, but will be overwritten (and ignored) by subsequent
          stages of packet relay."
@@ -2641,8 +2641,8 @@ etsysPolicyRuleMirrorIndex OBJECT-TYPE
         "A reference to a packet mirror destination (defined elsewhere).
 
          A value of (-1) indicates no mirror is specified, but a mirror is
-         not explicitly prohibitted.  
-         
+         not explicitly prohibitted.
+
          A value of (0) indicates that mirroring is explicitly prohibitted,
          unless a higher precedence rule has specified a mirror."
     DEFVAL { -1 }
@@ -2653,20 +2653,20 @@ etsysPolicyRuleQuarantineProfileIndex OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is not 0 this field defines 
-         the profile ID which will be used as the quarantine provisioning 
-         agents mux response for the mac address and port whose frames 
+        "If the etsysPolicyRuleProfileIndex is not 0 this field defines
+         the profile ID which will be used as the quarantine provisioning
+         agents mux response for the mac address and port whose frames
          matched this rule.
 
-         A value of (-1) indicates no quarantine profile is specified, 
-         but quarantine is not explicitly prohibitted.  
+         A value of (-1) indicates no quarantine profile is specified,
+         but quarantine is not explicitly prohibitted.
 
          A value of (0) indicates that quarantine is explicitly prohibited.
 
          If the etsysPolicyRuleProfileIndex is 0 this field is read only and
          will always return -1 when read."
     DEFVAL { -1 }
-    ::= { etsysPolicyRuleEntry 18 }     
+    ::= { etsysPolicyRuleEntry 18 }
 
 -- -------------------------------------------------------------
 -- etsysPolicyRulePortTable
@@ -2683,7 +2683,7 @@ etsysPolicyRulePortTable OBJECT-TYPE
          the rule which the instancing describes has been used.
          The agent may remove a row (and clear the used status)
          by setting the etsysPolicyRulePortHit leaf to False.
-         PolicyClassificationRuleType together with a length, 
+         PolicyClassificationRuleType together with a length,
          matching data and a relevant bits field, port type,
          and port number (port number zero is reserved to mean any
          port), scoped by a etsysPolicyRuleProfileIndex, and preceded by
@@ -2697,7 +2697,7 @@ etsysPolicyRulePortEntry OBJECT-TYPE
     DESCRIPTION
          "."
     INDEX    { dot1dBasePort,
-               etsysPolicyRuleProfileIndex, 
+               etsysPolicyRuleProfileIndex,
                etsysPolicyRuleType,
                etsysPolicyRuleData,
                etsysPolicyRulePrefixBits,
@@ -2717,19 +2717,19 @@ etsysPolicyRulePortHit OBJECT-TYPE
     DESCRIPTION
         "Every row will report a value of True, indicating that the
          Rule described by the instancing was used on the given
-         port.  An agent may be set this leaf to False to clear 
-         remove the row and clear the Rule Use bit for the 
+         port.  An agent may be set this leaf to False to clear
+         remove the row and clear the Rule Use bit for the
          specified Rule, on the given bridgePort."
     ::= { etsysPolicyRulePortEntry 1 }
 
 etsysPolicyRuleDynamicProfileAssignmentOverride OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
         "If true, administratively assigned profile assignment
          rules override dynamically assigned profiles assignments
-         for a given rule.  If false, the dynamically assigned 
+         for a given rule.  If false, the dynamically assigned
          value (typically created by a successful authentication
          attempt) overrides the administratively configured value.
          The agent may optionally implement this leaf as read-only."
@@ -2737,11 +2737,11 @@ etsysPolicyRuleDynamicProfileAssignmentOverride OBJECT-TYPE
     ::= { etsysPolicyRules 8 }
 
 etsysPolicyRuleDefaultDynamicSyslogStatus OBJECT-TYPE
-    SYNTAX      TriStateStatus 
+    SYNTAX      TriStateStatus
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If enabled(1), rules dynamically created will set 
+        "If enabled(1), rules dynamically created will set
          etsysPolicyRuleAuditSyslogEnable to enabled.  If
          disabled(2) a dynamically created rule will have
          etsysPolicyRuleAuditSyslogEnable set to disabled.
@@ -2750,11 +2750,11 @@ etsysPolicyRuleDefaultDynamicSyslogStatus OBJECT-TYPE
     ::= { etsysPolicyRules 9 }
 
 etsysPolicyRuleDefaultDynamicTrapStatus OBJECT-TYPE
-    SYNTAX      TriStateStatus 
+    SYNTAX      TriStateStatus
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If enabled(1), rules dynamically created will set 
+        "If enabled(1), rules dynamically created will set
          etsysPolicyRuleAuditTrapEnable to enabled.  If
          disabled(2) a dynamically created rule will have
          etsysPolicyRuleAuditTrapEnable set to disabled.
@@ -2767,15 +2767,15 @@ etsysPolicyRuleStatsAutoClearOnLink OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If set to enabled(1), when operstatus up is detected on any 
-          port the agent will clear the rule usage information 
-          associated with that port.  
+        "If set to enabled(1), when operstatus up is detected on any
+          port the agent will clear the rule usage information
+          associated with that port.
           This ability is further scoped to the list of ports defined by
           etsysPolicyRuleStatsAutoClearPorts.
-          This leaf is optional and will have no effect on an agent 
-          which has rule use accounting disabled or does not support 
+          This leaf is optional and will have no effect on an agent
+          which has rule use accounting disabled or does not support
           rule use accounting.
-          By default, the rule use accounting information will not be 
+          By default, the rule use accounting information will not be
           modified by operstatus transitions."
     DEFVAL { disabled }
     ::= { etsysPolicyRules 11 }
@@ -2787,31 +2787,31 @@ etsysPolicyRuleStatsAutoClearInterval OBJECT-TYPE
     DESCRIPTION
         "The interval at which the device will automatically clear rule
          usage statistics, in minutes.  This ability is disabled (usage
-         statistics will not be automatically cleared) if set to 
+         statistics will not be automatically cleared) if set to
          zero(0).
          This ability is further scoped to the list of ports defined by
          etsysPolicyRuleStatsAutoClearPorts.
          This leaf is optional and will have no effect on an agent which
-         has rule use accounting disabled or does not support rule use 
-         accounting." 
+         has rule use accounting disabled or does not support rule use
+         accounting."
     DEFVAL { 0 }
     ::= { etsysPolicyRules 12 }
 
 etsysPolicyRuleStatsAutoClearPorts OBJECT-TYPE
-    SYNTAX      PortList                  
+    SYNTAX      PortList
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The list ports on which rule usage statistics will be 
-         cleared  by one of the AutoClear actions 
-         (etsysPolicyRuleStatsAutoClearInterval, 
+        "The list ports on which rule usage statistics will be
+         cleared  by one of the AutoClear actions
+         (etsysPolicyRuleStatsAutoClearInterval,
           etsysPolicyRuleStatsAutoClearOnProfile, or
           etsysPolicyRuleStatsAutoClearOnLink).
          By default, no ports will be set in this list.
-         This leaf is optional, unless the agent claims support for 
+         This leaf is optional, unless the agent claims support for
           one of the other 'autoclear' objects, and will have no effect
-          on an agent which has rule use accounting disabled or does 
-          not support rule use accounting." 
+          on an agent which has rule use accounting disabled or does
+          not support rule use accounting."
     ::= { etsysPolicyRules 13 }
 
 etsysPolicyRuleStatsAutoClearOnProfile OBJECT-TYPE
@@ -2819,18 +2819,18 @@ etsysPolicyRuleStatsAutoClearOnProfile OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If set to enabled(1), when a rule assigning a PolicyProfile 
+        "If set to enabled(1), when a rule assigning a PolicyProfile
          (whose etsysPolicyRuleProfileIndex is zero(0)) is activated,
          all the rule usage bits associated with the rules bound to the
          PolicyProfile specified by the etsysPolicyRuleOperPid
          and the port specified by the etsysPolicyRulePort are cleared
-         (if there is no port specified or no valid 
+         (if there is no port specified or no valid
          etsysPolicyRuleProfileIndex specified, then no action follows).
          This ability is further scoped to the list of ports defined by
          etsysPolicyRuleStatsAutoClearPorts.
-         This leaf is optional and will have no effect on an agent 
-         which has rule use accounting disabled or does not support 
-         rule use accounting.  By default, the rule use accounting 
+         This leaf is optional and will have no effect on an agent
+         which has rule use accounting disabled or does not support
+         rule use accounting.  By default, the rule use accounting
          information will not be modified by the creation or activation
          of PolicyProfile assignment rules."
     DEFVAL { disabled }
@@ -2841,12 +2841,12 @@ etsysPolicyRuleStatsDroppedNotifications OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "A count of the number of times the agent has dropped 
-         notification (syslog or trap) of a etsysPolicyRuleUsageList 
-         bit transition.  A management entity might use this leaf as 
-         an indication to read the etsysPolicyRuleUsageList objects 
+        "A count of the number of times the agent has dropped
+         notification (syslog or trap) of a etsysPolicyRuleUsageList
+         bit transition.  A management entity might use this leaf as
+         an indication to read the etsysPolicyRuleUsageList objects
          for important rules.  This count should be kept to the best of
-         the device's ability, and explicitly does not cover 
+         the device's ability, and explicitly does not cover
          notifications discarded by the network."
     ::= { etsysPolicyRules 15 }
 
@@ -2855,8 +2855,8 @@ etsysPolicyRuleSylogMachineReadableFormat OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "If enabled, the device should format rule usage messages so 
-         that they might be processed by a machine (scripting backend, 
+        "If enabled, the device should format rule usage messages so
+         that they might be processed by a machine (scripting backend,
          etc).  If disabled, the messages should be formatted for human
          consumption."
     DEFVAL { disabled }
@@ -2869,7 +2869,7 @@ etsysPolicyRuleSylogExtendedFormat OBJECT-TYPE
     DESCRIPTION
         "If enabled, the device should provide additional information
          in rule-hit syslog messages.  This information MAY include what
-         actions may have been initiated by the rule (if any) or 
+         actions may have been initiated by the rule (if any) or
          data mined from the packet which matched the rule."
     DEFVAL { disabled }
     ::= { etsysPolicyRules 17 }
@@ -2892,7 +2892,7 @@ etsysPolicyRuleSylogEveryTime OBJECT-TYPE
 -- -------------------------------------------------------------
 
 etsysPolicyNonVolatileRulesLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -2906,20 +2906,20 @@ etsysPolicyNonVolatileRuleTable OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "A table containing rules bound to individual policies.  The 
+        "A table containing rules bound to individual policies.  The
          rules here contained are representations of the non-volatile
          rules contained in the etsysPolicyRuleTable defined in this MIB.
 
          A Rule is comprised of three components, a unique description
          of the network traffic, an associated list of actions, and
-         an associated list of accounting and auditing controls and 
+         an associated list of accounting and auditing controls and
          information.
 
          The unique description of the network traffic, defined by a
-         PolicyClassificationRuleType together with a length, 
+         PolicyClassificationRuleType together with a length,
          matching data and a relevant bits field, port type,
          and port number (port number zero is reserved to mean any
-         port), and scoped by a etsysPolicyProfileIndex, is used 
+         port), and scoped by a etsysPolicyProfileIndex, is used
          as the table index."
     ::= { etsysPolicyRules 20 }
 
@@ -2932,7 +2932,7 @@ etsysPolicyNonVolatileRuleEntry OBJECT-TYPE
          etsysPolicyNonVolatileRuleTable.  Entries within this table
          are representations of the non-volatile entries found
          in the etsysPolicyRuleTable."
-    INDEX    { etsysPolicyRuleProfileIndex, 
+    INDEX    { etsysPolicyRuleProfileIndex,
                etsysPolicyRuleType,
                etsysPolicyRuleData,
                etsysPolicyRulePrefixBits,
@@ -2975,20 +2975,20 @@ etsysPolicyNonVolatileRuleRowStatus OBJECT-TYPE
     DESCRIPTION
         "The status of this row.
 
-         When active(1) this entry's classification rule, 
+         When active(1) this entry's classification rule,
          is one of its associated policy's set of rules.
 
-         When this entry's associated policy, as defined by 
+         When this entry's associated policy, as defined by
          etsysPolicyRuleProfileIndex, is active and assigned to a port
          through the etsysPortPolicyProfileTable or to a station
-         through the etsysStationPolicyProfileTable, this 
+         through the etsysStationPolicyProfileTable, this
          classification rule will be applied to the port or station.
-         The exact behavior of this application depends upon the 
+         The exact behavior of this application depends upon the
          classification rule.
 
          When this object is notInService(2) or notReady(3)
          this entry is not considered one of its associated policy's
-         set of rules and this classification rule will not be 
+         set of rules and this classification rule will not be
          applied."
     ::= { etsysPolicyNonVolatileRuleEntry 7 }
 
@@ -3000,7 +3000,7 @@ etsysPolicyNonVolatileRuleStorageType OBJECT-TYPE
         "The storage type of this row.
 
          For all entries in the table this is set to nonVolatile(1),
-         and as such, this entry's classification rule will be added 
+         and as such, this entry's classification rule will be added
          to non-volatile storage."
     ::= { etsysPolicyNonVolatileRuleEntry 8 }
 
@@ -3015,62 +3015,62 @@ etsysPolicyNonVolatileRuleUsageList OBJECT-TYPE
 
 etsysPolicyNonVolatileRuleResult1 OBJECT-TYPE
     SYNTAX      Integer32(-1|0|1..4094|4095)
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is 0 this field defines the 
-         profile ID which will be assigned to frames matching this rule.  
-         This is the dynamically assigned value and may differ from the 
+        "If the etsysPolicyRuleProfileIndex is 0 this field defines the
+         profile ID which will be assigned to frames matching this rule.
+         This is the dynamically assigned value and may differ from the
          administratively configured value.
 
-         If the etsysPolicyRuleProfileIndex is not 0 then this field 
-         defines the VLAN ID with which to mark a frame matching this 
+         If the etsysPolicyRuleProfileIndex is not 0 then this field
+         defines the VLAN ID with which to mark a frame matching this
          PolicyNonVolatileRule.
 
          Note that three special, otherwise illegal, values of the
-         etsysPolicyNonVolatileRuleVlan are used in defining the 
+         etsysPolicyNonVolatileRuleVlan are used in defining the
          forwarding action.
-         
-             -1     Indicates that no VLAN or forwarding behavior 
+
+             -1     Indicates that no VLAN or forwarding behavior
                     modification is desired. A rule will not be matched
                     against for the purpose of determining a marking
                     VID if this value is set.
-         
-             0      Indicates that the default forwarding action 
+
+             0      Indicates that the default forwarding action
                     is to drop the packets matching this rule.
-                    
+
              4095   Indicates that the default forwarding action
                     is to forward any packets matching this rule."
     ::= { etsysPolicyNonVolatileRuleEntry 10 }
 
 etsysPolicyNonVolatileRuleResult2 OBJECT-TYPE
     SYNTAX      Integer32(-1|0..4095)
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is 0 this field defines 
-         the profile ID which the managing entity desires assigned to 
+        "If the etsysPolicyRuleProfileIndex is 0 this field defines
+         the profile ID which the managing entity desires assigned to
          frames matching this rule.  This is the administrative value
          and may differ from the dynamically assigned active value.
 
          If the etsysPolicyRuleProfileIndex is not 0 then this field is
-         The CoS with which to mark a frame matching this 
+         The CoS with which to mark a frame matching this
          PolicyNonVolatileRule.
 
          Note that one special, otherwise illegal, value of the
-         etsysPolicyNonVolatileRuleCoS is used in defining the 
+         etsysPolicyNonVolatileRuleCoS is used in defining the
          forwarding action.
-         
-             -1     Indicates that no CoS or forwarding behavior 
-                    modification is desired. A rule will not be 
-                    matched against for the purpose of determining 
+
+             -1     Indicates that no CoS or forwarding behavior
+                    modification is desired. A rule will not be
+                    matched against for the purpose of determining
                     a CoS if this value is set."
-         
+
     ::= { etsysPolicyNonVolatileRuleEntry 11 }
 
 etsysPolicyNonVolatileRuleAuditSyslogEnable OBJECT-TYPE
     SYNTAX      TriStateStatus
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "If enabled, a syslog message is sent when a bit in the
@@ -3079,7 +3079,7 @@ etsysPolicyNonVolatileRuleAuditSyslogEnable OBJECT-TYPE
 
 etsysPolicyNonVolatileRuleAuditTrapEnable OBJECT-TYPE
     SYNTAX      TriStateStatus
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "If enabled, an SNMP NOTIFICATION is sent when a bit in the
@@ -3092,16 +3092,16 @@ etsysPolicyNonVolatileRuleDisablePort OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "If enabled, a port is disabled (ifOperStatus of the
-         corresponding ifIndex will be down) when a bit in the 
+         corresponding ifIndex will be down) when a bit in the
          etsysPolicyNonVolatileRuleUsageList transitions from 0 to 1."
     ::= { etsysPolicyNonVolatileRuleEntry 14 }
 
 etsysPolicyNonVolatileRuleOperPid OBJECT-TYPE
     SYNTAX      Integer32(-1|0..4095)
-    MAX-ACCESS  read-only 
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is 0 then this field 
+        "If the etsysPolicyRuleProfileIndex is 0 then this field
          contains the currently applied profile ID for frames
          matching this rule.  This may be either the administratively
          applied value or the dynamically applied value.
@@ -3110,7 +3110,7 @@ etsysPolicyNonVolatileRuleOperPid OBJECT-TYPE
          object will return -1.
 
          Note that one special value exists:
-         
+
              -1     Indicates that no profile ID is being applied
                     by this rule."
     ::= { etsysPolicyNonVolatileRuleEntry 15 }
@@ -3121,8 +3121,8 @@ etsysPolicyNonVolatileRuleOverwriteTCI OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "If set, the information contained within the TCI field of
-         inbound, tagged packets will not be used by the device after 
-         the ingress classification stage of packet relay.  The net 
+         inbound, tagged packets will not be used by the device after
+         the ingress classification stage of packet relay.  The net
          effect will be that the TCI information may be used to classify
          the packet, but will be overwritten (and ignored) by subsequent
          stages of packet relay."
@@ -3136,8 +3136,8 @@ etsysPolicyNonVolatileRuleMirrorIndex OBJECT-TYPE
         "A reference to a packet mirror destination (defined elsewhere).
 
          A value of (-1) indicates no mirror is specified, but a mirror is
-         not explicitly prohibitted.  
-         
+         not explicitly prohibitted.
+
          A value of (0) indicates that mirroring is explicitly prohibitted,
          unless a higher precedence rule has specified a mirror."
     ::= { etsysPolicyNonVolatileRuleEntry 17 }
@@ -3147,56 +3147,56 @@ etsysPolicyNonVolatileRuleQuarantineProfileIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "If the etsysPolicyRuleProfileIndex is not 0 this field defines 
-         the profile ID which will be used as the quarantine provisioning 
-         agents mux response for the mac address and port whose frames 
+        "If the etsysPolicyRuleProfileIndex is not 0 this field defines
+         the profile ID which will be used as the quarantine provisioning
+         agents mux response for the mac address and port whose frames
          matched this rule.
 
-         A value of (-1) indicates no quarantine profile is specified, 
-         but quarantine is not explicitly prohibitted.  
+         A value of (-1) indicates no quarantine profile is specified,
+         but quarantine is not explicitly prohibitted.
 
          A value of (0) indicates that quarantine is explicitly prohibited.
 
-         If the etsysPolicyRuleProfileIndex is 0 this field will always 
+         If the etsysPolicyRuleProfileIndex is 0 this field will always
          return -1 when read."
-    ::= { etsysPolicyNonVolatileRuleEntry 18 }     
+    ::= { etsysPolicyNonVolatileRuleEntry 18 }
 
 -- -------------------------------------------------------------
--- etsysPolicyRFC3580Map group 
+-- etsysPolicyRFC3580Map group
 -- -------------------------------------------------------------
 
 etsysPolicyRFC3580MapResolveReponseConflict OBJECT-TYPE
-    SYNTAX      PolicyRFC3580MapRadiusResponseTC 
+    SYNTAX      PolicyRFC3580MapRadiusResponseTC
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
         "Indicates which field to use in the application of the RADIUS
-         response in the event that both the proprietary filter-id 
+         response in the event that both the proprietary filter-id
          indicating a policy profile and the standard (RFC3580) vlan-
          tunnel-attribute are present.  If policyProfile(1) is selected,
-         then the filter-id will be used, if vlanTunnelAttribute(2) is 
+         then the filter-id will be used, if vlanTunnelAttribute(2) is
          selected, then the vlan-tunnel-attribute will be used (and the
-         policy-map will be applied, if present).  A value of 
-         vlanTunnelAttributeWithPolicyProfile(3) indicates that both 
-         attributes should be applied, in the following manner:  the 
-         policyProfile should be enforced, with the exception of the 
-         etsysPolicyProfilePortVid (if present), the returned 
-         vlan-tunnel-attribute will be used in its place.  In this case, 
-         the policy-map will be ignored (as the policyProfile was 
+         policy-map will be applied, if present).  A value of
+         vlanTunnelAttributeWithPolicyProfile(3) indicates that both
+         attributes should be applied, in the following manner:  the
+         policyProfile should be enforced, with the exception of the
+         etsysPolicyProfilePortVid (if present), the returned
+         vlan-tunnel-attribute will be used in its place.  In this case,
+         the policy-map will be ignored (as the policyProfile was
          explicitly assigned).  VLAN classification rules will still
          be applied, as defined by the assigned policyProfile.
 
          Modifications of this value will not effect the current status
-         of any users currently authenticated.  The new state will be 
+         of any users currently authenticated.  The new state will be
          applied to new, successful authentications.  The current status
-         of current authentication may be modified through the 
-         individual agents or through the ENTERASYS-MULTI-AUTH-MIB, if 
-         supported."  
+         of current authentication may be modified through the
+         individual agents or through the ENTERASYS-MULTI-AUTH-MIB, if
+         supported."
     DEFVAL { policyProfile }
     ::= { etsysPolicyRFC3580Map 1 }
 
 etsysPolicyRFC3580MapLastChange OBJECT-TYPE
-    SYNTAX      TimeTicks 
+    SYNTAX      TimeTicks
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -3205,15 +3205,15 @@ etsysPolicyRFC3580MapLastChange OBJECT-TYPE
     ::= { etsysPolicyRFC3580Map 2 }
 
 etsysPolicyRFC3580MapTableDefault OBJECT-TYPE
-    SYNTAX      TruthValue 
+    SYNTAX      TruthValue
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
         "If read as True, then the etsysPolicyRFC3580MapTable is in the
-         default state (no mappings have been created), if False, then 
+         default state (no mappings have been created), if False, then
          non-default mappings exist.
          If set to True, then the etsysPolicyRFC3580MapTable will be put
-         into the default state (no mappings will exist).  A set to 
+         into the default state (no mappings will exist).  A set to
          False is not valid and MUST fail."
     ::= { etsysPolicyRFC3580Map 3 }
 
@@ -3223,7 +3223,7 @@ etsysPolicyRFC3580MapTable OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "A table containing VLAN ID to policy mappings. A policy is
-         a group of classification rules which may be applied on a 
+         a group of classification rules which may be applied on a
          per user basis, to ports or to stations."
     ::= { etsysPolicyRFC3580Map 4 }
 
@@ -3232,9 +3232,9 @@ etsysPolicyRFC3580MapEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "Conceptually defines a particular entry within the 
+        "Conceptually defines a particular entry within the
          etsysPolicyRFC3580MapTable. Entries within this table MUST be
-         considered non-volatile and MUST be maintained across 
+         considered non-volatile and MUST be maintained across
          entity resets."
     INDEX  { etsysPolicyRFC3580MapVlanId }
     ::= { etsysPolicyRFC3580MapTable 1 }
@@ -3248,11 +3248,11 @@ EtsysPolicyRFC3580MapEntry ::=
              }
 
 etsysPolicyRFC3580MapVlanId OBJECT-TYPE
-    SYNTAX      VlanIndex 
+    SYNTAX      VlanIndex
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The VlanIndex which will map to the policy profile specified 
+        "The VlanIndex which will map to the policy profile specified
          by the etsysPolicyRFC3580MapPolicyIndex of this row.  This will
          be used to map the VLAN returned by value from the Tunnel-
          Private-Group-ID RADIUS attribute."
@@ -3265,37 +3265,37 @@ etsysPolicyRFC3580MapVlanId OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The index of a Policy Profle as defined in the 
-         etsysPolicyProfileTable.  
+        "The index of a Policy Profle as defined in the
+         etsysPolicyProfileTable.
 
          A value of 0 indicates that the row is functionally non-
-         operational (no mapping exists).  Devices which support the 
+         operational (no mapping exists).  Devices which support the
          ENTERASYS-VLAN-AUTHORIZATION-MIB, and for which the value of
          etsysVlanAuthorizationEnable is Enabled and the value of
          etsysVlanAuthorizationStatus is Enabled on the port referenced
          by the authorization request, should then use the VlanIndex
-         provisioned (e.g. from the Tunnel-Private-Group-ID RADIUS 
+         provisioned (e.g. from the Tunnel-Private-Group-ID RADIUS
          attribute) as defined by RFC3580, otherwise, the device should
-         treat the result as if no matching Policy Profile had been 
+         treat the result as if no matching Policy Profile had been
          found (e.g. as a simple success).  In the case where a
-         Policy Profile is already being applied to the referenced 
-         station, but no mapping exists, the device MUST treat the 
-         Tunnel-Private-Group-ID as an override to the 
+         Policy Profile is already being applied to the referenced
+         station, but no mapping exists, the device MUST treat the
+         Tunnel-Private-Group-ID as an override to the
          etsysPolicyProfilePortVid defined by that profile (any matched
          classification rules which explicit provision a VLAN MUST still
-         override both the etsysPolicyProfilePortVid and the 
+         override both the etsysPolicyProfilePortVid and the
          Tunnel-Private-Group-ID.)
-         
+
          A non-zero value of this object indicates that the VlanIndex
-         provisioned (e.g. from the Tunnel-Private-Group-ID RADIUS 
-         attribute) should be mapped to a Policy Profile as defined in 
-         the etsysPolicyProfileTable, and that policy applied as if 
+         provisioned (e.g. from the Tunnel-Private-Group-ID RADIUS
+         attribute) should be mapped to a Policy Profile as defined in
+         the etsysPolicyProfileTable, and that policy applied as if
          the Policy name had been provisioned instead (e.g, in the
          Filter-ID RADIUS attribute).  If the mapping references a
-         non-existent row of the etsysPolicyProfileTable, or the 
+         non-existent row of the etsysPolicyProfileTable, or the
          referenced row has a etsysPolicyProfileRowStatus value other
          than Active, the device MUST behave as if the mapping did not
-         exist (apply the vlan-tunnel-attribute).  The 
+         exist (apply the vlan-tunnel-attribute).  The
          etsysPolicyRFC3580MapInvalidMapping MUST then be incremented."
 
     REFERENCE
@@ -3304,12 +3304,12 @@ etsysPolicyRFC3580MapVlanId OBJECT-TYPE
     ::= { etsysPolicyRFC3580MapEntry 2 }
 
 etsysPolicyRFC3580MapInvalidMapping OBJECT-TYPE
-    SYNTAX      Counter32 
+    SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "Increments to indicate the number of times the device has
-         detected an invalid/unknown EtsysPolicyRFC3580MapEntry 
+         detected an invalid/unknown EtsysPolicyRFC3580MapEntry
          (i.e. one that references an in-active or non-existent
          etsysPolicyProfile)."
     ::= { etsysPolicyRFC3580Map 5 }
@@ -3320,13 +3320,13 @@ etsysPolicyRFC3580MapInvalidMapping OBJECT-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysPolicyProfileConformance OBJECT IDENTIFIER 
+etsysPolicyProfileConformance OBJECT IDENTIFIER
                           ::= { etsysPolicyProfileMIB 7 }
 
-etsysPolicyProfileGroups OBJECT IDENTIFIER 
+etsysPolicyProfileGroups OBJECT IDENTIFIER
                           ::= { etsysPolicyProfileConformance 1 }
 
-etsysPolicyProfileCompliances OBJECT IDENTIFIER 
+etsysPolicyProfileCompliances OBJECT IDENTIFIER
                           ::= { etsysPolicyProfileConformance 2 }
 
 
@@ -3370,7 +3370,7 @@ etsysPolicyClassificationGroup OBJECT-GROUP
 
     STATUS  deprecated
     DESCRIPTION
-        "A collection of objects providing a mapping between a set 
+        "A collection of objects providing a mapping between a set
          of Classification Rules and a Policy Profile."
     ::= { etsysPolicyProfileGroups 2 }
 
@@ -3384,8 +3384,8 @@ etsysPortPolicyProfileGroup OBJECT-GROUP
             }
     STATUS  deprecated
     DESCRIPTION
-        "A collection of objects providing a mapping from a 
-         specific port to a Policy Profile instance.  Only 
+        "A collection of objects providing a mapping from a
+         specific port to a Policy Profile instance.  Only
          the read-only portions of this group are now current.
          They are listed under etsysPortPolicyProfileGroup2."
     ::= { etsysPolicyProfileGroups 3 }
@@ -3403,7 +3403,7 @@ etsysStationPolicyProfileGroup OBJECT-GROUP
             }
     STATUS  current
     DESCRIPTION
-        "A collection of objects providing a mapping from a 
+        "A collection of objects providing a mapping from a
          specific station to a Policy Profile instance."
     ::= { etsysPolicyProfileGroups 5 }
 
@@ -3486,7 +3486,7 @@ etsysPolicyRulesGroup OBJECT-GROUP
                 etsysPolicyRuleDisablePort,
                 etsysPolicyRuleOperPid,
                 etsysPolicyRulePortHit,
-                etsysPolicyRuleDynamicProfileAssignmentOverride, 
+                etsysPolicyRuleDynamicProfileAssignmentOverride,
                 etsysPolicyRuleDefaultDynamicSyslogStatus,
                 etsysPolicyRuleDefaultDynamicTrapStatus,
                 etsysPolicyRuleStatsAutoClearOnLink,
@@ -3508,7 +3508,7 @@ etsysPortPolicyProfileGroup2 OBJECT-GROUP
             }
     STATUS  current
     DESCRIPTION
-        "A collection of objects providing a mapping from a 
+        "A collection of objects providing a mapping from a
          specific port to a Policy Profile instance."
     ::= { etsysPolicyProfileGroups 11 }
 
@@ -3548,9 +3548,9 @@ etsysPolicyCapabilitiesGroup2 OBJECT-GROUP
             }
     STATUS  deprecated
     DESCRIPTION
-        "An object that indicates the capabilities of 
+        "An object that indicates the capabilities of
          the managed entity with respect to Policy Profiles and
-         defines the characteristics of policy rule data by rule 
+         defines the characteristics of policy rule data by rule
          type."
     ::= { etsysPolicyProfileGroups 13 }
 
@@ -3571,7 +3571,7 @@ etsysPolicyRulesGroup2 OBJECT-GROUP
                 etsysPolicyRuleDisablePort,
                 etsysPolicyRuleOperPid,
                 etsysPolicyRulePortHit,
-                etsysPolicyRuleDynamicProfileAssignmentOverride, 
+                etsysPolicyRuleDynamicProfileAssignmentOverride,
                 etsysPolicyRuleDefaultDynamicSyslogStatus,
                 etsysPolicyRuleDefaultDynamicTrapStatus,
                 etsysPolicyRuleStatsAutoClearOnLink,
@@ -3595,7 +3595,7 @@ etsysPolicyRulePortHitNotificationGroup NOTIFICATION-GROUP
             }
     STATUS  current
     DESCRIPTION
-        "An object group that provides support for traps sent from the 
+        "An object group that provides support for traps sent from the
          etsysPolicyRulePortHit event."
     ::= { etsysPolicyProfileGroups 15 }
 
@@ -3951,7 +3951,7 @@ etsysPolicyNonVolatileRulesGroup OBJECT-GROUP
 etsysPolicyProfileCompliance MODULE-COMPLIANCE
     STATUS  deprecated
     DESCRIPTION
-        "The compliance statement for devices that support Policy 
+        "The compliance statement for devices that support Policy
          Profiles.
 
          This compliance statement was deprecated to add
@@ -3959,23 +3959,23 @@ etsysPolicyProfileCompliance MODULE-COMPLIANCE
          and conditionally mandatory support for the
          etsysDevicePolicyProfileGroup."
     MODULE -- this module
-    MANDATORY-GROUPS { etsysPolicyProfileGroup, 
+    MANDATORY-GROUPS { etsysPolicyProfileGroup,
                        etsysPortPolicyProfileGroup }
 
     GROUP etsysPolicyClassificationGroup
     DESCRIPTION
         "The etsysPolicyClassification group is mandatory only
-         for agents which support advanced packet classification."  
-         
+         for agents which support advanced packet classification."
+
     GROUP etsysStationPolicyProfileGroup
     DESCRIPTION
         "The etsysStationPolicyProfileGroup is mandatory only
          for agents which support station-based policy application."
-         
+
     GROUP etsysInvalidPolicyPolicyGroup
-    DESCRIPTION  
-         "The etsysInvalidPolicyPolicyGroup is mandatory only 
-         for agents which support provisioning of policy based on 
+    DESCRIPTION
+         "The etsysInvalidPolicyPolicyGroup is mandatory only
+         for agents which support provisioning of policy based on
          AAA services such as RADIUS."
 
     ::= { etsysPolicyProfileCompliances 1 }
@@ -3983,36 +3983,36 @@ etsysPolicyProfileCompliance MODULE-COMPLIANCE
 etsysPolicyProfileCompliance2 MODULE-COMPLIANCE
     STATUS  deprecated
     DESCRIPTION
-        "The compliance statement for devices that support Policy 
+        "The compliance statement for devices that support Policy
          Profiles.
 
          This compliance state was deprecated to remove the
          conditional support of the etsysPolicyClassificationGroup,
-         and  add support for the etsysPolicyRFC3580MapGroup and the 
+         and  add support for the etsysPolicyRFC3580MapGroup and the
          etsysPolicyRulesGroup."
     MODULE -- this module
-    MANDATORY-GROUPS { etsysPolicyProfileGroup, 
+    MANDATORY-GROUPS { etsysPolicyProfileGroup,
                        etsysPortPolicyProfileGroup,
                        etsysPolicyCapabilitiesGroup }
 
     GROUP etsysPolicyClassificationGroup
     DESCRIPTION
         "The etsysPolicyClassification group is mandatory only
-         for agents which support advanced packet classification."  
-         
+         for agents which support advanced packet classification."
+
     GROUP etsysStationPolicyProfileGroup
     DESCRIPTION
         "The etsysStationPolicyProfileGroup is mandatory only
          for agents which support station-based policy application."
-         
+
     GROUP etsysInvalidPolicyPolicyGroup
-    DESCRIPTION  
-        "The etsysInvalidPolicyPolicyGroup is mandatory only 
-         for agents which support provisioning of policy based on 
+    DESCRIPTION
+        "The etsysInvalidPolicyPolicyGroup is mandatory only
+         for agents which support provisioning of policy based on
          AAA services such as RADIUS."
 
     GROUP etsysDevicePolicyProfileGroup
-    DESCRIPTION  
+    DESCRIPTION
         "The etsysDevicePolicyProfileGroup is mandatory for agents
          that cannot support complete policies on a per port basis."
 
@@ -4025,10 +4025,10 @@ etsysPolicyProfileCompliance2 MODULE-COMPLIANCE
 etsysPolicyProfileCompliance3 MODULE-COMPLIANCE
     STATUS  deprecated
     DESCRIPTION
-        "The compliance statement for devices that support Policy 
+        "The compliance statement for devices that support Policy
          Profiles."
     MODULE -- this module
-    MANDATORY-GROUPS { etsysPolicyProfileGroup, 
+    MANDATORY-GROUPS { etsysPolicyProfileGroup,
                        etsysPortPolicyProfileGroup2,
                        etsysPolicyCapabilitiesGroup }
 
@@ -4036,15 +4036,15 @@ etsysPolicyProfileCompliance3 MODULE-COMPLIANCE
     DESCRIPTION
         "The etsysStationPolicyProfileGroup is mandatory only
          for agents which support station-based policy application."
-         
+
     GROUP etsysInvalidPolicyPolicyGroup
-    DESCRIPTION  
-        "The etsysInvalidPolicyPolicyGroup is mandatory only 
-         for agents which support provisioning of policy based on 
+    DESCRIPTION
+        "The etsysInvalidPolicyPolicyGroup is mandatory only
+         for agents which support provisioning of policy based on
          AAA services such as RADIUS."
 
     GROUP etsysDevicePolicyProfileGroup
-    DESCRIPTION  
+    DESCRIPTION
         "The etsysDevicePolicyProfileGroup is mandatory for agents
          that cannot support complete policies on a per port basis."
 
@@ -4062,10 +4062,10 @@ etsysPolicyProfileCompliance3 MODULE-COMPLIANCE
 etsysPolicyProfileCompliance4 MODULE-COMPLIANCE
     STATUS  deprecated
     DESCRIPTION
-        "The compliance statement for devices that support Policy 
+        "The compliance statement for devices that support Policy
          Profiles."
     MODULE -- this module
-    MANDATORY-GROUPS { etsysPolicyProfileGroup, 
+    MANDATORY-GROUPS { etsysPolicyProfileGroup,
                        etsysPortPolicyProfileGroup2,
                        etsysPolicyCapabilitiesGroup2 }
 
@@ -4073,15 +4073,15 @@ etsysPolicyProfileCompliance4 MODULE-COMPLIANCE
     DESCRIPTION
         "The etsysStationPolicyProfileGroup is mandatory only
          for agents which support station-based policy application."
-         
+
     GROUP etsysInvalidPolicyPolicyGroup
-    DESCRIPTION  
-        "The etsysInvalidPolicyPolicyGroup is mandatory only 
-         for agents which support provisioning of policy based on 
+    DESCRIPTION
+        "The etsysInvalidPolicyPolicyGroup is mandatory only
+         for agents which support provisioning of policy based on
          AAA services such as RADIUS."
 
     GROUP etsysDevicePolicyProfileGroup
-    DESCRIPTION  
+    DESCRIPTION
         "The etsysDevicePolicyProfileGroup is mandatory for agents
          that cannot support complete policies on a per port basis."
 
@@ -4097,17 +4097,17 @@ etsysPolicyProfileCompliance4 MODULE-COMPLIANCE
 
     GROUP etsysPolicyRulePortHitNotificationGroup
     DESCRIPTION
-        "The etsysPolicyRulePortHitNotificationGroup is optional for 
+        "The etsysPolicyRulePortHitNotificationGroup is optional for
          agents that support rule use accounting."
     ::= { etsysPolicyProfileCompliances 4 }
 
 etsysPolicyProfileCompliance5 MODULE-COMPLIANCE
     STATUS  deprecated
     DESCRIPTION
-        "The compliance statement for devices that support Policy 
+        "The compliance statement for devices that support Policy
          Profiles."
     MODULE -- this module
-    MANDATORY-GROUPS { etsysPolicyProfileGroup, 
+    MANDATORY-GROUPS { etsysPolicyProfileGroup,
                        etsysPortPolicyProfileGroup2,
                        etsysPolicyCapabilitiesGroup2 }
 
@@ -4115,15 +4115,15 @@ etsysPolicyProfileCompliance5 MODULE-COMPLIANCE
     DESCRIPTION
         "The etsysStationPolicyProfileGroup is mandatory only
          for agents which support station-based policy application."
-         
+
     GROUP etsysInvalidPolicyPolicyGroup
-    DESCRIPTION  
-        "The etsysInvalidPolicyPolicyGroup is mandatory only 
-         for agents which support provisioning of policy based on 
+    DESCRIPTION
+        "The etsysInvalidPolicyPolicyGroup is mandatory only
+         for agents which support provisioning of policy based on
          AAA services such as RADIUS."
 
     GROUP etsysDevicePolicyProfileGroup
-    DESCRIPTION  
+    DESCRIPTION
         "The etsysDevicePolicyProfileGroup is mandatory for agents
          that cannot support complete policies on a per port basis."
 
@@ -4139,7 +4139,7 @@ etsysPolicyProfileCompliance5 MODULE-COMPLIANCE
 
     GROUP etsysPolicyRulePortHitNotificationGroup
     DESCRIPTION
-        "The etsysPolicyRulePortHitNotificationGroup is optional for 
+        "The etsysPolicyRulePortHitNotificationGroup is optional for
          agents that support rule use accounting."
     ::= { etsysPolicyProfileCompliances 5 }
 
@@ -4318,11 +4318,11 @@ etsysPolicyNonVolatileRuleCompliances MODULE-COMPLIANCE
          Non-Volatile Rule table."
     MODULE -- this module
     MANDATORY-GROUPS { etsysPolicyRulesGroup6 }
-    
+
     GROUP etsysPolicyNonVolatileRulesGroup
     DESCRIPTION
         "The etsysPolicyNonVolatileRulesGroup is optional
-         for agents that support Policy rule accounting and 
+         for agents that support Policy rule accounting and
          usage reporting."
 
     ::= { etsysPolicyProfileCompliances 10 }

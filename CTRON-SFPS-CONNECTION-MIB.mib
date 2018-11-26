@@ -42,7 +42,7 @@ IMPORTS
 --        IpAddress, Gauge
       Counter, TimeTicks
                 FROM RFC1155-SMI
- 
+
 --  These Objects are defined in the file sfps-inc.mib.txt
         sfpsSwitchConnections, sfpsConnectionAPI, sfpsConnectionStats,
         sfpsConnectionTestAPI, sfpsConnectionQueryAPI, sfpsConnectionConfigAPI,
@@ -53,13 +53,13 @@ IMPORTS
 
 --SfpsSwitchInstance ::= OCTET STRING (SIZE(4))
 --  this will map to chassis.module index value
- 
+
 SfpsSwitchPort ::= INTEGER
 --  this will map to chassis.module.portgroup.portsubgroup.port index value
- 
+
 SfpsAddress ::= OCTET STRING (SIZE (6))
 --  this will map to a MAC address
-  
+
 
 
 -- SFPS Switching Connection Group
@@ -114,7 +114,7 @@ sfpsConnectionDestination       OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The destination SFPS address for this source/destination
                  connection."
         ::= { sfpsConnectionEntry 1 }
@@ -123,16 +123,16 @@ sfpsConnectionSource    OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The source SFPS address for this source/destination
-                 connection." 
+                 connection."
         ::= { sfpsConnectionEntry 2 }
 
 sfpsConnectionPrimInPort        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies the primary inbound SFPS switch port."
         ::= { sfpsConnectionEntry 3 }
 
@@ -140,9 +140,9 @@ sfpsConnectionPrimOutPort       OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies the primary outbound SFPS switch port.  All switched
-                 traffic for this connection will be transmitted on 
+                 traffic for this connection will be transmitted on
                  this outbound port."
         ::= { sfpsConnectionEntry 4 }
 
@@ -150,7 +150,7 @@ sfpsConnectionSecInPort OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies the secondaryinbound SFPS switch port."
         ::= { sfpsConnectionEntry 5 }
 
@@ -158,9 +158,9 @@ sfpsConnectionSecOutPort        OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies the secondary outbound SFPS switch port.  All switched
-                 traffic for this connection will be transmitted on 
+                 traffic for this connection will be transmitted on
                  this outbound port."
         ::= { sfpsConnectionEntry 6 }
 
@@ -174,7 +174,7 @@ sfpsConnectionCtrlStatus        OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The control state of the SFPS connection."
         ::= { sfpsConnectionEntry 7 }
 
@@ -187,7 +187,7 @@ sfpsConnectionAdminStatus       OBJECT-TYPE
                 }
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "The administrative state of the SFPS connection."
 
         ::= { sfpsConnectionEntry 8 }
@@ -196,7 +196,7 @@ sfpsConnectionAge       OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Indicates the age of the connection."
         ::= { sfpsConnectionEntry 9 }
 
@@ -214,7 +214,7 @@ sfpsConnectionType      OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Sets the type of connection.  Provisioned connections are
                  setup manually; switched and vlan connections are setup
                  dynammically."
@@ -224,7 +224,7 @@ sfpsConnectionPkts      OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Indicates the total number of packets sent on this connection."
         ::= { sfpsConnectionEntry 11 }
 
@@ -232,7 +232,7 @@ sfpsConnectionBytes     OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Indicates the total number of bytes sent on this connection."
         ::= { sfpsConnectionEntry 12 }
 
@@ -240,7 +240,7 @@ sfpsConnectionCanAge    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionEntry 13 }
 
@@ -248,9 +248,9 @@ sfpsConnectionPrimOutPorts      OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies a list of outbound SFPS switch ports.  All
-                 switched traffic for this connection will be transmitted 
+                 switched traffic for this connection will be transmitted
                  on these outbound ports."
         ::= { sfpsConnectionEntry 14 }
 
@@ -258,14 +258,14 @@ sfpsConnectionSecOutPorts       OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION     
+        DESCRIPTION
                 "Identifies a list of outbound SFPS switch ports.  All
-                 switched traffic for this connection will be transmitted 
+                 switched traffic for this connection will be transmitted
                  on these outbound ports."
         ::= { sfpsConnectionEntry 15 }
 
 
- 
+
 
 --  SFPS Connection API
 
@@ -289,7 +289,7 @@ sfpsAPIInPort     OBJECT-TYPE
         SYNTAX  SfpsSwitchPort
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the ingress port of the switch."
         ::= { sfpsConnectionAPI 2 }
 
@@ -309,7 +309,7 @@ sfpsAPIInHeaderType     OBJECT-TYPE
 
 
 sfpsAPIInHeaderLength  OBJECT-TYPE
-        SYNTAX  INTEGER(1..12) 
+        SYNTAX  INTEGER(1..12)
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -331,7 +331,7 @@ sfpsAPIOutPort          OBJECT-TYPE
         SYNTAX  SfpsSwitchPort
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the egress port of the switch."
         ::= { sfpsConnectionAPI 6 }
 
@@ -351,7 +351,7 @@ sfpsAPIOutHeaderType    OBJECT-TYPE
 
 
 sfpsAPIOutHeaderLength  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
@@ -405,8 +405,8 @@ sfpsAPIArgumentOwner  OBJECT-TYPE
 sfpsAPIArgumentPriority  OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),               -- none of the following
-                        priority-1(2),          -- 
-                        priority-2(3),          -- 
+                        priority-1(2),          --
+                        priority-2(3),          --
                         priority-3(4),          --
                         priority-4(5),          --
                         priority-5(6)           --
@@ -432,7 +432,7 @@ sfpsAPIType OBJECT-TYPE
         DEFVAL { switched }
         ::= { sfpsConnectionAPI 13 }
 
- 
+
 -- Connection Stats MO
 
 sfpsConnectionStatsMaxCnxs      OBJECT-TYPE
@@ -440,7 +440,7 @@ sfpsConnectionStatsMaxCnxs      OBJECT-TYPE
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "The maximum number of bi-directional connections allocated 
+                "The maximum number of bi-directional connections allocated
                 for the switch."
         ::= { sfpsConnectionStats 1 }
 
@@ -550,7 +550,7 @@ sfpsConnectionStatsDeleteErrors OBJECT-TYPE
         ::= { sfpsConnectionStats 13 }
 
 
- 
+
 -- Connection Test API
 
 sfpsConnectionTestAPIVerb       OBJECT-TYPE
@@ -588,7 +588,7 @@ sfpsConnectionTestAPINumCnxs     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionTestAPI 3 }
 
@@ -597,7 +597,7 @@ sfpsConnectionTestAPIMacAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionTestAPI 4 }
 
@@ -605,11 +605,11 @@ sfpsConnectionTestAPIPort           OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionTestAPI 5 }
 
- 
+
 --  SFPS Connection Config API
 
 sfpsConnectionConfigAPIVerb    OBJECT-TYPE
@@ -631,7 +631,7 @@ sfpsConnectionConfigAPICnxHiMark     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the percentage of the Connection Table needed
                  to be full before beginning aging."
         DEFVAL { 95 }
@@ -641,7 +641,7 @@ sfpsConnectionConfigAPICnxNumToAge     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the number of connections to age at each pass."
         DEFVAL { 100 }
         ::= { sfpsConnectionConfigAPI 3 }
@@ -660,7 +660,7 @@ sfpsConnectionConfigAPIAgePassInProgress     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies whether the age pass is in progress.  0 - not aging now
                  1 - aging now."
         ::= { sfpsConnectionConfigAPI 5 }
@@ -669,7 +669,7 @@ sfpsConnectionConfigAPICurCapacity     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the percentage of the Connection Table used."
         ::= { sfpsConnectionConfigAPI 6 }
 
@@ -677,7 +677,7 @@ sfpsConnectionConfigAPILastPassTime     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the time that the last age pass occured."
         ::= { sfpsConnectionConfigAPI 7 }
 
@@ -685,7 +685,7 @@ sfpsConnectionConfigAPITimeSinceLastPass     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the time since the last age pass."
         ::= { sfpsConnectionConfigAPI 8 }
 
@@ -693,7 +693,7 @@ sfpsConnectionConfigAPIAgePassDelta     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the time between the last two age passes."
         ::= { sfpsConnectionConfigAPI 9 }
 
@@ -701,7 +701,7 @@ sfpsConnectionConfigAPIAgePassCount     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Specifies the number of aging passes that have occured."
         ::= { sfpsConnectionConfigAPI 10 }
 
@@ -709,7 +709,7 @@ sfpsConnectionConfigAPIAgeStatsHiMark     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionConfigAPI 11 }
 
@@ -717,7 +717,7 @@ sfpsConnectionConfigAPIStatsAgingEnable     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionConfigAPI 12 }
 
@@ -725,7 +725,7 @@ sfpsConnectionConfigAPIAgeStatsAgingSupported    OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionConfigAPI 13 }
 
@@ -733,7 +733,7 @@ sfpsConnectionConfigAPIIdleCnxs     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionConfigAPI 14 }
 
@@ -741,11 +741,11 @@ sfpsConnectionConfigAPIActiveCnxs     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionConfigAPI 15 }
 
- 
+
 --  SFPS Connection Query API
 
 sfpsConnectionQueryAPIVerb    OBJECT-TYPE
@@ -772,7 +772,7 @@ sfpsConnectionQueryAPIDestAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Destination MAC address."
         ::= { sfpsConnectionQueryAPI 2 }
 
@@ -781,7 +781,7 @@ sfpsConnectionQueryAPISourceAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Source MAC address."
         ::= { sfpsConnectionQueryAPI 3 }
 
@@ -790,7 +790,7 @@ sfpsConnectionQueryAPIInPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Source port number."
         ::= { sfpsConnectionQueryAPI 4 }
 
@@ -799,7 +799,7 @@ sfpsConnectionQueryAPIOutPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Destination port number."
         ::= { sfpsConnectionQueryAPI 5 }
 
@@ -832,7 +832,7 @@ sfpsConnectionQueryAPIAge     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Age of connection."
         ::= { sfpsConnectionQueryAPI 8 }
 
@@ -854,14 +854,14 @@ sfpsConnectionQueryAPIQueryType    OBJECT-TYPE
         ::= { sfpsConnectionQueryAPI 9 }
 
 sfpsConnectionQueryAPIOwner    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "Specifies whether or not Call control is owned by this agent
                  switch.  If the call is owned, then the switch
                  will be responsible for releasing the call.  This is
-                 used mainly when transferring call ownership in call 
+                 used mainly when transferring call ownership in call
                  re-routing and in setting up originating calls."
         ::= { sfpsConnectionQueryAPI 10 }
 
@@ -869,7 +869,7 @@ sfpsConnectionQueryAPIPkts     OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Number of packets switched on this connection."
         ::= { sfpsConnectionQueryAPI 11 }
 
@@ -877,7 +877,7 @@ sfpsConnectionQueryAPIBytes     OBJECT-TYPE
         SYNTAX  Counter
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Number of bytes switched on this connection."
         ::= { sfpsConnectionQueryAPI 12 }
 
@@ -885,7 +885,7 @@ sfpsConnectionQueryAPICanAge     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Determine if this connection will be aged - (1) means to age."
         ::= { sfpsConnectionQueryAPI 13 }
 
@@ -893,7 +893,7 @@ sfpsConnectionQueryAPIOutPorts     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "If OutPorts is 1 - the multiple outports will be displayed in
                  a text format."
         ::= { sfpsConnectionQueryAPI 14 }
@@ -902,7 +902,7 @@ sfpsConnectionQueryAPIMacAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "MAC address."
         ::= { sfpsConnectionQueryAPI 15 }
 
@@ -910,7 +910,7 @@ sfpsConnectionQueryAPISecInPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionQueryAPI 16 }
 
@@ -918,7 +918,7 @@ sfpsConnectionQueryAPISecOutPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionQueryAPI 17 }
 
@@ -926,12 +926,12 @@ sfpsConnectionQueryAPISecOutPorts     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 ""
         ::= { sfpsConnectionQueryAPI 18 }
 
 
- 
+
 --  SFPS Connection Lookup API
 
 sfpsConnectionLookupAPIVerb    OBJECT-TYPE
@@ -951,7 +951,7 @@ sfpsConnectionLookupAPIMacAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-write
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "MAC address to be looked up as either the Source or Destination addresses."
         ::= { sfpsConnectionLookupAPI 2 }
 
@@ -959,7 +959,7 @@ sfpsConnectionLookupAPIDestAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Destination MAC address"
         ::= { sfpsConnectionLookupAPI 3 }
 
@@ -967,7 +967,7 @@ sfpsConnectionLookupAPISourceAddr     OBJECT-TYPE
         SYNTAX  SfpsAddress
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Source MAC address"
         ::= { sfpsConnectionLookupAPI 4 }
 
@@ -975,7 +975,7 @@ sfpsConnectionLookupAPIPrimInPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Source port number"
         ::= { sfpsConnectionLookupAPI 5 }
 
@@ -983,7 +983,7 @@ sfpsConnectionLookupAPIPrimOutPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Destination port number.  If -1, denotes multiple out ports."
         ::= { sfpsConnectionLookupAPI 6 }
 
@@ -991,7 +991,7 @@ sfpsConnectionLookupAPISecInPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Source port number"
         ::= { sfpsConnectionLookupAPI 7 }
 
@@ -999,7 +999,7 @@ sfpsConnectionLookupAPISecOutPort     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Destination port number.  If 01, denotes multiple out ports"
         ::= { sfpsConnectionLookupAPI 8 }
 
@@ -1012,19 +1012,19 @@ sfpsConnectionLookupAPICtrlStatus     OBJECT-TYPE
         }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Control status"
         ::= { sfpsConnectionLookupAPI 9 }
 
 sfpsConnectionLookupAPIAdminStatus     OBJECT-TYPE
         SYNTAX  INTEGER {
                         other(1),
-                        disabled(2),    
+                        disabled(2),
                         enabled(3)
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Administrative status"
         ::= { sfpsConnectionLookupAPI 10 }
 
@@ -1032,7 +1032,7 @@ sfpsConnectionLookupAPIAge     OBJECT-TYPE
         SYNTAX  TimeTicks
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Age of connection"
         ::= { sfpsConnectionLookupAPI 11 }
 
@@ -1050,7 +1050,7 @@ sfpsConnectionLookupAPIType     OBJECT-TYPE
                 }
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Type of connection"
         ::= { sfpsConnectionLookupAPI 12 }
 
@@ -1058,7 +1058,7 @@ sfpsConnectionLookupAPIPkts     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Number of packets switched on this connection"
         ::= { sfpsConnectionLookupAPI 13 }
 
@@ -1066,7 +1066,7 @@ sfpsConnectionLookupAPIBytes     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Number of bytes switched on this connection"
         ::= { sfpsConnectionLookupAPI 14 }
 
@@ -1074,7 +1074,7 @@ sfpsConnectionLookupAPICanAge     OBJECT-TYPE
         SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "Boolean to determine if this connection will be aged.  True (1) means to age."
         ::= { sfpsConnectionLookupAPI 15 }
 
@@ -1082,7 +1082,7 @@ sfpsConnectionLookupAPIPrimOutPorts     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "If Primary OutPort is -1, the multiple outports will be displayed in text format"
         ::= { sfpsConnectionLookupAPI 16 }
 
@@ -1090,7 +1090,7 @@ sfpsConnectionLookupAPISecOutPorts     OBJECT-TYPE
         SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                 "If Secondary OutPort is -1, the multiple outports will be displayed in text format"
         ::= { sfpsConnectionLookupAPI 17 }
 
@@ -1098,7 +1098,7 @@ sfpsConnectionLookupAPISecOutPorts     OBJECT-TYPE
 --
 
 sfpsCNXPacketStatsVer1Tx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1106,7 +1106,7 @@ sfpsCNXPacketStatsVer1Tx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 1 }
 
 sfpsCNXPacketStatsVer2Tx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1114,7 +1114,7 @@ sfpsCNXPacketStatsVer2Tx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 2 }
 
 sfpsCNXPacketStatsVer1Rx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1122,7 +1122,7 @@ sfpsCNXPacketStatsVer1Rx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 3 }
 
 sfpsCNXPacketStatsVer2Rx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1130,7 +1130,7 @@ sfpsCNXPacketStatsVer2Rx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 4 }
 
 sfpsCNXPacketStatsOpCode1Tx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1138,7 +1138,7 @@ sfpsCNXPacketStatsOpCode1Tx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 5 }
 
 sfpsCNXPacketStatsOpCode2Tx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1146,7 +1146,7 @@ sfpsCNXPacketStatsOpCode2Tx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 6 }
 
 sfpsCNXPacketStatsOpCode1Rx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1154,7 +1154,7 @@ sfpsCNXPacketStatsOpCode1Rx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 7 }
 
 sfpsCNXPacketStatsOpCode2Rx    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -1162,11 +1162,11 @@ sfpsCNXPacketStatsOpCode2Rx    OBJECT-TYPE
         ::= { sfpsCNXPacketStats 8 }
 
 sfpsCNXPacketStatsRxErrors    OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 "Receive errors"
         ::= { sfpsCNXPacketStats 9 }
 
-END 
+END

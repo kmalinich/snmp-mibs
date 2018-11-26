@@ -1,6 +1,6 @@
 ENTERASYS-IEEE8021-Q-BRIDGE-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 
---  enterasys-ieee8021-q-bridge-mib-ext-mib.txt 
+--  enterasys-ieee8021-q-bridge-mib-ext-mib.txt
 --
 --  Part Number:
 --
@@ -64,8 +64,8 @@ etsysIeee8021QBridgeMibExtMIB MODULE-IDENTITY
          proprietary extensions to the IEEE8021-Q-BRIDGE-MIB."
 
     REVISION     "201302151853Z"  -- Fri Feb 15 18:53 UTC 2013
-    DESCRIPTION  "Added the  etsysIeee8021QBridgeFdb branch to 
-                  control and report the number of entries in 
+    DESCRIPTION  "Added the  etsysIeee8021QBridgeFdb branch to
+                  control and report the number of entries in
                   the filter database."
 
     REVISION     "201202071359Z"  -- Tue Feb  7 13:59 UTC 2012
@@ -76,7 +76,7 @@ etsysIeee8021QBridgeMibExtMIB MODULE-IDENTITY
 -- -------------------------------------------------------------
 -- Textual Conventions
 -- -------------------------------------------------------------
-EtsysIeee8021QBridgeFdbEntries ::= TEXTUAL-CONVENTION 
+EtsysIeee8021QBridgeFdbEntries ::= TEXTUAL-CONVENTION
     STATUS  current
     DESCRIPTION
         "Integer that especifies the maximum number of entries
@@ -94,7 +94,7 @@ EtsysIeee8021QBridgeFdbEntries ::= TEXTUAL-CONVENTION
 -- Object and Conformance Definitions
 -- -------------------------------------------------------------
 
-etsysIeee8021QBridgeMibExtObjects 
+etsysIeee8021QBridgeMibExtObjects
     OBJECT IDENTIFIER ::= { etsysIeee8021QBridgeMibExtMIB 1 }
 
 etsysIeee8021QBridgeMibExtConformance
@@ -131,7 +131,7 @@ etsysIeee8021QVlanMvrpRestrictedEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "Information controlling proprietary VLAN configuration 
+        "Information controlling proprietary VLAN configuration
          for MVRP on a device."
     INDEX { etsysIeee8021QVlanMvrpRestrictedComponentId,
             etsysIeee8021QVlanMvrpRestrictedIndex }
@@ -152,7 +152,7 @@ etsysIeee8021QVlanMvrpRestrictedComponentId OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The PBB component identifier to which this entry's 
+        "The PBB component identifier to which this entry's
          restricted MVRP VLAN attribute status applies."
     ::= { etsysIeee8021QVlanMvrpRestrictedEntry 1 }
 
@@ -161,7 +161,7 @@ etsysIeee8021QVlanMvrpRestrictedIndex OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The VLAN to which this entry's restricted MVRP VLAN 
+        "The VLAN to which this entry's restricted MVRP VLAN
          attribute status applies."
     ::= { etsysIeee8021QVlanMvrpRestrictedEntry 2 }
 
@@ -170,24 +170,24 @@ etsysIeee8021QVlanMvrpRestrictedStatus OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The state of restricted MVRP operation for this VLAN.  The 
-         value enabled(1) indicates that restricted MVRP operation is 
+        "The state of restricted MVRP operation for this VLAN.  The
+         value enabled(1) indicates that restricted MVRP operation is
          enabled for this VLAN.  This object affects MVRP Applicant
-         and Registrar state machines for this VLAN on all ports.  
-         If restricted MVRP is enabled for a VLAN the following rules 
+         and Registrar state machines for this VLAN on all ports.
+         If restricted MVRP is enabled for a VLAN the following rules
          are applied:
 
-         1. If MVRP is globally enabled and 
+         1. If MVRP is globally enabled and
 
          2. If MVRP is enabled at the port level, then
 
          3. Any ports that were members of the dot1qVlanCurrentEgressPorts
             table due to MVRP will signal to remove this registration and no
-            further registration requests received in MVRP PDUs for this 
+            further registration requests received in MVRP PDUs for this
             VLAN will be processed and
 
-         4. Any ports that were propagating registration information for 
-            this VLAN will cease propagation and all further MVRP PDUs 
+         4. Any ports that were propagating registration information for
+            this VLAN will cease propagation and all further MVRP PDUs
             transmitted after the initial withdrawal attempt will not
             include event notifications for this VLAN."
     DEFVAL      { disabled }
@@ -229,12 +229,12 @@ etsysIeee8021QBridgePortMvrpRxVidTranslationErrors OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of receive errors for MVRP due to an
-         incompatible VID translation configuration on a port. 
+         incompatible VID translation configuration on a port.
 
          This error occurs when an MVRPDU is received on a
          port which has a VID translation table configured and
-         the MVRPDU contains messages for multiple local VIDs 
-         that map to the same relay VID.  The MVRPDU is 
+         the MVRPDU contains messages for multiple local VIDs
+         that map to the same relay VID.  The MVRPDU is
          discarded when this error is detected."
     ::= { etsysIeee8021QBridgeMibExtPortVlanEntry 1 }
 
@@ -245,11 +245,11 @@ etsysIeee8021QBridgePortMvrpTxVidTranslationErrors OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "The total number of transmit errors for MVRP due to an
-         incompatible VID translation configuration on a port.  
+         incompatible VID translation configuration on a port.
 
          This error occurs when an MVRPDU is being encoded for
-         transmit on a port which has a VID translation table 
-         configured and the MVRPDU has messages for multiple 
+         transmit on a port which has a VID translation table
+         configured and the MVRPDU has messages for multiple
          local VIDs that map to the same relay VID.  The MVRPDU
          is discarded when this error occurs."
     ::= { etsysIeee8021QBridgeMibExtPortVlanEntry 2 }
@@ -295,7 +295,7 @@ etsysIeee8021QBridgeFdbMaxNumEntriesCapabilities OBJECT-TYPE
     ::= { etsysIeee8021QBridgeFdb 1 }
 
 etsysIeee8021QBridgeFdbMaxNumEntries OBJECT-TYPE
-    SYNTAX      EtsysIeee8021QBridgeFdbEntries 
+    SYNTAX      EtsysIeee8021QBridgeFdbEntries
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -318,10 +318,10 @@ etsysIeee8021QBridgeFdbOperMaxNumEntries OBJECT-TYPE
 -- Conformance Information
 -- -------------------------------------------------------------
 
-etsysIeee8021QBridgeMibExtGroups      
+etsysIeee8021QBridgeMibExtGroups
     OBJECT IDENTIFIER ::= { etsysIeee8021QBridgeMibExtConformance 1 }
 
-etsysIeee8021QBridgeMibExtCompliances 
+etsysIeee8021QBridgeMibExtCompliances
     OBJECT IDENTIFIER ::= { etsysIeee8021QBridgeMibExtConformance 2 }
 
 -- -------------------------------------------------------------
@@ -353,10 +353,10 @@ etsysIeee8021QBridgeMibExtFdbGroup OBJECT-GROUP
               etsysIeee8021QBridgeFdbOperMaxNumEntries }
     STATUS      current
     DESCRIPTION
-        "A collection of objects providing information about 
+        "A collection of objects providing information about
          the maximum number of entries in the filter database."
     ::= { etsysIeee8021QBridgeMibExtGroups 3 }
- 
+
 -- -------------------------------------------------------------
 -- Compliance statements
 -- -------------------------------------------------------------
@@ -398,7 +398,7 @@ etsysIeee8021QBridgeMibExtFdb MODULE-COMPLIANCE
         GROUP       etsysIeee8021QBridgeMibExtFdbGroup
         DESCRIPTION
             "This group is REQUIRED for devices that support the ability
-             to resize the maximum number of entries in the filter 
+             to resize the maximum number of entries in the filter
              database."
     ::= { etsysIeee8021QBridgeMibExtCompliances  3 }
 

@@ -36,7 +36,7 @@ CTRON-SMARTTRUNK-MIB DEFINITIONS ::= BEGIN
 --  Copyright February 1999 Cabletron Systems
 
 --  Note:  the design of this MIB owes much to designers of the LEC MIB.
---  Rev: 1.00.01 cleaned up some spaces to allow import into Spectrum MIB Tools. 
+--  Rev: 1.00.01 cleaned up some spaces to allow import into Spectrum MIB Tools.
 IMPORTS
         MODULE-IDENTITY, OBJECT-TYPE, Integer32, Counter32
                   FROM SNMPv2-SMI
@@ -62,7 +62,7 @@ ctSmartTrunk  MODULE-IDENTITY
     DESCRIPTION
             "This mib module defines a portion of the SNMP enterprise MIBs under Cabletron
              enterprise OID pertaining to configuration of Smart TRUNK network links."
-         ::= { ctSmartTrunkBranch 1 } 
+         ::= { ctSmartTrunkBranch 1 }
 
 ctSmartTrunkConfig    OBJECT IDENTIFIER ::= { ctSmartTrunk 1 }
 ctSmartTrunkDebug     OBJECT IDENTIFIER ::= { ctSmartTrunk 2 }

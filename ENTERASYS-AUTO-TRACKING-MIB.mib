@@ -6,7 +6,7 @@ ENTERASYS-AUTO-TRACKING-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Auto Tracking functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-AUTO-TRACKING-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright February 2013 Enterasys Networks, Inc.
@@ -56,14 +56,14 @@ etsysAutoTrackingMIB MODULE-IDENTITY
 
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID pertaining to 
+         the Enterasys Networks enterprise OID pertaining to
          configuration of Auto Tracking on a device."
 
     REVISION    "201302121656Z"  -- Tue Feb  12 16:56 GMT 2013
     DESCRIPTION "- Added account enable and disable
                  - Added the RADIUS timeout and reject policy
-                 profile indices to the port table."        
- 
+                 profile indices to the port table."
+
     REVISION    "201302111557Z"  -- Mon Feb 11 15:57 UTC 2013
     DESCRIPTION "OBJECT IDENTIFIER disambiguation."
 
@@ -108,10 +108,10 @@ etsysAutoTrackingSystemAccountEnable OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "When enabled(1), RADIUS accounting start, interim and 
+        "When enabled(1), RADIUS accounting start, interim and
          stop frames are sent to the configured RADIUS server(s).
-         
-         When disabled(2), accounting packets are not sent to 
+
+         When disabled(2), accounting packets are not sent to
          the RADIUS server."
     DEFVAL { disabled }
     ::= { etsysAutoTrackingSystem 2 }
@@ -160,7 +160,7 @@ etsysAutoTrackingPortEnable OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "When set to enabled(1), a platform dependent triggering
-         mechanism initiates auto tracking for sessions on this 
+         mechanism initiates auto tracking for sessions on this
          port.
          When disabled(2), auto tracking is disabled
          and all currently auto tracking sessions or those in
@@ -213,9 +213,9 @@ etsysAutoTrackingPortIdleTimeout OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "The maximum number of consecutive seconds an auto tracking 
-         session may be idle before termination of the session.  A 
-         value of zero indicates that the global 
+        "The maximum number of consecutive seconds an auto tracking
+         session may be idle before termination of the session.  A
+         value of zero indicates that the global
          etsysMultiAuthSessionTimeout value will be used."
     REFERENCE
         "RFC 2865, 'Remote Authentication Dial In User Service (RADIUS)',
@@ -228,19 +228,19 @@ etsysAutoTrackingPortRadiusTimeoutProfileIndex OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "The policy profile index to be used by the auto-tracking 
+        "The policy profile index to be used by the auto-tracking
          provisioning agent if a complete RADIUS server timeout occurs.
 
-         This policy profile index will only be used if the auto-tracking 
-         provisioning agent is the highest precedent multiauth 
-         provisioning agent to provision the session.  Auto-tracking has 
+         This policy profile index will only be used if the auto-tracking
+         provisioning agent is the highest precedent multiauth
+         provisioning agent to provision the session.  Auto-tracking has
          the lowest precedence by default.
 
          The value will be overwritten by the policy profile index in
-         etsysAutoTrackingPortRadiusRejectProfileIndex if both a 
+         etsysAutoTrackingPortRadiusRejectProfileIndex if both a
          rejection and a complete timeout occur.
 
-         A value of (0) indicates that no policy profile index is configured 
+         A value of (0) indicates that no policy profile index is configured
          for complete RADIUS server timeouts."
     DEFVAL { 0 }
     ::= { etsysAutoTrackingPortEntry 6 }
@@ -250,19 +250,19 @@ etsysAutoTrackingPortRadiusRejectProfileIndex OBJECT-TYPE
     MAX-ACCESS   read-write
     STATUS       current
     DESCRIPTION
-        "The policy profile index to be used by the auto-tracking 
+        "The policy profile index to be used by the auto-tracking
          provisioning agent if a complete RADIUS server timeout occurs.
-         
-         This policy profile index will only be used if the auto-tracking 
-         provisioning agent is the highest precedent multiauth 
-         provisioning agent to provision the session.  Auto-tracking has 
+
+         This policy profile index will only be used if the auto-tracking
+         provisioning agent is the highest precedent multiauth
+         provisioning agent to provision the session.  Auto-tracking has
          the lowest precedence by default.
 
          The value will not be overwritten by the policy profile index in
-         etsysAutoTrackingPortRadiusTimeoutProfileIndex if both a 
+         etsysAutoTrackingPortRadiusTimeoutProfileIndex if both a
          rejection and a complete timeout occur.
 
-         A value of (0) indicates that no policy profile index is configured 
+         A value of (0) indicates that no policy profile index is configured
          for complete RADIUS server timeouts."
     DEFVAL { 0 }
     ::= { etsysAutoTrackingPortEntry 7 }

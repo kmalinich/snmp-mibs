@@ -3,7 +3,7 @@ CTRON-SFPS-BINDERY-MIB DEFINITIONS ::= BEGIN
 --  sfps-bindery-mib.txt
 --  Revision: 0.0.04
 --
---  Part Number: 
+--  Part Number:
 --  Date: April 19, 1996
 --
 --  Cabletron Systems, Inc.
@@ -36,15 +36,15 @@ CTRON-SFPS-BINDERY-MIB DEFINITIONS ::= BEGIN
 --  Copyright October 93 Cabletron Systems
 --
 
- 
+
 IMPORTS
       OBJECT-TYPE
                 FROM RFC-1212
       DisplayString
                 FROM RFC1213-MIB
 --      enterprises,
---      IpAddress, 
---      Counter, Gauge, 
+--      IpAddress,
+--      Counter, Gauge,
       TimeTicks
                 FROM RFC1155-SMI
 
@@ -76,8 +76,8 @@ sfpsAgentBinderyConfigTable     OBJECT-TYPE
         SYNTAX  SEQUENCE OF SfpsAgentBinderyConfigEntry
         ACCESS  not-accessible
         STATUS  mandatory
-        DESCRIPTION 
-                "Soft Binding is implemented through a few new base classes, 
+        DESCRIPTION
+                "Soft Binding is implemented through a few new base classes,
                 a small army of instances of the base classes plus a bindery
                 table to tie the whole mess together."
        ::= { sfpsAgentConfig 1 }
@@ -101,10 +101,10 @@ SfpsAgentBinderyConfigEntry
                 sfpsAgentBinderyConfigAdminStatus       INTEGER,
                 sfpsAgentBinderyConfigStatusTime        TimeTicks,
                 sfpsAgentBinderyConfigNVStatus          INTEGER
-        }  
+        }
 
 sfpsAgentBinderyConfigHashLeaf    OBJECT-TYPE
-        SYNTAX  HexInteger  
+        SYNTAX  HexInteger
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -112,10 +112,10 @@ sfpsAgentBinderyConfigHashLeaf    OBJECT-TYPE
         ::= { sfpsAgentBinderyConfigEntry 1 }
 
 sfpsAgentBinderyConfigHashIndex     OBJECT-TYPE
-        SYNTAX  INTEGER  
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
-        DESCRIPTION  
+        DESCRIPTION
                "NO Bucket index, part of instance key."
         ::= { sfpsAgentBinderyConfigEntry 2 }
 
@@ -130,7 +130,7 @@ sfpsAgentBinderyConfigName     OBJECT-TYPE
 
 
 sfpsAgentBinderyConfigType  OBJECT-TYPE
-        SYNTAX  DisplayString 
+        SYNTAX  DisplayString
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -263,7 +263,7 @@ sfpsAgentBinderyAPIOperStatus  OBJECT-TYPE
         ::= { sfpsAgentBinderyAPI 5 }
 
 sfpsAgentBinderyAPINvSet  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
@@ -271,11 +271,11 @@ sfpsAgentBinderyAPINvSet  OBJECT-TYPE
         ::= { sfpsAgentBinderyAPI 6 }
 
 sfpsAgentBinderyAPINvTotal  OBJECT-TYPE
-        SYNTAX  INTEGER 
+        SYNTAX  INTEGER
         ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
-                "Total number of SFPSElements allocated in NVRAM. The 
+                "Total number of SFPSElements allocated in NVRAM. The
                 switch will always allocate enough space in NVRAM for
                 the number of elements. That is, NvTotal will always be
                 greater than or equal to NvSet."

@@ -6,7 +6,7 @@ ENTERASYS-VLAN-AUTHORIZATION-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' VLAN Authorization MIB.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-VLAN-AUTHORIZATION-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright June, 2004 Enterasys Networks, Inc.
@@ -70,7 +70,7 @@ etsysVlanAuthorizationMIB MODULE-IDENTITY
     DESCRIPTION
         "The initial version of this MIB module"
 
-    ::= { etsysModules 48 } 
+    ::= { etsysModules 48 }
 
 
 -- ---------------------------------------------------------- --
@@ -158,7 +158,7 @@ etsysVlanAuthorizationEntry OBJECT-TYPE
     ::= { etsysVlanAuthorizationTable 1 }
 
 EtsysVlanAuthorizationEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysVlanAuthorizationStatus         EnabledStatus,
         etsysVlanAuthorizationAdminEgress    VlanAuthEgressStatus,
         etsysVlanAuthorizationOperEgress     VlanAuthEgressStatus,
@@ -246,7 +246,7 @@ etsysVlanAuthorizationVlanID  OBJECT-TYPE
     DESCRIPTION
         "The 12 bit VLAN identifier for a given port, used to override
          the PVID of the given port, obtained as a result of an
-         authentication. 
+         authentication.
 
          A value of zero indicates that there is no authenticated VLAN
          ID for the given port. Should a port become unauthenticated
@@ -285,7 +285,7 @@ etsysVlanAuthorizationCompliances
 etsysVlanAuthorizationGroup OBJECT-GROUP
     OBJECTS {
         etsysVlanAuthorizationEnable,
-        etsysVlanAuthorizationStatus, 
+        etsysVlanAuthorizationStatus,
         etsysVlanAuthorizationAdminEgress,
         etsysVlanAuthorizationOperEgress,
         etsysVlanAuthorizationVlanID

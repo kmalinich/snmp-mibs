@@ -48,7 +48,7 @@ IMPORTS
 
         ifIndex, DisplayString
               FROM RFC1213-MIB
-        
+
         lecIndex, leArpMacAddress
               FROM LAN-EMULATION-CLIENT-MIB
 
@@ -69,7 +69,7 @@ AtmAddress ::= OCTET STRING (SIZE(20))
 
 ctATMBaseConfig          OBJECT IDENTIFIER ::= { ctATMConfig 1 }
 ctATMPhysicalRedundancy  OBJECT IDENTIFIER ::= { ctATMConfig 2 }
-ctATMPhysicalRedundancyInterface OBJECT IDENTIFIER ::= { 
+ctATMPhysicalRedundancyInterface OBJECT IDENTIFIER ::= {
                                      ctATMPhysicalRedundancy 1 }
 ctATMIlmi                OBJECT IDENTIFIER ::= { ctATMConfig 3 }
 ctATMSignalConfig        OBJECT IDENTIFIER ::= { ctATMConfig 4 }
@@ -83,14 +83,14 @@ ctATMTrafficManagementGroup     OBJECT IDENTIFIER ::= { ctATMConfig 7 }
 ctATMPvcIfDef    OBJECT-TYPE
      SYNTAX          INTEGER (1..512)
      MAX-ACCESS          read-write
-     STATUS          deprecated 
+     STATUS          deprecated
      DESCRIPTION
          "This object is the MIB-II interface on which the next
-          Permanent Virtual Circuit (PVC) will be created. 
- 
+          Permanent Virtual Circuit (PVC) will be created.
+
           It is an error to  set an interface number which is not
           an ATM interface (physical or virtual).
- 
+
           This object is persistent. However, during reinitialization of
           the device if it is found that the interface no longer
           supports ATM, then a new MIB-II interface will be created for
@@ -107,10 +107,10 @@ ctATMLecIfDef    OBJECT-TYPE
      DESCRIPTION
          "This object is the physical interface on which _all_ LAN
           Emulation Clients (LECs) will be created.
- 
+
           It is an error to  set an interface number which does not
           support ATM.
- 
+
           This object is persistent. However, during reinitialization of
           the device if it is found that the interface no longer
           supports ATM, then the first ATM interface for the device will
@@ -127,13 +127,13 @@ ctATMDefApplicationTable   OBJECT-TYPE
      DESCRIPTION
          "A list of Default Application objects for this interface."
      ::= { ctATMBaseConfig 3 }
-     
+
 ctATMDefApplicationEntry     OBJECT-TYPE
      SYNTAX          CtATMDefApplicationEntry
      MAX-ACCESS          not-accessible
      STATUS          obsolete
      DESCRIPTION
-         "An entry containing objects pertaining to the default 
+         "An entry containing objects pertaining to the default
           application on a physical interface."
      INDEX           { ifIndex }
      ::= { ctATMDefApplicationTable 1 }
@@ -164,7 +164,7 @@ ctATMDefApplication OBJECT-TYPE
      MAX-ACCESS          read-write
      STATUS          obsolete
      DESCRIPTION
-         "The default application to be run on this physical ATM 
+         "The default application to be run on this physical ATM
           interface.
 
           Selecting lane04 will cause the application known as FORE LAN
@@ -180,7 +180,7 @@ ctATMDefApplication OBJECT-TYPE
 
           Selecting lane will cause the application known as ATM Forum
           LAN emulation version 2.0 to be the default application on this
-          physical interface. If an attempt to be operational using LANE 
+          physical interface. If an attempt to be operational using LANE
           2.0 is unsuccessful because of a bad-version error, then ATM Forum
           LANE 1.0 will be the default application. Selecting this also
           enables ILMI in autoconfigure mode. i.e., a read on
@@ -190,7 +190,7 @@ ctATMDefApplication OBJECT-TYPE
           this object is set to lane.
 
           This object is persistent."
-     DEFVAL  { lane } 
+     DEFVAL  { lane }
      ::= { ctATMDefApplicationEntry 2 }
 
 
@@ -246,15 +246,15 @@ ctATMFramerStatus OBJECT-TYPE
           i.e., setting it to on will permit gathering of framer
           statistics at the expense of processing time. However it might
           be a valuable debugging aid to turn on the framer MIB.
- 
+
           Setting this object to off will not activate the respective
           framer MIBS. Thus saving processing time.
- 
+
           It is emphasised that collection of statistics for the framer
           is resource (processor, memory) intensive.
- 
+
           This object is persistent."
-     DEFVAL  { off } 
+     DEFVAL  { off }
      ::= { ctATMFramerStatusEntry 2 }
 
 --
@@ -321,7 +321,7 @@ ctATMLecArpMacAddress    OBJECT-TYPE
      ::= { ctATMLecArpMacEntry 2 }
 
 ctATMLecArpMacElanName   OBJECT-TYPE
-     SYNTAX              DisplayString 
+     SYNTAX              DisplayString
      MAX-ACCESS              read-only
      STATUS              current
      DESCRIPTION
@@ -382,7 +382,7 @@ ctATMPvcBwAllocEntry OBJECT-TYPE
         MAX-ACCESS       not-accessible
         STATUS       current
         DESCRIPTION
-                "An entry containing objects pertaining to Bandwidth 
+                "An entry containing objects pertaining to Bandwidth
                  Allocation."
         INDEX   { ifIndex }
         ::= { ctATMPvcBwAllocTable 1 }
@@ -405,7 +405,7 @@ ctATMPvcBwAllocPhysIface    OBJECT-TYPE
         ::= { ctATMPvcBwAllocEntry 1 }
 
 ctATMPvcBwAllocStatus  OBJECT-TYPE
-        SYNTAX         INTEGER 
+        SYNTAX         INTEGER
                              {
                              on(1),
                              off(2),
@@ -416,13 +416,13 @@ ctATMPvcBwAllocStatus  OBJECT-TYPE
         DESCRIPTION
          "The values on and off can be written to this object. Selecting
           on will enable bandwidth allocation mode on this interface. When
-          this mode is enabled all LECs and PVCs currently configured on 
+          this mode is enabled all LECs and PVCs currently configured on
           this interface will be deleted, UNI and ILMI will be disabled, and
           this module will reboot.
 
           Selecing off will disable bandwidth allocation mode on this
-          interface.  When this mode is disabled all PVCs currently 
-          configured on this interface will be deleted, UNI and ILMI will 
+          interface.  When this mode is disabled all PVCs currently
+          configured on this interface will be deleted, UNI and ILMI will
           revert to their former status, and this module will reboot.
 
           If bandwidth allocation mode is not supported by this module the
@@ -438,7 +438,7 @@ ctATMPvcBwAllocBandwidth    OBJECT-TYPE
         STATUS              obsolete
         DESCRIPTION
                 "Returns the amount of bandwidth in use on this ATM
-                 interface in bits per second." 
+                 interface in bits per second."
         ::= { ctATMPvcBwAllocEntry 3 }
 
 
@@ -447,10 +447,10 @@ ctATMPvcBwAllocBandwidth    OBJECT-TYPE
 -- ATM Discovery Elan Object Definitions
 
 -- This table provides the elan names, statuses, and modes for the
--- Discovery Elan process. The elan name is looked up in the LEC mib 
+-- Discovery Elan process. The elan name is looked up in the LEC mib
 -- when the device is initialized. If the status for a particular elan
--- is (Enabled) and the discovery elan table for that interface is 
--- configured as (Master), this interface will attempt to set up an 
+-- is (Enabled) and the discovery elan table for that interface is
+-- configured as (Master), this interface will attempt to set up an
 -- SVC. This allows the network administrator to manually configure
 -- the topology of elans in the ATM cloud.
 
@@ -492,7 +492,7 @@ ctATMDiscoveryElanIndex  OBJECT-TYPE
         DESCRIPTION
                 "There are a fixed number of elans (1 - MAX_ELANS) per
                  physical interface to initiate the discovery process on.
-                 This is the index for these elans. This is NOT related 
+                 This is the index for these elans. This is NOT related
                  to the LEC Index."
         ::= { ctATMDiscoveryElanEntry 1 }
 
@@ -501,10 +501,10 @@ ctATMDiscoveryElanName  OBJECT-TYPE
         MAX-ACCESS          read-write
         STATUS          current
         DESCRIPTION
-                "The device will try to discover, on this named elan, any 
-                 other devices out in the atm cloud that it should set up an 
-                 svc with. This allows flexibility in the number and location 
-                 of other switches this particular physical interface should 
+                "The device will try to discover, on this named elan, any
+                 other devices out in the atm cloud that it should set up an
+                 svc with. This allows flexibility in the number and location
+                 of other switches this particular physical interface should
                  know about and talk with."
         ::= { ctATMDiscoveryElanEntry 2 }
 
@@ -527,9 +527,9 @@ ctATMDiscoveryElanStatus  OBJECT-TYPE
                                   }
         MAX-ACCESS            read-write
         STATUS            current
-        DESCRIPTION             
-                "Enabled indicates this elan should be used in the 
-                 discovery process whereas disabled elans are not." 
+        DESCRIPTION
+                "Enabled indicates this elan should be used in the
+                 discovery process whereas disabled elans are not."
         ::= { ctATMDiscoveryElanEntry 4 }
 
 ctATMDiscoveryElanPhysIface  OBJECT-TYPE
@@ -537,7 +537,7 @@ ctATMDiscoveryElanPhysIface  OBJECT-TYPE
         MAX-ACCESS               read-only
         STATUS               obsolete
         DESCRIPTION
-                "The physical interface number on which to initiate the 
+                "The physical interface number on which to initiate the
                  discovery processes."
         ::= { ctATMDiscoveryElanEntry 5 }
 
@@ -554,7 +554,7 @@ ctATMVclTable       OBJECT-TYPE
     STATUS          current
     DESCRIPTION
         "A list of physical interface number, VPI, VCI, associated
-         with a virtual ifIndex, application port, ATM Address, and 
+         with a virtual ifIndex, application port, ATM Address, and
          Encapsulation type on this device."
     ::= { ctATMBaseConfig 8 }
 
@@ -565,9 +565,9 @@ ctATMVclEntry       OBJECT-TYPE
      DESCRIPTION
          "An entry containing objects pertaining to physical interface
           number, VPI, VCI, associated with a particular virtual ifIndex,
-          application port, ATM Address, and Encapsulation type on this 
+          application port, ATM Address, and Encapsulation type on this
           device."
-     INDEX        { ifIndex, atmVclVpi, atmVclVci }     
+     INDEX        { ifIndex, atmVclVpi, atmVclVci }
      ::= { ctATMVclTable 1 }
 
 CtATMVclEntry ::=
@@ -673,10 +673,10 @@ ctATMVclEncapsulationType OBJECT-TYPE
         The definitions reference RFC 1483 Multiprotocol Encapsulation
         over ATM AAL5 and to the ATM Forum LAN Emulation specification,
         and additional definitions previously categorized as 'other'.
-        This object mirrors the atmVccAal5EncapsType described in 
+        This object mirrors the atmVccAal5EncapsType described in
         RFC1695, up to the 'unknown' value.  'LANemulation' protocols
         were branched into two categories 'Data' and 'Control', and
-        ILMI, UNI, and 'atm_vc_svc_app' were added as 
+        ILMI, UNI, and 'atm_vc_svc_app' were added as
         expansions from 'other'."
      ::= { ctATMVclEntry 7 }
 
@@ -687,15 +687,15 @@ ctATMVclEncapsulationType OBJECT-TYPE
 -- ATM Physical Port Redundancy offers a method of managing redundant
 -- physical ports on a particular physical ATM interface.  The interface
 -- portion of redundancy is instanced with indices that match the MIB-II
--- ifIndex.  This capability will only be available for ATM MIB-II 
--- interfaces that correspond to a physical entity that has hardware to supply 
+-- ifIndex.  This capability will only be available for ATM MIB-II
+-- interfaces that correspond to a physical entity that has hardware to supply
 -- the redundant port feature.  It will not be available for virtual interfaces
--- or for physical interfaces that do not have hardware that can be used 
--- in a redundant fashion.  Because of this, the tables will be sparsely 
--- populated to show ONLY the physical ATM interfaces that can supply such a 
--- feature The port portion of redundancy is instanced with indices 
--- that start at one and then increment by one for each physical port on 
--- that physical interface that can be involved in the redundancy. The 
+-- or for physical interfaces that do not have hardware that can be used
+-- in a redundant fashion.  Because of this, the tables will be sparsely
+-- populated to show ONLY the physical ATM interfaces that can supply such a
+-- feature The port portion of redundancy is instanced with indices
+-- that start at one and then increment by one for each physical port on
+-- that physical interface that can be involved in the redundancy. The
 -- redundant port numbers cannot be sparse (i.e., they have to be contiguous).
 
 -- Physical port redundancy as a whole is an optional implementation.
@@ -703,7 +703,7 @@ ctATMVclEncapsulationType OBJECT-TYPE
 -- of the groups involved in the redundancy implementation must be
 -- provided.
 
--- All objects provided as part of the Redundancy table return the value 
+-- All objects provided as part of the Redundancy table return the value
 -- of the last request made unless mentioned otherwise.
 
 -- This section defines the redundancy objects under the Interface part of
@@ -878,7 +878,7 @@ ctATMPhyRedundActivation OBJECT-TYPE
      STATUS          current
      DESCRIPTION
          "If this object is set to automatic, a backup port will
-          automatically be activated upon failure of the active port. 
+          automatically be activated upon failure of the active port.
 
           If this object is set to manual, it will require the manual
           setting of ctATMPhyRedundActivePort to activate a port upon
@@ -1315,7 +1315,7 @@ ctATMSignalRestart OBJECT-TYPE
 --=====================================================================
 -- This group is an extension to the ATM Forum's LAN Emulation MIB.
 -- It will allow for extra configuration information to be read and set.
--- 
+--
 
 ctATMLANEInfoExtStatusTable       OBJECT-TYPE
     SYNTAX          SEQUENCE OF CtATMLANEInfoExtStatusEntry
@@ -1327,11 +1327,11 @@ ctATMLANEInfoExtStatusTable       OBJECT-TYPE
     ::= { ctATMLANEInfoExtGroup 1 }
 
 ctATMLANEInfoExtStatusEntry       OBJECT-TYPE
-     SYNTAX        CtATMLANEInfoExtStatusEntry 
+     SYNTAX        CtATMLANEInfoExtStatusEntry
      MAX-ACCESS         not-accessible
      STATUS         current
      DESCRIPTION
-         "An entry containing objects describing information about an 
+         "An entry containing objects describing information about an
           LEC (LAN Emulation Client).  It is instanced by lecIndex which
           is the same as what is defined in the ATM Forum's LAN Emulation
           MIB."
@@ -1355,7 +1355,7 @@ CtATMLANEInfoExtStatusEntry ::=
               }
 
 ctATMLANEInfoExtStatusUpTime OBJECT-TYPE
-     SYNTAX          INTEGER (1..2147483647) 
+     SYNTAX          INTEGER (1..2147483647)
      MAX-ACCESS          read-only
      STATUS          current
      DESCRIPTION
@@ -1376,22 +1376,22 @@ ctATMLANEInfoExtStatus OBJECT-TYPE
      MAX-ACCESS          read-only
      STATUS          current
      DESCRIPTION
-         "LEC_active         - The LEC is actually trying to become or is 
+         "LEC_active         - The LEC is actually trying to become or is
                                operational.
                                See lecInterfaceState in the ATM Forum's LAN
                                Emulation MIB to see which state the LEC is in.
-          LEC_notInService   - The LEC is not trying to become operational 
+          LEC_notInService   - The LEC is not trying to become operational
                                because the MIB read so.
-          LEC_noLink         - The LEC is not trying to become operational 
+          LEC_noLink         - The LEC is not trying to become operational
                                because the physical interface does not have
                                link.
-          LEC_noATMaddrnoUNI - The LEC is not trying to become operational 
+          LEC_noATMaddrnoUNI - The LEC is not trying to become operational
                                because there isn't an ATM address and UNI is
-                               not operational. 
+                               not operational.
           LEC_noATMaddr      - The LEC is not trying to become operational
-                               because there isn't an ATM address. 
+                               because there isn't an ATM address.
           LEC_noUNI          - The LEC is not trying to become operational
-                               because UNI is not operational. 
+                               because UNI is not operational.
           LEC_memError       - The LEC is not trying to become operational
                                because it was not able to allocate memory in
                                order to do so."
@@ -1408,7 +1408,7 @@ ctATMLANEInfoExtStatusSendTopo OBJECT-TYPE
          "This configuration value is used to define whether or not this LEC
           should send a LE_TOPOLOGY_CHANGE message when the situation presents
           itself."
-     DEFVAL  { on } 
+     DEFVAL  { on }
      ::= { ctATMLANEInfoExtStatusEntry  3 }
 
 ctATMLANEInfoExtStatusTimeLeft OBJECT-TYPE
@@ -1429,7 +1429,7 @@ ctATMLANEInfoExtStatusNumQueues OBJECT-TYPE
          "This configuration value is used to define the number of traffic
           descriptors used by this LEC to implement Traffic Mangement.
           It's value ranges from 1 to ctATMLANEInfoExtStatusMaxNumQueues."
-     DEFVAL  { 1 } 
+     DEFVAL  { 1 }
      ::= { ctATMLANEInfoExtStatusEntry  5 }
 
 ctATMLANEInfoExtStatusMaxNumQueues OBJECT-TYPE
@@ -1457,7 +1457,7 @@ ctATMLANEInfoExtTMTable       OBJECT-TYPE
     ::= { ctATMLANEInfoExtGroup 2 }
 
 ctATMLANEInfoExtTMEntry       OBJECT-TYPE
-     SYNTAX        CtATMLANEInfoExtTMEntry 
+     SYNTAX        CtATMLANEInfoExtTMEntry
      MAX-ACCESS         not-accessible
      STATUS         current
      DESCRIPTION
@@ -1471,7 +1471,7 @@ ctATMLANEInfoExtTMEntry       OBJECT-TYPE
 
 CtATMLANEInfoExtTMEntry ::=
      SEQUENCE {
-                   ctATMLANEInfoExtTMIndex 
+                   ctATMLANEInfoExtTMIndex
                         INTEGER,
                    ctATMLANEInfoExtTMTrafficDescrIndex
                         AtmTrafficDescrParamIndex
@@ -1482,20 +1482,20 @@ ctATMLANEInfoExtTMIndex OBJECT-TYPE
      MAX-ACCESS          read-only
      STATUS          current
      DESCRIPTION
-         "Defines the list index and will range from 1 to 
+         "Defines the list index and will range from 1 to
           ctATMLANEInfoExtStatusNumQueues."
      ::= { ctATMLANEInfoExtTMEntry  1 }
 
 ctATMLANEInfoExtTMTrafficDescrIndex OBJECT-TYPE
-     SYNTAX          AtmTrafficDescrParamIndex 
+     SYNTAX          AtmTrafficDescrParamIndex
      MAX-ACCESS          read-write
      STATUS          current
      DESCRIPTION
-         "Defines a traffic descriptor index that matches the index 
-          atmTrafficDescrParamIndex in the atmTrafficDescrParamTable 
+         "Defines a traffic descriptor index that matches the index
+          atmTrafficDescrParamIndex in the atmTrafficDescrParamTable
           defined in the RFC 1695.
 
-          NOTE: This table will always be at least of length 1. 
+          NOTE: This table will always be at least of length 1.
           In this case it will define the traffic descriptor that will
           be used for every data SVC for this LAN Emulation Client.
 
@@ -1510,21 +1510,21 @@ ctATMLANEInfoExtTMTrafficDescrIndex OBJECT-TYPE
 -- ATM Traffic Descriptor Name Table
 -- This table is an extension to the ATM Traffic Descriptor table
 -- described in RFC 1695.  In the atmTrafficDescrParamTable in
--- RFC 1695 a network manager can create a traffic descriptor and 
--- assign traffic parameters and traffic class.  A virtual link will use 
--- the traffic parameters and traffic class of the traffic descriptor whose 
--- index it points to.  The ATM Traffic Descriptor Name Table defined 
+-- RFC 1695 a network manager can create a traffic descriptor and
+-- assign traffic parameters and traffic class.  A virtual link will use
+-- the traffic parameters and traffic class of the traffic descriptor whose
+-- index it points to.  The ATM Traffic Descriptor Name Table defined
 -- here will match a name for a traffic descriptor to a traffic descriptor
 -- index.  This index will correspond to a traffic descriptor described
 -- in the ATM Traffic Descriptor Table in RFC 1695.
 
--- A row in this table will be created when a row is added to the 
+-- A row in this table will be created when a row is added to the
 -- atmTrafficDescrParamTable defined in RFC 1695 and will exist until
--- the row in the atmTrafficDescrParamTable has been destroyed.  
+-- the row in the atmTrafficDescrParamTable has been destroyed.
 -- After a row has been created in the atmTrafficDescrParamTable the
 -- value of the ctATMTrafficDescrName object associated with that traffic
 -- descriptor will default to "unknown" with the ctATMTrafficDescrParamIndex
--- appended to it.  For example, if a row is created in the 
+-- appended to it.  For example, if a row is created in the
 -- atmTrafficDescrParamTable with an index of 5, a row will be created
 -- in this table with an index of 5, and the object ctATMTrafficDescrName
 -- will default to "unknown5".
@@ -1535,8 +1535,8 @@ ctATMTrafficDescrNameTable       OBJECT-TYPE
     MAX-ACCESS          not-accessible
     STATUS          current
     DESCRIPTION
-        "An association between a string describing a traffic 
-         descriptor and a traffic descriptor index into the 
+        "An association between a string describing a traffic
+         descriptor and a traffic descriptor index into the
          atmTrafficDescrParamTable in RFC 1695."
     ::= { ctATMTrafficManagementGroup 1 }
 
@@ -1545,8 +1545,8 @@ ctATMTrafficDescrNameEntry       OBJECT-TYPE
      MAX-ACCESS         not-accessible
      STATUS         current
      DESCRIPTION
-         "An entry containing objects associating a string describing 
-          a traffic descriptor on this device and a traffic descriptor 
+         "An entry containing objects associating a string describing
+          a traffic descriptor on this device and a traffic descriptor
           index into the atmTrafficDescrParamTable in RFC 1695."
      INDEX    { atmTrafficDescrParamIndex }
      ::= { ctATMTrafficDescrNameTable 1 }
@@ -1586,7 +1586,7 @@ ctATMTrafficServiceCategoriesSupportedEntry OBJECT-TYPE
         MAX-ACCESS       not-accessible
         STATUS       current
         DESCRIPTION
-          "A table entry containing information related to the traffic 
+          "A table entry containing information related to the traffic
            management service categories that are supported for a certain
            physical interface."
         INDEX   { ifIndex }
@@ -1620,7 +1620,7 @@ ctATMTrafficServiceCategoriesSupportedBitMask  OBJECT-TYPE
                                                                                         mode please use ctATMPvcBwAllocStatus
              CBR(2)                                     Constant Bit Rate
              VBR-nrt(3)                                 Variable Bit Rate - non real time
-             UBR(4)                                             Unspecified Bit Rate  
+             UBR(4)                                             Unspecified Bit Rate
              ABR(5)                                             Avalilable Bit Rate
              VBR-rt(6)                                  Variable Bit Rate - real time "
 
@@ -1633,7 +1633,7 @@ ctATMTrafficManagementAllocBandwidth    OBJECT-TYPE
         DESCRIPTION
             "Returns the amount of bandwidth in use on this ATM
              interface in bits per second. Value only valid when
-             running more than just UBR traffic." 
+             running more than just UBR traffic."
         ::= { ctATMTrafficServiceCategoriesSupportedEntry 2 }
 
 --

@@ -17,16 +17,16 @@ REPEATER-REV4-MIB DEFINITIONS ::= BEGIN
 --  This module will be extended, as required.
 --
 
---  Cabletron Systems reserves the right to make changes in 
---  specification and other information contained in this document 
+--  Cabletron Systems reserves the right to make changes in
+--  specification and other information contained in this document
 --  without prior notice.  The reader should consult Cabletron Systems
 --  to determine whether any such changes have been made.
 --
---  In no event shall Cabletron Systems be liable for any incidental, 
---  indirect, special, or consequential damages whatsoever (including 
+--  In no event shall Cabletron Systems be liable for any incidental,
+--  indirect, special, or consequential damages whatsoever (including
 --  but not limited to lost profits) arising out of or related to this
 --  document or the information contained in it, even if Cabletron
---  Systems has been advised of, known, or should have known, the 
+--  Systems has been advised of, known, or should have known, the
 --  possibility of such damages.
 --
 --  Cabletron grants vendors, end-users, and other interested parties
@@ -72,7 +72,7 @@ rptrMgmt        OBJECT IDENTIFIER ::= { rptr 1 }
 -- This section defines the management objects under the Repeater node.
 -- The implementation of this group of objects is mandatory.
 
-  
+
 rptrMgmtName     OBJECT-TYPE
 SYNTAX      DisplayString (SIZE(20))
 ACCESS      read-write
@@ -110,7 +110,7 @@ STATUS      mandatory
 DESCRIPTION
         "Get the total number of ON ports in this network."
  ::= { rptrMgmt 4 }
-                                                                                                                                                                  
+
 rptrMgmtPortsOper        OBJECT-TYPE
 SYNTAX      INTEGER
 ACCESS      read-only
@@ -127,13 +127,13 @@ DESCRIPTION
         "Get a map of the chassis slots occupied by the boards in
         this network."
  ::= { rptrMgmt 6 }
-          
+
 rptrMgmtInterfaceNum    OBJECT-TYPE
 SYNTAX          INTEGER
 ACCESS          read-only
 STATUS          mandatory
 DESCRIPTION
-        "Get the MIBII interface number of this network.  A return of zero will 
+        "Get the MIBII interface number of this network.  A return of zero will
         mean this network is not associated with a MIBII interface."
  ::= { rptrMgmt 7 }
 
@@ -145,8 +145,8 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "Setting this OID to 2 will reset the 'rptrPktStats', 'rptrProtocols' 
-        and 'rptrFrameSizes' RREV-4 branch static counters. Reading this OID 
+        "Setting this OID to 2 will reset the 'rptrPktStats', 'rptrProtocols'
+        and 'rptrFrameSizes' RREV-4 branch static counters. Reading this OID
         will always return a 1."
  ::= { rptrMgmt 8 }
 
@@ -248,7 +248,7 @@ DESCRIPTION
  ::= { rptrPktStats 10 }
 
 -- Repeater Protocol Statistical Object Definitions
--- This section defines the protocol statistical objects under the 
+-- This section defines the protocol statistical objects under the
 -- Repeater node.   The implementation of this group is optional, but
 -- within the group all of the elements are mandatory.
 
@@ -331,7 +331,7 @@ DESCRIPTION
 
 rptrFrameSizes          OBJECT IDENTIFIER ::= { rptrStats 3 }
 
--- This section defines the frame size statistical objects under the 
+-- This section defines the frame size statistical objects under the
 -- Repeater node.  The implementation of this group is optional,
 -- but within the group all of the elements are mandatory.
 
@@ -543,7 +543,7 @@ STATUS          mandatory
 DESCRIPTION
         "If this object is set to Reset it will cause a reset
          of the redundancy object to occur.  Setting this
-         object to NoReset will do nothing. This object will always 
+         object to NoReset will do nothing. This object will always
          be read as NoReset."
  ::= { rptrRedund 1 }
 
@@ -629,7 +629,7 @@ RptrRedundCrctEntry ::=
                 INTEGER,
         rptrRedundCrctReset
                 INTEGER
-  }     
+  }
 
 rptrRedundCrctId        OBJECT-TYPE
 SYNTAX          INTEGER
@@ -1018,7 +1018,7 @@ DESCRIPTION
         "Setting this object to Lock will activate the network port
         security lock.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
  ::= { rptrSrcAddrMgmt 2 }
@@ -1154,13 +1154,13 @@ ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
         "Setting this object to Lock will activate the network port
-        security lock. 
+        security lock.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
-::= { rptrSaSecurity 1 } 
- 
+::= { rptrSaSecurity 1 }
+
 rptrSecuritySecureState OBJECT-TYPE
 SYNTAX  INTEGER {
         secure(1),
@@ -1171,13 +1171,13 @@ ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
         "The status of source address security of the network.  Ports on
-        the network that are secure(1), can be locked in order to 
+        the network that are secure(1), can be locked in order to
         enable security.  nonSecure(2) ports cannot be locked.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
-::= { rptrSaSecurity 2 } 
+::= { rptrSaSecurity 2 }
 
 rptrSecurityLearnState  OBJECT-TYPE
 SYNTAX  INTEGER {
@@ -1188,15 +1188,15 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "The learn state of the network. This object will only 
-        be applied to ports that are unlocked.  If set to learn(1), all 
+        "The learn state of the network. This object will only
+        be applied to ports that are unlocked.  If set to learn(1), all
         addresses are deleted on the ports and learning begins once again.
         If it is set to noLearn(2), learning stops on the port.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
-::= { rptrSaSecurity 3 } 
+::= { rptrSaSecurity 3 }
 
 rptrSecurityLearnMode   OBJECT-TYPE
 SYNTAX  INTEGER {
@@ -1214,10 +1214,10 @@ DESCRIPTION
         initially deleted and each port continuously replaces the existing
         secure source address with the latest source address it sees.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
-::= { rptrSaSecurity 4 } 
+::= { rptrSaSecurity 4 }
 
 
 
@@ -1330,7 +1330,7 @@ STATUS      mandatory
 DESCRIPTION
         "Get total number of operational ports in the port group."
  ::= { rptrPortGrpMgmtEntry 6 }
-                  
+
 rptrPortGrpMgmtLogPortCount  OBJECT-TYPE
 SYNTAX      INTEGER
 ACCESS      read-only
@@ -1368,21 +1368,21 @@ INDEX           { rptrPortGrpPktStatsId }
 
 RptrPortGrpPktStatsEntry ::=
   SEQUENCE {
-        rptrPortGrpPktStatsId   
+        rptrPortGrpPktStatsId
                 INTEGER,
-        rptrPortGrpPktStatsPkts 
+        rptrPortGrpPktStatsPkts
                 Counter,
-        rptrPortGrpPktStatsBytes        
+        rptrPortGrpPktStatsBytes
                 Counter,
-        rptrPortGrpPktStatsColls        
+        rptrPortGrpPktStatsColls
                 Counter,
-        rptrPortGrpPktStatsErrors       
+        rptrPortGrpPktStatsErrors
                 Counter,
-        rptrPortGrpPktStatsAlign        
+        rptrPortGrpPktStatsAlign
                 Counter,
         rptrPortGrpPktStatsCRC
                 Counter,
-        rptrPortGrpPktStatsOOW  
+        rptrPortGrpPktStatsOOW
                 Counter,
         rptrPortGrpPktStatsBroadcasts
                 Counter,
@@ -2021,8 +2021,8 @@ RptrPortGrpHwTrapEntry ::= SEQUENCE {
 }
 
 rptrPortGrpHwTrapSetGrpId   OBJECT-TYPE
-SYNTAX  INTEGER 
-ACCESS      read-only 
+SYNTAX  INTEGER
+ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
         "Returns an index to a port group for which the information in
@@ -2111,8 +2111,8 @@ RptrPortGrpSaTrapEntry ::= SEQUENCE {
 }
 
 rptrPortGrpSaTrapSetGrpId   OBJECT-TYPE
-SYNTAX  INTEGER 
-ACCESS      read-only 
+SYNTAX  INTEGER
+ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
         "Returns an index to a port group for which the information in
@@ -2203,7 +2203,7 @@ DESCRIPTION
                 unlock(1) - Unlocks the source address lock this group,
                 lock(2) - Locks the source address for this group,
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
 ::= { rptrPortGrpSrcAddrLockEntry 2 }
@@ -2222,7 +2222,7 @@ DESCRIPTION
         in order to enable security. When a value of  nonSecure(2) is
         returned ports cannot be locked.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
 ::= { rptrPortGrpSrcAddrLockEntry 3 }
@@ -2241,7 +2241,7 @@ DESCRIPTION
         to learn(1), all addresses are deleted on the port and learning begins
         once again.  If it is set to noLearn(2), learning stops on the port.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
 ::= { rptrPortGrpSrcAddrLockEntry 4 }
@@ -2262,7 +2262,7 @@ DESCRIPTION
         deleted and each port continuously replaces the existing secure
         source address with latest source address it sees.
 
-        Setting a value of portMisMatch(3) is invalid.  A value of 
+        Setting a value of portMisMatch(3) is invalid.  A value of
         portMisMatch(3) reflects that not all ports are at the same
         value."
 ::= { rptrPortGrpSrcAddrLockEntry 5 }
@@ -2355,7 +2355,7 @@ DESCRIPTION
         the port to be disabled.  When read this object will return
         the state of the object per the last request."
  ::= { rptrPortMgmtEntry 4 }
-                                                                                                        
+
 rptrPortMgmtOperState        OBJECT-TYPE
 SYNTAX      INTEGER {
                         notOperational(1),
@@ -2379,7 +2379,7 @@ DESCRIPTION
             determine the type of repeater port."
         ::= { rptrPortMgmtEntry 6 }
 
-                                                                                                                                                   
+
 
 -- Repeater Port Statistical Object Definitions
 
@@ -3210,7 +3210,7 @@ DESCRIPTION
 
 -- Repeater Port Source Address List Object Definitions
 
--- This section defines a table of Port Source Address List 
+-- This section defines a table of Port Source Address List
 -- objects under the Repeater node.  This group may only be
 -- implemented if the entire set of source addressing
 -- object groups have been implemented.
@@ -3390,7 +3390,7 @@ RptrPortHwTrapEntry ::= SEQUENCE {
 }
 
 rptrPortHwTrapSetPortId   OBJECT-TYPE
-SYNTAX  INTEGER 
+SYNTAX  INTEGER
 ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
@@ -3399,8 +3399,8 @@ DESCRIPTION
 ::= { rptrPortHwTrapEntry 1 }
 
 rptrPortHwTrapSetPortGrpId   OBJECT-TYPE
-SYNTAX  INTEGER 
-ACCESS      read-only 
+SYNTAX  INTEGER
+ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
         "Returns an index to a port group for which the information in
@@ -3453,7 +3453,7 @@ RptrPortSaTrapEntry ::= SEQUENCE {
 }
 
 rptrPortSaTrapSetPortId   OBJECT-TYPE
-SYNTAX  INTEGER 
+SYNTAX  INTEGER
 ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
@@ -3462,8 +3462,8 @@ DESCRIPTION
 ::= { rptrPortSaTrapEntry 1 }
 
 rptrPortSaTrapSetPortGrpId   OBJECT-TYPE
-SYNTAX  INTEGER 
-ACCESS      read-only 
+SYNTAX  INTEGER
+ACCESS      read-only
 STATUS      mandatory
 DESCRIPTION
         "Returns an index to a port group for which the information in
@@ -3609,10 +3609,10 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "A port that is set to full security and is locked will 
+        "A port that is set to full security and is locked will
         scramble ALL packets, which are not contained in the expected
-        address list, including broadcasts and multicasts.  A port 
-        that is set to partial security will allow broadcasts and 
+        address list, including broadcasts and multicasts.  A port
+        that is set to partial security will allow broadcasts and
         multicasts to repeat unscrambled."
 ::= { rptrPortSecurityEntry 7 }
 
@@ -3624,7 +3624,7 @@ SYNTAX  INTEGER {
 ACCESS  read-only
 STATUS  mandatory
 DESCRIPTION
-        "The secure state of the port.  If the port is secure(1), it 
+        "The secure state of the port.  If the port is secure(1), it
         can be locked in order to enable security.  A nonSecure(2)
         port cannot be locked."
 ::= { rptrPortSecurityEntry 8 }
@@ -3653,8 +3653,8 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "The learn state of the port.  This object will only 
-        be applied to a port that is unlocked.  If set to learn(1), all 
+        "The learn state of the port.  This object will only
+        be applied to a port that is unlocked.  If set to learn(1), all
         addresses are deleted on the port and learning begins once again.
         If it is set to noLearn(2), learning stops on the port."
 ::= { rptrPortSecurityEntry 10 }
@@ -3667,7 +3667,7 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "The learn mode of the port. If set to oneTime(1), 
+        "The learn mode of the port. If set to oneTime(1),
         the port is capable of learning two addresses and securing
         on both destination and source addresses (upon locking port).
         If set to continuous(2), all addresses are
@@ -3786,7 +3786,7 @@ SYNTAX  INTEGER {
 ACCESS  read-write
 STATUS  mandatory
 DESCRIPTION
-        "This object describes the status of the user selectable port.  
+        "This object describes the status of the user selectable port.
         On a TPXMIM34 this is port 13 which may either be an EPIM or
         default configuration.
 
@@ -3794,7 +3794,7 @@ DESCRIPTION
         A value of otherPort(2) may imply the use of the EPIM connection."
 ::= { rptrPortAssocEntry 2 }
 
--- TrapTypes 
+-- TrapTypes
 
 --      This section  will describe  the trap  types  that  the
 -- repeater section  of the  EMMe can  generate. These  are not
@@ -3822,7 +3822,7 @@ DESCRIPTION
 
 
 -- Trap Description
---  PortSegmenting 
+--  PortSegmenting
 
 -- Specfic Trap Type Code - 0x101
 
@@ -3836,7 +3836,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  PortUnsegementing 
+--  PortUnsegementing
 
 -- Specfic Trap Type Code - 0x102
 
@@ -3850,7 +3850,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  PortLinkUp 
+--  PortLinkUp
 
 -- Specfic Trap Type Code - 0x103
 
@@ -3863,7 +3863,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  PortLinkDown 
+--  PortLinkDown
 
 -- Specfic Trap Type Code - 0x104
 
@@ -3876,7 +3876,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  NewSourceAddress 
+--  NewSourceAddress
 
 -- Specfic Trap Type Code - 0x105
 
@@ -3889,7 +3889,7 @@ DESCRIPTION
 --        PortSourceAddr {rptrPortSrcAddrListEntry 4 }
 
 -- Trap Description
---  SourceAddressTimeout 
+--  SourceAddressTimeout
 
 -- Specfic Trap Type Code - 0x106
 
@@ -3903,7 +3903,7 @@ DESCRIPTION
 --        PortSourceAddr {rptrPortSrcAddrListEntry 4 }
 
 -- Trap Description
---  BoardRemoval 
+--  BoardRemoval
 
 -- Specfic Trap Type Code - 0x107
 
@@ -3915,7 +3915,7 @@ DESCRIPTION
 --        chassisMib 1.3.6.1.4.1.52.4.1.1.2.5.1.1
 
 -- Trap Description
---  boardInsertion 
+--  boardInsertion
 -- (also see chBoardInsertion, 0x136)
 -- Specfic Trap Type Code - 0x108
 
@@ -3923,11 +3923,11 @@ DESCRIPTION
 --      that a new board has been inserted.
 --      The interesting information will include:
 
---        chSlotID 
---        deviceType 
+--        chSlotID
+--        deviceType
 
 -- Trap Description
---  ActivePortInRedundantCircuitFailed 
+--  ActivePortInRedundantCircuitFailed
 
 -- Specfic Trap Type Code - 0x109
 
@@ -3941,7 +3941,7 @@ DESCRIPTION
 --        PortRedundCrt {rptrPortRedundEntry 3 }
 
 -- Trap Description
---  RedundantPortActivated 
+--  RedundantPortActivated
 
 -- Specfic Trap Type Code - 0x10a
 
@@ -3956,7 +3956,7 @@ DESCRIPTION
 --        PortRedundCrt {rptrPortRedundEntry 3 }
 
 -- Trap Description
---  RedundantPortTestFailed 
+--  RedundantPortTestFailed
 
 -- Specfic Trap Type Code - 0x10b
 
@@ -3972,7 +3972,7 @@ DESCRIPTION
 --        PortRedundCrt {rptrPortRedundEntry 3 }
 
 -- Trap Description
---  BoardTrafficThresholdExceeded 
+--  BoardTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x10f
 
@@ -3986,7 +3986,7 @@ DESCRIPTION
 --        BoardIndex {rptrPortGrpMgmtEntry 1 }
 
 -- Trap Description
---  BoardErrorThresholdExceeded 
+--  BoardErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x110
 
@@ -4002,7 +4002,7 @@ DESCRIPTION
 --        BoardIndex {rptrPortGrpMgmtEntry 1 }
 
 -- Trap Description
---  BoardCollisionThresholdExceeded 
+--  BoardCollisionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x111
 
@@ -4016,7 +4016,7 @@ DESCRIPTION
 --        BoardIndex {rptrPortGrpMgmtEntry 1 }
 
 -- Trap Description
---  PortTrafficThresholdExceeded 
+--  PortTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x112
 
@@ -4031,7 +4031,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  PortErrorThresholdExceeded 
+--  PortErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x113
 
@@ -4048,7 +4048,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  PortCollisionThresholdExceeded 
+--  PortCollisionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x114
 
@@ -4067,7 +4067,7 @@ DESCRIPTION
 
 -- Specfic Trap Type Code - 0x115
 
---   This trap indicates that a port has changed from a 
+--   This trap indicates that a port has changed from a
 -- station port to a link port or vice versa.
 -- The interesting information is:
 
@@ -4087,14 +4087,14 @@ DESCRIPTION
 
 --        BoardIndex {rptrPortGrpMgmtEntry 1 }
 --        PortIndex {rptrPortMgmtEntry 1 }
---        PortSourceAddr {rptrPortSrcAddrListEntry 4 } 
+--        PortSourceAddr {rptrPortSrcAddrListEntry 4 }
 
 -- Trap Description
 --  PortViolationReset
 
--- Specfic Trap Type Code - 0x118 
+-- Specfic Trap Type Code - 0x118
 
---   This trap is generated when management intervention has 
+--   This trap is generated when management intervention has
 -- reset a port after a violation has occurred.
 -- The interesting information is:
 
@@ -4196,7 +4196,7 @@ DESCRIPTION
 --  repeater alarm time base
 --  board number
 --
- 
+
 -- Trap Description
 --  PortBroadcastThresholdExceeded
 --
@@ -4211,7 +4211,7 @@ DESCRIPTION
 --  board number
 --  port number
 --
- 
+
 
 --  SystemVolatgeLow
 -- Specfic Trap Type Code - 0x125
@@ -4234,7 +4234,7 @@ DESCRIPTION
 --        None
 
 -- Trap Description
---  EpimRemoval 
+--  EpimRemoval
 
 -- Specfic Trap Type Code - 0x127
 
@@ -4246,7 +4246,7 @@ DESCRIPTION
 --        PortIndex {rptrPortMgmtEntry 1 }
 
 -- Trap Description
---  Epiminsertion 
+--  Epiminsertion
 
 -- Specfic Trap Type Code - 0x128
 
@@ -4260,7 +4260,7 @@ DESCRIPTION
 
 
 -- Trap Description
---  RptrTrafficThresholdExceeded 
+--  RptrTrafficThresholdExceeded
 
 -- Specfic Trap Type Code - 0x129
 
@@ -4273,7 +4273,7 @@ DESCRIPTION
 --        RptrInterfaceNum {rptrMgmt 7 }
 
 -- Trap Description
---  RptrErrorThresholdExceeded 
+--  RptrErrorThresholdExceeded
 
 -- Specfic Trap Type Code - 0x130
 
@@ -4288,7 +4288,7 @@ DESCRIPTION
 --        RptrInterfaceNum {rptrMgmt 7 }
 
 -- Trap Description
---  RptrCollsionThresholdExceeded 
+--  RptrCollsionThresholdExceeded
 
 -- Specfic Trap Type Code - 0x131
 
@@ -4306,7 +4306,7 @@ DESCRIPTION
 
 -- Specfic Trap Type Code - 0x132
 
---   This trap is generated when the status of the address lock 
+--   This trap is generated when the status of the address lock
 -- changes for a certain network.
 -- The interesting information is:
 
@@ -4346,10 +4346,10 @@ DESCRIPTION
 --      port group { rptrPortGrmtMgmtEntry 1 }
 --      port { rptrPortMgmtEntry 2 }
 --      lock status { rptrPortSecurityLockEntry 3 }
- 
+
 
 -- Trap Description
---  chBoardInsertion 
+--  chBoardInsertion
 -- (also see boardInsertion, 0x108)
 
 -- Specfic Trap Type Code - 0x136
@@ -4358,7 +4358,7 @@ DESCRIPTION
 --      that a new board has been inserted.
 --      The interesting information will include:
 
---        chSlotID 
---        chSlotModuleType 
+--        chSlotID
+--        chSlotModuleType
 
 END

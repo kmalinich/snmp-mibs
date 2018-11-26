@@ -6,7 +6,7 @@ ENTERASYS-IF-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --
 --
 
---  This module provides authoritative definitions for Enterasys 
+--  This module provides authoritative definitions for Enterasys
 --  Networks' Interface MIB Extensions functionality.
 
 --
@@ -25,7 +25,7 @@ ENTERASYS-IF-MIB-EXT-MIB DEFINITIONS ::= BEGIN
 --  possibility of such damages.
 --
 --  Enterasys Networks grants vendors, end-users, and other interested
---  parties a non-exclusive license to use this Specification in 
+--  parties a non-exclusive license to use this Specification in
 --  connection with the management of Enterasys Networks products.
 
 --  Copyright (2005-2013) Enterasys Networks, Inc.
@@ -55,50 +55,50 @@ etsysIfMibExtMIB MODULE-IDENTITY
          Phone:   +1 603 952 5000
          E-mail:  support@enterasys.com
          WWW:     http://www.enterasys.com"
-   
+
     DESCRIPTION
         "This MIB module defines a portion of the SNMP MIB under
-         the Enterasys Networks enterprise OID that provide 
+         the Enterasys Networks enterprise OID that provide
          extensions to the industry standard IF-MIB."
 
     REVISION    "201304121314Z"  -- Fri Apr 12 13:14 UTC 2013
     DESCRIPTION
         "Update CONTACT-INFO clause."
-   
+
     REVISION    "201302111814Z"  -- Mon Feb 11 18:14 UTC 2013
     DESCRIPTION
-        "Addition of Transmit Queue Monitor cause to the 
+        "Addition of Transmit Queue Monitor cause to the
          EtsysIfOperStatusCauses textual convention."
 
     REVISION    "201202022008Z"  -- Thu Feb  2 20:08 UTC 2012
-    DESCRIPTION 
+    DESCRIPTION
         "Addition of Ethernet OAM ULD cause to the EtsysIfOperStatusCauses
          textual convention."
 
     REVISION    "201112071558Z"  -- Wed Dec  7 15:58 UTC 2011
-    DESCRIPTION 
+    DESCRIPTION
         "Addition of Link-state cause to the EtsysIfOperStatusCauses
          textual convention."
 
     REVISION    "201110251948Z"  -- Tue Oct 25 19:48 UTC 2011
-    DESCRIPTION 
+    DESCRIPTION
         "Addition of Chassis Bonding cause to the EtsysIfOperStatusCauses
          textual convention."
 
     REVISION    "201106081212Z"  -- Wed Jun  8 12:12 UTC 2011
-    DESCRIPTION 
+    DESCRIPTION
         "Addition of MAC Locking cause to the EtsysIfOperStatusCauses
          textual convention."
 
     REVISION    "201105121415Z"  -- Thu May 12 16:15:05 GMT 2011
-    DESCRIPTION 
+    DESCRIPTION
         "Addition of Ethernet OAM and Ethernet OAM Loopback
          causes to the EtsysIfOperStatusCauses textual convention."
-        
+
     REVISION    "200501132135Z"  -- Thu Jan 13 21:35 GMT 2005
-    DESCRIPTION 
+    DESCRIPTION
         "The initial version of this MIB module."
-    ::= { etsysModules 57 } 
+    ::= { etsysModules 57 }
 
 
 -- Textual Conventions
@@ -108,28 +108,28 @@ EtsysIfOperStatusCauses ::= TEXTUAL-CONVENTION
     DESCRIPTION
         "This convention specifies the variety of functionalities that
          may cause an interface's ifOperStatus to be have a value other
-         than up(1).  A set bit indicates that the associated cause is 
+         than up(1).  A set bit indicates that the associated cause is
          influencing the interface's current ifOperStatus.
 
          adminStatus(0)
           - The ifAdminStatus for the interface is not up(1).
 
-         linkLoss(1) 
+         linkLoss(1)
           - The interface has physically lost link with its partner.
 
-         linkFlap(2) 
+         linkFlap(2)
           - The interface has been brought down by the Link Flap
             feature as defined by etsysLinkFlapMIB.
 
-         self(3)     
-          - The interface has brought itself down.  
+         self(3)
+          - The interface has brought itself down.
 
          initialization(4)
           - The system or interface is still in the process of
             initializing itself.
 
          flowLimiting(5)
-          - The interface has been brought down by the Flow Limiting 
+          - The interface has been brought down by the Flow Limiting
             feature as defined by etsysFlowLimitingMIB.
 
          policy(6)
@@ -141,17 +141,17 @@ EtsysIfOperStatusCauses ::= TEXTUAL-CONVENTION
             feature defined by etsysCosMIB.
 
          ieee8021x(8)
-          - The interface has been made dormant awaiting successful 
+          - The interface has been made dormant awaiting successful
             authentication by 802.1X.
 
          ieee8023lag(9)
           - The interface has been made dormant as a result of being
             an underlying physical port in a Link Aggregation.
-            
+
          enetOam(10)
           - The interface has been brought down by the Ethernet OAM
             feature as defined by etsysEthOamExtMIB.
-            
+
          enetOamLb(11)
           - The interface has been brought down by the Ethernet OAM
             loopback feature as defined by dot3OamMIB.
@@ -159,7 +159,7 @@ EtsysIfOperStatusCauses ::= TEXTUAL-CONVENTION
          macLock(12)
           - The interface has been brought down by the MAC Lock
             feature as defined in etsysMACLockingMIB.
- 
+
          chassisBonding(13)
           - The interface has been brought down by the Chassis Bonding
             feature as defined in etsysVirtualSwitchBondingMIB.
@@ -167,17 +167,17 @@ EtsysIfOperStatusCauses ::= TEXTUAL-CONVENTION
          linkState(14)
           - The interface has been brought down by the Link-state
             application as defined in etsysLinkstateMIB.
-            
+
          enetOamUld(15)
           - The interface has been brought down by the Ethernet OAM
             Unidirectional Link Detection (ULD) feature as defined by
             etsysEthOamExtMIB.
-            
+
          txqMonitor(16)
           - The interface has been brought down by the Transmit Queue
             Monitor feature as defined in etsysTxqMonitorMIB."
 
-            
+
     REFERENCE
         "RFC 2863, 'The Interfaces Group MIB'
          ENTERASYS-LINK-FLAP-MIB
@@ -217,13 +217,13 @@ EtsysIfOperStatusCauses ::= TEXTUAL-CONVENTION
 -- MIB Objects
 -- -------------------------------------------------------------
 
-etsysIfMibExtObjects      OBJECT IDENTIFIER 
+etsysIfMibExtObjects      OBJECT IDENTIFIER
                            ::= { etsysIfMibExtMIB 1 }
 
-etsysIfMibExtSystem       OBJECT IDENTIFIER 
+etsysIfMibExtSystem       OBJECT IDENTIFIER
                            ::= { etsysIfMibExtObjects 1 }
 
-etsysIfMibExtInterface    OBJECT IDENTIFIER 
+etsysIfMibExtInterface    OBJECT IDENTIFIER
                            ::= { etsysIfMibExtObjects 2 }
 
 
@@ -240,11 +240,11 @@ etsysIfOperStateLinkChange OBJECT-TYPE
          the physical link state of an interface when the interface's
          ifOperStatus transitions into or out of the down(2) state.
          A value of enabled(1) will cause an interface to drop physical
-         link when its ifOperStatus transitions to down(2).  If the 
+         link when its ifOperStatus transitions to down(2).  If the
          interface would transition out of the down(2) state, assuming
-         it did have link, then physical link will be restored to the 
-         interface.  A value of disabled(2) will cause an interface to 
-         not alter its physical link regardless of the value of 
+         it did have link, then physical link will be restored to the
+         interface.  A value of disabled(2) will cause an interface to
+         not alter its physical link regardless of the value of
          ifOperStatus.  This object only affects those interfaces which
          have a concept of physical link."
     DEFVAL      { disabled }
@@ -274,7 +274,7 @@ etsysInterfaceExtEntry OBJECT-TYPE
     ::= { etsysInterfaceExtTable 1 }
 
 EtsysInterfaceExtEntry ::=
-    SEQUENCE { 
+    SEQUENCE {
         etsysIfOperStatusCause
             EtsysIfOperStatusCauses
     }

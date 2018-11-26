@@ -1,11 +1,11 @@
 --
 -- Copyright (c) 2004-2012, Infoblox, Inc
 -- All rights reserved.
-                                                                                                
+
 IB-DNSONE-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
-   OBJECT-TYPE, NOTIFICATION-TYPE, MODULE-IDENTITY, enterprises, 
+   OBJECT-TYPE, NOTIFICATION-TYPE, MODULE-IDENTITY, enterprises,
    Counter64          FROM SNMPv2-SMI
    TEXTUAL-CONVENTION FROM SNMPv2-TC
    ibDNSOne, IbString FROM IB-SMI-MIB;
@@ -27,7 +27,7 @@ ibDnsModule MODULE-IDENTITY
 
     REVISION  "200501100000Z"  --  Jan 10, 2005
     DESCRIPTION   "Added copyright"
-                                                                                                
+
     REVISION  "200405210000Z"  --  May 21, 2004
     DESCRIPTION   "Creation of the MIB file"
 

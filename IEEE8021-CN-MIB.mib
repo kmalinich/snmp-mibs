@@ -39,7 +39,7 @@ ieee8021CnMib
     ORGANIZATION "IEEE 802.1 Working Group"
     CONTACT-INFO
           "WG-URL: http://grouper.ieee.org/groups/802/1/index.html
-         WG-EMail: stds-802-1@ieee.org 
+         WG-EMail: stds-802-1@ieee.org
 
           Contact: Norman Finn
            Postal: C/O IEEE 802.1 Working Group
@@ -51,7 +51,7 @@ ieee8021CnMib
                    USA
            E-mail: STDS-802-1-L@LISTSERV.IEEE.ORG
        "
-   DESCRIPTION 
+   DESCRIPTION
      "Congestion notification module.
       Unless otherwise indicated, the references in this MIB
       module are to IEEE Std 802.1Q-2011.
@@ -61,11 +61,11 @@ ieee8021CnMib
       see the draft itself for full legal notices."
    REVISION     "201102270000Z" -- February 27, 2011
    DESCRIPTION
-     "Minor edits to contact information etc. as part of 
+     "Minor edits to contact information etc. as part of
     2011 revision of IEEE Std 802.1Q."
 
    REVISION       "200912180000Z"    -- 12/18/2009 00:00GMT
-   DESCRIPTION 
+   DESCRIPTION
       "Included in IEEE 802.1Qau-2010
 
         Copyright (C) IEEE."
@@ -410,7 +410,7 @@ ieee8021CnCompntPriTable
     STATUS      current
     DESCRIPTION
        "Each row in this table supplies default values for one
-        Congestion Notification Priority Value for a whole bridge 
+        Congestion Notification Priority Value for a whole bridge
         component or end station.
 
         Creating a row in this table makes the priority value of
@@ -650,7 +650,7 @@ ieee8021CnComPriLldpInstanceSelector
         ieee8021CnComPriLldpInstanceChoice contains the value cnlNone
         (1).
 
-        This object can be overridden by 
+        This object can be overridden by
         ieee8021CnPortPriLldpInstanceChoice and
         ieee8021CnPortPriLldpInstanceChoice.
        "

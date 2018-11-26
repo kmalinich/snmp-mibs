@@ -13,7 +13,7 @@ IMPORTS
         ::= OCTET STRING
     TruthValue  ::=
         INTEGER { false(2), true(1) }
-            
+
     --PhysAddress               ::= OCTET STRING
     --Guage32                   ::= Counter
     --MacAddress                ::= OCTET STRING
@@ -217,7 +217,7 @@ ctronAP3000 MODULE-IDENTITY
         apSyslogConfigMgnt      OBJECT IDENTIFIER ::= { ctronAP3000 20 }
         apEventLogMgnt          OBJECT IDENTIFIER ::= { ctronAP3000 21 }
         apWSLSupportMgnt        OBJECT IDENTIFIER ::= { ctronAP3000 22 }
-        apWMMMgnt               OBJECT IDENTIFIER ::= { ctronAP3000 23 }        
+        apWMMMgnt               OBJECT IDENTIFIER ::= { ctronAP3000 23 }
         apNotificationTrapTree  OBJECT IDENTIFIER ::= { ctronAP3000 100 }
 
 -- -------------------------------------------------------------
@@ -1574,7 +1574,7 @@ EnterpriseApRadioEntry ::= SEQUENCE
     enterpriseApRadioMulticastDataRate  INTEGER,
     enterpriseApRadioAutoDataRate   INTEGER,
     enterpriseApRadioPreamble       INTEGER,
-    enterpriseApRadioSWRetryMode    INTEGER    
+    enterpriseApRadioSWRetryMode    INTEGER
 }
 
 enterpriseApRadioIndex OBJECT-TYPE
@@ -1853,7 +1853,7 @@ enterpriseApRadioSWRetryMode OBJECT-TYPE
         DESCRIPTION
             "This value indicates whether SW retty mode  is enabled or not
                          for this radio interface"
-        ::= { enterpriseApRadioEntry 18 }        
+        ::= { enterpriseApRadioEntry 18 }
 -- **********************************************************************
 -- * EnterpriseApVapRadio TABLE
 -- **********************************************************************
@@ -3666,7 +3666,7 @@ apWMMControlTable OBJECT-TYPE
         DESCRIPTION
             "Table for WMM configuration per radio."
         ::= { apWMMMgnt 1 }
-        
+
 apWMMControlEntry OBJECT-TYPE
         SYNTAX ApWMMControlEntry
         MAX-ACCESS not-accessible
@@ -3716,7 +3716,7 @@ apWMMBssParamTable OBJECT-TYPE
         REFERENCE
             "IEEE 802.11e -2005"
         ::= { apWMMMgnt 2 }
-        
+
 apWMMBssParamEntry OBJECT-TYPE
         SYNTAX ApWMMBssParamEntry
         MAX-ACCESS not-accessible
@@ -3748,7 +3748,7 @@ apWMMBssParamIndex OBJECT-TYPE
                 1) 1 AC_BE (best effort, ACI=0)
                 2) 2 AC_BK (background, ACI=1)
                 3) 3 AC_VI (video, ACI=2)
-                4) 4 AC_VO (voice, ACI=3)          
+                4) 4 AC_VO (voice, ACI=3)
             "
         ::= { apWMMBssParamEntry 1 }
 
@@ -3824,7 +3824,7 @@ apWMMApParamTable OBJECT-TYPE
         REFERENCE
             "IEEE 802.11e -2005"
         ::= { apWMMMgnt 3 }
-        
+
 apWMMApParamEntry OBJECT-TYPE
         SYNTAX ApWMMApParamEntry
         MAX-ACCESS not-accessible
@@ -3856,7 +3856,7 @@ apWMMApParamIndex OBJECT-TYPE
                 1) 1 AC_BE (best effort, ACI=0)
                 2) 2 AC_BK (background, ACI=1)
                 3) 3 AC_VI (video, ACI=2)
-                4) 4 AC_VO (voice, ACI=3)          
+                4) 4 AC_VO (voice, ACI=3)
             "
         ::= { apWMMApParamEntry 1 }
 
