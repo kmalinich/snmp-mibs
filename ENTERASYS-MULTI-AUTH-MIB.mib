@@ -1166,7 +1166,7 @@ EtsysMultiAuthCounterEntry ::=
 			Counter64,
 		etsysMultiAuthCounterOutboundPackets
 			Counter64
-    }	
+    }
 
 etsysMultiAuthCounterInboundBytes OBJECT-TYPE
 	SYNTAX  	Counter64
