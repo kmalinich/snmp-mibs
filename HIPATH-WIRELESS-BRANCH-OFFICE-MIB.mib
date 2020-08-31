@@ -1,18 +1,18 @@
 	HIPATH-WIRELESS-BRANCH-OFFICE-MIB DEFINITIONS ::= BEGIN
 
 		IMPORTS
-			apIndex			
-				FROM HIPATH-WIRELESS-HWC-MIB			
-			hiPathWirelessMgmt, hiPathWirelessModules			
-				FROM HIPATH-WIRELESS-SMI			
-			OBJECT-GROUP, MODULE-COMPLIANCE			
-				FROM SNMPv2-CONF			
-			IpAddress, Integer32, OBJECT-TYPE, MODULE-IDENTITY			
-				FROM SNMPv2-SMI			
-			RowStatus			
+			apIndex
+				FROM HIPATH-WIRELESS-HWC-MIB
+			hiPathWirelessMgmt, hiPathWirelessModules
+				FROM HIPATH-WIRELESS-SMI
+			OBJECT-GROUP, MODULE-COMPLIANCE
+				FROM SNMPv2-CONF
+			IpAddress, Integer32, OBJECT-TYPE, MODULE-IDENTITY
+				FROM SNMPv2-SMI
+			RowStatus
 				FROM SNMPv2-TC;
-	
-	
+
+
 --  July 29, 2005 at 14:43 GMT
 -- July 29, 2005 at 14:43 GMT
 		-- 1.3.6.1.4.1.4329.15.5.4
@@ -23,10 +23,10 @@
 			CONTACT-INFO
 				"Behrouz Sultan
 				Chantry Networks, Inc.
-				
+
 				1900 Minnesota Court, Suite 125
 				Mississauga ON, L5N 3C9
-				
+
 				Email: behrouz.sultan@siemens.com
 				Phone 1-905-363-6400
 				Fax   1-905-567-0099"
@@ -37,21 +37,21 @@
 				"Initial version."
 			::= { hiPathWirelessModules 4 }
 
-		
-	
-	
+
+
+
 --
 -- Node definitions
 --
-	
+
 		-- 1.3.6.1.4.1.4329.15.3.22
 		hiPathWirelessBranchOfficeMib OBJECT IDENTIFIER ::= { hiPathWirelessMgmt 22 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1
 		branchOfficeObjects OBJECT IDENTIFIER ::= { hiPathWirelessBranchOfficeMib 1 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1
 		branchOfficeTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF BranchOfficeEntry
@@ -61,7 +61,7 @@
 				"Table of branch office configuration values for the access points."
 			::= { branchOfficeObjects 1 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1
 		branchOfficeEntry OBJECT-TYPE
 			SYNTAX BranchOfficeEntry
@@ -72,7 +72,7 @@
 			INDEX { apIndex }
 			::= { branchOfficeTable 1 }
 
-		
+
 		BranchOfficeEntry ::=
 			SEQUENCE {
 				boConnectMode
@@ -102,7 +102,7 @@
 				"Access point connection mode - use a static definition or service discovery."
 			::= { branchOfficeEntry 1 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1.2
 		boIpAllocation OBJECT-TYPE
 			SYNTAX INTEGER
@@ -116,7 +116,7 @@
 				"Indicates if access point is to use DHCP to acquire an IP address or has a statically configured IP address."
 			::= { branchOfficeEntry 2 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1.3
 		boStaticIpAddress OBJECT-TYPE
 			SYNTAX IpAddress
@@ -126,7 +126,7 @@
 				"If access point is statically configured, contains the IP addres."
 			::= { branchOfficeEntry 3 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1.4
 		boStaticNetmask OBJECT-TYPE
 			SYNTAX IpAddress
@@ -136,7 +136,7 @@
 				"Netmask for the access point if statically configured."
 			::= { branchOfficeEntry 4 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1.5
 		boStaticGateway OBJECT-TYPE
 			SYNTAX IpAddress
@@ -146,7 +146,7 @@
 				"Default gateway for the access point if statically configured."
 			::= { branchOfficeEntry 5 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.1.1.6
 		boRebootOnPollFailure OBJECT-TYPE
 			SYNTAX Integer32
@@ -156,7 +156,7 @@
 				"Indicates if access point should reboot on a poll failure (disabling wireless access) or continue to provide limited local wireless service."
 			::= { branchOfficeEntry 6 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.2
 		branchOfficeHWCTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF BranchOfficeHWCEntry
@@ -166,7 +166,7 @@
 				"Contains the list of access controller IP addressIf an access point has a static."
 			::= { branchOfficeObjects 2 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.2.1
 		branchOfficeHWCEntry OBJECT-TYPE
 			SYNTAX BranchOfficeHWCEntry
@@ -177,7 +177,7 @@
 			INDEX { apIndex }
 			::= { branchOfficeHWCTable 1 }
 
-		
+
 		BranchOfficeHWCEntry ::=
 			SEQUENCE {
 				boHWCConnectOrder
@@ -197,7 +197,7 @@
 				"The position of the access controller in the search list."
 			::= { branchOfficeHWCEntry 1 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.2.1.2
 		boHWCIpAddress OBJECT-TYPE
 			SYNTAX IpAddress
@@ -207,7 +207,7 @@
 				"IP address of the access controller."
 			::= { branchOfficeHWCEntry 2 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.1.2.1.3
 		boHWCRowStatus OBJECT-TYPE
 			SYNTAX RowStatus
@@ -217,11 +217,11 @@
 				"RowStatus attribute to control modification of branchOfficeHWCTable."
 			::= { branchOfficeHWCEntry 3 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.2
 		hiPathWirelessBranchOfficeConformance OBJECT IDENTIFIER ::= { hiPathWirelessBranchOfficeMib 2 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.2.1
 		hiPathWirelessBranchOfficeGroup OBJECT-GROUP
 			OBJECTS { boHWCRowStatus, boHWCIpAddress, boHWCConnectOrder }
@@ -230,7 +230,7 @@
 				"Conformance group definitions for the branch office MIB."
 			::= { hiPathWirelessBranchOfficeConformance 1 }
 
-		
+
 --  this module
 		-- 1.3.6.1.4.1.4329.15.3.22.2.2
 		hiPathWirelessBOConformance MODULE-COMPLIANCE
@@ -241,7 +241,7 @@
 				MANDATORY-GROUPS { hiPathWirelessBranchOfficeGroup }
 			::= { hiPathWirelessBranchOfficeConformance 2 }
 
-		
+
 		-- 1.3.6.1.4.1.4329.15.3.22.2.3
 		hiPathWirelessBOObsoleteGroup OBJECT-GROUP
 			OBJECTS { boConnectMode, boIpAllocation, boStaticIpAddress, boStaticNetmask, boStaticGateway,
@@ -251,6 +251,6 @@
 				"Description."
 			::= { hiPathWirelessBranchOfficeConformance 3 }
 
-		
-	
+
+
 	END

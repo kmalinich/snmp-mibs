@@ -124,7 +124,7 @@ policyMIB MODULE-IDENTITY
        DESCRIPTION
 	"Comparison operator used by ACL's to permit src/dst port addresses."
        SYNTAX     INTEGER {
-            notused(1), -- no port comparison to be made	
+            notused(1), -- no port comparison to be made
             eq(2),   -- equals
             neq(3),  -- not equals
             lt(4),   -- less than
@@ -690,7 +690,7 @@ polL2Group  OBJECT IDENTIFIER   ::= { ssrMibs 16 }
 
    polL2FilterDesc  OBJECT-TYPE
        SYNTAX       DisplayString (SIZE (0..25))
-       MAX-ACCESS   read-create	
+       MAX-ACCESS   read-create
        STATUS      current
        DESCRIPTION
          "A string used to describe the filter. It should contain
@@ -1377,7 +1377,7 @@ polGroupV10  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1420,7 +1420,7 @@ polGroupV11  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1477,7 +1477,7 @@ polGroupV12  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 
@@ -1560,7 +1560,7 @@ polGroupV13  OBJECT-GROUP
    polAclServiceNumber,
    polAclServiceLastChanged,
    polAclServiceIfIndex,
-   polAclName2,	
+   polAclName2,
    polAclServiceDirection,
    polAclServiceRowStatus,
 

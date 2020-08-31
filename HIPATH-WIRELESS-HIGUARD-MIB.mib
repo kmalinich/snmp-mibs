@@ -7,7 +7,7 @@ IMPORTS
         NOTIFICATION-TYPE,
         Integer32,IpAddress
                 FROM SNMPv2-SMI
-        hiPathWirelessHWM			
+        hiPathWirelessHWM
 		FROM HIPATH-WIRELESS-SMI;
 
 -- 1.3.6.1.4.1.4329.15.6.1
@@ -18,10 +18,10 @@ hiPathWirelessHiGuardMib MODULE-IDENTITY
         CONTACT-INFO
 		"Behrouz Sultan
 		 Enterasys Networks, Inc.
-				
+
 		 55 Commerce Valley Drive, Suite 400
 		 Thornhill ON, L3T 7V9
-				
+
 		 Email: bsultani@enterasys.com
 		 Phone: 289-695-3241"
 

@@ -1368,7 +1368,7 @@ EtsysNatBindingEntry ::=
         etsysNatBindingClear
             TruthValue
     }
-	
+
 etsysNatBindingId OBJECT-TYPE
     SYNTAX       Unsigned32
     MAX-ACCESS   not-accessible
