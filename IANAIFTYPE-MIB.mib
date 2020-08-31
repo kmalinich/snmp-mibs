@@ -77,13 +77,13 @@
 
        REVISION     "200603310000Z"  -- March 31, 2006
        DESCRIPTION  "Registration of new IANA ifType 234."
-
+	
        REVISION     "200603300000Z"  -- March 30, 2006
        DESCRIPTION  "Registration of new IANA ifType 233."
 
        REVISION     "200512220000Z"  -- December 22, 2005
        DESCRIPTION  "Registration of new IANA ifTypes 231 and 232."
-
+	
        REVISION     "200510100000Z"  -- October 10, 2005
        DESCRIPTION  "Registration of new IANA ifType 230."
 
@@ -135,7 +135,7 @@
        REVISION     "200210170000Z"  -- Oct 17, 2002
        DESCRIPTION  "Registration of new IANAifType
                      219."
-
+	
        REVISION     "200207160000Z"  -- Jul 16, 2002
        DESCRIPTION  "Registration of new IANAifTypes
                      217 and 218."
@@ -147,7 +147,7 @@
        REVISION     "200206190000Z"  -- Jun 19, 2002
        DESCRIPTION  "Registration of new IANAifType
                      214."
-
+	
        REVISION     "200201040000Z"  -- Jan 4, 2002
        DESCRIPTION  "Registration of new IANAifTypes
                      211, 212 and 213."
@@ -210,7 +210,7 @@
 
        REVISION     "200009010000Z"  -- Sept 01, 2000
        DESCRIPTION  "Registration of new IANAifTypes
-                     184, 185, and 186."
+                     184, 185, and 186."			
 
        REVISION     "200008240000Z"  -- Aug 24, 2000
        DESCRIPTION  "Registration of new IANAifType 183."
@@ -225,7 +225,7 @@
 
        REVISION     "200004250000Z"  -- Apr 25, 2000
        DESCRIPTION  "Registration of new IANAifTypes 168 and 169."
-
+	
        REVISION     "200003060000Z"  -- Mar 6, 2000
        DESCRIPTION  "Fixed a missing semi-colon in the IMPORT.
                      Also cleaned up the REVISION log a bit.
@@ -389,7 +389,7 @@
                    voiceOverIp(104),   -- voice over IP encapsulation
                    atmDxi(105),        -- ATM DXI
                    atmFuni(106),       -- ATM FUNI
-                   atmIma (107),       -- ATM IMA
+                   atmIma (107),       -- ATM IMA		
                    pppMultilinkBundle(108), -- PPP Multilink Bundle
                    ipOverCdlc (109),   -- IBM ipOverCdlc
                    ipOverClaw (110),   -- IBM Common Link Access to Workstn
@@ -421,7 +421,7 @@
                    l2vlan (135),       -- Layer 2 Virtual LAN using 802.1Q
                    l3ipvlan (136),     -- Layer 3 Virtual LAN using IP
                    l3ipxvlan (137),    -- Layer 3 Virtual LAN using IPX
-                   digitalPowerline (138), -- IP over Power Lines
+                   digitalPowerline (138), -- IP over Power Lines	
                    mediaMailOverIp (139), -- Multimedia Mail over IP
                    dtm (140),        -- Dynamic syncronous Transfer Mode
                    dcn (141),    -- Data Communications Network
@@ -434,7 +434,7 @@
                    dvbRccUpstream (148),  -- DVB-RCC Upstream Channel
                    atmVirtual (149),   -- ATM Virtual Interface
                    mplsTunnel (150),   -- MPLS Tunnel Virtual Interface
-                   srp (151),	-- Spatial Reuse Protocol
+                   srp (151),	-- Spatial Reuse Protocol	
                    voiceOverAtm (152),  -- Voice Over ATM
                    voiceOverFrameRelay (153),   -- Voice Over Frame Relay
                    idsl (154),		-- Digital Subscriber Loop over ISDN
@@ -496,7 +496,7 @@
                    pon155 (207), -- FSAN 155Mb Symetrical PON interface
                    pon622 (208), -- FSAN622Mb Symetrical PON interface
                    bridge (209), -- Transparent bridge interface
-                   linegroup (210), -- Interface common to multiple lines
+                   linegroup (210), -- Interface common to multiple lines		
                    voiceEMFGD (211), -- voice E&M Feature Group D
                    voiceFGDEANA (212), -- voice FGD Exchange Access North American
                    voiceDID (213), -- voice Direct Inward Dialing
@@ -506,7 +506,7 @@
                    pdnEtherLoop1 (217), -- Paradyne EtherLoop 1
                    pdnEtherLoop2 (218), -- Paradyne EtherLoop 2
                    opticalChannelGroup (219), -- Optical Channel Group
-                   homepna (220), -- HomePNA ITU-T G.989
+                   homepna (220), -- HomePNA ITU-T G.989				
                    gfp (221), -- Generic Framing Procedure (GFP)
                    ciscoISLvlan (222), -- Layer 2 Virtual LAN using Cisco ISL
                    actelisMetaLOOP (223), -- Acteleis proprietary MetaLOOP High Speed Link

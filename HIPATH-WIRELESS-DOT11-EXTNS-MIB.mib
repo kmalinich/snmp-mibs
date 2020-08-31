@@ -1,20 +1,20 @@
 	HIPATH-WIRELESS-DOT11-EXTNS-MIB DEFINITIONS ::= BEGIN
 
 		IMPORTS
-			hiPathWirelessMgmt, hiPathWirelessModules
-				FROM HIPATH-WIRELESS-SMI
-			dot11WEPDefaultKeyIndex
-				FROM IEEE802dot11-MIB
-			ifIndex
-				FROM IF-MIB
-			OBJECT-GROUP, MODULE-COMPLIANCE
-				FROM SNMPv2-CONF
-			Integer32, Unsigned32, Counter64, OBJECT-TYPE, MODULE-IDENTITY
-				FROM SNMPv2-SMI
-			MacAddress, TruthValue, RowStatus, DisplayString
+			hiPathWirelessMgmt, hiPathWirelessModules			
+				FROM HIPATH-WIRELESS-SMI			
+			dot11WEPDefaultKeyIndex			
+				FROM IEEE802dot11-MIB			
+			ifIndex			
+				FROM IF-MIB			
+			OBJECT-GROUP, MODULE-COMPLIANCE			
+				FROM SNMPv2-CONF			
+			Integer32, Unsigned32, Counter64, OBJECT-TYPE, MODULE-IDENTITY			
+				FROM SNMPv2-SMI			
+			MacAddress, TruthValue, RowStatus, DisplayString			
 				FROM SNMPv2-TC;
-
-
+	
+	
 		-- 1.3.6.1.4.1.4329.15.5.3
 		hiPathWirelessDot11ExtnsMIB MODULE-IDENTITY
 			LAST-UPDATED "201310161515Z"		-- Oct 16, 2013 at 15:15 GMT
@@ -22,10 +22,10 @@
 				"Chantry Networks, Inc"
 			CONTACT-INFO
 				"Chantry Networks, Inc.
-
+				
 				55 Commerce Valley Drive (W), Suite 400
 				Thornhill, Ontario L3T 7V9, Canada
-
+				
 				Phone:   1-289-695-3182
 				Fax:     1 289-695-3299"
 			DESCRIPTION
@@ -42,15 +42,15 @@
 			         - Added mode11AC(6) to assocIfIndex.
 			        "
 
-
-
+				
+				
 
 			REVISION "201304301515Z"		-- April 30, 2013 at 15:15 GMT
 			DESCRIPTION
 			        "- Added  assocDLLostRetriesPackets and assocDLLostRetriesBytes to assocGroupTable.
 			        "
 
-
+				
 			REVISION "201108171815Z"		-- August 17, 2011 at 18:15 GMT
 			DESCRIPTION
 				"dot11ExtRadioStatsTable was modified:
@@ -101,28 +101,28 @@
 				"Initial revision."
 			::= { hiPathWirelessModules 3 }
 
-
-
+		
+	
 --
 -- Type definitions
 --
-
+	
 		WEPKeytype ::= OCTET STRING (SIZE (0 | 14 | 38))
 
-
-
+	
+	
 --
 -- Node definitions
 --
-
+	
 		-- 1.3.6.1.4.1.4329.15.3.1
 		dot11ExtnsMib OBJECT IDENTIFIER ::= { hiPathWirelessMgmt 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1
 		dot11Extsmt OBJECT IDENTIFIER ::= { dot11ExtnsMib 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1
 		dot11ExtBSSIDTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11ExtBSSIDEntry
@@ -134,7 +134,7 @@
 				SSID with with each BSS."
 			::= { dot11Extsmt 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1
 		dot11ExtBSSIDEntry OBJECT-TYPE
 			SYNTAX Dot11ExtBSSIDEntry
@@ -145,7 +145,7 @@
 			INDEX { ifIndex, dot11ExtBSSIndex }
 			::= { dot11ExtBSSIDTable 1 }
 
-
+		
 		Dot11ExtBSSIDEntry ::=
 			SEQUENCE {
 				dot11ExtBSSIndex
@@ -174,7 +174,7 @@
 				each Basic Service Set Identifier (BSSID) supported by a radio."
 			::= { dot11ExtBSSIDEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.2
 		dot11ExtBSSID OBJECT-TYPE
 			SYNTAX MacAddress
@@ -186,7 +186,7 @@
 				a radio can support up to 8 distinct BSSIDs."
 			::= { dot11ExtBSSIDEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.3
 		dot11ExtSSIDID OBJECT-TYPE
 			SYNTAX Integer32 (0..2147483647)
@@ -197,7 +197,7 @@
 				This number is meaningless external to the product."
 			::= { dot11ExtBSSIDEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.4
 		dot11ExtSSID OBJECT-TYPE
 			SYNTAX OCTET STRING (SIZE (0..32))
@@ -208,7 +208,7 @@
 				the wireless network to which this adapter belongs."
 			::= { dot11ExtBSSIDEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.5
 		dot11ExtBSSIDWEPKeyIndex OBJECT-TYPE
 			SYNTAX Integer32
@@ -219,7 +219,7 @@
 				from the ieee802dot11 dot11WEPDefaultKeysTable."
 			::= { dot11ExtBSSIDEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.6
 		dot11ExtSSIDSuppress OBJECT-TYPE
 			SYNTAX TruthValue
@@ -230,7 +230,7 @@
 				with this BSSID in the beacons."
 			::= { dot11ExtBSSIDEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.1.1.7
 		dot11ExtPriorityTrafficHandling OBJECT-TYPE
 			SYNTAX TruthValue
@@ -240,7 +240,7 @@
 				"When True, priority traffic handling is enabled for this BSSID."
 			::= { dot11ExtBSSIDEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2
 		dot11ExtWEPKeyMappingsTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11ExtWEPKeyMappingsEntry
@@ -249,12 +249,12 @@
 			DESCRIPTION
 				"The dot11ExtWEPKeyMappingsTable supports the ability to
 				configure a separate WEP key for each BSS/Station pairing.
-
+				
 				The WEPKeyMappingValues in this table are logically WRITE-ONLY.
 				Any attempt to read these values will return null or 0."
 			::= { dot11Extsmt 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2.1
 		dot11ExtWEPKeyMappingsEntry OBJECT-TYPE
 			SYNTAX Dot11ExtWEPKeyMappingsEntry
@@ -265,7 +265,7 @@
 			INDEX { ifIndex, dot11ExtBSSIndex, dot11ExtWEPKeyMappingIndex }
 			::= { dot11ExtWEPKeyMappingsTable 1 }
 
-
+		
 		Dot11ExtWEPKeyMappingsEntry ::=
 			SEQUENCE {
 				dot11ExtWEPKeyMappingIndex
@@ -290,7 +290,7 @@
 				of the columnar objects in the WEP Key Mappings Table."
 			::= { dot11ExtWEPKeyMappingsEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2.1.2
 		dot11ExtWEPKeyMappingAddress OBJECT-TYPE
 			SYNTAX MacAddress
@@ -301,7 +301,7 @@
 				key mapping entry are to be used."
 			::= { dot11ExtWEPKeyMappingsEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2.1.3
 		dot11ExtWEPKeyMappingWEPOn OBJECT-TYPE
 			SYNTAX TruthValue
@@ -312,7 +312,7 @@
 				with the dot11WEPKeyMappingAddress STA."
 			::= { dot11ExtWEPKeyMappingsEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2.1.4
 		dot11ExtWEPKeyMappingValue OBJECT-TYPE
 			SYNTAX WEPKeytype
@@ -322,7 +322,7 @@
 				"A WEP secret key value."
 			::= { dot11ExtWEPKeyMappingsEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.2.1.5
 		dot11ExtWEPKeyMappingStatus OBJECT-TYPE
 			SYNTAX RowStatus
@@ -334,7 +334,7 @@
 				mapping Table."
 			::= { dot11ExtWEPKeyMappingsEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.3
 		dot11CapabilitiesTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11CapabilitiesEntry
@@ -345,7 +345,7 @@
 				that each radio in the accessPoint are capable of supporting."
 			::= { dot11Extsmt 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.3.1
 		dot11CapabilitiesEntry OBJECT-TYPE
 			SYNTAX Dot11CapabilitiesEntry
@@ -356,7 +356,7 @@
 			INDEX { ifIndex }
 			::= { dot11CapabilitiesTable 1 }
 
-
+		
 		Dot11CapabilitiesEntry ::=
 			SEQUENCE {
 				dot11Capabilities
@@ -380,7 +380,7 @@
 				"Describes the capabilities of a radio, for example the protocol supported."
 			::= { dot11CapabilitiesEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.4
 		dot11bConfigTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11bConfigEntry
@@ -390,7 +390,7 @@
 				"The table contains configuration elements specific to the 802.11b protocol."
 			::= { dot11Extsmt 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.4.1
 		dot11bConfigEntry OBJECT-TYPE
 			SYNTAX Dot11bConfigEntry
@@ -404,7 +404,7 @@
 			INDEX { ifIndex }
 			::= { dot11bConfigTable 1 }
 
-
+		
 		Dot11bConfigEntry ::=
 			SEQUENCE {
 				dot11bEnabled
@@ -422,7 +422,7 @@
 				"When true, 802.1b protocol support is active on this radio."
 			::= { dot11bConfigEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.4.1.2
 		dot11BasicB OBJECT-TYPE
 			SYNTAX INTEGER
@@ -439,7 +439,7 @@
 				only the two 11 rates (1 and 2 Mbps) as basic rates."
 			::= { dot11bConfigEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5
 		dot11gConfigTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11gConfigEntry
@@ -452,7 +452,7 @@
 				support 802.11g, null or 0 will be returned."
 			::= { dot11Extsmt 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1
 		dot11gConfigEntry OBJECT-TYPE
 			SYNTAX Dot11gConfigEntry
@@ -463,7 +463,7 @@
 			INDEX { ifIndex }
 			::= { dot11gConfigTable 1 }
 
-
+		
 		Dot11gConfigEntry ::=
 			SEQUENCE {
 				dot11gEnabled
@@ -489,7 +489,7 @@
 				"When true, 802.1g protocol support is active on this radio."
 			::= { dot11gConfigEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1.3
 		dot11gProtectionMode OBJECT-TYPE
 			SYNTAX INTEGER
@@ -510,7 +510,7 @@
 				mode is always enabled."
 			::= { dot11gConfigEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1.4
 		dot11gProtectionType OBJECT-TYPE
 			SYNTAX INTEGER
@@ -525,7 +525,7 @@
 				or a CTS-only protection mechanism when Protection Mode is enabled."
 			::= { dot11gConfigEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1.5
 		dot11gProtectionRate OBJECT-TYPE
 			SYNTAX INTEGER
@@ -541,7 +541,7 @@
 				"Specifies the rate to be used by RTS or CTS in protection mode."
 			::= { dot11gConfigEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1.6
 		dot11gBasicG OBJECT-TYPE
 			SYNTAX INTEGER
@@ -561,7 +561,7 @@
 				OFDM specifies only OFDM rates (6, 12 and 24 Mbps) as basic."
 			::= { dot11gConfigEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.5.1.7
 		dot11gProtectionModeSelected OBJECT-TYPE
 			SYNTAX INTEGER
@@ -581,7 +581,7 @@
 				by Controller."
 			::= { dot11gConfigEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7
 		dot11ExtSmtTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11ExtSmtEntry
@@ -591,7 +591,7 @@
 				"Extended settings table."
 			::= { dot11Extsmt 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1
 		dot11ExtSmtEntry OBJECT-TYPE
 			SYNTAX Dot11ExtSmtEntry
@@ -602,7 +602,7 @@
 			INDEX { ifIndex }
 			::= { dot11ExtSmtTable 1 }
 
-
+		
 		Dot11ExtSmtEntry ::=
 			SEQUENCE {
 				smtShortPreambleInvoked
@@ -671,7 +671,7 @@
 				always short, always long or automatically selected."
 			::= { dot11ExtSmtEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.2
 		dot11ExtSmtCurrentChannel OBJECT-TYPE
 			SYNTAX Integer32 (0..2147483647)
@@ -681,7 +681,7 @@
 				"Specfies the current radio channel. Value of zero means 'auto' selection."
 			::= { dot11ExtSmtEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.3
 		dot11ExtSmtMaxBasicRate OBJECT-TYPE
 			SYNTAX OCTET STRING (SIZE (1..126))
@@ -691,7 +691,7 @@
 				"Specifies the maximum basic rate."
 			::= { dot11ExtSmtEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.4
 		dot11ExtSmtMinBasicRate OBJECT-TYPE
 			SYNTAX OCTET STRING (SIZE (1..126))
@@ -702,7 +702,7 @@
 				also the minimum operational rate."
 			::= { dot11ExtSmtEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.5
 		dot11ExtSmtMaxOperationalRate OBJECT-TYPE
 			SYNTAX OCTET STRING (SIZE (1..126))
@@ -712,7 +712,7 @@
 				"Specifies the maximum operational rate."
 			::= { dot11ExtSmtEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.6
 		dot11ExtSmtCurChanSelectedByAP OBJECT-TYPE
 			SYNTAX Integer32
@@ -722,7 +722,7 @@
 				"Current channel selected by Access Point."
 			::= { dot11ExtSmtEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.7
 		dot11ExtSmtRFDomain OBJECT-TYPE
 			SYNTAX DisplayString
@@ -734,7 +734,7 @@
 				are suppressed."
 			::= { dot11ExtSmtEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.8
 		dot11ExtSmtAutoTxPowerCtrl OBJECT-TYPE
 			SYNTAX Integer32
@@ -744,7 +744,7 @@
 				"Auto Transmission Power Control."
 			::= { dot11ExtSmtEntry 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.9
 		dot11ExtSmtCurrentTxPowerLevel OBJECT-TYPE
 			SYNTAX Integer32
@@ -754,7 +754,7 @@
 				"Current transmission power level of the radio."
 			::= { dot11ExtSmtEntry 9 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.10
 		dot11ExtSmtMaxTxPower OBJECT-TYPE
 			SYNTAX Integer32
@@ -764,7 +764,7 @@
 				"Maximum transmission power level of the radio."
 			::= { dot11ExtSmtEntry 10 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.11
 		dot11ExtSmtMinTxPower OBJECT-TYPE
 			SYNTAX Integer32
@@ -774,7 +774,7 @@
 				"Minimum transmission power level of the radio."
 			::= { dot11ExtSmtEntry 11 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.12
 		dot11ExtSmtAutoTxPowerCtrlAdjust OBJECT-TYPE
 			SYNTAX Integer32
@@ -784,7 +784,7 @@
 				"Auto Transmission Power Control adjust."
 			::= { dot11ExtSmtEntry 12 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.13
 		dot11ExtSmtBGretries OBJECT-TYPE
 			SYNTAX Integer32 (0..10)
@@ -794,7 +794,7 @@
 				"Number of retries for Background traffics. "
 			::= { dot11ExtSmtEntry 13 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.14
 		dot11ExtSmtBEretries OBJECT-TYPE
 			SYNTAX Integer32 (0..10)
@@ -804,7 +804,7 @@
 				"Number of retries for Best Efforts traffics."
 			::= { dot11ExtSmtEntry 14 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.15
 		dot11ExtSmtVIretries OBJECT-TYPE
 			SYNTAX Integer32 (0..10)
@@ -814,7 +814,7 @@
 				"Number of retries for Video traffics."
 			::= { dot11ExtSmtEntry 15 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.16
 		dot11ExtSmtVOretries OBJECT-TYPE
 			SYNTAX Integer32 (0..10)
@@ -824,7 +824,7 @@
 				"Number of retries for Voice traffics."
 			::= { dot11ExtSmtEntry 16 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.17
 		dot11ExtSmtTVOretries OBJECT-TYPE
 			SYNTAX Integer32 (0..10)
@@ -834,7 +834,7 @@
 				"Number of retries for Turbo Voice traffics."
 			::= { dot11ExtSmtEntry 17 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.18
 		dot11ExtSmtDcsMode OBJECT-TYPE
 			SYNTAX INTEGER
@@ -849,7 +849,7 @@
 				"DCS operation mode."
 			::= { dot11ExtSmtEntry 18 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.19
 		dot11ExtSmtDcsNoiseThreshold OBJECT-TYPE
 			SYNTAX Integer32 (-95..-50)
@@ -862,7 +862,7 @@
 				to monitor or active"
 			::= { dot11ExtSmtEntry 19 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.20
 		dot11ExtSmtDcsChlOccThreshold OBJECT-TYPE
 			SYNTAX Integer32 (10..100)
@@ -875,7 +875,7 @@
 				mode is set to monitor or active"
 			::= { dot11ExtSmtEntry 20 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.21
 		dot11ExtSmtDcsUpdatePeriod OBJECT-TYPE
 			SYNTAX Integer32 (0..15)
@@ -889,7 +889,7 @@
 				to monitor or active"
 			::= { dot11ExtSmtEntry 21 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.22
 		dot11ExtSmtDcsChannelSelection OBJECT-TYPE
 			SYNTAX Integer32 (0..255)
@@ -904,7 +904,7 @@
 				16 = custom"
 			::= { dot11ExtSmtEntry 22 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.7.1.23
 		dot11ExtSmtDcsChannelList OBJECT-TYPE
 			SYNTAX DisplayString
@@ -928,7 +928,7 @@
 
 
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.8
 		dot11ExtVlanSmtTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11ExtVlanSmtEntry
@@ -938,7 +938,7 @@
 				"This table contains configuration about bridging mode for the radio."
 			::= { dot11Extsmt 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.8.1
 		dot11ExtVlanSmtEntry OBJECT-TYPE
 			SYNTAX Dot11ExtVlanSmtEntry
@@ -949,7 +949,7 @@
 			INDEX { ifIndex, dot11ExtBSSIndex }
 			::= { dot11ExtVlanSmtTable 1 }
 
-
+		
 		Dot11ExtVlanSmtEntry ::=
 			SEQUENCE {
 				vlanBridgeMode
@@ -967,7 +967,7 @@
 				"When true, bridging mode is enabled on this radio."
 			::= { dot11ExtVlanSmtEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.8.1.2
 		vlanTag OBJECT-TYPE
 			SYNTAX Integer32
@@ -977,7 +977,7 @@
 				"Integer specifying the VLAN tag.  If untagged, returns -1."
 			::= { dot11ExtVlanSmtEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.10
 		dot11DiversityTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11DiversityEntry
@@ -987,7 +987,7 @@
 				"List of configuration elements specific to diversity support."
 			::= { dot11Extsmt 10 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.10.1
 		dot11DiversityEntry OBJECT-TYPE
 			SYNTAX Dot11DiversityEntry
@@ -998,7 +998,7 @@
 			INDEX { ifIndex }
 			::= { dot11DiversityTable 1 }
 
-
+		
 		Dot11DiversityEntry ::=
 			SEQUENCE {
 				dot11DiversityRxDiversity
@@ -1025,7 +1025,7 @@
 			DEFVAL { best }
 			::= { dot11DiversityEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.10.1.2
 		dot11DiversityTxDiversity OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1042,7 +1042,7 @@
 			DEFVAL { best }
 			::= { dot11DiversityEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.10.1.3
 		dot11AntennaSelection OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1063,7 +1063,7 @@
 			DEFVAL { none }
 			::= { dot11DiversityEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11
 		dot11nConfigTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11nConfigEntry
@@ -1076,7 +1076,7 @@
 				support 802.11n, null or 0 will be returned."
 			::= { dot11Extsmt 11 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1
 		dot11nConfigEntry OBJECT-TYPE
 			SYNTAX Dot11nConfigEntry
@@ -1087,7 +1087,7 @@
 			INDEX { ifIndex }
 			::= { dot11nConfigTable 1 }
 
-
+		
 		Dot11nConfigEntry ::=
 			SEQUENCE {
 				dot11nEnabled
@@ -1135,7 +1135,7 @@
 				"When true, 802.1n protocol support is active on this radio."
 			::= { dot11nConfigEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.2
 		dot11nChlBonding OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1150,7 +1150,7 @@
 				"802.11n protocol Channel Bonding."
 			::= { dot11nConfigEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.3
 		dot11nChlWidth OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1166,7 +1166,7 @@
 				"802.11n protocol Channel Width."
 			::= { dot11nConfigEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.4
 		dot11nChlGuardInterval OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1180,7 +1180,7 @@
 				"802.11n protocol Guard Interval."
 			::= { dot11nConfigEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.5
 		dot11nProtectEnabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1190,7 +1190,7 @@
 				"802.11n protocol Channel Protectino Mode."
 			::= { dot11nConfigEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.6
 		dot11nProtectType OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1205,7 +1205,7 @@
 				"802.11n protocol 40Mhz Channel Protection Type."
 			::= { dot11nConfigEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.7
 		dot11nProtectOffset OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1219,7 +1219,7 @@
 				"802.11n protocol 40Mhz Channel Protection Offset."
 			::= { dot11nConfigEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.8
 		dot11nPtotectBusyThr OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -1229,7 +1229,7 @@
 				"802.11n protocol 40Mhz Channel Protection Busy Threshold."
 			::= { dot11nConfigEntry 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.9
 		dot11nAggrMsduEnabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1239,7 +1239,7 @@
 				"802.11n protocol Aggregate MSDUs."
 			::= { dot11nConfigEntry 9 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.10
 		dot11nAggrMsduMaxLen OBJECT-TYPE
 			SYNTAX INTEGER (2290..4096)
@@ -1249,7 +1249,7 @@
 				"802.11n protocol Aggregate MSDU Max Length."
 			::= { dot11nConfigEntry 10 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.11
 		dot11nAggrMpduEnabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1259,7 +1259,7 @@
 				"802.11n protocol Aggregate MPDUs."
 			::= { dot11nConfigEntry 11 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.12
 		dot11nAggrMpduMaxLen OBJECT-TYPE
 			SYNTAX INTEGER (1024..65535)
@@ -1269,7 +1269,7 @@
 				"802.11n protocol Aggregate MPDU Max Length."
 			::= { dot11nConfigEntry 12 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.13
 		dot11nAggrMsduSubFrames OBJECT-TYPE
 			SYNTAX INTEGER (2..64)
@@ -1279,7 +1279,7 @@
 				"802.11n protocol Aggregate MPDU Max Number of Sub-frames."
 			::= { dot11nConfigEntry 13 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.14
 		dot11nAddbaSupEnabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1289,7 +1289,7 @@
 				"802.11n protocol ADDBA Support."
 			::= { dot11nConfigEntry 14 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.15
 		dot11nConfigLDPC OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1300,7 +1300,7 @@
 				to increase the reliability  of the transmission."
 			::= { dot11nConfigEntry 15 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.16
 		dot11nConfigSTBC OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1312,7 +1312,7 @@
 				chains than receiver chains."
 			::= { dot11nConfigEntry 16 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.1.11.1.17
 		dot11nConfigTXBF OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1324,11 +1324,11 @@
 				and performance of wireless links."
 			::= { dot11nConfigEntry 17 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2
 		dot11ExtAPObjs OBJECT IDENTIFIER ::= { dot11ExtnsMib 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2
 		dot1XConfigTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot1XConfigEntry
@@ -1339,7 +1339,7 @@
 				security."
 			::= { dot11ExtAPObjs 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1
 		dot1XConfigEntry OBJECT-TYPE
 			SYNTAX Dot1XConfigEntry
@@ -1350,7 +1350,7 @@
 			INDEX { ifIndex, dot11ExtBSSIndex }
 			::= { dot1XConfigTable 1 }
 
-
+		
 		Dot1XConfigEntry ::=
 			SEQUENCE {
 				dot1XEnabled
@@ -1380,7 +1380,7 @@
 				"Enable 802.1X authentication for this BSSID."
 			::= { dot1XConfigEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.2
 		dot1XDynamicRekeyingInterval OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -1392,7 +1392,7 @@
 				the key value must be updated."
 			::= { dot1XConfigEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.3
 		dot1XWPA1Enabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1402,7 +1402,7 @@
 				"Enables WPA.1 (Wi-Fi Protected Access) on this BSSID"
 			::= { dot1XConfigEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.4
 		dot1XWPAPassphrase OBJECT-TYPE
 			SYNTAX DisplayString
@@ -1413,7 +1413,7 @@
 				write only.  Any attempt to read this element will result in null or 0."
 			::= { dot1XConfigEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.5
 		dot1XWPACipherType OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1429,7 +1429,7 @@
 				This value has meaning if WPA.1 is enabled."
 			::= { dot1XConfigEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.6
 		dot1XWPA2Enabled OBJECT-TYPE
 			SYNTAX TruthValue
@@ -1439,7 +1439,7 @@
 				"When true, WPA v.2 support is enabled."
 			::= { dot1XConfigEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.7
 		dot1XWPA2CipherType OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1455,7 +1455,7 @@
 				This value has meaning if WPA.2 is enabled."
 			::= { dot1XConfigEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.2.2.1.8
 		dot1XConfigKeyManagement OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1472,11 +1472,11 @@
 				This field has meaning when dot1XEnabled is true and WPAv2 is enabled."
 			::= { dot1XConfigEntry 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4
 		dot11ExtCounters OBJECT IDENTIFIER ::= { dot11ExtnsMib 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1
 		assocGroupTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF AssocGroupEntry
@@ -1486,7 +1486,7 @@
 				"STA statistics table."
 			::= { dot11ExtCounters 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1
 		assocGroupEntry OBJECT-TYPE
 			SYNTAX AssocGroupEntry
@@ -1497,7 +1497,7 @@
 			INDEX { assocAddress }
 			::= { assocGroupTable 1 }
 
-
+		
 		AssocGroupEntry ::=
 			SEQUENCE {
 				assocAddress
@@ -1530,8 +1530,8 @@
 				        Integer32,
 				assocDLLostRetriesBytes
 				        Integer32
-
-
+				
+				
 			 }
 
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.1
@@ -1543,7 +1543,7 @@
 				"MAC address associated with the client."
 			::= { assocGroupEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.2
 		assocIfIndex OBJECT-TYPE
 			SYNTAX INTEGER
@@ -1564,7 +1564,7 @@
 				Symbols notation:  modeN50 = an = n5.0Ghz,   modeN24 = bgn = n2.4Ghz."
 			::= { assocGroupEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.3
 		assocReceivedRSSI OBJECT-TYPE
 			SYNTAX Integer32
@@ -1577,7 +1577,7 @@
 				specific range."
 			::= { assocGroupEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.4
 		assocTransmittedRSSI OBJECT-TYPE
 			SYNTAX Integer32
@@ -1588,7 +1588,7 @@
 				to transmitted packets for this client."
 			::= { assocGroupEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.5
 		assocReceivedRate OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -1598,7 +1598,7 @@
 				"PHY rate for the packets received from this client."
 			::= { assocGroupEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.6
 		assocTransmittedRate OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -1608,7 +1608,7 @@
 				"PHY rate used to transmit packets for this client."
 			::= { assocGroupEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.7
 		assocReceivedFrameCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1618,7 +1618,7 @@
 				"Frames received from this client."
 			::= { assocGroupEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.8
 		assocTransmittedFrameCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1628,7 +1628,7 @@
 				"Frames transmitted for this client."
 			::= { assocGroupEntry 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.9
 		assocReceiveErrors OBJECT-TYPE
 			SYNTAX Counter64
@@ -1638,7 +1638,7 @@
 				"Frames received with errors from this client."
 			::= { assocGroupEntry 9 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.10
 		assocTransmitErrors OBJECT-TYPE
 			SYNTAX Counter64
@@ -1649,7 +1649,7 @@
 				for this cleint."
 			::= { assocGroupEntry 10 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.11
 		assocTransmitBytes OBJECT-TYPE
 			SYNTAX Counter64
@@ -1659,7 +1659,7 @@
 				"Bytes transmitted for this client."
 			::= { assocGroupEntry 11 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.12
 		assocReceiveBytes OBJECT-TYPE
 			SYNTAX Counter64
@@ -1669,7 +1669,7 @@
 				"Bytes received from this client."
 			::= { assocGroupEntry 12 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.1.1.13
 		assocReceivedRSS OBJECT-TYPE
 			SYNTAX Integer32
@@ -1708,7 +1708,7 @@
 
 
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2
 		assocCountersTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF AssocCountersEntry
@@ -1718,7 +1718,7 @@
 				"STA association statistics table."
 			::= { dot11ExtCounters 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2.1
 		assocCountersEntry OBJECT-TYPE
 			SYNTAX AssocCountersEntry
@@ -1729,7 +1729,7 @@
 			INDEX { assocAddress }
 			::= { assocCountersTable 1 }
 
-
+		
 		AssocCountersEntry ::=
 			SEQUENCE {
 				assocAuthenticationCount
@@ -1753,7 +1753,7 @@
 				"Number of authentications for this client."
 			::= { assocCountersEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2.1.2
 		assocDeauthenticationCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1763,7 +1763,7 @@
 				"Number of deauthentications for this client."
 			::= { assocCountersEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2.1.3
 		assocAssociationCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1773,7 +1773,7 @@
 				"Number of associations for this client."
 			::= { assocCountersEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2.1.4
 		assocDeassociationCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1783,7 +1783,7 @@
 				"Number of deassociations for this client."
 			::= { assocCountersEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.2.1.5
 		assocReassociationCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -1793,7 +1793,7 @@
 				"Number of reassociations for this client."
 			::= { assocCountersEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3
 		dot11ExtRadioStatsTable OBJECT-TYPE
 			SYNTAX SEQUENCE OF Dot11ExtRadioStatsEntry
@@ -1803,7 +1803,7 @@
 				"Table of statistics for the dot11 radio."
 			::= { dot11ExtCounters 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1
 		dot11ExtRadioStatsEntry OBJECT-TYPE
 			SYNTAX Dot11ExtRadioStatsEntry
@@ -1814,7 +1814,7 @@
 			INDEX { ifIndex }
 			::= { dot11ExtRadioStatsTable 1 }
 
-
+		
 		Dot11ExtRadioStatsEntry ::=
 			SEQUENCE {
 				dot11ExtRadioType
@@ -1920,7 +1920,7 @@
 				dot11j(10),
 				dot11ac(11),
 				dot11cStrict(12)
-
+				
 				}
 			MAX-ACCESS read-only
 			STATUS current
@@ -1928,7 +1928,7 @@
 				"Indicates the type of radio (a/an or b/g/bgn)."
 			::= { dot11ExtRadioStatsEntry 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.2
 		dot11ExtRadioInUcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -1938,7 +1938,7 @@
 				"Number of unicast packets from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.3
 		dot11ExtRadioInMcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -1948,7 +1948,7 @@
 				"Number of multicast packets from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.4
 		dot11ExtRadioInBcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -1958,7 +1958,7 @@
 				"Number of broadcast packets from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.5
 		dot11ExtRadioInOctets OBJECT-TYPE
 			SYNTAX Counter64
@@ -1968,7 +1968,7 @@
 				"Total bytes from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 5 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.6
 		dot11ExtRadioInErrors OBJECT-TYPE
 			SYNTAX Counter64
@@ -1978,7 +1978,7 @@
 				"Number of error packets from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 6 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.7
 		dot11ExtRadioInDiscardsPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -1988,7 +1988,7 @@
 				"Number of discarded packets from wireless-to-wired network at this radio."
 			::= { dot11ExtRadioStatsEntry 7 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.8
 		dot11ExtRadioOutUcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -1998,7 +1998,7 @@
 				"Number of unicast packets from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 8 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.9
 		dot11ExtRadioOutMcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -2008,7 +2008,7 @@
 				"Number of multicast packets from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 9 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.10
 		dot11ExtRadioOutBcastPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -2018,7 +2018,7 @@
 				"Number of broadcast from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 10 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.11
 		dot11ExtRadioOutOctets OBJECT-TYPE
 			SYNTAX Counter64
@@ -2028,7 +2028,7 @@
 				"Total bytes from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 11 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.12
 		dot11ExtRadioOutErrors OBJECT-TYPE
 			SYNTAX Counter64
@@ -2038,7 +2038,7 @@
 				"Number of error packets from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 12 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.13
 		dot11ExtRadioOutDiscardsPkts OBJECT-TYPE
 			SYNTAX Counter64
@@ -2048,7 +2048,7 @@
 				"Number of discarded packets from wired-to-wireless network at this radio."
 			::= { dot11ExtRadioStatsEntry 13 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.14
 		dot11ExtRadioWepIcvErrorCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2058,7 +2058,7 @@
 				"Number of WEP ICV Errors."
 			::= { dot11ExtRadioStatsEntry 14 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.15
 		dot11ExtRadioWepExcludedCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2068,7 +2068,7 @@
 				"Number of WEP excluded."
 			::= { dot11ExtRadioStatsEntry 15 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.16
 		dot11ExtRadioRetryCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2078,7 +2078,7 @@
 				"Number of retry frames."
 			::= { dot11ExtRadioStatsEntry 16 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.17
 		dot11ExtRadioMultipleRetryCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2088,7 +2088,7 @@
 				"Number of multiple retries frames."
 			::= { dot11ExtRadioStatsEntry 17 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.18
 		dot11ExtRadioRtsSuccessCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2098,7 +2098,7 @@
 				"Number of successful RTS frames."
 			::= { dot11ExtRadioStatsEntry 18 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.19
 		dot11ExtRadioRtsFailCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2108,7 +2108,7 @@
 				"Number of failed RTS frames."
 			::= { dot11ExtRadioStatsEntry 19 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.20
 		dot11ExtRadioAckFailCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2118,7 +2118,7 @@
 				"Number of failed ACK frames."
 			::= { dot11ExtRadioStatsEntry 20 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.21
 		dot11ExtRadioFrameDupCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2128,7 +2128,7 @@
 				"Number of duplicated frames."
 			::= { dot11ExtRadioStatsEntry 21 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.22
 		dot11ExtRadioTransFragCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2138,7 +2138,7 @@
 				"Number of transmitted fragment."
 			::= { dot11ExtRadioStatsEntry 22 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.23
 		dot11ExtRadioMulTransFrameCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2148,7 +2148,7 @@
 				"Number of transmitted multicast fragment."
 			::= { dot11ExtRadioStatsEntry 23 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.24
 		dot11ExtRadioFailedCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2158,7 +2158,7 @@
 				"Number of failed frames."
 			::= { dot11ExtRadioStatsEntry 24 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.25
 		dot11ExtRadioReceivedFragCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2168,7 +2168,7 @@
 				"Number of received fragment."
 			::= { dot11ExtRadioStatsEntry 25 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.26
 		dot11ExtRadioMulRecFrameCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2178,7 +2178,7 @@
 				"Number of received multicast frame."
 			::= { dot11ExtRadioStatsEntry 26 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.27
 		dot11ExtRadioFcsErrorCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2188,7 +2188,7 @@
 				"Number of FCS errors frames."
 			::= { dot11ExtRadioStatsEntry 27 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.28
 		dot11ExtRadioWepUndecrypCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2198,7 +2198,7 @@
 				"Number of undecryptable WEP frames."
 			::= { dot11ExtRadioStatsEntry 28 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.29
 		dot11ExtRadioTransFrameCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2208,7 +2208,7 @@
 				"Number of transmitted frames."
 			::= { dot11ExtRadioStatsEntry 29 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.30
 		dot11ExtRadioDeauthCacCount OBJECT-TYPE
 			SYNTAX Counter64
@@ -2218,7 +2218,7 @@
 				"Number of deauthentications due to CAC."
 			::= { dot11ExtRadioStatsEntry 30 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.31
 		dot11ExtRadioAvgNfCount OBJECT-TYPE
 			SYNTAX INTEGER (50..100)
@@ -2231,7 +2231,7 @@
 				Variable is reported as average over the last 30 seconds."
 			::= { dot11ExtRadioStatsEntry 31 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.32
 		dot11ExtRadioMaxNfCount OBJECT-TYPE
 			SYNTAX INTEGER (50..100)
@@ -2244,7 +2244,7 @@
 				Variable is reported as max over the last 30 seconds."
 			::= { dot11ExtRadioStatsEntry 32 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.33
 		dot11ExtRadioAvgChlOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2254,7 +2254,7 @@
 				"Average DCS Channel Utilization by Adjacent APs [%]."
 			::= { dot11ExtRadioStatsEntry 33 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.34
 		dot11ExtRadioMaxChlOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2264,7 +2264,7 @@
 				"Maximum DCS Channel Utilization by Adjacent APs [%]."
 			::= { dot11ExtRadioStatsEntry 34 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.35
 		dot11ExtRadioAvgTxOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2276,7 +2276,7 @@
 				Variable is reported as average over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 35 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.36
 		dot11ExtRadioMaxTxOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2288,7 +2288,7 @@
 				access to the channel. Variable is reported as max over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 36 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.37
 		dot11ExtRadioAvgRxOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2298,7 +2298,7 @@
 				"Average DCS RX Channel Utilization [%]."
 			::= { dot11ExtRadioStatsEntry 37 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.38
 		dot11ExtRadioMaxRxOccCount OBJECT-TYPE
 			SYNTAX INTEGER (0..100)
@@ -2308,7 +2308,7 @@
 				"Maximum DCS RX Channel Utilization [%]."
 			::= { dot11ExtRadioStatsEntry 38 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.39
 		dot11ExtRadioAvgBusyChPercentage OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -2323,7 +2323,7 @@
 				is reported as average over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 39 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.40
 		dot11ExtRadioMaxBusyChPercentage OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -2338,7 +2338,7 @@
 				channel. Variable is reported as maximum over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 40 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.41
 		dot11ExtRadioAvgRxChOccPercentage OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -2352,7 +2352,7 @@
 				signal. Variable is reported as average over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 41 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.4.3.1.42
 		dot11ExtRadioMaxRxChOccPercentage OBJECT-TYPE
 			SYNTAX Unsigned32
@@ -2366,11 +2366,11 @@
 				valid 802.11 signal. Variable is reported as max over the last 100 seconds."
 			::= { dot11ExtRadioStatsEntry 42 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5
 		dot11ExtConformance OBJECT IDENTIFIER ::= { dot11ExtnsMib 5 }
 
-
+		
 --  this module
 		-- 1.3.6.1.4.1.4329.15.3.1.5.1
 		hiPathWirelessDot11ExtModule MODULE-COMPLIANCE
@@ -2382,7 +2382,7 @@
 						   dot11ExtRadioStatsGroup}
 			::= { dot11ExtConformance 1 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.2
 		hiPathWirelessDot11ExtGroups OBJECT-GROUP
 			OBJECTS { dot11ExtSSIDID, dot11ExtSSID, dot11ExtWEPKeyMappingIndex, dot11ExtWEPKeyMappingAddress, dot11ExtWEPKeyMappingWEPOn,
@@ -2401,7 +2401,7 @@
 				"High Path Wireless DOT11-EXTNS object-group."
 			::= { dot11ExtConformance 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.3
 		hiPathWirelessDot11ObsoleteGroups OBJECT-GROUP
 			OBJECTS { vlanBridgeMode, dot11gBasicG, dot11BasicB, vlanTag }
@@ -2410,11 +2410,11 @@
 				"Objects in this list are obsolete."
 			::= { dot11ExtConformance 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.4
 		dot11EWCGroups OBJECT IDENTIFIER ::= { dot11ExtConformance 4 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.4.1
 		dot11nConfigGroup OBJECT-GROUP
 			OBJECTS { dot11nEnabled, dot11nChlBonding, dot11nChlWidth, dot11nChlGuardInterval, dot11nProtectEnabled,
@@ -2428,7 +2428,7 @@
 
 
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.4.2
 		assocGroupGroup OBJECT-GROUP
 			OBJECTS { assocAddress, assocIfIndex, assocReceivedRSSI, assocTransmittedRSSI, assocReceivedRate,
@@ -2439,7 +2439,7 @@
 				"Objects in this group contain information about associated MUs."
 			::= { dot11EWCGroups 2 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.4.3
 		assocCountersGroup OBJECT-GROUP
 			OBJECTS { assocAuthenticationCount, assocDeauthenticationCount, assocAssociationCount, assocDeassociationCount, assocReassociationCount
@@ -2449,7 +2449,7 @@
 				"Objects in this group contain stats related to associated MUs."
 			::= { dot11EWCGroups 3 }
 
-
+		
 		-- 1.3.6.1.4.1.4329.15.3.1.5.4.4
 		dot11ExtRadioStatsGroup OBJECT-GROUP
 			OBJECTS { dot11ExtRadioType, dot11ExtRadioInUcastPkts, dot11ExtRadioInMcastPkts, dot11ExtRadioInBcastPkts, dot11ExtRadioInOctets,
@@ -2466,6 +2466,6 @@
 				"Objects in this group contain statistics related a radio."
 			::= { dot11EWCGroups 4 }
 
-
-
+		
+	
 	END

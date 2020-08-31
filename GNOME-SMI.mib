@@ -1,0 +1,72 @@
+GNOME-SMI DEFINITIONS ::= BEGIN
+
+IMPORTS
+	MODULE-IDENTITY,
+	OBJECT-IDENTITY,
+	enterprises
+		FROM SNMPv2-SMI;
+
+gnome MODULE-IDENTITY
+	LAST-UPDATED "200312070000Z"
+	ORGANIZATION "GNOME project"
+	CONTACT-INFO
+		"GNU Network Object Model Environment project
+
+		see http://www.gnome.org for contact persons of a particular
+		area or subproject of GNOME.
+
+		Administrative contact for MIB module:
+
+		Jochen Friedrich
+		Buedingerstr. 30b
+		63546 Hammersbach
+		Germany
+
+		email: jochen@scram.de"
+	DESCRIPTION
+		"The Structure of GNOME."
+
+	-- revision history
+
+	REVISION "9809010000Z"  -- September 01, 1998
+	DESCRIPTION
+		"Initial version."
+
+	REVISION "200312070000Z"  -- December 07, 2003
+	DESCRIPTION
+		"Added gnomeSysadmin subtree for GNOME project system administration.
+		Updated contact info."
+
+	::= { enterprises 3317 }	-- assigned by IANA
+
+gnomeProducts OBJECT-IDENTITY
+	STATUS	current
+	DESCRIPTION
+		"gnomeProducts is the root OBJECT IDENTIFIER from
+		which sysObjectID values are assigned."
+	::= { gnome 1 }
+
+gnomeMgmt OBJECT-IDENTITY
+	STATUS  current
+	DESCRIPTION
+		"gnomeMgmt defines the subtree for production GNOME related
+		MIB registrations."
+	::= { gnome 2 }
+
+gnomeTest OBJECT-IDENTITY
+	STATUS  current
+	DESCRIPTION
+		"gnomeTest defines the subtree for testing GNOME related
+		MIB registrations."
+	::= { gnome 3 }
+
+gnomeSysadmin OBJECT-IDENTITY
+	STATUS  current
+	DESCRIPTION
+		"gnomeSysadmin defines the subtree for GNOME related Sysadmin
+		MIB registrations."
+	::= { gnome 4 }
+
+-- more to come if necessary.
+
+END

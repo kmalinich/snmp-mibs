@@ -898,7 +898,7 @@ dot11MultiDomainCapabilityEntry OBJECT-TYPE
 		INDEX { ifIndex,
 		        dot11MultiDomainCapabilityIndex }
 	::= { dot11MultiDomainCapabilityTable 1 }
-
+	
 Dot11MultiDomainCapabilityEntry ::=
 		SEQUENCE {	dot11MultiDomainCapabilityIndex		Integer32,
 					dot11FirstChannelNumber				Integer32,
@@ -1501,7 +1501,7 @@ dot11PHYType OBJECT-TYPE
 	        "This is an 8-bit integer value that identifies the PHY type
 	        supported by the attached PLCP and PMD. Currently defined
 	        values and their corresponding PHY types are:
-
+	
 	        FHSS 2.4 GHz = 01 , DSSS 2.4 GHz = 02, IR Baseband = 03,
 			OFDM 5GHz = 04, HRDSSS = 05"
     ::= { dot11PhyOperationEntry 1 }
@@ -1890,13 +1890,13 @@ dot11EHCCCapabilityEnabled OBJECT-TYPE
 
 dot11HopAlgorithmAdopted OBJECT-TYPE
 		SYNTAX INTEGER { crnt(1), hopindex(2), hcc(3) }
--- Modified by Daniel R. Borges on 02.14.2002 (compilation errors)
+-- Modified by Daniel R. Borges on 02.14.2002 (compilation errors)	
 		MAX-ACCESS read-write
 		STATUS current
 		DESCRIPTION
 			"This attribute, indicates which of the algorithms will be used to generate
 			the Hopping Patterns. Valid Values are:
-
+	
 			0 - hopping patterns as defined in clause 14 of the current version
 			    of IEEE Std 802.11
 			1 - hop index method (with or without table)

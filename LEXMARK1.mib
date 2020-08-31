@@ -1632,7 +1632,7 @@ PrtgenInfoEntry ::= SEQUENCE {
     prtgenPeripheralID              DisplayString,
     prtgenCodeRevision              DisplayString,
     prtgenResValue                  INTEGER,
-    prtgenSerialNo		    DisplayString
+    prtgenSerialNo		    DisplayString	
     }
 
 prtgenPrinterIndex OBJECT-TYPE
@@ -2017,7 +2017,7 @@ prtgenAlertIndex OBJECT-TYPE
    STATUS mandatory
    DESCRIPTION
 	"The index value used to determine which alerts the entry has been associated with. 1 is for toner. 2 is for Photoconductor. "
-   ::= { prtgenAlertEntry 1 }
+   ::= { prtgenAlertEntry 1 }  	
 
 prtgenAlertDescription OBJECT-TYPE
     SYNTAX  DisplayString
@@ -2045,8 +2045,8 @@ prtgenAlertGroup OBJECT-TYPE
 			channel(14),
 			interpreter(15),
 			consoleDisplayBuffer(16),
-			consoleLights(17)
-		}
+			consoleLights(17)	
+		}	
     ACCESS read-only
     STATUS  mandatory
     DESCRIPTION
@@ -2068,7 +2068,7 @@ prtDotmatrixEntry OBJECT-TYPE
     STATUS  mandatory
     DESCRIPTION
 	"An entry containing attached dotmatrix-printer info"
-    INDEX {prtgenPrinterIndex }
+    INDEX {prtgenPrinterIndex }	
     ::= { prtDotmatrixTable 1 }
 
 PrtDotmatrixEntry ::= SEQUENCE {
@@ -2123,7 +2123,7 @@ prtdmLockMacroButton OBJECT-TYPE
 	"The status of whether Macro button is locked."
     DEFVAL {0}
     ::= { prtDotmatrixEntry 5 }
-
+	
 prtdmLockLFButton OBJECT-TYPE
     SYNTAX  INTEGER {
         No(0),
@@ -2229,7 +2229,7 @@ DmMacroEntry ::= SEQUENCE {
 	dmTOFCutPaperNoASF	INTEGER,
 	dmTOFASF		INTEGER,
 	dmTOFCutPaperASF	INTEGER
-    }
+    }		
 
 dmMacroIndex OBJECT-TYPE
    SYNTAX Integer32
@@ -2247,7 +2247,7 @@ dmCharacterSet OBJECT-TYPE
    ACCESS read-write
    STATUS mandatory
    DESCRIPTION
-	"Character setting for macro. CharacterSet1 is the factory default for the U.S.; CharacterSet2 is the factory default for the EMEA "
+	"Character setting for macro. CharacterSet1 is the factory default for the U.S.; CharacterSet2 is the factory default for the EMEA "	
    ::= { dmMacroEntry 2 }
 
 dm20PEnabled OBJECT-TYPE
@@ -2267,7 +2267,7 @@ dmFont OBJECT-TYPE
    STATUS mandatory
    DESCRIPTION
         "An integer representing the font type of the macro.
-
+	
 	Value	9Wire Printer	24Wire Printer
 	-----	-------------	--------------
 	0	Fast Draft	Courier
@@ -2278,7 +2278,7 @@ dmFont OBJECT-TYPE
 	5	Download	Script
 	6			Draft
 	7			Fast Draft
-	8			Download
+	8			Download	
         "
    ::= { dmMacroEntry 4 }
 
@@ -2292,7 +2292,7 @@ dmFontLock OBJECT-TYPE
    DESCRIPTION
         "The status of whether Font is locked. "
    DEFVAL {0}
-   ::= { dmMacroEntry 5 }
+   ::= { dmMacroEntry 5 }	
 
 dmPitch OBJECT-TYPE
    SYNTAX INTEGER(0..6)
@@ -2301,7 +2301,7 @@ dmPitch OBJECT-TYPE
    DESCRIPTION
         "An integer representing the pitch of the macro.
 
-	Value	9wire Printer	24Wire Printer
+	Value	9wire Printer	24Wire Printer	
 	----	-------------	--------------
 	0	10		10
 	1	12		12
@@ -2311,7 +2311,7 @@ dmPitch OBJECT-TYPE
 	5	Proportional	24
 	6			Proportional
         "
-   ::= { dmMacroEntry 6 }
+   ::= { dmMacroEntry 6 } 			
 
 dmPitchLock OBJECT-TYPE
    SYNTAX INTEGER{
@@ -2323,7 +2323,7 @@ dmPitchLock OBJECT-TYPE
    DESCRIPTION
         "The status of whether Pitch is locked. "
    DEFVAL {0}
-   ::= { dmMacroEntry 7 }
+   ::= { dmMacroEntry 7 }	
 
 dmCodePage OBJECT-TYPE
    SYNTAX INTEGER{
@@ -2350,7 +2350,7 @@ dmCodePage OBJECT-TYPE
         "A set of 256 graphic designs(characters) associated with unique code values from 0 through 255, x00 to xFF. "
    ::= { dmMacroEntry 8 }
 
-
+    			
 dmTOFPushTractor OBJECT-TYPE
    SYNTAX INTEGER
    ACCESS read-write
