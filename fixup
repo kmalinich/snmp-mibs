@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob
+
+dos2unix ./*.*
+
+for MIBNAME in ./*.my; do
+	mv "${MIBNAME}" "${MIBNAME//\.my}.MIB";
+done
+
+while true; do
+	if ! grep -Eq '\ $' ./*.* && ! grep -Pq '\t$' ./*.*; then
+		break
+	fi
+
+	if grep -Eq '\ $' ./*.*; then
+		echo "trailing space"
+		sed -i 's/\ $//g' $(grep -El '\ $' ./*.*)
+	fi
+
+	if grep -Pq '\t$' ./*.*; then
+		echo "trailing tab"
+		sed -i 's/\t$//g' $(grep -El '\t$' ./*.*)
+	fi
+done
