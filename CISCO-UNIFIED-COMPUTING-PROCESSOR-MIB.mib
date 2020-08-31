@@ -249,7 +249,7 @@ cucsProcessorEnvStatsSuspect OBJECT-TYPE
     ::= { cucsProcessorEnvStatsEntry 9 }
 
 cucsProcessorEnvStatsTemperature OBJECT-TYPE
-    SYNTAX       STRING
+    SYNTAX       INTEGER
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -257,7 +257,7 @@ cucsProcessorEnvStatsTemperature OBJECT-TYPE
     ::= { cucsProcessorEnvStatsEntry 10 }
 
 cucsProcessorEnvStatsTemperatureAvg OBJECT-TYPE
-    SYNTAX       STRING
+    SYNTAX       INTEGER
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -266,7 +266,7 @@ cucsProcessorEnvStatsTemperatureAvg OBJECT-TYPE
     ::= { cucsProcessorEnvStatsEntry 11 }
 
 cucsProcessorEnvStatsTemperatureMax OBJECT-TYPE
-    SYNTAX       STRING
+    SYNTAX       INTEGER
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
@@ -275,7 +275,7 @@ cucsProcessorEnvStatsTemperatureMax OBJECT-TYPE
     ::= { cucsProcessorEnvStatsEntry 12 }
 
 cucsProcessorEnvStatsTemperatureMin OBJECT-TYPE
-    SYNTAX       STRING
+    SYNTAX       INTEGER
     MAX-ACCESS   read-only
     STATUS       current
     DESCRIPTION
