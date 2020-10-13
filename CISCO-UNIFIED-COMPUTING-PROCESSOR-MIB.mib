@@ -163,7 +163,7 @@ CucsProcessorEnvStatsEntry ::= SEQUENCE {
     cucsProcessorEnvStatsInputCurrentMin                             INTEGER,
     cucsProcessorEnvStatsIntervals                                   Gauge32,
     cucsProcessorEnvStatsSuspect                                     TruthValue,
-    cucsProcessorEnvStatsTemperature                                 INTEGER,
+    cucsProcessorEnvStatsTemperature                                 STRING,
     cucsProcessorEnvStatsTemperatureAvg                              INTEGER,
     cucsProcessorEnvStatsTemperatureMax                              INTEGER,
     cucsProcessorEnvStatsTemperatureMin                              INTEGER,
