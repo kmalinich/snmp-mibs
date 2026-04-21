@@ -4441,7 +4441,7 @@ cpeeNetmask OBJECT-TYPE
     ::= { cpeExprConfigStatsEntry 9 }
 
 EntityProtocolType ::=
-	INTEGER{ http(0), ftp(1), tcp(2), udp(3), sslBridge(4), monitor(5), monitorUdp(6), nntp(7), httpserver(8), httpclient(9), rpcserver(10), rpcclient(11), nat(12), any(13), ssl(14), dns(15), adns(16), snmp(17), ha(18), monitorPing(19), sslOtherTcp(20), aaa(21), secureMonitor(22), sslvpnUdp(23), rip(24), dnsClient(25), rpcServer(26), rpcClient(27), dhcrpa(35), sipudp(38), dnstcp(43), adnstcp(44), rtsp(45), push(47), sslPush(48), dhcpClient(49), radius(50), rdp(55), mysql(56), mssql(57), diameter(67), sslDiameter(68), tftp(69), tftp(80), serviceUnknown(81) }
+	INTEGER{ http(0), ftp(1), tcp(2), udp(3), sslBridge(4), monitor(5), monitorUdp(6), nntp(7), httpserver(8), httpclient(9), rpcserver(10), rpcclient(11), nat(12), any(13), ssl(14), dns(15), adns(16), snmp(17), ha(18), monitorPing(19), sslOtherTcp(20), aaa(21), secureMonitor(22), sslvpnUdp(23), rip(24), dnsClient(25), rpcServer(26), rpcClient(27), dhcrpa(35), sipudp(38), dnstcp(43), adnstcp(44), rtsp(45), push(47), sslPush(48), dhcpClient(49), radius(50), rdp(55), mysql(56), mssql(57), diameter(67), sslDiameter(68), tftp(69), serviceUnknown(81) }
 
 EntityState ::=
 	INTEGER{ down(1), unknown(2), busy(3), outOfService(4), transitionToOutOfService(5), up(7), transitionToOutOfServiceDown(8) }
